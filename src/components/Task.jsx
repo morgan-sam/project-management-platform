@@ -1,13 +1,14 @@
 import React from 'react';
+import Cell from './Cell';
 
 const Task = (props) => {
 	return (
 		<div className="taskEntry">
-			<h3>Task: {props.task}</h3>
-			<h3>Date: {props.date}</h3>
-			<h3>Deadline: {props.deadline}</h3>
-			<h3>Urgency: {props.urgency}</h3>
-			<h3>Team: {props.team}</h3>
+			<Cell text={props.task} />
+			<Cell text={props.date} />
+			<Cell text={props.deadline} />
+			<Cell text={props.urgency} />
+			<Cell text={props.team} />
 		</div>
 	);
 };

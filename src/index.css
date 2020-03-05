@@ -9,3 +9,14 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.table > * {
+	display: flex;
+	flex-direction: row;
+}
+
+.cell {
+	width: 5rem;
+	padding: 1rem;
+	border: 1px solid black;
+}
