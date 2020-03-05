@@ -1,6 +1,8 @@
 import React from 'react';
-
 import Table from './Table';
+import taskList from '../data/taskList';
+
+console.log(taskList);
 
 const App = () => {
 	return (
