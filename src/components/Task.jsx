@@ -9,6 +9,7 @@ const Task = (props) => {
 			<Cell text={props.deadline} />
 			<Cell text={props.urgency} />
 			<Cell text={props.team} />
+			<Cell text={props.completed} />
 		</div>
 	);
 };

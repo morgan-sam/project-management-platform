@@ -9,6 +9,7 @@ const TableHeadings = () => {
 			<Cell text={'Deadline'} />
 			<Cell text={'Urgency'} />
 			<Cell text={'Team'} />
+			<Cell text={'Completed'} />
 		</div>
 	);
 };
