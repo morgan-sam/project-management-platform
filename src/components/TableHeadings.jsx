@@ -3,7 +3,7 @@ import Cell from './Cell';
 
 const TableHeadings = () => {
 	return (
-		<div className="tableHeading">
+		<div className="tableHeadings">
 			<Cell text={'Task'} />
 			<Cell text={'Date'} />
 			<Cell text={'Deadline'} />
