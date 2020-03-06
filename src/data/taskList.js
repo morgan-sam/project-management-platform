@@ -1,5 +1,6 @@
 const taskList = [
 	{
+		key: '1576996323453',
 		task: 'Create App',
 		date: '2020-01-01T00:00:00.000Z',
 		deadline: '2020-01-01T00:00:00.000Z',
@@ -8,6 +9,7 @@ const taskList = [
 		completed: false
 	},
 	{
+		key: '1576996323453',
 		task: 'Add Payment Feature',
 		date: '2020-03-01T00:00:00.000Z',
 		deadline: '2020-06-01T00:00:00.000Z',
@@ -16,6 +18,7 @@ const taskList = [
 		completed: true
 	},
 	{
+		key: '1576996323453',
 		task: 'Refactor Backend',
 		date: '2021-01-17T00:00:00.000Z',
 		deadline: '2021-09-28T00:00:00.000Z',
@@ -24,6 +27,7 @@ const taskList = [
 		completed: false
 	},
 	{
+		key: '1576996323453',
 		task: 'Redesign Homepage',
 		date: '2019-01-01T00:00:00.000Z',
 		deadline: '2020-01-01T00:00:00.000Z',
