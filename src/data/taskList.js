@@ -17,15 +17,15 @@ const taskList = [
 	},
 	{
 		task: 'Refactor Backend',
-		date: '2020-01-01T00:00:00.000Z',
-		deadline: '2020-01-01T00:00:00.000Z',
+		date: '2021-01-17T00:00:00.000Z',
+		deadline: '2021-09-28T00:00:00.000Z',
 		urgency: 9,
 		team: 'Team 2',
 		completed: false
 	},
 	{
 		task: 'Redesign Homepage',
-		date: '2020-01-01T00:00:00.000Z',
+		date: '2019-01-01T00:00:00.000Z',
 		deadline: '2020-01-01T00:00:00.000Z',
 		urgency: 2,
 		team: 'Team 2',

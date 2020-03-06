@@ -5,10 +5,7 @@ import sortList from '../processing/sortList';
 
 const App = () => {
 	const [ tableView, setTableView ] = useState('tasks');
-	const [ sortType, setSortType ] = useState('task');
-	//set state to determine what mode table is in
-
-	//sort tasklist according to state
+	const [ sortType, setSortType ] = useState('date');
 	const sortedList = sortList(sortType, taskList);
 
 	return (

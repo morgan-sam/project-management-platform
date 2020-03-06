@@ -1,10 +1,13 @@
 export const sortList = (sortType, taskList) => {
 	const index = Object.keys(taskList[0]).indexOf(sortType);
-	console.log(index);
-	print(taskList);
-	const sortedList = sortObjListAlphabetically(taskList, index);
-	print(taskList);
-	return taskList;
+	const type = typeof Object.values(taskList[0])[index];
+	if (type === 'number') {
+		return sortObjListNumerically(taskList, index);
+	} else if (type === 'string') {
+		return sortObjListAlphabetically(taskList, index);
+	} else if (type === 'boolean') {
+		return sortObjListNumerically(taskList, index);
+	}
 };
 
 export default sortList;
