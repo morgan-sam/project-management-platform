@@ -7,7 +7,7 @@ const Table = (props) => {
 
 	return (
 		<div className="table">
-			<TableHeadings />
+			<TableHeadings setSortType={(val) => props.setSortType(val)} />
 			{tasks}
 		</div>
 	);

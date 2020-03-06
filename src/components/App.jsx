@@ -11,7 +11,7 @@ const App = () => {
 	return (
 		<div>
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
-			<Table taskList={sortedList} />
+			<Table taskList={sortedList} setSortType={(val) => setSortType(val)} />
 		</div>
 	);
 };

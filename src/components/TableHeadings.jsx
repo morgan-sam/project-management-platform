@@ -1,15 +1,15 @@
 import React from 'react';
 import Cell from './Cell';
 
-const TableHeadings = () => {
+const TableHeadings = (props) => {
 	return (
 		<div className="tableHeadings">
-			<Cell text={'Task'} />
-			<Cell text={'Date'} />
-			<Cell text={'Deadline'} />
-			<Cell text={'Urgency'} />
-			<Cell text={'Team'} />
-			<Cell text={'Completed'} />
+			<Cell text={'Task'} onClick={() => props.setSortType('task')} />
+			<Cell text={'Date'} onClick={() => props.setSortType('date')} />
+			<Cell text={'Deadline'} onClick={() => props.setSortType('deadline')} />
+			<Cell text={'Urgency'} onClick={() => props.setSortType('urgency')} />
+			<Cell text={'Team'} onClick={() => props.setSortType('team')} />
+			<Cell text={'Completed'} onClick={() => props.setSortType('completed')} />
 		</div>
 	);
 };
