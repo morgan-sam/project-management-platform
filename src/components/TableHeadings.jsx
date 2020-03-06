@@ -3,7 +3,7 @@ import Cell from './Cell';
 
 const TableHeadings = (props) => {
 	return (
-		<div className="tableHeadings">
+		<div className="tableHeadings" style={{ cursor: 'pointer' }}>
 			<Cell text={'Task'} onClick={() => props.setSortType('task')} />
 			<Cell text={'Date'} onClick={() => props.setSortType('date')} />
 			<Cell text={'Deadline'} onClick={() => props.setSortType('deadline')} />
