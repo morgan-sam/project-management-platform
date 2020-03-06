@@ -4,7 +4,7 @@ import taskList from '../data/taskList';
 import sortList from '../processing/sortList';
 
 const App = () => {
-	const [ tableView, setTableView ] = useState('tasks');
+	// const [ tableView, setTableView ] = useState('tasks');
 	const [ sortType, setSortType ] = useState('date');
 	const sortedList = sortList(sortType, taskList);
 

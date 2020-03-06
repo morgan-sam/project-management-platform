@@ -12,10 +12,6 @@ export const sortList = (sortType, taskList) => {
 
 export default sortList;
 
-const print = (value) => {
-	console.log(JSON.parse(JSON.stringify(value)));
-};
-
 function sortObjListNumerically(list, index) {
 	return list.sort((a, b) => Object.values(a)[index] - Object.values(b)[index]);
 }
