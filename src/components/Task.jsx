@@ -5,8 +5,8 @@ const Task = (props) => {
 	return (
 		<div className="taskEntry">
 			<Cell text={props.task} />
-			<Cell text={props.date} />
-			<Cell text={props.deadline} />
+			<Cell text={new Date(props.date).toString()} />
+			<Cell text={new Date(props.deadline).toString()} />
 			<Cell text={props.urgency} />
 			<Cell text={props.team} />
 			<Cell text={props.completed} />
