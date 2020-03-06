@@ -19,6 +19,14 @@ const taskList = [
 		task: 'Refactor Backend',
 		date: '1/3/20',
 		deadline: '1/6/20',
+		urgency: 9,
+		team: 'Team 2',
+		completed: false
+	},
+	{
+		task: 'Redesign Homepage',
+		date: '10/3/20',
+		deadline: '1/4/20',
 		urgency: 2,
 		team: 'Team 2',
 		completed: false

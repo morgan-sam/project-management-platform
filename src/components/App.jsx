@@ -5,16 +5,16 @@ import sortList from '../processing/sortList';
 
 const App = () => {
 	const [ tableView, setTableView ] = useState('tasks');
-	const [ tableSort, setTableSort ] = useState('date');
+	const [ sortType, setSortType ] = useState('task');
 	//set state to determine what mode table is in
 
 	//sort tasklist according to state
-	sortList();
+	const sortedList = sortList(sortType, taskList);
 
 	return (
 		<div>
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
-			<Table taskList={taskList} />
+			<Table taskList={sortedList} />
 		</div>
 	);
 };
