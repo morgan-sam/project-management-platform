@@ -5,17 +5,32 @@ import sortList from "../processing/sortList";
 
 const App = () => {
   // const [ tableView, setTableView ] = useState('tasks');
-  const [sortType, setSortType] = useState("date");
-  const [sortReversed, setSortReversed] = useState(false);
-  const sortedList = sortList(sortType, taskList);
+
+  const [sortOptions, setSortOptions] = useState({
+    type: "date",
+    reversed: false
+  });
+
+  function userSetSort(sort) {
+    if (sort === sortOptions.type) {
+      setSortOptions({ ...sortOptions, reversed: !sortOptions.reversed });
+    } else {
+      setSortOptions({
+        type: sort,
+        reversed: false
+      });
+    }
+  }
+
+  const sortedList = sortList(sortOptions, taskList);
 
   return (
     <div>
       <h1>PROJECT MANAGEMENT PLATFORM</h1>
       <Table
         taskList={sortedList}
-        sortOptions={{ type: sortType, reversed: sortReversed }}
-        setSortType={val => setSortType(val)}
+        sortOptions={sortOptions}
+        userSetSort={val => userSetSort(val)}
       />
     </div>
   );

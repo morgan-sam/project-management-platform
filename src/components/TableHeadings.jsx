@@ -8,33 +8,33 @@ const TableHeadings = props => {
     <div className="tableHeadings" style={{ cursor: "pointer" }}>
       <Cell
         text={`Task ${props.sortOptions.type === "task" ? sortArrow : ""}`}
-        onClick={() => props.setSortType("task")}
+        onClick={() => props.userSetSort("task")}
       />
       <Cell
         text={`Date ${props.sortOptions.type === "date" ? sortArrow : ""}`}
-        onClick={() => props.setSortType("date")}
+        onClick={() => props.userSetSort("date")}
       />
       <Cell
         text={`Deadline ${
           props.sortOptions.type === "deadline" ? sortArrow : ""
         }`}
-        onClick={() => props.setSortType("deadline")}
+        onClick={() => props.userSetSort("deadline")}
       />
       <Cell
         text={`Urgency ${
           props.sortOptions.type === "urgency" ? sortArrow : ""
         }`}
-        onClick={() => props.setSortType("urgency")}
+        onClick={() => props.userSetSort("urgency")}
       />
       <Cell
         text={`Team ${props.sortOptions.type === "team" ? sortArrow : ""}`}
-        onClick={() => props.setSortType("team")}
+        onClick={() => props.userSetSort("team")}
       />
       <Cell
         text={`Completed ${
           props.sortOptions.type === "completed" ? sortArrow : ""
         }`}
-        onClick={() => props.setSortType("completed")}
+        onClick={() => props.userSetSort("completed")}
       />
     </div>
   );
