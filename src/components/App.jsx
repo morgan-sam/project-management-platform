@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "./Table";
+import FilterBar from "./FilterBar";
 import taskList from "../data/taskList";
 import sortList from "../processing/sortList";
 
@@ -25,8 +26,9 @@ const App = () => {
   const sortedList = sortList(sortOptions, taskList);
 
   return (
-    <div>
+    <div className="mainPage">
       <h1>PROJECT MANAGEMENT PLATFORM</h1>
+      <FilterBar />
       <Table
         taskList={sortedList}
         sortOptions={sortOptions}
