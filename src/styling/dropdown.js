@@ -7,3 +7,7 @@ export const dropdownStyle = {
 	textAlign: 'center',
 	userSelect: 'none'
 };
+
+export const optionStyle = {
+	borderTop: 'none'
+};

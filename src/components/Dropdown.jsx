@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { capitalizeFirstLetter } from '../processing/utility';
-import { dropdownStyle } from '../styling/dropdown';
+import { dropdownStyle, optionStyle } from '../styling/dropdown';
 
 const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ defaultValue, setDefaultValue ] = useState(props.default);
-
-	console.log(dropdownStyle);
 
 	const optionDivs = props.options.map(function(el, i) {
 		const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
@@ -14,7 +12,7 @@ const DateSelect = (props) => {
 			<div
 				key={i}
 				className="dropdownOption"
-				style={{ ...dropdownStyle, zIndex: '1' }}
+				style={{ ...dropdownStyle, ...optionStyle }}
 				onMouseDown={() => {
 					props.onClick(el);
 					setDefaultValue(display);
