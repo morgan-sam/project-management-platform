@@ -20,9 +20,21 @@ const DateSelect = (props) => {
 					'November',
 					'December'
 				]}
+				default={'January'}
+				onClick={(val) => console.log(`${val} selected.`)}
 			/>
-			<Dropdown style={{ margin: '0 0.5rem' }} options={[ 1, 2, 3, 4 ]} />
-			<Dropdown style={{ margin: '0 0.5rem' }} options={[ 'A', 'B', 'C', 'D' ]} />
+			<Dropdown
+				style={{ margin: '0 0.5rem' }}
+				options={[ 1, 2, 3, 4 ]}
+				default={5}
+				onClick={(val) => console.log(`${val} selected.`)}
+			/>
+			<Dropdown
+				style={{ margin: '0 0.5rem' }}
+				options={[ 'A', 'B', 'C', 'D' ]}
+				default={'E'}
+				onClick={(val) => console.log(`${val} selected.`)}
+			/>
 		</div>
 	);
 };

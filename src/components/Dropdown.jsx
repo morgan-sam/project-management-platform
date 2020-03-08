@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
-	const [ defaultValue, setDefaultValue ] = useState(props.placeholder);
-	const [ hoveredOption, setHoveredOption ] = useState(null);
+	const [ defaultValue, setDefaultValue ] = useState(props.default);
 
 	const dropdownStyle = {
 		height: '2rem',
 		width: '5rem',
 		border: '1px solid black',
 		backgroundColor: '#ccc',
-		zIndex: '2',
+		zIndex: '0',
 		textAlign: 'center'
 	};
 
@@ -20,8 +19,8 @@ const DateSelect = (props) => {
 			<div
 				key={i}
 				className="dropdownOption"
-				style={{ ...dropdownStyle }}
-				onClick={() => {
+				style={{ ...dropdownStyle, zIndex: '1' }}
+				onMouseDown={() => {
 					props.onClick(el);
 					setDefaultValue(display);
 					setListOpen(false);
@@ -62,7 +61,9 @@ const DateSelect = (props) => {
 					if (e.buttons === 1) setListOpen(!listOpen);
 				}}
 				onContextMenu={(e) => e.preventDefault()}
-			/>
+			>
+				{defaultValue}
+			</div>
 			{listOpen ? optionDivs : null}
 		</div>
 	);
