@@ -1,44 +1,42 @@
 body {
-  margin: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 1rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+		"Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .table {
-  position: relative;
-  z-index: -1;
+	position: relative;
+	z-index: 0;
 }
 
 .table > * {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .cell {
-  width: 5rem;
-  padding: 1rem;
-  border: 1px solid black;
-  background-color: #fff;
+	width: 5rem;
+	padding: 1rem;
+	border: 1px solid black;
+	background-color: #fff;
 }
 
 .mainPage > * {
-  margin: 1rem 0;
+	margin: 1rem 0;
 }
 
 .filterBar {
-  position: relative;
-  height: 2rem;
-  width: 40rem;
-  border: 1px solid black;
-  line-height: 2rem;
-  padding: 0.5rem;
-  z-index: 1;
+	position: relative;
+	height: 2rem;
+	width: 40rem;
+	border: 1px solid black;
+	line-height: 2rem;
+	padding: 0.5rem;
+	z-index: 1;
 }
