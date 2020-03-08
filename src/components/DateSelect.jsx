@@ -1,34 +1,17 @@
 import React from 'react';
 import Dropdown from './Dropdown';
+import { months, daysInMonth, get21stCenturyYears } from '../data/dates';
 
 const DateSelect = (props) => {
+	console.log(months());
+	console.log(get21stCenturyYears());
+	console.log(daysInMonth(3, 2020));
+
 	return (
 		<div className="dateSelect" style={{ display: 'flex' }}>
-			<Dropdown
-				options={[
-					'january',
-					'february',
-					'march',
-					'april',
-					'may',
-					'june',
-					'july',
-					'august',
-					'september',
-					'october',
-					'november',
-					'december'
-				]}
-				default={'January'}
-				onClick={(val) => console.log(`${val} selected.`)}
-			/>
-			<Dropdown options={[ 1, 2, 3, 4 ]} default={5} onClick={(val) => console.log(`${val} selected.`)} />
-			<Dropdown
-				style={{ margin: '0 0.5rem' }}
-				options={[ 'A', 'B', 'C', 'D' ]}
-				default={'E'}
-				onClick={(val) => console.log(`${val} selected.`)}
-			/>
+			<Dropdown onClick={(val) => console.log(`${val} selected.`)} />
+			<Dropdown onClick={(val) => console.log(`${val} selected.`)} />
+			<Dropdown onClick={(val) => console.log(`${val} selected.`)} />
 		</div>
 	);
 };
