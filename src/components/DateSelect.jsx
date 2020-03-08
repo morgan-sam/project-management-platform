@@ -5,7 +5,6 @@ const DateSelect = (props) => {
 	return (
 		<div className="dateSelect" style={{ display: 'flex' }}>
 			<Dropdown
-				style={{ margin: '0 0.5rem' }}
 				options={[
 					'january',
 					'february',
@@ -23,12 +22,7 @@ const DateSelect = (props) => {
 				default={'January'}
 				onClick={(val) => console.log(`${val} selected.`)}
 			/>
-			<Dropdown
-				style={{ margin: '0 0.5rem' }}
-				options={[ 1, 2, 3, 4 ]}
-				default={5}
-				onClick={(val) => console.log(`${val} selected.`)}
-			/>
+			<Dropdown options={[ 1, 2, 3, 4 ]} default={5} onClick={(val) => console.log(`${val} selected.`)} />
 			<Dropdown
 				style={{ margin: '0 0.5rem' }}
 				options={[ 'A', 'B', 'C', 'D' ]}

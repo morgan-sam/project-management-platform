@@ -6,23 +6,25 @@ const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ defaultValue, setDefaultValue ] = useState(props.default);
 
-	const optionDivs = props.options.map(function(el, i) {
-		const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
-		return (
-			<div
-				key={i}
-				className="dropdownOption"
-				style={{ ...dropdownStyle, ...optionStyle }}
-				onMouseDown={() => {
-					props.onClick(el);
-					setDefaultValue(display);
-					setListOpen(false);
-				}}
-			>
-				{display}
-			</div>
-		);
-	});
+	const optionDivs = props.options
+		? props.options.map(function(el, i) {
+				const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
+				return (
+					<div
+						key={i}
+						className="dropdownOption"
+						style={{ ...dropdownStyle, ...optionStyle }}
+						onMouseDown={() => {
+							props.onClick(el);
+							setDefaultValue(display);
+							setListOpen(false);
+						}}
+					>
+						{display}
+					</div>
+				);
+			})
+		: null;
 
 	useEffect(() => {
 		if (listOpen) {
