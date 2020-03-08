@@ -10,12 +10,32 @@ const DateSelect = (props) => {
 		width: '5rem',
 		border: '1px solid black',
 		backgroundColor: '#ccc',
-		zIndex: '2'
+		zIndex: '2',
+		textAlign: 'center'
 	};
 
-	const optionDivs = props.options.map((el, i) => (
-		<div key={i} className="dropdownOption" style={{ ...dropdownStyle, position: 'relative' }} />
-	));
+	const optionDivs = props.options.map(function(el, i) {
+		const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
+		return (
+			<div
+				key={i}
+				className="dropdownOption"
+				style={{ ...dropdownStyle }}
+				onClick={() => {
+					props.onClick(el);
+					setDefaultValue(display);
+					setListOpen(false);
+				}}
+			>
+				{display}
+			</div>
+		);
+	});
+
+	function capitalizeFirstLetter(str) {
+		if (str.length > 0) return str[0].toUpperCase() + str.slice(1);
+		else return str;
+	}
 
 	useEffect(() => {
 		if (listOpen) {
@@ -37,7 +57,7 @@ const DateSelect = (props) => {
 		<div className="dropdown">
 			<div
 				className="dropdownHeader"
-				style={{ ...dropdownStyle, position: 'relative' }}
+				style={{ ...dropdownStyle }}
 				onMouseDown={(e) => {
 					if (e.buttons === 1) setListOpen(!listOpen);
 				}}
