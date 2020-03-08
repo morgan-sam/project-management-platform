@@ -10,7 +10,8 @@ const DateSelect = (props) => {
 		border: '1px solid black',
 		backgroundColor: '#ccc',
 		zIndex: '0',
-		textAlign: 'center'
+		textAlign: 'center',
+		userSelect: 'none'
 	};
 
 	const optionDivs = props.options.map(function(el, i) {
@@ -53,7 +54,7 @@ const DateSelect = (props) => {
 	};
 
 	return (
-		<div className="dropdown">
+		<div className="dropdown" style={{ cursor: 'pointer' }}>
 			<div
 				className="dropdownHeader"
 				style={{ ...dropdownStyle }}
