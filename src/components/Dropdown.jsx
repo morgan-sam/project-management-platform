@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { capitalizeFirstLetter } from '../processing/utility';
 
 const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
@@ -31,11 +32,6 @@ const DateSelect = (props) => {
 			</div>
 		);
 	});
-
-	function capitalizeFirstLetter(str) {
-		if (str.length > 0) return str[0].toUpperCase() + str.slice(1);
-		else return str;
-	}
 
 	useEffect(() => {
 		if (listOpen) {

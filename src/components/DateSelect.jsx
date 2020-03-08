@@ -7,18 +7,18 @@ const DateSelect = (props) => {
 			<Dropdown
 				style={{ margin: '0 0.5rem' }}
 				options={[
-					'January',
-					'February',
-					'March',
-					'April',
-					'May',
-					'June',
-					'July',
-					'August',
-					'September',
-					'October',
-					'November',
-					'December'
+					'january',
+					'february',
+					'march',
+					'april',
+					'may',
+					'june',
+					'july',
+					'august',
+					'september',
+					'october',
+					'november',
+					'december'
 				]}
 				default={'January'}
 				onClick={(val) => console.log(`${val} selected.`)}
