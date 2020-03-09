@@ -27,6 +27,7 @@ const DateSelect = (props) => {
 		: null;
 
 	useEffect(() => {
+		checkIfOptionOOB();
 		if (listOpen) {
 			document.addEventListener('mousedown', whileDropdownOpenClick);
 		} else {
@@ -42,7 +43,13 @@ const DateSelect = (props) => {
 		setListOpen(false);
 	};
 
-	if (props.options.indexOf(defaultValue) === -1) setDefaultValue(props.options[props.options.length - 1]);
+	const checkIfOptionOOB = () => {
+		if (props.options.indexOf(defaultValue) === -1) {
+			const lastValue = props.options[props.options.length - 1];
+			setDefaultValue(lastValue);
+			props.onClick(lastValue);
+		}
+	};
 
 	return (
 		<div className="dropdown" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>

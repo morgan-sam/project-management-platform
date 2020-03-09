@@ -7,6 +7,8 @@ const DateSelect = (props) => {
 	const [ selectedMonth, setSelectedMonth ] = useState('January');
 	const [ selectedYear, setSelectedYear ] = useState(2020);
 
+	console.log(selectedDay, selectedMonth, selectedYear);
+
 	return (
 		<div className="dateSelect" style={{ display: 'flex' }}>
 			<Dropdown
