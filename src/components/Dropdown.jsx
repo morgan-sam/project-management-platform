@@ -42,6 +42,8 @@ const DateSelect = (props) => {
 		setListOpen(false);
 	};
 
+	if (props.options.indexOf(defaultValue) === -1) setDefaultValue(props.options[props.options.length - 1]);
+
 	return (
 		<div className="dropdown" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
 			<div
