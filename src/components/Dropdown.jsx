@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { capitalizeFirstLetter } from '../processing/utility';
-import { dropdownBoxStyle, dropdownClosedStyle, dropdownOpenStyle, optionStyle } from '../styling/dropdown';
+import {
+	dropdownParentStyle,
+	dropdownBoxStyle,
+	dropdownClosedStyle,
+	dropdownOpenStyle,
+	optionStyle
+} from '../styling/dropdown';
 
 const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
@@ -52,18 +58,28 @@ const DateSelect = (props) => {
 	};
 
 	return (
-		<div className="dropdown" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
-			<div
-				className="dropdownHeader"
-				style={{ ...dropdownBoxStyle }}
-				onMouseDown={(e) => {
-					if (e.buttons === 1) setListOpen(!listOpen);
-				}}
-				onContextMenu={(e) => e.preventDefault()}
-			>
-				{defaultValue}
+		<div className="dropdown" style={dropdownParentStyle}>
+			<div className="dropdownContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
+				<div
+					className="dropdownHeader"
+					style={{ ...dropdownBoxStyle }}
+					onMouseDown={(e) => {
+						if (e.buttons === 1) setListOpen(!listOpen);
+					}}
+					onContextMenu={(e) => e.preventDefault()}
+				>
+					{defaultValue}
+				</div>
+				{listOpen ? optionDivs : null}
 			</div>
-			{listOpen ? optionDivs : null}
+			<div
+				style={{
+					...dropdownBoxStyle,
+					display: listOpen ? 'block' : 'none'
+				}}
+			>
+				{'▼'}
+			</div>
 		</div>
 	);
 };

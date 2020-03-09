@@ -45,15 +45,15 @@ code {
 	margin: 0 0.2rem;
 }
 
-.dropdown > * {
+.dropdownContainer > * {
 	width: auto;
 }
 
-.dropdown {
+.dropdownContainer {
 	scrollbar-width: none; /* For Firefox */
 	-ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
-.dropdown::-webkit-scrollbar {
+.dropdownContainer::-webkit-scrollbar {
 	width: 0px; /* For Chrome, Safari, and Opera */
 }
