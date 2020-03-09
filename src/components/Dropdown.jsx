@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { capitalizeFirstLetter } from '../processing/utility';
 import {
 	dropdownParentStyle,
+	dropdownHeaderStyle,
 	dropdownBoxStyle,
 	dropdownClosedStyle,
 	dropdownOpenStyle,
+	finalOptionStyle,
 	optionStyle
 } from '../styling/dropdown';
 
@@ -12,14 +14,21 @@ const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ defaultValue, setDefaultValue ] = useState(props.default);
 
+	const getCurrentOptionStyle = (index, options) => {
+		const max = options.length - 1;
+		if (index === max) return { ...optionStyle, ...finalOptionStyle };
+		else return optionStyle;
+	};
+
 	const optionDivs = props.options
 		? props.options.map(function(el, i) {
+				const currentOptionStyle = getCurrentOptionStyle(i, props.options);
 				const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
 				return (
 					<div
 						key={i}
 						className="dropdownOption"
-						style={{ ...dropdownBoxStyle, ...optionStyle }}
+						style={{ ...dropdownBoxStyle, ...currentOptionStyle }}
 						onMouseDown={() => {
 							props.onClick(el);
 							setDefaultValue(display);
@@ -62,7 +71,7 @@ const DateSelect = (props) => {
 			<div className="dropdownContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
 				<div
 					className="dropdownHeader"
-					style={{ ...dropdownBoxStyle }}
+					style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
 					onMouseDown={(e) => {
 						if (e.buttons === 1) setListOpen(!listOpen);
 					}}

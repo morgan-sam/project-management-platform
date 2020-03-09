@@ -2,6 +2,10 @@ export const dropdownParentStyle = {
 	borderTop: '1px solid black'
 };
 
+export const dropdownHeaderStyle = {
+	borderTop: 'none'
+};
+
 export const dropdownClosedStyle = {
 	cursor: 'pointer',
 	maxHeight: '2rem',
@@ -27,4 +31,8 @@ export const dropdownBoxStyle = {
 
 export const optionStyle = {
 	borderTop: 'none'
+};
+
+export const finalOptionStyle = {
+	borderBottom: 'none'
 };
