@@ -1,4 +1,8 @@
-export const months = () => {
+export const getMonthIntegers = () => {
+	return Array.from(Array(12).keys()).map((el) => el + 1);
+};
+
+export const monthStringArray = () => {
 	return [
 		'January',
 		'February',
@@ -19,9 +23,9 @@ export const get21stCenturyYears = () => {
 	return Array.from(Array(100).keys()).map((el) => el + 2000);
 };
 
-export const arrayOfMonthDays = (monthString, year) => {
-	const monthInt = months().indexOf(monthString) + 1;
-	const totalDays = daysInMonth(monthInt, year);
+export const arrayOfMonthDays = (month, year) => {
+	if (typeof month === 'string') month = monthStringArray().indexOf(month) + 1;
+	const totalDays = daysInMonth(month, year);
 	return Array.from(Array(totalDays).keys()).map((el) => el + 1);
 };
 

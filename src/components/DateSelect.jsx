@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Dropdown from './Dropdown';
-import { months, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
+import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
 
 const DateSelect = (props) => {
 	const [ selectedDay, setSelectedDay ] = useState(1);
@@ -14,7 +14,7 @@ const DateSelect = (props) => {
 				options={arrayOfMonthDays(selectedMonth, selectedYear)}
 				onClick={(val) => setSelectedDay(val)}
 			/>
-			<Dropdown default={selectedMonth} options={months()} onClick={(val) => setSelectedMonth(val)} />
+			<Dropdown default={selectedMonth} options={getMonthIntegers()} onClick={(val) => setSelectedMonth(val)} />
 			<Dropdown default={selectedYear} options={get21stCenturyYears()} onClick={(val) => setSelectedYear(val)} />
 		</div>
 	);
