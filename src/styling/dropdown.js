@@ -3,6 +3,7 @@ export const dropdownClosedStyle = {
 	maxHeight: '2rem',
 	overflow: 'hidden'
 };
+
 export const dropdownOpenStyle = {
 	cursor: 'pointer',
 	maxHeight: '20rem',
@@ -12,7 +13,7 @@ export const dropdownOpenStyle = {
 export const dropdownBoxStyle = {
 	boxSizing: 'border-box',
 	height: '2rem',
-	width: '5rem',
+	padding: '0 1rem',
 	border: '1px solid black',
 	backgroundColor: '#ccc',
 	zIndex: '0',
