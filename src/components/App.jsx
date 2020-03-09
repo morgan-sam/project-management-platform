@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Table from './Table';
 import FilterBar from './FilterBar';
 import taskList from '../data/taskList';

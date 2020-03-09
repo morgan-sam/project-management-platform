@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import { months, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
 
@@ -6,8 +6,6 @@ const DateSelect = (props) => {
 	const [ selectedDay, setSelectedDay ] = useState(1);
 	const [ selectedMonth, setSelectedMonth ] = useState('January');
 	const [ selectedYear, setSelectedYear ] = useState(2020);
-
-	console.log(selectedDay, selectedMonth, selectedYear);
 
 	return (
 		<div className="dateSelect" style={{ display: 'flex' }}>
