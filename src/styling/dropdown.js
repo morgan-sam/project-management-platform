@@ -1,4 +1,16 @@
-export const dropdownStyle = {
+export const dropdownClosedStyle = {
+	cursor: 'pointer',
+	maxHeight: '2rem',
+	overflow: 'hidden'
+};
+export const dropdownOpenStyle = {
+	cursor: 'pointer',
+	maxHeight: '20rem',
+	overflowY: 'scroll'
+};
+
+export const dropdownBoxStyle = {
+	boxSizing: 'border-box',
 	height: '2rem',
 	width: '5rem',
 	border: '1px solid black',

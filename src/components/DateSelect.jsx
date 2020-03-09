@@ -3,9 +3,9 @@ import Dropdown from './Dropdown';
 import { months, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
 
 const DateSelect = (props) => {
+	const [ selectedDay, setSelectedDay ] = useState(1);
 	const [ selectedMonth, setSelectedMonth ] = useState('January');
 	const [ selectedYear, setSelectedYear ] = useState(2020);
-	const [ selectedDay, setSelectedDay ] = useState(1);
 
 	return (
 		<div className="dateSelect" style={{ display: 'flex' }}>

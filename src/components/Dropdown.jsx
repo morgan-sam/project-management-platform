@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { capitalizeFirstLetter } from '../processing/utility';
-import { dropdownStyle, optionStyle } from '../styling/dropdown';
+import { dropdownBoxStyle, dropdownClosedStyle, dropdownOpenStyle, optionStyle } from '../styling/dropdown';
 
 const DateSelect = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
@@ -13,7 +13,7 @@ const DateSelect = (props) => {
 					<div
 						key={i}
 						className="dropdownOption"
-						style={{ ...dropdownStyle, ...optionStyle }}
+						style={{ ...dropdownBoxStyle, ...optionStyle }}
 						onMouseDown={() => {
 							props.onClick(el);
 							setDefaultValue(display);
@@ -43,10 +43,10 @@ const DateSelect = (props) => {
 	};
 
 	return (
-		<div className="dropdown" style={{ cursor: 'pointer' }}>
+		<div className="dropdown" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
 			<div
 				className="dropdownHeader"
-				style={{ ...dropdownStyle }}
+				style={{ ...dropdownBoxStyle }}
 				onMouseDown={(e) => {
 					if (e.buttons === 1) setListOpen(!listOpen);
 				}}
