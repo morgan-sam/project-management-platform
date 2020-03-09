@@ -33,7 +33,7 @@ code {
 
 .filterBar {
 	position: relative;
-	height: 2rem;
+	height: 4rem;
 	width: 40rem;
 	border: 1px solid black;
 	line-height: 2rem;

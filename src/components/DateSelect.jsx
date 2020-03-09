@@ -8,7 +8,19 @@ const DateSelect = (props) => {
 	const [ selectedYear, setSelectedYear ] = useState(2020);
 
 	return (
-		<div className="dateSelect" style={{ display: 'flex' }}>
+		<div
+			className="dateSelect"
+			style={{
+				display: 'grid',
+				gridTemplateColumns: '3rem 4rem 5rem',
+				gridTemplateRows: '2rem 1fr',
+				gridTemplateAreas: '". . ." ". . ."',
+				textAlign: 'center'
+			}}
+		>
+			<div className="dropdownLabel">Day</div>
+			<div className="dropdownLabel">Month</div>
+			<div className="dropdownLabel">Year</div>
 			<Dropdown
 				default={selectedDay}
 				options={arrayOfMonthDays(selectedMonth, selectedYear)}

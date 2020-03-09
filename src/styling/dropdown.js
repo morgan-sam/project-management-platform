@@ -1,5 +1,7 @@
 export const dropdownParentStyle = {
-	borderTop: '1px solid black'
+	borderTop: '1px solid black',
+
+	textAlign: 'center'
 };
 
 export const dropdownHeaderStyle = {
