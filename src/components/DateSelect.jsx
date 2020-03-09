@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from './Dropdown';
-import { months, daysInMonth, get21stCenturyYears } from '../data/dates';
+import { months, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
 
 const DateSelect = (props) => {
-	const [ selectedMonth, setSelectedMonth ] = useState('January');
+	const [ selectedMonth, setSelectedMonth ] = useState('February');
 	const [ selectedYear, setSelectedYear ] = useState(2020);
 
+	console.log(arrayOfMonthDays(selectedMonth, selectedYear));
 	console.log(selectedMonth);
 	console.log(selectedYear);
 	return (
