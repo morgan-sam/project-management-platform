@@ -18,6 +18,8 @@ const App = () => {
 		deadline: '2020-01-01T00:00:00.000Z'
 	});
 
+	console.log(filterOptions);
+
 	function userSetSort(sort) {
 		if (sort === sortOptions.type) {
 			setSortOptions({ ...sortOptions, reversed: !sortOptions.reversed });
@@ -32,7 +34,7 @@ const App = () => {
 	return (
 		<div className="mainPage">
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
-			<FilterBar />
+			<FilterBar setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
 			<Table taskList={sortedList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
 		</div>
 	);
