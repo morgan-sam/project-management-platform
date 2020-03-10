@@ -10,7 +10,7 @@ import {
 	optionStyle
 } from '../styling/dropdown';
 
-const DateSelect = (props) => {
+const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ defaultValue, setDefaultValue ] = useState(props.default);
 
@@ -93,4 +93,4 @@ const DateSelect = (props) => {
 	);
 };
 
-export default DateSelect;
+export default Dropdown;
