@@ -1,6 +1,8 @@
 import React from 'react';
 import Cell from './Cell';
 
+import { parseISOToDDMMYYYY } from '../processing/parseDates';
+
 const Task = (props) => {
 	return (
 		<div className="taskEntry">
@@ -12,11 +14,6 @@ const Task = (props) => {
 			<Cell text={props.completed} />
 		</div>
 	);
-};
-
-const parseISOToDDMMYYYY = (string) => {
-	const stringDate = string.match(/.+?(?=T)/g)[0];
-	return stringDate.split('-').reverse().join('/');
 };
 
 export default Task;
