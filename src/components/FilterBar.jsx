@@ -4,15 +4,14 @@ import DateSelect from './DateSelect';
 const FilterBar = (props) => {
 	const filterBarStyle = {
 		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center'
+		flexDirection: 'row'
 	};
 
 	return (
 		<div className="filterBar" style={{ ...filterBarStyle, ...props.style }}>
-			<div>Start Date:</div>
+			<div className="filterBarLabel">Start Date:</div>
 			<DateSelect />
-			<div>End Date:</div>
+			<div className="filterBarLabel">End Date:</div>
 			<DateSelect />
 		</div>
 	);

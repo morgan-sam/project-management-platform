@@ -49,6 +49,11 @@ code {
 	margin: 0 0.2rem;
 }
 
+.filterBarLabel {
+	display: flex;
+	align-items: center;
+}
+
 .dropdownContainer > * {
 	width: auto;
 }
