@@ -41,6 +41,10 @@ code {
 	z-index: 1;
 }
 
+.filterBar > * {
+	margin: 0 0.5rem;
+}
+
 .dateSelect > * {
 	margin: 0 0.2rem;
 }
