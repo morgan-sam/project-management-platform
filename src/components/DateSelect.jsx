@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
+import { dateSelectStyle } from '../styling/dateSelect';
 
 const DateSelect = (props) => {
 	const [ selectedDay, setSelectedDay ] = useState(1);
@@ -8,16 +9,7 @@ const DateSelect = (props) => {
 	const [ selectedYear, setSelectedYear ] = useState(2020);
 
 	return (
-		<div
-			className="dateSelect"
-			style={{
-				display: 'grid',
-				gridTemplateColumns: '3rem 4rem 5rem',
-				gridTemplateRows: '2rem 1fr',
-				gridTemplateAreas: '". . ." ". . ."',
-				textAlign: 'center'
-			}}
-		>
+		<div className="dateSelect" style={dateSelectStyle}>
 			<div className="dropdownLabel">Day</div>
 			<div className="dropdownLabel">Month</div>
 			<div className="dropdownLabel">Year</div>
