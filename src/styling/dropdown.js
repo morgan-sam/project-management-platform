@@ -1,7 +1,7 @@
 const DROPDOWN_HEIGHT_REMS = 2;
 
 export const dropdownParentStyle = {
-	width: 'inherit',
+	width: '100%',
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'center',
@@ -55,3 +55,11 @@ export const finalOptionStyle = {
 	borderBottom: 'none',
 	width: 'inherit'
 };
+
+/*
+
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center'
+
+*/

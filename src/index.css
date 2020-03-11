@@ -53,10 +53,6 @@ code {
 	align-items: center;
 }
 
-.dateSelect > * {
-	margin: 0 0.2rem;
-}
-
 .dropdownOptionContainer {
 	scrollbar-width: none; /* For Firefox */
 	-ms-overflow-style: none; /* For Internet Explorer and Edge */
