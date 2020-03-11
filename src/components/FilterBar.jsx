@@ -1,9 +1,8 @@
 import React from 'react';
 import Dropdown from './Dropdown';
+import DateRangeSelect from './DateRangeSelect';
 import UrgencyRangeSelect from './UrgencyRangeSelect';
-import DateOptionPopUp from './DateOptionPopUp';
 import { filterBarStyle } from '../styling/filterBar';
-import { parseISOToDateObj } from '../processing/parseDates';
 
 const FilterBar = (props) => {
 	return (
@@ -19,24 +18,8 @@ const FilterBar = (props) => {
 					})}
 				defaultChecked={props.filterOptions.active}
 			/>
-			<div className="filterBarLabel">Date:</div>
-			<DateOptionPopUp
-				setFilterDate={(val) => {
-					props.setFilterOptions({
-						...props.filterOptions,
-						date: val
-					});
-				}}
-				date={parseISOToDateObj(props.filterOptions.date)}
-			/>
-			<div className="filterBarLabel">Deadline:</div>
-			<DateOptionPopUp
-				setFilterDate={(val) =>
-					props.setFilterOptions({
-						...props.filterOptions,
-						deadline: val
-					})}
-			/>
+			<DateRangeSelect {...props} />
+			<UrgencyRangeSelect {...props} />
 			<div className="filterBarLabel">Completed:</div>
 			<Dropdown
 				className="completionDropdown"
@@ -51,7 +34,6 @@ const FilterBar = (props) => {
 						completion: val
 					})}
 			/>
-			<UrgencyRangeSelect {...props} />
 		</div>
 	);
 };

@@ -1,4 +1,5 @@
 export const dateOptionPopUpStyling = {
+	display: 'flex',
 	border: '1px solid black',
 	height: '100%'
 };
