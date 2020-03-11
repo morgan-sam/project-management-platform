@@ -3,6 +3,27 @@ import Dropdown from './Dropdown';
 
 const UrgencyRangeSelect = (props) => {
 	const elStyle = { margin: '0 0.3rem' };
+
+	const setParentUrgencyOptions = (min, max) => {
+		props.setFilterOptions({
+			...props.filterOptions,
+			urgency: {
+				min,
+				max
+			}
+		});
+	};
+
+	const setMinUrgency = (min) => {
+		if (min > props.filterOptions.urgency.max) setParentUrgencyOptions(min, min);
+		else setParentUrgencyOptions(min, props.filterOptions.urgency.max);
+	};
+
+	const setMaxUrgency = (max) => {
+		if (max < props.filterOptions.urgency.min) setParentUrgencyOptions(max, max);
+		else setParentUrgencyOptions(props.filterOptions.urgency.min, max);
+	};
+
 	return (
 		<div>
 			<div className="filterBarLabel" style={elStyle}>
@@ -16,16 +37,7 @@ const UrgencyRangeSelect = (props) => {
 				}}
 				default={props.filterOptions.urgency.min}
 				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={(val) => {
-					const newVal = val > props.filterOptions.urgency.max ? props.filterOptions.urgency.max : val;
-					props.setFilterOptions({
-						...props.filterOptions,
-						urgency: {
-							...props.filterOptions.urgency,
-							min: newVal
-						}
-					});
-				}}
+				onClick={(val) => setMinUrgency(val)}
 			/>
 			<Dropdown
 				className="maxUrgencyDropdown"
@@ -35,16 +47,7 @@ const UrgencyRangeSelect = (props) => {
 				}}
 				default={props.filterOptions.urgency.max}
 				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={(val) => {
-					const newVal = val < props.filterOptions.urgency.min ? props.filterOptions.urgency.min : val;
-					props.setFilterOptions({
-						...props.filterOptions,
-						urgency: {
-							...props.filterOptions.urgency,
-							max: newVal
-						}
-					});
-				}}
+				onClick={(val) => setMaxUrgency(val)}
 			/>
 		</div>
 	);
