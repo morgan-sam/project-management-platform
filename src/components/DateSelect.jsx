@@ -2,22 +2,20 @@ import React, { useState } from 'react';
 import Dropdown from './Dropdown';
 import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
 import { dateSelectStyle } from '../styling/dateSelect';
-import { parseDateObjToISO } from '../processing/parseDates';
 
 const DateSelect = (props) => {
 	const [ selectedDay, setSelectedDay ] = useState(1);
 	const [ selectedMonth, setSelectedMonth ] = useState('January');
 	const [ selectedYear, setSelectedYear ] = useState(2020);
 
-	const passDateToParentAsISO = (val) => {
+	const passDateToParent = (val) => {
 		const dateObj = {
 			day: selectedDay,
 			month: selectedMonth,
 			year: selectedYear,
 			...val
 		};
-		const dateISO = parseDateObjToISO(dateObj);
-		props.setFilterDate(dateISO);
+		props.setDate(dateObj);
 	};
 
 	return (
@@ -30,7 +28,7 @@ const DateSelect = (props) => {
 				options={arrayOfMonthDays(selectedMonth, selectedYear)}
 				onClick={(val) => {
 					setSelectedDay(val);
-					passDateToParentAsISO({ day: val });
+					passDateToParent({ day: val });
 				}}
 			/>
 			<Dropdown
@@ -38,7 +36,7 @@ const DateSelect = (props) => {
 				options={getMonthIntegers()}
 				onClick={(val) => {
 					setSelectedMonth(val);
-					passDateToParentAsISO({ month: val });
+					passDateToParent({ month: val });
 				}}
 			/>
 			<Dropdown
@@ -46,7 +44,7 @@ const DateSelect = (props) => {
 				options={get21stCenturyYears()}
 				onClick={(val) => {
 					setSelectedYear(val);
-					passDateToParentAsISO({ year: val });
+					passDateToParent({ year: val });
 				}}
 			/>
 		</div>

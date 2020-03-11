@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from './Dropdown';
-import DateSelect from './DateSelect';
+import DateOptionPopUp from './DateOptionPopUp';
 import { filterBarStyle } from '../styling/filterBar';
 
 const FilterBar = (props) => {
@@ -18,7 +18,7 @@ const FilterBar = (props) => {
 				defaultChecked={props.filterOptions.active}
 			/>
 			<div className="filterBarLabel">Date:</div>
-			<DateSelect
+			<DateOptionPopUp
 				setFilterDate={(val) => {
 					props.setFilterOptions({
 						...props.filterOptions,
@@ -27,7 +27,7 @@ const FilterBar = (props) => {
 				}}
 			/>
 			<div className="filterBarLabel">Deadline:</div>
-			<DateSelect
+			<DateOptionPopUp
 				setFilterDate={(val) =>
 					props.setFilterOptions({
 						...props.filterOptions,
