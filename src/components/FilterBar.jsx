@@ -5,6 +5,9 @@ import { filterBarStyle } from '../styling/filterBar';
 const FilterBar = (props) => {
 	return (
 		<div className="filterBar" style={{ ...filterBarStyle, ...props.style }}>
+			<div className="filterBarLabel">Active:</div>
+			<input type="checkbox" className="inputCheckbox" />
+			<div className="filterBarLabel">Date:</div>
 			<div className="filterBarLabel">Date:</div>
 			<DateSelect
 				setFilterDate={(val) => {
