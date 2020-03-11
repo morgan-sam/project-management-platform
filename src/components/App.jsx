@@ -13,7 +13,7 @@ const App = () => {
 	});
 
 	const [ filterOptions, setFilterOptions ] = useState({
-		active: false,
+		active: true,
 		date: '2020-01-01T00:00:00.000Z',
 		deadline: '2020-01-01T00:00:00.000Z'
 	});
