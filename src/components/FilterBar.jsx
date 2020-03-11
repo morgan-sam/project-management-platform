@@ -38,8 +38,8 @@ const FilterBar = (props) => {
 			<Dropdown
 				className="completionDropdown"
 				style={{
-					width: '7rem',
-					margin: 'auto'
+					width: '7rem'
+					// height: 'auto'
 				}}
 				default={'All'}
 				options={[ 'All', 'Complete', 'Incomplete' ]}

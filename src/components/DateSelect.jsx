@@ -19,7 +19,7 @@ const DateSelect = (props) => {
 	};
 
 	return (
-		<div className="dateSelect" style={dateSelectStyle}>
+		<div className="dateSelect" style={{ ...dateSelectStyle, ...props.style }}>
 			<div className="dropdownLabel">Day</div>
 			<div className="dropdownLabel">Month</div>
 			<div className="dropdownLabel">Year</div>

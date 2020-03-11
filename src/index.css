@@ -49,27 +49,20 @@ code {
 
 .filterBar > * {
 	margin: 0 0.5rem;
+	display: flex;
+	align-items: center;
 }
 
 .dateSelect > * {
 	margin: 0 0.2rem;
 }
 
-.filterBarLabel {
-	display: flex;
-	align-items: center;
-}
-
-.dropdownContainer > * {
-	width: auto;
-}
-
-.dropdownContainer {
+.dropdownOptionContainer {
 	scrollbar-width: none; /* For Firefox */
 	-ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
-.dropdownContainer::-webkit-scrollbar {
+.dropdownOptionContainer::-webkit-scrollbar {
 	width: 0px; /* For Chrome, Safari, and Opera */
 }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { capitalizeFirstLetter } from '../processing/utility';
 import {
 	dropdownParentStyle,
+	dropdownElementStyle,
 	dropdownHeaderStyle,
 	dropdownBoxStyle,
 	dropdownClosedStyle,
@@ -68,26 +69,27 @@ const Dropdown = (props) => {
 
 	return (
 		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
-			<div className="dropdownContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
-				<div
-					className="dropdownHeader"
-					style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
-					onMouseDown={(e) => {
-						if (e.buttons === 1) setListOpen(!listOpen);
-					}}
-					onContextMenu={(e) => e.preventDefault()}
-				>
-					{defaultValue}
+			<div className="dropdownElement" style={dropdownElementStyle}>
+				<div className="dropdownOptionContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
+					<div
+						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
+						onMouseDown={(e) => {
+							if (e.buttons === 1) setListOpen(!listOpen);
+						}}
+						onContextMenu={(e) => e.preventDefault()}
+					>
+						{defaultValue}
+					</div>
+					{listOpen ? optionDivs : null}
 				</div>
-				{listOpen ? optionDivs : null}
-			</div>
-			<div
-				style={{
-					...dropdownBoxStyle,
-					display: listOpen ? 'block' : 'none'
-				}}
-			>
-				{'▼'}
+				<div
+					style={{
+						...dropdownBoxStyle,
+						display: listOpen ? 'block' : 'none'
+					}}
+				>
+					{'▼'}
+				</div>
 			</div>
 		</div>
 	);
