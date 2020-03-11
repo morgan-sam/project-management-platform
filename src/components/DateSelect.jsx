@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropdown from './Dropdown';
 import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
 import { dateSelectStyle } from '../styling/dateSelect';

@@ -17,7 +17,8 @@ const App = () => {
 		active: true,
 		date: '2020-01-01T00:00:00.000Z',
 		deadline: '2020-01-01T00:00:00.000Z',
-		completion: 'all'
+		completion: 'all',
+		urgency: { min: 1, max: 5 }
 	});
 
 	function userSetSort(sort) {
