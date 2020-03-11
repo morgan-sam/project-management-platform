@@ -13,7 +13,6 @@ import {
 
 const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
-	const [ defaultValue, setDefaultValue ] = useState(props.default);
 
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
@@ -32,7 +31,6 @@ const Dropdown = (props) => {
 						style={{ ...dropdownBoxStyle, ...currentOptionStyle }}
 						onMouseDown={() => {
 							props.onClick(el);
-							setDefaultValue(display);
 							setListOpen(false);
 						}}
 					>
@@ -60,9 +58,8 @@ const Dropdown = (props) => {
 	};
 
 	const checkIfOptionOOB = () => {
-		if (props.options.indexOf(defaultValue) === -1) {
+		if (props.options.indexOf(props.default) === -1) {
 			const lastValue = props.options[props.options.length - 1];
-			setDefaultValue(lastValue);
 			props.onClick(lastValue);
 		}
 	};
@@ -78,7 +75,7 @@ const Dropdown = (props) => {
 						}}
 						onContextMenu={(e) => e.preventDefault()}
 					>
-						{defaultValue}
+						{capitalizeFirstLetter(props.default)}
 					</div>
 					{listOpen ? optionDivs : null}
 				</div>

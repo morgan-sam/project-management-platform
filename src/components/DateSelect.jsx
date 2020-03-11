@@ -4,47 +4,30 @@ import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from '../data
 import { dateSelectStyle } from '../styling/dateSelect';
 
 const DateSelect = (props) => {
-	const [ selectedDay, setSelectedDay ] = useState(1);
-	const [ selectedMonth, setSelectedMonth ] = useState('January');
-	const [ selectedYear, setSelectedYear ] = useState(2020);
-
-	const passDateToParent = (val) => {
-		const dateObj = {
-			day: selectedDay,
-			month: selectedMonth,
-			year: selectedYear,
-			...val
-		};
-		props.setDate(dateObj);
-	};
-
 	return (
 		<div className="dateSelect" style={{ ...dateSelectStyle, ...props.style }}>
 			<div className="dropdownLabel">Day</div>
 			<div className="dropdownLabel">Month</div>
 			<div className="dropdownLabel">Year</div>
 			<Dropdown
-				default={selectedDay}
-				options={arrayOfMonthDays(selectedMonth, selectedYear)}
+				default={props.date.day}
+				options={arrayOfMonthDays(props.date.month, props.date.year)}
 				onClick={(val) => {
-					setSelectedDay(val);
-					passDateToParent({ day: val });
+					props.setDate({ ...props.date, day: val });
 				}}
 			/>
 			<Dropdown
-				default={selectedMonth}
+				default={props.date.month}
 				options={getMonthIntegers()}
 				onClick={(val) => {
-					setSelectedMonth(val);
-					passDateToParent({ month: val });
+					props.setDate({ ...props.date, month: val });
 				}}
 			/>
 			<Dropdown
-				default={selectedYear}
+				default={props.date.year}
 				options={get21stCenturyYears()}
 				onClick={(val) => {
-					setSelectedYear(val);
-					passDateToParent({ year: val });
+					props.setDate({ ...props.date, year: val });
 				}}
 			/>
 		</div>

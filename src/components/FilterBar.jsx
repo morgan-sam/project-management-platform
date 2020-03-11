@@ -2,6 +2,7 @@ import React from 'react';
 import Dropdown from './Dropdown';
 import DateOptionPopUp from './DateOptionPopUp';
 import { filterBarStyle } from '../styling/filterBar';
+import { parseISOToDateObj } from '../processing/parseDates';
 
 const FilterBar = (props) => {
 	return (
@@ -25,6 +26,7 @@ const FilterBar = (props) => {
 						date: val
 					});
 				}}
+				date={parseISOToDateObj(props.filterOptions.date)}
 			/>
 			<div className="filterBarLabel">Deadline:</div>
 			<DateOptionPopUp
@@ -39,14 +41,13 @@ const FilterBar = (props) => {
 				className="completionDropdown"
 				style={{
 					width: '7rem'
-					// height: 'auto'
 				}}
-				default={'All'}
-				options={[ 'All', 'Complete', 'Incomplete' ]}
+				default={props.filterOptions.completion}
+				options={[ 'all', 'complete', 'incomplete' ]}
 				onClick={(val) =>
 					props.setFilterOptions({
 						...props.filterOptions,
-						completion: val.toLowerCase()
+						completion: val
 					})}
 			/>
 		</div>

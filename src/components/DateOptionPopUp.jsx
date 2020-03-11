@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DateSelect from './DateSelect';
 import { parseDateObjToISO } from '../processing/parseDates';
 import {
@@ -12,11 +12,19 @@ import {
 } from '../styling/dateOption';
 
 const DateOptionPopUp = (props) => {
-	const [ selectedDate, setSelectedDate ] = useState('test');
+	const [ selectedDate, setSelectedDate ] = useState({ day: 1, month: 1, year: 2020 });
+	const [ backupDate, setBackupDate ] = useState({ day: 1, month: 1, year: 2020 });
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
 
+	useEffect(
+		() => {
+			props.setFilterDate(parseDateObjToISO(selectedDate));
+		},
+		[ selectedDate ]
+	);
+
 	return (
-		<div style={dateOptionPopUpStyling} onMouseLeave={() => setShowDateSelect(false)}>
+		<div style={dateOptionPopUpStyling}>
 			<div
 				style={{ ...dateDisplayBoxStyling, display: showDateSelect ? 'none' : 'flex' }}
 				onClick={() => setShowDateSelect(true)}
@@ -30,18 +38,33 @@ const DateOptionPopUp = (props) => {
 				}}
 				setDate={(date) => {
 					setSelectedDate(date);
-					props.setFilterDate(parseDateObjToISO(date));
 				}}
+				date={selectedDate}
 			/>
 
 			<div
 				className="canConBtnContainer"
 				style={{ ...canConContainerStyle, display: showDateSelect ? 'flex' : 'none' }}
 			>
-				<button className="cancelButton" style={{ ...canConBtnStyle, ...confirmBtnStyle }}>
+				<button
+					className="cancelButton"
+					style={{ ...canConBtnStyle, ...confirmBtnStyle }}
+					onClick={() => {
+						setShowDateSelect(false);
+						setSelectedDate(backupDate);
+						props.setFilterDate(parseDateObjToISO(backupDate));
+					}}
+				>
 					X
 				</button>
-				<button className="confirmButton" style={{ ...canConBtnStyle, ...cancelBtnStyle }}>
+				<button
+					className="confirmButton"
+					style={{ ...canConBtnStyle, ...cancelBtnStyle }}
+					onClick={() => {
+						setShowDateSelect(false);
+						setBackupDate(selectedDate);
+					}}
+				>
 					✓
 				</button>
 			</div>
