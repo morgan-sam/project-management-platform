@@ -20,7 +20,6 @@ const FilterBar = (props) => {
 			<div className="filterBarLabel">Date:</div>
 			<DateSelect
 				setFilterDate={(val) => {
-					console.log(val);
 					props.setFilterOptions({
 						...props.filterOptions,
 						date: val

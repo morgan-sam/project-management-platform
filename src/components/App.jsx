@@ -20,8 +20,6 @@ const App = () => {
 		completion: 'all'
 	});
 
-	console.log(filterOptions);
-
 	function userSetSort(sort) {
 		if (sort === sortOptions.type) {
 			setSortOptions({ ...sortOptions, reversed: !sortOptions.reversed });
