@@ -17,7 +17,6 @@ const FilterBar = (props) => {
 				defaultChecked={props.filterOptions.active}
 			/>
 			<div className="filterBarLabel">Date:</div>
-			<div className="filterBarLabel">Date:</div>
 			<DateSelect
 				setFilterDate={(val) => {
 					console.log(val);
