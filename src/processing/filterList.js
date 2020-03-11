@@ -3,6 +3,8 @@ export const filterList = (filterOptions, taskList) => {
 	filteredList = filteredList.filter((el) => filterOptions.date <= el.date);
 	filteredList = filteredList.filter((el) => filterOptions.deadline >= el.deadline);
 	filteredList = filterListCompletion(filterOptions, filteredList);
+	filteredList = filteredList.filter((el) => filterOptions.urgency.min <= el.urgency);
+	filteredList = filteredList.filter((el) => filterOptions.urgency.max >= el.urgency);
 	return filteredList;
 };
 

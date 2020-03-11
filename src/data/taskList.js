@@ -22,7 +22,7 @@ const taskList = [
 		task: 'Refactor Backend',
 		date: '2021-01-17T00:00:00.000Z',
 		deadline: '2021-09-28T00:00:00.000Z',
-		urgency: 9,
+		urgency: 1,
 		team: 'Team 2',
 		completed: false
 	},
