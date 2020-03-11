@@ -44,9 +44,11 @@ const FilterBar = (props) => {
 				}}
 				default={'All'}
 				options={[ 'All', 'Complete', 'Incomplete' ]}
-				onClick={(val) => {
-					console.log(val);
-				}}
+				onClick={(val) =>
+					props.setFilterOptions({
+						...props.filterOptions,
+						completion: val.toLowerCase()
+					})}
 			/>
 		</div>
 	);
