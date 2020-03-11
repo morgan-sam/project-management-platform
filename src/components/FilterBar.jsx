@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from './Dropdown';
+import UrgencyRangeSelect from './UrgencyRangeSelect';
 import DateOptionPopUp from './DateOptionPopUp';
 import { filterBarStyle } from '../styling/filterBar';
 import { parseISOToDateObj } from '../processing/parseDates';
@@ -50,43 +51,7 @@ const FilterBar = (props) => {
 						completion: val
 					})}
 			/>
-			<div className="filterBarLabel">Urgency Range:</div>
-			<Dropdown
-				className="minUrgencyDropdown"
-				style={{
-					width: '2rem'
-				}}
-				default={props.filterOptions.urgency.min}
-				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={(val) => {
-					const newVal = val > props.filterOptions.urgency.max ? props.filterOptions.urgency.max : val;
-					props.setFilterOptions({
-						...props.filterOptions,
-						urgency: {
-							...props.filterOptions.urgency,
-							min: newVal
-						}
-					});
-				}}
-			/>
-			<Dropdown
-				className="maxUrgencyDropdown"
-				style={{
-					width: '2rem'
-				}}
-				default={props.filterOptions.urgency.max}
-				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={(val) => {
-					const newVal = val < props.filterOptions.urgency.min ? props.filterOptions.urgency.min : val;
-					props.setFilterOptions({
-						...props.filterOptions,
-						urgency: {
-							...props.filterOptions.urgency,
-							max: newVal
-						}
-					});
-				}}
-			/>
+			<UrgencyRangeSelect {...props} />
 		</div>
 	);
 };
