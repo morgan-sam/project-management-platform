@@ -1,7 +1,5 @@
 export const dropdownParentStyle = {
-	borderTop: '1px solid black',
-
-	textAlign: 'center'
+	borderTop: '1px solid black'
 };
 
 export const dropdownHeaderStyle = {
@@ -23,7 +21,6 @@ export const dropdownOpenStyle = {
 export const dropdownBoxStyle = {
 	boxSizing: 'border-box',
 	height: '2rem',
-	padding: '0 1rem',
 	border: '1px solid black',
 	backgroundColor: '#ccc',
 	zIndex: '0',
