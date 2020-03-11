@@ -1,26 +1,22 @@
 export const dateOptionPopUpStyling = {
-	border: '1px solid black'
+	border: '1px solid black',
+	height: '100%'
 };
 
 export const dateDisplayBoxStyling = {
-	border: '1px solid black',
+	height: 'auto',
 	padding: '0 0.5rem',
-	textAlign: 'center',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center'
+	textAlign: 'center'
 };
 
 export const datePopUpStyling = {
-	border: '1px solid lblack',
 	textAlign: 'center'
 };
 
 export const canConBtnStyle = {
 	margin: '0.5rem',
 	height: '2rem',
-	width: '2rem',
-	justifyContent: 'center'
+	width: '2rem'
 };
 
 export const canConContainerStyle = {
