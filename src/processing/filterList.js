@@ -17,4 +17,9 @@ const filterListCompletion = (filterOptions, list) => {
 	});
 };
 
+export const getTaskListTeams = (taskList) => {
+	const availableTeams = taskList.map((el) => el.team);
+	return Array.from(new Set(availableTeams)).sort();
+};
+
 export default filterList;

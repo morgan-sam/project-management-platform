@@ -3,7 +3,7 @@ import Table from './Table';
 import FilterBar from './FilterBar';
 import taskList from '../data/taskList';
 import sortList from '../processing/sortList';
-import filterList from '../processing/filterList';
+import { filterList, getTaskListTeams } from '../processing/filterList';
 
 const App = () => {
 	// const [ tableView, setTableView ] = useState('tasks');
@@ -31,6 +31,8 @@ const App = () => {
 			});
 		}
 	}
+
+	console.log(getTaskListTeams(taskList));
 
 	let displayList = sortList(sortOptions, taskList);
 	if (filterOptions.active) displayList = filterList(filterOptions, displayList);
