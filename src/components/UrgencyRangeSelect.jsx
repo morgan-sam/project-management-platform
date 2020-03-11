@@ -39,6 +39,7 @@ const UrgencyRangeSelect = (props) => {
 				options={[ 1, 2, 3, 4, 5 ]}
 				onClick={(val) => setMinUrgency(val)}
 			/>
+			{'..'}
 			<Dropdown
 				className="maxUrgencyDropdown"
 				style={{
