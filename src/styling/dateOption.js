@@ -6,7 +6,9 @@ export const dateOptionPopUpStyling = {
 export const dateDisplayBoxStyling = {
 	height: 'auto',
 	padding: '0 0.5rem',
-	textAlign: 'center'
+	textAlign: 'center',
+	userSelect: 'none',
+	cursor: 'pointer'
 };
 
 export const datePopUpStyling = {
@@ -27,9 +29,13 @@ export const canConContainerStyle = {
 };
 
 export const confirmBtnStyle = {
-	backgroundColor: '#fb9898'
+	backgroundColor: '#fb9898',
+	userSelect: 'none',
+	cursor: 'pointer'
 };
 
 export const cancelBtnStyle = {
-	backgroundColor: '#c1fcc1'
+	backgroundColor: '#c1fcc1',
+	userSelect: 'none',
+	cursor: 'pointer'
 };
