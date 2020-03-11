@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropdown from './Dropdown';
 import DateSelect from './DateSelect';
 import { filterBarStyle } from '../styling/filterBar';
 
@@ -33,6 +34,19 @@ const FilterBar = (props) => {
 						...props.filterOptions,
 						deadline: val
 					})}
+			/>
+			<div className="filterBarLabel">Completed:</div>
+			<Dropdown
+				className="completionDropdown"
+				style={{
+					width: '7rem',
+					margin: 'auto'
+				}}
+				default={'All'}
+				options={[ 'All', 'Complete', 'Incomplete' ]}
+				onClick={(val) => {
+					console.log(val);
+				}}
 			/>
 		</div>
 	);

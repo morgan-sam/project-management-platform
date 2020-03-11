@@ -67,7 +67,7 @@ const Dropdown = (props) => {
 	};
 
 	return (
-		<div className="dropdown" style={dropdownParentStyle}>
+		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
 			<div className="dropdownContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
 				<div
 					className="dropdownHeader"
