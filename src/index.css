@@ -39,12 +39,9 @@ code {
 
 .filterBar {
 	position: relative;
-	height: auto;
-	width: auto;
 	border: 1px solid black;
 	line-height: 2rem;
 	padding: 0.5rem;
-	display: flex;
 	align-items: center;
 	z-index: 1;
 }
@@ -62,8 +59,4 @@ code {
 
 .dropdownOptionContainer::-webkit-scrollbar {
 	width: 0px; /* For Chrome, Safari, and Opera */
-}
-
-.inputCheckbox {
-	height: inherit;
 }
