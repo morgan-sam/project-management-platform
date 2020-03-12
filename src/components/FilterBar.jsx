@@ -12,8 +12,8 @@ const FilterBar = (props) => {
 			<FilterToggle {...props} />
 			<DateRangeSelect {...props} />
 			<UrgencyRangeSelect {...props} />
-			<CompletionSelect {...props} />
 			<TeamSelect {...props} />
+			<CompletionSelect {...props} />
 		</div>
 	);
 };

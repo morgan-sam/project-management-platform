@@ -10,7 +10,6 @@ export const filterList = (filterOptions, taskList) => {
 };
 
 const filterListTeams = (filterOptions, list) => {
-	console.log(filterOptions);
 	return list.filter(function(el) {
 		if (filterOptions.teams === 'all') return true;
 		else if (filterOptions.teams === el.team) return true;
