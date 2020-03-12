@@ -32,3 +32,10 @@ export const arrayOfMonthDays = (month, year) => {
 export const daysInMonth = (month, year) => {
 	return new Date(year, month, 0).getDate();
 };
+
+export const getDayFromTodayAsISO = (dayDifference = 0) => {
+	const day = new Date();
+	day.setDate(day.getDate() + dayDifference);
+	const stringDate = day.toISOString().match(/.+?(?=T)/g)[0];
+	return `${stringDate}T00:00:00.000Z`;
+};
