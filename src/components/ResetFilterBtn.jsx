@@ -1,4 +1,5 @@
 import React from 'react';
+import { getDayFromTodayAsISO } from '../data/dates';
 
 const ResetFilterBtn = (props) => {
 	return (
@@ -8,8 +9,8 @@ const ResetFilterBtn = (props) => {
 			onClick={() => {
 				props.setFilterOptions({
 					active: true,
-					date: '2020-01-01T00:00:00.000Z',
-					deadline: '2025-01-01T00:00:00.000Z',
+					date: '2000-01-01T00:00:00.000Z',
+					deadline: getDayFromTodayAsISO(14),
 					completion: 'all',
 					urgency: { min: 1, max: 5 },
 					teams: 'all'
