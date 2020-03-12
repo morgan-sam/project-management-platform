@@ -10,7 +10,9 @@ const TaskManager = (props) => {
 	const btnContainerStyle = {
 		display: 'flex',
 		flexDirection: 'row',
-		justifyContent: 'left'
+		justifyContent: 'left',
+		border: '1px solid black',
+		padding: '0.8rem'
 	};
 
 	return (
