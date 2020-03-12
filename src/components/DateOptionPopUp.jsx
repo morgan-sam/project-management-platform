@@ -12,16 +12,8 @@ import {
 } from '../styling/dateOption';
 
 const DateOptionPopUp = (props) => {
-	const [ selectedDate, setSelectedDate ] = useState(props.date);
 	const [ backupDate, setBackupDate ] = useState(props.date);
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
-
-	useEffect(
-		() => {
-			props.setFilterDate(parseDateObjToISO(selectedDate));
-		},
-		[ selectedDate ]
-	);
 
 	return (
 		<div style={dateOptionPopUpStyling}>
@@ -29,7 +21,7 @@ const DateOptionPopUp = (props) => {
 				style={{ ...dateDisplayBoxStyling, display: showDateSelect ? 'none' : 'flex' }}
 				onClick={() => setShowDateSelect(true)}
 			>
-				{selectedDate.day}/{selectedDate.month}/{selectedDate.year}
+				{props.date.day}/{props.date.month}/{props.date.year}
 			</div>
 			<DateSelect
 				style={{
@@ -37,9 +29,9 @@ const DateOptionPopUp = (props) => {
 					display: showDateSelect ? 'grid' : 'none'
 				}}
 				setDate={(date) => {
-					setSelectedDate(date);
+					props.setFilterDate(parseDateObjToISO(date));
 				}}
-				date={selectedDate}
+				date={props.date}
 			/>
 
 			<div
@@ -51,7 +43,6 @@ const DateOptionPopUp = (props) => {
 					style={{ ...canConBtnStyle, ...confirmBtnStyle }}
 					onClick={() => {
 						setShowDateSelect(false);
-						setSelectedDate(backupDate);
 						props.setFilterDate(parseDateObjToISO(backupDate));
 					}}
 				>
@@ -62,7 +53,7 @@ const DateOptionPopUp = (props) => {
 					style={{ ...canConBtnStyle, ...cancelBtnStyle }}
 					onClick={() => {
 						setShowDateSelect(false);
-						setBackupDate(selectedDate);
+						setBackupDate(props.date);
 					}}
 				>
 					✓
