@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Table from './Table';
+import TaskManager from './TaskManager';
 import FilterBar from './FilterBar';
 import taskList from '../data/taskList';
 import sortList from '../processing/sortList';
@@ -39,6 +40,7 @@ const App = () => {
 	return (
 		<div className="mainPage">
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
+			<TaskManager />
 			<FilterBar
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
