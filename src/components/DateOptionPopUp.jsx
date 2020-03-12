@@ -12,8 +12,8 @@ import {
 } from '../styling/dateOption';
 
 const DateOptionPopUp = (props) => {
-	const [ selectedDate, setSelectedDate ] = useState({ day: 1, month: 1, year: 2020 });
-	const [ backupDate, setBackupDate ] = useState({ day: 1, month: 1, year: 2020 });
+	const [ selectedDate, setSelectedDate ] = useState(props.date);
+	const [ backupDate, setBackupDate ] = useState(props.date);
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
 
 	useEffect(

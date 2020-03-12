@@ -3,6 +3,7 @@ import FilterToggle from './FilterToggle';
 import DateRangeSelect from './DateRangeSelect';
 import UrgencyRangeSelect from './UrgencyRangeSelect';
 import CompletionSelect from './CompletionSelect';
+import TeamSelect from './TeamSelect';
 import { filterBarStyle } from '../styling/filterBar';
 
 const FilterBar = (props) => {
@@ -12,6 +13,7 @@ const FilterBar = (props) => {
 			<DateRangeSelect {...props} />
 			<UrgencyRangeSelect {...props} />
 			<CompletionSelect {...props} />
+			<TeamSelect {...props} />
 		</div>
 	);
 };

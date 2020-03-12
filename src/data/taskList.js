@@ -29,8 +29,8 @@ const taskList = [
 	{
 		key: '1576996383453',
 		task: 'Redesign Homepage',
-		date: '2019-01-01T00:00:00.000Z',
-		deadline: '2020-01-01T00:00:00.000Z',
+		date: '2020-01-01T00:00:00.000Z',
+		deadline: '2021-01-01T00:00:00.000Z',
 		urgency: 2,
 		team: 'Team 2',
 		completed: false

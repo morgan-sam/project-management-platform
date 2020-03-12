@@ -5,7 +5,17 @@ export const filterList = (filterOptions, taskList) => {
 	filteredList = filterListCompletion(filterOptions, filteredList);
 	filteredList = filteredList.filter((el) => filterOptions.urgency.min <= el.urgency);
 	filteredList = filteredList.filter((el) => filterOptions.urgency.max >= el.urgency);
+	filteredList = filterListTeams(filterOptions, filteredList);
 	return filteredList;
+};
+
+const filterListTeams = (filterOptions, list) => {
+	console.log(filterOptions);
+	return list.filter(function(el) {
+		if (filterOptions.teams === 'all') return true;
+		else if (filterOptions.teams === el.team) return true;
+		else return false;
+	});
 };
 
 const filterListCompletion = (filterOptions, list) => {

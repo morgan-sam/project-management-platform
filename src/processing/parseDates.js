@@ -5,7 +5,8 @@ export const parseISOToLittleEndian = (string) => {
 
 export const parseISOToDateObj = (string) => {
 	const stringDate = string.match(/.+?(?=T)/g)[0];
-	const dateArray = stringDate.split('-').reverse();
+	const dateSplitString = stringDate.split('-').reverse();
+	const dateArray = dateSplitString.map((el) => parseInt(el));
 	return { day: dateArray[0], month: dateArray[1], year: dateArray[2] };
 };
 

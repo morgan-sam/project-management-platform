@@ -16,9 +16,10 @@ const App = () => {
 	const [ filterOptions, setFilterOptions ] = useState({
 		active: true,
 		date: '2020-01-01T00:00:00.000Z',
-		deadline: '2020-01-01T00:00:00.000Z',
+		deadline: '2025-01-01T00:00:00.000Z',
 		completion: 'all',
-		urgency: { min: 1, max: 5 }
+		urgency: { min: 1, max: 5 },
+		teams: 'all'
 	});
 
 	function userSetSort(sort) {
@@ -32,15 +33,17 @@ const App = () => {
 		}
 	}
 
-	console.log(getTaskListTeams(taskList));
-
 	let displayList = sortList(sortOptions, taskList);
 	if (filterOptions.active) displayList = filterList(filterOptions, displayList);
 
 	return (
 		<div className="mainPage">
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
-			<FilterBar setFilterOptions={setFilterOptions} filterOptions={filterOptions} />
+			<FilterBar
+				setFilterOptions={setFilterOptions}
+				filterOptions={filterOptions}
+				taskListTeams={[ 'all', ...getTaskListTeams(taskList) ]}
+			/>
 			<Table taskList={displayList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
 		</div>
 	);

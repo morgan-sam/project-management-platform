@@ -29,6 +29,7 @@ const DateRangeSelect = (props) => {
 						...props.filterOptions,
 						deadline: val
 					})}
+				date={parseISOToDateObj(props.filterOptions.deadline)}
 			/>
 		</div>
 	);
