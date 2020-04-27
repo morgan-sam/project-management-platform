@@ -8,4 +8,4 @@ DATE=$(date --utc +%FT%TZ)
 DEADLINE=$(date --date='14 days' --utc +%FT%TZ)
 URGENCY=$(echo $RANDOM % 5 + 1 | bc)
 TEAM=$(echo Team_$(echo $RANDOM % 5 + 1 | bc))
-curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"team":"'$TEAM'","completed":"true"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
+curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"team":"'$TEAM'","completed":"false"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
