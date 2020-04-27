@@ -20,7 +20,8 @@ const App = () => {
 		teams: 'all'
 	});
 
-	const [ taskList, setTaskList ] = useState([]);
+	const [ rawTaskList, setRawTaskList ] = useState([]);
+	const [ displayTaskList, setDisplayTaskList ] = useState([]);
 
 	function userSetSort(sort) {
 		if (sort === sortOptions.type) {
@@ -33,17 +34,25 @@ const App = () => {
 		}
 	}
 
+	useEffect(() => {
+		(async () => {
+			try {
+				const data = await fetch('/tasks');
+				const jsonData = await data.json();
+				setRawTaskList(jsonData);
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	}, []);
+
 	useEffect(
 		() => {
 			(async () => {
-				try {
-					const data = await fetch('/tasks');
-					const jsonData = await data.json();
-					let sortedList = sortList(sortOptions, jsonData);
-					if (filterOptions.active) sortedList = filterList(filterOptions, sortedList);
-					setTaskList(sortedList);
-				} catch (error) {
-					console.log(error);
+				if (rawTaskList) {
+					let editedList = sortList(sortOptions, rawTaskList);
+					if (filterOptions.active) editedList = filterList(filterOptions, editedList);
+					setDisplayTaskList(editedList);
 				}
 			})();
 		},
@@ -57,9 +66,9 @@ const App = () => {
 			<FilterBar
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
-				taskListTeams={[ 'all', ...getTaskListTeams(taskList) ]}
+				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 			/>
-			<Table taskList={taskList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
+			<Table taskList={displayTaskList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
 		</div>
 	);
 };
