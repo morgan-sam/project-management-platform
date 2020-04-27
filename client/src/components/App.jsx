@@ -47,7 +47,7 @@ const App = () => {
 				}
 			})();
 		},
-		[ filterOptions ]
+		[ filterOptions, sortOptions ]
 	);
 
 	return (
