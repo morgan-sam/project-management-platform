@@ -12,22 +12,27 @@ const TableHeadings = (props) => {
 				onClick={() => props.userSetSort('task')}
 			/>
 			<Cell
+				className="dateCell"
 				text={`Date ${props.sortOptions.type === 'date' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('date')}
 			/>
 			<Cell
+				className="deadlineCell"
 				text={`Deadline ${props.sortOptions.type === 'deadline' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('deadline')}
 			/>
 			<Cell
+				className="urgencyCell"
 				text={`Urgency ${props.sortOptions.type === 'urgency' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('urgency')}
 			/>
 			<Cell
+				className="teamCell"
 				text={`Team ${props.sortOptions.type === 'team' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('team')}
 			/>
 			<Cell
+				className="completedCell"
 				text={`Completed ${props.sortOptions.type === 'completed' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('completed')}
 			/>
