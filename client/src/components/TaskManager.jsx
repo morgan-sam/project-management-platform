@@ -15,10 +15,22 @@ const TaskManager = (props) => {
 		padding: '0.8rem'
 	};
 
+	const deleteSelectedTasks = (taskIds) => {
+		for (let i = 0; i < taskIds.length; i++) {
+			fetch('/tasks/' + taskIds[i], {
+				method: 'delete'
+			});
+		}
+		props.setSelectedTasks([]);
+		props.setDataChanged(true);
+	};
+
 	return (
 		<div className="taskManager" style={btnContainerStyle}>
 			<button style={btnStyle}>New Task</button>
-			<button style={btnStyle}>Delete Selected Tasks</button>
+			<button style={btnStyle} onClick={() => deleteSelectedTasks(props.selectedTasks)}>
+				Delete Selected Tasks
+			</button>
 			<button style={btnStyle}>BLANK</button>
 			<button style={btnStyle}>BLANK</button>
 		</div>

@@ -23,6 +23,7 @@ const App = () => {
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ displayTaskList, setDisplayTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
+	const [ dataChanged, setDataChanged ] = useState(false);
 
 	function userSetSort(sort) {
 		if (sort === sortOptions.type) {
@@ -35,17 +36,21 @@ const App = () => {
 		}
 	}
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const data = await fetch('/tasks');
-				const jsonData = await data.json();
-				setRawTaskList(jsonData);
-			} catch (error) {
-				console.log(error);
-			}
-		})();
-	}, []);
+	useEffect(
+		() => {
+			(async () => {
+				try {
+					const data = await fetch('/tasks');
+					const jsonData = await data.json();
+					setRawTaskList(jsonData);
+					setDataChanged(false);
+				} catch (error) {
+					console.log(error);
+				}
+			})();
+		},
+		[ dataChanged ]
+	);
 
 	useEffect(
 		() => {
@@ -61,7 +66,11 @@ const App = () => {
 	return (
 		<div className="mainPage">
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
-			<TaskManager />
+			<TaskManager
+				selectedTasks={selectedTasks}
+				setSelectedTasks={setSelectedTasks}
+				setDataChanged={setDataChanged}
+			/>
 			<FilterBar
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
