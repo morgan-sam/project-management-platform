@@ -33,6 +33,10 @@ code {
 	width: 15rem;
 }
 
+.selectedCell {
+	width: 1rem;
+}
+
 .mainPage {
 	height: fit-content;
 	width: fit-content;

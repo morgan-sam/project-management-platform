@@ -12,6 +12,7 @@ const Task = (props) => {
 			<Cell className="urgencyCell" text={props.urgency} />
 			<Cell className="teamCell" text={props.team} />
 			<Cell className="completedCell" text={props.completed} />
+			<Cell className="selectedCell" text={props.selected} />
 		</div>
 	);
 };

@@ -36,6 +36,7 @@ const TableHeadings = (props) => {
 				text={`Completed ${props.sortOptions.type === 'completed' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('completed')}
 			/>
+			<Cell className="selectedCell" text={`X`} />
 		</div>
 	);
 };

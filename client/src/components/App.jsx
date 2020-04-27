@@ -20,7 +20,7 @@ const App = () => {
 		teams: 'all'
 	});
 
-	const [ displayList, setDisplayList ] = useState([]);
+	const [ taskList, setTaskList ] = useState([]);
 
 	function userSetSort(sort) {
 		if (sort === sortOptions.type) {
@@ -38,11 +38,10 @@ const App = () => {
 			(async () => {
 				try {
 					const data = await fetch('/tasks');
-					const taskList = await data.json();
-					let sortedList = sortList(sortOptions, taskList);
+					const jsonData = await data.json();
+					let sortedList = sortList(sortOptions, jsonData);
 					if (filterOptions.active) sortedList = filterList(filterOptions, sortedList);
-					console.log(sortedList);
-					setDisplayList(sortedList);
+					setTaskList(sortedList);
 				} catch (error) {
 					console.log(error);
 				}
@@ -51,8 +50,6 @@ const App = () => {
 		[ filterOptions ]
 	);
 
-	console.log(filterOptions);
-
 	return (
 		<div className="mainPage">
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>
@@ -60,9 +57,9 @@ const App = () => {
 			<FilterBar
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
-				taskListTeams={[ 'all', ...getTaskListTeams(displayList) ]}
+				taskListTeams={[ 'all', ...getTaskListTeams(taskList) ]}
 			/>
-			<Table taskList={displayList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
+			<Table taskList={taskList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
 		</div>
 	);
 };
