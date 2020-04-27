@@ -22,6 +22,7 @@ const App = () => {
 
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ displayTaskList, setDisplayTaskList ] = useState([]);
+	const [ selectedTasks, setSelectedTasks ] = useState([]);
 
 	function userSetSort(sort) {
 		if (sort === sortOptions.type) {
@@ -68,7 +69,13 @@ const App = () => {
 				filterOptions={filterOptions}
 				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 			/>
-			<Table taskList={displayTaskList} sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
+			<Table
+				taskList={displayTaskList}
+				sortOptions={sortOptions}
+				userSetSort={(val) => userSetSort(val)}
+				selectedTasks={selectedTasks}
+				setSelectedTasks={setSelectedTasks}
+			/>
 		</div>
 	);
 };

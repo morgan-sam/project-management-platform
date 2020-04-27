@@ -4,7 +4,6 @@ import TableHeadings from './TableHeadings';
 
 const Table = (props) => {
 	const [ displayList, setDisplayList ] = useState([]);
-	const [ selectedTasks, setSelectedTasks ] = useState([]);
 
 	useEffect(
 		() => {
@@ -13,22 +12,22 @@ const Table = (props) => {
 					<Task
 						key={i}
 						{...el}
-						selected={selectedTasks.includes(el.id)}
+						selected={props.selectedTasks.includes(el.id)}
 						setSelect={(id) => setSelectState(id)}
 					/>
 				);
 			});
 			setDisplayList(tasks);
 		},
-		[ props.taskList, selectedTasks ]
+		[ props.taskList, props.selectedTasks ]
 	);
 
 	const setSelectState = (id) => {
-		if (selectedTasks.includes(id)) {
-			const filtered = selectedTasks.filter((el) => el !== id);
-			setSelectedTasks(filtered);
+		if (props.selectedTasks.includes(id)) {
+			const filtered = props.selectedTasks.filter((el) => el !== id);
+			props.setSelectedTasks(filtered);
 		} else {
-			setSelectedTasks([ ...selectedTasks, id ]);
+			props.setSelectedTasks([ ...props.selectedTasks, id ]);
 		}
 	};
 
