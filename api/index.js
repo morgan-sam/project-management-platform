@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const db = require('./config/queries');
 
 const app = express();
 app.use(cors());
@@ -12,3 +13,5 @@ app.listen(process.env.PORT || 8000, () => {
 app.get('/', (req, res) => {
 	res.send({ message: 'Welcome to the server!' });
 });
+
+app.get('/tasks', db.getEntries);
