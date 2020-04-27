@@ -25,13 +25,28 @@ const TaskManager = (props) => {
 		props.setDataChanged(true);
 	};
 
+	const getAllIds = () => {
+		return props.rawTaskList.map((el) => el.id);
+	};
+
+	const checkIfAllTasksSelected = () => {
+		return getAllIds().length !== props.selectedTasks.length;
+	};
+
+	const selectAllTasks = () => {
+		if (checkIfAllTasksSelected()) props.setSelectedTasks(getAllIds());
+		else props.setSelectedTasks([]);
+	};
+
 	return (
 		<div className="taskManager" style={btnContainerStyle}>
 			<button style={btnStyle}>New Task</button>
 			<button style={btnStyle} onClick={() => deleteSelectedTasks(props.selectedTasks)}>
 				Delete Selected Tasks
 			</button>
-			<button style={btnStyle}>BLANK</button>
+			<button style={btnStyle} onClick={() => selectAllTasks()}>
+				{checkIfAllTasksSelected() ? 'S' : 'Des'}elect All Tasks
+			</button>
 			<button style={btnStyle}>BLANK</button>
 		</div>
 	);

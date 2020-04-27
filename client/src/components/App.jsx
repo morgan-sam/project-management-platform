@@ -69,6 +69,7 @@ const App = () => {
 			<TaskManager
 				selectedTasks={selectedTasks}
 				setSelectedTasks={setSelectedTasks}
+				rawTaskList={rawTaskList}
 				setDataChanged={setDataChanged}
 			/>
 			<FilterBar
