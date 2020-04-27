@@ -14,4 +14,6 @@ app.get('/', (req, res) => {
 	res.send({ message: 'Welcome to the server!' });
 });
 
-app.get('/tasks', db.getEntries);
+app.get('/tasks', db.getTasks);
+app.post('/tasks', db.createTask);
+app.delete('/tasks/:ID', db.deleteTask);
