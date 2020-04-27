@@ -55,7 +55,7 @@ const App = () => {
 				setDisplayTaskList(editedList);
 			})();
 		},
-		[ filterOptions, sortOptions ]
+		[ rawTaskList, filterOptions, sortOptions ]
 	);
 
 	return (
