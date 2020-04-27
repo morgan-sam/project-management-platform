@@ -6,13 +6,17 @@ import { parseISOToLittleEndian } from '../processing/parseDates';
 const Task = (props) => {
 	return (
 		<div className="taskEntry">
-			<Cell className="taskCell" text={props.task} />
-			<Cell className="dateCell" text={parseISOToLittleEndian(props.date)} />
-			<Cell className="deadlineCell" text={parseISOToLittleEndian(props.deadline)} />
-			<Cell className="urgencyCell" text={props.urgency} />
-			<Cell className="teamCell" text={props.team} />
-			<Cell className="completedCell" text={props.completed} />
-			<Cell className="selectedCell" text={props.selected ? 'X' : ''} onClick={() => props.setSelect(props.id)} />
+			<Cell className="tableCell taskCell" text={props.task} />
+			<Cell className="tableCell dateCell" text={parseISOToLittleEndian(props.date)} />
+			<Cell className="tableCell deadlineCell" text={parseISOToLittleEndian(props.deadline)} />
+			<Cell className="tableCell urgencyCell" text={props.urgency} />
+			<Cell className="tableCell teamCell" text={props.team} />
+			<Cell className="tableCell completedCell" text={props.completed} />
+			<Cell
+				className="tableCell selectedCell"
+				text={props.selected ? 'X' : ''}
+				onClick={() => props.setSelect(props.id)}
+			/>
 		</div>
 	);
 };

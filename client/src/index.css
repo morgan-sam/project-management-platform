@@ -37,6 +37,14 @@ code {
 	width: 1rem;
 }
 
+.headingCell.selectedCell {
+	cursor: auto;
+}
+
+.tableCell.selectedCell {
+	cursor: pointer;
+}
+
 .mainPage {
 	height: fit-content;
 	width: fit-content;

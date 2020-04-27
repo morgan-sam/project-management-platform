@@ -7,36 +7,36 @@ const TableHeadings = (props) => {
 	return (
 		<div className="tableHeadings" style={{ cursor: 'pointer', userSelect: 'none' }}>
 			<Cell
-				className="taskCell"
+				className="headingCell taskCell"
 				text={`Task ${props.sortOptions.type === 'task' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('task')}
 			/>
 			<Cell
-				className="dateCell"
+				className="headingCell dateCell"
 				text={`Date ${props.sortOptions.type === 'date' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('date')}
 			/>
 			<Cell
-				className="deadlineCell"
+				className="headingCell deadlineCell"
 				text={`Deadline ${props.sortOptions.type === 'deadline' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('deadline')}
 			/>
 			<Cell
-				className="urgencyCell"
+				className="headingCell urgencyCell"
 				text={`Urgency ${props.sortOptions.type === 'urgency' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('urgency')}
 			/>
 			<Cell
-				className="teamCell"
+				className="headingCell teamCell"
 				text={`Team ${props.sortOptions.type === 'team' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('team')}
 			/>
 			<Cell
-				className="completedCell"
+				className="headingCell completedCell"
 				text={`Completed ${props.sortOptions.type === 'completed' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('completed')}
 			/>
-			<Cell className="selectedCell" text={`X`} />
+			<Cell className="headingCell selectedCell" text={`X`} />
 		</div>
 	);
 };
