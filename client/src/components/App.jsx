@@ -37,6 +37,8 @@ const App = () => {
 	let displayList = sortList(sortOptions, taskList);
 	if (filterOptions.active) displayList = filterList(filterOptions, displayList);
 
+	console.log(filterOptions);
+
 	return (
 		<div className="mainPage">
 			<h1>PROJECT MANAGEMENT PLATFORM</h1>

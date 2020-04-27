@@ -8,7 +8,7 @@ const ResetFilterBtn = (props) => {
 			style={{ width: '5rem', height: '2rem' }}
 			onClick={() => {
 				props.setFilterOptions({
-					active: true,
+					...props.filterOptions,
 					date: '2000-01-01T00:00:00.000Z',
 					deadline: getDayFromTodayAsISO(14),
 					completion: 'all',
