@@ -1,2 +1,11 @@
+TASK=$(curl https://random-word-api.herokuapp.com/word?number=2)
+TASK=$(echo ${TASK//[\"\[\]]/})
+TASK=$(echo "${TASK//,/$' '}")
+TASK=($TASK)
+TASK="${TASK[@]^}"
+TASK=$(echo "${TASK// /$'_'}")
 DATE=$(date --utc +%FT%TZ)
-curl -d '{"task":"TEST_TASK","date": "'$DATE'","urgency":"3","completed":"true"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
+DEADLINE=$(date --date='14 days' --utc +%FT%TZ)
+URGENCY=$(echo $RANDOM % 5 + 1 | bc)
+TEAM=$(echo Team_$(echo $RANDOM % 5 + 1 | bc))
+curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"team":"'$TEAM'","completed":"true"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
