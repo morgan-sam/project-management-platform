@@ -13,7 +13,7 @@ const App = () => {
 
 	const [ filterOptions, setFilterOptions ] = useState({
 		active: true,
-		date: '2020-01-01T00:00:00.000Z',
+		date: '2000-01-01T00:00:00.000Z',
 		deadline: '2025-01-01T00:00:00.000Z',
 		completion: 'all',
 		urgency: { min: 1, max: 5 },
@@ -50,11 +50,9 @@ const App = () => {
 	useEffect(
 		() => {
 			(async () => {
-				if (rawTaskList) {
-					let editedList = sortList(sortOptions, rawTaskList);
-					if (filterOptions.active) editedList = filterList(filterOptions, editedList);
-					setDisplayTaskList(editedList);
-				}
+				let editedList = sortList(sortOptions, rawTaskList);
+				if (filterOptions.active) editedList = filterList(filterOptions, editedList);
+				setDisplayTaskList(editedList);
 			})();
 		},
 		[ filterOptions, sortOptions ]

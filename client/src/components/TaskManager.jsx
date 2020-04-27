@@ -2,7 +2,7 @@ import React from 'react';
 
 const TaskManager = (props) => {
 	const btnStyle = {
-		width: '5rem',
+		width: 'auto',
 		height: '2rem',
 		marginRight: '1rem'
 	};
@@ -18,7 +18,7 @@ const TaskManager = (props) => {
 	return (
 		<div className="taskManager" style={btnContainerStyle}>
 			<button style={btnStyle}>New Task</button>
-			<button style={btnStyle}>BLANK</button>
+			<button style={btnStyle}>Delete Selected Tasks</button>
 			<button style={btnStyle}>BLANK</button>
 			<button style={btnStyle}>BLANK</button>
 		</div>
