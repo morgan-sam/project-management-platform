@@ -33,19 +33,25 @@ const App = () => {
 		}
 	}
 
-	useEffect(() => {
-		(async () => {
-			try {
-				const data = await fetch('/tasks');
-				const taskList = await data.json();
-				let sortedList = sortList(sortOptions, taskList);
-				if (filterOptions.active) sortedList = filterList(filterOptions, sortedList);
-				setDisplayList(sortedList);
-			} catch (error) {
-				console.log(error);
-			}
-		})();
-	}, []);
+	useEffect(
+		() => {
+			(async () => {
+				try {
+					const data = await fetch('/tasks');
+					const taskList = await data.json();
+					let sortedList = sortList(sortOptions, taskList);
+					if (filterOptions.active) sortedList = filterList(filterOptions, sortedList);
+					console.log(sortedList);
+					setDisplayList(sortedList);
+				} catch (error) {
+					console.log(error);
+				}
+			})();
+		},
+		[ filterOptions ]
+	);
+
+	console.log(filterOptions);
 
 	return (
 		<div className="mainPage">
