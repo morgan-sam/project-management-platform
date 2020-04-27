@@ -15,5 +15,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/tasks', db.getTasks);
+app.get('/tasks/:ID', db.getTaskById);
 app.post('/tasks', db.createTask);
 app.delete('/tasks/:ID', db.deleteTask);

@@ -7,6 +7,14 @@ const getTasks = (request, response) => {
 	});
 };
 
+const getTaskById = (request, response) => {
+	const ID = parseInt(request.params.ID);
+	pool.query('SELECT * FROM tasks WHERE ID = $1', [ ID ], (error, results) => {
+		if (error) throw error;
+		response.status(200).json(results.rows);
+	});
+};
+
 const createTask = (request, response) => {
 	const { task, date, deadline, urgency, team, completed } = request.body;
 	pool.query(
@@ -29,6 +37,7 @@ const deleteTask = (request, response) => {
 
 module.exports = {
 	getTasks,
+	getTaskById,
 	createTask,
 	deleteTask
 };
