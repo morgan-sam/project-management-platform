@@ -17,6 +17,7 @@ code {
 }
 
 .table > * {
+	width: 'auto';
 	display: flex;
 	flex-direction: row;
 }
@@ -26,6 +27,10 @@ code {
 	padding: 1rem;
 	border: 1px solid black;
 	background-color: #fff;
+}
+
+.taskCell {
+	width: 15rem;
 }
 
 .mainPage {

@@ -7,6 +7,7 @@ const TableHeadings = (props) => {
 	return (
 		<div className="tableHeadings" style={{ cursor: 'pointer', userSelect: 'none' }}>
 			<Cell
+				className="taskCell"
 				text={`Task ${props.sortOptions.type === 'task' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('task')}
 			/>

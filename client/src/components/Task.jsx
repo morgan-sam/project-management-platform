@@ -6,12 +6,12 @@ import { parseISOToLittleEndian } from '../processing/parseDates';
 const Task = (props) => {
 	return (
 		<div className="taskEntry">
-			<Cell text={props.task} />
-			<Cell text={parseISOToLittleEndian(props.date)} />
-			<Cell text={parseISOToLittleEndian(props.deadline)} />
-			<Cell text={props.urgency} />
-			<Cell text={props.team} />
-			<Cell text={props.completed} />
+			<Cell className="taskCell" text={props.task} />
+			<Cell className="dateCell" text={parseISOToLittleEndian(props.date)} />
+			<Cell className="deadlineCell" text={parseISOToLittleEndian(props.deadline)} />
+			<Cell className="urgencyCell" text={props.urgency} />
+			<Cell className="teamCell" text={props.team} />
+			<Cell className="completedCell" text={props.completed} />
 		</div>
 	);
 };
