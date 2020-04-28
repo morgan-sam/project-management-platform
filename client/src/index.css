@@ -1,3 +1,9 @@
+:root {
+	--line-thickness: 2px;
+	--line-curve: 1rem;
+	--line-color: #444;
+}
+
 body {
 	margin: 1rem;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -54,6 +60,7 @@ code {
 	width: auto;
 	position: relative;
 	z-index: 0;
+	border-radius: var(--line-curve);
 }
 
 .table > * {
@@ -65,18 +72,18 @@ code {
 .cell {
 	width: 7rem;
 	padding: 1rem;
-	border-top: 1px solid black;
-	border-left: 1px solid black;
+	border-top: var(--line-thickness) solid var(--line-color);
+	border-left: var(--line-thickness) solid var(--line-color);
 	background-color: #fff;
 	text-align: center;
 }
 
 table > * > *:last-child {
-	border-right: 1px solid black;
+	border-right: var(--line-thickness) solid var(--line-color);
 }
 
 table > tr:last-child > * {
-	border-bottom: 1px solid black;
+	border-bottom: var(--line-thickness) solid var(--line-color);
 }
 
 .taskCell {
@@ -100,17 +107,17 @@ table > tr:last-child > * {
 /* TABLE CURVED CORNERS */
 
 table > tr:first-child > *:first-child {
-	border-top-left-radius: 5px;
+	border-top-left-radius: var(--line-curve);
 }
 
 table > tr:first-child > *:last-child {
-	border-top-right-radius: 5px;
+	border-top-right-radius: var(--line-curve);
 }
 
 table > tr:last-child > *:first-child {
-	border-bottom-left-radius: 5px;
+	border-bottom-left-radius: var(--line-curve);
 }
 
 table > tr:last-child > *:last-child {
-	border-bottom-right-radius: 5px;
+	border-bottom-right-radius: var(--line-curve);
 }
