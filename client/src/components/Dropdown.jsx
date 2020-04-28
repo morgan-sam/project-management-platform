@@ -21,7 +21,7 @@ const Dropdown = (props) => {
 	};
 
 	const optionDivs = props.options
-		? props.options.map(function(el, i) {
+		? props.options.map((el, i) => {
 				const currentOptionStyle = getCurrentOptionStyle(i, props.options);
 				const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
 				return (

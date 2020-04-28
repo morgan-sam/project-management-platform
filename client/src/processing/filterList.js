@@ -18,7 +18,7 @@ const filterListDeadline = (filterOptions, list) => {
 };
 
 const filterListTeams = (filterOptions, list) => {
-	return list.filter(function(el) {
+	return list.filter((el) => {
 		if (filterOptions.teams === 'all') return true;
 		else if (filterOptions.teams === el.team) return true;
 		else return false;
@@ -26,7 +26,7 @@ const filterListTeams = (filterOptions, list) => {
 };
 
 const filterListCompletion = (filterOptions, list) => {
-	return list.filter(function(el) {
+	return list.filter((el) => {
 		if (filterOptions.completion === 'all') return true;
 		else if (filterOptions.completion === 'complete' && el.completed) return true;
 		else if (filterOptions.completion === 'incomplete' && !el.completed) return true;
