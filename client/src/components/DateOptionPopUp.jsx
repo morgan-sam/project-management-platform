@@ -10,57 +10,19 @@ import {
 	cancelBtnStyle,
 	canConContainerStyle,
 	dateSelectConfirmContainerStyling
-} from '../styling/dateOption';
+} from 'styling/dateOption';
+import {
+	dateOptionOpen,
+	dateOptionClosed,
+	displayOffscreen,
+	displayOnscreen,
+	selectOffscreen,
+	selectOnscreen
+} from 'styling/dateOptionPopUp';
 
 const DateOptionPopUp = (props) => {
 	const [ backupDate, setBackupDate ] = useState(props.date);
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
-
-	const dateOptionOpen = {
-		width: '18rem',
-		height: '10rem'
-	};
-
-	const dateOptionClosed = {
-		width: '7rem',
-		height: '3rem'
-	};
-
-	const displayOffscreen = {
-		position: 'absolute',
-		left: '0%',
-		top: '50%',
-		transform: 'translate(-50%,-50%)',
-		zIndex: '5',
-		opacity: '0'
-	};
-
-	const displayOnscreen = {
-		position: 'absolute',
-		left: '50%',
-		top: '50%',
-		transform: 'translate(-50%,-50%)',
-		zIndex: '5',
-		opacity: '1'
-	};
-
-	const selectOffscreen = {
-		position: 'absolute',
-		left: '0%',
-		top: '50%',
-		transform: 'translate(50%,-50%)',
-		zIndex: '3',
-		opacity: '0'
-	};
-
-	const selectOnscreen = {
-		position: 'absolute',
-		left: '50%',
-		top: '50%',
-		transform: 'translate(-50%,-50%)',
-		zIndex: '3',
-		opacity: '1'
-	};
 
 	return (
 		<div
@@ -85,8 +47,7 @@ const DateOptionPopUp = (props) => {
 			>
 				<DateSelect
 					style={{
-						...datePopUpStyling,
-						opacity: showDateSelect ? '1' : '0'
+						...datePopUpStyling
 					}}
 					setDate={(date) => {
 						props.setFilterDate(parseDateObjToISO(date));
@@ -94,10 +55,7 @@ const DateOptionPopUp = (props) => {
 					date={props.date}
 				/>
 
-				<div
-					className="canConBtnContainer"
-					style={{ ...canConContainerStyle, opacity: showDateSelect ? '1' : '0' }}
-				>
+				<div className="canConBtnContainer" style={{ ...canConContainerStyle }}>
 					<button
 						className="cancelButton"
 						style={{ ...canConBtnStyle, ...confirmBtnStyle }}
