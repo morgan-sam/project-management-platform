@@ -79,6 +79,7 @@ code {
 .dropdownOptionContainer {
 	scrollbar-width: none; /* For Firefox */
 	-ms-overflow-style: none; /* For Internet Explorer and Edge */
+	transition: 1s;
 }
 
 .dropdownOptionContainer::-webkit-scrollbar {
