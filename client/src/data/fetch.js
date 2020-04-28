@@ -1,8 +1,12 @@
 export const fetchDeleteTasks = (idArray) => {
 	for (let i = 0; i < idArray.length; i++) {
-		fetch(`/tasks/${idArray[i]}`, {
-			method: 'delete'
-		});
+		try {
+			fetch(`/tasks/${idArray[i]}`, {
+				method: 'delete'
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 };
 
