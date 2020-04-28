@@ -1,26 +1,26 @@
 import React from 'react';
-import Cell from 'components/Cell';
+import DataCell from 'components/DataCell';
 import { parseISOToLittleEndian } from 'processing/parseDates';
 
 const Task = (props) => {
 	return (
-		<div className="taskEntry">
-			<Cell className="tableCell taskCell" text={props.item.task} />
-			<Cell className="tableCell dateCell" text={parseISOToLittleEndian(props.item.date)} />
-			<Cell className="tableCell deadlineCell" text={parseISOToLittleEndian(props.item.deadline)} />
-			<Cell className="tableCell urgencyCell" text={props.item.urgency} />
-			<Cell className="tableCell teamCell" text={props.item.team} />
-			<Cell
-				className="tableCell completedCell"
+		<tr className="taskEntry">
+			<DataCell className="taskCell" text={props.item.task} />
+			<DataCell className="dateCell" text={parseISOToLittleEndian(props.item.date)} />
+			<DataCell className="deadlineCell" text={parseISOToLittleEndian(props.item.deadline)} />
+			<DataCell className="urgencyCell" text={props.item.urgency} />
+			<DataCell className="teamCell" text={props.item.team} />
+			<DataCell
+				className="completedCell"
 				text={props.item.completed}
 				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
 			/>
-			<Cell
-				className="tableCell selectedCell"
+			<DataCell
+				className="selectedCell"
 				text={props.selected ? 'X' : ''}
 				onClick={() => props.setSelect(props.item.id)}
 			/>
-		</div>
+		</tr>
 	);
 };
 

@@ -33,10 +33,10 @@ const Table = (props) => {
 	};
 
 	return (
-		<div className="table">
+		<table className="table">
 			<TableHeadings sortOptions={props.sortOptions} userSetSort={(val) => props.userSetSort(val)} />
 			{displayList}
-		</div>
+		</table>
 	);
 };
 
