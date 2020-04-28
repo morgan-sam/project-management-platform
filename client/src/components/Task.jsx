@@ -4,10 +4,10 @@ import Cell from './Cell';
 import { parseISOToLittleEndian } from '../processing/parseDates';
 
 const Task = (props) => {
-	const setCompletedState = async (id) => {
-		const newItem = { ...props.item, completed: !props.item.completed };
+	const setCompletedState = async (item) => {
+		const newItem = { ...item, completed: !item.completed };
 		try {
-			fetch(`/tasks/${id}`, {
+			fetch(`/tasks/${item.id}`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ const Task = (props) => {
 			<Cell
 				className="tableCell completedCell"
 				text={props.item.completed}
-				onClick={() => setCompletedState(props.item.id)}
+				onClick={() => setCompletedState(props.item)}
 			/>
 			<Cell
 				className="tableCell selectedCell"

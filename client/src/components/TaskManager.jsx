@@ -47,7 +47,7 @@ const TaskManager = (props) => {
 			<button style={btnStyle} onClick={() => selectAllTasks()}>
 				{checkIfAllTasksSelected() ? 'S' : 'Des'}elect All Tasks
 			</button>
-			<button style={btnStyle}>BLANK</button>
+			<button style={btnStyle}>Mark As Complete</button>
 		</div>
 	);
 };
