@@ -4,9 +4,11 @@ import { btnStyle, btnContainerStyle } from '../styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from '../processing/taskListSelection';
 
 const TaskManager = (props) => {
+	const { setSelectedTasks, setDataChanged, setEntryCompletion, rawTaskList, selectedTasks } = props;
+
 	const selectedTaskChangeComplete = () => {
-		props.setSelectedTasks([]);
-		props.setDataChanged(true);
+		setSelectedTasks([]);
+		setDataChanged(true);
 	};
 
 	const deleteSelectedTasks = (selectedTaskIds) => {
@@ -15,10 +17,10 @@ const TaskManager = (props) => {
 	};
 
 	const setSelectedTaskCompletion = (taskIds) => {
-		const newCompletion = !checkIfAllSelectedAreComplete(props.rawTaskList, props.selectedTasks);
+		const newCompletion = !checkIfAllSelectedAreComplete(rawTaskList, selectedTasks);
 		for (let i = 0; i < taskIds.length; i++) {
-			const obj = props.rawTaskList.find((el) => el.id === taskIds[i]);
-			props.setEntryCompletion(obj, newCompletion);
+			const obj = rawTaskList.find((el) => el.id === taskIds[i]);
+			setEntryCompletion(obj, newCompletion);
 		}
 		selectedTaskChangeComplete();
 	};
@@ -26,22 +28,21 @@ const TaskManager = (props) => {
 	//////////////////////////////////////////////////////////////
 
 	const selectAllTasks = () => {
-		if (checkIfAllTasksSelected(props.rawTaskList, props.selectedTasks))
-			props.setSelectedTasks(getAllIds(props.rawTaskList));
-		else props.setSelectedTasks([]);
+		if (checkIfAllTasksSelected(rawTaskList, selectedTasks)) setSelectedTasks(getAllIds(rawTaskList));
+		else setSelectedTasks([]);
 	};
 
 	return (
 		<div className="taskManager" style={btnContainerStyle}>
 			<button style={btnStyle}>New Task</button>
-			<button style={btnStyle} onClick={() => deleteSelectedTasks(props.selectedTasks)}>
+			<button style={btnStyle} onClick={() => deleteSelectedTasks(selectedTasks)}>
 				Delete Selected Tasks
 			</button>
 			<button style={btnStyle} onClick={() => selectAllTasks()}>
-				{checkIfAllTasksSelected(props.rawTaskList, props.selectedTasks) ? 'S' : 'Des'}elect All Tasks
+				{checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks
 			</button>
-			<button style={btnStyle} onClick={() => setSelectedTaskCompletion(props.selectedTasks)}>
-				Mark As {checkIfAllSelectedAreComplete(props.rawTaskList, props.selectedTasks) ? 'Inc' : 'C'}omplete
+			<button style={btnStyle} onClick={() => setSelectedTaskCompletion(selectedTasks)}>
+				Mark As {checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete
 			</button>
 		</div>
 	);
