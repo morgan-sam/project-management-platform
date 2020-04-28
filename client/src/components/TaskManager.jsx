@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchDeleteTasks } from '../data/fetch';
 import { btnStyle, btnContainerStyle } from '../styling/taskManager';
 
 const TaskManager = (props) => {
@@ -7,12 +8,8 @@ const TaskManager = (props) => {
 		props.setDataChanged(true);
 	};
 
-	const deleteSelectedTasks = (taskIds) => {
-		for (let i = 0; i < taskIds.length; i++) {
-			fetch(`/tasks/${taskIds[i]}`, {
-				method: 'delete'
-			});
-		}
+	const deleteSelectedTasks = (selectedTaskIds) => {
+		fetchDeleteTasks(selectedTaskIds);
 		selectedTaskChangeComplete();
 	};
 
