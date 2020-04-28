@@ -25,8 +25,6 @@ const TaskManager = (props) => {
 		selectedTaskChangeComplete();
 	};
 
-	//////////////////////////////////////////////////////////////
-
 	const selectAllTasks = () => {
 		if (checkIfAllTasksSelected(rawTaskList, selectedTasks)) setSelectedTasks(getAllIds(rawTaskList));
 		else setSelectedTasks([]);
