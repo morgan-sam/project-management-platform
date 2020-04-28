@@ -11,7 +11,7 @@ import {
 	optionStyle
 } from '../styling/dropdown';
 
-const Dropdown = (props, onOpenChange) => {
+const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
 
 	const getCurrentOptionStyle = (index, options) => {
@@ -42,11 +42,8 @@ const Dropdown = (props, onOpenChange) => {
 
 	useEffect(() => {
 		checkIfOptionOOB();
-		if (listOpen) {
-			document.addEventListener('mousedown', whileDropdownOpenClick);
-		} else {
-			document.removeEventListener('mousedown', whileDropdownOpenClick);
-		}
+		if (listOpen) document.addEventListener('mousedown', whileDropdownOpenClick);
+		else document.removeEventListener('mousedown', whileDropdownOpenClick);
 		return () => document.removeEventListener('mousedown', whileDropdownOpenClick);
 	});
 
