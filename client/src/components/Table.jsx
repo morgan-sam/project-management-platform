@@ -14,7 +14,7 @@ const Table = (props) => {
 						item={el}
 						selected={props.selectedTasks.includes(el.id)}
 						setSelect={(id) => setSelectState(id)}
-						setDataChanged={props.setDataChanged}
+						setEntryCompletion={props.setEntryCompletion}
 					/>
 				);
 			});

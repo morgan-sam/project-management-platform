@@ -4,22 +4,6 @@ import Cell from './Cell';
 import { parseISOToLittleEndian } from '../processing/parseDates';
 
 const Task = (props) => {
-	const setCompletedState = async (item) => {
-		const newItem = { ...item, completed: !item.completed };
-		try {
-			fetch(`/tasks/${item.id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(newItem)
-			});
-			props.setDataChanged(true);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	return (
 		<div className="taskEntry">
 			<Cell className="tableCell taskCell" text={props.item.task} />
@@ -30,7 +14,7 @@ const Task = (props) => {
 			<Cell
 				className="tableCell completedCell"
 				text={props.item.completed}
-				onClick={() => setCompletedState(props.item)}
+				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
 			/>
 			<Cell
 				className="tableCell selectedCell"

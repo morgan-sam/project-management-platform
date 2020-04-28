@@ -36,6 +36,22 @@ const App = () => {
 		}
 	}
 
+	const setEntryCompletion = async (entry, completion) => {
+		const newEntry = { ...entry, completed: completion };
+		try {
+			fetch(`/tasks/${entry.id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(newEntry)
+			});
+			setDataChanged(true);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	useEffect(
 		() => {
 			(async () => {
@@ -71,6 +87,7 @@ const App = () => {
 				setSelectedTasks={setSelectedTasks}
 				rawTaskList={rawTaskList}
 				setDataChanged={setDataChanged}
+				setEntryCompletion={setEntryCompletion}
 			/>
 			<FilterBar
 				setFilterOptions={setFilterOptions}
@@ -84,6 +101,7 @@ const App = () => {
 				selectedTasks={selectedTasks}
 				setSelectedTasks={setSelectedTasks}
 				setDataChanged={setDataChanged}
+				setEntryCompletion={setEntryCompletion}
 			/>
 		</div>
 	);
