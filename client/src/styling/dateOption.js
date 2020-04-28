@@ -1,9 +1,15 @@
 export const dateOptionPopUpStyling = {
 	display: 'flex',
 	border: '1px solid black',
-	justifyContent: 'center',
+	justifyContent: 'left',
 	alignItems: 'center',
-	height: '100%'
+	overflow: 'hidden',
+	transition: '1s',
+	position: 'relative'
+};
+
+export const dateSelectConfirmContainerStyling = {
+	transition: '1s'
 };
 
 export const dateDisplayBoxStyling = {
@@ -11,11 +17,14 @@ export const dateDisplayBoxStyling = {
 	padding: '0 0.5rem',
 	textAlign: 'center',
 	userSelect: 'none',
-	cursor: 'pointer'
+	cursor: 'pointer',
+	transition: '1s'
 };
 
 export const datePopUpStyling = {
-	textAlign: 'center'
+	textAlign: 'center',
+	display: 'grid',
+	transition: '1s'
 };
 
 export const canConBtnStyle = {
@@ -27,8 +36,10 @@ export const canConBtnStyle = {
 export const canConContainerStyle = {
 	display: 'flex',
 	flexDirection: 'row',
+	justifyContent: 'center',
 	alignItems: 'center',
-	paddingRight: '0.75rem'
+	paddingRight: '0.75rem',
+	transition: '0.5s'
 };
 
 export const confirmBtnStyle = {
