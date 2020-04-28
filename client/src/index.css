@@ -27,10 +27,12 @@ code {
 	padding: 1rem;
 	border: 1px solid black;
 	background-color: #fff;
+	text-align: center;
 }
 
 .taskCell {
 	width: 15rem;
+	text-align: left;
 }
 
 .selectedCell {
