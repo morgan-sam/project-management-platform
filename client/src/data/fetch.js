@@ -1,6 +1,6 @@
-export const fetchDeleteTasks = (taskIds) => {
-	for (let i = 0; i < taskIds.length; i++) {
-		fetch(`/tasks/${taskIds[i]}`, {
+export const fetchDeleteTasks = (idArray) => {
+	for (let i = 0; i < idArray.length; i++) {
+		fetch(`/tasks/${idArray[i]}`, {
 			method: 'delete'
 		});
 	}

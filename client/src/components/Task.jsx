@@ -1,6 +1,5 @@
 import React from 'react';
 import Cell from './Cell';
-
 import { parseISOToLittleEndian } from '../processing/parseDates';
 
 const Task = (props) => {
