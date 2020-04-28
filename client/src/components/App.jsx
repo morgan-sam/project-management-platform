@@ -3,7 +3,7 @@ import Table from './Table';
 import TaskManager from './TaskManager';
 import FilterBar from './FilterBar';
 import sortList from '../processing/sortList';
-import { fetchPutEntry } from '../data/fetch';
+import { fetchGetEntries, fetchPutEntry } from '../data/fetch';
 import { filterList, getTaskListTeams } from '../processing/filterList';
 
 const App = () => {
@@ -50,14 +50,9 @@ const App = () => {
 	useEffect(
 		() => {
 			(async () => {
-				try {
-					const data = await fetch('/tasks');
-					const jsonData = await data.json();
-					setRawTaskList(jsonData);
-					setDataChanged(false);
-				} catch (error) {
-					console.log(error);
-				}
+				const data = await fetchGetEntries();
+				setRawTaskList(data);
+				setDataChanged(false);
 			})();
 		},
 		[ dataChanged ]

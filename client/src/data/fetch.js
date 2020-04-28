@@ -15,3 +15,12 @@ export const fetchPutEntry = (entry) => {
 		body: JSON.stringify(entry)
 	});
 };
+export const fetchGetEntries = async () => {
+	try {
+		const data = await fetch('/tasks');
+		const jsonData = await data.json();
+		return jsonData;
+	} catch (error) {
+		console.log(error);
+	}
+};
