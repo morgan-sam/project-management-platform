@@ -2,14 +2,18 @@ import React from 'react';
 import { btnStyle, btnContainerStyle } from '../styling/taskManager';
 
 const TaskManager = (props) => {
+	const selectedTaskChangeComplete = () => {
+		props.setSelectedTasks([]);
+		props.setDataChanged(true);
+	};
+
 	const deleteSelectedTasks = (taskIds) => {
 		for (let i = 0; i < taskIds.length; i++) {
 			fetch(`/tasks/${taskIds[i]}`, {
 				method: 'delete'
 			});
 		}
-		props.setSelectedTasks([]);
-		props.setDataChanged(true);
+		selectedTaskChangeComplete();
 	};
 
 	const setSelectedTaskCompletion = (taskIds) => {
@@ -18,8 +22,7 @@ const TaskManager = (props) => {
 			const obj = props.rawTaskList.find((el) => el.id === taskIds[i]);
 			props.setEntryCompletion(obj, newCompletion);
 		}
-		props.setSelectedTasks([]);
-		props.setDataChanged(true);
+		selectedTaskChangeComplete();
 	};
 
 	//////////////////////////////////////////////////////////////
