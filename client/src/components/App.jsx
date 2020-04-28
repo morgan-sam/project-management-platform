@@ -83,6 +83,7 @@ const App = () => {
 				userSetSort={(val) => userSetSort(val)}
 				selectedTasks={selectedTasks}
 				setSelectedTasks={setSelectedTasks}
+				setDataChanged={setDataChanged}
 			/>
 		</div>
 	);

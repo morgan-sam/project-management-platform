@@ -11,9 +11,10 @@ const Table = (props) => {
 				return (
 					<Task
 						key={i}
-						{...el}
+						item={el}
 						selected={props.selectedTasks.includes(el.id)}
 						setSelect={(id) => setSelectState(id)}
+						setDataChanged={props.setDataChanged}
 					/>
 				);
 			});

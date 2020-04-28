@@ -41,6 +41,9 @@ code {
 	cursor: auto;
 }
 
+.tableCell.completedCell {
+	cursor: pointer;
+}
 .tableCell.selectedCell {
 	cursor: pointer;
 }

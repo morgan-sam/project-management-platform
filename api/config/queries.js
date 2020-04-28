@@ -27,6 +27,19 @@ const createTask = (request, response) => {
 	);
 };
 
+const updateTask = (request, response) => {
+	const ID = request.params.id;
+	const { task, date, deadline, urgency, team, completed } = request.body;
+	pool.query(
+		'UPDATE tasks SET task = $2, date = $3, deadline = $4, urgency = $5, team = $6, completed = $7 WHERE ID = $1',
+		[ ID, task, date, deadline, urgency, team, completed ],
+		(error, results) => {
+			if (error) throw error;
+			response.status(200).send(`Entry modified with ID: ${ID}\n`);
+		}
+	);
+};
+
 const deleteTask = (request, response) => {
 	const ID = parseInt(request.params.ID);
 	pool.query('DELETE FROM tasks WHERE ID = $1', [ ID ], (error, results) => {
@@ -39,5 +52,6 @@ module.exports = {
 	getTasks,
 	getTaskById,
 	createTask,
+	updateTask,
 	deleteTask
 };

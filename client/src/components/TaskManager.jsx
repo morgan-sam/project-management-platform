@@ -17,7 +17,7 @@ const TaskManager = (props) => {
 
 	const deleteSelectedTasks = (taskIds) => {
 		for (let i = 0; i < taskIds.length; i++) {
-			fetch('/tasks/' + taskIds[i], {
+			fetch(`/tasks/${taskIds[i]}`, {
 				method: 'delete'
 			});
 		}
