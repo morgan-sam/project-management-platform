@@ -4,6 +4,7 @@ import TaskManager from './TaskManager';
 import FilterBar from './FilterBar';
 import sortList from '../processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from '../data/fetch';
+import { filterOptionsDefault } from '../data/defaultState';
 import { filterList, getTaskListTeams } from '../processing/filterList';
 
 const App = () => {
@@ -12,15 +13,7 @@ const App = () => {
 		reversed: false
 	});
 
-	const [ filterOptions, setFilterOptions ] = useState({
-		active: true,
-		date: '2000-01-01T00:00:00.000Z',
-		deadline: '2025-01-01T00:00:00.000Z',
-		completion: 'all',
-		urgency: { min: 1, max: 5 },
-		teams: 'all'
-	});
-
+	const [ filterOptions, setFilterOptions ] = useState(filterOptionsDefault());
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ displayTaskList, setDisplayTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
