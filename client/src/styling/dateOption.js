@@ -3,7 +3,6 @@ export const dateOptionPopUpStyling = {
 	border: '1px solid black',
 	justifyContent: 'left',
 	alignItems: 'center',
-	overflow: 'hidden',
 	transition: '1s',
 	position: 'relative',
 	borderRadius: '5px'

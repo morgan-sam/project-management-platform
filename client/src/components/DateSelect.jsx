@@ -15,6 +15,7 @@ const DateSelect = (props) => {
 				onClick={(val) => {
 					props.setDate({ ...props.date, day: val });
 				}}
+				onOpenChange={(boo) => props.onDateSelectDropdownOpen(boo)}
 			/>
 			<Dropdown
 				default={props.date.month}
@@ -22,6 +23,7 @@ const DateSelect = (props) => {
 				onClick={(val) => {
 					props.setDate({ ...props.date, month: val });
 				}}
+				onOpenChange={(boo) => props.onDateSelectDropdownOpen(boo)}
 			/>
 			<Dropdown
 				default={props.date.year}
@@ -29,6 +31,7 @@ const DateSelect = (props) => {
 				onClick={(val) => {
 					props.setDate({ ...props.date, year: val });
 				}}
+				onOpenChange={(boo) => props.onDateSelectDropdownOpen(boo)}
 			/>
 		</div>
 	);

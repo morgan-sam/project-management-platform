@@ -23,11 +23,21 @@ import {
 const DateOptionPopUp = (props) => {
 	const [ backupDate, setBackupDate ] = useState(props.date);
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
+	const [ overflowHidden, setOverflowHidden ] = useState(true);
+
+	const onDateSelectDropdownOpen = (boo) => {
+		if (boo) {
+			setTimeout(() => {
+				setOverflowHidden(true);
+			}, 10);
+		} else setOverflowHidden(false);
+	};
 
 	return (
 		<div
 			style={{
 				...dateOptionPopUpStyling,
+				overflow: overflowHidden ? 'visible' : 'hidden',
 				...(showDateSelect ? dateOptionOpen : dateOptionClosed)
 			}}
 		>
@@ -53,6 +63,7 @@ const DateOptionPopUp = (props) => {
 						props.setFilterDate(parseDateObjToISO(date));
 					}}
 					date={props.date}
+					onDateSelectDropdownOpen={onDateSelectDropdownOpen}
 				/>
 
 				<div className="canConBtnContainer" style={{ ...canConContainerStyle }}>
