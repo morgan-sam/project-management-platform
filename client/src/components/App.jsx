@@ -3,6 +3,7 @@ import Table from './Table';
 import TaskManager from './TaskManager';
 import FilterBar from './FilterBar';
 import sortList from '../processing/sortList';
+import { fetchPutEntry } from '../data/fetch';
 import { filterList, getTaskListTeams } from '../processing/filterList';
 
 const App = () => {
@@ -39,13 +40,7 @@ const App = () => {
 	const setEntryCompletion = async (entry, completion) => {
 		const newEntry = { ...entry, completed: completion };
 		try {
-			fetch(`/tasks/${entry.id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(newEntry)
-			});
+			fetchPutEntry(newEntry);
 			setDataChanged(true);
 		} catch (error) {
 			console.log(error);

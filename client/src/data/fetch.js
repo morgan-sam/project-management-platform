@@ -5,3 +5,13 @@ export const fetchDeleteTasks = (taskIds) => {
 		});
 	}
 };
+
+export const fetchPutEntry = (entry) => {
+	fetch(`/tasks/${entry.id}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(entry)
+	});
+};
