@@ -10,44 +10,6 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.table {
-	width: auto;
-	position: relative;
-	z-index: 0;
-}
-
-.table > * {
-	width: 'auto';
-	display: flex;
-	flex-direction: row;
-}
-
-.cell {
-	width: 7rem;
-	padding: 1rem;
-	border: 1px solid black;
-	background-color: #fff;
-	text-align: center;
-}
-
-.taskCell {
-	width: 15rem;
-	text-align: left;
-}
-
-.selectedCell {
-	width: 1rem;
-}
-
-.headingCell.selectedCell {
-	cursor: auto;
-}
-
-.tableCell.completedCell {
-	cursor: pointer;
-	user-select: none;
-}
-
 .tableCell.selectedCell {
 	cursor: pointer;
 }
@@ -84,6 +46,55 @@ code {
 
 .dropdownOptionContainer::-webkit-scrollbar {
 	width: 0px; /* For Chrome, Safari, and Opera */
+}
+
+/* TABLE */
+
+.table {
+	width: auto;
+	position: relative;
+	z-index: 0;
+}
+
+.table > * {
+	width: 'auto';
+	display: flex;
+	flex-direction: row;
+}
+
+.cell {
+	width: 7rem;
+	padding: 1rem;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	background-color: #fff;
+	text-align: center;
+}
+
+table > * > *:last-child {
+	border-right: 1px solid black;
+}
+
+table > tr:last-child > * {
+	border-bottom: 1px solid black;
+}
+
+.taskCell {
+	width: 15rem;
+	text-align: left;
+}
+
+.selectedCell {
+	width: 1rem;
+}
+
+.headingCell.selectedCell {
+	cursor: auto;
+}
+
+.tableCell.completedCell {
+	cursor: pointer;
+	user-select: none;
 }
 
 /* TABLE CURVED CORNERS */
