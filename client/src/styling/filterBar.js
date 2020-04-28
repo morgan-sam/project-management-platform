@@ -1,4 +1,5 @@
 export const filterBarStyle = {
 	display: 'flex',
-	flexDirection: 'row'
+	flexDirection: 'row',
+	borderRadius: '5px'
 };

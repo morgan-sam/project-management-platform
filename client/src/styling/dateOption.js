@@ -5,7 +5,8 @@ export const dateOptionPopUpStyling = {
 	alignItems: 'center',
 	overflow: 'hidden',
 	transition: '1s',
-	position: 'relative'
+	position: 'relative',
+	borderRadius: '5px'
 };
 
 export const dateSelectConfirmContainerStyling = {
