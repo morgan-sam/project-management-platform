@@ -26,7 +26,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 
-	function userSetSort(sort) {
+	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
 			setSortOptions({ ...sortOptions, reversed: !sortOptions.reversed });
 		} else {
@@ -35,7 +35,7 @@ const App = () => {
 				reversed: false
 			});
 		}
-	}
+	};
 
 	const setEntryCompletion = async (entry, completion) => {
 		const newEntry = { ...entry, completed: completion };

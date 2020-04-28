@@ -23,6 +23,7 @@ export const fetchPutEntry = (entry) => {
 		console.log(error);
 	}
 };
+
 export const fetchGetEntries = async () => {
 	try {
 		const data = await fetch('/tasks');

@@ -12,10 +12,10 @@ export const sortList = (sortOptions, taskList) => {
 
 export default sortList;
 
-function sortObjListNumerically(list, index) {
+const sortObjListNumerically = (list, index) => {
 	return list.sort((a, b) => Object.values(a)[index] - Object.values(b)[index]);
-}
+};
 
-function sortObjListAlphabetically(list, index) {
+const sortObjListAlphabetically = (list, index) => {
 	return list.sort((a, b) => (Object.values(a)[index] < Object.values(b)[index] ? -1 : 1));
-}
+};
