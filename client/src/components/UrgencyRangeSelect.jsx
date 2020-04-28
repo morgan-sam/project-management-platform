@@ -29,27 +29,29 @@ const UrgencyRangeSelect = (props) => {
 			<div className="filterBarLabel" style={elStyle}>
 				Urgency Range:
 			</div>
-			<Dropdown
-				className="minUrgencyDropdown"
-				style={{
-					...elStyle,
-					width: '2rem'
-				}}
-				default={props.filterOptions.urgency.min}
-				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={(val) => setMinUrgency(val)}
-			/>
-			{'..'}
-			<Dropdown
-				className="maxUrgencyDropdown"
-				style={{
-					...elStyle,
-					width: '2rem'
-				}}
-				default={props.filterOptions.urgency.max}
-				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={(val) => setMaxUrgency(val)}
-			/>
+			<div style={{ display: 'flex' }}>
+				<Dropdown
+					className="minUrgencyDropdown"
+					style={{
+						...elStyle,
+						width: '2rem'
+					}}
+					default={props.filterOptions.urgency.min}
+					options={[ 1, 2, 3, 4, 5 ]}
+					onClick={(val) => setMinUrgency(val)}
+				/>
+				{'..'}
+				<Dropdown
+					className="maxUrgencyDropdown"
+					style={{
+						...elStyle,
+						width: '2rem'
+					}}
+					default={props.filterOptions.urgency.max}
+					options={[ 1, 2, 3, 4, 5 ]}
+					onClick={(val) => setMaxUrgency(val)}
+				/>
+			</div>
 		</div>
 	);
 };
