@@ -1,5 +1,5 @@
 import React from 'react';
-import Cell from './Cell';
+import Cell from 'components/Cell';
 
 const TableHeadings = (props) => {
 	const sortArrow = props.sortOptions.reversed ? '↓' : '↑';

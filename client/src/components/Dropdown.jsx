@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { capitalizeFirstLetter } from '../processing/utility';
+import { capitalizeFirstLetter } from 'processing/utility';
 import {
 	dropdownParentStyle,
 	dropdownElementStyle,

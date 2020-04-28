@@ -1,7 +1,7 @@
 import React from 'react';
-import { fetchDeleteTasks } from '../data/fetch';
-import { btnStyle, btnContainerStyle } from '../styling/taskManager';
-import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from '../processing/taskListSelection';
+import { fetchDeleteTasks } from 'data/fetch';
+import { btnStyle, btnContainerStyle } from 'styling/taskManager';
+import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 
 const TaskManager = (props) => {
 	const { setSelectedTasks, setDataChanged, setEntryCompletion, rawTaskList, selectedTasks } = props;

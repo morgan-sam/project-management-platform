@@ -1,6 +1,6 @@
 import React from 'react';
-import DateOptionPopUp from './DateOptionPopUp';
-import { parseISOToDateObj } from '../processing/parseDates';
+import DateOptionPopUp from 'components/DateOptionPopUp';
+import { parseISOToDateObj } from 'processing/parseDates';
 
 const DateRangeSelect = (props) => {
 	const elStyle = { margin: '0 1rem' };

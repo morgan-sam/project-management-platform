@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDayFromTodayAsISO } from '../data/dates';
+import { getDayFromTodayAsISO } from 'data/dates';
 
 const ResetFilterBtn = (props) => {
 	return (

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Table from './Table';
-import TaskManager from './TaskManager';
-import FilterBar from './FilterBar';
-import sortList from '../processing/sortList';
-import { fetchGetEntries, fetchPutEntry } from '../data/fetch';
-import { filterOptionsDefault } from '../data/defaultState';
-import { filterList, getTaskListTeams } from '../processing/filterList';
+import Table from 'components/Table';
+import TaskManager from 'components/TaskManager';
+import FilterBar from 'components/FilterBar';
+import sortList from 'processing/sortList';
+import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
+import { filterOptionsDefault } from 'data/defaultState';
+import { filterList, getTaskListTeams } from 'processing/filterList';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({

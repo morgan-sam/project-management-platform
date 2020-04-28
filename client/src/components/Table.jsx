@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Task from './Task';
-import TableHeadings from './TableHeadings';
+import Task from 'components/Task';
+import TableHeadings from 'components/TableHeadings';
 
 const Table = (props) => {
 	const [ displayList, setDisplayList ] = useState([]);

@@ -1,11 +1,11 @@
 import React from 'react';
-import FilterToggle from './FilterToggle';
-import ResetFilterBtn from './ResetFilterBtn';
-import DateRangeSelect from './DateRangeSelect';
-import UrgencyRangeSelect from './UrgencyRangeSelect';
-import CompletionSelect from './CompletionSelect';
-import TeamSelect from './TeamSelect';
-import { filterBarStyle } from '../styling/filterBar';
+import FilterToggle from 'components/FilterToggle';
+import ResetFilterBtn from 'components/ResetFilterBtn';
+import DateRangeSelect from 'components/DateRangeSelect';
+import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
+import CompletionSelect from 'components/CompletionSelect';
+import TeamSelect from 'components/TeamSelect';
+import { filterBarStyle } from 'styling/filterBar';
 
 const FilterBar = (props) => {
 	return (

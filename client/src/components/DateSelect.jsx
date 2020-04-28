@@ -1,7 +1,7 @@
 import React from 'react';
-import Dropdown from './Dropdown';
-import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from '../data/dates';
-import { dateSelectStyle } from '../styling/dateSelect';
+import Dropdown from 'components/Dropdown';
+import { getMonthIntegers, arrayOfMonthDays, get21stCenturyYears } from 'data/dates';
+import { dateSelectStyle } from 'styling/dateSelect';
 
 const DateSelect = (props) => {
 	return (

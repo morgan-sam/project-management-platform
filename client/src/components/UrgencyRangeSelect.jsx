@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from './Dropdown';
+import Dropdown from 'components/Dropdown';
 
 const UrgencyRangeSelect = (props) => {
 	const elStyle = { margin: '0 0.3rem' };
