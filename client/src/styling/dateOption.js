@@ -1,6 +1,8 @@
 export const dateOptionPopUpStyling = {
 	display: 'flex',
 	border: '1px solid black',
+	justifyContent: 'center',
+	alignItems: 'center',
 	height: '100%'
 };
 
