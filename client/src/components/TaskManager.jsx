@@ -25,6 +25,25 @@ const TaskManager = (props) => {
 		props.setDataChanged(true);
 	};
 
+	const setSelectedTaskCompletion = (taskIds) => {
+		const newCompletion = !checkIfAllSelectedAreComplete();
+		for (let i = 0; i < taskIds.length; i++) {
+			const obj = props.rawTaskList.find((el) => el.id === taskIds[i]);
+			props.setEntryCompletion(obj, newCompletion);
+		}
+		props.setSelectedTasks([]);
+		props.setDataChanged(true);
+	};
+
+	//////////////////////////////////////////////////////////////
+
+	const checkIfAllSelectedAreComplete = () => {
+		const selectedItems = props.rawTaskList.filter((el) => props.selectedTasks.includes(el.id));
+		return (
+			Boolean(selectedItems.length) && selectedItems.length === selectedItems.filter((el) => el.completed).length
+		);
+	};
+
 	const getAllIds = () => {
 		return props.rawTaskList.map((el) => el.id);
 	};
@@ -47,7 +66,9 @@ const TaskManager = (props) => {
 			<button style={btnStyle} onClick={() => selectAllTasks()}>
 				{checkIfAllTasksSelected() ? 'S' : 'Des'}elect All Tasks
 			</button>
-			<button style={btnStyle}>Mark As Complete</button>
+			<button style={btnStyle} onClick={() => setSelectedTaskCompletion(props.selectedTasks)}>
+				Mark As {checkIfAllSelectedAreComplete() ? 'Inc' : 'C'}omplete
+			</button>
 		</div>
 	);
 };
