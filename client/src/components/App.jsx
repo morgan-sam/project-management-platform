@@ -39,12 +39,8 @@ const App = () => {
 
 	const setEntryCompletion = async (entry, completion) => {
 		const newEntry = { ...entry, completed: completion };
-		try {
-			fetchPutEntry(newEntry);
-			setDataChanged(true);
-		} catch (error) {
-			console.log(error);
-		}
+		fetchPutEntry(newEntry);
+		setDataChanged(true);
 	};
 
 	useEffect(

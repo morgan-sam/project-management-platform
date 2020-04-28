@@ -7,13 +7,17 @@ export const fetchDeleteTasks = (idArray) => {
 };
 
 export const fetchPutEntry = (entry) => {
-	fetch(`/tasks/${entry.id}`, {
-		method: 'PUT',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(entry)
-	});
+	try {
+		fetch(`/tasks/${entry.id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(entry)
+		});
+	} catch (error) {
+		console.log(error);
+	}
 };
 export const fetchGetEntries = async () => {
 	try {
