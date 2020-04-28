@@ -1,20 +1,7 @@
 import React from 'react';
+import { btnStyle, btnContainerStyle } from '../styling/taskManager';
 
 const TaskManager = (props) => {
-	const btnStyle = {
-		width: 'auto',
-		height: '2rem',
-		marginRight: '1rem'
-	};
-
-	const btnContainerStyle = {
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'left',
-		border: '1px solid black',
-		padding: '0.8rem'
-	};
-
 	const deleteSelectedTasks = (taskIds) => {
 		for (let i = 0; i < taskIds.length; i++) {
 			fetch(`/tasks/${taskIds[i]}`, {
