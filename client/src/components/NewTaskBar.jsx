@@ -14,7 +14,11 @@ const NewTaskBar = (props) => {
 	return (
 		<div
 			classname="newTaskBar"
-			style={{ ...newTaskBarStyle, ...(props.displayNewTaskBar ? taskBarHidden : taskBarVisible) }}
+			style={{
+				...props.style,
+				...newTaskBarStyle,
+				...(props.displayNewTaskBar ? taskBarHidden : taskBarVisible)
+			}}
 		>
 			<div>{'New Task Bar'}</div>
 		</div>

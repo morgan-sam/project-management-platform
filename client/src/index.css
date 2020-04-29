@@ -16,16 +16,6 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.mainPage {
-	height: fit-content;
-	width: fit-content;
-	position: relative;
-}
-
-.mainPage > * {
-	margin: 1rem 0;
-}
-
 .dropdownOptionContainer {
 	scrollbar-width: none; /* For Firefox */
 	-ms-overflow-style: none; /* For Internet Explorer and Edge */

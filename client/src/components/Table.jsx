@@ -33,7 +33,7 @@ const Table = (props) => {
 	};
 
 	return (
-		<table className="table">
+		<table className="table" style={props.style}>
 			<thead>
 				<TableHeadings sortOptions={props.sortOptions} userSetSort={(val) => props.userSetSort(val)} />
 			</thead>

@@ -7,6 +7,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from './NewTaskBar';
+import { mainPageStyle, mainPageItemStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -65,9 +66,10 @@ const App = () => {
 	);
 
 	return (
-		<div className="mainPage">
-			<h1>PROJECT MANAGEMENT PLATFORM</h1>
+		<div className="mainPage" style={mainPageStyle}>
+			<h1 style={mainPageItemStyle}>PROJECT MANAGEMENT PLATFORM</h1>
 			<TaskManager
+				style={mainPageItemStyle}
 				selectedTasks={selectedTasks}
 				setSelectedTasks={setSelectedTasks}
 				rawTaskList={rawTaskList}
@@ -77,12 +79,18 @@ const App = () => {
 				setDisplayNewTaskBar={setDisplayNewTaskBar}
 			/>
 			<FilterBar
+				style={mainPageItemStyle}
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
 				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 			/>
-			<NewTaskBar displayNewTaskBar={displayNewTaskBar} setDisplayNewTaskBar={setDisplayNewTaskBar} />
+			<NewTaskBar
+				style={mainPageItemStyle}
+				displayNewTaskBar={displayNewTaskBar}
+				setDisplayNewTaskBar={setDisplayNewTaskBar}
+			/>
 			<Table
+				style={mainPageItemStyle}
 				taskList={displayTaskList}
 				sortOptions={sortOptions}
 				userSetSort={(val) => userSetSort(val)}

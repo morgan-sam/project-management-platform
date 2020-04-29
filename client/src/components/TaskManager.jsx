@@ -31,7 +31,7 @@ const TaskManager = (props) => {
 	};
 
 	return (
-		<div className="taskManager" style={btnContainerStyle}>
+		<div className="taskManager" style={{ ...props.style, ...btnContainerStyle }}>
 			<button style={btnStyle} onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}>
 				New Task
 			</button>
