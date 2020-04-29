@@ -17,7 +17,7 @@ const TaskNameInput = (props) => {
 			<form>
 				<label style={formItemsStyle}>Task Name:</label>
 				<input style={formItemsStyle} type="text" name="name" />
-				<input type="submit" value="Submit" style={{ display: 'none' }} />
+				<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
 			</form>
 		</div>
 	);
