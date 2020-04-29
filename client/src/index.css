@@ -63,11 +63,6 @@ code {
 	z-index: 0;
 }
 
-.table > * {
-	width: 'auto';
-	flex-direction: row;
-}
-
 table > * > * > *:last-child {
 	border-right: var(--line-thickness) solid var(--line-color);
 }
