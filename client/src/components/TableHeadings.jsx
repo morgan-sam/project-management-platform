@@ -1,6 +1,14 @@
 import React from 'react';
 import HeadingCell from 'components/HeadingCell';
-import { cellStyle } from 'styling/table';
+import {
+	taskCell,
+	dateCell,
+	deadlineCell,
+	urgencyCell,
+	teamCell,
+	completedCell,
+	selectedCell
+} from 'styling/headingCell';
 
 const TableHeadings = (props) => {
 	const sortArrow = props.sortOptions.reversed ? '↓' : '↑';
@@ -11,39 +19,39 @@ const TableHeadings = (props) => {
 				className="taskCell"
 				text={`Task ${props.sortOptions.type === 'task' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('task')}
-				style={cellStyle}
+				style={taskCell}
 			/>
 			<HeadingCell
 				className="dateCell"
 				text={`Date ${props.sortOptions.type === 'date' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('date')}
-				style={cellStyle}
+				style={dateCell}
 			/>
 			<HeadingCell
 				className="deadlineCell"
 				text={`Deadline ${props.sortOptions.type === 'deadline' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('deadline')}
-				style={cellStyle}
+				style={deadlineCell}
 			/>
 			<HeadingCell
 				className="urgencyCell"
 				text={`Urgency ${props.sortOptions.type === 'urgency' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('urgency')}
-				style={cellStyle}
+				style={urgencyCell}
 			/>
 			<HeadingCell
 				className="teamCell"
 				text={`Team ${props.sortOptions.type === 'team' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('team')}
-				style={cellStyle}
+				style={teamCell}
 			/>
 			<HeadingCell
 				className="completedCell"
 				text={`Completed ${props.sortOptions.type === 'completed' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('completed')}
-				style={cellStyle}
+				style={completedCell}
 			/>
-			<HeadingCell className="selectedCell" text={`X`} style={cellStyle} />
+			<HeadingCell className="selectedCell" text={`X`} style={selectedCell} />
 		</tr>
 	);
 };
