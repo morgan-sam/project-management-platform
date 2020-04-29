@@ -1,6 +1,5 @@
 import React from 'react';
 import DateOptionPopUp from 'components/DateOptionPopUp';
-import { parseISOToDateObj } from 'processing/parseDates';
 
 const DateRangeSelect = (props) => {
 	const elStyle = { margin: '0 1rem' };
@@ -9,28 +8,11 @@ const DateRangeSelect = (props) => {
 			<div className="filterBarLabel" style={elStyle}>
 				Date:
 			</div>
-			<DateOptionPopUp
-				style={elStyle}
-				setFilterDate={(val) => {
-					props.setFilterOptions({
-						...props.filterOptions,
-						date: val
-					});
-				}}
-				date={parseISOToDateObj(props.filterOptions.date)}
-			/>
+			<DateOptionPopUp style={elStyle} setSelectDate={(val) => props.setDate(val)} date={props.date} />
 			<div className="filterBarLabel" style={elStyle}>
 				Deadline:
 			</div>
-			<DateOptionPopUp
-				style={elStyle}
-				setFilterDate={(val) =>
-					props.setFilterOptions({
-						...props.filterOptions,
-						deadline: val
-					})}
-				date={parseISOToDateObj(props.filterOptions.deadline)}
-			/>
+			<DateOptionPopUp style={elStyle} setSelectDate={(val) => props.setDeadline(val)} date={props.deadline} />
 		</div>
 	);
 };

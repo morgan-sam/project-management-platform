@@ -60,7 +60,7 @@ const DateOptionPopUp = (props) => {
 						...datePopUpStyling
 					}}
 					setDate={(date) => {
-						props.setFilterDate(parseDateObjToISO(date));
+						props.setSelectDate(parseDateObjToISO(date));
 					}}
 					date={props.date}
 					onDateSelectDropdownOpen={onDateSelectDropdownOpen}
@@ -72,7 +72,7 @@ const DateOptionPopUp = (props) => {
 						style={{ ...canConBtnStyle, ...confirmBtnStyle }}
 						onClick={() => {
 							setShowDateSelect(false);
-							props.setFilterDate(parseDateObjToISO(backupDate));
+							props.setSelectDate(parseDateObjToISO(backupDate));
 						}}
 					>
 						X
