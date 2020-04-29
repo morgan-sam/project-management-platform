@@ -32,7 +32,9 @@ const TaskManager = (props) => {
 
 	return (
 		<div className="taskManager" style={btnContainerStyle}>
-			<button style={btnStyle}>New Task</button>
+			<button style={btnStyle} onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}>
+				New Task
+			</button>
 			<button style={btnStyle} onClick={() => deleteSelectedTasks(selectedTasks)}>
 				Delete Selected Tasks
 			</button>

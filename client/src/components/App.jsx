@@ -19,6 +19,7 @@ const App = () => {
 	const [ displayTaskList, setDisplayTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
+	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -72,13 +73,15 @@ const App = () => {
 				rawTaskList={rawTaskList}
 				setDataChanged={setDataChanged}
 				setEntryCompletion={setEntryCompletion}
+				displayNewTaskBar={displayNewTaskBar}
+				setDisplayNewTaskBar={setDisplayNewTaskBar}
 			/>
 			<FilterBar
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
 				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 			/>
-			<NewTaskBar />
+			<NewTaskBar displayNewTaskBar={displayNewTaskBar} setDisplayNewTaskBar={setDisplayNewTaskBar} />
 			<Table
 				taskList={displayTaskList}
 				sortOptions={sortOptions}

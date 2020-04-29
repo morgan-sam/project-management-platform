@@ -19,6 +19,7 @@ code {
 .mainPage {
 	height: fit-content;
 	width: fit-content;
+	position: relative;
 }
 
 .mainPage > * {
