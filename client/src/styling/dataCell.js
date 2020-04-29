@@ -1,31 +1,37 @@
-import { cellStyle } from 'styling/table';
+import {
+	taskDefaultCell,
+	dateDefaultCell,
+	deadlineDefaultCell,
+	urgencyDefaultCell,
+	teamDefaultCell,
+	completedDefaultCell,
+	selectedDefaultCell
+} from 'styling/table';
 
 export const taskCell = {
-	...cellStyle,
-	width: '15rem',
-	textAlign: 'left'
+	...taskDefaultCell
 };
 
 export const dateCell = {
-	...cellStyle
+	...dateDefaultCell
 };
 
 export const deadlineCell = {
-	...cellStyle
+	...deadlineDefaultCell
 };
 
 export const urgencyCell = {
-	...cellStyle
+	...urgencyDefaultCell
 };
 
 export const teamCell = {
-	...cellStyle
+	...teamDefaultCell
 };
 
 export const completedCell = {
-	...cellStyle
+	...completedDefaultCell
 };
 
 export const selectedCell = {
-	...cellStyle
+	...selectedDefaultCell
 };

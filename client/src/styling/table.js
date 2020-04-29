@@ -6,3 +6,33 @@ export const cellStyle = {
 	backgroundColor: '#fff',
 	textAlign: 'center'
 };
+
+export const taskDefaultCell = {
+	...cellStyle,
+	width: '15rem',
+	textAlign: 'left'
+};
+
+export const dateDefaultCell = {
+	...cellStyle
+};
+
+export const deadlineDefaultCell = {
+	...cellStyle
+};
+
+export const urgencyDefaultCell = {
+	...cellStyle
+};
+
+export const teamDefaultCell = {
+	...cellStyle
+};
+
+export const completedDefaultCell = {
+	...cellStyle
+};
+
+export const selectedDefaultCell = {
+	...cellStyle
+};
