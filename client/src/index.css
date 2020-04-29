@@ -29,15 +29,6 @@ code {
 	margin: 1rem 0;
 }
 
-.filterBar {
-	position: relative;
-	border: 1px solid black;
-	line-height: 2rem;
-	padding: 0.5rem;
-	align-items: center;
-	z-index: 1;
-}
-
 .filterBar > * {
 	margin: 0 0.5rem;
 	display: flex;
