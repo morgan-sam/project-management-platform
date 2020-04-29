@@ -30,12 +30,10 @@ export const teamCell = {
 
 export const completedCell = {
 	...completedDefaultCell,
-	cursor: 'pointer',
 	userSelect: 'none'
 };
 
 export const selectedCell = {
 	...selectedDefaultCell,
-	cursor: 'pointer',
 	userSelect: 'none'
 };

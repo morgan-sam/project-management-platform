@@ -30,10 +30,12 @@ export const teamDefaultCell = {
 };
 
 export const completedDefaultCell = {
-	...cellStyle
+	...cellStyle,
+	cursor: 'pointer'
 };
 
 export const selectedDefaultCell = {
 	...cellStyle,
+	cursor: 'pointer',
 	width: '1rem'
 };
