@@ -29,8 +29,12 @@ const DateOptionPopUp = (props) => {
 		if (boo) {
 			setTimeout(() => {
 				setOverflowHidden(true);
+				if (props.setOverflowHidden) props.setOverflowHidden(true);
 			}, 10);
-		} else setOverflowHidden(false);
+		} else {
+			setOverflowHidden(false);
+			if (props.setOverflowHidden) props.setOverflowHidden(false);
+		}
 	};
 
 	return (

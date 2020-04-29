@@ -5,6 +5,6 @@ export const newTaskBarStyle = {
 	borderRadius: '5px',
 	border: '1px solid black',
 	boxSizing: 'content-box',
-	transition: '1s',
+	height: 'auto',
 	overflow: 'hidden'
 };
