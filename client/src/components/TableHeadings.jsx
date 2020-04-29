@@ -51,7 +51,12 @@ const TableHeadings = (props) => {
 				onClick={() => props.userSetSort('completed')}
 				style={completedCell}
 			/>
-			<HeadingCell className="selectedCell" text={`X`} style={selectedCell} />
+			<HeadingCell
+				className="selectedCell"
+				text={`${props.sortOptions.type === 'selected' ? sortArrow : 'X'}`}
+				onClick={() => props.userSetSort('selected')}
+				style={selectedCell}
+			/>
 		</tr>
 	);
 };

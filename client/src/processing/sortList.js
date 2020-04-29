@@ -1,10 +1,18 @@
 export const sortList = (options, taskList) => {
-	const { sortOptions, selectedTasks } = options;
+	const { sortOptions } = options;
 	if (taskList.length === 0) return [];
 	if (sortOptions.type !== 'selected') return sortListByData(sortOptions, taskList);
+	else return sortListBySelected(options, taskList);
 };
-
 export default sortList;
+
+const sortListBySelected = (options, taskList) => {
+	const { sortOptions, selectedTasks } = options;
+	const selected = taskList.filter((el) => selectedTasks.includes(el.id));
+	const unselected = taskList.filter((el) => !selectedTasks.includes(el.id));
+	if (sortOptions.reversed) return [ ...selected, ...unselected ];
+	else return [ ...unselected, ...selected ];
+};
 
 const sortListByData = (sortOptions, taskList) => {
 	const index = Object.keys(taskList[0]).indexOf(sortOptions.type);
