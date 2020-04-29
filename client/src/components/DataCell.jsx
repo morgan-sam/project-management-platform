@@ -1,12 +1,11 @@
 import React from 'react';
-import { cellStyle } from 'styling/table';
 
 const DataCell = (props) => {
 	return (
 		<td
 			className={`dataCell ${props.className}`}
 			onClick={() => (props.onClick ? props.onClick() : null)}
-			style={cellStyle}
+			style={props.style}
 		>
 			{props.text === true ? '✓' : props.text}
 		</td>
