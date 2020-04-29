@@ -35,13 +35,10 @@ code {
 	width: 0px; /* For Chrome, Safari, and Opera */
 }
 
-/* TABLE */
+/* TABLE CURVED CORNERS */
 
-.table {
+table {
 	border-collapse: separate;
-	width: auto;
-	position: relative;
-	z-index: 0;
 }
 
 table > * > * > *:last-child {
@@ -51,8 +48,6 @@ table > * > * > *:last-child {
 table > *:last-child > tr:last-child > * {
 	border-bottom: var(--line-thickness) solid var(--line-color);
 }
-
-/* TABLE CURVED CORNERS */
 
 table > *:first-child > tr:first-child > *:first-child {
 	border-top-left-radius: var(--line-curve);
