@@ -9,7 +9,7 @@ import { filterBarStyle } from 'styling/filterBar';
 
 const FilterBar = (props) => {
 	return (
-		<div className="filterBar" style={{ ...filterBarStyle, ...props.style }}>
+		<div className="filterBar" style={filterBarStyle}>
 			<FilterToggle {...props} />
 			<ResetFilterBtn {...props} />
 			<DateRangeSelect {...props} />

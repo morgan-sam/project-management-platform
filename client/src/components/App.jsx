@@ -6,6 +6,7 @@ import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
+import NewTaskBar from './NewTaskBar';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -77,6 +78,7 @@ const App = () => {
 				filterOptions={filterOptions}
 				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 			/>
+			<NewTaskBar />
 			<Table
 				taskList={displayTaskList}
 				sortOptions={sortOptions}
