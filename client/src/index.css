@@ -57,10 +57,10 @@ code {
 /* TABLE */
 
 .table {
+	border-collapse: separate;
 	width: auto;
 	position: relative;
 	z-index: 0;
-	border-radius: var(--line-curve);
 }
 
 .table > * {
@@ -72,9 +72,18 @@ code {
 	width: 7rem;
 	padding: 1rem;
 	margin: 0;
-	border: var(--line-thickness) solid var(--line-color);
+	border-top: var(--line-thickness) solid var(--line-color);
+	border-left: var(--line-thickness) solid var(--line-color);
 	background-color: #fff;
 	text-align: center;
+}
+
+table > * > * > *:last-child {
+	border-right: var(--line-thickness) solid var(--line-color);
+}
+
+table > *:last-child > tr:last-child > * {
+	border-bottom: var(--line-thickness) solid var(--line-color);
 }
 
 .taskCell {
@@ -97,18 +106,18 @@ code {
 
 /* TABLE CURVED CORNERS */
 
-/* table > tr:first-child > *:first-child {
+table > *:first-child > tr:first-child > *:first-child {
 	border-top-left-radius: var(--line-curve);
 }
 
-table > tr:first-child > *:last-child {
+table > *:first-child > tr:first-child > *:last-child {
 	border-top-right-radius: var(--line-curve);
 }
 
-table > tr:last-child > *:first-child {
+table > *:last-child > tr:last-child > *:first-child {
 	border-bottom-left-radius: var(--line-curve);
 }
 
-table > tr:last-child > *:last-child {
+table > *:last-child > tr:last-child > *:last-child {
 	border-bottom-right-radius: var(--line-curve);
-} */
+}
