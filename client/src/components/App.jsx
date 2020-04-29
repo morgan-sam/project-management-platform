@@ -50,7 +50,11 @@ const App = () => {
 	useEffect(
 		() => {
 			(async () => {
-				let editedList = sortList(sortOptions, rawTaskList);
+				const options = {
+					sortOptions,
+					selectedTasks
+				};
+				let editedList = sortList(options, rawTaskList);
 				if (filterOptions.active) editedList = filterList(filterOptions, editedList);
 				setDisplayTaskList(editedList);
 			})();
