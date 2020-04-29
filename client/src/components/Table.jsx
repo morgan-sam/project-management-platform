@@ -34,8 +34,10 @@ const Table = (props) => {
 
 	return (
 		<table className="table">
-			<TableHeadings sortOptions={props.sortOptions} userSetSort={(val) => props.userSetSort(val)} />
-			{displayList}
+			<thead>
+				<TableHeadings sortOptions={props.sortOptions} userSetSort={(val) => props.userSetSort(val)} />
+			</thead>
+			<tbody>{displayList}</tbody>
 		</table>
 	);
 };

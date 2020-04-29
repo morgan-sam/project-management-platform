@@ -65,25 +65,16 @@ code {
 
 .table > * {
 	width: 'auto';
-	display: flex;
 	flex-direction: row;
 }
 
 .cell {
 	width: 7rem;
 	padding: 1rem;
-	border-top: var(--line-thickness) solid var(--line-color);
-	border-left: var(--line-thickness) solid var(--line-color);
+	margin: 0;
+	border: var(--line-thickness) solid var(--line-color);
 	background-color: #fff;
 	text-align: center;
-}
-
-table > * > *:last-child {
-	border-right: var(--line-thickness) solid var(--line-color);
-}
-
-table > tr:last-child > * {
-	border-bottom: var(--line-thickness) solid var(--line-color);
 }
 
 .taskCell {
@@ -106,7 +97,7 @@ table > tr:last-child > * {
 
 /* TABLE CURVED CORNERS */
 
-table > tr:first-child > *:first-child {
+/* table > tr:first-child > *:first-child {
 	border-top-left-radius: var(--line-curve);
 }
 
@@ -120,4 +111,4 @@ table > tr:last-child > *:first-child {
 
 table > tr:last-child > *:last-child {
 	border-bottom-right-radius: var(--line-curve);
-}
+} */
