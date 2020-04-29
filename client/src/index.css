@@ -29,12 +29,6 @@ code {
 	margin: 1rem 0;
 }
 
-.filterBar > * {
-	margin: 0 0.5rem;
-	display: flex;
-	align-items: center;
-}
-
 .dropdownOptionContainer {
 	scrollbar-width: none; /* For Firefox */
 	-ms-overflow-style: none; /* For Internet Explorer and Edge */

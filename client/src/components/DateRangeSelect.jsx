@@ -5,7 +5,7 @@ import { parseISOToDateObj } from 'processing/parseDates';
 const DateRangeSelect = (props) => {
 	const elStyle = { margin: '0 1rem' };
 	return (
-		<div className="DateRangeSelect">
+		<div className="DateRangeSelect" style={props.style}>
 			<div className="filterBarLabel" style={elStyle}>
 				Date:
 			</div>

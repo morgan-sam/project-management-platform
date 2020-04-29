@@ -4,7 +4,7 @@ import Dropdown from 'components/Dropdown';
 const CompletionSelect = (props) => {
 	const elStyle = { margin: '0 0.3rem' };
 	return (
-		<div>
+		<div style={props.style}>
 			<div className="filterBarLabel" style={elStyle}>
 				Completed:
 			</div>

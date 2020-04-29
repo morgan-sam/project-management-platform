@@ -9,3 +9,9 @@ export const filterBarStyle = {
 	flexDirection: 'row',
 	borderRadius: '5px'
 };
+
+export const filterBarItemStyle = {
+	margin: '0 0.5rem',
+	display: 'flex',
+	alignItems: 'center'
+};

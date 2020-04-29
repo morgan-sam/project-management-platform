@@ -5,7 +5,7 @@ const ResetFilterBtn = (props) => {
 	return (
 		<button
 			className="resetFilterBtn"
-			style={{ width: 'auto', height: '2rem' }}
+			style={{ ...props.style, width: 'auto', height: '2rem' }}
 			onClick={() => {
 				props.setFilterOptions({
 					...props.filterOptions,

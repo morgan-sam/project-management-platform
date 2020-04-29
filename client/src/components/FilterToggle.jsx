@@ -3,7 +3,7 @@ import React from 'react';
 const FilterToggle = (props) => {
 	const elStyle = { margin: '0 0.3rem' };
 	return (
-		<div>
+		<div style={props.style}>
 			<div className="filterBarLabel" style={elStyle}>
 				Active:
 			</div>

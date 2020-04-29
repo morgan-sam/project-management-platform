@@ -25,7 +25,7 @@ const UrgencyRangeSelect = (props) => {
 	};
 
 	return (
-		<div>
+		<div style={props.style}>
 			<div className="filterBarLabel" style={elStyle}>
 				Urgency Range:
 			</div>
