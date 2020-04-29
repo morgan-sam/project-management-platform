@@ -50,7 +50,10 @@ const DateOptionPopUp = (props) => {
 					...dateDisplayBoxStyling,
 					...(showDateSelect ? displayOffscreen : displayOnscreen)
 				}}
-				onClick={() => setShowDateSelect(true)}
+				onClick={() => {
+					setShowDateSelect(true);
+					if (props.setPopUpOpen) props.setPopUpOpen(true);
+				}}
 			>
 				{props.date.day}/{props.date.month}/{props.date.year}
 			</div>
@@ -76,6 +79,7 @@ const DateOptionPopUp = (props) => {
 						style={{ ...canConBtnStyle, ...confirmBtnStyle }}
 						onClick={() => {
 							setShowDateSelect(false);
+							if (props.setPopUpOpen) props.setPopUpOpen(false);
 							props.setSelectDate(parseDateObjToISO(backupDate));
 						}}
 					>
@@ -86,6 +90,7 @@ const DateOptionPopUp = (props) => {
 						style={{ ...canConBtnStyle, ...cancelBtnStyle }}
 						onClick={() => {
 							setShowDateSelect(false);
+							if (props.setPopUpOpen) props.setPopUpOpen(false);
 							setBackupDate(props.date);
 						}}
 					>

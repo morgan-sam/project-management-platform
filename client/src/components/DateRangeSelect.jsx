@@ -8,6 +8,7 @@ const DateRangeSelect = (props) => {
 		display: 'flex',
 		alignItems: 'center'
 	};
+
 	return (
 		<div className="DateRangeSelect" style={{ ...props.style, ...dateRangeSelectStyle }}>
 			<div className="filterBarLabel" style={elStyle}>
