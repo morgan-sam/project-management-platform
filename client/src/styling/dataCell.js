@@ -29,7 +29,9 @@ export const teamCell = {
 };
 
 export const completedCell = {
-	...completedDefaultCell
+	...completedDefaultCell,
+	cursor: 'pointer',
+	userSelect: 'none'
 };
 
 export const selectedCell = {

@@ -76,11 +76,6 @@ table > *:last-child > tr:last-child > * {
 	border-bottom: var(--line-thickness) solid var(--line-color);
 }
 
-.tableCell.completedCell {
-	cursor: pointer;
-	user-select: none;
-}
-
 /* TABLE CURVED CORNERS */
 
 table > *:first-child > tr:first-child > *:first-child {
