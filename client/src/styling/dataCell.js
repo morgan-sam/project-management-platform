@@ -35,5 +35,7 @@ export const completedCell = {
 };
 
 export const selectedCell = {
-	...selectedDefaultCell
+	...selectedDefaultCell,
+	cursor: 'pointer',
+	userSelect: 'none'
 };
