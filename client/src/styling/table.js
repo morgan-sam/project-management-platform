@@ -34,5 +34,6 @@ export const completedDefaultCell = {
 };
 
 export const selectedDefaultCell = {
-	...cellStyle
+	...cellStyle,
+	width: '1rem'
 };

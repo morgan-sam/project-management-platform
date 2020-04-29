@@ -76,10 +76,6 @@ table > *:last-child > tr:last-child > * {
 	border-bottom: var(--line-thickness) solid var(--line-color);
 }
 
-.selectedCell {
-	width: 1rem;
-}
-
 .tableCell.completedCell {
 	cursor: pointer;
 	user-select: none;
