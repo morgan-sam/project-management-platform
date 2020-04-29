@@ -3,6 +3,7 @@ import { newTaskBarStyle } from 'styling/newTaskBar';
 
 const NewTaskBar = (props) => {
 	const taskBarHidden = {
+		margin: '-8px 0',
 		height: '0',
 		opacity: '0'
 	};
