@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { newTaskBarStyle } from 'styling/newTaskBar';
+import TaskNameInput from './TaskNameInput';
 
 const NewTaskBar = (props) => {
 	const taskBarHidden = {
@@ -21,7 +22,7 @@ const NewTaskBar = (props) => {
 				...(props.displayNewTaskBar ? taskBarHidden : taskBarVisible)
 			}}
 		>
-			<div>{'New Task Bar'}</div>
+			<TaskNameInput {...props} />
 		</div>
 	);
 };
