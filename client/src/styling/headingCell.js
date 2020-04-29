@@ -33,5 +33,6 @@ export const completedCell = {
 };
 
 export const selectedCell = {
-	...selectedDefaultCell
+	...selectedDefaultCell,
+	cursor: 'auto'
 };

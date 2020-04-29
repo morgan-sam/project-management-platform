@@ -80,10 +80,6 @@ table > *:last-child > tr:last-child > * {
 	width: 1rem;
 }
 
-.headingCell.selectedCell {
-	cursor: auto;
-}
-
 .tableCell.completedCell {
 	cursor: pointer;
 	user-select: none;
