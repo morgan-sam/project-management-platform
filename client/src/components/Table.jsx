@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Task from 'components/Task';
 import TableHeadings from 'components/TableHeadings';
+import NoDataDisplay from 'components/NoDataDisplay';
 
 const Table = (props) => {
 	const [ displayList, setDisplayList ] = useState([]);
@@ -38,6 +39,7 @@ const Table = (props) => {
 				<TableHeadings sortOptions={props.sortOptions} userSetSort={(val) => props.userSetSort(val)} />
 			</thead>
 			<tbody>{displayList}</tbody>
+			{displayList.length === 0 && <NoDataDisplay />}
 		</table>
 	);
 };
