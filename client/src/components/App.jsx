@@ -43,7 +43,8 @@ const App = () => {
 		() => {
 			(async () => {
 				const data = await fetchGetEntries();
-				setRawTaskList(data);
+				if (data) setRawTaskList(data);
+				else setRawTaskList([]);
 				setDataChanged(false);
 			})();
 		},
