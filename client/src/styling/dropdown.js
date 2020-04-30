@@ -17,6 +17,9 @@ export const dropdownElementStyle = {
 };
 
 export const dropdownHeaderStyle = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
 	borderTop: 'none',
 	width: 'inherit'
 };
@@ -43,7 +46,10 @@ export const dropdownBoxStyle = {
 	zIndex: '0',
 	textAlign: 'center',
 	userSelect: 'none',
-	width: 'inherit'
+	width: 'inherit',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center'
 };
 
 export const optionStyle = {

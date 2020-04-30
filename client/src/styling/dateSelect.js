@@ -1,7 +1,7 @@
 export const dateSelectStyle = {
 	display: 'grid',
 	gridTemplateColumns: '3rem 4rem 5rem',
-	gridTemplateRows: '1fr 1fr',
+	gridTemplateRows: '2rem 2rem',
 	gridTemplateAreas: '". . ." ". . ."',
 	textAlign: 'center',
 	padding: '1rem'
