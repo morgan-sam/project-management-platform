@@ -4,7 +4,7 @@ export const filterBarStyle = {
 	lineHeight: '2rem',
 	padding: '0.5rem',
 	alignItems: 'center',
-	zIndex: '1',
+	zIndex: '9',
 	display: 'flex',
 	flexDirection: 'row',
 	borderRadius: '5px'

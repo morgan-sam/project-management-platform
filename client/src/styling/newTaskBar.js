@@ -6,5 +6,6 @@ export const newTaskBarStyle = {
 	border: '1px solid black',
 	boxSizing: 'content-box',
 	height: 'auto',
-	overflow: 'hidden'
+	overflow: 'hidden',
+	zIndex: '8'
 };

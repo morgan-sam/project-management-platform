@@ -10,5 +10,6 @@ export const btnContainerStyle = {
 	justifyContent: 'left',
 	border: '1px solid black',
 	padding: '0.8rem',
-	borderRadius: '5px'
+	borderRadius: '5px',
+	zIndex: '10'
 };

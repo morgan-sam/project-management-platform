@@ -4,7 +4,8 @@ export const cellStyle = {
 	borderTop: '2px solid #444',
 	borderLeft: '2px solid #444',
 	backgroundColor: '#fff',
-	textAlign: 'center'
+	textAlign: 'center',
+	zIndex: '7'
 };
 
 export const taskDefaultCell = {
