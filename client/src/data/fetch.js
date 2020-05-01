@@ -1,3 +1,17 @@
+export const fetchPostEntry = (entry) => {
+	try {
+		fetch(`/tasks`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(entry)
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 export const fetchDeleteTasks = (idArray) => {
 	for (let i = 0; i < idArray.length; i++) {
 		try {

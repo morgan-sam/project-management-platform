@@ -89,6 +89,7 @@ const App = () => {
 				style={mainPageItemStyle}
 				displayNewTaskBar={displayNewTaskBar}
 				setDisplayNewTaskBar={setDisplayNewTaskBar}
+				setDataChanged={setDataChanged}
 			/>
 			<Table
 				style={mainPageItemStyle}

@@ -4,8 +4,11 @@ import InputFormWithLabel from './InputFormWithLabel';
 import DateRangeSelect from 'components/DateRangeSelect';
 import { parseISOToDateObj } from 'processing/parseDates';
 import DropdownWithLabel from 'components/DropdownWithLabel';
+import { fetchPostEntry } from 'data/fetch';
 
 const NewTaskBar = (props) => {
+	const { style, displayNewTaskBar, setDataChanged } = props;
+
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
@@ -13,10 +16,12 @@ const NewTaskBar = (props) => {
 	const [ date, setDate ] = useState('2013-03-10T02:00:00Z');
 	const [ deadline, setDeadline ] = useState('2013-03-10T02:00:00Z');
 	const [ urgency, setUrgency ] = useState(3);
-	const [ teams, setTeams ] = useState(null);
+	const [ team, setTeam ] = useState(null);
 
 	const addTaskToDatabase = () => {
-		console.log(task, date, deadline, urgency, teams);
+		const entry = { task, date, deadline, urgency, team, completed: 'false' };
+		fetchPostEntry(entry);
+		setDataChanged(true);
 	};
 
 	return (
@@ -24,9 +29,9 @@ const NewTaskBar = (props) => {
 			<div
 				classname="newTaskBar"
 				style={{
-					...props.style,
+					...style,
 					...newTaskBarStyle,
-					...(props.displayNewTaskBar ? getTaskBarHiddenStyle(popUpOpen) : getTaskBarVisibleStyle(popUpOpen)),
+					...(displayNewTaskBar ? getTaskBarHiddenStyle(popUpOpen) : getTaskBarVisibleStyle(popUpOpen)),
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>
@@ -48,7 +53,7 @@ const NewTaskBar = (props) => {
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setUrgency(val)}
 				/>
-				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
+				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} />
 				<button onClick={() => addTaskToDatabase()} style={addTaskBtn}>
 					Add Task To Database
 				</button>
