@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
-import TaskNameInput from './TaskNameInput';
+import InputFormWithLabel from './InputFormWithLabel';
 import DateRangeSelect from 'components/DateRangeSelect';
 import { parseISOToDateObj } from 'processing/parseDates';
 import DropdownWithLabel from 'components/DropdownWithLabel';
@@ -9,9 +9,13 @@ const NewTaskBar = (props) => {
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
+	const [ task, setTask ] = useState(null);
 	const [ date, setDate ] = useState('2013-03-10T02:00:00Z');
 	const [ deadline, setDeadline ] = useState('2013-03-10T02:00:00Z');
 	const [ urgency, setUrgency ] = useState(3);
+	const [ teams, setTeams ] = useState(null);
+
+	console.log(task, date, deadline, urgency, teams);
 
 	return (
 		<div>
@@ -24,7 +28,7 @@ const NewTaskBar = (props) => {
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>
-				<TaskNameInput {...props} />
+				<InputFormWithLabel {...props} label={'Task'} onChange={(val) => setTask(val)} />
 				<DateRangeSelect
 					{...props}
 					date={parseISOToDateObj(date)}
@@ -42,6 +46,7 @@ const NewTaskBar = (props) => {
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setUrgency(val)}
 				/>
+				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
 			</div>
 		</div>
 	);

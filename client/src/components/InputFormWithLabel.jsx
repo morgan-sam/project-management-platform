@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const TaskNameInput = (props) => {
-	const taskNameInputStyle = {
+const InputFormWithLabel = (props) => {
+	const inputFormWithLabelStyle = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -13,9 +13,9 @@ const TaskNameInput = (props) => {
 	};
 
 	return (
-		<div style={{ ...props.style, ...taskNameInputStyle }}>
-			<form>
-				<label style={formItemsStyle}>Task Name:</label>
+		<div style={{ ...props.style, ...inputFormWithLabelStyle }}>
+			<form onChange={(e) => props.onChange(e.target.value)}>
+				<label style={formItemsStyle}>{props.label}:</label>
 				<input style={formItemsStyle} type="text" name="name" />
 				<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
 			</form>
@@ -23,4 +23,4 @@ const TaskNameInput = (props) => {
 	);
 };
 
-export default TaskNameInput;
+export default InputFormWithLabel;
