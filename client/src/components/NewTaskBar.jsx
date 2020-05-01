@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { newTaskBarStyle } from 'styling/newTaskBar';
 import TaskNameInput from './TaskNameInput';
 import DateRangeSelect from 'components/DateRangeSelect';
 import { parseISOToDateObj } from 'processing/parseDates';
-import Dropdown from 'components/Dropdown';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 
 const NewTaskBar = (props) => {
