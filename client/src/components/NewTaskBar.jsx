@@ -48,7 +48,6 @@ const NewTaskBar = (props) => {
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>
-				{/* {elHeight} */}
 				<TaskNameInput {...props} />
 				<DateRangeSelect
 					{...props}
