@@ -7,7 +7,6 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 
 const NewTaskBar = (props) => {
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
-	const [ elHeight, setElHeight ] = useState(0);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
 	const smallOpenTransition = 'max-height 1s cubic-bezier(.23,.52,.53,.74)';
