@@ -8,7 +8,6 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 
 const NewTaskBar = (props) => {
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
-	const NewTaskBarElement = useRef();
 	const [ elHeight, setElHeight ] = useState(0);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
@@ -42,7 +41,6 @@ const NewTaskBar = (props) => {
 	return (
 		<div>
 			<div
-				ref={NewTaskBarElement}
 				classname="newTaskBar"
 				style={{
 					...props.style,
