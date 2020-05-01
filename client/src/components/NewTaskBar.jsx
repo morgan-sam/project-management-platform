@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
+import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
 import InputFormWithLabel from './InputFormWithLabel';
 import DateRangeSelect from 'components/DateRangeSelect';
 import { parseISOToDateObj } from 'processing/parseDates';
@@ -15,7 +15,9 @@ const NewTaskBar = (props) => {
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState(null);
 
-	console.log(task, date, deadline, urgency, teams);
+	const addTaskToDatabase = () => {
+		console.log(task, date, deadline, urgency, teams);
+	};
 
 	return (
 		<div>
@@ -47,6 +49,9 @@ const NewTaskBar = (props) => {
 					onClick={(val) => setUrgency(val)}
 				/>
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
+				<button onClick={() => addTaskToDatabase()} style={addTaskBtn}>
+					Add Task To Database
+				</button>
 			</div>
 		</div>
 	);

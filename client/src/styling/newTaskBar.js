@@ -1,6 +1,8 @@
 export const newTaskBarStyle = {
 	position: 'relative',
 	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
 	flexDirection: 'row',
 	borderRadius: '5px',
 	border: '1px solid black',
@@ -35,4 +37,10 @@ export const getTaskBarVisibleStyle = (popUpOpen) => {
 		//executes on task bar open
 		transition: `${popUpOpen ? largeOpenTransition : smallOpenTransition}, opacity 1s`
 	};
+};
+
+export const addTaskBtn = {
+	width: 'auto',
+	height: '2rem',
+	margin: '1rem'
 };
