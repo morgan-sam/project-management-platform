@@ -10,12 +10,10 @@ export const dropdownParentStyle = {
 };
 
 export const dropdownElementStyle = {
-	borderTop: '1px solid black',
 	width: 'inherit',
 	position: 'absolute',
 	top: '50%',
-	transform: `translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem)`,
-	borderRadius: DROPDOWN_BORDER_RADIUS
+	transform: `translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem)`
 };
 
 export const dropdownHeaderStyle = (listOpen) => {
@@ -23,7 +21,6 @@ export const dropdownHeaderStyle = (listOpen) => {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderTop: 'none',
 		width: 'inherit',
 		borderRadius: listOpen ? `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0` : DROPDOWN_BORDER_RADIUS
 	};
