@@ -28,7 +28,7 @@ const NewTaskBar = (props) => {
 	return (
 		<div>
 			<div
-				classname="newTaskBar"
+				className="newTaskBar"
 				style={{
 					...style,
 					...newTaskBarStyle,
