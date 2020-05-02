@@ -1,0 +1,23 @@
+@keyframes float {
+	from {
+		margin-top: 0;
+	}
+
+	to {
+		margin-top: 2rem;
+	}
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg) scale(2) skew(0deg);
+	}
+	25% {
+		transform: rotate(90deg) scale(4) skew(45deg);
+	}
+	50% {
+		transform: rotate(180deg) scale(1.5) skew(0deg);
+	}
+	100% {
+		transform: rotate(270deg) scale(4) skew(-45deg);
+	}
+}
