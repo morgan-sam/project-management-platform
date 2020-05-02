@@ -7,7 +7,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import { fetchPostEntry } from 'data/fetch';
 
 const NewTaskBar = (props) => {
-	const { style, displayNewTaskBar, setDataChanged } = props;
+	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar } = props;
 
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
@@ -20,6 +20,7 @@ const NewTaskBar = (props) => {
 
 	const addTaskToDatabase = () => {
 		const entry = { task, date, deadline, urgency, team, completed: 'false' };
+		setDisplayNewTaskBar(false);
 		fetchPostEntry(entry);
 		setDataChanged(true);
 	};
@@ -31,7 +32,7 @@ const NewTaskBar = (props) => {
 				style={{
 					...style,
 					...newTaskBarStyle,
-					...(displayNewTaskBar ? getTaskBarHiddenStyle(popUpOpen) : getTaskBarVisibleStyle(popUpOpen)),
+					...(displayNewTaskBar ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>
