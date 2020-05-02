@@ -27,6 +27,7 @@ const DropdownWithLabel = (props) => {
 				default={props.default}
 				options={props.options}
 				onClick={(val) => props.onClick(val)}
+				onOpenChange={props.setOverflowHidden}
 			/>
 		</div>
 	);

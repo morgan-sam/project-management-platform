@@ -52,6 +52,7 @@ const NewTaskBar = (props) => {
 					default={urgency}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setUrgency(val)}
+					setOverflowHidden={setOverflowHidden}
 				/>
 				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} />
 				<button onClick={() => addTaskToDatabase()} style={addTaskBtn}>
