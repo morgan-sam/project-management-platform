@@ -29,7 +29,7 @@ const Dropdown = (props) => {
 					<div
 						key={i}
 						className="dropdownOption"
-						style={{ ...dropdownBoxStyle, ...currentOptionStyle }}
+						style={{ ...dropdownBoxStyle(listOpen), ...currentOptionStyle }}
 						onMouseDown={() => {
 							props.onClick(el);
 							setListOpen(false);
@@ -70,9 +70,12 @@ const Dropdown = (props) => {
 	return (
 		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
 			<div className="dropdownElement" style={dropdownElementStyle}>
-				<div className="dropdownOptionContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
+				<div
+					className="dropdownOptionContainer"
+					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
+				>
 					<div
-						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle(listOpen) }}
+						style={{ ...dropdownBoxStyle(listOpen), ...dropdownHeaderStyle(listOpen) }}
 						onMouseDown={(e) => {
 							if (e.buttons === 1) setListOpen(!listOpen);
 						}}
@@ -84,7 +87,7 @@ const Dropdown = (props) => {
 				</div>
 				<div
 					style={{
-						...dropdownBoxStyle,
+						...dropdownBoxStyle(listOpen),
 						...dropdownEndNode,
 						display: listOpen ? 'block' : 'none'
 					}}
