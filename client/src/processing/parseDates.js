@@ -15,3 +15,9 @@ export const parseDateObjToISO = (obj) => {
 	const monthString = obj.month >= 10 ? obj.month.toString() : '0' + obj.month.toString();
 	return `${obj.year}-${monthString}-${dayString}T00:00:00.000Z`;
 };
+
+export const getISODaysFromToday = (days) => {
+	const today = new Date();
+	const newDate = new Date(today.getTime() + days * (1000 * 60 * 60 * 24));
+	return newDate.toISOString();
+};
