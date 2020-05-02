@@ -7,6 +7,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from './NewTaskBar';
+import ColorButton from 'components/ColorButton';
 import { mainPageStyle, mainPageItemStyle, mainTitleStyle } from 'styling/mainPage';
 
 const App = () => {
@@ -69,6 +70,12 @@ const App = () => {
 	return (
 		<div className="mainPage" style={mainPageStyle}>
 			<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
+			<ColorButton
+				style={{ width: '7rem', height: '3rem' }}
+				text={'Test Button'}
+				onClick={() => console.log('hi')}
+				color={'red'}
+			/>
 			<TaskManager
 				style={mainPageItemStyle}
 				selectedTasks={selectedTasks}
