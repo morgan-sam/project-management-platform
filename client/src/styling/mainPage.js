@@ -1,7 +1,10 @@
 export const mainPageStyle = {
 	height: 'fit-content',
 	width: 'fit-content',
-	position: 'relative'
+	position: 'absolute',
+	padding: '2.6rem',
+	left: '0',
+	top: '0'
 };
 
 export const mainPageItemStyle = {
@@ -9,5 +12,6 @@ export const mainPageItemStyle = {
 };
 
 export const mainTitleStyle = {
-	fontSize: '2.2rem'
+	fontSize: '2.2rem',
+	margin: '0 0 1.5rem 0'
 };
