@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
 import InputFormWithLabel from './InputFormWithLabel';
 import DateRangeSelect from 'components/DateRangeSelect';
-import { parseISOToDateObj, getISODaysFromToday } from 'processing/parseDates';
+import { parseISOToDateObj } from 'processing/parseDates';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import { fetchPostEntry } from 'data/fetch';
+import { getDayFromTodayAsISO } from 'data/dates';
 
 const NewTaskBar = (props) => {
 	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar } = props;
@@ -13,8 +14,8 @@ const NewTaskBar = (props) => {
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
 	const [ task, setTask ] = useState(null);
-	const [ date, setDate ] = useState(getISODaysFromToday(0));
-	const [ deadline, setDeadline ] = useState(getISODaysFromToday(14));
+	const [ date, setDate ] = useState(getDayFromTodayAsISO(0));
+	const [ deadline, setDeadline ] = useState(getDayFromTodayAsISO(14));
 	const [ urgency, setUrgency ] = useState(3);
 	const [ team, setTeam ] = useState(null);
 
