@@ -44,7 +44,7 @@ export const dropdownBoxStyle = {
 	boxSizing: 'border-box',
 	height: `${DROPDOWN_HEIGHT_REMS}rem`,
 	border: '1px solid black',
-	backgroundColor: '#ccc',
+	backgroundColor: '#fff',
 	zIndex: '0',
 	textAlign: 'center',
 	userSelect: 'none',
