@@ -27,45 +27,45 @@ export const dropdownHeaderStyle = (listOpen) => {
 	};
 };
 
-export const dropdownClosedStyle = {
-	boxSizing: 'border-box',
-	cursor: 'pointer',
-	maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
-	overflow: 'hidden',
-	width: 'inherit',
-	border: '1px solid black',
-	borderRadius: DROPDOWN_BORDER_RADIUS,
-	transition: '0s border'
+export const dropdownClosedStyle = (listOpen) => {
+	return {
+		cursor: 'pointer',
+		maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
+		overflow: 'hidden',
+		width: 'inherit',
+		border: '1px solid black',
+		borderBottom: listOpen ? 'none' : '1px solid black',
+		transition: '0s borderBottom',
+		borderRadius: DROPDOWN_BORDER_RADIUS
+	};
 };
 
-export const dropdownOpenStyle = {
-	boxSizing: 'border-box',
-	cursor: 'pointer',
-	maxHeight: '20rem',
-	overflowY: 'scroll',
-	width: 'inherit',
-	borderRadius: `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0`,
-	transition: '0s borderTop',
-	boxSizing: 'border-box',
-	border: '1px solid black',
-	borderBottom: '0'
+export const dropdownOpenStyle = () => {
+	return {
+		cursor: 'pointer',
+		maxHeight: '20rem',
+		overflowY: 'scroll',
+		width: 'inherit',
+		border: '1px solid black',
+		borderRadius: `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0`
+	};
 };
 
-export const dropdownBoxStyle = {
-	boxSizing: 'border-box',
-	height: `${DROPDOWN_HEIGHT_REMS}rem`,
-	borderBottom: '1px solid black',
-	backgroundColor: '#fff',
-	zIndex: '0',
-	textAlign: 'center',
-	userSelect: 'none',
-	width: 'inherit',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	borderLeft: 'none',
-	borderRight: 'none',
-	boxSizing: 'border-box'
+export const dropdownBoxStyle = (listOpen) => {
+	return {
+		boxSizing: 'content-box',
+		height: `${DROPDOWN_HEIGHT_REMS}rem`,
+		border: 'none',
+		borderBottom: listOpen ? '1px solid black' : 'none',
+		backgroundColor: '#fff',
+		zIndex: '0',
+		textAlign: 'center',
+		userSelect: 'none',
+		width: 'inherit',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
+	};
 };
 
 export const optionStyle = {
@@ -81,7 +81,7 @@ export const finalOptionStyle = {
 };
 
 export const dropdownEndNode = {
-	borderRadius: `0 0 ${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS}`,
-	boxSizing: 'border-box',
-	border: '1px solid black'
+	border: '1px solid black',
+	boxSizing: 'content-box',
+	borderRadius: `0 0 ${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS}`
 };
