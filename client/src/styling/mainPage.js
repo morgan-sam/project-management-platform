@@ -7,3 +7,7 @@ export const mainPageStyle = {
 export const mainPageItemStyle = {
 	margin: '1rem 0'
 };
+
+export const mainTitleStyle = {
+	fontSize: '2.2rem'
+};

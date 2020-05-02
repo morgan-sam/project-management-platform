@@ -7,7 +7,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from './NewTaskBar';
-import { mainPageStyle, mainPageItemStyle } from 'styling/mainPage';
+import { mainPageStyle, mainPageItemStyle, mainTitleStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -68,7 +68,7 @@ const App = () => {
 
 	return (
 		<div className="mainPage" style={mainPageStyle}>
-			<h1 style={mainPageItemStyle}>PROJECT MANAGEMENT PLATFORM</h1>
+			<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
 			<TaskManager
 				style={mainPageItemStyle}
 				selectedTasks={selectedTasks}
