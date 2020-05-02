@@ -84,6 +84,7 @@ const App = () => {
 				setFilterOptions={setFilterOptions}
 				filterOptions={filterOptions}
 				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
+				rawTaskList={rawTaskList}
 			/>
 			<NewTaskBar
 				style={mainPageItemStyle}

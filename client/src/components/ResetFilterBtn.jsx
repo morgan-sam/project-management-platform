@@ -1,7 +1,9 @@
 import React from 'react';
-import { getDayFromTodayAsISO } from 'data/dates';
+import { getBoundaryDates } from 'data/dates';
+import { parseISOToZeroTime } from 'processing/parseDates';
 
 const ResetFilterBtn = (props) => {
+	const boundaryDates = getBoundaryDates(props.rawTaskList);
 	return (
 		<button
 			className="resetFilterBtn"
@@ -9,8 +11,8 @@ const ResetFilterBtn = (props) => {
 			onClick={() => {
 				props.setFilterOptions({
 					...props.filterOptions,
-					date: '2000-01-01T00:00:00.000Z',
-					deadline: getDayFromTodayAsISO(14),
+					date: parseISOToZeroTime(boundaryDates.date),
+					deadline: parseISOToZeroTime(boundaryDates.deadline),
 					completion: 'all',
 					urgency: { min: 1, max: 5 },
 					teams: 'all'
