@@ -76,18 +76,18 @@ const DateOptionPopUp = (props) => {
 				<div className="canConBtnContainer" style={{ ...canConContainerStyle }}>
 					<button
 						className="cancelButton"
-						style={{ ...canConBtnStyle, ...confirmBtnStyle }}
+						style={{ ...canConBtnStyle, ...cancelBtnStyle }}
 						onClick={() => {
 							setShowDateSelect(false);
 							if (props.setPopUpOpen) props.setPopUpOpen(false);
 							props.setSelectDate(parseDateObjToISO(backupDate));
 						}}
 					>
-						X
+						×
 					</button>
 					<button
 						className="confirmButton"
-						style={{ ...canConBtnStyle, ...cancelBtnStyle }}
+						style={{ ...canConBtnStyle, ...confirmBtnStyle }}
 						onClick={() => {
 							setShowDateSelect(false);
 							if (props.setPopUpOpen) props.setPopUpOpen(false);
