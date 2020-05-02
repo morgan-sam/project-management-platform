@@ -8,7 +8,8 @@ import {
 	dropdownClosedStyle,
 	dropdownOpenStyle,
 	finalOptionStyle,
-	optionStyle
+	optionStyle,
+	dropdownEndNode
 } from '../styling/dropdown';
 
 const Dropdown = (props) => {
@@ -71,7 +72,7 @@ const Dropdown = (props) => {
 			<div className="dropdownElement" style={dropdownElementStyle}>
 				<div className="dropdownOptionContainer" style={listOpen ? dropdownOpenStyle : dropdownClosedStyle}>
 					<div
-						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle }}
+						style={{ ...dropdownBoxStyle, ...dropdownHeaderStyle(listOpen) }}
 						onMouseDown={(e) => {
 							if (e.buttons === 1) setListOpen(!listOpen);
 						}}
@@ -84,6 +85,7 @@ const Dropdown = (props) => {
 				<div
 					style={{
 						...dropdownBoxStyle,
+						...dropdownEndNode,
 						display: listOpen ? 'block' : 'none'
 					}}
 				>
