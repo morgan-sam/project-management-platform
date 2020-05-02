@@ -6,7 +6,8 @@ export const dropdownParentStyle = {
 	display: 'flex',
 	flexDirection: 'column',
 	justifyContent: 'center',
-	position: 'relative'
+	position: 'relative',
+	boxSizing: 'border-box'
 };
 
 export const dropdownElementStyle = {
@@ -27,23 +28,33 @@ export const dropdownHeaderStyle = (listOpen) => {
 };
 
 export const dropdownClosedStyle = {
+	boxSizing: 'border-box',
 	cursor: 'pointer',
 	maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
 	overflow: 'hidden',
-	width: 'inherit'
+	width: 'inherit',
+	border: '1px solid black',
+	borderRadius: DROPDOWN_BORDER_RADIUS,
+	transition: '0s border'
 };
 
 export const dropdownOpenStyle = {
+	boxSizing: 'border-box',
 	cursor: 'pointer',
 	maxHeight: '20rem',
 	overflowY: 'scroll',
-	width: 'inherit'
+	width: 'inherit',
+	borderRadius: `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0`,
+	transition: '0s borderTop',
+	boxSizing: 'border-box',
+	border: '1px solid black',
+	borderBottom: '0'
 };
 
 export const dropdownBoxStyle = {
 	boxSizing: 'border-box',
 	height: `${DROPDOWN_HEIGHT_REMS}rem`,
-	border: '1px solid black',
+	borderBottom: '1px solid black',
 	backgroundColor: '#fff',
 	zIndex: '0',
 	textAlign: 'center',
@@ -51,19 +62,26 @@ export const dropdownBoxStyle = {
 	width: 'inherit',
 	display: 'flex',
 	justifyContent: 'center',
-	alignItems: 'center'
+	alignItems: 'center',
+	borderLeft: 'none',
+	borderRight: 'none',
+	boxSizing: 'border-box'
 };
 
 export const optionStyle = {
 	borderTop: 'none',
-	width: 'inherit'
+	width: 'inherit',
+	boxSizing: 'border-box'
 };
 
 export const finalOptionStyle = {
 	borderBottom: 'none',
-	width: 'inherit'
+	width: 'inherit',
+	boxSizing: 'border-box'
 };
 
 export const dropdownEndNode = {
-	borderRadius: `0 0 ${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS}`
+	borderRadius: `0 0 ${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS}`,
+	boxSizing: 'border-box',
+	border: '1px solid black'
 };
