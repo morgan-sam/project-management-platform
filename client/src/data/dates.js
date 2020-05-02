@@ -1,3 +1,5 @@
+import sortList from 'processing/sortList';
+
 export const getMonthIntegers = () => {
 	return Array.from(Array(12).keys()).map((el) => el + 1);
 };
@@ -38,4 +40,32 @@ export const getDayFromTodayAsISO = (dayDifference = 0) => {
 	day.setDate(day.getDate() + dayDifference);
 	const stringDate = day.toISOString().match(/.+?(?=T)/g)[0];
 	return `${stringDate}T00:00:00.000Z`;
+};
+
+export const getBoundaryDates = (rawTaskList) => {
+	const tasksSortedByDate = sortList(
+		{
+			sortOptions: {
+				type: 'date',
+				reversed: false
+			},
+			selectedTasks: []
+		},
+		rawTaskList
+	);
+	const tasksSortedByDeadline = sortList(
+		{
+			sortOptions: {
+				type: 'deadline',
+				reversed: true
+			},
+			selectedTasks: []
+		},
+		rawTaskList
+	);
+	if (tasksSortedByDate.length && tasksSortedByDeadline.length) {
+		const firstDate = tasksSortedByDate[0].date;
+		const lastDeadline = tasksSortedByDeadline[0].deadline;
+		return { date: firstDate, deadline: lastDeadline };
+	} else return { date: null, deadline: null };
 };
