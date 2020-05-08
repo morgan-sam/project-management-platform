@@ -28,7 +28,7 @@ const ColorButton = (props) => {
 		backgroundColor: 'transparent',
 		border: '1px solid black',
 		color: hover ? 'white' : 'black',
-		transition: '0.2s cubic-bezier(.11,.31,.92,.05)'
+		transition: '0.5s cubic-bezier(.11,.31,.92,.05)'
 	};
 
 	const colorBoxStyle = {
@@ -39,13 +39,13 @@ const ColorButton = (props) => {
 		backgroundColor: props.color,
 		zIndex: '-2',
 		transformOrigin: 'center',
-		transform: hover ? 'translate(0%,0%) scale(2) skew(0deg)' : 'translate(0%,200%) scale(2.6) skew(0deg)',
+		transform: hover ? 'translate(0%,0%) scale(2) skew(0deg)' : 'translate(0%,400%) scale(2) skew(45deg)',
 		borderRadius: '0',
-		transition: '0.2s transform cubic-bezier(.11,.31,.92,.05)',
+		transition: '0.6s transform ease-in-out',
 		background:
 			'radial-gradient(circle, rgba(35,104,184,1) 0%, rgba(104,207,189,0.9906163148853291) 48%, rgba(61,53,209,1) 100%)',
 		opacity: '100%',
-		animation: hover ? 'rotate 5s cubic-bezier(0,.09,1,-0.09) 0.7s infinite alternate-reverse' : 'none'
+		animation: hover ? 'rotate 5s cubic-bezier(0,.09,1,-0.09) 0.6s infinite alternate-reverse' : 'none'
 	};
 
 	const whiteBoxStyle = {
