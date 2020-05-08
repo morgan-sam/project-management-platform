@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
-import InputFormWithLabel from './InputFormWithLabel';
+import ColorButton from 'components/ColorButton';
 import DateRangeSelect from 'components/DateRangeSelect';
-import { parseISOToDateObj } from 'processing/parseDates';
 import DropdownWithLabel from 'components/DropdownWithLabel';
+import InputFormWithLabel from 'components/InputFormWithLabel';
+import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
+import { parseISOToDateObj } from 'processing/parseDates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
 
@@ -57,9 +58,7 @@ const NewTaskBar = (props) => {
 					setOverflowHidden={setOverflowHidden}
 				/>
 				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} />
-				<button onClick={() => addTaskToDatabase()} style={addTaskBtn}>
-					Add Task To Database
-				</button>
+				<ColorButton text={`Add Task To Database`} onClick={() => addTaskToDatabase()} color={'red'} />
 			</div>
 		</div>
 	);

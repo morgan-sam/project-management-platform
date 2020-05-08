@@ -1,13 +1,13 @@
 import React from 'react';
+import ColorButton from 'components/ColorButton';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToZeroTime } from 'processing/parseDates';
 
 const ResetFilterBtn = (props) => {
 	const boundaryDates = getBoundaryDates(props.rawTaskList);
 	return (
-		<button
+		<ColorButton
 			className="resetFilterBtn"
-			style={{ ...props.style, width: 'auto', height: '2rem' }}
 			onClick={() => {
 				props.setFilterOptions({
 					...props.filterOptions,
@@ -18,9 +18,8 @@ const ResetFilterBtn = (props) => {
 					teams: 'all'
 				});
 			}}
-		>
-			Reset Filter
-		</button>
+			text={'Reset Filter'}
+		/>
 	);
 };
 
