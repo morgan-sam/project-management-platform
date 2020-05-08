@@ -27,7 +27,7 @@ const ColorButton = (props) => {
 					style={{ ...getButtonStyle(props.style, hover), ...props.style }}
 					onMouseDown={() => setPressed(true)}
 					onMouseUp={(val) => {
-						props.onClick(val);
+						if (pressed) props.onClick(val);
 						if (getComputedStyle(floatRef.current).top === `${BUTTON_BOUNCE_PX}px`) setPressed(false);
 						else setTimeout(() => setPressed(false), 300);
 					}}
