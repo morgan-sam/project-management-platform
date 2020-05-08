@@ -19,7 +19,7 @@ const ColorButton = (props) => {
 			onMouseOver={() => setHover(true)}
 			onMouseLeave={() => {
 				setHover(false);
-				setTimeout(() => setPressed(false), 300);
+				setTimeout(() => setPressed(false), 200);
 			}}
 		>
 			<div style={getFloatingContainerStyle(props.style, { hover, pressed })} ref={floatRef}>
@@ -29,7 +29,7 @@ const ColorButton = (props) => {
 					onMouseUp={(val) => {
 						if (pressed) props.onClick(val);
 						if (getComputedStyle(floatRef.current).top === `${BUTTON_BOUNCE_PX}px`) setPressed(false);
-						else setTimeout(() => setPressed(false), 300);
+						else setTimeout(() => setPressed(false), 200);
 					}}
 				>
 					{props.text}
