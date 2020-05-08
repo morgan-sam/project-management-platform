@@ -64,8 +64,8 @@ const ColorButton = (props) => {
 	};
 
 	return (
-		<div style={staticContainerStyle}>
-			<div style={floatingContainerStyle} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+		<div style={staticContainerStyle} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+			<div style={floatingContainerStyle}>
 				<button style={{ ...buttonStyle, ...props.style }} onClick={(val) => props.onClick(val)}>
 					{props.text}
 				</button>
