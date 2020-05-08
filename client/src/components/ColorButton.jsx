@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const ColorButton = (props) => {
+	const BUTTON_BOUNCE_PX = 8;
+
 	const [ hover, setHover ] = useState(false);
+	const [ pressed, setPressed ] = useState(false);
+	const floatRef = useRef();
 
 	const btnWidth = props.style && props.style.width ? props.style.width : 'auto';
 	const btnHeight = props.style && props.style.height ? props.style.height : 'auto';
@@ -18,7 +22,7 @@ const ColorButton = (props) => {
 		position: 'relative',
 		width: btnWidth,
 		height: btnHeight,
-		top: hover ? '-0.5rem' : '0',
+		top: pressed ? `${BUTTON_BOUNCE_PX}px` : hover ? `-${BUTTON_BOUNCE_PX}px` : '0',
 		transition: 'top 0.2s ease-in-out',
 		animation: hover ? 'float 1.4s ease-in-out 0.4s alternate infinite' : 'none',
 		overflow: 'hidden',
@@ -65,8 +69,16 @@ const ColorButton = (props) => {
 
 	return (
 		<div style={staticContainerStyle} onMouseOver={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-			<div style={floatingContainerStyle}>
-				<button style={{ ...buttonStyle, ...props.style }} onClick={(val) => props.onClick(val)}>
+			<div style={floatingContainerStyle} ref={floatRef}>
+				<button
+					style={{ ...buttonStyle, ...props.style }}
+					onMouseDown={() => setPressed(true)}
+					onMouseUp={(val) => {
+						props.onClick(val);
+						if (getComputedStyle(floatRef.current).top === `${BUTTON_BOUNCE_PX}px`) setPressed(false);
+						else setTimeout(() => setPressed(false), 300);
+					}}
+				>
 					{props.text}
 				</button>
 				<div style={colorBoxStyle} />
