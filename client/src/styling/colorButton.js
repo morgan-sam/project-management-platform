@@ -66,13 +66,21 @@ export const getColorBoxStyle = (color, hover) => {
 };
 
 const calculateColorStyles = (color) => {
-	console.log(standardizeColor(color));
+	const hex = anyColorToHex(color);
+	console.log(hex);
+	// const shortHand = hexToRgb(hex);
+	// console.log(shortHand);
 };
 
-const standardizeColor = (str) => {
+const anyColorToHex = (str) => {
 	var ctx = document.createElement('canvas').getContext('2d');
 	ctx.fillStyle = str;
 	return ctx.fillStyle;
+};
+
+const hexToRgb = (str) => {
+	// const shortHand = str.match('^#?([a-fd])([a-fd])([a-fd])$');
+	// return shortHand;
 };
 
 export const whiteBoxStyle = {
