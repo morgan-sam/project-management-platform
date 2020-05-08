@@ -17,7 +17,10 @@ const ColorButton = (props) => {
 		<div
 			style={getStaticContainerStyle(props.style)}
 			onMouseOver={() => setHover(true)}
-			onMouseLeave={() => setHover(false)}
+			onMouseLeave={() => {
+				setHover(false);
+				setTimeout(() => setPressed(false), 300);
+			}}
 		>
 			<div style={getFloatingContainerStyle(props.style, { hover, pressed })} ref={floatRef}>
 				<button
