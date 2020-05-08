@@ -42,7 +42,6 @@ const ColorButton = (props) => {
 		position: 'absolute',
 		width: '150%',
 		height: '150%',
-		backgroundColor: props.color,
 		zIndex: '-2',
 		transformOrigin: 'center',
 		transform: hover ? 'translate(0%,0%) scale(2) skew(0deg)' : 'translate(0%,400%) scale(2) skew(45deg)',

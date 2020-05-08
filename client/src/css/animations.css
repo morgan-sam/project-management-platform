@@ -1,10 +1,10 @@
 @keyframes float {
 	from {
-		margin-top: 0;
+		padding: 0;
 	}
 
 	to {
-		margin-top: 0;
+		padding: 0;
 	}
 }
 @keyframes rotate {
