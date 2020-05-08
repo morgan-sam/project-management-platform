@@ -70,12 +70,6 @@ const App = () => {
 	return (
 		<div className="mainPage" style={mainPageStyle}>
 			<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
-			<ColorButton
-				style={{ width: '7rem', height: '3rem' }}
-				text={'Test Button'}
-				onClick={() => console.log('hi')}
-				color={'red'}
-			/>
 			<TaskManager
 				style={mainPageItemStyle}
 				selectedTasks={selectedTasks}

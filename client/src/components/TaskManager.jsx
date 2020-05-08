@@ -1,4 +1,5 @@
 import React from 'react';
+import ColorButton from 'components/ColorButton';
 import { fetchDeleteTasks } from 'data/fetch';
 import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
@@ -32,18 +33,26 @@ const TaskManager = (props) => {
 
 	return (
 		<div className="taskManager" style={{ ...props.style, ...btnContainerStyle }}>
-			<button style={btnStyle} onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}>
-				New Task
-			</button>
-			<button style={btnStyle} onClick={() => deleteSelectedTasks(selectedTasks)}>
-				Delete Selected Tasks
-			</button>
-			<button style={btnStyle} onClick={() => selectAllTasks()}>
-				{checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks
-			</button>
-			<button style={btnStyle} onClick={() => setSelectedTaskCompletion(selectedTasks)}>
-				Mark As {checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete
-			</button>
+			<ColorButton
+				text={'New Task'}
+				onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}
+				color={'red'}
+			/>
+			<ColorButton
+				text={'Delete Selected Tasks'}
+				onClick={() => deleteSelectedTasks(selectedTasks)}
+				color={'red'}
+			/>
+			<ColorButton
+				text={`${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks`}
+				onClick={() => selectAllTasks()}
+				color={'red'}
+			/>
+			<ColorButton
+				text={`Mark As ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`}
+				onClick={() => setSelectedTaskCompletion(selectedTasks)}
+				color={'red'}
+			/>
 		</div>
 	);
 };

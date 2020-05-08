@@ -11,5 +11,6 @@ export const btnContainerStyle = {
 	border: '1px solid black',
 	padding: '0.8rem',
 	borderRadius: '5px',
-	zIndex: '10'
+	zIndex: '10',
+	padding: '1rem'
 };
