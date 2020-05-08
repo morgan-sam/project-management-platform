@@ -48,7 +48,8 @@ export const getButtonStyle = (style, hover) => {
 	};
 };
 
-export const getColorBoxStyle = (hover) => {
+export const getColorBoxStyle = (color, hover) => {
+	calculateColorStyles(color);
 	return {
 		position: 'absolute',
 		width: '150%',
@@ -58,11 +59,20 @@ export const getColorBoxStyle = (hover) => {
 		transform: hover ? 'translate(0%,0%) scale(2) skew(0deg)' : 'translate(0%,400%) scale(2) skew(45deg)',
 		borderRadius: '0',
 		transition: '0s transform ease-in-out',
-		background:
-			'radial-gradient(circle, rgba(35,104,184,1) 0%, rgba(104,207,189,0.9906163148853291) 48%, rgba(61,53,209,1) 100%)',
+		background: 'radial-gradient(circle, rgb(35,104,184,1) 0%, rgb(104,207,189) 48%, rgb(61,53,209) 100%)',
 		opacity: '100%',
 		animation: hover ? 'rotate 5s cubic-bezier(0,.09,1,-0.09) 0s infinite alternate-reverse' : 'none'
 	};
+};
+
+const calculateColorStyles = (color) => {
+	console.log(standardizeColor(color));
+};
+
+const standardizeColor = (str) => {
+	var ctx = document.createElement('canvas').getContext('2d');
+	ctx.fillStyle = str;
+	return ctx.fillStyle;
 };
 
 export const whiteBoxStyle = {

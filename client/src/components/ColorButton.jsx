@@ -34,7 +34,7 @@ const ColorButton = (props) => {
 				>
 					{props.text}
 				</button>
-				<div style={getColorBoxStyle(hover)} />
+				<div style={getColorBoxStyle(props.color, hover)} />
 				<div style={whiteBoxStyle} />
 			</div>
 		</div>
