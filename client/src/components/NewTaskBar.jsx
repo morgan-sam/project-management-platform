@@ -23,9 +23,9 @@ const NewTaskBar = (props) => {
 	const addTaskToDatabase = () => {
 		if (task && team) {
 			const entry = { task, date, deadline, urgency, team, completed: 'false' };
-			setDisplayNewTaskBar(false);
 			fetchPostEntry(entry);
 			setDataChanged(true);
+			setTimeout(() => setDisplayNewTaskBar(false), 500);
 		}
 	};
 
