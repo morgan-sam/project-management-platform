@@ -15,3 +15,9 @@ export const calculateColorStyles = (color) => {
 	colorThree[domColorIndex] = colorOne[domColorIndex];
 	return [ colorOne, colorTwo, colorThree ];
 };
+
+export const getHoverTextColor = (color) => {
+	const rgb = hexToRgb(anyColorToHex(color));
+	const sum = rgb.reduce((a, b) => a + b, 0);
+	return sum > 5 * (255 * 3) / 6 ? 'black' : 'white';
+};

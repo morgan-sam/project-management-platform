@@ -1,5 +1,4 @@
-import { anyColorToHex, hexToRgb } from 'processing/convertColors';
-import { calculateColorStyles } from 'styling/theme';
+import { calculateColorStyles, getHoverTextColor } from 'styling/theme';
 export const BUTTON_BOUNCE_PX = 8;
 
 const getButtonSizes = (style) => {
@@ -51,12 +50,6 @@ export const getButtonStyle = (props, hover) => {
 		color: hover ? hoverTextColor : 'black',
 		transition: '0s cubic-bezier(.11,.31,.92,.05)'
 	};
-};
-
-const getHoverTextColor = (color) => {
-	const rgb = hexToRgb(anyColorToHex(color));
-	const sum = rgb.reduce((a, b) => a + b, 0);
-	return sum > 5 * (255 * 3) / 6 ? 'black' : 'white';
 };
 
 export const getColorBoxStyle = (color, hover) => {

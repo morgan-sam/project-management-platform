@@ -23,7 +23,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
-	const [ colorTheme, setColorTheme ] = useState('plum');
+	const [ colorTheme, setColorTheme ] = useState('pink');
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {

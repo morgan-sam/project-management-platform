@@ -1,4 +1,4 @@
-import { calculateColorStyles } from 'styling/theme';
+import { calculateColorStyles, getHoverTextColor } from 'styling/theme';
 
 const DROPDOWN_HEIGHT_REMS = 2;
 const DROPDOWN_BORDER_RADIUS = '5px';
@@ -75,8 +75,11 @@ export const dropdownBoxStyle = (themeColor, state) => {
 const getHoveredStyle = (color) => {
 	const colors = calculateColorStyles(color);
 	return {
-		background: `linear-gradient(63deg, rgb(${colors[2].join(',')}) 0%, rgb(${colors[0].join(',')}) 60%)`,
-		transition: '1s'
+		background: `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[0].join(',')}), rgb(${colors[1].join(
+			','
+		)}))`,
+		filter: 'brightness(110%) contrast(80%)',
+		color: getHoverTextColor(color)
 	};
 };
 
