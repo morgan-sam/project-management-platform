@@ -66,5 +66,3 @@ export const cancelBtnStyle = {
 	border: '3px solid #ff8080',
 	borderRadius: '5px'
 };
-
-//

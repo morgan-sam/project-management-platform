@@ -82,6 +82,7 @@ const DateOptionPopUp = (props) => {
 							if (props.setPopUpOpen) props.setPopUpOpen(false);
 							props.setSelectDate(parseDateObjToISO(backupDate));
 						}}
+						tabIndex="-1"
 					>
 						×
 					</button>
@@ -93,6 +94,7 @@ const DateOptionPopUp = (props) => {
 							if (props.setPopUpOpen) props.setPopUpOpen(false);
 							setBackupDate(props.date);
 						}}
+						tabIndex="-1"
 					>
 						✓
 					</button>
