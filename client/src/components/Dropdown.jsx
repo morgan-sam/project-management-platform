@@ -15,13 +15,13 @@ import {
 
 const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
+	const [ hoveredItem, setHoveredItem ] = useState();
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
 		if (index === max) return { ...optionStyle, ...finalOptionStyle };
 		else return optionStyle;
 	};
-	const color = useContext(ThemeContext);
-	console.log(color);
+	const themeColor = useContext(ThemeContext);
 
 	const optionDivs = props.options
 		? props.options.map((el, i) => {
@@ -31,11 +31,17 @@ const Dropdown = (props) => {
 					<div
 						key={i}
 						className="dropdownOption"
-						style={{ ...dropdownBoxStyle(listOpen), ...currentOptionStyle }}
+						style={{
+							...dropdownBoxStyle(listOpen),
+							...currentOptionStyle,
+							backgroundColor: i === hoveredItem ? themeColor : '#fff'
+						}}
 						onMouseDown={() => {
 							props.onClick(el);
 							setListOpen(false);
 						}}
+						onMouseOver={() => setHoveredItem(i)}
+						onMouseLeave={() => setHoveredItem(null)}
 					>
 						{display}
 					</div>
@@ -77,11 +83,17 @@ const Dropdown = (props) => {
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
 				>
 					<div
-						style={{ ...dropdownBoxStyle(listOpen), ...dropdownHeaderStyle(listOpen) }}
+						style={{
+							...dropdownBoxStyle(listOpen),
+							...dropdownHeaderStyle(listOpen),
+							backgroundColor: hoveredItem === 'header' ? themeColor : '#fff'
+						}}
 						onMouseDown={(e) => {
 							if (e.buttons === 1) setListOpen(!listOpen);
 						}}
 						onContextMenu={(e) => e.preventDefault()}
+						onMouseOver={() => setHoveredItem('header')}
+						onMouseLeave={() => setHoveredItem(null)}
 					>
 						{capitalizeFirstLetter(props.default)}
 					</div>
