@@ -24,7 +24,10 @@ const ColorButton = (props) => {
 		>
 			<div style={getFloatingContainerStyle(props.style, { hover, pressed })} ref={floatRef}>
 				<button
-					style={{ ...getButtonStyle(props.style, hover), ...props.style }}
+					style={{
+						...getButtonStyle({ style: props.style, color: props.color }, hover),
+						...props.style
+					}}
 					onMouseDown={() => setPressed(true)}
 					onMouseUp={(val) => {
 						if (pressed) props.onClick(val);

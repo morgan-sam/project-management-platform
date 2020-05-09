@@ -22,7 +22,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
-	const [ colorTheme, setColorTheme ] = useState('lightslateblue');
+	const [ colorTheme, setColorTheme ] = useState('aliceblue');
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -70,7 +70,7 @@ const App = () => {
 
 	return (
 		<div className="mainPage" style={mainPageStyle}>
-			<ColorTest />
+			{/* <ColorTest /> */}
 			<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
 			<TaskManager
 				style={mainPageItemStyle}

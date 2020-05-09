@@ -34,8 +34,11 @@ export const getFloatingContainerStyle = (style, state) => {
 	};
 };
 
-export const getButtonStyle = (style, hover) => {
+export const getButtonStyle = (props, hover) => {
+	const { style, color } = props;
 	const { width, height } = getButtonSizes(style);
+	const hoverTextColor = getHoverTextColor(color);
+
 	return {
 		position: 'relative',
 		width,
@@ -46,6 +49,10 @@ export const getButtonStyle = (style, hover) => {
 		color: hover ? 'white' : 'black',
 		transition: '0s cubic-bezier(.11,.31,.92,.05)'
 	};
+};
+
+const getHoverTextColor = () => {
+	//
 };
 
 export const getColorBoxStyle = (color, hover) => {
