@@ -13,6 +13,8 @@ export const dropdownParentStyle = {
 };
 
 export const dropdownElementStyle = {
+	position: 'relative',
+	height: `${DROPDOWN_HEIGHT_REMS}rem`,
 	width: 'inherit',
 	position: 'absolute',
 	top: '50%',
@@ -21,6 +23,8 @@ export const dropdownElementStyle = {
 
 export const dropdownHeaderStyle = (listOpen) => {
 	return {
+		position: 'relative',
+		height: `${DROPDOWN_HEIGHT_REMS}rem`,
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -31,6 +35,7 @@ export const dropdownHeaderStyle = (listOpen) => {
 
 export const dropdownClosedStyle = (listOpen) => {
 	return {
+		position: 'relative',
 		cursor: 'pointer',
 		maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
 		overflow: 'hidden',
@@ -44,6 +49,7 @@ export const dropdownClosedStyle = (listOpen) => {
 
 export const dropdownOpenStyle = () => {
 	return {
+		position: 'relative',
 		cursor: 'pointer',
 		maxHeight: '20rem',
 		overflowY: 'scroll',
@@ -53,9 +59,9 @@ export const dropdownOpenStyle = () => {
 	};
 };
 
-export const dropdownBoxStyle = (themeColor, state) => {
-	const { listOpen, hovered } = state;
+export const dropdownBoxStyle = (listOpen) => {
 	return {
+		position: 'relative',
 		boxSizing: 'content-box',
 		height: `${DROPDOWN_HEIGHT_REMS}rem`,
 		border: 'none',
@@ -67,19 +73,22 @@ export const dropdownBoxStyle = (themeColor, state) => {
 		width: 'inherit',
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center',
-		...(hovered ? getHoveredStyle(themeColor) : null)
+		alignItems: 'center'
 	};
 };
 
-const getHoveredStyle = (color) => {
+export const getHoveredStyle = (color) => {
 	const colors = calculateColorStyles(color);
 	return {
+		position: 'absolute',
+		height: `100%`,
+		width: '100%',
 		background: `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[0].join(',')}), rgb(${colors[1].join(
 			','
 		)}))`,
 		filter: 'brightness(110%) contrast(80%)',
-		color: getHoverTextColor(color)
+		color: getHoverTextColor(color),
+		zIndex: '-1'
 	};
 };
 

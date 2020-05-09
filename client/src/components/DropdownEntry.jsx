@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { capitalizeFirstLetter } from 'processing/utility';
-import { dropdownBoxStyle } from 'styling/dropdown';
+import { dropdownBoxStyle, getHoveredStyle } from 'styling/dropdown';
 
 const DropdownEntry = (props) => {
 	const [ hovered, setHovered ] = useState();
@@ -12,7 +12,7 @@ const DropdownEntry = (props) => {
 			key={entryIndex}
 			className="dropdownOption"
 			style={{
-				...dropdownBoxStyle(themeColor, { listOpen, hovered }),
+				...dropdownBoxStyle(listOpen),
 				...props.style
 			}}
 			onMouseDown={() => {
@@ -22,7 +22,8 @@ const DropdownEntry = (props) => {
 			onMouseOver={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
-			{typeof value === 'string' ? capitalizeFirstLetter(value) : value}
+			<span>{typeof value === 'string' ? capitalizeFirstLetter(value) : value}</span>
+			{hovered && <div style={getHoveredStyle(themeColor)} />}
 		</div>
 	);
 };
