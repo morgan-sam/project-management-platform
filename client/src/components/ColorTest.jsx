@@ -12,8 +12,6 @@ const ColorTest = (props) => {
 		height: '10rem'
 	};
 
-	console.log(color);
-
 	return (
 		<div className="colorTestContainer" style={{ display: 'flex', margin: '0 0 3rem 0' }}>
 			<Dropdown

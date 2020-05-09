@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import ThemeContext from 'context/ThemeContext';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
 	dropdownParentStyle,
@@ -14,12 +15,13 @@ import {
 
 const Dropdown = (props) => {
 	const [ listOpen, setListOpen ] = useState(false);
-
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
 		if (index === max) return { ...optionStyle, ...finalOptionStyle };
 		else return optionStyle;
 	};
+	const color = useContext(ThemeContext);
+	console.log(color);
 
 	const optionDivs = props.options
 		? props.options.map((el, i) => {

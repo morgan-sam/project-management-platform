@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ThemeProvider } from 'context/ThemeContext';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
 import ColorTest from 'components/ColorTest';
@@ -69,46 +70,48 @@ const App = () => {
 	);
 
 	return (
-		<div className="mainPage" style={mainPageStyle}>
-			{/* <ColorTest /> */}
-			<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
-			<TaskManager
-				style={mainPageItemStyle}
-				selectedTasks={selectedTasks}
-				setSelectedTasks={setSelectedTasks}
-				rawTaskList={rawTaskList}
-				setDataChanged={setDataChanged}
-				setEntryCompletion={setEntryCompletion}
-				displayNewTaskBar={displayNewTaskBar}
-				setDisplayNewTaskBar={setDisplayNewTaskBar}
-				colorTheme={colorTheme}
-			/>
-			<FilterBar
-				style={mainPageItemStyle}
-				setFilterOptions={setFilterOptions}
-				filterOptions={filterOptions}
-				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
-				rawTaskList={rawTaskList}
-				colorTheme={colorTheme}
-			/>
-			<NewTaskBar
-				style={mainPageItemStyle}
-				displayNewTaskBar={displayNewTaskBar}
-				setDisplayNewTaskBar={setDisplayNewTaskBar}
-				setDataChanged={setDataChanged}
-				colorTheme={colorTheme}
-			/>
-			<Table
-				style={mainPageItemStyle}
-				taskList={displayTaskList}
-				sortOptions={sortOptions}
-				userSetSort={(val) => userSetSort(val)}
-				selectedTasks={selectedTasks}
-				setSelectedTasks={setSelectedTasks}
-				setDataChanged={setDataChanged}
-				setEntryCompletion={setEntryCompletion}
-			/>
-		</div>
+		<ThemeProvider value={colorTheme}>
+			<div className="mainPage" style={mainPageStyle}>
+				{/* <ColorTest /> */}
+				<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
+				<TaskManager
+					style={mainPageItemStyle}
+					selectedTasks={selectedTasks}
+					setSelectedTasks={setSelectedTasks}
+					rawTaskList={rawTaskList}
+					setDataChanged={setDataChanged}
+					setEntryCompletion={setEntryCompletion}
+					displayNewTaskBar={displayNewTaskBar}
+					setDisplayNewTaskBar={setDisplayNewTaskBar}
+					colorTheme={colorTheme}
+				/>
+				<FilterBar
+					style={mainPageItemStyle}
+					setFilterOptions={setFilterOptions}
+					filterOptions={filterOptions}
+					taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
+					rawTaskList={rawTaskList}
+					colorTheme={colorTheme}
+				/>
+				<NewTaskBar
+					style={mainPageItemStyle}
+					displayNewTaskBar={displayNewTaskBar}
+					setDisplayNewTaskBar={setDisplayNewTaskBar}
+					setDataChanged={setDataChanged}
+					colorTheme={colorTheme}
+				/>
+				<Table
+					style={mainPageItemStyle}
+					taskList={displayTaskList}
+					sortOptions={sortOptions}
+					userSetSort={(val) => userSetSort(val)}
+					selectedTasks={selectedTasks}
+					setSelectedTasks={setSelectedTasks}
+					setDataChanged={setDataChanged}
+					setEntryCompletion={setEntryCompletion}
+				/>
+			</div>
+		</ThemeProvider>
 	);
 };
 
