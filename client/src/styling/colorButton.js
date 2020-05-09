@@ -46,13 +46,15 @@ export const getButtonStyle = (props, hover) => {
 		padding: '0.75rem',
 		backgroundColor: 'transparent',
 		border: '1px solid black',
-		color: hover ? 'white' : 'black',
+		color: hover ? hoverTextColor : 'black',
 		transition: '0s cubic-bezier(.11,.31,.92,.05)'
 	};
 };
 
-const getHoverTextColor = () => {
-	//
+const getHoverTextColor = (color) => {
+	const rgb = hexToRgb(anyColorToHex(color));
+	const sum = rgb.reduce((a, b) => a + b, 0);
+	return sum > 5 * (255 * 3) / 6 ? 'black' : 'white';
 };
 
 export const getColorBoxStyle = (color, hover) => {
