@@ -1,6 +1,5 @@
-import { getThemeGradient } from 'styling/theme';
 import { anyColorToHex, hexToRgb } from 'processing/convertColors';
-
+import { calculateColorStyles } from 'styling/theme';
 export const BUTTON_BOUNCE_PX = 8;
 
 const getButtonSizes = (style) => {
@@ -70,10 +69,17 @@ export const getColorBoxStyle = (color, hover) => {
 		transform: hover ? 'translate(0%,0%) scale(2) skew(0deg)' : 'translate(0%,400%) scale(2) skew(45deg)',
 		borderRadius: '0',
 		transition: '0s transform ease-in-out',
-		background: getThemeGradient(color),
+		background: getButtonGradient(color),
 		opacity: '100%',
 		animation: hover ? 'rotate 5s cubic-bezier(0,.09,1,-0.09) 0s infinite alternate-reverse' : 'none'
 	};
+};
+
+const getButtonGradient = (color) => {
+	const colors = calculateColorStyles(color);
+	return `radial-gradient(circle, rgb(${colors[0].join(',')}) 0%, rgb(${colors[1].join(
+		','
+	)}) 48%, rgb(${colors[2].join(',')}) 100%)`;
 };
 
 export const whiteBoxStyle = {

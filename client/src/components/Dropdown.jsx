@@ -32,9 +32,8 @@ const Dropdown = (props) => {
 						key={i}
 						className="dropdownOption"
 						style={{
-							...dropdownBoxStyle(listOpen),
-							...currentOptionStyle,
-							backgroundColor: i === hoveredItem ? themeColor : '#fff'
+							...dropdownBoxStyle(themeColor, { listOpen, hovered: i === hoveredItem }),
+							...currentOptionStyle
 						}}
 						onMouseDown={() => {
 							props.onClick(el);
@@ -84,9 +83,8 @@ const Dropdown = (props) => {
 				>
 					<div
 						style={{
-							...dropdownBoxStyle(listOpen),
-							...dropdownHeaderStyle(listOpen),
-							backgroundColor: hoveredItem === 'header' ? themeColor : '#fff'
+							...dropdownBoxStyle(themeColor, { listOpen, hovered: hoveredItem === 'header' }),
+							...dropdownHeaderStyle(listOpen)
 						}}
 						onMouseDown={(e) => {
 							if (e.buttons === 1) setListOpen(!listOpen);
@@ -101,7 +99,7 @@ const Dropdown = (props) => {
 				</div>
 				<div
 					style={{
-						...dropdownBoxStyle(listOpen),
+						...dropdownBoxStyle(themeColor, { listOpen, hovered: false }),
 						...dropdownEndNode,
 						display: listOpen ? 'block' : 'none'
 					}}

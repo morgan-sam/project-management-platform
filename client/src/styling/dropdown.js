@@ -1,3 +1,5 @@
+import { calculateColorStyles } from 'styling/theme';
+
 const DROPDOWN_HEIGHT_REMS = 2;
 const DROPDOWN_BORDER_RADIUS = '5px';
 
@@ -51,20 +53,30 @@ export const dropdownOpenStyle = () => {
 	};
 };
 
-export const dropdownBoxStyle = (listOpen) => {
+export const dropdownBoxStyle = (themeColor, state) => {
+	const { listOpen, hovered } = state;
 	return {
 		boxSizing: 'content-box',
 		height: `${DROPDOWN_HEIGHT_REMS}rem`,
 		border: 'none',
 		borderBottom: listOpen ? '1px solid black' : 'none',
-		backgroundColor: '#fff',
+		background: '#fff',
 		zIndex: '0',
 		textAlign: 'center',
 		userSelect: 'none',
 		width: 'inherit',
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		...(hovered ? getHoveredStyle(themeColor) : null)
+	};
+};
+
+const getHoveredStyle = (color) => {
+	const colors = calculateColorStyles(color);
+	return {
+		background: `linear-gradient(63deg, rgb(${colors[2].join(',')}) 0%, rgb(${colors[0].join(',')}) 60%)`,
+		transition: '1s'
 	};
 };
 
