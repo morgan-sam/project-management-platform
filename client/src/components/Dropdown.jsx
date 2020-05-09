@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
+import DropdownHeader from 'components/DropdownHeader';
 import DropdownEntry from 'components/DropdownEntry';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
 	dropdownParentStyle,
 	dropdownElementStyle,
-	dropdownHeaderStyle,
 	dropdownBoxStyle,
 	dropdownClosedStyle,
 	dropdownOpenStyle,
@@ -73,20 +73,7 @@ const Dropdown = (props) => {
 					className="dropdownOptionContainer"
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
 				>
-					<div
-						style={{
-							...dropdownBoxStyle(themeColor, { listOpen, hovered: hoveredItem === 'header' }),
-							...dropdownHeaderStyle(listOpen)
-						}}
-						onMouseDown={(e) => {
-							if (e.buttons === 1) setListOpen(!listOpen);
-						}}
-						onContextMenu={(e) => e.preventDefault()}
-						onMouseOver={() => setHoveredItem('header')}
-						onMouseLeave={() => setHoveredItem(null)}
-					>
-						{capitalizeFirstLetter(props.default)}
-					</div>
+					<DropdownHeader default={props.default} setListOpen={setListOpen} listOpen={listOpen} />
 					{listOpen ? optionDivs : null}
 				</div>
 				<div
