@@ -21,10 +21,12 @@ const NewTaskBar = (props) => {
 	const [ team, setTeam ] = useState(null);
 
 	const addTaskToDatabase = () => {
-		const entry = { task, date, deadline, urgency, team, completed: 'false' };
-		setDisplayNewTaskBar(false);
-		fetchPostEntry(entry);
-		setDataChanged(true);
+		if (task && team) {
+			const entry = { task, date, deadline, urgency, team, completed: 'false' };
+			setDisplayNewTaskBar(false);
+			fetchPostEntry(entry);
+			setDataChanged(true);
+		}
 	};
 
 	return (
