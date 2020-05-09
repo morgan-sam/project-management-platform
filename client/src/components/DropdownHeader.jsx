@@ -22,7 +22,7 @@ const DropdownHeader = (props) => {
 			onMouseLeave={() => setHovered(false)}
 		>
 			<span>{capitalizeFirstLetter(props.default)}</span>
-			{hovered && <div style={getHoveredStyle(themeColor)} />}
+			<div style={{ ...getHoveredStyle(themeColor), opacity: hovered ? '1' : '0' }} />
 		</div>
 	);
 };

@@ -89,7 +89,8 @@ export const getHoveredStyle = (color) => {
 		filter: 'brightness(110%) contrast(80%)',
 		color: getHoverTextColor(color),
 		zIndex: '-1',
-		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite'
+		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
+		transition: 'opacity 0.05s'
 	};
 };
 
