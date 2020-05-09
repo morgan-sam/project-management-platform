@@ -8,7 +8,6 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
-import ColorButton from 'components/ColorButton';
 import { mainPageStyle, mainPageItemStyle, mainTitleStyle } from 'styling/mainPage';
 
 const App = () => {
