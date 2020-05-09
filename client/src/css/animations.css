@@ -32,3 +32,20 @@
 		transform: rotate(360deg) scale(2) skew(0);
 	}
 }
+@keyframes shake {
+	0% {
+		transform: translateX(0%);
+	}
+	25% {
+		transform: translateX(-5%);
+	}
+	50% {
+		transform: translateX(0%);
+	}
+	75% {
+		transform: translateX(5%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}

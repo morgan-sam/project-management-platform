@@ -8,13 +8,14 @@ const getButtonSizes = (style) => {
 	};
 };
 
-export const getStaticContainerStyle = (style) => {
+export const getStaticContainerStyle = (style, shake) => {
 	return {
 		position: 'relative',
 		height: style && style.height ? `${parseInt(style.height) * 1.8}rem` : 'auto',
 		display: 'flex',
 		alignItems: 'center',
-		margin: '0.5rem'
+		margin: '0.5rem',
+		animation: shake ? 'shake 0.2s ease-in-out infinite' : 'none'
 	};
 };
 

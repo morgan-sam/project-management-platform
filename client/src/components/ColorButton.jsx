@@ -10,16 +10,21 @@ import {
 
 const ColorButton = (props) => {
 	const [ hover, setHover ] = useState(false);
+	const [ shake, setShake ] = useState(false);
 	const [ pressed, setPressed ] = useState(false);
 	const floatRef = useRef();
 
 	return (
 		<div
-			style={getStaticContainerStyle(props.style)}
-			onMouseOver={() => setHover(true)}
+			style={getStaticContainerStyle(props.style, shake)}
+			onMouseOver={() => {
+				if (props.enabled) setHover(true);
+			}}
 			onMouseLeave={() => {
-				setHover(false);
-				setTimeout(() => setPressed(false), 200);
+				if (props.enabled) {
+					setHover(false);
+					setTimeout(() => setPressed(false), 200);
+				}
 			}}
 		>
 			<div style={getFloatingContainerStyle(props.style, { hover, pressed })} ref={floatRef}>
@@ -28,11 +33,18 @@ const ColorButton = (props) => {
 						...getButtonStyle({ style: props.style, color: props.color }, hover),
 						...props.style
 					}}
-					onMouseDown={() => setPressed(true)}
+					onMouseDown={() => {
+						if (props.enabled) setPressed(true);
+					}}
 					onMouseUp={(val) => {
-						if (pressed) props.onClick(val);
-						if (getComputedStyle(floatRef.current).top === `${BUTTON_BOUNCE_PX}px`) setPressed(false);
-						else setTimeout(() => setPressed(false), 200);
+						if (props.enabled) {
+							if (pressed) props.onClick(val);
+							if (getComputedStyle(floatRef.current).top === `${BUTTON_BOUNCE_PX}px`) setPressed(false);
+							else setTimeout(() => setPressed(false), 200);
+						} else {
+							setShake(true);
+							setTimeout(() => setShake(false), 300);
+						}
 					}}
 				>
 					{props.text}
@@ -43,5 +55,7 @@ const ColorButton = (props) => {
 		</div>
 	);
 };
+
+ColorButton.defaultProps = { enabled: true };
 
 export default ColorButton;

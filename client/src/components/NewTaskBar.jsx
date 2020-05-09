@@ -60,7 +60,12 @@ const NewTaskBar = (props) => {
 					setOverflowHidden={setOverflowHidden}
 				/>
 				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} />
-				<ColorButton text={`Add Task To Database`} onClick={() => addTaskToDatabase()} color={colorTheme} />
+				<ColorButton
+					text={`Add Task To Database`}
+					onClick={() => addTaskToDatabase()}
+					color={colorTheme}
+					enabled={task && team}
+				/>
 			</div>
 		</div>
 	);
