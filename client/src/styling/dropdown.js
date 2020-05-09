@@ -40,7 +40,9 @@ export const dropdownClosedStyle = (listOpen) => {
 		maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
 		overflow: 'hidden',
 		width: 'inherit',
-		border: '1px solid black',
+		borderTop: '1px solid black',
+		borderLeft: '1px solid black',
+		borderRight: '1px solid black',
 		borderBottom: listOpen ? 'none' : '1px solid black',
 		transition: '0s borderBottom',
 		borderRadius: DROPDOWN_BORDER_RADIUS
