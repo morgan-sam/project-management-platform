@@ -67,20 +67,32 @@ export const getColorBoxStyle = (color, hover) => {
 
 const calculateColorStyles = (color) => {
 	const hex = anyColorToHex(color);
-	console.log(hex);
-	// const shortHand = hexToRgb(hex);
-	// console.log(shortHand);
+	const rgb = hexToRgb(hex);
+	console.log(rgb);
 };
 
 const anyColorToHex = (str) => {
-	var ctx = document.createElement('canvas').getContext('2d');
+	let ctx = document.createElement('canvas').getContext('2d');
 	ctx.fillStyle = str;
 	return ctx.fillStyle;
 };
 
-const hexToRgb = (str) => {
-	// const shortHand = str.match('^#?([a-fd])([a-fd])([a-fd])$');
-	// return shortHand;
+const hexToRgb = (hex) => {
+	hex = standardizeHex(hex);
+	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result
+		? {
+				r: parseInt(result[1], 16),
+				g: parseInt(result[2], 16),
+				b: parseInt(result[3], 16)
+			}
+		: null;
+};
+
+const standardizeHex = (hex) => {
+	let match = hex.match(/^#?([a-f\d])([a-f\d])([a-f\d])$/i);
+	if (match) return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${match[3]}`;
+	else return hex;
 };
 
 export const whiteBoxStyle = {
