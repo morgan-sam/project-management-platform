@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from 'components/Dropdown';
 import { CSS_COLOR_NAMES } from 'data/cssColors';
-import { calculateColorStyles } from 'styling/colorButton';
+import { calculateColorStyles } from 'styling/theme';
 
 const ColorTest = (props) => {
 	const [ color, setColor ] = useState('rgb(3,3,3)');
