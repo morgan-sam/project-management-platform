@@ -87,10 +87,15 @@ export const getHoveredStyle = (color) => {
 		width: '100%',
 		background: `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[1].join(',')}))`,
 		filter: 'brightness(110%) contrast(80%)',
-		color: getHoverTextColor(color),
 		zIndex: '-1',
 		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
 		transition: 'opacity 0.05s'
+	};
+};
+
+export const getDropdownTextStyle = (themeColor, hover) => {
+	return {
+		color: hover ? getHoverTextColor(themeColor) : '#000'
 	};
 };
 
