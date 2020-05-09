@@ -67,8 +67,8 @@ export const getColorBoxStyle = (color, hover) => {
 
 const calculateColorStyles = (color) => {
 	const hex = anyColorToHex(color);
-	const rgb = hexToRgb(hex);
-	console.log(rgb);
+	const { r, g, b } = hexToRgb(hex);
+	console.log(r, g, b);
 };
 
 const anyColorToHex = (str) => {
