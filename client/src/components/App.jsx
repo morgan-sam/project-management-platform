@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
+import ColorTest from 'components/ColorTest';
 import FilterBar from 'components/FilterBar';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
@@ -69,6 +70,7 @@ const App = () => {
 
 	return (
 		<div className="mainPage" style={mainPageStyle}>
+			<ColorTest />
 			<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
 			<TaskManager
 				style={mainPageItemStyle}

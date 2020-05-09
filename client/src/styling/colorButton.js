@@ -49,7 +49,7 @@ export const getButtonStyle = (style, hover) => {
 };
 
 export const getColorBoxStyle = (color, hover) => {
-	calculateColorStyles(color);
+	const colors = calculateColorStyles(color);
 	return {
 		position: 'absolute',
 		width: '150%',
@@ -59,16 +59,29 @@ export const getColorBoxStyle = (color, hover) => {
 		transform: hover ? 'translate(0%,0%) scale(2) skew(0deg)' : 'translate(0%,400%) scale(2) skew(45deg)',
 		borderRadius: '0',
 		transition: '0s transform ease-in-out',
-		background: 'radial-gradient(circle, rgb(35,104,184,1) 0%, rgb(104,207,189) 48%, rgb(61,53,209) 100%)',
+		background: `radial-gradient(circle, rgb(${colors[0].join(',')}) 0%, rgb(${colors[1].join(
+			','
+		)}) 48%, rgb(${colors[2].join(',')}) 100%)`,
 		opacity: '100%',
 		animation: hover ? 'rotate 5s cubic-bezier(0,.09,1,-0.09) 0s infinite alternate-reverse' : 'none'
 	};
 };
 
-const calculateColorStyles = (color) => {
+export const calculateColorStyles = (color) => {
 	const hex = anyColorToHex(color);
-	const { r, g, b } = hexToRgb(hex);
-	console.log(r, g, b);
+	const [ r, g, b ] = hexToRgb(hex);
+	const colorOne = [ r, g, b ];
+	let colorTwo = [ r / 2, g / 2, b / 2 ];
+	let colorThree = [
+		Math.abs(r - Math.abs((255 - r) / 2)),
+		Math.abs(g - Math.abs((255 - g) / 2)),
+		Math.abs(b - Math.abs((255 - b) / 2))
+	];
+	const domColorIndex = colorOne.indexOf(Math.max(...colorOne));
+	colorTwo[domColorIndex] = colorTwo[domColorIndex] * 1.5;
+	colorThree[domColorIndex] = colorOne[domColorIndex];
+	// console.log(colorOne, colorTwo, colorThree);
+	return [ colorOne, colorTwo, colorThree ];
 };
 
 const anyColorToHex = (str) => {
@@ -80,13 +93,7 @@ const anyColorToHex = (str) => {
 const hexToRgb = (hex) => {
 	hex = standardizeHex(hex);
 	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	return result
-		? {
-				r: parseInt(result[1], 16),
-				g: parseInt(result[2], 16),
-				b: parseInt(result[3], 16)
-			}
-		: null;
+	return result ? [ parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16) ] : null;
 };
 
 const standardizeHex = (hex) => {

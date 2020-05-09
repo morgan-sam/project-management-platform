@@ -36,22 +36,22 @@ const TaskManager = (props) => {
 			<ColorButton
 				text={'New Task'}
 				onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}
-				color={'red'}
+				color={'salmon'}
 			/>
 			<ColorButton
 				text={'Delete Selected Tasks'}
 				onClick={() => deleteSelectedTasks(selectedTasks)}
-				color={'red'}
+				color={'gold'}
 			/>
 			<ColorButton
 				text={`${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks`}
 				onClick={() => selectAllTasks()}
-				color={'red'}
+				color={'purple'}
 			/>
 			<ColorButton
 				text={`Mark As ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`}
 				onClick={() => setSelectedTaskCompletion(selectedTasks)}
-				color={'red'}
+				color={'limegreen'}
 			/>
 		</div>
 	);
