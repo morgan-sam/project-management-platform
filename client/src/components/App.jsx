@@ -22,6 +22,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
+	const [ colorTheme, setColorTheme ] = useState('lightslateblue');
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -80,6 +81,7 @@ const App = () => {
 				setEntryCompletion={setEntryCompletion}
 				displayNewTaskBar={displayNewTaskBar}
 				setDisplayNewTaskBar={setDisplayNewTaskBar}
+				colorTheme={colorTheme}
 			/>
 			<FilterBar
 				style={mainPageItemStyle}
@@ -87,12 +89,14 @@ const App = () => {
 				filterOptions={filterOptions}
 				taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 				rawTaskList={rawTaskList}
+				colorTheme={colorTheme}
 			/>
 			<NewTaskBar
 				style={mainPageItemStyle}
 				displayNewTaskBar={displayNewTaskBar}
 				setDisplayNewTaskBar={setDisplayNewTaskBar}
 				setDataChanged={setDataChanged}
+				colorTheme={colorTheme}
 			/>
 			<Table
 				style={mainPageItemStyle}

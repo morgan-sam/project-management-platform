@@ -5,7 +5,7 @@ import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 
 const TaskManager = (props) => {
-	const { setSelectedTasks, setDataChanged, setEntryCompletion, rawTaskList, selectedTasks } = props;
+	const { setSelectedTasks, setDataChanged, setEntryCompletion, rawTaskList, selectedTasks, colorTheme } = props;
 
 	const selectedTaskChangeComplete = () => {
 		setSelectedTasks([]);
@@ -36,22 +36,22 @@ const TaskManager = (props) => {
 			<ColorButton
 				text={'New Task'}
 				onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}
-				color={'salmon'}
+				color={colorTheme}
 			/>
 			<ColorButton
 				text={'Delete Selected Tasks'}
 				onClick={() => deleteSelectedTasks(selectedTasks)}
-				color={'gold'}
+				color={colorTheme}
 			/>
 			<ColorButton
 				text={`${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks`}
 				onClick={() => selectAllTasks()}
-				color={'purple'}
+				color={colorTheme}
 			/>
 			<ColorButton
 				text={`Mark As ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`}
 				onClick={() => setSelectedTaskCompletion(selectedTasks)}
-				color={'limegreen'}
+				color={colorTheme}
 			/>
 		</div>
 	);

@@ -9,7 +9,7 @@ import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
 
 const NewTaskBar = (props) => {
-	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar } = props;
+	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar, colorTheme } = props;
 
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
@@ -58,11 +58,7 @@ const NewTaskBar = (props) => {
 					setOverflowHidden={setOverflowHidden}
 				/>
 				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} />
-				<ColorButton
-					text={`Add Task To Database`}
-					onClick={() => addTaskToDatabase()}
-					color={'rgb(35, 104, 184)'}
-				/>
+				<ColorButton text={`Add Task To Database`} onClick={() => addTaskToDatabase()} color={colorTheme} />
 			</div>
 		</div>
 	);
