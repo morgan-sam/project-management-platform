@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
+import DropdownEntry from 'components/DropdownEntry';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
 	dropdownParentStyle,
@@ -24,26 +25,17 @@ const Dropdown = (props) => {
 	const themeColor = useContext(ThemeContext);
 
 	const optionDivs = props.options
-		? props.options.map((el, i) => {
-				const currentOptionStyle = getCurrentOptionStyle(i, props.options);
-				const display = typeof el === 'string' ? capitalizeFirstLetter(el) : el;
+		? props.options.map((value, i) => {
 				return (
-					<div
-						key={i}
-						className="dropdownOption"
-						style={{
-							...dropdownBoxStyle(themeColor, { listOpen, hovered: i === hoveredItem }),
-							...currentOptionStyle
-						}}
-						onMouseDown={() => {
-							props.onClick(el);
-							setListOpen(false);
-						}}
-						onMouseOver={() => setHoveredItem(i)}
-						onMouseLeave={() => setHoveredItem(null)}
-					>
-						{display}
-					</div>
+					<DropdownEntry
+						hoveredItem={hoveredItem}
+						setHoveredItem={setHoveredItem}
+						listOpen={listOpen}
+						onClick={props.onClick}
+						style={getCurrentOptionStyle(i, props.options)}
+						value={value}
+						setListOpen={setListOpen}
+					/>
 				);
 			})
 		: null;
