@@ -11,7 +11,8 @@ import {
 	dropdownOpenStyle,
 	finalOptionStyle,
 	optionStyle,
-	dropdownEndNode
+	dropdownEndNode,
+	getHoveredStyle
 } from '../styling/dropdown';
 
 const Dropdown = (props) => {

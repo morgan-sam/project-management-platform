@@ -38,7 +38,6 @@ export const dropdownClosedStyle = (listOpen) => {
 		position: 'relative',
 		cursor: 'pointer',
 		maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
-		overflow: 'hidden',
 		width: 'inherit',
 		borderTop: '1px solid black',
 		borderLeft: '1px solid black',
@@ -75,7 +74,8 @@ export const dropdownBoxStyle = (listOpen) => {
 		width: 'inherit',
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		overflow: 'hidden'
 	};
 };
 
@@ -85,12 +85,11 @@ export const getHoveredStyle = (color) => {
 		position: 'absolute',
 		height: `100%`,
 		width: '100%',
-		background: `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[0].join(',')}), rgb(${colors[1].join(
-			','
-		)}))`,
+		background: `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[1].join(',')}))`,
 		filter: 'brightness(110%) contrast(80%)',
 		color: getHoverTextColor(color),
-		zIndex: '-1'
+		zIndex: '-1',
+		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite'
 	};
 };
 

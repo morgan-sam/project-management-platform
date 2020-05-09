@@ -21,3 +21,14 @@
 		transform: rotate(270deg) scale(4) skew(45deg);
 	}
 }
+@keyframes wave {
+	0% {
+		transform: rotate(0deg) scale(2) skew(0);
+	}
+	50% {
+		transform: rotate(180deg) scale(8) skew(45deg);
+	}
+	100% {
+		transform: rotate(360deg) scale(2) skew(0);
+	}
+}
