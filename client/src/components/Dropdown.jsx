@@ -35,6 +35,7 @@ const Dropdown = (props) => {
 						style={getCurrentOptionStyle(i, props.options)}
 						value={value}
 						setListOpen={setListOpen}
+						key={i}
 					/>
 				);
 			})

@@ -5,11 +5,10 @@ import { dropdownBoxStyle, getHoveredStyle } from 'styling/dropdown';
 
 const DropdownEntry = (props) => {
 	const [ hovered, setHovered ] = useState();
-	const { listOpen, entryIndex, onClick, setListOpen, value } = props;
+	const { listOpen, onClick, setListOpen, value } = props;
 	const themeColor = useContext(ThemeContext);
 	return (
 		<div
-			key={entryIndex}
 			className="dropdownOption"
 			style={{
 				...dropdownBoxStyle(listOpen),
