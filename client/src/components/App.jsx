@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'context/ThemeContext';
+import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
 import ColorTest from 'components/ColorTest';
@@ -9,7 +10,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
-import { mainPageStyle, mainPageItemStyle, mainTitleStyle } from 'styling/mainPage';
+import { mainPageStyle, mainPageItemStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -68,7 +69,7 @@ const App = () => {
 		<ThemeProvider value={colorTheme}>
 			<div className="mainPage" style={mainPageStyle}>
 				{/* <ColorTest /> */}
-				<h1 style={{ ...mainPageItemStyle, ...mainTitleStyle }}>PROJECT MANAGEMENT PLATFORM</h1>
+				<MainTitle style={mainPageItemStyle} />
 				<TaskManager
 					style={mainPageItemStyle}
 					selectedTasks={selectedTasks}

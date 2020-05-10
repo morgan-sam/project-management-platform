@@ -10,10 +10,3 @@ export const mainPageStyle = {
 export const mainPageItemStyle = {
 	margin: '1rem 0'
 };
-
-export const mainTitleStyle = {
-	fontSize: '2.2rem',
-	margin: '0 0 1.5rem 0',
-	opacity: '0',
-	animation: 'fade-in 1s ease-in-out 0s 1 forwards'
-};
