@@ -19,7 +19,6 @@ const App = () => {
 
 	const [ filterOptions, setFilterOptions ] = useState(filterOptionsDefault());
 	const [ rawTaskList, setRawTaskList ] = useState([]);
-	const [ displayTaskList, setDisplayTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
@@ -54,20 +53,16 @@ const App = () => {
 		[ dataChanged ]
 	);
 
-	useEffect(
-		() => {
-			(async () => {
-				const options = {
-					sortOptions,
-					selectedTasks
-				};
-				let editedList = sortList(options, rawTaskList);
-				if (filterOptions.active) editedList = filterList(filterOptions, editedList);
-				setDisplayTaskList(editedList);
-			})();
-		},
-		[ rawTaskList, filterOptions, sortOptions ]
-	);
+	const getTaskList = () => {
+		const options = {
+			sortOptions,
+			selectedTasks
+		};
+		let editedList = rawTaskList;
+		editedList = sortList(options, rawTaskList);
+		if (filterOptions.active) editedList = filterList(filterOptions, editedList);
+		return editedList;
+	};
 
 	return (
 		<ThemeProvider value={colorTheme}>
@@ -102,13 +97,13 @@ const App = () => {
 				/>
 				<Table
 					style={mainPageItemStyle}
-					taskList={displayTaskList}
 					sortOptions={sortOptions}
 					userSetSort={(val) => userSetSort(val)}
 					selectedTasks={selectedTasks}
 					setSelectedTasks={setSelectedTasks}
 					setDataChanged={setDataChanged}
 					setEntryCompletion={setEntryCompletion}
+					taskList={getTaskList()}
 				/>
 			</div>
 		</ThemeProvider>

@@ -4,42 +4,38 @@ import TableHeadings from 'components/TableHeadings';
 import NoDataDisplay from 'components/NoDataDisplay';
 
 const Table = (props) => {
-	const [ displayList, setDisplayList ] = useState([]);
+	const { taskList, selectedTasks, setSelectedTasks, sortOptions, setEntryCompletion, userSetSort } = props;
 
-	useEffect(
-		() => {
-			const tasks = props.taskList.map((el, i) => {
-				return (
-					<Task
-						key={i}
-						item={el}
-						selected={props.selectedTasks.includes(el.id)}
-						setSelect={(id) => setSelectState(id)}
-						setEntryCompletion={props.setEntryCompletion}
-					/>
-				);
-			});
-			setDisplayList(tasks);
-		},
-		[ props.taskList, props.selectedTasks ]
-	);
+	const getCompTaskList = () => {
+		return taskList.map((el, i) => {
+			return (
+				<Task
+					key={i}
+					item={el}
+					selected={selectedTasks.includes(el.id)}
+					setSelect={(id) => setSelectState(id)}
+					setEntryCompletion={setEntryCompletion}
+				/>
+			);
+		});
+	};
 
 	const setSelectState = (id) => {
-		if (props.selectedTasks.includes(id)) {
-			const filtered = props.selectedTasks.filter((el) => el !== id);
-			props.setSelectedTasks(filtered);
+		if (selectedTasks.includes(id)) {
+			const filtered = selectedTasks.filter((el) => el !== id);
+			setSelectedTasks(filtered);
 		} else {
-			props.setSelectedTasks([ ...props.selectedTasks, id ]);
+			setSelectedTasks([ ...selectedTasks, id ]);
 		}
 	};
 
 	return (
 		<table className="table" style={props.style}>
 			<thead>
-				<TableHeadings sortOptions={props.sortOptions} userSetSort={(val) => props.userSetSort(val)} />
+				<TableHeadings sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
 			</thead>
-			<tbody>{displayList}</tbody>
-			{displayList.length === 0 && <NoDataDisplay />}
+			<tbody>{getCompTaskList()}</tbody>
+			{taskList.length === 0 && <NoDataDisplay />}
 		</table>
 	);
 };

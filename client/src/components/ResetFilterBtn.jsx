@@ -4,11 +4,11 @@ import { getBoundaryDates } from 'data/dates';
 import { parseISOToZeroTime } from 'processing/parseDates';
 
 const ResetFilterBtn = (props) => {
-	const boundaryDates = getBoundaryDates(props.rawTaskList);
 	return (
 		<ColorButton
 			className="resetFilterBtn"
 			onClick={() => {
+				const boundaryDates = getBoundaryDates(props.rawTaskList);
 				props.setFilterOptions({
 					...props.filterOptions,
 					date: parseISOToZeroTime(boundaryDates.date),
