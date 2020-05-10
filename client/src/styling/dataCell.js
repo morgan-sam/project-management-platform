@@ -8,6 +8,8 @@ import {
 	selectionDefaultCell
 } from 'styling/table';
 
+import { getHoverTextColor } from 'styling/theme';
+
 export const taskCell = {
 	...taskDefaultCell
 };
@@ -36,4 +38,12 @@ export const completedCell = {
 export const selectionCell = {
 	...selectionDefaultCell,
 	userSelect: 'none'
+};
+
+export const getHighlightCellStyle = (color) => {
+	const textColor = getHoverTextColor(color);
+	return {
+		backgroundColor: color,
+		color: textColor
+	};
 };
