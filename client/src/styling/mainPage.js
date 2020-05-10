@@ -13,5 +13,7 @@ export const mainPageItemStyle = {
 
 export const mainTitleStyle = {
 	fontSize: '2.2rem',
-	margin: '0 0 1.5rem 0'
+	margin: '0 0 1.5rem 0',
+	opacity: '0',
+	animation: 'fade-in 1s ease-in-out 0s 1 forwards'
 };
