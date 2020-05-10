@@ -1,7 +1,15 @@
 import React from 'react';
 import DataCell from 'components/DataCell';
 import { parseISOToLittleEndian } from 'processing/parseDates';
-import { taskCell, dateCell, deadlineCell, urgencyCell, teamCell, completedCell, selectedCell } from 'styling/dataCell';
+import {
+	taskCell,
+	dateCell,
+	deadlineCell,
+	urgencyCell,
+	teamCell,
+	completedCell,
+	selectionCell
+} from 'styling/dataCell';
 
 const Task = (props) => {
 	return (
@@ -27,10 +35,10 @@ const Task = (props) => {
 				style={completedCell}
 			/>
 			<DataCell
-				className="selectedCell"
+				className="selectionCell"
 				text={props.selected ? 'X' : ''}
 				onClick={() => props.setSelect(props.item.id)}
-				style={selectedCell}
+				style={selectionCell}
 			/>
 		</tr>
 	);

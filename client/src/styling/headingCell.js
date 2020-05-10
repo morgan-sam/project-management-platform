@@ -5,7 +5,7 @@ import {
 	urgencyDefaultCell,
 	teamDefaultCell,
 	completedDefaultCell,
-	selectedDefaultCell
+	selectionDefaultCell
 } from 'styling/table';
 
 export const taskCell = {
@@ -32,6 +32,6 @@ export const completedCell = {
 	...completedDefaultCell
 };
 
-export const selectedCell = {
-	...selectedDefaultCell
+export const selectionCell = {
+	...selectionDefaultCell
 };

@@ -7,7 +7,7 @@ import {
 	urgencyCell,
 	teamCell,
 	completedCell,
-	selectedCell
+	selectionCell
 } from 'styling/headingCell';
 
 const TableHeadings = (props) => {
@@ -52,10 +52,10 @@ const TableHeadings = (props) => {
 				style={completedCell}
 			/>
 			<HeadingCell
-				className="selectedCell"
+				className="selectionCell"
 				text={`${props.sortOptions.type === 'selected' ? sortArrow : 'X'}`}
 				onClick={() => props.userSetSort('selected')}
-				style={selectedCell}
+				style={selectionCell}
 			/>
 		</tr>
 	);

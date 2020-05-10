@@ -1,5 +1,13 @@
 import React from 'react';
-import { taskCell, dateCell, deadlineCell, urgencyCell, teamCell, completedCell, selectedCell } from 'styling/dataCell';
+import {
+	taskCell,
+	dateCell,
+	deadlineCell,
+	urgencyCell,
+	teamCell,
+	completedCell,
+	selectionCell
+} from 'styling/dataCell';
 
 const NoDataDisplay = () => {
 	const text = 'NO DATA AVAILABLE';
@@ -13,7 +21,7 @@ const NoDataDisplay = () => {
 				<td style={urgencyCell}>{text}</td>
 				<td style={teamCell}>{text}</td>
 				<td style={completedCell}>{text}</td>
-				<td style={selectedCell}>{text}</td>
+				<td style={selectionCell}>{text}</td>
 			</tr>
 		</tbody>
 	);
