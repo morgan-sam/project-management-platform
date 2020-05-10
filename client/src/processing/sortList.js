@@ -18,6 +18,7 @@ const sortListByData = (sortOptions, taskList) => {
 	const index = Object.keys(taskList[0]).indexOf(sortOptions.type);
 	const type = typeof Object.values(taskList[0])[index];
 	const params = { index, reversed: sortOptions.reversed ? -1 : 1 };
+	taskList = sortObjListByTask(taskList, params);
 	if (type === 'number') taskList = sortObjListNumerically(taskList, params);
 	else if (type === 'string') taskList = sortObjListAlphabetically(taskList, params);
 	else if (type === 'boolean') taskList = sortObjListNumerically(taskList, params);
@@ -32,4 +33,9 @@ const sortObjListNumerically = (list, params) => {
 const sortObjListAlphabetically = (list, params) => {
 	const { index, reversed } = params;
 	return list.sort((a, b) => (Object.values(a)[index] < Object.values(b)[index] ? -1 * reversed : 1 * reversed));
+};
+
+const sortObjListByTask = (list, params) => {
+	const { reversed } = params;
+	return list.sort((a, b) => (a.task < b.task ? -1 * reversed : 1 * reversed));
 };
