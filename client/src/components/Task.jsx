@@ -6,7 +6,12 @@ import { taskCell, dateCell, deadlineCell, urgencyCell, teamCell, completedCell,
 const Task = (props) => {
 	return (
 		<tr className="taskEntry">
-			<DataCell className="taskCell" text={props.item.task} style={taskCell} />
+			<DataCell
+				className="taskCell"
+				text={props.item.task}
+				style={taskCell}
+				onClick={() => props.setSelect(props.item.id)}
+			/>
 			<DataCell className="dateCell" text={parseISOToLittleEndian(props.item.date)} style={dateCell} />
 			<DataCell
 				className="deadlineCell"

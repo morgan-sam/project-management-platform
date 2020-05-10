@@ -11,7 +11,8 @@ export const cellStyle = {
 export const taskDefaultCell = {
 	...cellStyle,
 	width: '15rem',
-	textAlign: 'left'
+	textAlign: 'left',
+	cursor: 'pointer'
 };
 
 export const dateDefaultCell = {
