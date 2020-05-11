@@ -3,6 +3,7 @@ import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
+import PopUp from 'components/PopUp';
 import ColorTest from 'components/ColorTest';
 import FilterBar from 'components/FilterBar';
 import sortList from 'processing/sortList';
@@ -106,6 +107,7 @@ const App = () => {
 					setEntryCompletion={setEntryCompletion}
 					taskList={getTaskList()}
 				/>
+				<PopUp />
 			</div>
 		</ThemeProvider>
 	);
