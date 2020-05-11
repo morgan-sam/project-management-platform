@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { capitalizeFirstLetter } from 'processing/utility';
-import { dropdownBoxStyle, dropdownHeaderStyle, getHoveredStyle, getDropdownTextStyle } from 'styling/dropdown';
+import {
+	dropdownBoxStyle,
+	dropdownHeaderStyle,
+	getHoveredStyle,
+	getDropdownTextStyle,
+	optionBackgroundStyle
+} from 'styling/dropdown';
 
 const DropdownHeader = (props) => {
 	const headerRef = useRef(null);
@@ -39,7 +45,13 @@ const DropdownHeader = (props) => {
 			<span style={getDropdownTextStyle(themeColor, hoverEnabled && hovered)}>
 				{capitalizeFirstLetter(props.default)}
 			</span>
-			<div style={{ ...getHoveredStyle(themeColor), opacity: hoverEnabled && hovered ? '1' : '0' }} />
+			<div
+				style={{
+					...optionBackgroundStyle,
+					...getHoveredStyle(themeColor),
+					opacity: hoverEnabled && hovered ? '1' : '0'
+				}}
+			/>
 		</div>
 	);
 };
