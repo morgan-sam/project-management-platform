@@ -5,7 +5,7 @@ import { dropdownBoxStyle, getHoveredStyle, getDropdownTextStyle } from 'styling
 
 const DropdownEntry = (props) => {
 	const [ hovered, setHovered ] = useState();
-	const { listOpen, onClick, setListOpen, value } = props;
+	const { listOpen, onClick, setListOpen, value, hoverEnabled } = props;
 	const themeColor = useContext(ThemeContext);
 	return (
 		<div
@@ -18,8 +18,12 @@ const DropdownEntry = (props) => {
 				onClick(value);
 				setListOpen(false);
 			}}
-			onMouseOver={() => setHovered(true)}
-			onMouseLeave={() => setHovered(false)}
+			onMouseOver={() => {
+				if (hoverEnabled) setHovered(true);
+			}}
+			onMouseLeave={() => {
+				setHovered(false);
+			}}
 		>
 			<span style={getDropdownTextStyle(themeColor, hovered)}>
 				{typeof value === 'string' ? capitalizeFirstLetter(value) : value}

@@ -21,8 +21,8 @@ const Dropdown = (props) => {
 	const dropdownRef = useRef(null);
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ listOpening, setListingOpening ] = useState(false);
-	const [ hoveredItem, setHoveredItem ] = useState(false);
 	const [ endOfList, setEndOfList ] = useState(false);
+	const [ optionDivs, setOptionDivs ] = useState(false);
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
 		if (index === max) return { ...optionStyle, ...finalOptionStyle };
@@ -30,22 +30,28 @@ const Dropdown = (props) => {
 	};
 	const themeColor = useContext(ThemeContext);
 
-	const optionDivs = props.options
-		? props.options.map((value, i) => {
-				return (
-					<DropdownEntry
-						hoveredItem={hoveredItem}
-						setHoveredItem={setHoveredItem}
-						listOpen={listOpen}
-						onClick={props.onClick}
-						style={getCurrentOptionStyle(i, props.options)}
-						value={value}
-						setListOpen={setListOpen}
-						key={i}
-					/>
-				);
-			})
-		: null;
+	useEffect(
+		() => {
+			setOptionDivs(
+				props.options
+					? props.options.map((value, i) => {
+							return (
+								<DropdownEntry
+									hoverEnabled={endOfList || !listOpening}
+									listOpen={listOpen}
+									onClick={props.onClick}
+									style={getCurrentOptionStyle(i, props.options)}
+									value={value}
+									setListOpen={setListOpen}
+									key={i}
+								/>
+							);
+						})
+					: null
+			);
+		},
+		[ listOpen, listOpening, endOfList ]
+	);
 
 	useEffect(() => {
 		checkIfOptionOOB();
@@ -58,13 +64,6 @@ const Dropdown = (props) => {
 		if (e.target.className === 'dropdown') return;
 		setListOpen(false);
 	};
-
-	useEffect(
-		() => {
-			if (props.onOpenChange) props.onOpenChange(listOpen);
-		},
-		[ listOpen ]
-	);
 
 	const checkIfOptionOOB = () => {
 		if (props.options.indexOf(props.default) === -1) {
@@ -89,6 +88,7 @@ const Dropdown = (props) => {
 					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 +
 					1;
 				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
+				console.log(JSON.parse(JSON.stringify(dropdownSize)));
 				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
 				setEndOfList(dropdownSize == dropdownRef.current.scrollTop);
 			};
@@ -98,24 +98,21 @@ const Dropdown = (props) => {
 
 	useEffect(
 		() => {
+			if (props.onOpenChange) props.onOpenChange(listOpen);
 			if (listOpen) setListingOpening(true);
 		},
 		[ listOpen ]
 	);
-	useEffect(
-		() => {
-			if (listOpen) {
-				const checkListFinishedOpening = (e) => {
-					if (e.propertyName === 'max-height') {
-						setListingOpening(false);
-					}
-				};
-				dropdownRef.current.addEventListener('transitionend', (e) => checkListFinishedOpening(e), false);
-				return dropdownRef.current.addEventListener('transitionend', (e) => checkListFinishedOpening(e), false);
+
+	useEffect(() => {
+		const checkListFinishedOpening = (e) => {
+			if (e.propertyName === 'max-height') {
+				setListingOpening(false);
 			}
-		},
-		[ listOpen ]
-	);
+		};
+		dropdownRef.current.addEventListener('transitionend', (e) => checkListFinishedOpening(e), false);
+		return dropdownRef.current.addEventListener('transitionend', (e) => checkListFinishedOpening(e), false);
+	}, []);
 
 	return (
 		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
