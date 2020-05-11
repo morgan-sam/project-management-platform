@@ -20,7 +20,8 @@ import {
 const Dropdown = (props) => {
 	const dropdownRef = useRef(null);
 	const [ listOpen, setListOpen ] = useState(false);
-	const [ hoveredItem, setHoveredItem ] = useState();
+	const [ listOpening, setListingOpening ] = useState(false);
+	const [ hoveredItem, setHoveredItem ] = useState(false);
 	const [ endOfList, setEndOfList ] = useState(false);
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
@@ -93,6 +94,27 @@ const Dropdown = (props) => {
 			};
 		},
 		[ optionDivs ]
+	);
+
+	useEffect(
+		() => {
+			if (listOpen) setListingOpening(true);
+		},
+		[ listOpen ]
+	);
+	useEffect(
+		() => {
+			if (listOpen) {
+				const checkListFinishedOpening = (e) => {
+					if (e.propertyName === 'max-height') {
+						setListingOpening(false);
+					}
+				};
+				dropdownRef.current.addEventListener('transitionend', (e) => checkListFinishedOpening(e), false);
+				return dropdownRef.current.addEventListener('transitionend', (e) => checkListFinishedOpening(e), false);
+			}
+		},
+		[ listOpen ]
 	);
 
 	return (
