@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import DropdownHeader from 'components/DropdownHeader';
 import DropdownEntry from 'components/DropdownEntry';
-import { capitalizeFirstLetter } from 'processing/utility';
+
 import {
 	dropdownParentStyle,
 	dropdownElementStyle,
@@ -11,8 +11,7 @@ import {
 	dropdownOpenStyle,
 	finalOptionStyle,
 	optionStyle,
-	dropdownEndNode,
-	getHoveredStyle
+	dropdownEndNode
 } from '../styling/dropdown';
 
 const Dropdown = (props) => {
