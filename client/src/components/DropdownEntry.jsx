@@ -25,10 +25,10 @@ const DropdownEntry = (props) => {
 				setHovered(false);
 			}}
 		>
-			<span style={getDropdownTextStyle(themeColor, hovered)}>
+			<span style={getDropdownTextStyle(themeColor, hoverEnabled && hovered)}>
 				{typeof value === 'string' ? capitalizeFirstLetter(value) : value}
 			</span>
-			<div style={{ ...getHoveredStyle(themeColor), opacity: hovered ? '1' : '0' }} />
+			<div style={{ ...getHoveredStyle(themeColor), opacity: hoverEnabled && hovered ? '1' : '0' }} />
 		</div>
 	);
 };

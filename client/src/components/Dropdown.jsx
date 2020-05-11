@@ -88,7 +88,6 @@ const Dropdown = (props) => {
 					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 +
 					1;
 				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
-				console.log(JSON.parse(JSON.stringify(dropdownSize)));
 				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
 				setEndOfList(dropdownSize == dropdownRef.current.scrollTop);
 			};
