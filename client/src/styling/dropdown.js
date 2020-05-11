@@ -89,7 +89,7 @@ export const optionBackgroundStyle = {
 export const getHoveredStyle = (color) => {
 	return {
 		background: getOptionGradientStyle(color),
-		filter: 'brightness(110%) contrast(80%)',
+		filter: 'brightness(110%) contrast(80%) saturate(110%)',
 		zIndex: '-1',
 		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
 		transition: 'opacity 0.05s'
@@ -99,7 +99,7 @@ export const getHoveredStyle = (color) => {
 export const getDefaultStyle = (color) => {
 	return {
 		background: getOptionGradientStyle(color),
-		filter: 'brightness(90%) contrast(80%)',
+		filter: 'brightness(110%) contrast(80%) saturate(80%) opacity(80%)',
 		zIndex: '-1',
 		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
 		transition: 'opacity 0.05s'
