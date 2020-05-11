@@ -5,7 +5,15 @@ import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 
 const TaskManager = (props) => {
-	const { setSelectedTasks, setDataChanged, setEntryCompletion, rawTaskList, selectedTasks, colorTheme } = props;
+	const {
+		setSelectedTasks,
+		setDataChanged,
+		setEntryCompletion,
+		rawTaskList,
+		selectedTasks,
+		colorTheme,
+		setPopUp
+	} = props;
 
 	const selectedTaskChangeComplete = () => {
 		setSelectedTasks([]);
@@ -40,7 +48,11 @@ const TaskManager = (props) => {
 			/>
 			<ColorButton
 				text={'Delete Selected Tasks'}
-				onClick={() => deleteSelectedTasks(selectedTasks)}
+				onClick={() =>
+					setPopUp({
+						message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
+						confirm: () => deleteSelectedTasks(selectedTasks)
+					})}
 				color={colorTheme}
 			/>
 			<ColorButton

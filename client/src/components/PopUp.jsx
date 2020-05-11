@@ -2,6 +2,8 @@ import React from 'react';
 import ColorButton from 'components/ColorButton';
 
 const PopUp = (props) => {
+	const { message, confirm, setPopUp } = props;
+
 	const popUpContainerStyle = {
 		display: 'flex',
 		flexDirection: 'column',
@@ -38,23 +40,32 @@ const PopUp = (props) => {
 		margin: '2rem 0 0 0'
 	};
 
+	const closePopUp = () => {
+		setPopUp({ message: null, confirm: null, cancel: null });
+	};
+
 	return (
 		<div style={popUpContainerStyle}>
 			<div style={messageContainerStyle}>
-				<h3>{props.message}</h3>
+				<h3>{message}</h3>
 			</div>
 			<div style={buttonContainerStyle}>
 				<ColorButton
 					color={'green'}
 					style={buttonStyle}
 					text={'Confirm'}
-					onClick={() => console.log('Confirm')}
+					onClick={async () => {
+						setTimeout(() => {
+							closePopUp();
+							confirm();
+						}, 500);
+					}}
 				/>
 				<ColorButton
 					color={'darkred'}
 					style={buttonStyle}
 					text={'Cancel'}
-					onClick={() => console.log('Cancel')}
+					onClick={() => setTimeout(() => closePopUp(), 500)}
 				/>
 			</div>
 		</div>

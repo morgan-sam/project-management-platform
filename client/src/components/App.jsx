@@ -25,6 +25,10 @@ const App = () => {
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
+	const [ popUp, setPopUp ] = useState({
+		message: null,
+		confirm: null
+	});
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -81,6 +85,7 @@ const App = () => {
 					displayNewTaskBar={displayNewTaskBar}
 					setDisplayNewTaskBar={setDisplayNewTaskBar}
 					colorTheme={colorTheme}
+					setPopUp={setPopUp}
 				/>
 				<FilterBar
 					style={mainPageItemStyle}
@@ -107,7 +112,7 @@ const App = () => {
 					setEntryCompletion={setEntryCompletion}
 					taskList={getTaskList()}
 				/>
-				<PopUp message={'Are you sure you want to delete # tasks from the database?'} />
+				{popUp.message && <PopUp {...popUp} setPopUp={setPopUp} />}
 			</div>
 		</ThemeProvider>
 	);
