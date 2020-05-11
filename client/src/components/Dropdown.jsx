@@ -122,7 +122,12 @@ const Dropdown = (props) => {
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
 					ref={dropdownRef}
 				>
-					<DropdownHeader default={props.default} setListOpen={setListOpen} listOpen={listOpen} />
+					<DropdownHeader
+						default={props.default}
+						setListOpen={setListOpen}
+						listOpen={listOpen}
+						hoverEnabled={endOfList || !listOpening}
+					/>
 					{listOpen ? optionDivs : null}
 				</div>
 				<div

@@ -18,7 +18,9 @@ const DropdownHeader = (props) => {
 				if (e.buttons === 1) setListOpen(!listOpen);
 			}}
 			onContextMenu={(e) => e.preventDefault()}
-			onMouseOver={() => setHovered(true)}
+			onMouseOver={() => {
+				if (props.hoverEnabled) setHovered(true);
+			}}
 			onMouseLeave={() => setHovered(false)}
 		>
 			<span style={getDropdownTextStyle(themeColor, hovered)}>{capitalizeFirstLetter(props.default)}</span>
