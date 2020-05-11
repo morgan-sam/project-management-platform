@@ -1,14 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { capitalizeFirstLetter } from 'processing/utility';
 import { dropdownBoxStyle, dropdownHeaderStyle, getHoveredStyle, getDropdownTextStyle } from 'styling/dropdown';
 
 const DropdownHeader = (props) => {
+	const headerRef = useRef(null);
 	const [ hovered, setHovered ] = useState();
-	const { listOpen, setListOpen } = props;
+	const { listOpen, setListOpen, hoverEnabled } = props;
 	const themeColor = useContext(ThemeContext);
+
+	useEffect(
+		() => {
+			//check if mouseover with no movement once hover enabled
+			if (headerRef && headerRef.current && headerRef.current.querySelector(':hover')) {
+				setHovered(true);
+			}
+		},
+		[ hoverEnabled ]
+	);
+
 	return (
 		<div
+			ref={headerRef}
 			className="dropdownHeader"
 			style={{
 				...dropdownBoxStyle(listOpen),
@@ -19,14 +32,14 @@ const DropdownHeader = (props) => {
 			}}
 			onContextMenu={(e) => e.preventDefault()}
 			onMouseOver={() => {
-				if (props.hoverEnabled) setHovered(true);
+				if (hoverEnabled) setHovered(true);
 			}}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<span style={getDropdownTextStyle(themeColor, props.hoverEnabled && hovered)}>
+			<span style={getDropdownTextStyle(themeColor, hoverEnabled && hovered)}>
 				{capitalizeFirstLetter(props.default)}
 			</span>
-			<div style={{ ...getHoveredStyle(themeColor), opacity: props.hoverEnabled && hovered ? '1' : '0' }} />
+			<div style={{ ...getHoveredStyle(themeColor), opacity: hoverEnabled && hovered ? '1' : '0' }} />
 		</div>
 	);
 };
