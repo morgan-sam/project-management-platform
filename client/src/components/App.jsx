@@ -107,7 +107,7 @@ const App = () => {
 					setEntryCompletion={setEntryCompletion}
 					taskList={getTaskList()}
 				/>
-				<PopUp />
+				<PopUp message={'Are you sure you want to delete # tasks from the database?'} />
 			</div>
 		</ThemeProvider>
 	);

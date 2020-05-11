@@ -10,8 +10,8 @@ const PopUp = (props) => {
 		position: 'absolute',
 		top: '50vh',
 		left: '50vw',
-		height: '22rem',
-		width: '30rem',
+		height: '12rem',
+		width: '23rem',
 		border: '1px solid black',
 		transform: 'translate(-50%,-50%)',
 		backgroundColor: 'white',
@@ -31,9 +31,18 @@ const PopUp = (props) => {
 		lineHeight: '0'
 	};
 
+	const messageContainerStyle = {
+		width: '75%',
+		textAlign: 'center',
+		lineHeight: '1.5rem',
+		margin: '2rem 0 0 0'
+	};
+
 	return (
 		<div style={popUpContainerStyle}>
-			<h3>PopUp</h3>
+			<div style={messageContainerStyle}>
+				<h3>{props.message}</h3>
+			</div>
 			<div style={buttonContainerStyle}>
 				<ColorButton
 					color={'green'}
