@@ -1,4 +1,4 @@
-import { calculateColorStyles, getHoverTextColor } from 'styling/theme';
+import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
 
 export const DROPDOWN_HEIGHT_REMS = 2;
 export const DROPDOWN_MAX_HEIGHT_REMS = 20;
@@ -80,13 +80,15 @@ export const dropdownBoxStyle = (listOpen) => {
 	};
 };
 
+export const optionBackgroundStyle = {
+	position: 'absolute',
+	height: `100%`,
+	width: '100%'
+};
+
 export const getHoveredStyle = (color) => {
-	const colors = calculateColorStyles(color);
 	return {
-		position: 'absolute',
-		height: `100%`,
-		width: '100%',
-		background: `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[1].join(',')}))`,
+		background: getOptionGradientStyle(color),
 		filter: 'brightness(110%) contrast(80%)',
 		zIndex: '-1',
 		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
@@ -94,9 +96,24 @@ export const getHoveredStyle = (color) => {
 	};
 };
 
+export const getDefaultStyle = (color) => {
+	return {
+		background: getOptionGradientStyle(color),
+		filter: 'brightness(90%) contrast(80%)',
+		zIndex: '-1',
+		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
+		transition: 'opacity 0.05s'
+	};
+};
+
+export const getOptionGradientStyle = (color) => {
+	const colors = calculateColorStyles(color);
+	return `radial-gradient(rgb(${colors[0].join(',')}),rgb(${colors[1].join(',')}))`;
+};
+
 export const getDropdownTextStyle = (themeColor, hover) => {
 	return {
-		color: hover ? getHoverTextColor(themeColor) : '#000'
+		color: hover ? getGradientTextColor(themeColor) : '#000'
 	};
 };
 

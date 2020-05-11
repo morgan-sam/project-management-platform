@@ -1,12 +1,19 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { capitalizeFirstLetter } from 'processing/utility';
-import { dropdownBoxStyle, getHoveredStyle, getDropdownTextStyle } from 'styling/dropdown';
+import {
+	dropdownBoxStyle,
+	getDropdownTextStyle,
+	optionBackgroundStyle,
+	getHoveredStyle,
+	getDefaultStyle
+} from 'styling/dropdown';
+import { calculateColorStyles } from 'styling/theme';
 
 const DropdownEntry = (props) => {
 	const entryRef = useRef(null);
 	const [ hovered, setHovered ] = useState();
-	const { listOpen, onClick, setListOpen, value, hoverEnabled } = props;
+	const { listOpen, onClick, setListOpen, value, hoverEnabled, isDefault } = props;
 	const themeColor = useContext(ThemeContext);
 
 	useEffect(
@@ -36,10 +43,17 @@ const DropdownEntry = (props) => {
 			}}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<span style={getDropdownTextStyle(themeColor, hoverEnabled && hovered)}>
+			<span style={getDropdownTextStyle(themeColor, (hoverEnabled && hovered) || isDefault)}>
 				{typeof value === 'string' ? capitalizeFirstLetter(value) : value}
 			</span>
-			<div style={{ ...getHoveredStyle(themeColor), opacity: hoverEnabled && hovered ? '1' : '0' }} />
+			<div
+				style={{
+					...optionBackgroundStyle,
+					opacity: (hoverEnabled && hovered) || isDefault ? '1' : '0',
+					...(isDefault ? getDefaultStyle(themeColor) : null),
+					...(hoverEnabled && hovered ? getHoveredStyle(themeColor) : null)
+				}}
+			/>
 		</div>
 	);
 };

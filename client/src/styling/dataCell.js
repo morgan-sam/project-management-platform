@@ -8,7 +8,7 @@ import {
 	selectionDefaultCell
 } from 'styling/table';
 
-import { getHoverTextColor } from 'styling/theme';
+import { getGradientTextColor } from 'styling/theme';
 
 export const taskCell = {
 	...taskDefaultCell
@@ -41,7 +41,7 @@ export const selectionCell = {
 };
 
 export const getHighlightCellStyle = (color) => {
-	const textColor = getHoverTextColor(color);
+	const textColor = getGradientTextColor(color);
 	return {
 		backgroundColor: color,
 		color: textColor

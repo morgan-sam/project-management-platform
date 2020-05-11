@@ -16,7 +16,7 @@ export const calculateColorStyles = (color) => {
 	return [ colorOne, colorTwo, colorThree ];
 };
 
-export const getHoverTextColor = (color) => {
+export const getGradientTextColor = (color) => {
 	const rgb = hexToRgb(anyColorToHex(color));
 	const sum = rgb.reduce((a, b) => a + b, 0);
 	return sum > 5 * (255 * 3) / 6 ? 'black' : 'white';

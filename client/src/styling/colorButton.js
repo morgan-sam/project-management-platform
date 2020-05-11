@@ -1,4 +1,4 @@
-import { calculateColorStyles, getHoverTextColor } from 'styling/theme';
+import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
 export const BUTTON_BOUNCE_PX = 8;
 
 const getButtonSizes = (style) => {
@@ -39,7 +39,7 @@ export const getFloatingContainerStyle = (style, state) => {
 export const getButtonStyle = (props, hover) => {
 	const { style, color } = props;
 	const { width, height } = getButtonSizes(style);
-	const hoverTextColor = getHoverTextColor(color);
+	const hoverTextColor = getGradientTextColor(color);
 
 	return {
 		position: 'relative',
