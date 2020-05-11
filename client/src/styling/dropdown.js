@@ -1,6 +1,6 @@
 import { calculateColorStyles, getHoverTextColor } from 'styling/theme';
 
-const DROPDOWN_HEIGHT_REMS = 2;
+export const DROPDOWN_HEIGHT_REMS = 2;
 const DROPDOWN_BORDER_RADIUS = '5px';
 
 export const dropdownParentStyle = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import DropdownHeader from 'components/DropdownHeader';
 import DropdownEntry from 'components/DropdownEntry';
@@ -11,10 +11,12 @@ import {
 	dropdownOpenStyle,
 	finalOptionStyle,
 	optionStyle,
-	dropdownEndNode
-} from '../styling/dropdown';
+	dropdownEndNode,
+	DROPDOWN_HEIGHT_REMS
+} from 'styling/dropdown';
 
 const Dropdown = (props) => {
+	const dropdownRef = useRef(null);
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ hoveredItem, setHoveredItem ] = useState();
 	const getCurrentOptionStyle = (index, options) => {
@@ -67,12 +69,21 @@ const Dropdown = (props) => {
 		}
 	};
 
+	const setDropdownStartPosition = () => {
+		const currentIndex = props.options.indexOf(props.default);
+		dropdownRef.current.scrollTop =
+			DROPDOWN_HEIGHT_REMS * (currentIndex + 1) * parseFloat(getComputedStyle(dropdownRef.current).fontSize);
+	};
+
+	useEffect(() => setDropdownStartPosition(), [ listOpen ]);
+
 	return (
 		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
 			<div className="dropdownElement" style={dropdownElementStyle}>
 				<div
 					className="dropdownOptionContainer"
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
+					ref={dropdownRef}
 				>
 					<DropdownHeader default={props.default} setListOpen={setListOpen} listOpen={listOpen} />
 					{listOpen ? optionDivs : null}
