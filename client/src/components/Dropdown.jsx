@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import DropdownHeader from 'components/DropdownHeader';
 import DropdownEntry from 'components/DropdownEntry';
+import { convertRemToPixels } from 'processing/convertUnits';
 
 import {
 	dropdownParentStyle,
@@ -12,13 +13,15 @@ import {
 	finalOptionStyle,
 	optionStyle,
 	dropdownEndNode,
-	DROPDOWN_HEIGHT_REMS
+	DROPDOWN_HEIGHT_REMS,
+	DROPDOWN_MAX_HEIGHT_REMS
 } from 'styling/dropdown';
 
 const Dropdown = (props) => {
 	const dropdownRef = useRef(null);
 	const [ listOpen, setListOpen ] = useState(false);
 	const [ hoveredItem, setHoveredItem ] = useState();
+	const [ endOfList, setEndOfList ] = useState(false);
 	const getCurrentOptionStyle = (index, options) => {
 		const max = options.length - 1;
 		if (index === max) return { ...optionStyle, ...finalOptionStyle };
@@ -77,6 +80,21 @@ const Dropdown = (props) => {
 
 	useEffect(() => setDropdownStartPosition(), [ listOpen ]);
 
+	useEffect(
+		() => {
+			dropdownRef.current.onscroll = () => {
+				let dropdownSize =
+					convertRemToPixels(DROPDOWN_HEIGHT_REMS) * props.options.length +
+					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 +
+					1;
+				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
+				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
+				setEndOfList(dropdownSize == dropdownRef.current.scrollTop);
+			};
+		},
+		[ optionDivs ]
+	);
+
 	return (
 		<div className={props.className} style={{ ...dropdownParentStyle, ...props.style }}>
 			<div className="dropdownElement" style={dropdownElementStyle}>
@@ -95,7 +113,7 @@ const Dropdown = (props) => {
 						display: listOpen ? 'block' : 'none'
 					}}
 				>
-					{'▼'}
+					{endOfList ? '✖' : '▼'}
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 import { calculateColorStyles, getHoverTextColor } from 'styling/theme';
 
 export const DROPDOWN_HEIGHT_REMS = 2;
+export const DROPDOWN_MAX_HEIGHT_REMS = 20;
 const DROPDOWN_BORDER_RADIUS = '5px';
 
 export const dropdownParentStyle = {
@@ -52,7 +53,7 @@ export const dropdownOpenStyle = () => {
 	return {
 		position: 'relative',
 		cursor: 'pointer',
-		maxHeight: '20rem',
+		maxHeight: `${DROPDOWN_MAX_HEIGHT_REMS}rem`,
 		overflowY: 'scroll',
 		width: 'inherit',
 		border: '1px solid black',
