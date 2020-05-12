@@ -94,7 +94,7 @@ const Task = (props) => {
 					}
 				}}
 				onMouseLeave={(e) => {
-					if (props.initialID === props.item.id) {
+					if (props.initialID === props.item.id && e.buttons === 1) {
 						props.setSelectState(props.item.id, props.selecting);
 					}
 				}}
