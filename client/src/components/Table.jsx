@@ -42,8 +42,18 @@ const Table = (props) => {
 		else setSelectedTasks(filtered);
 	};
 
-	const newTaskHover = (id) => {
-		setSelectState(id, selecting);
+	const newTaskHover = (dragToID) => {
+		let inScope = false;
+		let tasksToSelect = [];
+		if (initialID === dragToID) return;
+		for (let i = 0; i < taskList.length - 1; i++) {
+			const task = taskList[i];
+			if (task.id === initialID || task.id === dragToID) inScope = !inScope;
+			if (inScope) tasksToSelect.push(task.id);
+		}
+		console.log(tasksToSelect);
+		console.log(selectedTasks);
+		setSelectedTasks([ ...tasksToSelect ]);
 	};
 
 	return (
