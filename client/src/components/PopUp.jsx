@@ -10,7 +10,7 @@ const PopUp = (props) => {
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
-		position: 'absolute',
+		position: 'fixed',
 		top: '50vh',
 		left: '50vw',
 		height: '12rem',
