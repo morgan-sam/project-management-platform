@@ -5,7 +5,7 @@ const DataCell = (props) => {
 		<td
 			className={`dataCell ${props.className}`}
 			onClick={() => (props.onClick ? props.onClick() : null)}
-			style={props.style}
+			style={{ ...props.style, userSelect: 'none' }}
 			onMouseOver={(val) => {
 				if (props.onMouseOver) props.onMouseOver(val);
 			}}
