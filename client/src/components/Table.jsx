@@ -6,6 +6,7 @@ import NoDataDisplay from 'components/NoDataDisplay';
 const Table = (props) => {
 	const { taskList, selectedTasks, setSelectedTasks, sortOptions, setEntryCompletion, userSetSort } = props;
 
+	const [ initialID, setInitialID ] = useState();
 	const [ selecting, setSelecting ] = useState(true);
 
 	const getCompTaskList = () => {
@@ -20,6 +21,9 @@ const Table = (props) => {
 					setEntryCompletion={setEntryCompletion}
 					selecting={selecting}
 					setSelecting={setSelecting}
+					newTaskHover={newTaskHover}
+					initialID={initialID}
+					setInitialID={setInitialID}
 				/>
 			);
 		});
@@ -36,6 +40,10 @@ const Table = (props) => {
 		const filtered = selectedTasks.filter((el) => el !== id);
 		if (state) setSelectedTasks([ ...filtered, id ]);
 		else setSelectedTasks(filtered);
+	};
+
+	const newTaskHover = () => {
+		//
 	};
 
 	return (

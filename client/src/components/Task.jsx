@@ -52,7 +52,10 @@ const Task = (props) => {
 			<DataCell
 				className="selectionCell"
 				text={props.selected ? 'X' : ''}
-				onMouseDown={() => props.setSelecting(!props.selected)}
+				onMouseDown={() => {
+					props.setSelecting(!props.selected);
+					props.setInitialID(props.item.id);
+				}}
 				onClick={() => props.toggleSelectState(props.item.id)}
 				style={{ ...selectionCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				onMouseOver={(e) => {
@@ -61,7 +64,7 @@ const Task = (props) => {
 					}
 				}}
 				onMouseLeave={(e) => {
-					if (e.buttons === 1) {
+					if (props.initialID === props.item.id) {
 						props.setSelectState(props.item.id, props.selecting);
 					}
 				}}
