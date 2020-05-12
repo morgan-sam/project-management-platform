@@ -12,7 +12,9 @@ const DataCell = (props) => {
 			onMouseLeave={(val) => {
 				if (props.onMouseLeave) props.onMouseLeave(val);
 			}}
-			onMouseDown={() => props.onMouseDown()}
+			onMouseDown={(val) => {
+				if (props.onMouseDown) props.onMouseDown(val);
+			}}
 		>
 			{props.text === true ? '✓' : props.text}
 		</td>
