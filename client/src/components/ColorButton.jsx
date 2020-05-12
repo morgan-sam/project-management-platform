@@ -40,7 +40,10 @@ const ColorButton = (props) => {
 						if (props.enabled) {
 							if (pressed) props.onClick(val);
 							if (getComputedStyle(floatRef.current).top === `${BUTTON_BOUNCE_PX}px`) setPressed(false);
-							else setTimeout(() => setPressed(false), 200);
+							else
+								setTimeout(() => {
+									if (floatRef.current) setPressed(false);
+								}, 200);
 						} else {
 							setShake(true);
 							setTimeout(() => setShake(false), 300);
