@@ -21,6 +21,7 @@ import {
 } from 'styling/dateOptionPopUp';
 
 const DateOptionPopUp = (props) => {
+	const [ internalDateChange, setInternalDateChange ] = useState(false);
 	const [ backupDate, setBackupDate ] = useState(props.date);
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
@@ -67,6 +68,7 @@ const DateOptionPopUp = (props) => {
 						...datePopUpStyling
 					}}
 					setDate={(date) => {
+						setInternalDateChange(true);
 						props.setSelectDate(parseDateObjToISO(date));
 					}}
 					date={props.date}
@@ -80,7 +82,8 @@ const DateOptionPopUp = (props) => {
 						onClick={() => {
 							setShowDateSelect(false);
 							if (props.setPopUpOpen) props.setPopUpOpen(false);
-							props.setSelectDate(parseDateObjToISO(backupDate));
+							if (internalDateChange) props.setSelectDate(parseDateObjToISO(backupDate));
+							setInternalDateChange(false);
 						}}
 						tabIndex="-1"
 					>
@@ -93,6 +96,7 @@ const DateOptionPopUp = (props) => {
 							setShowDateSelect(false);
 							if (props.setPopUpOpen) props.setPopUpOpen(false);
 							setBackupDate(props.date);
+							setInternalDateChange(false);
 						}}
 						tabIndex="-1"
 					>
