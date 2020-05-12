@@ -1,10 +1,14 @@
-export const mainPageStyle = {
-	height: 'fit-content',
-	width: 'fit-content',
-	position: 'absolute',
-	padding: '2.6rem',
-	left: '0',
-	top: '0'
+export const getMainPageStyle = (scrollLocked = false) => {
+	return {
+		height: '100vh',
+		width: 'fit-content',
+		position: 'absolute',
+		padding: '2.6rem',
+		boxSizing: 'border-box',
+		left: '0',
+		top: '0',
+		overflow: scrollLocked ? 'hidden' : 'none'
+	};
 };
 
 export const mainPageItemStyle = {

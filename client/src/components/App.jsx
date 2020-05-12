@@ -11,7 +11,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
-import { mainPageStyle, mainPageItemStyle } from 'styling/mainPage';
+import { getMainPageStyle, mainPageItemStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -72,7 +72,7 @@ const App = () => {
 
 	return (
 		<ThemeProvider value={colorTheme}>
-			<div className="mainPage" style={mainPageStyle}>
+			<div className="mainPage" style={getMainPageStyle(popUp.message)}>
 				{/* <ColorTest /> */}
 				<MainTitle style={mainPageItemStyle} />
 				<TaskManager
@@ -113,6 +113,20 @@ const App = () => {
 					taskList={getTaskList()}
 				/>
 				{popUp.message && <PopUp {...popUp} setPopUp={setPopUp} />}
+				{popUp.message && (
+					<div
+						style={{
+							height: '100vh',
+							width: '100vw',
+							background: 'white',
+							opacity: '0.8',
+							position: 'absolute',
+							top: '0',
+							left: '0',
+							zIndex: '9'
+						}}
+					/>
+				)}
 			</div>
 		</ThemeProvider>
 	);
