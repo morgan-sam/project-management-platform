@@ -42,8 +42,8 @@ const Table = (props) => {
 		else setSelectedTasks(filtered);
 	};
 
-	const newTaskHover = () => {
-		//
+	const newTaskHover = (id) => {
+		setSelectState(id, selecting);
 	};
 
 	return (

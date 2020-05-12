@@ -22,32 +22,62 @@ const Task = (props) => {
 				text={props.item.task}
 				style={{ ...taskCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				onClick={() => props.toggleSelectState(props.item.id)}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.newTaskHover(props.item.id);
+					}
+				}}
 			/>
 			<DataCell
 				className="dateCell"
 				text={parseISOToLittleEndian(props.item.date)}
 				style={{ ...dateCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.newTaskHover(props.item.id);
+					}
+				}}
 			/>
 			<DataCell
 				className="deadlineCell"
 				text={parseISOToLittleEndian(props.item.deadline)}
 				style={{ ...deadlineCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.newTaskHover(props.item.id);
+					}
+				}}
 			/>
 			<DataCell
 				className="urgencyCell"
 				text={props.item.urgency}
 				style={{ ...urgencyCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.newTaskHover(props.item.id);
+					}
+				}}
 			/>
 			<DataCell
 				className="teamCell"
 				text={props.item.team}
 				style={{ ...teamCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.newTaskHover(props.item.id);
+					}
+				}}
 			/>
 			<DataCell
 				className="completedCell"
 				text={props.item.completed}
 				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
 				style={{ ...completedCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.newTaskHover(props.item.id);
+					}
+				}}
 			/>
 			<DataCell
 				className="selectionCell"
@@ -60,7 +90,7 @@ const Task = (props) => {
 				style={{ ...selectionCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				onMouseOver={(e) => {
 					if (e.buttons === 1) {
-						props.setSelectState(props.item.id, props.selecting);
+						props.newTaskHover(props.item.id);
 					}
 				}}
 				onMouseLeave={(e) => {
