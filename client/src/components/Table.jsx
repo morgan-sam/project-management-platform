@@ -6,6 +6,8 @@ import NoDataDisplay from 'components/NoDataDisplay';
 const Table = (props) => {
 	const { taskList, selectedTasks, setSelectedTasks, sortOptions, setEntryCompletion, userSetSort } = props;
 
+	const [ selecting, setSelecting ] = useState(true);
+
 	const getCompTaskList = () => {
 		return taskList.map((el, i) => {
 			return (
@@ -13,20 +15,27 @@ const Table = (props) => {
 					key={i}
 					item={el}
 					selected={selectedTasks.includes(el.id)}
-					setSelect={(id) => setSelectState(id)}
+					toggleSelectState={(id) => toggleSelectState(id)}
+					setSelectState={(id, state) => setSelectState(id, state)}
 					setEntryCompletion={setEntryCompletion}
+					selecting={selecting}
+					setSelecting={setSelecting}
 				/>
 			);
 		});
 	};
 
-	const setSelectState = (id) => {
+	const toggleSelectState = (id) => {
 		if (selectedTasks.includes(id)) {
 			const filtered = selectedTasks.filter((el) => el !== id);
 			setSelectedTasks(filtered);
-		} else {
-			setSelectedTasks([ ...selectedTasks, id ]);
-		}
+		} else setSelectedTasks([ ...selectedTasks, id ]);
+	};
+
+	const setSelectState = (id, state) => {
+		const filtered = selectedTasks.filter((el) => el !== id);
+		if (state) setSelectedTasks([ ...filtered, id ]);
+		else setSelectedTasks(filtered);
 	};
 
 	return (

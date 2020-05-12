@@ -21,7 +21,7 @@ const Task = (props) => {
 				className="taskCell"
 				text={props.item.task}
 				style={{ ...taskCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				onClick={() => props.setSelect(props.item.id)}
+				onClick={() => props.toggleSelectState(props.item.id)}
 			/>
 			<DataCell
 				className="dateCell"
@@ -52,8 +52,19 @@ const Task = (props) => {
 			<DataCell
 				className="selectionCell"
 				text={props.selected ? 'X' : ''}
-				onClick={() => props.setSelect(props.item.id)}
+				onMouseDown={() => props.setSelecting(!props.selected)}
+				onClick={() => props.toggleSelectState(props.item.id)}
 				style={{ ...selectionCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onMouseOver={(e) => {
+					if (e.buttons === 1) {
+						props.setSelectState(props.item.id, props.selecting);
+					}
+				}}
+				onMouseLeave={(e) => {
+					if (e.buttons === 1) {
+						props.setSelectState(props.item.id, props.selecting);
+					}
+				}}
 			/>
 		</tr>
 	);
