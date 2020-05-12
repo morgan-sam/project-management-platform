@@ -2,6 +2,7 @@ import React from 'react';
 import ColorButton from 'components/ColorButton';
 
 const PopUp = (props) => {
+	const popUpCloseTimeMs = 400;
 	const { message, confirm, setPopUp } = props;
 
 	const popUpContainerStyle = {
@@ -58,14 +59,14 @@ const PopUp = (props) => {
 						setTimeout(() => {
 							closePopUp();
 							confirm();
-						}, 500);
+						}, popUpCloseTimeMs);
 					}}
 				/>
 				<ColorButton
 					color={'darkred'}
 					style={buttonStyle}
 					text={'Cancel'}
-					onClick={() => setTimeout(() => closePopUp(), 500)}
+					onClick={() => setTimeout(() => closePopUp(), popUpCloseTimeMs)}
 				/>
 			</div>
 		</div>
