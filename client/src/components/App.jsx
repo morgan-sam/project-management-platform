@@ -18,7 +18,7 @@ const App = () => {
 		type: 'date',
 		reversed: false
 	});
-
+	const [ pressedKeys, setPressedKeys ] = useState([]);
 	const [ filterOptions, setFilterOptions ] = useState(filterOptionsDefault());
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
@@ -69,6 +69,20 @@ const App = () => {
 		if (filterOptions.active) editedList = filterList(filterOptions, editedList);
 		return editedList;
 	};
+
+	React.useEffect(() => {
+		const handleKeyDown = (e) =>
+			setPressedKeys((prevPressed) => [ ...prevPressed.filter((k) => k !== e.key), e.key ]);
+		const handleKeyUp = (e) => setPressedKeys(pressedKeys.filter((k) => k !== e.key));
+		document.addEventListener('keydown', handleKeyDown);
+		document.addEventListener('keyup', handleKeyUp);
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+			document.removeEventListener('keyup', handleKeyUp);
+		};
+	}, []);
+
+	console.log(pressedKeys);
 
 	return (
 		<ThemeProvider value={colorTheme}>
