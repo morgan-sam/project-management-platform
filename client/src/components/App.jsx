@@ -11,7 +11,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
-import { getMainPageStyle, mainPageItemStyle } from 'styling/mainPage';
+import { getMainPageStyle, mainPageItemStyle, overlayStyle } from 'styling/mainPage';
 import { fetchDeleteTasks } from 'data/fetch';
 
 const App = () => {
@@ -130,21 +130,7 @@ const App = () => {
 				{confirmPopUp.message && (
 					<ConfirmPopUp {...confirmPopUp} setConfirmPopUp={setConfirmPopUp} pressedKeys={pressedKeys} />
 				)}
-				{confirmPopUp.message && (
-					<div
-						className={'overlay'}
-						style={{
-							height: '100vh',
-							width: '100vw',
-							background: 'white',
-							opacity: '0.8',
-							position: 'absolute',
-							top: '0',
-							left: '0',
-							zIndex: '9'
-						}}
-					/>
-				)}
+				{confirmPopUp.message && <div className={'overlay'} style={overlayStyle} />}
 			</div>
 		</ThemeProvider>
 	);

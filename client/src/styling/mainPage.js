@@ -14,3 +14,14 @@ export const getMainPageStyle = (scrollLocked = false) => {
 export const mainPageItemStyle = {
 	margin: '1rem 0'
 };
+
+export const overlayStyle = {
+	height: '100vh',
+	width: '100vw',
+	background: 'white',
+	opacity: '0.8',
+	position: 'absolute',
+	top: '0',
+	left: '0',
+	zIndex: '9'
+};
