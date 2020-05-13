@@ -66,6 +66,12 @@ const TaskManager = (props) => {
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
+				text={'Batch New Tasks'}
+				onClick={() => null}
+				color={colorTheme}
+			/>
+			<ColorButton
+				className={'taskManagerBtn'}
 				text={'Delete Selected Tasks'}
 				onClick={() => deletePopUp()}
 				enabled={selectedTasks.length}
