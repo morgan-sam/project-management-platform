@@ -134,7 +134,7 @@ const Dropdown = (props) => {
 					style={{
 						...dropdownBoxStyle(themeColor, { listOpen, hovered: false }),
 						...dropdownEndNode,
-						display: listOpen ? 'block' : 'none'
+						display: listOpen ? 'flex' : 'none'
 					}}
 				>
 					{endOfList ? '✖' : '▼'}

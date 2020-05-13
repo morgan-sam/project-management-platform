@@ -4,6 +4,7 @@ import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
 import ConfirmPopUp from 'components/ConfirmPopUp';
+import BatchNewTasks from 'components/BatchNewTasks';
 import ColorTest from 'components/ColorTest';
 import FilterBar from 'components/FilterBar';
 import sortList from 'processing/sortList';
@@ -130,6 +131,7 @@ const App = () => {
 				{confirmPopUp.message && (
 					<ConfirmPopUp {...confirmPopUp} setConfirmPopUp={setConfirmPopUp} pressedKeys={pressedKeys} />
 				)}
+				<BatchNewTasks />
 				{confirmPopUp.message && <div className={'overlay'} style={overlayStyle} />}
 			</div>
 		</ThemeProvider>
