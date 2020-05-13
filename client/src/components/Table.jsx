@@ -4,7 +4,15 @@ import TableHeadings from 'components/TableHeadings';
 import NoDataDisplay from 'components/NoDataDisplay';
 
 const Table = (props) => {
-	const { taskList, selectedTasks, setSelectedTasks, sortOptions, setEntryCompletion, userSetSort } = props;
+	const {
+		taskList,
+		selectedTasks,
+		setSelectedTasks,
+		sortOptions,
+		setEntryCompletion,
+		userSetSort,
+		pressedKeys
+	} = props;
 
 	const [ initialID, setInitialID ] = useState();
 	const [ selecting, setSelecting ] = useState(true);
@@ -51,9 +59,11 @@ const Table = (props) => {
 			if (task.id === initialID || task.id === dragToID) inScope = !inScope;
 			if (inScope) tasksToSelect.push(task.id);
 		}
-		console.log(tasksToSelect);
-		console.log(selectedTasks);
-		setSelectedTasks([ ...tasksToSelect ]);
+		if (pressedKeys.includes('Control')) {
+			setSelectedTasks([ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ]);
+		} else {
+			setSelectedTasks([ ...tasksToSelect ]);
+		}
 	};
 
 	return (

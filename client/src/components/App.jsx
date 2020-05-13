@@ -82,8 +82,6 @@ const App = () => {
 		};
 	}, []);
 
-	console.log(pressedKeys);
-
 	return (
 		<ThemeProvider value={colorTheme}>
 			<div className="mainPage" style={getMainPageStyle(popUp.message)}>
@@ -125,6 +123,7 @@ const App = () => {
 					setDataChanged={setDataChanged}
 					setEntryCompletion={setEntryCompletion}
 					taskList={getTaskList()}
+					pressedKeys={pressedKeys}
 				/>
 				{popUp.message && <PopUp {...popUp} setPopUp={setPopUp} />}
 				{popUp.message && (
