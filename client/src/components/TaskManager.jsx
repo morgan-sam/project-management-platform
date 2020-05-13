@@ -49,12 +49,13 @@ const TaskManager = (props) => {
 			<ColorButton
 				text={'Delete Selected Tasks'}
 				onClick={() => {
-					console.log(selectedTasks);
-					setPopUp({
-						message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
-						confirm: () => deleteSelectedTasks(selectedTasks)
-					});
+					if (selectedTasks.length)
+						setPopUp({
+							message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
+							confirm: () => deleteSelectedTasks(selectedTasks)
+						});
 				}}
+				enabled={selectedTasks.length}
 				color={colorTheme}
 			/>
 			<ColorButton
