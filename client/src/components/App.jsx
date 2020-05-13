@@ -128,6 +128,7 @@ const App = () => {
 				{popUp.message && <PopUp {...popUp} setPopUp={setPopUp} />}
 				{popUp.message && (
 					<div
+						className={'popUpOverlay'}
 						style={{
 							height: '100vh',
 							width: '100vw',

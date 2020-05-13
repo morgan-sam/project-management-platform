@@ -42,11 +42,13 @@ const TaskManager = (props) => {
 	return (
 		<div className="taskManager" style={{ ...props.style, ...btnContainerStyle }}>
 			<ColorButton
+				className={'taskManagerBtn'}
 				text={'New Task'}
 				onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}
 				color={colorTheme}
 			/>
 			<ColorButton
+				className={'taskManagerBtn'}
 				text={'Delete Selected Tasks'}
 				onClick={() => {
 					if (selectedTasks.length)
@@ -59,11 +61,13 @@ const TaskManager = (props) => {
 				color={colorTheme}
 			/>
 			<ColorButton
+				className={'taskManagerBtn'}
 				text={`${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks`}
 				onClick={() => selectAllTasks()}
 				color={colorTheme}
 			/>
 			<ColorButton
+				className={'taskManagerBtn'}
 				text={`Mark As ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`}
 				onClick={() => {
 					if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);

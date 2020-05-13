@@ -27,6 +27,7 @@ const ColorButton = (props) => {
 		>
 			<div style={getFloatingContainerStyle(props.style, { hover, pressed })} ref={floatRef}>
 				<button
+					className={props.className}
 					style={{
 						...getButtonStyle({ style: props.style, color: props.color }, hover),
 						...props.style

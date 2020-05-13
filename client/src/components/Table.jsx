@@ -66,6 +66,28 @@ const Table = (props) => {
 		}
 	};
 
+	useEffect(() => {
+		function handleClickOutside(e) {
+			const clickClasses = getParentsClassList(e.target);
+			const legalClasses = [ 'dataCell', 'taskManagerBtn', 'popUp', 'popUpOverlay' ];
+			const conditions = legalClasses.map((el) => Boolean(clickClasses.match(el)));
+			if (!conditions.includes(true)) setSelectedTasks([]);
+		}
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
+	const getParentsClassList = (elem) => {
+		var parents = [];
+		for (; elem && elem !== document; elem = elem.parentNode) {
+			if (elem.className) parents.push(elem.className);
+		}
+		return parents.join(' ');
+	};
+
 	return (
 		<table className="table" style={props.style}>
 			<thead>

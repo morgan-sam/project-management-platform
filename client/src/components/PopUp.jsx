@@ -46,7 +46,7 @@ const PopUp = (props) => {
 	};
 
 	return (
-		<div style={popUpContainerStyle}>
+		<div className={'popUp'} style={popUpContainerStyle}>
 			<div style={messageContainerStyle}>
 				<h3>{message}</h3>
 			</div>
