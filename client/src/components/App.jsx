@@ -127,7 +127,7 @@ const App = () => {
 					taskList={getTaskList()}
 					pressedKeys={pressedKeys}
 				/>
-				{popUp.message && <PopUp {...popUp} setPopUp={setPopUp} />}
+				{popUp.message && <PopUp {...popUp} setPopUp={setPopUp} pressedKeys={pressedKeys} />}
 				{popUp.message && (
 					<div
 						className={'popUpOverlay'}

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 
 const PopUp = (props) => {
 	const popUpCloseTimeMs = 400;
-	const { message, confirm, setPopUp } = props;
+	const { message, confirm, setPopUp, pressedKeys } = props;
 
 	const popUpContainerStyle = {
 		display: 'flex',
@@ -44,6 +44,17 @@ const PopUp = (props) => {
 	const closePopUp = () => {
 		setPopUp({ message: null, confirm: null, cancel: null });
 	};
+
+	useEffect(
+		() => {
+			if (pressedKeys.includes('Escape')) closePopUp();
+			if (pressedKeys.includes('Enter')) {
+				closePopUp();
+				confirm();
+			}
+		},
+		[ pressedKeys ]
+	);
 
 	return (
 		<div className={'popUp'} style={popUpContainerStyle}>
