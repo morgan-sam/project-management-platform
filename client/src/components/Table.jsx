@@ -73,11 +73,8 @@ const Table = (props) => {
 			const conditions = legalClasses.map((el) => Boolean(clickClasses.match(el)));
 			if (!conditions.includes(true)) setSelectedTasks([]);
 		}
-
 		document.addEventListener('mousedown', handleClickOutside);
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
+		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, []);
 
 	const getParentsClassList = (elem) => {
