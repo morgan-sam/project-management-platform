@@ -70,7 +70,7 @@ const Table = (props) => {
 	useEffect(() => {
 		function handleClickOutside(e) {
 			const clickClasses = getParentsClassList(e.target);
-			const legalClasses = [ 'dataCell', 'taskManagerBtn', 'popUp', 'popUpOverlay' ];
+			const legalClasses = [ 'dataCell', 'taskManagerBtn', 'popUp', 'overlay' ];
 			const conditions = legalClasses.map((el) => Boolean(clickClasses.match(el)));
 			if (!conditions.includes(true)) setSelectedTasks([]);
 		}

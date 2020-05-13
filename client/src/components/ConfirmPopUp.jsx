@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 
-const PopUp = (props) => {
+const ConfirmPopUp = (props) => {
 	const popUpCloseTimeMs = 400;
-	const { message, confirm, setPopUp, pressedKeys } = props;
+	const { message, confirm, setConfirmPopUp, pressedKeys } = props;
 
 	const popUpContainerStyle = {
 		display: 'flex',
@@ -42,7 +42,7 @@ const PopUp = (props) => {
 	};
 
 	const closePopUp = () => {
-		setPopUp({ message: null, confirm: null, cancel: null });
+		setConfirmPopUp({ message: null, confirm: null, cancel: null });
 	};
 
 	useEffect(
@@ -84,4 +84,4 @@ const PopUp = (props) => {
 	);
 };
 
-export default PopUp;
+export default ConfirmPopUp;

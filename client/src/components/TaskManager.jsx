@@ -12,7 +12,7 @@ const TaskManager = (props) => {
 		rawTaskList,
 		selectedTasks,
 		colorTheme,
-		setPopUp,
+		setConfirmPopUp,
 		pressedKeys
 	} = props;
 
@@ -42,7 +42,7 @@ const TaskManager = (props) => {
 	const deletePopUp = () => {
 		{
 			if (selectedTasks.length)
-				setPopUp({
+				setConfirmPopUp({
 					message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
 					confirm: () => deleteSelectedTasks(selectedTasks)
 				});
