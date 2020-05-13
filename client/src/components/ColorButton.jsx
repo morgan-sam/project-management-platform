@@ -14,10 +14,6 @@ const ColorButton = (props) => {
 	const [ pressed, setPressed ] = useState(false);
 	const floatRef = useRef();
 
-	console.log(`hover: ${hover}`);
-	console.log(`shake: ${shake}`);
-	console.log(`pressed: ${pressed}`);
-
 	return (
 		<div
 			style={getStaticContainerStyle(props.style, shake)}
