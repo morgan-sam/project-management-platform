@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Task from 'components/Task';
 import TableHeadings from 'components/TableHeadings';
 import NoDataDisplay from 'components/NoDataDisplay';
+import { getParentsClassList } from 'processing/processClassnames';
 
 const Table = (props) => {
 	const {
@@ -76,14 +77,6 @@ const Table = (props) => {
 		document.addEventListener('mousedown', handleClickOutside);
 		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, []);
-
-	const getParentsClassList = (elem) => {
-		var parents = [];
-		for (; elem && elem !== document; elem = elem.parentNode) {
-			if (elem.className) parents.push(elem.className);
-		}
-		return parents.join(' ');
-	};
 
 	return (
 		<table className="table" style={props.style}>
