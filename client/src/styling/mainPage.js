@@ -7,7 +7,7 @@ export const getMainPageStyle = (scrollLocked = false) => {
 		boxSizing: 'border-box',
 		left: '0',
 		top: '0',
-		overflow: scrollLocked ? 'hidden' : 'none'
+		overflow: scrollLocked ? 'hidden' : 'visible'
 	};
 };
 
