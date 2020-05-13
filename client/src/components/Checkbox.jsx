@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Checkbox(props) {
+const Checkbox = (props) => {
 	const { style } = props;
 
 	const checkboxContainerStyle = {
@@ -39,6 +39,6 @@ function Checkbox(props) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Checkbox;
