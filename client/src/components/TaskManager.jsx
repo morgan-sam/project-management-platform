@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 import { fetchDeleteTasks } from 'data/fetch';
 import { btnStyle, btnContainerStyle } from 'styling/taskManager';
@@ -12,19 +12,14 @@ const TaskManager = (props) => {
 		rawTaskList,
 		selectedTasks,
 		colorTheme,
-		setPopUp
+		setPopUp,
+		pressedKeys
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
 		setSelectedTasks([]);
 		setDataChanged(true);
 	};
-
-	const deleteSelectedTasks = (selectedTaskIds) => {
-		fetchDeleteTasks(selectedTaskIds);
-		selectedTaskChangeComplete();
-	};
-
 	const setSelectedTaskCompletion = (taskIds) => {
 		const newCompletion = !checkIfAllSelectedAreComplete(rawTaskList, selectedTasks);
 		for (let i = 0; i < taskIds.length; i++) {
@@ -39,6 +34,28 @@ const TaskManager = (props) => {
 		else setSelectedTasks([]);
 	};
 
+	const deleteSelectedTasks = (selectedTaskIds) => {
+		fetchDeleteTasks(selectedTaskIds);
+		selectedTaskChangeComplete();
+	};
+
+	const deletePopUp = () => {
+		{
+			if (selectedTasks.length)
+				setPopUp({
+					message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
+					confirm: () => deleteSelectedTasks(selectedTasks)
+				});
+		}
+	};
+
+	useEffect(
+		() => {
+			if (pressedKeys.includes('Delete')) deletePopUp();
+		},
+		[ pressedKeys ]
+	);
+
 	return (
 		<div className="taskManager" style={{ ...props.style, ...btnContainerStyle }}>
 			<ColorButton
@@ -50,13 +67,7 @@ const TaskManager = (props) => {
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={'Delete Selected Tasks'}
-				onClick={() => {
-					if (selectedTasks.length)
-						setPopUp({
-							message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
-							confirm: () => deleteSelectedTasks(selectedTasks)
-						});
-				}}
+				onClick={() => deletePopUp()}
 				enabled={selectedTasks.length}
 				color={colorTheme}
 			/>

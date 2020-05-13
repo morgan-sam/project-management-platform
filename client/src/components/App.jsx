@@ -12,6 +12,7 @@ import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
 import { getMainPageStyle, mainPageItemStyle } from 'styling/mainPage';
+import { fetchDeleteTasks } from 'data/fetch';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -98,6 +99,7 @@ const App = () => {
 					setDisplayNewTaskBar={setDisplayNewTaskBar}
 					colorTheme={colorTheme}
 					setPopUp={setPopUp}
+					pressedKeys={pressedKeys}
 				/>
 				<FilterBar
 					style={mainPageItemStyle}
