@@ -65,8 +65,11 @@ const TaskManager = (props) => {
 			/>
 			<ColorButton
 				text={`Mark As ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`}
-				onClick={() => setSelectedTaskCompletion(selectedTasks)}
+				onClick={() => {
+					if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);
+				}}
 				color={colorTheme}
+				enabled={selectedTasks.length}
 			/>
 		</div>
 	);
