@@ -36,6 +36,15 @@ const BatchNewTasks = (props) => {
 		margin: '1rem'
 	};
 
+	const optionButtonStyle = {
+		height: 'auto',
+		width: 'auto',
+		backgroundColor: 'white',
+		border: '1px solid black',
+		margin: '0.5rem',
+		padding: '0.25rem'
+	};
+
 	return (
 		<div style={containerStyle}>
 			<div style={subContainerStyle}>
@@ -43,11 +52,14 @@ const BatchNewTasks = (props) => {
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel {...props} label={'Task Template'} onChange={(val) => setTaskTemplate(val)} />
-				<div>{'[Task Option Buttons]'}</div>
+				<button style={optionButtonStyle}>Numbers</button>
+				<button style={optionButtonStyle}>Letters</button>
+				<button style={optionButtonStyle}>Reverse</button>
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel {...props} label={'Date Template'} onChange={(val) => setDateTemplate(val)} />
-				<div>{'[Date Option Buttons]'}</div>
+				<button style={optionButtonStyle}>Today</button>
+				<button style={optionButtonStyle}>Sequential Days</button>
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -55,7 +67,8 @@ const BatchNewTasks = (props) => {
 					label={'Deadline Template'}
 					onChange={(val) => setDeadlineTemplate(val)}
 				/>
-				<div>{'[Deadline Option Buttons]'}</div>
+				<button style={optionButtonStyle}>Today</button>
+				<button style={optionButtonStyle}>Sequential Days</button>
 			</div>
 			<div style={subContainerStyle}>
 				<DropdownWithLabel
