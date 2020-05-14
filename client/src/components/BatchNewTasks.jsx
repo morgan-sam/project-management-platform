@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
+import ColorButton from 'components/ColorButton';
 
 const BatchNewTasks = (props) => {
 	const [ numberOfTasks, setNumberOfTasks ] = useState();
@@ -67,6 +68,7 @@ const BatchNewTasks = (props) => {
 				/>
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
 			</div>
+			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => null} />
 		</div>
 	);
 };

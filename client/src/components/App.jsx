@@ -131,7 +131,7 @@ const App = () => {
 				{confirmPopUp.message && (
 					<ConfirmPopUp {...confirmPopUp} setConfirmPopUp={setConfirmPopUp} pressedKeys={pressedKeys} />
 				)}
-				<BatchNewTasks />
+				<BatchNewTasks colorTheme={colorTheme} />
 				{confirmPopUp.message && <div className={'overlay'} style={overlayStyle} />}
 			</div>
 		</ThemeProvider>
