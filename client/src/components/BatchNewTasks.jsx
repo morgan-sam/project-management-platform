@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
-import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj } from 'processing/parseDates';
 
 const BatchNewTasks = (props) => {
 	const [ numberOfTasks, setNumberOfTasks ] = useState();
