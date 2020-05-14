@@ -14,10 +14,10 @@ const BatchNewTasks = (props) => {
 
 	const interpretTaskTemplate = () => {
 		if (taskTemplate) {
-			const numFlag = taskTemplate.match(/\$\{n[^}]*\}/g);
-			const letterFlag = taskTemplate.match(/\$\{l[^}]*\}/g);
-			console.log(numFlag);
-			console.log(letterFlag);
+			const numFlags = taskTemplate.match(/\$\{n[^}]*\}/g);
+			const letterFlags = taskTemplate.match(/\$\{l[^}]*\}/g);
+			console.log(numFlags);
+			console.log(letterFlags);
 		}
 	};
 
