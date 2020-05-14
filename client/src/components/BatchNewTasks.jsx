@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import ColorButton from 'components/ColorButton';
+import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
 
 const BatchNewTasks = (props) => {
 	const [ numberOfTasks, setNumberOfTasks ] = useState();
@@ -10,40 +11,6 @@ const BatchNewTasks = (props) => {
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState();
-
-	const containerStyle = {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		position: 'fixed',
-		justifyContent: 'center',
-		top: '50vh',
-		left: '50vw',
-		height: '50%',
-		width: '50%',
-		border: '1px solid black',
-		transform: 'translate(-50%,-50%)',
-		backgroundColor: 'white',
-		zIndex: '10',
-		padding: '2rem'
-	};
-
-	const subContainerStyle = {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center',
-		margin: '1rem'
-	};
-
-	const optionButtonStyle = {
-		height: 'auto',
-		width: 'auto',
-		backgroundColor: 'white',
-		border: '1px solid black',
-		margin: '0.5rem',
-		padding: '0.25rem'
-	};
 
 	return (
 		<div style={containerStyle}>
