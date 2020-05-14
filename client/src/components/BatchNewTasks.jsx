@@ -12,10 +12,23 @@ const BatchNewTasks = (props) => {
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState();
 
+	const interpretTaskTemplate = () => {
+		if (taskTemplate) {
+			const numFlag = taskTemplate.match(/\$\{n[^}]*\}/g);
+			const letterFlag = taskTemplate.match(/\$\{l[^}]*\}/g);
+			console.log(numFlag);
+			console.log(letterFlag);
+		}
+	};
+
 	return (
 		<div style={containerStyle}>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel {...props} label={'Number Of Tasks'} onChange={(val) => setNumberOfTasks(val)} />
+				<InputFormWithLabel
+					{...props}
+					label={'Number Of Tasks'}
+					onChange={(val) => setNumberOfTasks(parseInt(val))}
+				/>
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel {...props} label={'Task Template'} onChange={(val) => setTaskTemplate(val)} />
@@ -48,7 +61,7 @@ const BatchNewTasks = (props) => {
 				/>
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
 			</div>
-			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => null} />
+			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => interpretTaskTemplate()} />
 		</div>
 	);
 };
