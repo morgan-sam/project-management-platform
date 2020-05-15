@@ -3,7 +3,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
-import { canConContainerStyle } from 'styling/dateOption';
+import { interpretTaskTemplate } from 'processing/batchNewTasks';
 
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(23);
@@ -12,64 +12,6 @@ const BatchNewTasks = (props) => {
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState();
-
-	const interpretTaskTemplate = () => {
-		if (taskTemplate) {
-			const numFlags = taskTemplate.match(/\$\{( *n[^}]*)\}/g);
-			// const letterFlags = taskTemplate.match(/\$\{( *l[^}]*)\}/g);
-			const numSettings = numFlags.map((el) => convertNumFlagToSettings(el));
-			const numStrings = numSettings.map((el) => convertNumSettingsToStrings(el, taskCount));
-			const combinedStrings = combineParallelArrays(numStrings);
-			let taskStrings = [];
-			for (let i = 0; i < taskCount; i++) {
-				let matchIndex = 0;
-				taskStrings[i] = taskTemplate.replace(/\$\{( *n[^}]*)\}/g, function(s) {
-					return combinedStrings[i][matchIndex++] || s;
-				});
-			}
-			console.log(taskStrings);
-		}
-	};
-
-	const combineParallelArrays = (matrix) => {
-		let singleArray = generateEmptyMatrix(matrix[0].length, matrix[0][0].length - 1);
-		for (let a = 0; a < matrix[0].length; a++) {
-			for (let b = 0; b < matrix.length; b++) {
-				singleArray[a][b] = matrix[b][a];
-			}
-		}
-		return singleArray;
-	};
-
-	const generateEmptyMatrix = (x, y) => {
-		let matrix = [];
-		for (let a = 0; a < x; a++) matrix.push([].concat(Array(y)));
-		return matrix;
-	};
-
-	const convertNumSettingsToStrings = (settings, count) => {
-		let strings = [];
-		const { ascending, digits } = settings;
-		for (let i = 0; i < count; i++) {
-			const num = ascending ? i : count - i - 1;
-			const zeroes = Math.max(0, digits - num.toString().length);
-			strings.push(`${'0'.repeat(zeroes)}${num}`);
-		}
-		return strings;
-	};
-
-	const convertNumFlagToSettings = (flag) => {
-		if (!flag) return null;
-		const groups = flag.replace(/[\$\{\} ]/g, '').split(',');
-		let settings = { digits: 1, ascending: true };
-		if (groups[0] !== 'n' && groups[0] !== 'N') return {};
-		let orderIndex = 2;
-		if (parseInt(groups[1]) >= 0 && parseInt(groups[1]) <= 9) settings.digits = parseInt(groups[1]);
-		else orderIndex = 1;
-		if (groups[orderIndex] === 'a' || groups[orderIndex] === 'A') settings.ascending = true;
-		else if (groups[orderIndex] === 'd' || groups[orderIndex] === 'D') settings.ascending = false;
-		return settings;
-	};
 
 	return (
 		<div style={containerStyle}>
@@ -123,7 +65,11 @@ const BatchNewTasks = (props) => {
 				/>
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} default={teams} />
 			</div>
-			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => interpretTaskTemplate()} />
+			<ColorButton
+				color={props.colorTheme}
+				text={'Add Tasks'}
+				onClick={() => interpretTaskTemplate(taskTemplate, taskCount)}
+			/>
 		</div>
 	);
 };
