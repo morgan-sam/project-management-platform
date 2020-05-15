@@ -62,17 +62,19 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 };
 
 const matchDate = (template) => {
-	const expression = '(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)';
-	const regex = new RegExp(expression, 'g');
+	const regex = new RegExp('(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)');
 	const dateMatches = template.match(regex);
 	if (!dateMatches) return null;
-	else return regex.exec(template).groups;
+	else {
+		const removalRegex = new RegExp('\\([^)(]+\\/[^)(]+\\/[^)(]+\\)');
+		return { date: regex.exec(template).groups, template: template.replace(removalRegex, '') };
+	}
 };
 
-const interpretTemplate = (template) => {
+const interpretTemplate = (dateTemplate) => {
 	let instructions = [];
-	const brackets = matchDate(template);
-	console.log(brackets);
+	const { date, template } = matchDate(dateTemplate);
+	console.log(date, template);
 };
 
 // Date/Deadline Template Options:
