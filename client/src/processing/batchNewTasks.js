@@ -58,7 +58,8 @@ const convertFlagToSettings = (flag) => {
 ////////////////////////////////////////////////
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
-	const result = interpretTemplate(dateTemplate);
+	const instructions = convertTemplateToInstructions(dateTemplate);
+	console.log(instructions);
 };
 
 const matchDate = (template) => {
@@ -73,45 +74,47 @@ const matchDate = (template) => {
 
 const matchOperator = (template) => {
 	const regex = new RegExp('^(\\+|\\-)');
-	const dateMatches = template.match(regex);
-	if (!dateMatches) return { operator: null, operatorTemplate: null };
+	const operatorMatches = template.match(regex);
+	if (!operatorMatches) return { operator: null, operatorTemplate: null };
 	else return { operator: regex.exec(template)[0], operatorTemplate: template.replace(regex, '') };
 };
 
 const matchNumber = (template) => {
 	const regex = new RegExp('^(\\d+|[a-zA-Z])');
-	const dateMatches = template.match(regex);
-	if (!dateMatches) return { operator: null, numberTemplate: null };
+	const numberMatches = template.match(regex);
+	if (!numberMatches) return { operator: null, numberTemplate: null };
 	else return { number: regex.exec(template)[0], numberTemplate: template.replace(regex, '') };
 };
 
-const interpretTemplate = (template) => {
+const convertTemplateToInstructions = (template) => {
 	let instructions = [];
-	let { date, dateTemplate } = matchDate(template);
-	if (dateTemplate) {
-		template = dateTemplate;
-		instructions.push({
-			type: 'date',
-			value: date
-		});
+	while (template.length) {
+		let { date, dateTemplate } = matchDate(template);
+		if (dateTemplate !== null) {
+			template = dateTemplate;
+			instructions.push({
+				type: 'date',
+				value: date
+			});
+		}
+		let { operator, operatorTemplate } = matchOperator(template);
+		if (operatorTemplate !== null) {
+			template = operatorTemplate;
+			instructions.push({
+				type: 'operator',
+				value: operator
+			});
+		}
+		let { number, numberTemplate } = matchNumber(template);
+		if (numberTemplate !== null) {
+			template = numberTemplate;
+			instructions.push({
+				type: 'number',
+				value: number
+			});
+		}
 	}
-	let { operator, operatorTemplate } = matchOperator(template);
-	if (operatorTemplate) {
-		template = operatorTemplate;
-		instructions.push({
-			type: 'operator',
-			value: operator
-		});
-	}
-	let { number, numberTemplate } = matchNumber(template);
-	if (numberTemplate) {
-		template = numberTemplate;
-		instructions.push({
-			type: 'number',
-			value: number
-		});
-	}
-	console.log(instructions);
+	return instructions;
 };
 
 // Date/Deadline Template Options:
