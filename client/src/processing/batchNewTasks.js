@@ -58,19 +58,22 @@ const convertFlagToSettings = (flag) => {
 ////////////////////////////////////////////////
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
-	const { dmy, template } = seperateRawDateFromTemplate(dateTemplate);
-	console.log(dmy);
-	return template;
+	const result = interpretTemplate(dateTemplate);
 };
 
-const seperateRawDateFromTemplate = (template) => {
-	let dmy = [];
+const matchDate = (template) => {
+	let dmy = {};
 	const expression = '(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)';
 	const regex = new RegExp(expression, 'g');
 	const dateMatches = template.match(regex);
-	for (let i = 0; i < dateMatches.length; i++) dmy.push(regex.exec(template).groups);
-	template = template.replace(regex, 'date');
-	return { template, dmy };
+	if (!dateMatches) return null;
+	else return regex.exec(template).groups;
+};
+
+const interpretTemplate = (template) => {
+	let instructions = [];
+	const brackets = matchDate(template);
+	console.log(brackets);
 };
 
 // Date/Deadline Template Options:

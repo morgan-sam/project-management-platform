@@ -68,7 +68,7 @@ const BatchNewTasks = (props) => {
 			<ColorButton
 				color={props.colorTheme}
 				text={'Add Tasks'}
-				onClick={() => console.log(interpretDateTemplate(dateTemplate, taskCount))}
+				onClick={() => interpretDateTemplate(dateTemplate, taskCount)}
 			/>
 		</div>
 	);
