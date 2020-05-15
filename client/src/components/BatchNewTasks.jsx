@@ -5,7 +5,7 @@ import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
 
 const BatchNewTasks = (props) => {
-	const [ numberOfTasks, setNumberOfTasks ] = useState();
+	const [ numberOfTasks, setNumberOfTasks ] = useState(23);
 	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,2,d}');
 	const [ dateTemplate, setDateTemplate ] = useState();
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
@@ -41,16 +41,27 @@ const BatchNewTasks = (props) => {
 					{...props}
 					label={'Number Of Tasks'}
 					onChange={(val) => setNumberOfTasks(parseInt(val))}
+					default={numberOfTasks ? numberOfTasks : 0}
 				/>
 			</div>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel {...props} label={'Task Template'} onChange={(val) => setTaskTemplate(val)} />
+				<InputFormWithLabel
+					{...props}
+					label={'Task Template'}
+					onChange={(val) => setTaskTemplate(val)}
+					default={taskTemplate}
+				/>
 				<button style={optionButtonStyle}>Numbers</button>
 				<button style={optionButtonStyle}>Letters</button>
 				<button style={optionButtonStyle}>Reverse</button>
 			</div>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel {...props} label={'Date Template'} onChange={(val) => setDateTemplate(val)} />
+				<InputFormWithLabel
+					{...props}
+					label={'Date Template'}
+					onChange={(val) => setDateTemplate(val)}
+					default={dateTemplate}
+				/>
 				<button style={optionButtonStyle}>Today</button>
 				<button style={optionButtonStyle}>Sequential Days</button>
 			</div>
@@ -59,6 +70,7 @@ const BatchNewTasks = (props) => {
 					{...props}
 					label={'Deadline Template'}
 					onChange={(val) => setDeadlineTemplate(val)}
+					default={deadlineTemplate}
 				/>
 				<button style={optionButtonStyle}>Today</button>
 				<button style={optionButtonStyle}>Sequential Days</button>
@@ -72,7 +84,7 @@ const BatchNewTasks = (props) => {
 					onClick={(val) => setUrgency(val)}
 					width={'2rem'}
 				/>
-				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
+				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} default={teams} />
 			</div>
 			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => interpretTaskTemplate()} />
 		</div>
