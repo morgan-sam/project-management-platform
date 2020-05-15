@@ -62,7 +62,6 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 };
 
 const matchDate = (template) => {
-	let dmy = {};
 	const expression = '(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)';
 	const regex = new RegExp(expression, 'g');
 	const dateMatches = template.match(regex);
