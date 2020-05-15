@@ -66,10 +66,7 @@ const matchDate = (template) => {
 	const regex = new RegExp('^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)');
 	const dateMatches = template.match(regex);
 	if (!dateMatches) return { date: null, dateTemplate: null };
-	else {
-		const removalRegex = new RegExp('^[^)(]+\\/[^)(]+\\/[^)(]+');
-		return { date: regex.exec(template).groups, dateTemplate: template.replace(removalRegex, '') };
-	}
+	else return { date: regex.exec(template).groups, dateTemplate: template.replace(regex, '') };
 };
 
 const matchBrackets = (template) => {
