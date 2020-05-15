@@ -5,8 +5,8 @@ import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
 
 const BatchNewTasks = (props) => {
-	const [ numberOfTasks, setNumberOfTasks ] = useState(23);
-	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,2,d}');
+	const [ taskCount, setTaskCount ] = useState(23);
+	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}');
 	const [ dateTemplate, setDateTemplate ] = useState();
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
@@ -16,12 +16,24 @@ const BatchNewTasks = (props) => {
 		if (taskTemplate) {
 			const numFlags = taskTemplate.match(/\$\{( *n[^}]*)\}/g);
 			const letterFlags = taskTemplate.match(/\$\{( *l[^}]*)\}/g);
-			const info = convertNumFlagsToInfo(numFlags);
-			console.log(info);
+			const numSettings = convertNumFlagsToSettings(numFlags);
+			const numStrings = convertNumSettingsToStrings(numSettings, taskCount);
+			console.log(numStrings);
 		}
 	};
 
-	const convertNumFlagsToInfo = (numFlags) => {
+	const convertNumSettingsToStrings = (settings, count) => {
+		let strings = [];
+		const { ascending, digits } = settings;
+		for (let i = 0; i < count; i++) {
+			const num = ascending ? i : count - i - 1;
+			const zeroes = Math.max(0, digits - num.toString().length);
+			strings.push(`${'0'.repeat(zeroes)}${num}`);
+		}
+		return strings;
+	};
+
+	const convertNumFlagsToSettings = (numFlags) => {
 		if (!numFlags) return null;
 		const groups = numFlags.map((el) => el.replace(/[\$\{\} ]/g, '').split(','))[0];
 		let settings = { digits: 1, ascending: true };
@@ -40,8 +52,8 @@ const BatchNewTasks = (props) => {
 				<InputFormWithLabel
 					{...props}
 					label={'Number Of Tasks'}
-					onChange={(val) => setNumberOfTasks(parseInt(val))}
-					default={numberOfTasks ? numberOfTasks : 0}
+					onChange={(val) => setTaskCount(parseInt(val))}
+					default={taskCount ? taskCount : 0}
 				/>
 			</div>
 			<div style={subContainerStyle}>
