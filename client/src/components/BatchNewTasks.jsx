@@ -15,12 +15,32 @@ const BatchNewTasks = (props) => {
 	const interpretTaskTemplate = () => {
 		if (taskTemplate) {
 			const numFlags = taskTemplate.match(/\$\{( *n[^}]*)\}/g);
-			console.log(numFlags);
-			const letterFlags = taskTemplate.match(/\$\{( *l[^}]*)\}/g);
+			// const letterFlags = taskTemplate.match(/\$\{( *l[^}]*)\}/g);
 			const numSettings = numFlags.map((el) => convertNumFlagToSettings(el));
 			const numStrings = numSettings.map((el) => convertNumSettingsToStrings(el, taskCount));
-			console.log(numStrings);
+			const combinedStrings = combineParallelArrays(numStrings);
+			console.log(combinedStrings);
+			// let taskStrings = [];
+			// for (let i = 0; i < taskCount; i++) {
+			// 	taskStrings[i] = taskTemplate.replace(/\$\{( *n[^}]*)\}/g, numStrings[i]);
+			// }
 		}
+	};
+
+	const combineParallelArrays = (matrix) => {
+		let singleArray = generateEmptyMatrix(matrix[0].length, matrix[0][0].length - 1);
+		for (let a = 0; a < matrix[0].length; a++) {
+			for (let b = 0; b < matrix.length; b++) {
+				singleArray[a][b] = matrix[b][a];
+			}
+		}
+		return singleArray;
+	};
+
+	const generateEmptyMatrix = (x, y) => {
+		let matrix = [];
+		for (let a = 0; a < x; a++) matrix.push([].concat(Array(y)));
+		return matrix;
 	};
 
 	const convertNumSettingsToStrings = (settings, count) => {
