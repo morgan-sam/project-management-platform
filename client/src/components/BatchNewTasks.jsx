@@ -3,6 +3,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
+import { canConContainerStyle } from 'styling/dateOption';
 
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(23);
@@ -19,11 +20,14 @@ const BatchNewTasks = (props) => {
 			const numSettings = numFlags.map((el) => convertNumFlagToSettings(el));
 			const numStrings = numSettings.map((el) => convertNumSettingsToStrings(el, taskCount));
 			const combinedStrings = combineParallelArrays(numStrings);
-			console.log(combinedStrings);
-			// let taskStrings = [];
-			// for (let i = 0; i < taskCount; i++) {
-			// 	taskStrings[i] = taskTemplate.replace(/\$\{( *n[^}]*)\}/g, numStrings[i]);
-			// }
+			let taskStrings = [];
+			for (let i = 0; i < taskCount; i++) {
+				let matchIndex = 0;
+				taskStrings[i] = taskTemplate.replace(/\$\{( *n[^}]*)\}/g, function(s) {
+					return combinedStrings[i][matchIndex++] || s;
+				});
+			}
+			console.log(taskStrings);
 		}
 	};
 
