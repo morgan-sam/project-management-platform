@@ -6,7 +6,7 @@ import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/ba
 
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(23);
-	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}');
+	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${n,2,a}');
 	const [ dateTemplate, setDateTemplate ] = useState();
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
@@ -15,9 +15,10 @@ const BatchNewTasks = (props) => {
 	const interpretTaskTemplate = () => {
 		if (taskTemplate) {
 			const numFlags = taskTemplate.match(/\$\{( *n[^}]*)\}/g);
+			console.log(numFlags);
 			const letterFlags = taskTemplate.match(/\$\{( *l[^}]*)\}/g);
-			const numSettings = convertNumFlagsToSettings(numFlags);
-			const numStrings = convertNumSettingsToStrings(numSettings, taskCount);
+			const numSettings = numFlags.map((el) => convertNumFlagToSettings(el));
+			const numStrings = numSettings.map((el) => convertNumSettingsToStrings(el, taskCount));
 			console.log(numStrings);
 		}
 	};
@@ -33,9 +34,9 @@ const BatchNewTasks = (props) => {
 		return strings;
 	};
 
-	const convertNumFlagsToSettings = (numFlags) => {
-		if (!numFlags) return null;
-		const groups = numFlags.map((el) => el.replace(/[\$\{\} ]/g, '').split(','))[0];
+	const convertNumFlagToSettings = (flag) => {
+		if (!flag) return null;
+		const groups = flag.replace(/[\$\{\} ]/g, '').split(',');
 		let settings = { digits: 1, ascending: true };
 		if (groups[0] !== 'n' && groups[0] !== 'N') return {};
 		let orderIndex = 2;
