@@ -6,7 +6,7 @@ import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/ba
 
 const BatchNewTasks = (props) => {
 	const [ numberOfTasks, setNumberOfTasks ] = useState();
-	const [ taskTemplate, setTaskTemplate ] = useState();
+	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,2,d}');
 	const [ dateTemplate, setDateTemplate ] = useState();
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
@@ -14,11 +14,24 @@ const BatchNewTasks = (props) => {
 
 	const interpretTaskTemplate = () => {
 		if (taskTemplate) {
-			const numFlags = taskTemplate.match(/\$\{n[^}]*\}/g);
-			const letterFlags = taskTemplate.match(/\$\{l[^}]*\}/g);
-			console.log(numFlags);
-			console.log(letterFlags);
+			const numFlags = taskTemplate.match(/\$\{( *n[^}]*)\}/g);
+			const letterFlags = taskTemplate.match(/\$\{( *l[^}]*)\}/g);
+			const info = convertNumFlagsToInfo(numFlags);
+			console.log(info);
 		}
+	};
+
+	const convertNumFlagsToInfo = (numFlags) => {
+		if (!numFlags) return null;
+		const groups = numFlags.map((el) => el.replace(/[\$\{\} ]/g, '').split(','))[0];
+		let settings = { digits: 1, ascending: true };
+		if (groups[0] !== 'n' && groups[0] !== 'N') return {};
+		let orderIndex = 2;
+		if (parseInt(groups[1]) >= 0 && parseInt(groups[1]) <= 9) settings.digits = parseInt(groups[1]);
+		else orderIndex = 1;
+		if (groups[orderIndex] === 'a' || groups[orderIndex] === 'A') settings.ascending = true;
+		else if (groups[orderIndex] === 'd' || groups[orderIndex] === 'D') settings.ascending = false;
+		return settings;
 	};
 
 	return (
