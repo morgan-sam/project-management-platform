@@ -6,8 +6,8 @@ import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/ba
 import { interpretTaskTemplate } from 'processing/batchNewTasks';
 
 const BatchNewTasks = (props) => {
-	const [ taskCount, setTaskCount ] = useState(23);
-	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${n,2,a}');
+	const [ taskCount, setTaskCount ] = useState(20);
+	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${l,d}_${n,2}');
 	const [ dateTemplate, setDateTemplate ] = useState();
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
