@@ -1,4 +1,4 @@
-import { combineParallelArrays, generateEmptyMatrix } from 'processing/utility';
+import { combineParallelArrays } from 'processing/utility';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
@@ -13,8 +13,8 @@ export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 				return combinedStrings[i][matchIndex++] || s;
 			});
 		}
-		console.log(taskStrings);
-	}
+		return taskStrings;
+	} else return null;
 };
 
 const convertSettingsToStrings = (settings, count) => {
