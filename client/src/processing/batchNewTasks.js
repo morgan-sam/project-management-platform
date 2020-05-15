@@ -62,75 +62,37 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	console.log(instructions);
 };
 
-const matchDate = (template) => {
-	const regex = new RegExp('^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)');
-	const dateMatches = template.match(regex);
-	if (!dateMatches) return { date: null, dateTemplate: null };
-	else return { date: regex.exec(template).groups, dateTemplate: template.replace(regex, '') };
-};
-
-const matchBrackets = (template) => {
-	const regex = new RegExp('^(\\(.*\\))');
-	const bracketMatches = template.match(regex);
-	if (!bracketMatches) return { brackets: null, bracketsTemplate: null };
-	else return { brackets: regex.exec(template)[0], bracketsTemplate: template.replace(regex, '') };
-};
-
-const matchOperator = (template) => {
-	const regex = new RegExp('^(\\+|\\-)');
-	const operatorMatches = template.match(regex);
-	if (!operatorMatches) return { operator: null, operatorTemplate: null };
-	else return { operator: regex.exec(template)[0], operatorTemplate: template.replace(regex, '') };
-};
-
-const matchNumber = (template) => {
-	const regex = new RegExp('^(\\d+|[a-zA-Z])');
-	const numberMatches = template.match(regex);
-	if (!numberMatches) return { operator: null, numberTemplate: null };
-	else return { number: regex.exec(template)[0], numberTemplate: template.replace(regex, '') };
+const retrieveInstructionFromTemplate = (template, regex) => {
+	console.log(regex);
+	const matches = template.match(regex);
+	if (!matches) return { value: null, newTemplate: null };
+	else
+		return {
+			value: regex.exec(template).groups ? regex.exec(template).groups : regex.exec(template)[0],
+			newTemplate: template.replace(regex, '')
+		};
 };
 
 const regexList = [
-	{ type: 'date', regex: '^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)' },
-	{ type: 'operator', regex: '^(\\+|\\-)' },
-	{ type: 'number', regex: '^(\\d+|[a-zA-Z])' },
-	{ type: 'brackets', regex: '^(\\(.*\\))' }
+	{ type: 'date', regex: new RegExp('^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)') },
+	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
+	{ type: 'number', regex: new RegExp('^(\\d+|[a-zA-Z])') },
+	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
 ];
 
 const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
-		let { date, dateTemplate } = matchDate(template);
-		if (dateTemplate !== null) {
-			template = dateTemplate;
-			instructions.push({
-				type: 'date',
-				value: date
-			});
-		}
-		let { operator, operatorTemplate } = matchOperator(template);
-		if (operatorTemplate !== null) {
-			template = operatorTemplate;
-			instructions.push({
-				type: 'operator',
-				value: operator
-			});
-		}
-		let { number, numberTemplate } = matchNumber(template);
-		if (numberTemplate !== null) {
-			template = numberTemplate;
-			instructions.push({
-				type: 'number',
-				value: number
-			});
-		}
-		let { brackets, bracketsTemplate } = matchBrackets(template);
-		if (bracketsTemplate !== null) {
-			template = bracketsTemplate;
-			instructions.push({
-				type: 'brackets',
-				value: brackets
-			});
+		for (let i = 0; i < regexList.length; i++) {
+			console.log(i);
+			let { value, newTemplate } = retrieveInstructionFromTemplate(template, regexList[i].regex);
+			if (newTemplate !== null) {
+				template = newTemplate;
+				instructions.push({
+					type: regexList[i].type,
+					value: value
+				});
+			}
 		}
 	}
 	return instructions;
