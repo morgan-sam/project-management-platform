@@ -78,6 +78,13 @@ const matchOperator = (template) => {
 	else return { operator: regex.exec(template)[0], operatorTemplate: template.replace(regex, '') };
 };
 
+const matchNumber = (template) => {
+	const regex = new RegExp('^(\\d+|[a-zA-Z])');
+	const dateMatches = template.match(regex);
+	if (!dateMatches) return { operator: null, numberTemplate: null };
+	else return { number: regex.exec(template)[0], numberTemplate: template.replace(regex, '') };
+};
+
 const interpretTemplate = (template) => {
 	let instructions = [];
 	let { date, dateTemplate } = matchDate(template);
@@ -94,6 +101,14 @@ const interpretTemplate = (template) => {
 		instructions.push({
 			type: 'operator',
 			value: operator
+		});
+	}
+	let { number, numberTemplate } = matchNumber(template);
+	if (numberTemplate) {
+		template = numberTemplate;
+		instructions.push({
+			type: 'number',
+			value: number
 		});
 	}
 	console.log(instructions);
