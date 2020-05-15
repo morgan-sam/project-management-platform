@@ -63,13 +63,20 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 };
 
 const matchDate = (template) => {
-	const regex = new RegExp('^\\((?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)\\)');
+	const regex = new RegExp('^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)');
 	const dateMatches = template.match(regex);
 	if (!dateMatches) return { date: null, dateTemplate: null };
 	else {
-		const removalRegex = new RegExp('^\\([^)(]+\\/[^)(]+\\/[^)(]+\\)');
+		const removalRegex = new RegExp('^[^)(]+\\/[^)(]+\\/[^)(]+');
 		return { date: regex.exec(template).groups, dateTemplate: template.replace(removalRegex, '') };
 	}
+};
+
+const matchBrackets = (template) => {
+	const regex = new RegExp('^(\\(.*\\))');
+	const bracketMatches = template.match(regex);
+	if (!bracketMatches) return { brackets: null, bracketsTemplate: null };
+	else return { brackets: regex.exec(template)[0], bracketsTemplate: template.replace(regex, '') };
 };
 
 const matchOperator = (template) => {
@@ -111,6 +118,14 @@ const convertTemplateToInstructions = (template) => {
 			instructions.push({
 				type: 'number',
 				value: number
+			});
+		}
+		let { brackets, bracketsTemplate } = matchBrackets(template);
+		if (bracketsTemplate !== null) {
+			template = bracketsTemplate;
+			instructions.push({
+				type: 'brackets',
+				value: brackets
 			});
 		}
 	}
