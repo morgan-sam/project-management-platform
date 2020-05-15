@@ -63,7 +63,6 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 };
 
 const retrieveInstructionFromTemplate = (template, regex) => {
-	console.log(regex);
 	const matches = template.match(regex);
 	if (!matches) return { value: null, newTemplate: null };
 	else
@@ -75,6 +74,7 @@ const retrieveInstructionFromTemplate = (template, regex) => {
 
 const regexList = [
 	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
+	{ type: 'today', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
 	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
 	{ type: 'number', regex: new RegExp('^(\\d+|[a-zA-Z])') },
 	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
@@ -84,13 +84,12 @@ const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
 		for (let i = 0; i < regexList.length; i++) {
-			console.log(i);
 			let { value, newTemplate } = retrieveInstructionFromTemplate(template, regexList[i].regex);
 			if (newTemplate !== null) {
 				template = newTemplate;
 				instructions.push({
 					type: regexList[i].type,
-					value: value
+					value: regexList[i].default ? regexList[i].default : value
 				});
 			}
 		}
