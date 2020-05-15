@@ -64,21 +64,39 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 const matchDate = (template) => {
 	const regex = new RegExp('^\\((?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)\\)');
 	const dateMatches = template.match(regex);
-	if (!dateMatches) return { date: null, newTemplate: null };
+	if (!dateMatches) return { date: null, dateTemplate: null };
 	else {
 		const removalRegex = new RegExp('^\\([^)(]+\\/[^)(]+\\/[^)(]+\\)');
-		return { date: regex.exec(template).groups, newTemplate: template.replace(removalRegex, '') };
+		return { date: regex.exec(template).groups, dateTemplate: template.replace(removalRegex, '') };
 	}
 };
 
-const matchOperator = (template) => {};
+const matchOperator = (template) => {
+	const regex = new RegExp('^(\\+|\\-)');
+	const dateMatches = template.match(regex);
+	if (!dateMatches) return { operator: null, operatorTemplate: null };
+	else return { operator: regex.exec(template)[0], operatorTemplate: template.replace(regex, '') };
+};
 
 const interpretTemplate = (template) => {
 	let instructions = [];
-	const { date, newTemplate } = matchDate(template);
-	if (newTemplate) template = newTemplate;
-
-	console.log(template);
+	let { date, dateTemplate } = matchDate(template);
+	if (dateTemplate) {
+		template = dateTemplate;
+		instructions.push({
+			type: 'date',
+			value: date
+		});
+	}
+	let { operator, operatorTemplate } = matchOperator(template);
+	if (operatorTemplate) {
+		template = operatorTemplate;
+		instructions.push({
+			type: 'operator',
+			value: operator
+		});
+	}
+	console.log(instructions);
 };
 
 // Date/Deadline Template Options:
