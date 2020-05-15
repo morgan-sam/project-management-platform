@@ -58,11 +58,15 @@ const convertFlagToSettings = (flag) => {
 ////////////////////////////////////////////////
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
-	let dmy;
-	const expression = '(?<day>[^(]+)\\/(?<month>.+)\\/(?<year>[^)]+)';
+	let dmy = [];
+	const expression = '(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)';
 	const regex = new RegExp(expression, 'g');
-	if (dateTemplate.match(regex)) dmy = regex.exec(dateTemplate).groups;
+	const dateMatches = dateTemplate.match(regex);
+	for (let i = 0; i < dateMatches.length; i++) {
+		dmy.push(regex.exec(dateTemplate).groups);
+	}
 	console.log(dmy);
+	dateTemplate = dateTemplate.replace(regex, 'date');
 	return dateTemplate;
 };
 
