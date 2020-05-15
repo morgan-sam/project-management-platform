@@ -8,7 +8,7 @@ import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNe
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(20);
 	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${l,d}_${n,2}');
-	const [ dateTemplate, setDateTemplate ] = useState();
+	const [ dateTemplate, setDateTemplate ] = useState('t+nd');
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState();
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState();
@@ -68,7 +68,7 @@ const BatchNewTasks = (props) => {
 			<ColorButton
 				color={props.colorTheme}
 				text={'Add Tasks'}
-				onClick={() => console.log(interpretTaskTemplate(taskTemplate, taskCount))}
+				onClick={() => console.log(interpretDateTemplate(dateTemplate, taskCount))}
 			/>
 		</div>
 	);
@@ -92,13 +92,3 @@ export default BatchNewTasks;
 // feature_${l,d} => (feature_z,feature_y,feature_x)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
-// Date/Deadline Template Options:
-
-// Examples:
-// (today) + nd         =>      (sequential days in a row starting from today)
-// (1/10/20) + n(2m)    =>      (sequential alternative months starting from specified date)
-// (today+2w) - nd      =>      (counts backwards in days starting from a fortnight from today)
-// (t)                  =>      (shorthand version of todays date)
-// (t/t/t)              =>      (exact version of todays date)
-// (1/t/t) + ny         =>      (counts from first day of current month in years)

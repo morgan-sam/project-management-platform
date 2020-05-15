@@ -1,4 +1,6 @@
 import { combineParallelArrays } from 'processing/utility';
+import { getDayFromTodayAsISO } from 'data/dates';
+import { parseISOToDateObj } from 'processing/parseDates';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
@@ -55,6 +57,21 @@ const convertFlagToSettings = (flag) => {
 
 ////////////////////////////////////////////////
 
-export const interpretDateTemplate = () => {
-	//
+export const interpretDateTemplate = (dateTemplate, taskCount) => {
+	let dmy;
+	const expression = '(?<day>[^(]+)\\/(?<month>.+)\\/(?<year>[^)]+)';
+	const regex = new RegExp(expression, 'g');
+	if (dateTemplate.match(regex)) dmy = regex.exec(dateTemplate).groups;
+	console.log(dmy);
+	return dateTemplate;
 };
+
+// Date/Deadline Template Options:
+
+// Examples:
+// (today) + nd         =>      (sequential days in a row starting from today)
+// (1/10/20) + n(2m)    =>      (sequential alternative months starting from specified date)
+// (today+2w) - nd      =>      (counts backwards in days starting from a fortnight from today)
+// (t)                  =>      (shorthand version of todays date)
+// (t/t/t)              =>      (exact version of todays date)
+// (1/t/t) + ny         =>      (counts from first day of current month in years)
