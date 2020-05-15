@@ -74,7 +74,7 @@ const retrieveInstructionFromTemplate = (template, regex) => {
 };
 
 const regexList = [
-	{ type: 'date', regex: new RegExp('^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)') },
+	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
 	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
 	{ type: 'number', regex: new RegExp('^(\\d+|[a-zA-Z])') },
 	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
@@ -101,9 +101,9 @@ const convertTemplateToInstructions = (template) => {
 // Date/Deadline Template Options:
 
 // Examples:
-// (today) + nd         =>      (sequential days in a row starting from today)
-// (1/10/20) + n(2m)    =>      (sequential alternative months starting from specified date)
-// (today+2w) - nd      =>      (counts backwards in days starting from a fortnight from today)
-// (t)                  =>      (shorthand version of todays date)
-// (t/t/t)              =>      (exact version of todays date)
-// (1/t/t) + ny         =>      (counts from first day of current month in years)
+// ${today} + nd         =>      (sequential days in a row starting from today)
+// ${1/10/20} + n(2m)    =>      (sequential alternative months starting from specified date)
+// ${today+2w} - nd      =>      (counts backwards in days starting from a fortnight from today)
+// ${t}                  =>      (shorthand version of todays date)
+// ${t/t/t}              =>      (exact version of todays date)
+// ${1/t/t} + ny         =>      (counts from first day of current month in years)
