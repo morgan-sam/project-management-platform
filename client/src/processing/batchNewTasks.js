@@ -48,3 +48,9 @@ const convertFlagToSettings = (flag) => {
 	else if (groups[orderIndex] === 'd' || groups[orderIndex] === 'D') settings.ascending = false;
 	return settings;
 };
+
+////////////////////////////////////////////////
+
+export const interpretDateTemplate = () => {
+	//
+};

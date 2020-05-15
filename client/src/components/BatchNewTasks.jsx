@@ -3,7 +3,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
-import { interpretTaskTemplate } from 'processing/batchNewTasks';
+import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
 
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(20);
@@ -68,7 +68,7 @@ const BatchNewTasks = (props) => {
 			<ColorButton
 				color={props.colorTheme}
 				text={'Add Tasks'}
-				onClick={() => interpretTaskTemplate(taskTemplate, taskCount)}
+				onClick={() => interpretDateTemplate(taskTemplate, taskCount)}
 			/>
 		</div>
 	);
