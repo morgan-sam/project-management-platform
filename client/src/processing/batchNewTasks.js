@@ -6,15 +6,19 @@ export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 		const settings = flags.map((el) => convertFlagToSettings(el));
 		const strings = settings.map((el) => convertSettingsToStrings(el, taskCount));
 		const combinedStrings = combineParallelArrays(strings);
-		let taskStrings = [];
-		for (let i = 0; i < taskCount; i++) {
-			let matchIndex = 0;
-			taskStrings[i] = taskTemplate.replace(/\$\{( *[nlNL][^}]*)\}/g, function(s) {
-				return combinedStrings[i][matchIndex++] || s;
-			});
-		}
-		return taskStrings;
+		return getFullTaskStrings(combinedStrings, taskTemplate);
 	} else return null;
+};
+
+const getFullTaskStrings = (strings, template) => {
+	let taskStrings = [];
+	for (let i = 0; i < strings.length; i++) {
+		let matchIndex = 0;
+		taskStrings[i] = template.replace(/\$\{( *[nlNL][^}]*)\}/g, function(s) {
+			return strings[i][matchIndex++] || s;
+		});
+	}
+	return taskStrings;
 };
 
 const convertSettingsToStrings = (settings, count) => {
