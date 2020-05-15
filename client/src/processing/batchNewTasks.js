@@ -90,6 +90,13 @@ const matchNumber = (template) => {
 	else return { number: regex.exec(template)[0], numberTemplate: template.replace(regex, '') };
 };
 
+const regexList = [
+	{ type: 'date', regex: '^(?<day>[^)(]+)\\/(?<month>[^)(]+)\\/(?<year>[^)(]+)' },
+	{ type: 'operator', regex: '^(\\+|\\-)' },
+	{ type: 'number', regex: '^(\\d+|[a-zA-Z])' },
+	{ type: 'brackets', regex: '^(\\(.*\\))' }
+];
+
 const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
