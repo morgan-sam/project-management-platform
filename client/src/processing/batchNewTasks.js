@@ -101,7 +101,6 @@ const convertTemplateToInstructions = (template) => {
 };
 
 const interpretInstructions = (instructions) => {
-	console.log(instructions);
 	const TEST_TASKCOUNT = 5;
 	for (let i = 0; i < instructions.length; i++) {
 		if (
@@ -112,18 +111,39 @@ const interpretInstructions = (instructions) => {
 			const { day, month, year } = instructions[i].value;
 			const operator = instructions[i + 1].value;
 			const algebra = instructions[i + 2].value;
-			const { newString, numArray } = getNumbersFromString(algebra);
-			console.log(newString, numArray);
-
-			// let date = new Date(year, month - 1, day);
-			// let modifier = 1;
-			// let change = operator === '-' ? -modifier : modifier;
-			// console.log(amount);
-			// let newDate = date.setDate(date.getDate() + change);
-			// console.log(newDate);
+			let { newString, numArray } = getNumbersFromString(algebra);
+			let product = numArray.reduce((a, b) => a * b);
+			if (newString.match(/n/g)) {
+				product *= TEST_TASKCOUNT;
+				newString = newString.replace(/n/g, '');
+			}
+			let date = new Date(year, month - 1, day);
+			let newDate;
+			if (newString.match(/d/g)) {
+				newDate = date.setDate(date.getDate() + product);
+				newString = newString.replace(/d/g, '');
+			}
+			if (newString.match(/m/g)) {
+				newDate = addMonths(date, product);
+				newString = newString.replace(/m/g, '');
+			}
+			if (newString.match(/y/g)) {
+				newDate = date.setFullYear(date.getFullYear() + product);
+				newString = newString.replace(/y/g, '');
+			}
+			return new Date(newDate);
 		}
 	}
 	return 'output';
+};
+
+const addMonths = (date, months) => {
+	const d = date.getDate();
+	date.setMonth(date.getMonth() + +months);
+	if (date.getDate() != d) {
+		date.setDate(0);
+	}
+	return date;
 };
 
 const getNumbersFromString = (string) => {

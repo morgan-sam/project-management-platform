@@ -8,7 +8,7 @@ import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNe
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(20);
 	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${l,d}_${n,2}');
-	const [ dateTemplate, setDateTemplate ] = useState('${t}+2nd3n67n4');
+	const [ dateTemplate, setDateTemplate ] = useState('${t}+2nd');
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}');
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState();
