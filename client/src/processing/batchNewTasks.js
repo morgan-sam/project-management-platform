@@ -102,6 +102,7 @@ const convertTemplateToInstructions = (template) => {
 
 const interpretInstructions = (instructions, taskCount) => {
 	console.log(instructions);
+	if (instructions.filter((el) => el.type === 'date').length > 1) return 'ERROR: MULTIPLE DATES';
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		let [ previous, operator ] = new Array(2).fill(null);
