@@ -143,8 +143,7 @@ const addSubtractDates = (dateOne, dateTwo, operator) => {
 	date = new Date(date.setDate(date.getDate() + parseInt(dateTwo.day) * sign));
 	date = addMonths(date, parseInt(dateTwo.month) * sign);
 	date = new Date(date.setFullYear(date.getFullYear() + parseInt(dateTwo.year) * sign));
-	const newDate = parseECMADateToDateObj(date);
-	return newDate;
+	return parseECMADateToDateObj(date);
 };
 
 const calculateDateWithAlgebra = (date, operator, algebra, task) => {
@@ -163,9 +162,7 @@ const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 const addMonths = (date, months) => {
 	const d = date.getDate();
 	date.setMonth(date.getMonth() + +months);
-	if (date.getDate() != d) {
-		date.setDate(0);
-	}
+	if (date.getDate() != d) date.setDate(0);
 	return date;
 };
 
