@@ -111,8 +111,8 @@ const interpretInstructions = (instructions) => {
 			const { day, month, year } = instructions[i].value;
 			const operator = instructions[i + 1].value;
 			const algebra = instructions[i + 2].value;
-			let { numArray } = getNumbersFromString(algebra);
-			let product = numArray.reduce((a, b) => a * b);
+			let numArray = getNumbersFromString(algebra);
+			let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
 			product = operator === '-' ? -product : product;
 			let date = new Date(year, month - 1, day);
 			if (algebra.match(/n/g)) product *= TEST_TASKCOUNT;
@@ -136,9 +136,9 @@ const addMonths = (date, months) => {
 
 const getNumbersFromString = (string) => {
 	const numbers = string.match(/([0-9]+)/g);
+	if (!numbers) return null;
 	const numArray = numbers.map((el) => parseInt(el));
-	const newString = string.replace(/([0-9]+)/g, '');
-	return { newString, numArray };
+	return numArray;
 };
 
 // Date/Deadline Template Options:
