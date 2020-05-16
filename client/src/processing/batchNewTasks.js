@@ -104,31 +104,39 @@ const interpretInstructions = (instructions, taskCount) => {
 	console.log(instructions);
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
+		let [ currentDate, currentOperator, currentAlgebra ] = new Array(3).fill(null);
 		for (let i = 0; i < instructions.length; i++) {
-			if (
-				instructions[i] &&
-				instructions[i + 1] &&
-				instructions[i + 2] &&
-				instructions[i].type === 'date' &&
-				instructions[i + 1].type === 'operator' &&
-				instructions[i + 2].type === 'algebra'
-			) {
-				const { day, month, year } = instructions[i].value;
-				const operator = instructions[i + 1].value;
-				const algebra = instructions[i + 2].value;
-				let numArray = getNumbersFromString(algebra);
-				let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
-				product = operator === '-' ? -product : product;
-				let date = new Date(year, month - 1, day);
-				if (algebra.match(/n/g)) product *= task;
-				if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
-				else if (algebra.match(/m/g)) date = addMonths(date, product);
-				else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
-				stringArray.push(parseECMADateToLittleEndian(new Date(date)));
+			const { type, value } = instructions[i];
+			if (type === 'date') {
+				if (currentDate === null) currentDate = value;
+			}
+			if (type === 'operator') {
+				if (currentOperator === null) currentOperator = value;
+			}
+			if (type === 'algebra') {
+				if (currentAlgebra === null) currentAlgebra = value;
+				if (currentDate && currentOperator) {
+					const date = calculateDateWithAlgebra(currentDate, currentOperator, currentAlgebra, task);
+					[ currentDate, currentOperator, currentAlgebra ] = new Array(3).fill(null);
+					console.log(date);
+				}
 			}
 		}
 	}
 	return stringArray;
+};
+
+const calculateDateWithAlgebra = (date, operator, algebra, task) => {
+	const { day, month, year } = date;
+	let numArray = getNumbersFromString(algebra);
+	let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
+	product = operator === '-' ? -product : product;
+	date = new Date(year, month - 1, day);
+	if (algebra.match(/n/g)) product *= task;
+	if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
+	else if (algebra.match(/m/g)) date = addMonths(date, product);
+	else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
+	return parseECMADateToLittleEndian(new Date(date));
 };
 
 const addMonths = (date, months) => {

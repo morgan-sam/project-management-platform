@@ -40,8 +40,6 @@ const BatchNewTasks = (props) => {
 					label={'Date Template'}
 					onChange={(val) => {
 						let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
-						// if ((val.match(/\+(?![^{]*\})|\-(?![^{]*\})/g) || []).length > 1)
-						// 	filtered = val.substring(0, val.length - 1);
 						setDateTemplate(filtered);
 					}}
 					default={dateTemplate}
