@@ -93,8 +93,8 @@ const convertTemplateToInstructions = (template) => {
 					value: regexList[i].default ? regexList[i].default : value
 				});
 			} else skipCount++;
-			if (skipCount === regexList.length) return 'ERROR';
 		}
+		if (skipCount === regexList.length) return 'ERROR';
 	}
 	return instructions;
 };
