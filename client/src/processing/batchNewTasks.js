@@ -59,7 +59,7 @@ const convertFlagToSettings = (flag) => {
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	const instructions = convertTemplateToInstructions(dateTemplate);
-	const output = interpretInstructions(instructions);
+	const output = interpretInstructions(instructions, taskCount);
 	console.log(output);
 };
 
@@ -100,29 +100,31 @@ const convertTemplateToInstructions = (template) => {
 	return instructions;
 };
 
-const interpretInstructions = (instructions) => {
-	const TEST_TASKCOUNT = 5;
-	for (let i = 0; i < instructions.length; i++) {
-		if (
-			instructions[i].type === 'date' &&
-			instructions[i + 1].type === 'operator' &&
-			instructions[i + 2].type === 'algebra'
-		) {
-			const { day, month, year } = instructions[i].value;
-			const operator = instructions[i + 1].value;
-			const algebra = instructions[i + 2].value;
-			let numArray = getNumbersFromString(algebra);
-			let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
-			product = operator === '-' ? -product : product;
-			let date = new Date(year, month - 1, day);
-			if (algebra.match(/n/g)) product *= TEST_TASKCOUNT;
-			if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
-			else if (algebra.match(/m/g)) date = addMonths(date, product);
-			else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
-			return new Date(date);
+const interpretInstructions = (instructions, taskCount) => {
+	let stringArray = [];
+	for (let task = 0; task < taskCount; task++) {
+		for (let i = 0; i < instructions.length; i++) {
+			if (
+				instructions[i].type === 'date' &&
+				instructions[i + 1].type === 'operator' &&
+				instructions[i + 2].type === 'algebra'
+			) {
+				const { day, month, year } = instructions[i].value;
+				const operator = instructions[i + 1].value;
+				const algebra = instructions[i + 2].value;
+				let numArray = getNumbersFromString(algebra);
+				let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
+				product = operator === '-' ? -product : product;
+				let date = new Date(year, month - 1, day);
+				if (algebra.match(/n/g)) product *= task;
+				if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
+				else if (algebra.match(/m/g)) date = addMonths(date, product);
+				else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
+				stringArray.push(new Date(date));
+			}
 		}
 	}
-	return 'output';
+	return stringArray;
 };
 
 const addMonths = (date, months) => {
