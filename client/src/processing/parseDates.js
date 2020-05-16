@@ -20,3 +20,7 @@ export const parseISOToZeroTime = (iso) => {
 	const dateOnly = iso.match(/.+?(?=T)/g)[0];
 	return `${dateOnly}T00:00:00.000Z`;
 };
+
+export const parseECMADateToDateObj = (ECMADate) => {
+	return { day: ECMADate.getDate(), month: ECMADate.getMonth(), year: ECMADate.getFullYear() };
+};
