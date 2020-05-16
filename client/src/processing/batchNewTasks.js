@@ -104,7 +104,6 @@ const convertTemplateToInstructions = (template) => {
 };
 
 const interpretInstructions = (instructions, taskCount) => {
-	// if (instructions.filter((el) => el.type === 'date').length > 1) return 'ERROR: MULTIPLE DATES';
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		let [ previous, operator ] = new Array(2).fill(null);
@@ -150,7 +149,6 @@ const addSubtractDates = (dateOne, dateTwo, operator) => {
 
 const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 	const { day, month, year } = date;
-	console.log({ day, month, year });
 	let numArray = getNumbersFromString(algebra);
 	let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
 	product = operator === '-' ? -product : product;
