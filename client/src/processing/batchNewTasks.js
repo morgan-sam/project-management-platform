@@ -113,6 +113,7 @@ const interpretInstructions = (instructions) => {
 			const algebra = instructions[i + 2].value;
 			let { numArray } = getNumbersFromString(algebra);
 			let product = numArray.reduce((a, b) => a * b);
+			product = operator === '-' ? -product : product;
 			let newDate;
 			let date = new Date(year, month - 1, day);
 			if (algebra.match(/n/g)) product *= TEST_TASKCOUNT;
