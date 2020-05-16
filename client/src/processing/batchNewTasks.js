@@ -111,26 +111,14 @@ const interpretInstructions = (instructions) => {
 			const { day, month, year } = instructions[i].value;
 			const operator = instructions[i + 1].value;
 			const algebra = instructions[i + 2].value;
-			let { newString, numArray } = getNumbersFromString(algebra);
+			let { numArray } = getNumbersFromString(algebra);
 			let product = numArray.reduce((a, b) => a * b);
-			if (newString.match(/n/g)) {
-				product *= TEST_TASKCOUNT;
-				newString = newString.replace(/n/g, '');
-			}
-			let date = new Date(year, month - 1, day);
 			let newDate;
-			if (newString.match(/d/g)) {
-				newDate = date.setDate(date.getDate() + product);
-				newString = newString.replace(/d/g, '');
-			}
-			if (newString.match(/m/g)) {
-				newDate = addMonths(date, product);
-				newString = newString.replace(/m/g, '');
-			}
-			if (newString.match(/y/g)) {
-				newDate = date.setFullYear(date.getFullYear() + product);
-				newString = newString.replace(/y/g, '');
-			}
+			let date = new Date(year, month - 1, day);
+			if (algebra.match(/n/g)) product *= TEST_TASKCOUNT;
+			if (algebra.match(/d/g)) newDate = date.setDate(date.getDate() + product);
+			else if (algebra.match(/m/g)) newDate = addMonths(date, product);
+			else if (algebra.match(/y/g)) newDate = date.setFullYear(date.getFullYear() + product);
 			return new Date(newDate);
 		}
 	}
