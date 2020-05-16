@@ -1,6 +1,6 @@
 import { combineParallelArrays } from 'processing/utility';
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj, parseECMADateToLittleEndian } from 'processing/parseDates';
+import { parseISOToDateObj, parseECMADateToLittleEndian, parseECMADateToDateObj } from 'processing/parseDates';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
@@ -102,7 +102,7 @@ const convertTemplateToInstructions = (template) => {
 
 const interpretInstructions = (instructions, taskCount) => {
 	console.log(instructions);
-	if (instructions.filter((el) => el.type === 'date').length > 1) return 'ERROR: MULTIPLE DATES';
+	// if (instructions.filter((el) => el.type === 'date').length > 1) return 'ERROR: MULTIPLE DATES';
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		let [ previous, operator ] = new Array(2).fill(null);
@@ -124,6 +124,8 @@ const interpretInstructions = (instructions, taskCount) => {
 			} else if (type === 'date' && previous && operator) {
 				if (previous.type === 'date') {
 					// Add together two dates
+					previous = { value: addSubtractDates(previous.value, value, operator), type: 'date' };
+					operator = null;
 				} else if (previous.type === 'algebra') {
 					previous = { value: calculateDateWithAlgebra(value, operator, previous.value, task), type: 'date' };
 					operator = null;
@@ -133,6 +135,16 @@ const interpretInstructions = (instructions, taskCount) => {
 		stringArray.push(previous.value);
 	}
 	return stringArray;
+};
+
+const addSubtractDates = (dateOne, dateTwo, operator) => {
+	const sign = operator === '-' ? -1 : 1;
+	let date = new Date(dateOne.year, dateOne.month - 1, dateOne.day);
+	date = new Date(date.setDate(date.getDate() + parseInt(dateTwo.day) * sign));
+	date = addMonths(date, parseInt(dateTwo.month) * sign);
+	date = new Date(date.setFullYear(date.getFullYear() + parseInt(dateTwo.year) * sign));
+	const newDate = parseECMADateToDateObj(date);
+	return newDate;
 };
 
 const calculateDateWithAlgebra = (date, operator, algebra, task) => {
