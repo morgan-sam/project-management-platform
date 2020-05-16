@@ -59,7 +59,8 @@ const convertFlagToSettings = (flag) => {
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	const instructions = convertTemplateToInstructions(dateTemplate);
-	console.log(instructions);
+	const output = interpretInstructions(instructions);
+	console.log(output);
 };
 
 const retrieveInstructionFromTemplate = (template, regex) => {
@@ -74,7 +75,7 @@ const retrieveInstructionFromTemplate = (template, regex) => {
 
 const regexList = [
 	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
-	{ type: 'today', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
+	{ type: 'date', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
 	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
 	{ type: 'number', regex: new RegExp('^(\\d+|[a-zA-Z])') },
 	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
@@ -97,6 +98,19 @@ const convertTemplateToInstructions = (template) => {
 		if (skipCount === regexList.length) return 'ERROR';
 	}
 	return instructions;
+};
+
+const interpretInstructions = (instructions) => {
+	for (let i = 0; i < instructions.length; i++) {
+		if (
+			instructions[i].type === 'date' &&
+			instructions[i + 1].type === 'operator' &&
+			instructions[i + 2].type === 'number'
+		) {
+			//
+		}
+	}
+	return 'output';
 };
 
 // Date/Deadline Template Options:
