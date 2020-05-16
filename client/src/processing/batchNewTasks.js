@@ -101,10 +101,14 @@ const convertTemplateToInstructions = (template) => {
 };
 
 const interpretInstructions = (instructions, taskCount) => {
+	console.log(instructions);
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		for (let i = 0; i < instructions.length; i++) {
 			if (
+				instructions[i] &&
+				instructions[i + 1] &&
+				instructions[i + 2] &&
 				instructions[i].type === 'date' &&
 				instructions[i + 1].type === 'operator' &&
 				instructions[i + 2].type === 'algebra'
