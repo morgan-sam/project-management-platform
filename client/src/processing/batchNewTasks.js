@@ -157,7 +157,7 @@ const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 	if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
 	else if (algebra.match(/m/g)) date = addMonths(date, product);
 	else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
-	return parseECMADateToLittleEndian(new Date(date));
+	return parseECMADateToDateObj(new Date(date));
 };
 
 const addMonths = (date, months) => {
