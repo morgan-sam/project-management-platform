@@ -1,6 +1,6 @@
 import { combineParallelArrays } from 'processing/utility';
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj } from 'processing/parseDates';
+import { parseISOToDateObj, parseDateObjToISO } from 'processing/parseDates';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
@@ -77,7 +77,7 @@ const regexList = [
 	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
 	{ type: 'date', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
 	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
-	{ type: 'number', regex: new RegExp('^(\\d+|[a-zA-Z])') },
+	{ type: 'algebra', regex: new RegExp('^([a-zA-Z0-9]+)') },
 	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
 ];
 
@@ -101,16 +101,36 @@ const convertTemplateToInstructions = (template) => {
 };
 
 const interpretInstructions = (instructions) => {
+	console.log(instructions);
+	const TEST_TASKCOUNT = 5;
 	for (let i = 0; i < instructions.length; i++) {
 		if (
 			instructions[i].type === 'date' &&
 			instructions[i + 1].type === 'operator' &&
-			instructions[i + 2].type === 'number'
+			instructions[i + 2].type === 'algebra'
 		) {
-			//
+			const { day, month, year } = instructions[i].value;
+			const operator = instructions[i + 1].value;
+			const algebra = instructions[i + 2].value;
+			const { newString, numArray } = getNumbersFromString(algebra);
+			console.log(newString, numArray);
+
+			// let date = new Date(year, month - 1, day);
+			// let modifier = 1;
+			// let change = operator === '-' ? -modifier : modifier;
+			// console.log(amount);
+			// let newDate = date.setDate(date.getDate() + change);
+			// console.log(newDate);
 		}
 	}
 	return 'output';
+};
+
+const getNumbersFromString = (string) => {
+	const numbers = string.match(/([0-9]+)/g);
+	const numArray = numbers.map((el) => parseInt(el));
+	const newString = string.replace(/([0-9]+)/g, '');
+	return { newString, numArray };
 };
 
 // Date/Deadline Template Options:
