@@ -116,15 +116,11 @@ const interpretInstructions = (instructions, taskCount) => {
 				else if (operator === '+' && value === '-') operator = '-';
 				else operator = value;
 			} else if (type === 'algebra' && previous && operator) {
-				if (previous.type === 'date') {
-					previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
-					operator = null;
-				} else if (previous.type === 'algebra') {
-					// Add together two algebra equations
-				}
+				// previous type will always be date
+				previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
+				operator = null;
 			} else if (type === 'date' && previous && operator) {
 				if (previous.type === 'date') {
-					// Add together two dates
 					previous = { value: addSubtractDates(previous.value, value, operator), type: 'date' };
 					operator = null;
 				} else if (previous.type === 'algebra') {
