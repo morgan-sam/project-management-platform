@@ -24,3 +24,7 @@ export const parseISOToZeroTime = (iso) => {
 export const parseECMADateToDateObj = (ECMADate) => {
 	return { day: ECMADate.getDate(), month: ECMADate.getMonth(), year: ECMADate.getFullYear() };
 };
+
+export const parseECMADateToLittleEndian = (ECMADate) => {
+	return `${ECMADate.getDate()}/${ECMADate.getMonth()}/${ECMADate.getFullYear()}`;
+};

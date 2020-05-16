@@ -1,6 +1,6 @@
 import { combineParallelArrays } from 'processing/utility';
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj, parseDateObjToISO } from 'processing/parseDates';
+import { parseISOToDateObj, parseECMADateToLittleEndian } from 'processing/parseDates';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
@@ -120,7 +120,7 @@ const interpretInstructions = (instructions, taskCount) => {
 				if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
 				else if (algebra.match(/m/g)) date = addMonths(date, product);
 				else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
-				stringArray.push(new Date(date));
+				stringArray.push(parseECMADateToLittleEndian(new Date(date)));
 			}
 		}
 	}
