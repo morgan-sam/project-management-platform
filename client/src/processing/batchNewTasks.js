@@ -83,6 +83,7 @@ const regexList = [
 const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
+		let skipCount = 0;
 		for (let i = 0; i < regexList.length; i++) {
 			let { value, newTemplate } = retrieveInstructionFromTemplate(template, regexList[i].regex);
 			if (newTemplate !== null) {
@@ -91,7 +92,8 @@ const convertTemplateToInstructions = (template) => {
 					type: regexList[i].type,
 					value: regexList[i].default ? regexList[i].default : value
 				});
-			}
+			} else skipCount++;
+			if (skipCount === regexList.length) return 'ERROR';
 		}
 	}
 	return instructions;
