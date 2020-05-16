@@ -8,8 +8,8 @@ import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNe
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(20);
 	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${l,d}_${n,2}');
-	const [ dateTemplate, setDateTemplate ] = useState('${t/1/2010}');
-	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}');
+	const [ dateTemplate, setDateTemplate ] = useState('${t}');
+	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}+2w');
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teams, setTeams ] = useState();
 
@@ -52,7 +52,7 @@ const BatchNewTasks = (props) => {
 					{...props}
 					label={'Deadline Template'}
 					onChange={(val) => {
-						const filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
+						let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
 						setDeadlineTemplate(filtered);
 					}}
 					default={deadlineTemplate}

@@ -97,6 +97,7 @@ const convertTemplateToInstructions = (template) => {
 		}
 		if (skipCount === regexList.length) return 'ERROR';
 	}
+	if (instructions[0].type !== 'date') return 'ERROR: TEMPLATE MUST START WITH DATE';
 	instructions = instructions.map(
 		(el) => (el.type === 'date' ? { type: 'date', value: getDateWithExactValues(el.value) } : el)
 	);
@@ -104,6 +105,7 @@ const convertTemplateToInstructions = (template) => {
 };
 
 const interpretInstructions = (instructions, taskCount) => {
+	console.log(instructions);
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		let [ previous, operator ] = new Array(2).fill(null);
@@ -116,7 +118,7 @@ const interpretInstructions = (instructions, taskCount) => {
 				else if (operator === '+' && value === '-') operator = '-';
 				else operator = value;
 			} else if (type === 'algebra' && previous && operator) {
-				// previous type will always be date
+				// template must start with date so previous type for algebra will always be date
 				previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
 				operator = null;
 			} else if (type === 'date' && previous && operator) {
