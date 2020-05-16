@@ -108,8 +108,12 @@ const interpretInstructions = (instructions, taskCount) => {
 		for (let i = 0; i < instructions.length; i++) {
 			const { type, value } = instructions[i];
 			if ((type === 'date' || type === 'algebra') && previous === null) previous = instructions[i];
-			else if (type === 'operator' && operator === null) operator = value;
-			else if (type === 'algebra' && previous && operator) {
+			else if (type === 'operator') {
+				if (operator === '-' && value === '-') operator = '+';
+				else if (operator === '-' && value === '+') operator = '-';
+				else if (operator === '+' && value === '-') operator = '-';
+				else operator = value;
+			} else if (type === 'algebra' && previous && operator) {
 				if (previous.type === 'date') {
 					previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
 					operator = null;
