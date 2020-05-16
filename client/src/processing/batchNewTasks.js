@@ -114,13 +114,12 @@ const interpretInstructions = (instructions) => {
 			let { numArray } = getNumbersFromString(algebra);
 			let product = numArray.reduce((a, b) => a * b);
 			product = operator === '-' ? -product : product;
-			let newDate;
 			let date = new Date(year, month - 1, day);
 			if (algebra.match(/n/g)) product *= TEST_TASKCOUNT;
-			if (algebra.match(/d/g)) newDate = date.setDate(date.getDate() + product);
-			else if (algebra.match(/m/g)) newDate = addMonths(date, product);
-			else if (algebra.match(/y/g)) newDate = date.setFullYear(date.getFullYear() + product);
-			return new Date(newDate);
+			if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
+			else if (algebra.match(/m/g)) date = addMonths(date, product);
+			else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
+			return new Date(date);
 		}
 	}
 	return 'output';
