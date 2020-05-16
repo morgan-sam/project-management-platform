@@ -104,24 +104,28 @@ const interpretInstructions = (instructions, taskCount) => {
 	console.log(instructions);
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
-		let [ currentDate, currentOperator, currentAlgebra ] = new Array(3).fill(null);
+		let [ previous, operator ] = new Array(2).fill(null);
 		for (let i = 0; i < instructions.length; i++) {
 			const { type, value } = instructions[i];
-			if (type === 'date') {
-				if (currentDate === null) currentDate = value;
-			}
-			if (type === 'operator') {
-				if (currentOperator === null) currentOperator = value;
-			}
-			if (type === 'algebra') {
-				if (currentAlgebra === null) currentAlgebra = value;
-				if (currentDate && currentOperator) {
-					const date = calculateDateWithAlgebra(currentDate, currentOperator, currentAlgebra, task);
-					[ currentDate, currentOperator, currentAlgebra ] = new Array(3).fill(null);
-					console.log(date);
+			if ((type === 'date' || type === 'algebra') && previous === null) previous = instructions[i];
+			else if (type === 'operator' && operator === null) operator = value;
+			else if (type === 'algebra' && previous && operator) {
+				if (previous.type === 'date') {
+					previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
+					operator = null;
+				} else if (previous.type === 'algebra') {
+					// Add together two algebra equations
+				}
+			} else if (type === 'date' && previous && operator) {
+				if (previous.type === 'date') {
+					// Add together two algebra dates
+				} else if (previous.type === 'algebra') {
+					previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
+					operator = null;
 				}
 			}
 		}
+		stringArray.push(previous.value);
 	}
 	return stringArray;
 };
