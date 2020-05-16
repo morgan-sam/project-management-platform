@@ -97,11 +97,13 @@ const convertTemplateToInstructions = (template) => {
 		}
 		if (skipCount === regexList.length) return 'ERROR';
 	}
+	instructions = instructions.map(
+		(el) => (el.type === 'date' ? { type: 'date', value: getDateWithExactValues(el.value) } : el)
+	);
 	return instructions;
 };
 
 const interpretInstructions = (instructions, taskCount) => {
-	console.log(instructions);
 	// if (instructions.filter((el) => el.type === 'date').length > 1) return 'ERROR: MULTIPLE DATES';
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
@@ -148,6 +150,7 @@ const addSubtractDates = (dateOne, dateTwo, operator) => {
 
 const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 	const { day, month, year } = date;
+	console.log({ day, month, year });
 	let numArray = getNumbersFromString(algebra);
 	let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
 	product = operator === '-' ? -product : product;
@@ -157,6 +160,15 @@ const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 	else if (algebra.match(/m/g)) date = addMonths(date, product);
 	else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
 	return parseECMADateToDateObj(new Date(date));
+};
+
+const getDateWithExactValues = (date) => {
+	const today = new Date();
+	return {
+		day: date.day === 't' ? today.getDate() : date.day,
+		month: date.month === 't' ? today.getMonth() + 1 : date.month,
+		year: date.year === 't' ? today.getFullYear() : date.year
+	};
 };
 
 const addMonths = (date, months) => {
