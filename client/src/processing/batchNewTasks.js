@@ -124,7 +124,7 @@ const interpretInstructions = (instructions, taskCount) => {
 				if (previous.type === 'date') {
 					// Add together two dates
 				} else if (previous.type === 'algebra') {
-					previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
+					previous = { value: calculateDateWithAlgebra(value, operator, previous.value, task), type: 'date' };
 					operator = null;
 				}
 			}
