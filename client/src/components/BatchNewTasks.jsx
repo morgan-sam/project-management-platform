@@ -9,6 +9,8 @@ import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/parseDates';
 
 const BatchNewTasks = (props) => {
+	const { setDataChanged, setPopUp, colorTheme } = props;
+
 	const [ taskCount, setTaskCount ] = useState(20);
 	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${l,d}_${n,2}');
 	const [ dateTemplate, setDateTemplate ] = useState('${t}');
@@ -31,6 +33,8 @@ const BatchNewTasks = (props) => {
 				completed: false
 			};
 			fetchPostEntry(entry);
+			setDataChanged(true);
+			setPopUp(null);
 		}
 	};
 
@@ -51,7 +55,7 @@ const BatchNewTasks = (props) => {
 					onChange={(val) => setTaskTemplate(val)}
 					default={taskTemplate}
 				/>
-				<WizardButton color={props.colorTheme} />
+				<WizardButton color={colorTheme} />
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -63,7 +67,7 @@ const BatchNewTasks = (props) => {
 					}}
 					default={dateTemplate}
 				/>
-				<WizardButton color={props.colorTheme} />
+				<WizardButton color={colorTheme} />
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -75,7 +79,7 @@ const BatchNewTasks = (props) => {
 					}}
 					default={deadlineTemplate}
 				/>
-				<WizardButton color={props.colorTheme} />
+				<WizardButton color={colorTheme} />
 			</div>
 			<div style={subContainerStyle}>
 				<DropdownWithLabel
@@ -88,7 +92,7 @@ const BatchNewTasks = (props) => {
 				/>
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeam(val)} default={team} />
 			</div>
-			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
+			<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
 		</div>
 	);
 };

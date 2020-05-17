@@ -4,6 +4,7 @@ import ConfirmPopUp from 'components/ConfirmPopUp';
 import { fetchDeleteTasks } from 'data/fetch';
 import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
+import BatchNewTasks from './BatchNewTasks';
 
 const TaskManager = (props) => {
 	const {
@@ -72,7 +73,10 @@ const TaskManager = (props) => {
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={'Batch New Tasks'}
-				onClick={() => null}
+				onClick={() =>
+					setPopUp(
+						<BatchNewTasks colorTheme={colorTheme} setPopUp={setPopUp} setDataChanged={setDataChanged} />
+					)}
 				color={colorTheme}
 			/>
 			<ColorButton
