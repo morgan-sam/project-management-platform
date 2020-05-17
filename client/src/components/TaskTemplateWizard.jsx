@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
+import ColorButton from 'components/ColorButton';
 import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
 
 const TaskTemplateWizard = (props) => {
@@ -67,6 +68,15 @@ const TaskTemplateWizard = (props) => {
 		padding: '1rem'
 	};
 
+	const generateTaskTemplate = () => {
+		let template = name;
+		template += '_${';
+		template += `${symbol},`;
+		if (symbol === 'n') template += `${digits},`;
+		template += `${order}}`;
+		return template;
+	};
+
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
 			<div style={nameContainer}>
@@ -127,7 +137,17 @@ const TaskTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={bottomContainer}>{'Bottom'}</div>
+			<div style={bottomContainer}>
+				<ColorButton
+					color={colorTheme}
+					text={'Generate Template'}
+					onClick={() => {
+						const dateTemplate = generateTaskTemplate();
+						setTemplate({ ...template, task: dateTemplate });
+						setScreen('main');
+					}}
+				/>
+			</div>
 			<button style={cancelButtonStyle} onClick={() => setScreen('main')}>
 				×
 			</button>
