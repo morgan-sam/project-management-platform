@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
+import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle } from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
@@ -30,6 +31,7 @@ const BatchNewTasks = (props) => {
 					onChange={(val) => setTaskTemplate(val)}
 					default={taskTemplate}
 				/>
+				<WizardButton color={props.colorTheme} />
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -41,6 +43,7 @@ const BatchNewTasks = (props) => {
 					}}
 					default={dateTemplate}
 				/>
+				<WizardButton color={props.colorTheme} />
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -52,6 +55,7 @@ const BatchNewTasks = (props) => {
 					}}
 					default={deadlineTemplate}
 				/>
+				<WizardButton color={props.colorTheme} />
 			</div>
 			<div style={subContainerStyle}>
 				<DropdownWithLabel
