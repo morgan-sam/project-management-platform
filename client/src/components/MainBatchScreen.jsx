@@ -4,6 +4,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import {
+	titleStyle,
 	containerStyle,
 	subContainerStyle,
 	cancelButtonStyle,
@@ -16,6 +17,7 @@ const MainBatchScreen = (props) => {
 
 	return (
 		<div style={containerStyle}>
+			<div style={titleStyle}>Batch New Tasks</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
 					{...props}

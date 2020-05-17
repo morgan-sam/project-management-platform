@@ -1,3 +1,8 @@
+export const titleStyle = {
+	padding: '3rem',
+	fontSize: '1.6rem'
+};
+
 export const containerStyle = {
 	position: 'fixed',
 	display: 'flex',
