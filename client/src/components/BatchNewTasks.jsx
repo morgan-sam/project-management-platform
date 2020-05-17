@@ -30,9 +30,6 @@ const BatchNewTasks = (props) => {
 					onChange={(val) => setTaskTemplate(val)}
 					default={taskTemplate}
 				/>
-				<button style={optionButtonStyle}>Numbers</button>
-				<button style={optionButtonStyle}>Letters</button>
-				<button style={optionButtonStyle}>Reverse</button>
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -44,8 +41,6 @@ const BatchNewTasks = (props) => {
 					}}
 					default={dateTemplate}
 				/>
-				<button style={optionButtonStyle}>Today</button>
-				<button style={optionButtonStyle}>Sequential Days</button>
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -57,8 +52,6 @@ const BatchNewTasks = (props) => {
 					}}
 					default={deadlineTemplate}
 				/>
-				<button style={optionButtonStyle}>Today</button>
-				<button style={optionButtonStyle}>Sequential Days</button>
 			</div>
 			<div style={subContainerStyle}>
 				<DropdownWithLabel
