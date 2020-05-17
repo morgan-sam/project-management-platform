@@ -28,6 +28,13 @@ const TaskTemplateWizard = (props) => {
 		textAlign: 'center'
 	};
 
+	const getDigitContainerStyle = (symbol) => {
+		return {
+			opacity: symbol === 'l' ? '0.3' : '1',
+			pointerEvents: symbol === 'l' ? 'none' : 'auto'
+		};
+	};
+
 	const nameContainer = {
 		...categoryStyle,
 		gridArea: '1 / 1 / 4 / 2'
@@ -40,6 +47,7 @@ const TaskTemplateWizard = (props) => {
 
 	const digitsContainer = {
 		...categoryStyle,
+		...getDigitContainerStyle(symbol),
 		gridArea: '1 / 2 / 4 / 3'
 	};
 
