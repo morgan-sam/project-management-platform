@@ -22,3 +22,17 @@ export const subContainerStyle = {
 	justifyContent: 'center',
 	margin: '1rem'
 };
+
+export const cancelButtonStyle = {
+	position: 'absolute',
+	display: 'flex',
+	justifyContent: 'center',
+	lineHeight: '0',
+	height: '2rem',
+	width: '2rem',
+	top: '1rem',
+	right: '1rem',
+	backgroundColor: 'salmon',
+	color: 'white',
+	fontSize: '2rem'
+};

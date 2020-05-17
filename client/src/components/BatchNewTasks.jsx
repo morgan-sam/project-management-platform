@@ -3,7 +3,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
-import { containerStyle, subContainerStyle } from 'styling/batchNewTasks';
+import { containerStyle, subContainerStyle, cancelButtonStyle } from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
 import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/parseDates';
@@ -93,6 +93,9 @@ const BatchNewTasks = (props) => {
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeam(val)} default={team} />
 			</div>
 			<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
+			<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
+				×
+			</button>
 		</div>
 	);
 };
