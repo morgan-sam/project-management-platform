@@ -5,6 +5,8 @@ import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import { containerStyle, subContainerStyle } from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
+import { fetchPostEntry } from 'data/fetch';
+import { parseDateObjToISO } from 'processing/parseDates';
 
 const BatchNewTasks = (props) => {
 	const [ taskCount, setTaskCount ] = useState(20);
@@ -12,7 +14,25 @@ const BatchNewTasks = (props) => {
 	const [ dateTemplate, setDateTemplate ] = useState('${t}');
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}+2w');
 	const [ urgency, setUrgency ] = useState(3);
-	const [ teams, setTeams ] = useState();
+	const [ team, setTeam ] = useState('team1 team2 team3');
+
+	const addMultipleTasks = () => {
+		const tasks = interpretTaskTemplate(taskTemplate, taskCount);
+		const dates = interpretDateTemplate(dateTemplate, taskCount);
+		const deadlines = interpretDateTemplate(deadlineTemplate, taskCount);
+
+		for (let i = 0; i < taskCount; i++) {
+			const entry = {
+				task: tasks[i],
+				date: parseDateObjToISO(dates[i]),
+				deadline: parseDateObjToISO(deadlines[i]),
+				urgency,
+				team,
+				completed: false
+			};
+			fetchPostEntry(entry);
+		}
+	};
 
 	return (
 		<div style={containerStyle}>
@@ -66,13 +86,9 @@ const BatchNewTasks = (props) => {
 					onClick={(val) => setUrgency(val)}
 					width={'2rem'}
 				/>
-				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} default={teams} />
+				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeam(val)} default={team} />
 			</div>
-			<ColorButton
-				color={props.colorTheme}
-				text={'Add Tasks'}
-				onClick={() => interpretDateTemplate(dateTemplate, taskCount)}
-			/>
+			<ColorButton color={props.colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
 		</div>
 	);
 };

@@ -64,7 +64,7 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 		return null;
 	}
 	const dateArray = interpretInstructions(instructions, taskCount);
-	console.log(dateArray);
+	return dateArray;
 };
 
 const retrieveInstructionFromTemplate = (template, regex) => {
