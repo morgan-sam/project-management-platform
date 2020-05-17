@@ -88,13 +88,11 @@ const TaskTemplateWizard = (props) => {
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
 			<div style={nameContainer}>
-				<InputFormWithLabel
-					{...props}
-					label={'Task Name'}
-					onChange={(val) => setName(val)}
-					default={name}
-					style={containerItemStyle}
-				/>
+				<div style={{ padding: '1.5rem', paddingTop: '0.4rem' }}>Text Name:</div>
+				<form style={{ padding: '1rem' }} onChange={(e) => setName(e.target.value)}>
+					<input type="text" name="name" value={name} />
+					<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
+				</form>
 			</div>
 			<div style={symbolContainer}>
 				<div style={containerItemStyle}>Symbol:</div>
@@ -114,7 +112,7 @@ const TaskTemplateWizard = (props) => {
 				</div>
 			</div>
 			<div style={digitsContainer}>
-				<div style={containerItemStyle}>{`Digits:`}</div>
+				<div style={{ ...containerItemStyle, paddingTop: '0.3rem' }}>{`Digits:`}</div>
 				<Dropdown
 					className="dropdown"
 					default={digits}
@@ -122,7 +120,7 @@ const TaskTemplateWizard = (props) => {
 						alignItems: 'center',
 						zIndex: '9',
 						width: '2rem',
-						padding: '3rem'
+						padding: '2rem'
 					}}
 					options={[ ...Array(11).keys() ].slice(1)}
 					onClick={(val) => setDigits(val)}
