@@ -35,7 +35,7 @@ const MainBatchScreen = (props) => {
 						}}
 						default={template.task}
 					/>
-					<WizardButton color={colorTheme} onClick={() => null} />
+					<WizardButton color={colorTheme} onClick={() => setScreen('taskWizard')} />
 				</div>
 				<div style={errorTextStyle}>{errors.task}</div>
 			</div>
