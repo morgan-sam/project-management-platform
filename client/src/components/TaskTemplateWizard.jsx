@@ -3,7 +3,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
-import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
+import { cancelButtonStyle, containerStyle, titleStyle } from 'styling/batchNewTasks';
 
 const TaskTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template } = props;
@@ -15,7 +15,7 @@ const TaskTemplateWizard = (props) => {
 	const parentContainer = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(3, 1fr)',
+		gridTemplateRows: 'repeat(6, 1fr)',
 		padding: '3rem'
 	};
 
@@ -36,29 +36,35 @@ const TaskTemplateWizard = (props) => {
 		};
 	};
 
+	const topContainer = {
+		...titleStyle,
+		...categoryStyle,
+		gridArea: '1 / 1 / 2 / 3'
+	};
+
 	const nameContainer = {
 		...categoryStyle,
-		gridArea: '1 / 1 / 4 / 2'
+		gridArea: '2 / 1 / 4 / 2'
 	};
 
 	const symbolContainer = {
 		...categoryStyle,
-		gridArea: '4 / 1 / 7 / 2'
+		gridArea: '4 / 1 / 6 / 2'
 	};
 
 	const digitsContainer = {
 		...categoryStyle,
 		...getDigitContainerStyle(symbol),
-		gridArea: '1 / 2 / 4 / 3'
+		gridArea: '2 / 2 / 4 / 3'
 	};
 
 	const orderContainer = {
 		...categoryStyle,
-		gridArea: '4 / 2 / 7 / 3'
+		gridArea: '4 / 2 / 6 / 3'
 	};
 
 	const bottomContainer = {
-		gridArea: '7 / 1 / 9 / 3',
+		gridArea: '6 / 1 / 7 / 3',
 		padding: '2rem',
 		display: 'flex',
 		alignItems: 'center',
@@ -88,6 +94,7 @@ const TaskTemplateWizard = (props) => {
 
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
+			<div style={topContainer}>Generate Task Template</div>
 			<div style={nameContainer}>
 				<div style={{ padding: '1.5rem', paddingTop: '0.4rem' }}>Text Name:</div>
 				<form style={{ padding: '1rem' }} onChange={(e) => setName(e.target.value)}>
