@@ -21,13 +21,7 @@ const DateTemplateWizard = (props) => {
 	};
 
 	return (
-		<div
-			style={{
-				...containerStyle,
-				height: '10rem',
-				width: '20rem'
-			}}
-		>
+		<div style={containerStyle}>
 			<div>Initial Date:</div>
 			<DateSelect date={date} setDate={setDate} />
 			<div>Sequence:</div>

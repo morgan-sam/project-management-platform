@@ -10,7 +10,9 @@ export const containerStyle = {
 	transform: 'translate(-50%,-50%)',
 	backgroundColor: 'white',
 	zIndex: '10',
-	padding: '2rem'
+	padding: '2rem',
+	height: 'auto',
+	width: 'auto'
 };
 
 export const subContainerStyle = {
