@@ -74,7 +74,7 @@ const DateTemplateWizard = (props) => {
 		template += amount;
 		template += sequence;
 		template += `n${step}`;
-		console.log(template);
+		return template;
 	};
 
 	const shortStepToFull = (step) => {
