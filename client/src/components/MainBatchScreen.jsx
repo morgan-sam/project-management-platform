@@ -15,7 +15,13 @@ const MainBatchScreen = (props) => {
 	const { template, errors, setErrors, setTemplate, colorTheme, addMultipleTasks, setPopUp, setScreen } = props;
 
 	return (
-		<div style={containerStyle}>
+		<div
+			style={{
+				...containerStyle,
+				height: '30rem',
+				width: '50rem'
+			}}
+		>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
 					{...props}

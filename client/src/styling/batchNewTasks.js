@@ -6,8 +6,6 @@ export const containerStyle = {
 	justifyContent: 'center',
 	top: '50vh',
 	left: '50vw',
-	height: '30rem',
-	width: '50rem',
 	border: '1px solid black',
 	transform: 'translate(-50%,-50%)',
 	backgroundColor: 'white',
