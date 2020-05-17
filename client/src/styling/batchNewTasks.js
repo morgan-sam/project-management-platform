@@ -22,12 +22,3 @@ export const subContainerStyle = {
 	justifyContent: 'center',
 	margin: '1rem'
 };
-
-export const optionButtonStyle = {
-	height: 'auto',
-	width: 'auto',
-	backgroundColor: 'white',
-	border: '1px solid black',
-	margin: '0.5rem',
-	padding: '0.25rem'
-};

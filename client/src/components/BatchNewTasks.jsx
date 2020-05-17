@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import ColorButton from 'components/ColorButton';
-import { containerStyle, subContainerStyle, optionButtonStyle } from 'styling/batchNewTasks';
+import { containerStyle, subContainerStyle } from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
 
 const BatchNewTasks = (props) => {
