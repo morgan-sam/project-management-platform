@@ -110,7 +110,14 @@ const DateTemplateWizard = (props) => {
 		<div style={{ ...containerStyle, ...parentContainer }}>
 			<div style={dateContainer}>
 				<div style={containerItemStyle}>Initial Date:</div>
-				<DateSelect date={date} setDate={setDate} style={containerItemStyle} />
+				<DateSelect
+					date={date}
+					setDate={setDate}
+					style={{
+						...containerItemStyle,
+						zIndex: '10'
+					}}
+				/>
 			</div>
 			<div style={sequenceContainer}>
 				<div style={containerItemStyle}>Sequence:</div>
@@ -171,7 +178,7 @@ const DateTemplateWizard = (props) => {
 					default={amount}
 					style={{
 						alignItems: 'center',
-						zIndex: '10',
+						zIndex: '9',
 						width: '2rem',
 						padding: '3rem'
 					}}
