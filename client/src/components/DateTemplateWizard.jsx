@@ -22,26 +22,6 @@ const DateTemplateWizard = (props) => {
 		gridTemplateRows: 'repeat(3, 1fr)'
 	};
 
-	const sequenceSubContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(2, 1fr)',
-		gridGap: '1rem',
-		padding: '1rem'
-	};
-
-	const stepSubContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(4, 1fr)',
-		gridGap: '1rem',
-		padding: '1rem'
-	};
-
-	const containerItemStyle = {
-		padding: '1rem'
-	};
-
 	const categoryStyle = {
 		display: 'flex',
 		flexDirection: 'column',
@@ -58,12 +38,54 @@ const DateTemplateWizard = (props) => {
 		};
 	};
 
+	const dateContainer = {
+		...categoryStyle,
+		gridArea: '1 / 1 / 2 / 2'
+	};
+
+	const sequenceContainer = {
+		...categoryStyle,
+		gridArea: ' 2 / 1 / 3 / 2'
+	};
+
+	const stepContainer = {
+		...categoryStyle,
+		...getRightHandContainerStyle(sequence),
+		gridArea: '1 / 2 / 2 / 3'
+	};
+
+	const amountContainer = {
+		...categoryStyle,
+		...getRightHandContainerStyle(sequence),
+		gridArea: '2 / 2 / 3 / 3'
+	};
+
+	const sequenceSubContainer = {
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateRows: 'repeat(2, 1fr)',
+		gridGap: '1rem',
+		padding: '1rem'
+	};
+
+	const stepSubContainer = {
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateRows: 'repeat(4, 1fr)',
+		gridGap: '1rem',
+		padding: '1rem'
+	};
+
 	const bottomContainer = {
 		padding: '2rem',
 		gridArea: ' 3 / 1 / 4 / 3',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center'
+	};
+
+	const containerItemStyle = {
+		padding: '1rem'
 	};
 
 	const generateDateTemplate = () => {
@@ -86,11 +108,11 @@ const DateTemplateWizard = (props) => {
 
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
-			<div style={{ ...categoryStyle, gridArea: '1 / 1 / 2 / 2' }}>
+			<div style={dateContainer}>
 				<div style={containerItemStyle}>Initial Date:</div>
 				<DateSelect date={date} setDate={setDate} style={containerItemStyle} />
 			</div>
-			<div style={{ ...categoryStyle, gridArea: ' 2 / 1 / 3 / 2' }}>
+			<div style={sequenceContainer}>
 				<div style={containerItemStyle}>Sequence:</div>
 				<div style={{ ...sequenceSubContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
@@ -113,7 +135,7 @@ const DateTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={{ ...categoryStyle, ...getRightHandContainerStyle(sequence), gridArea: '1 / 2 / 2 / 3' }}>
+			<div style={stepContainer}>
 				<div style={containerItemStyle}>Step:</div>
 				<div style={{ ...stepSubContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
@@ -142,7 +164,7 @@ const DateTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={{ ...categoryStyle, ...getRightHandContainerStyle(sequence), gridArea: '2 / 2 / 3 / 3' }}>
+			<div style={amountContainer}>
 				<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
 				<Dropdown
 					className="dropdown"
