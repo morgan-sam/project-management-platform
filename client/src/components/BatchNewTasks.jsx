@@ -60,7 +60,7 @@ const BatchNewTasks = (props) => {
 					setScreen={setScreen}
 				/>
 			)}
-			{screen === 'dateWizard' && <DateTemplateWizard setScreen={setScreen} />}
+			{screen === 'dateWizard' && <DateTemplateWizard setScreen={setScreen} colorTheme={colorTheme} />}
 		</div>
 	);
 };
