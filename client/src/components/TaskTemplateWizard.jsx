@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import InputFormWithLabel from 'components/InputFormWithLabel';
 import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
 
 const TaskTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template } = props;
+	const [ name, setName ] = useState('');
 
 	const parentContainer = {
 		display: 'grid',
@@ -50,7 +52,9 @@ const TaskTemplateWizard = (props) => {
 
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
-			<div style={nameContainer}>{'Name'}</div>
+			<div style={nameContainer}>
+				<InputFormWithLabel {...props} label={'Task Name'} onChange={(val) => setName(val)} default={name} />
+			</div>
 			<div style={symbolContainer}>{'Symbol'}</div>
 			<div style={digitsContainer}>{'Digits'}</div>
 			<div style={orderContainer}>{'Order'}</div>
