@@ -23,7 +23,7 @@ const BatchNewTasks = (props) => {
 		let errors = {};
 		const tasks = interpretTaskTemplate(template.task, template.count);
 		const dates = interpretDateTemplate(template.date, template.count);
-		const deadlines = interpretDateTemplate(template.date, template.count);
+		const deadlines = interpretDateTemplate(template.deadline, template.count);
 		if (typeof tasks === 'string') errors['task'] = tasks;
 		if (typeof dates === 'string') errors['date'] = dates;
 		if (typeof deadlines === 'string') errors['deadline'] = deadlines;
@@ -60,12 +60,13 @@ const BatchNewTasks = (props) => {
 					setScreen={setScreen}
 				/>
 			)}
-			{screen === 'dateWizard' && (
+			{(screen === 'dateWizard' || screen === 'deadlineWizard') && (
 				<DateTemplateWizard
 					setScreen={setScreen}
 					colorTheme={colorTheme}
 					template={template}
 					setTemplate={setTemplate}
+					screen={screen}
 				/>
 			)}
 		</div>

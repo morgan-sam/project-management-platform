@@ -10,7 +10,7 @@ import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
 import { useState } from 'react';
 
 const DateTemplateWizard = (props) => {
-	const { setScreen, colorTheme, setTemplate, template } = props;
+	const { setScreen, colorTheme, setTemplate, template, screen } = props;
 	const [ date, setDate ] = useState(parseISOToDateObj(getDayFromTodayAsISO()));
 	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
@@ -163,7 +163,8 @@ const DateTemplateWizard = (props) => {
 					text={'Generate Template'}
 					onClick={() => {
 						const dateTemplate = generateDateTemplate();
-						setTemplate({ ...template, date: dateTemplate });
+						if (screen === 'dateWizard') setTemplate({ ...template, date: dateTemplate });
+						if (screen === 'deadlineWizard') setTemplate({ ...template, deadline: dateTemplate });
 						setScreen('main');
 					}}
 				/>
