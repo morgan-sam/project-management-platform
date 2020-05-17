@@ -40,24 +40,32 @@ const DateTemplateWizard = (props) => {
 
 	const dateContainer = {
 		...categoryStyle,
-		gridArea: '1 / 1 / 2 / 2'
+		gridArea: '1 / 1 / 4 / 2'
 	};
 
 	const sequenceContainer = {
 		...categoryStyle,
-		gridArea: ' 2 / 1 / 3 / 2'
+		gridArea: '4 / 1 / 7 / 2'
 	};
 
 	const stepContainer = {
 		...categoryStyle,
 		...getRightHandContainerStyle(sequence),
-		gridArea: '1 / 2 / 2 / 3'
+		gridArea: '1 / 2 / 4 / 3'
 	};
 
 	const amountContainer = {
 		...categoryStyle,
 		...getRightHandContainerStyle(sequence),
-		gridArea: '2 / 2 / 3 / 3'
+		gridArea: '4 / 2 / 7 / 3'
+	};
+
+	const bottomContainer = {
+		gridArea: '7 / 1 / 9 / 3',
+		padding: '2rem',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center'
 	};
 
 	const sequenceSubContainer = {
@@ -75,15 +83,6 @@ const DateTemplateWizard = (props) => {
 		gridGap: '1rem',
 		padding: '1rem'
 	};
-
-	const bottomContainer = {
-		padding: '2rem',
-		gridArea: ' 3 / 1 / 4 / 3',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center'
-	};
-
 	const containerItemStyle = {
 		padding: '1rem'
 	};
