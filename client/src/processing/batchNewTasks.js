@@ -64,8 +64,7 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 		return null;
 	}
 	const dateArray = interpretInstructions(instructions, taskCount);
-	const stringDateArray = dateArray.map((el) => parseDateObjToLittleEndian(el));
-	console.log(stringDateArray);
+	console.log(dateArray);
 };
 
 const retrieveInstructionFromTemplate = (template, regex) => {
