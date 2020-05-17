@@ -4,7 +4,7 @@ import ConfirmPopUp from 'components/ConfirmPopUp';
 import { fetchDeleteTasks } from 'data/fetch';
 import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
-import BatchNewTasks from './BatchNewTasks';
+import BatchNewTasks from 'components/BatchNewTasks';
 
 const TaskManager = (props) => {
 	const {

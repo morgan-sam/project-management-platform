@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
+import DateTemplateWizard from 'components/DateTemplateWizard';
 import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import {
@@ -16,31 +17,32 @@ import { parseDateObjToISO } from 'processing/parseDates';
 
 const BatchNewTasks = (props) => {
 	const { setDataChanged, setPopUp, colorTheme } = props;
-
-	const [ taskCount, setTaskCount ] = useState(10);
-	const [ taskTemplate, setTaskTemplate ] = useState('Task_${n}');
-	const [ dateTemplate, setDateTemplate ] = useState('${t}');
-	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}+2w');
-	const [ urgency, setUrgency ] = useState(3);
-	const [ team, setTeam ] = useState('PLACEHOLDER_NAME');
 	const [ errors, setErrors ] = useState({ task: '', date: '', deadline: '' });
+	const [ template, setTemplate ] = useState({
+		count: 10,
+		task: 'Task_${n}',
+		date: '${t}',
+		deadline: '${t}+2w',
+		urgency: 3,
+		team: 'PLACEHOLDER_NAME'
+	});
 
 	const addMultipleTasks = () => {
 		let errors = {};
-		const tasks = interpretTaskTemplate(taskTemplate, taskCount);
-		const dates = interpretDateTemplate(dateTemplate, taskCount);
-		const deadlines = interpretDateTemplate(deadlineTemplate, taskCount);
+		const tasks = interpretTaskTemplate(template.task, template.count);
+		const dates = interpretDateTemplate(template.date, template.count);
+		const deadlines = interpretDateTemplate(template.date, template.count);
 		if (typeof tasks === 'string') errors['task'] = tasks;
 		if (typeof dates === 'string') errors['date'] = dates;
 		if (typeof deadlines === 'string') errors['deadline'] = deadlines;
 		if (Object.values(errors).length === 0) {
-			for (let i = 0; i < taskCount; i++) {
+			for (let i = 0; i < template.count; i++) {
 				const entry = {
 					task: tasks[i],
 					date: parseDateObjToISO(dates[i]),
 					deadline: parseDateObjToISO(deadlines[i]),
-					urgency,
-					team,
+					urgency: template.urgency,
+					team: template.team,
 					completed: false
 				};
 				fetchPostEntry(entry);
@@ -58,8 +60,8 @@ const BatchNewTasks = (props) => {
 				<InputFormWithLabel
 					{...props}
 					label={'Number Of Tasks'}
-					onChange={(val) => setTaskCount(parseInt(val))}
-					default={taskCount ? taskCount : 0}
+					onChange={(val) => setTemplate({ ...template, count: parseInt(val) })}
+					default={template.count ? template.count : 0}
 				/>
 			</div>
 			<div style={subContainerStyle}>
@@ -68,12 +70,12 @@ const BatchNewTasks = (props) => {
 						{...props}
 						label={'Task Template'}
 						onChange={(val) => {
-							setTaskTemplate(val);
+							setTemplate({ ...template, task: val });
 							setErrors({ ...errors, task: null });
 						}}
-						default={taskTemplate}
+						default={template.task}
 					/>
-					<WizardButton color={colorTheme} />
+					<WizardButton color={colorTheme} onClick={() => null} />
 				</div>
 				<div style={errorTextStyle}>{errors.task}</div>
 			</div>
@@ -84,12 +86,12 @@ const BatchNewTasks = (props) => {
 						label={'Date Template'}
 						onChange={(val) => {
 							let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
-							setDateTemplate(filtered);
+							setTemplate({ ...template, date: filtered });
 							setErrors({ ...errors, date: null });
 						}}
-						default={dateTemplate}
+						default={template.date}
 					/>
-					<WizardButton color={colorTheme} />
+					<WizardButton color={colorTheme} onClick={() => null} />
 				</div>
 				<div style={errorTextStyle}>{errors.date}</div>
 			</div>
@@ -100,10 +102,10 @@ const BatchNewTasks = (props) => {
 						label={'Deadline Template'}
 						onChange={(val) => {
 							let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
-							setDeadlineTemplate(filtered);
+							setTemplate({ ...template, deadline: filtered });
 							setErrors({ ...errors, deadline: null });
 						}}
-						default={deadlineTemplate}
+						default={template.deadline}
 					/>
 					<WizardButton color={colorTheme} />
 				</div>
@@ -114,13 +116,18 @@ const BatchNewTasks = (props) => {
 					{...props}
 					label={'Urgency'}
 					options={[ 1, 2, 3, 4, 5 ]}
-					default={urgency}
-					onClick={(val) => setUrgency(val)}
+					default={template.urgency}
+					onClick={(val) => setTemplate({ ...template, urgency: val })}
 					width={'2rem'}
 				/>
 			</div>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} default={team} />
+				<InputFormWithLabel
+					{...props}
+					label={'Team'}
+					onChange={(val) => setTemplate({ ...template, team: val })}
+					default={template.team}
+				/>
 			</div>
 			<div style={subContainerStyle}>
 				<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
