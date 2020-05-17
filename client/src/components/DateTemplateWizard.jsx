@@ -20,13 +20,17 @@ const DateTemplateWizard = (props) => {
 		padding: '1rem'
 	};
 
+	const containerItemStyle = {
+		padding: '1rem'
+	};
+
 	return (
 		<div style={containerStyle}>
-			<div>Initial Date:</div>
-			<DateSelect date={date} setDate={setDate} />
-			<div>Sequence:</div>
+			<div style={containerItemStyle}>Initial Date:</div>
+			<DateSelect date={date} setDate={setDate} style={containerItemStyle} />
+			<div style={containerItemStyle}>Sequence:</div>
 
-			<div style={sequenceContainer}>
+			<div style={{ ...sequenceContainer, ...containerItemStyle }}>
 				<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Forward:</div>
 				<Checkbox style={{ gridArea: '1 / 2 / 2 / 3' }} default={forward} onChange={() => setForwards(true)} />
 				<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Backwards:</div>
