@@ -1,6 +1,6 @@
 import { combineParallelArrays } from 'processing/utility';
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj, parseECMADateToLittleEndian, parseECMADateToDateObj } from 'processing/parseDates';
+import { parseISOToDateObj, parseDateObjToLittleEndian, parseECMADateToDateObj } from 'processing/parseDates';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
@@ -63,8 +63,9 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 		console.log(instructions);
 		return null;
 	}
-	const output = interpretInstructions(instructions, taskCount);
-	console.log(output);
+	const dateArray = interpretInstructions(instructions, taskCount);
+	const stringDateArray = dateArray.map((el) => parseDateObjToLittleEndian(el));
+	console.log(stringDateArray);
 };
 
 const retrieveInstructionFromTemplate = (template, regex) => {

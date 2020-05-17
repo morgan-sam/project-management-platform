@@ -3,6 +3,10 @@ export const parseISOToLittleEndian = (string) => {
 	return stringDate.split('-').reverse().join('/');
 };
 
+export const parseDateObjToLittleEndian = (dateObj) => {
+	return `${dateObj.day}/${dateObj.month}/${dateObj.year}`;
+};
+
 export const parseISOToDateObj = (string) => {
 	const stringDate = string.match(/.+?(?=T)/g)[0];
 	const dateSplitString = stringDate.split('-').reverse();
