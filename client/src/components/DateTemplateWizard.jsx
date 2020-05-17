@@ -22,7 +22,7 @@ const DateTemplateWizard = (props) => {
 		gridTemplateRows: 'repeat(3, 1fr)'
 	};
 
-	const sequenceContainer = {
+	const sequenceSubContainer = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridTemplateRows: 'repeat(2, 1fr)',
@@ -30,7 +30,7 @@ const DateTemplateWizard = (props) => {
 		padding: '1rem'
 	};
 
-	const stepContainer = {
+	const stepSubContainer = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridTemplateRows: 'repeat(4, 1fr)',
@@ -92,7 +92,7 @@ const DateTemplateWizard = (props) => {
 			</div>
 			<div style={{ ...categoryStyle, gridArea: ' 2 / 1 / 3 / 2' }}>
 				<div style={containerItemStyle}>Sequence:</div>
-				<div style={{ ...sequenceContainer, ...containerItemStyle }}>
+				<div style={{ ...sequenceSubContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -115,7 +115,7 @@ const DateTemplateWizard = (props) => {
 			</div>
 			<div style={{ ...categoryStyle, ...getRightHandContainerStyle(sequence), gridArea: '1 / 2 / 2 / 3' }}>
 				<div style={containerItemStyle}>Step:</div>
-				<div style={{ ...stepContainer, ...containerItemStyle }}>
+				<div style={{ ...stepSubContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
