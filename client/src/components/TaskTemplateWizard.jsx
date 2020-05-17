@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import InputFormWithLabel from 'components/InputFormWithLabel';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';

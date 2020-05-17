@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import MainBatchScreen from 'components/MainBatchScreen';
 import DateTemplateWizard from 'components/DateTemplateWizard';
 import TaskTemplateWizard from 'components/TaskTemplateWizard';
-import { containerStyle } from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
 import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/parseDates';
