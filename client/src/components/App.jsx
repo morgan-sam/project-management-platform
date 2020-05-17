@@ -3,7 +3,6 @@ import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
-import ConfirmPopUp from 'components/ConfirmPopUp';
 import BatchNewTasks from 'components/BatchNewTasks';
 import ColorTest from 'components/ColorTest';
 import FilterBar from 'components/FilterBar';
@@ -27,10 +26,7 @@ const App = () => {
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
-	const [ confirmPopUp, setConfirmPopUp ] = useState({
-		message: null,
-		confirm: null
-	});
+	const [ popUp, setPopUp ] = useState(null);
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -86,7 +82,7 @@ const App = () => {
 
 	return (
 		<ThemeProvider value={colorTheme}>
-			<div className="mainPage" style={getMainPageStyle(confirmPopUp.message)}>
+			<div className="mainPage" style={getMainPageStyle(popUp)}>
 				{/* <ColorTest /> */}
 				<MainTitle style={mainPageItemStyle} />
 				<TaskManager
@@ -99,8 +95,8 @@ const App = () => {
 					displayNewTaskBar={displayNewTaskBar}
 					setDisplayNewTaskBar={setDisplayNewTaskBar}
 					colorTheme={colorTheme}
-					setConfirmPopUp={setConfirmPopUp}
 					pressedKeys={pressedKeys}
+					setPopUp={setPopUp}
 				/>
 				<FilterBar
 					style={mainPageItemStyle}
@@ -128,11 +124,8 @@ const App = () => {
 					taskList={getTaskList()}
 					pressedKeys={pressedKeys}
 				/>
-				{confirmPopUp.message && (
-					<ConfirmPopUp {...confirmPopUp} setConfirmPopUp={setConfirmPopUp} pressedKeys={pressedKeys} />
-				)}
-				<BatchNewTasks colorTheme={colorTheme} />
-				{confirmPopUp.message && <div className={'overlay'} style={overlayStyle} />}
+				{popUp}
+				{popUp && <div className={'overlay'} style={overlayStyle} />}
 			</div>
 		</ThemeProvider>
 	);

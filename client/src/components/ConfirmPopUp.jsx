@@ -3,7 +3,7 @@ import ColorButton from 'components/ColorButton';
 
 const ConfirmPopUp = (props) => {
 	const popUpCloseTimeMs = 400;
-	const { message, confirm, setConfirmPopUp, pressedKeys } = props;
+	const { message, confirm, setPopUp, pressedKeys } = props;
 
 	const popUpContainerStyle = {
 		display: 'flex',
@@ -41,9 +41,7 @@ const ConfirmPopUp = (props) => {
 		margin: '2rem 0 0 0'
 	};
 
-	const closePopUp = () => {
-		setConfirmPopUp({ message: null, confirm: null, cancel: null });
-	};
+	const closePopUp = () => setPopUp(null);
 
 	useEffect(
 		() => {

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
+import ConfirmPopUp from 'components/ConfirmPopUp';
 import { fetchDeleteTasks } from 'data/fetch';
 import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
@@ -12,7 +13,7 @@ const TaskManager = (props) => {
 		rawTaskList,
 		selectedTasks,
 		colorTheme,
-		setConfirmPopUp,
+		setPopUp,
 		pressedKeys
 	} = props;
 
@@ -42,10 +43,14 @@ const TaskManager = (props) => {
 	const deletePopUp = () => {
 		{
 			if (selectedTasks.length)
-				setConfirmPopUp({
-					message: `Are you sure you want to delete ${selectedTasks.length} tasks?`,
-					confirm: () => deleteSelectedTasks(selectedTasks)
-				});
+				setPopUp(
+					<ConfirmPopUp
+						message={`Are you sure you want to delete ${selectedTasks.length} tasks?`}
+						confirm={() => deleteSelectedTasks(selectedTasks)}
+						pressedKeys={pressedKeys}
+						setPopUp={setPopUp}
+					/>
+				);
 		}
 	};
 
