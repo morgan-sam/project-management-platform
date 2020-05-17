@@ -16,7 +16,7 @@ const BatchNewTasks = (props) => {
 	const [ dateTemplate, setDateTemplate ] = useState('${t}');
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}+2w');
 	const [ urgency, setUrgency ] = useState(3);
-	const [ team, setTeam ] = useState('team1 team2 team3');
+	const [ team, setTeam ] = useState('teamName');
 
 	const addMultipleTasks = () => {
 		const tasks = interpretTaskTemplate(taskTemplate, taskCount);
@@ -90,7 +90,7 @@ const BatchNewTasks = (props) => {
 					onClick={(val) => setUrgency(val)}
 					width={'2rem'}
 				/>
-				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeam(val)} default={team} />
+				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} default={team} />
 			</div>
 			<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
 			<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
