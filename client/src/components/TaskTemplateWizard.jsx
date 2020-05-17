@@ -78,8 +78,8 @@ const TaskTemplateWizard = (props) => {
 	};
 
 	const generateTaskTemplate = () => {
-		let template = name;
-		template += '_${';
+		let template = name.length ? `${name}_` : '';
+		template += '${';
 		template += `${symbol},`;
 		if (symbol === 'n') template += `${digits},`;
 		template += `${order}}`;
