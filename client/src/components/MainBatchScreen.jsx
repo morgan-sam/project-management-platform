@@ -12,18 +12,10 @@ import {
 } from 'styling/batchNewTasks';
 
 const MainBatchScreen = (props) => {
-	const { template, errors, setErrors, setTemplate, colorTheme, addMultipleTasks, setPopUp } = props;
+	const { template, errors, setErrors, setTemplate, colorTheme, addMultipleTasks, setPopUp, setScreen } = props;
 
-	const mainScreenContainerStyle = {
-		height: '100%',
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center'
-	};
 	return (
-		<div style={mainScreenContainerStyle}>
+		<div style={containerStyle}>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
 					{...props}
@@ -59,7 +51,7 @@ const MainBatchScreen = (props) => {
 						}}
 						default={template.date}
 					/>
-					<WizardButton color={colorTheme} onClick={() => null} />
+					<WizardButton color={colorTheme} onClick={() => setScreen('dateWizard')} />
 				</div>
 				<div style={errorTextStyle}>{errors.date}</div>
 			</div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MainBatchScreen from 'components/MainBatchScreen';
+import DateTemplateWizard from 'components/DateTemplateWizard';
 import { containerStyle } from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
 import { fetchPostEntry } from 'data/fetch';
@@ -16,6 +17,7 @@ const BatchNewTasks = (props) => {
 		urgency: 3,
 		team: 'PLACEHOLDER_NAME'
 	});
+	const [ screen, setScreen ] = useState('main');
 
 	const addMultipleTasks = () => {
 		let errors = {};
@@ -45,16 +47,20 @@ const BatchNewTasks = (props) => {
 	};
 
 	return (
-		<div style={containerStyle}>
-			<MainBatchScreen
-				errors={errors}
-				setErrors={setErrors}
-				template={template}
-				setTemplate={setTemplate}
-				colorTheme={colorTheme}
-				addMultipleTasks={addMultipleTasks}
-				setPopUp={setPopUp}
-			/>
+		<div>
+			{screen === 'main' && (
+				<MainBatchScreen
+					errors={errors}
+					setErrors={setErrors}
+					template={template}
+					setTemplate={setTemplate}
+					colorTheme={colorTheme}
+					addMultipleTasks={addMultipleTasks}
+					setPopUp={setPopUp}
+					setScreen={setScreen}
+				/>
+			)}
+			{screen === 'dateWizard' && <DateTemplateWizard setScreen={setScreen} />}
 		</div>
 	);
 };

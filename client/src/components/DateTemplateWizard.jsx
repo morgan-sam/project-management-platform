@@ -4,33 +4,28 @@ import BatchNewTasks from 'components/BatchNewTasks';
 import { cancelButtonStyle } from 'styling/batchNewTasks';
 
 const DateTemplateWizard = (props) => {
-	const { setPopUp, colorTheme, setDataChanged } = props;
+	const { setScreen } = props;
 
 	const containerStyle = {
-		position: 'fixed',
-		height: '14rem',
-		width: '20rem',
-		backgroundColor: 'white',
-		border: '1px solid black',
-		top: '50vh',
-		left: '50vw',
-		transform: 'translate(-50%,-50%)',
-		zIndex: '10',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		justifyContent: 'center'
+		position: 'fixed',
+		justifyContent: 'center',
+		top: '50vh',
+		left: '50vw',
+		height: '10rem',
+		width: '20rem',
+		border: '1px solid black',
+		transform: 'translate(-50%,-50%)',
+		backgroundColor: 'white',
+		zIndex: '10',
+		padding: '2rem'
 	};
 
 	return (
 		<div style={containerStyle}>
-			<button
-				style={cancelButtonStyle}
-				onClick={() =>
-					setPopUp(
-						<BatchNewTasks colorTheme={colorTheme} setPopUp={setPopUp} setDataChanged={setDataChanged} />
-					)}
-			>
+			<button style={cancelButtonStyle} onClick={() => setScreen('main')}>
 				×
 			</button>
 		</div>
