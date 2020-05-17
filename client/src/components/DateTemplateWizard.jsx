@@ -58,23 +58,23 @@ const DateTemplateWizard = (props) => {
 			<div style={categoryStyle}>
 				<div style={containerItemStyle}>Sequence:</div>
 				<div style={{ ...sequenceContainer, ...containerItemStyle }}>
-					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Forward:</div>
+					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
+						default={sequence === 'none'}
+						onChange={() => setSequence('none')}
+					/>
+					<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Forwards:</div>
+					<Checkbox
+						style={{ gridArea: ' 2 / 2 / 3 / 3' }}
 						default={sequence === '+'}
 						onChange={() => setSequence('+')}
 					/>
-					<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Backwards:</div>
-					<Checkbox
-						style={{ gridArea: ' 2 / 2 / 3 / 3' }}
-						default={sequence === '-'}
-						onChange={() => setSequence('-')}
-					/>
-					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>None:</div>
+					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Backwards:</div>
 					<Checkbox
 						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
-						default={sequence === 'none'}
-						onChange={() => setSequence('none')}
+						default={sequence === '-'}
+						onChange={() => setSequence('-')}
 					/>
 				</div>
 			</div>
