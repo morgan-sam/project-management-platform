@@ -1,8 +1,8 @@
 export const containerStyle = {
+	position: 'fixed',
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
-	position: 'fixed',
 	justifyContent: 'center',
 	top: '50vh',
 	left: '50vw',

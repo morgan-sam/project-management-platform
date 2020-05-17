@@ -1,6 +1,7 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
 import Checkbox from 'components/Checkbox';
+import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj } from 'processing/parseDates';
@@ -13,6 +14,7 @@ const DateTemplateWizard = (props) => {
 	const [ date, setDate ] = useState(parseISOToDateObj(getDayFromTodayAsISO()));
 	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
+	const [ amount, setAmount ] = useState(1);
 
 	const parentContainer = {
 		display: 'grid',
@@ -41,6 +43,10 @@ const DateTemplateWizard = (props) => {
 	};
 
 	const categoryStyle = {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
 		padding: '1rem',
 		textAlign: 'center'
 	};
@@ -121,7 +127,21 @@ const DateTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={{ ...categoryStyle, gridArea: '2 / 2 / 3 / 3' }} />
+			<div style={{ ...categoryStyle, gridArea: '2 / 2 / 3 / 3' }}>
+				<div style={containerItemStyle}>{`Amount Of ${step}s:`}</div>
+				<Dropdown
+					className="dropdown"
+					default={amount}
+					style={{
+						alignItems: 'center',
+						zIndex: '10',
+						width: '2rem',
+						padding: '3rem'
+					}}
+					options={[ ...Array(11).keys() ].slice(1)}
+					onClick={(val) => setAmount(val)}
+				/>
+			</div>
 			<div style={bottomContainer}>
 				<ColorButton color={colorTheme} text={'Generate Template'} onClick={() => generateDateTemplate()} />
 			</div>
