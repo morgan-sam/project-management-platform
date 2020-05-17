@@ -11,7 +11,7 @@ import { useState } from 'react';
 const DateTemplateWizard = (props) => {
 	const { setScreen, colorTheme } = props;
 	const [ date, setDate ] = useState(parseISOToDateObj(getDayFromTodayAsISO()));
-	const [ forward, setForwards ] = useState(true);
+	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
 
 	const sequenceContainer = {
@@ -43,7 +43,8 @@ const DateTemplateWizard = (props) => {
 		let template = '${';
 		template += Object.values(date).join('/');
 		template += '}';
-		template += forward ? '+' : '-';
+		if (sequence === 'none') return template;
+		template += sequence;
 		template += `n${step}`;
 		console.log(template);
 	};
@@ -60,46 +61,54 @@ const DateTemplateWizard = (props) => {
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Forward:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
-						default={forward}
-						onChange={() => setForwards(true)}
+						default={sequence === '+'}
+						onChange={() => setSequence('+')}
 					/>
 					<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Backwards:</div>
 					<Checkbox
 						style={{ gridArea: ' 2 / 2 / 3 / 3' }}
-						default={!forward}
-						onChange={() => setForwards(false)}
+						default={sequence === '-'}
+						onChange={() => setSequence('-')}
 					/>
-				</div>
-			</div>
-			<div style={categoryStyle}>
-				<div style={containerItemStyle}>Step:</div>
-				<div style={{ ...stepContainer, ...containerItemStyle }}>
-					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
-					<Checkbox
-						style={{ gridArea: '1 / 2 / 2 / 3' }}
-						default={step === 'd'}
-						onChange={() => setStep('d')}
-					/>
-					<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Week:</div>
-					<Checkbox
-						style={{ gridArea: '2 / 2 / 3 / 3' }}
-						default={step === 'w'}
-						onChange={() => setStep('w')}
-					/>
-					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Month:</div>
+					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>None:</div>
 					<Checkbox
 						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
-						default={step === 'm'}
-						onChange={() => setStep('m')}
-					/>
-					<div style={{ gridArea: '4 / 1 / 5 / 2' }}>Year:</div>
-					<Checkbox
-						style={{ gridArea: '4 / 2 / 5 / 3' }}
-						default={step === 'y'}
-						onChange={() => setStep('y')}
+						default={sequence === 'none'}
+						onChange={() => setSequence('none')}
 					/>
 				</div>
 			</div>
+			{sequence !== 'none' && (
+				<div style={categoryStyle}>
+					<div style={containerItemStyle}>Step:</div>
+					<div style={{ ...stepContainer, ...containerItemStyle }}>
+						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
+						<Checkbox
+							style={{ gridArea: '1 / 2 / 2 / 3' }}
+							default={step === 'd'}
+							onChange={() => setStep('d')}
+						/>
+						<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Week:</div>
+						<Checkbox
+							style={{ gridArea: '2 / 2 / 3 / 3' }}
+							default={step === 'w'}
+							onChange={() => setStep('w')}
+						/>
+						<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Month:</div>
+						<Checkbox
+							style={{ gridArea: ' 3 / 2 / 4 / 3' }}
+							default={step === 'm'}
+							onChange={() => setStep('m')}
+						/>
+						<div style={{ gridArea: '4 / 1 / 5 / 2' }}>Year:</div>
+						<Checkbox
+							style={{ gridArea: '4 / 2 / 5 / 3' }}
+							default={step === 'y'}
+							onChange={() => setStep('y')}
+						/>
+					</div>
+				</div>
+			)}
 			<div style={{ padding: '2rem' }}>
 				<ColorButton color={colorTheme} text={'Generate Template'} onClick={() => generateDateTemplate()} />
 			</div>
