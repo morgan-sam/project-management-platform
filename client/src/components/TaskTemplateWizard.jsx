@@ -25,7 +25,8 @@ const TaskTemplateWizard = (props) => {
 		alignItems: 'center',
 		justifyContent: 'center',
 		padding: '1rem',
-		textAlign: 'center'
+		textAlign: 'center',
+		margin: '1.5rem 0rem'
 	};
 
 	const getDigitContainerStyle = (symbol) => {
