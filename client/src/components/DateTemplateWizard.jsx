@@ -64,6 +64,7 @@ const DateTemplateWizard = (props) => {
 		template += Object.values(date).join('/');
 		template += '}';
 		if (sequence === 'none') return template;
+		template += amount;
 		template += sequence;
 		template += `n${step}`;
 		console.log(template);
