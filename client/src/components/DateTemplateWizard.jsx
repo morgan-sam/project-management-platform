@@ -51,6 +51,13 @@ const DateTemplateWizard = (props) => {
 		textAlign: 'center'
 	};
 
+	const getRightHandContainerStyle = (sequence) => {
+		return {
+			opacity: sequence === 'none' ? '0.3' : '1',
+			pointerEvents: sequence === 'none' ? 'none' : 'auto'
+		};
+	};
+
 	const bottomContainer = {
 		padding: '2rem',
 		gridArea: ' 3 / 1 / 4 / 3',
@@ -106,7 +113,7 @@ const DateTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={{ ...categoryStyle, gridArea: '1 / 2 / 2 / 3' }}>
+			<div style={{ ...categoryStyle, ...getRightHandContainerStyle(sequence), gridArea: '1 / 2 / 2 / 3' }}>
 				<div style={containerItemStyle}>Step:</div>
 				<div style={{ ...stepContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
@@ -135,7 +142,7 @@ const DateTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={{ ...categoryStyle, gridArea: '2 / 2 / 3 / 3' }}>
+			<div style={{ ...categoryStyle, ...getRightHandContainerStyle(sequence), gridArea: '2 / 2 / 3 / 3' }}>
 				<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
 				<Dropdown
 					className="dropdown"
