@@ -19,7 +19,8 @@ const DateTemplateWizard = (props) => {
 	const parentContainer = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(3, 1fr)'
+		gridTemplateRows: 'repeat(3, 1fr)',
+		padding: '3rem'
 	};
 
 	const categoryStyle = {
