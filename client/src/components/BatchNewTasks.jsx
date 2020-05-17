@@ -24,6 +24,7 @@ const BatchNewTasks = (props) => {
 		const tasks = interpretTaskTemplate(taskTemplate, taskCount);
 		const dates = interpretDateTemplate(dateTemplate, taskCount);
 		const deadlines = interpretDateTemplate(deadlineTemplate, taskCount);
+		if (typeof tasks === 'string') errors['task'] = tasks;
 		if (typeof dates === 'string') errors['date'] = dates;
 		if (typeof deadlines === 'string') errors['deadline'] = deadlines;
 		if (Object.values(errors).length === 0) {

@@ -5,6 +5,7 @@ import { parseISOToDateObj, parseDateObjToLittleEndian, parseECMADateToDateObj }
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
 		const flags = taskTemplate.match(/\$\{( *[nlNL][^}]*)\}/g);
+		if (!flags) return 'ERROR: INVALID TEMPLATE';
 		const settings = flags.map((el) => convertFlagToSettings(el));
 		const strings = settings.map((el) => convertSettingsToStrings(el, taskCount));
 		const combinedStrings = combineParallelArrays(strings);
