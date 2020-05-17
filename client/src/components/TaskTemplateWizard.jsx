@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import InputFormWithLabel from 'components/InputFormWithLabel';
+import Checkbox from 'components/Checkbox';
 import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
 
 const TaskTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template } = props;
 	const [ name, setName ] = useState('');
+	const [ symbol, setSymbol ] = useState('n');
 
 	const parentContainer = {
 		display: 'grid',
@@ -50,12 +52,46 @@ const TaskTemplateWizard = (props) => {
 		justifyContent: 'center'
 	};
 
+	const symbolSubContainer = {
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateRows: 'repeat(2, 1fr)',
+		gridGap: '1rem',
+		padding: '1rem'
+	};
+
+	const containerItemStyle = {
+		padding: '1rem'
+	};
+
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
 			<div style={nameContainer}>
-				<InputFormWithLabel {...props} label={'Task Name'} onChange={(val) => setName(val)} default={name} />
+				<InputFormWithLabel
+					{...props}
+					label={'Task Name'}
+					onChange={(val) => setName(val)}
+					default={name}
+					style={containerItemStyle}
+				/>
 			</div>
-			<div style={symbolContainer}>{'Symbol'}</div>
+			<div style={symbolContainer}>
+				<div style={containerItemStyle}>Symbol:</div>
+				<div style={{ ...symbolSubContainer, ...containerItemStyle }}>
+					<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Number:</div>
+					<Checkbox
+						style={{ gridArea: ' 2 / 2 / 3 / 3' }}
+						default={symbol === 'n'}
+						onChange={() => setSymbol('n')}
+					/>
+					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Letter:</div>
+					<Checkbox
+						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
+						default={symbol === 'l'}
+						onChange={() => setSymbol('l')}
+					/>
+				</div>
+			</div>
 			<div style={digitsContainer}>{'Digits'}</div>
 			<div style={orderContainer}>{'Order'}</div>
 			<div style={bottomContainer}>{'Bottom'}</div>
