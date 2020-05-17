@@ -64,7 +64,7 @@ const TaskTemplateWizard = (props) => {
 		justifyContent: 'center'
 	};
 
-	const symbolSubContainer = {
+	const subContainer = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridTemplateRows: 'repeat(2, 1fr)',
@@ -98,7 +98,7 @@ const TaskTemplateWizard = (props) => {
 			</div>
 			<div style={symbolContainer}>
 				<div style={containerItemStyle}>Symbol:</div>
-				<div style={{ ...symbolSubContainer, ...containerItemStyle }}>
+				<div style={{ ...subContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Number:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -130,7 +130,7 @@ const TaskTemplateWizard = (props) => {
 			</div>
 			<div style={orderContainer}>
 				<div style={containerItemStyle}>Order:</div>
-				<div style={{ ...symbolSubContainer, ...containerItemStyle }}>
+				<div style={{ ...subContainer, ...containerItemStyle }}>
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Ascending:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
