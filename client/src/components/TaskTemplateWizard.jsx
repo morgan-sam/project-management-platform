@@ -7,6 +7,7 @@ const TaskTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template } = props;
 	const [ name, setName ] = useState('');
 	const [ symbol, setSymbol ] = useState('n');
+	const [ order, setOrder ] = useState('a');
 
 	const parentContainer = {
 		display: 'grid',
@@ -93,7 +94,23 @@ const TaskTemplateWizard = (props) => {
 				</div>
 			</div>
 			<div style={digitsContainer}>{'Digits'}</div>
-			<div style={orderContainer}>{'Order'}</div>
+			<div style={orderContainer}>
+				<div style={containerItemStyle}>Order:</div>
+				<div style={{ ...symbolSubContainer, ...containerItemStyle }}>
+					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Ascending:</div>
+					<Checkbox
+						style={{ gridArea: '1 / 2 / 2 / 3' }}
+						default={order === 'a'}
+						onChange={() => setOrder('a')}
+					/>
+					<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Descending:</div>
+					<Checkbox
+						style={{ gridArea: '2 / 2 / 3 / 3' }}
+						default={order === 'd'}
+						onChange={() => setOrder('d')}
+					/>
+				</div>
+			</div>
 			<div style={bottomContainer}>{'Bottom'}</div>
 			<button style={cancelButtonStyle} onClick={() => setScreen('main')}>
 				×
