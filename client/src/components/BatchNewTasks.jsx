@@ -109,14 +109,16 @@ const BatchNewTasks = (props) => {
 				</div>
 				<div style={errorTextStyle}>{errors.deadline}</div>
 			</div>
-			<DropdownWithLabel
-				{...props}
-				label={'Urgency'}
-				options={[ 1, 2, 3, 4, 5 ]}
-				default={urgency}
-				onClick={(val) => setUrgency(val)}
-				width={'2rem'}
-			/>
+			<div style={{ zIndex: '10' }}>
+				<DropdownWithLabel
+					{...props}
+					label={'Urgency'}
+					options={[ 1, 2, 3, 4, 5 ]}
+					default={urgency}
+					onClick={(val) => setUrgency(val)}
+					width={'2rem'}
+				/>
+			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} default={team} />
 			</div>
