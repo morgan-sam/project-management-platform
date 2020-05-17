@@ -59,6 +59,10 @@ const convertFlagToSettings = (flag) => {
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	const instructions = convertTemplateToInstructions(dateTemplate);
+	if (typeof instructions === 'string') {
+		console.log(instructions);
+		return null;
+	}
 	const output = interpretInstructions(instructions, taskCount);
 	console.log(output);
 };
@@ -95,8 +99,9 @@ const convertTemplateToInstructions = (template) => {
 				});
 			} else skipCount++;
 		}
-		if (skipCount === regexList.length) return 'ERROR';
+		if (skipCount === regexList.length) return 'ERROR: INVALID TEMPLATE';
 	}
+	if (instructions.length === 0) return 'ERROR: NO TEMPLATE ENTERED';
 	if (instructions[0].type !== 'date') return 'ERROR: TEMPLATE MUST START WITH DATE';
 	instructions = instructions.map(
 		(el) => (el.type === 'date' ? { type: 'date', value: getDateWithExactValues(el.value) } : el)
