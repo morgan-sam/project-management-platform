@@ -78,15 +78,15 @@ const TaskTemplateWizard = (props) => {
 			<div style={symbolContainer}>
 				<div style={containerItemStyle}>Symbol:</div>
 				<div style={{ ...symbolSubContainer, ...containerItemStyle }}>
-					<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Number:</div>
+					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Number:</div>
 					<Checkbox
-						style={{ gridArea: ' 2 / 2 / 3 / 3' }}
+						style={{ gridArea: '1 / 2 / 2 / 3' }}
 						default={symbol === 'n'}
 						onChange={() => setSymbol('n')}
 					/>
-					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Letter:</div>
+					<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Letter:</div>
 					<Checkbox
-						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
+						style={{ gridArea: '2 / 2 / 3 / 3' }}
 						default={symbol === 'l'}
 						onChange={() => setSymbol('l')}
 					/>
