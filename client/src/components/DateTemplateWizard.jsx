@@ -69,6 +69,13 @@ const DateTemplateWizard = (props) => {
 		console.log(template);
 	};
 
+	const shortStepToFull = (step) => {
+		if (step === 'd') return 'Day';
+		if (step === 'w') return 'Week';
+		if (step === 'm') return 'Month';
+		if (step === 'y') return 'Year';
+	};
+
 	return (
 		<div style={{ ...containerStyle, ...parentContainer }}>
 			<div style={{ ...categoryStyle, gridArea: '1 / 1 / 2 / 2' }}>
@@ -128,7 +135,7 @@ const DateTemplateWizard = (props) => {
 				</div>
 			</div>
 			<div style={{ ...categoryStyle, gridArea: '2 / 2 / 3 / 3' }}>
-				<div style={containerItemStyle}>{`Amount Of ${step}s:`}</div>
+				<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
 				<Dropdown
 					className="dropdown"
 					default={amount}
