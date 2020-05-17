@@ -11,30 +11,37 @@ import { parseDateObjToISO } from 'processing/parseDates';
 const BatchNewTasks = (props) => {
 	const { setDataChanged, setPopUp, colorTheme } = props;
 
-	const [ taskCount, setTaskCount ] = useState(20);
-	const [ taskTemplate, setTaskTemplate ] = useState('standup_${n,3,d}_${l,d}_${n,2}');
+	const [ taskCount, setTaskCount ] = useState(10);
+	const [ taskTemplate, setTaskTemplate ] = useState('Task_${n}');
 	const [ dateTemplate, setDateTemplate ] = useState('${t}');
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}+2w');
 	const [ urgency, setUrgency ] = useState(3);
-	const [ team, setTeam ] = useState('teamName');
+	const [ team, setTeam ] = useState('PLACEHOLDER_NAME');
+	const [ errors, setErrors ] = useState({ task: null, date: null, deadline: null });
 
 	const addMultipleTasks = () => {
+		let errors = {};
 		const tasks = interpretTaskTemplate(taskTemplate, taskCount);
 		const dates = interpretDateTemplate(dateTemplate, taskCount);
 		const deadlines = interpretDateTemplate(deadlineTemplate, taskCount);
-
-		for (let i = 0; i < taskCount; i++) {
-			const entry = {
-				task: tasks[i],
-				date: parseDateObjToISO(dates[i]),
-				deadline: parseDateObjToISO(deadlines[i]),
-				urgency,
-				team,
-				completed: false
-			};
-			fetchPostEntry(entry);
-			setDataChanged(true);
-			setPopUp(null);
+		if (typeof dates === 'string') errors['date'] = dates;
+		if (typeof deadlines === 'string') errors['deadline'] = deadlines;
+		if (Object.values(errors).length === 0) {
+			for (let i = 0; i < taskCount; i++) {
+				const entry = {
+					task: tasks[i],
+					date: parseDateObjToISO(dates[i]),
+					deadline: parseDateObjToISO(deadlines[i]),
+					urgency,
+					team,
+					completed: false
+				};
+				fetchPostEntry(entry);
+				setDataChanged(true);
+				setPopUp(null);
+			}
+		} else {
+			setErrors(errors);
 		}
 	};
 
@@ -52,10 +59,14 @@ const BatchNewTasks = (props) => {
 				<InputFormWithLabel
 					{...props}
 					label={'Task Template'}
-					onChange={(val) => setTaskTemplate(val)}
+					onChange={(val) => {
+						setTaskTemplate(val);
+						setErrors({ ...errors, task: null });
+					}}
 					default={taskTemplate}
 				/>
 				<WizardButton color={colorTheme} />
+				{errors.task}
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -64,10 +75,12 @@ const BatchNewTasks = (props) => {
 					onChange={(val) => {
 						let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
 						setDateTemplate(filtered);
+						setErrors({ ...errors, date: null });
 					}}
 					default={dateTemplate}
 				/>
 				<WizardButton color={colorTheme} />
+				{errors.date}
 			</div>
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
@@ -76,10 +89,12 @@ const BatchNewTasks = (props) => {
 					onChange={(val) => {
 						let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
 						setDeadlineTemplate(filtered);
+						setErrors({ ...errors, deadline: null });
 					}}
 					default={deadlineTemplate}
 				/>
 				<WizardButton color={colorTheme} />
+				{errors.deadline}
 			</div>
 			<div style={subContainerStyle}>
 				<DropdownWithLabel

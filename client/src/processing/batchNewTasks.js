@@ -9,7 +9,7 @@ export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 		const strings = settings.map((el) => convertSettingsToStrings(el, taskCount));
 		const combinedStrings = combineParallelArrays(strings);
 		return getFullTaskStrings(combinedStrings, taskTemplate);
-	} else return null;
+	} else return 'ERROR: TEMPLATE NOT ENTERED';
 };
 
 const getFullTaskStrings = (strings, template) => {
@@ -59,10 +59,7 @@ const convertFlagToSettings = (flag) => {
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	const instructions = convertTemplateToInstructions(dateTemplate);
-	if (typeof instructions === 'string') {
-		console.log(instructions);
-		return null;
-	}
+	if (typeof instructions === 'string') return instructions;
 	const dateArray = interpretInstructions(instructions, taskCount);
 	return dateArray;
 };
