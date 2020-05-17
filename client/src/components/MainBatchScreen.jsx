@@ -75,7 +75,7 @@ const MainBatchScreen = (props) => {
 						}}
 						default={template.deadline}
 					/>
-					<WizardButton color={colorTheme} />
+					<WizardButton color={colorTheme} onClick={() => null} />
 				</div>
 				<div style={errorTextStyle}>{errors.deadline}</div>
 			</div>
