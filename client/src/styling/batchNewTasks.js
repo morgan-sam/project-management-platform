@@ -17,10 +17,10 @@ export const containerStyle = {
 
 export const subContainerStyle = {
 	display: 'flex',
-	flexDirection: 'row',
+	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center',
-	margin: '1rem'
+	height: '6rem'
 };
 
 export const cancelButtonStyle = {
@@ -35,4 +35,16 @@ export const cancelButtonStyle = {
 	backgroundColor: 'salmon',
 	color: 'white',
 	fontSize: '2rem'
+};
+
+export const errorTextStyle = {
+	position: 'relative',
+	top: '1rem',
+	lineHeight: '0',
+	color: '#c12d29'
+};
+
+export const topRowStyle = {
+	display: 'flex',
+	flexDirection: 'row'
 };

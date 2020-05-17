@@ -3,7 +3,13 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
-import { containerStyle, subContainerStyle, cancelButtonStyle } from 'styling/batchNewTasks';
+import {
+	containerStyle,
+	subContainerStyle,
+	cancelButtonStyle,
+	errorTextStyle,
+	topRowStyle
+} from 'styling/batchNewTasks';
 import { interpretTaskTemplate, interpretDateTemplate } from 'processing/batchNewTasks';
 import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/parseDates';
@@ -17,7 +23,7 @@ const BatchNewTasks = (props) => {
 	const [ deadlineTemplate, setDeadlineTemplate ] = useState('${t}+2w');
 	const [ urgency, setUrgency ] = useState(3);
 	const [ team, setTeam ] = useState('PLACEHOLDER_NAME');
-	const [ errors, setErrors ] = useState({ task: null, date: null, deadline: null });
+	const [ errors, setErrors ] = useState({ task: '', date: '', deadline: '' });
 
 	const addMultipleTasks = () => {
 		let errors = {};
@@ -57,58 +63,66 @@ const BatchNewTasks = (props) => {
 				/>
 			</div>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel
-					{...props}
-					label={'Task Template'}
-					onChange={(val) => {
-						setTaskTemplate(val);
-						setErrors({ ...errors, task: null });
-					}}
-					default={taskTemplate}
-				/>
-				<WizardButton color={colorTheme} />
-				{errors.task}
+				<div style={topRowStyle}>
+					<InputFormWithLabel
+						{...props}
+						label={'Task Template'}
+						onChange={(val) => {
+							setTaskTemplate(val);
+							setErrors({ ...errors, task: null });
+						}}
+						default={taskTemplate}
+					/>
+					<WizardButton color={colorTheme} />
+				</div>
+				<div style={errorTextStyle}>{errors.task}</div>
 			</div>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel
-					{...props}
-					label={'Date Template'}
-					onChange={(val) => {
-						let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
-						setDateTemplate(filtered);
-						setErrors({ ...errors, date: null });
-					}}
-					default={dateTemplate}
-				/>
-				<WizardButton color={colorTheme} />
-				{errors.date}
+				<div style={topRowStyle}>
+					<InputFormWithLabel
+						{...props}
+						label={'Date Template'}
+						onChange={(val) => {
+							let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
+							setDateTemplate(filtered);
+							setErrors({ ...errors, date: null });
+						}}
+						default={dateTemplate}
+					/>
+					<WizardButton color={colorTheme} />
+				</div>
+				<div style={errorTextStyle}>{errors.date}</div>
 			</div>
 			<div style={subContainerStyle}>
-				<InputFormWithLabel
-					{...props}
-					label={'Deadline Template'}
-					onChange={(val) => {
-						let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
-						setDeadlineTemplate(filtered);
-						setErrors({ ...errors, deadline: null });
-					}}
-					default={deadlineTemplate}
-				/>
-				<WizardButton color={colorTheme} />
-				{errors.deadline}
+				<div style={topRowStyle}>
+					<InputFormWithLabel
+						{...props}
+						label={'Deadline Template'}
+						onChange={(val) => {
+							let filtered = val.replace(/[^a-zA-Z0-9\{\}\$\+\-\(\)\/]/g, '');
+							setDeadlineTemplate(filtered);
+							setErrors({ ...errors, deadline: null });
+						}}
+						default={deadlineTemplate}
+					/>
+					<WizardButton color={colorTheme} />
+				</div>
+				<div style={errorTextStyle}>{errors.deadline}</div>
 			</div>
+			<DropdownWithLabel
+				{...props}
+				label={'Urgency'}
+				options={[ 1, 2, 3, 4, 5 ]}
+				default={urgency}
+				onClick={(val) => setUrgency(val)}
+				width={'2rem'}
+			/>
 			<div style={subContainerStyle}>
-				<DropdownWithLabel
-					{...props}
-					label={'Urgency'}
-					options={[ 1, 2, 3, 4, 5 ]}
-					default={urgency}
-					onClick={(val) => setUrgency(val)}
-					width={'2rem'}
-				/>
 				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} default={team} />
 			</div>
-			<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
+			<div style={subContainerStyle}>
+				<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
+			</div>
 			<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 				×
 			</button>
