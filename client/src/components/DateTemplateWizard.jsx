@@ -12,7 +12,7 @@ const DateTemplateWizard = (props) => {
 	const { setScreen, colorTheme } = props;
 	const [ date, setDate ] = useState(parseISOToDateObj(getDayFromTodayAsISO()));
 	const [ forward, setForwards ] = useState(true);
-	const [ step, setStep ] = useState('day');
+	const [ step, setStep ] = useState('d');
 
 	const sequenceContainer = {
 		display: 'grid',
@@ -37,6 +37,15 @@ const DateTemplateWizard = (props) => {
 	const categoryStyle = {
 		padding: '1rem',
 		textAlign: 'center'
+	};
+
+	const generateDateTemplate = () => {
+		let template = '${';
+		template += Object.values(date).join('/');
+		template += '}';
+		template += forward ? '+' : '-';
+		template += `n${step}`;
+		console.log(template);
 	};
 
 	return (
@@ -68,31 +77,31 @@ const DateTemplateWizard = (props) => {
 					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
 					<Checkbox
 						style={{ gridArea: '1 / 2 / 2 / 3' }}
-						default={step === 'day'}
-						onChange={() => setStep('day')}
+						default={step === 'd'}
+						onChange={() => setStep('d')}
 					/>
 					<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Week:</div>
 					<Checkbox
 						style={{ gridArea: '2 / 2 / 3 / 3' }}
-						default={step === 'week'}
-						onChange={() => setStep('week')}
+						default={step === 'w'}
+						onChange={() => setStep('w')}
 					/>
 					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Month:</div>
 					<Checkbox
 						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
-						default={step === 'month'}
-						onChange={() => setStep('month')}
+						default={step === 'm'}
+						onChange={() => setStep('m')}
 					/>
 					<div style={{ gridArea: '4 / 1 / 5 / 2' }}>Year:</div>
 					<Checkbox
 						style={{ gridArea: '4 / 2 / 5 / 3' }}
-						default={step === 'year'}
-						onChange={() => setStep('year')}
+						default={step === 'y'}
+						onChange={() => setStep('y')}
 					/>
 				</div>
 			</div>
 			<div style={{ padding: '2rem' }}>
-				<ColorButton color={colorTheme} text={'Generate Template'} />
+				<ColorButton color={colorTheme} text={'Generate Template'} onClick={() => generateDateTemplate()} />
 			</div>
 			<button style={cancelButtonStyle} onClick={() => setScreen('main')}>
 				×
