@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import Checkbox from 'components/Checkbox';
+import Dropdown from 'components/Dropdown';
 import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
 
 const TaskTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template } = props;
 	const [ name, setName ] = useState('');
 	const [ symbol, setSymbol ] = useState('n');
+	const [ digits, setDigits ] = useState(1);
 	const [ order, setOrder ] = useState('a');
 
 	const parentContainer = {
@@ -93,7 +95,21 @@ const TaskTemplateWizard = (props) => {
 					/>
 				</div>
 			</div>
-			<div style={digitsContainer}>{'Digits'}</div>
+			<div style={digitsContainer}>
+				<div style={containerItemStyle}>{`Digits:`}</div>
+				<Dropdown
+					className="dropdown"
+					default={digits}
+					style={{
+						alignItems: 'center',
+						zIndex: '9',
+						width: '2rem',
+						padding: '3rem'
+					}}
+					options={[ ...Array(11).keys() ].slice(1)}
+					onClick={(val) => setDigits(val)}
+				/>
+			</div>
 			<div style={orderContainer}>
 				<div style={containerItemStyle}>Order:</div>
 				<div style={{ ...symbolSubContainer, ...containerItemStyle }}>
