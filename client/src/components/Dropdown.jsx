@@ -90,7 +90,7 @@ const Dropdown = (props) => {
 					1;
 				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
 				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
-				setEndOfList(dropdownSize == dropdownRef.current.scrollTop);
+				setEndOfList(dropdownSize === dropdownRef.current.scrollTop);
 			};
 		},
 		[ optionDivs ]
