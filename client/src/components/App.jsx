@@ -3,7 +3,6 @@ import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
-import BatchNewTasks from 'components/BatchNewTasks';
 import ColorTest from 'components/ColorTest';
 import FilterBar from 'components/FilterBar';
 import sortList from 'processing/sortList';
@@ -12,7 +11,6 @@ import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
 import { getMainPageStyle, mainPageItemStyle, overlayStyle } from 'styling/mainPage';
-import { fetchDeleteTasks } from 'data/fetch';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -25,7 +23,8 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
-	const [ colorTheme, setColorTheme ] = useState('#add8e6');
+	const [ colorTheme, setColorTheme ] = useState('#ff0000');
+	// const [ colorTheme, setColorTheme ] = useState('#add8e6');
 	const [ popUp, setPopUp ] = useState(null);
 
 	const userSetSort = (sort) => {
