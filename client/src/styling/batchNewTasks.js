@@ -25,7 +25,7 @@ export const subContainerStyle = {
 	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center',
-	height: '6rem'
+	height: '4rem'
 };
 
 export const cancelButtonStyle = {
