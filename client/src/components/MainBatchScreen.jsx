@@ -9,7 +9,8 @@ import {
 	subContainerStyle,
 	cancelButtonStyle,
 	errorTextStyle,
-	topRowStyle
+	topRowStyle,
+	finalContainerStyle
 } from 'styling/batchNewTasks';
 
 const MainBatchScreen = (props) => {
@@ -91,7 +92,7 @@ const MainBatchScreen = (props) => {
 					default={template.team}
 				/>
 			</div>
-			<div style={subContainerStyle}>
+			<div style={finalContainerStyle}>
 				<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
 			</div>
 			<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>

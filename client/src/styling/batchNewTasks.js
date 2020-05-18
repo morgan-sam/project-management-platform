@@ -53,3 +53,7 @@ export const topRowStyle = {
 	display: 'flex',
 	flexDirection: 'row'
 };
+
+export const finalContainerStyle = {
+	padding: '2.5rem'
+};
