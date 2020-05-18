@@ -15,7 +15,7 @@ const ResetFilterBtn = (props) => {
 					deadline: parseISOToZeroTime(boundaryDates.deadline),
 					completion: 'all',
 					urgency: { min: 1, max: 5 },
-					teams: 'all'
+					teams: [ 'all' ]
 				});
 			}}
 			text={'Reset Filter'}
