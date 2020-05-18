@@ -4,7 +4,7 @@ CREATE TABLE tasks (
   date TIMESTAMP WITH TIME ZONE NOT NULL,
   deadline TIMESTAMP WITH TIME ZONE,
   urgency SMALLINT NOT NULL,
-  team VARCHAR(50),
+  teams TEXT[],
   completed BOOLEAN NOT NULL
 );
 

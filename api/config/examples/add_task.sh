@@ -16,7 +16,7 @@ do
     then teamArray+=("Team_$i"); fi; done;
     if [ ${#teamArray[@]} -eq 0 ];
     then teamArray+="Team_$(( RANDOM % 5 + 1))"; fi;
-    TEAMS=$(printf '%s\n' "${teamArray[@]}" | jq -R . | jq -s .)
+    TEAMS=$(printf '%s\n' "${teamArray[@]}" | jq -R . | jq -s . | tr -d '\n' | tr -d ' ')
     echo -e "Task: ${TASK}\nDate: ${DATE}\nDeadline: ${DEADLINE}\nUrgency: ${URGENCY}\nTeam: ${TEAMS}"
-    #curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"team":"'$TEAMS'","completed":"false"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
+    curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"teams":'"$TEAMS"',"completed":"false"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
 done

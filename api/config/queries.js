@@ -16,10 +16,10 @@ const getTaskById = (request, response) => {
 };
 
 const createTask = (request, response) => {
-	const { task, date, deadline, urgency, team, completed } = request.body;
+	const { task, date, deadline, urgency, teams, completed } = request.body;
 	pool.query(
-		'INSERT INTO tasks (task, date, deadline, urgency, team, completed) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *',
-		[ task, date, deadline, urgency, team, completed ],
+		'INSERT INTO tasks (task, date, deadline, urgency, teams, completed) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *',
+		[ task, date, deadline, urgency, teams, completed ],
 		(error, results) => {
 			if (error) throw error;
 			response.status(201).send(`Task added with ID: ${results.rows[0].id}\n`);
@@ -29,10 +29,10 @@ const createTask = (request, response) => {
 
 const updateTask = (request, response) => {
 	const ID = request.params.id;
-	const { task, date, deadline, urgency, team, completed } = request.body;
+	const { task, date, deadline, urgency, teams, completed } = request.body;
 	pool.query(
-		'UPDATE tasks SET task = $2, date = $3, deadline = $4, urgency = $5, team = $6, completed = $7 WHERE ID = $1',
-		[ ID, task, date, deadline, urgency, team, completed ],
+		'UPDATE tasks SET task = $2, date = $3, deadline = $4, urgency = $5, teams = $6, completed = $7 WHERE ID = $1',
+		[ ID, task, date, deadline, urgency, teams, completed ],
 		(error, results) => {
 			if (error) throw error;
 			response.status(200).send(`Entry modified with ID: ${ID}\n`);
