@@ -6,6 +6,7 @@ import ColorButton from 'components/ColorButton';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj } from 'processing/parseDates';
 import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
+import { capitalizeFirstLetter } from 'processing/utility';
 import {
 	mainGridContainer,
 	getSectionOpacityStyle,
@@ -46,7 +47,7 @@ const DateTemplateWizard = (props) => {
 
 	return (
 		<div style={containerStyle}>
-			<div style={topContainer}>Generate Date Template</div>
+			<div style={topContainer}>{`Generate ${capitalizeFirstLetter(screen.replace(/Wizard/, ''))} Template`}</div>
 			<div style={mainGridContainer}>
 				<div style={topLeftContainer}>
 					<div style={containerItemStyle}>Initial Date:</div>
