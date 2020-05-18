@@ -9,7 +9,6 @@ export const btnContainerStyle = {
 	flexDirection: 'row',
 	justifyContent: 'left',
 	border: '1px solid black',
-	padding: '0.8rem',
 	borderRadius: '5px',
 	zIndex: '10',
 	padding: '1rem'

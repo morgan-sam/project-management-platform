@@ -14,7 +14,6 @@ export const dropdownParentStyle = {
 };
 
 export const dropdownElementStyle = {
-	position: 'relative',
 	height: `${DROPDOWN_HEIGHT_REMS}rem`,
 	width: 'inherit',
 	position: 'absolute',
