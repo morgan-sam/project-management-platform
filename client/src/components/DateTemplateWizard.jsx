@@ -5,8 +5,7 @@ import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj } from 'processing/parseDates';
-
-import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
+import { cancelButtonStyle, containerStyle, titleStyle } from 'styling/batchNewTasks';
 import { useState } from 'react';
 
 const DateTemplateWizard = (props) => {
@@ -15,13 +14,6 @@ const DateTemplateWizard = (props) => {
 	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
 	const [ amount, setAmount ] = useState(1);
-
-	const parentContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(3, 1fr)',
-		padding: '3rem'
-	};
 
 	const categoryStyle = {
 		display: 'flex',
@@ -32,6 +24,12 @@ const DateTemplateWizard = (props) => {
 		textAlign: 'center'
 	};
 
+	const mainGridContainer = {
+		display: 'grid',
+		gridTemplateColumns: 'repeat(2, 1fr)',
+		gridTemplateRows: 'repeat(2, 1fr)'
+	};
+
 	const getRightHandContainerStyle = (sequence) => {
 		return {
 			opacity: sequence === 'none' ? '0.3' : '1',
@@ -39,30 +37,35 @@ const DateTemplateWizard = (props) => {
 		};
 	};
 
+	const topContainer = {
+		...titleStyle,
+		...categoryStyle,
+		margin: '1.5rem 0rem'
+	};
+
 	const dateContainer = {
 		...categoryStyle,
-		gridArea: '1 / 1 / 4 / 2'
+		gridArea: '1 / 1 / 2 / 2'
 	};
 
 	const sequenceContainer = {
 		...categoryStyle,
-		gridArea: '4 / 1 / 7 / 2'
+		gridArea: '2 / 1 / 3 / 2'
 	};
 
 	const stepContainer = {
 		...categoryStyle,
 		...getRightHandContainerStyle(sequence),
-		gridArea: '1 / 2 / 4 / 3'
+		gridArea: '1 / 2 / 2 / 3'
 	};
 
 	const amountContainer = {
 		...categoryStyle,
 		...getRightHandContainerStyle(sequence),
-		gridArea: '4 / 2 / 7 / 3'
+		gridArea: '2 / 2 / 3 / 3'
 	};
 
 	const bottomContainer = {
-		gridArea: '7 / 1 / 9 / 3',
 		padding: '2rem',
 		display: 'flex',
 		alignItems: 'center',
@@ -84,6 +87,7 @@ const DateTemplateWizard = (props) => {
 		gridGap: '1rem',
 		padding: '1rem'
 	};
+
 	const containerItemStyle = {
 		padding: '1rem'
 	};
@@ -107,84 +111,87 @@ const DateTemplateWizard = (props) => {
 	};
 
 	return (
-		<div style={{ ...containerStyle, ...parentContainer }}>
-			<div style={dateContainer}>
-				<div style={containerItemStyle}>Initial Date:</div>
-				<DateSelect
-					date={date}
-					setDate={setDate}
-					style={{
-						...containerItemStyle,
-						zIndex: '10'
-					}}
-				/>
-			</div>
-			<div style={sequenceContainer}>
-				<div style={containerItemStyle}>Sequence:</div>
-				<div style={{ ...sequenceSubContainer, ...containerItemStyle }}>
-					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
-					<Checkbox
-						style={{ gridArea: '1 / 2 / 2 / 3' }}
-						default={sequence === 'none'}
-						onChange={() => setSequence('none')}
-					/>
-					<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Forwards:</div>
-					<Checkbox
-						style={{ gridArea: ' 2 / 2 / 3 / 3' }}
-						default={sequence === '+'}
-						onChange={() => setSequence('+')}
-					/>
-					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Backwards:</div>
-					<Checkbox
-						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
-						default={sequence === '-'}
-						onChange={() => setSequence('-')}
+		<div style={containerStyle}>
+			<div style={topContainer}>Generate Date Template</div>
+			<div style={mainGridContainer}>
+				<div style={dateContainer}>
+					<div style={containerItemStyle}>Initial Date:</div>
+					<DateSelect
+						date={date}
+						setDate={setDate}
+						style={{
+							...containerItemStyle,
+							zIndex: '10'
+						}}
 					/>
 				</div>
-			</div>
-			<div style={stepContainer}>
-				<div style={containerItemStyle}>Step:</div>
-				<div style={{ ...stepSubContainer, ...containerItemStyle }}>
-					<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
-					<Checkbox
-						style={{ gridArea: '1 / 2 / 2 / 3' }}
-						default={step === 'd'}
-						onChange={() => setStep('d')}
-					/>
-					<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Week:</div>
-					<Checkbox
-						style={{ gridArea: '2 / 2 / 3 / 3' }}
-						default={step === 'w'}
-						onChange={() => setStep('w')}
-					/>
-					<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Month:</div>
-					<Checkbox
-						style={{ gridArea: ' 3 / 2 / 4 / 3' }}
-						default={step === 'm'}
-						onChange={() => setStep('m')}
-					/>
-					<div style={{ gridArea: '4 / 1 / 5 / 2' }}>Year:</div>
-					<Checkbox
-						style={{ gridArea: '4 / 2 / 5 / 3' }}
-						default={step === 'y'}
-						onChange={() => setStep('y')}
+				<div style={sequenceContainer}>
+					<div style={containerItemStyle}>Sequence:</div>
+					<div style={{ ...sequenceSubContainer, ...containerItemStyle }}>
+						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
+						<Checkbox
+							style={{ gridArea: '1 / 2 / 2 / 3' }}
+							default={sequence === 'none'}
+							onChange={() => setSequence('none')}
+						/>
+						<div style={{ gridArea: ' 2 / 1 / 3 / 2' }}>Forwards:</div>
+						<Checkbox
+							style={{ gridArea: ' 2 / 2 / 3 / 3' }}
+							default={sequence === '+'}
+							onChange={() => setSequence('+')}
+						/>
+						<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Backwards:</div>
+						<Checkbox
+							style={{ gridArea: ' 3 / 2 / 4 / 3' }}
+							default={sequence === '-'}
+							onChange={() => setSequence('-')}
+						/>
+					</div>
+				</div>
+				<div style={stepContainer}>
+					<div style={containerItemStyle}>Step:</div>
+					<div style={{ ...stepSubContainer, ...containerItemStyle }}>
+						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
+						<Checkbox
+							style={{ gridArea: '1 / 2 / 2 / 3' }}
+							default={step === 'd'}
+							onChange={() => setStep('d')}
+						/>
+						<div style={{ gridArea: '2 / 1 / 3 / 2' }}>Week:</div>
+						<Checkbox
+							style={{ gridArea: '2 / 2 / 3 / 3' }}
+							default={step === 'w'}
+							onChange={() => setStep('w')}
+						/>
+						<div style={{ gridArea: ' 3 / 1 / 4 / 2' }}>Month:</div>
+						<Checkbox
+							style={{ gridArea: ' 3 / 2 / 4 / 3' }}
+							default={step === 'm'}
+							onChange={() => setStep('m')}
+						/>
+						<div style={{ gridArea: '4 / 1 / 5 / 2' }}>Year:</div>
+						<Checkbox
+							style={{ gridArea: '4 / 2 / 5 / 3' }}
+							default={step === 'y'}
+							onChange={() => setStep('y')}
+						/>
+					</div>
+				</div>
+				<div style={amountContainer}>
+					<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
+					<Dropdown
+						className="dropdown"
+						default={amount}
+						style={{
+							alignItems: 'center',
+							zIndex: '9',
+							width: '2rem',
+							padding: '3rem'
+						}}
+						options={[ ...Array(11).keys() ].slice(1)}
+						onClick={(val) => setAmount(val)}
 					/>
 				</div>
-			</div>
-			<div style={amountContainer}>
-				<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
-				<Dropdown
-					className="dropdown"
-					default={amount}
-					style={{
-						alignItems: 'center',
-						zIndex: '9',
-						width: '2rem',
-						padding: '3rem'
-					}}
-					options={[ ...Array(11).keys() ].slice(1)}
-					onClick={(val) => setAmount(val)}
-				/>
 			</div>
 			<div style={bottomContainer}>
 				<ColorButton

@@ -89,7 +89,7 @@ const TaskTemplateWizard = (props) => {
 	};
 
 	return (
-		<div style={{ ...containerStyle }}>
+		<div style={containerStyle}>
 			<div style={topContainer}>Generate Task Template</div>
 			<div style={mainGridContainer}>
 				<div style={nameContainer}>
