@@ -18,7 +18,7 @@ const FilterBar = (props) => {
 		completion: false
 	});
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
-	console.log(dropdownsOpen);
+
 	return (
 		<div
 			className="filterBar"
