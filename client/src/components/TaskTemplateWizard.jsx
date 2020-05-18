@@ -39,23 +39,23 @@ const TaskTemplateWizard = (props) => {
 		...categoryStyle
 	};
 
-	const nameContainer = {
+	const topLeftContainer = {
 		...categoryStyle,
 		gridArea: '1 / 1 / 2 / 2'
 	};
 
-	const symbolContainer = {
+	const bottomLeftContainer = {
 		...categoryStyle,
 		gridArea: '2 / 1 / 3 / 2'
 	};
 
-	const digitsContainer = {
+	const topRightContainer = {
 		...categoryStyle,
 		...getDigitContainerStyle(symbol),
 		gridArea: '1 / 2 / 2 / 3'
 	};
 
-	const orderContainer = {
+	const bottomRightContainer = {
 		...categoryStyle,
 		gridArea: '2 / 2 / 3 / 3'
 	};
@@ -92,14 +92,14 @@ const TaskTemplateWizard = (props) => {
 		<div style={containerStyle}>
 			<div style={topContainer}>Generate Task Template</div>
 			<div style={mainGridContainer}>
-				<div style={nameContainer}>
+				<div style={topLeftContainer}>
 					<div style={{ padding: '1.5rem', paddingTop: '0.4rem' }}>Text Name:</div>
 					<form style={{ padding: '1rem' }} onChange={(e) => setName(e.target.value)}>
 						<input type="text" name="name" value={name} />
 						<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
 					</form>
 				</div>
-				<div style={symbolContainer}>
+				<div style={bottomLeftContainer}>
 					<div style={containerItemStyle}>Symbol:</div>
 					<div style={{ ...subContainer, ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Number:</div>
@@ -116,7 +116,7 @@ const TaskTemplateWizard = (props) => {
 						/>
 					</div>
 				</div>
-				<div style={digitsContainer}>
+				<div style={topRightContainer}>
 					<div style={{ ...containerItemStyle, paddingTop: '0.3rem' }}>{`Digits:`}</div>
 					<Dropdown
 						className="dropdown"
@@ -131,7 +131,7 @@ const TaskTemplateWizard = (props) => {
 						onClick={(val) => setDigits(val)}
 					/>
 				</div>
-				<div style={orderContainer}>
+				<div style={bottomRightContainer}>
 					<div style={containerItemStyle}>Order:</div>
 					<div style={{ ...subContainer, ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Ascending:</div>

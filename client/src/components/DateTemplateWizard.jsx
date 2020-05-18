@@ -43,23 +43,23 @@ const DateTemplateWizard = (props) => {
 		margin: '1.5rem 0rem'
 	};
 
-	const dateContainer = {
+	const topLeftContainer = {
 		...categoryStyle,
 		gridArea: '1 / 1 / 2 / 2'
 	};
 
-	const sequenceContainer = {
+	const bottomLeftContainer = {
 		...categoryStyle,
 		gridArea: '2 / 1 / 3 / 2'
 	};
 
-	const stepContainer = {
+	const topRightContainer = {
 		...categoryStyle,
 		...getRightHandContainerStyle(sequence),
 		gridArea: '1 / 2 / 2 / 3'
 	};
 
-	const amountContainer = {
+	const bottomRightContainer = {
 		...categoryStyle,
 		...getRightHandContainerStyle(sequence),
 		gridArea: '2 / 2 / 3 / 3'
@@ -114,7 +114,7 @@ const DateTemplateWizard = (props) => {
 		<div style={containerStyle}>
 			<div style={topContainer}>Generate Date Template</div>
 			<div style={mainGridContainer}>
-				<div style={dateContainer}>
+				<div style={topLeftContainer}>
 					<div style={containerItemStyle}>Initial Date:</div>
 					<DateSelect
 						date={date}
@@ -125,7 +125,7 @@ const DateTemplateWizard = (props) => {
 						}}
 					/>
 				</div>
-				<div style={sequenceContainer}>
+				<div style={bottomLeftContainer}>
 					<div style={containerItemStyle}>Sequence:</div>
 					<div style={{ ...sequenceSubContainer, ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
@@ -148,7 +148,7 @@ const DateTemplateWizard = (props) => {
 						/>
 					</div>
 				</div>
-				<div style={stepContainer}>
+				<div style={topRightContainer}>
 					<div style={containerItemStyle}>Step:</div>
 					<div style={{ ...stepSubContainer, ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
@@ -177,7 +177,7 @@ const DateTemplateWizard = (props) => {
 						/>
 					</div>
 				</div>
-				<div style={amountContainer}>
+				<div style={bottomRightContainer}>
 					<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
 					<Dropdown
 						className="dropdown"
