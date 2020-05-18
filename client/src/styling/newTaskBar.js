@@ -38,9 +38,3 @@ export const getTaskBarVisibleStyle = (popUpOpen) => {
 		transition: `${popUpOpen ? largeOpenTransition : smallOpenTransition}, opacity 1s`
 	};
 };
-
-export const addTaskBtn = {
-	width: 'auto',
-	height: '2rem',
-	margin: '1rem'
-};

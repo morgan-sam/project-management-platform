@@ -3,7 +3,7 @@ import ColorButton from 'components/ColorButton';
 import DateRangeSelect from 'components/DateRangeSelect';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
-import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
+import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
 import { parseISOToDateObj } from 'processing/parseDates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
