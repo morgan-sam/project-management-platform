@@ -35,10 +35,12 @@ const FilterBar = (props) => {
 			<DropdownCheckboxes
 				label={'Teams'}
 				onClick={(val) => {
+					console.log(filterOptions.teams);
 					let newState = filterOptions.teams.filter((el) => el !== 'all');
 					if (val === 'all') newState = [ 'all' ];
 					else if (newState.includes(val)) newState = newState.filter((el) => el !== val);
 					else newState.push(val);
+					if (newState.length === 0) newState = [ 'all' ];
 					setFilterOptions({ ...filterOptions, teams: newState });
 				}}
 				options={taskListTeams}
