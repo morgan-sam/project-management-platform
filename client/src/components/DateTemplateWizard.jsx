@@ -30,10 +30,10 @@ const DateTemplateWizard = (props) => {
 		gridTemplateRows: 'repeat(2, 1fr)'
 	};
 
-	const getRightHandContainerStyle = (sequence) => {
+	const getSectionOpacityStyle = (disabled) => {
 		return {
-			opacity: sequence === 'none' ? '0.3' : '1',
-			pointerEvents: sequence === 'none' ? 'none' : 'auto'
+			opacity: disabled ? '0.3' : '1',
+			pointerEvents: disabled ? 'none' : 'auto'
 		};
 	};
 
@@ -55,13 +55,11 @@ const DateTemplateWizard = (props) => {
 
 	const topRightContainer = {
 		...categoryStyle,
-		...getRightHandContainerStyle(sequence),
 		gridArea: '1 / 2 / 2 / 3'
 	};
 
 	const bottomRightContainer = {
 		...categoryStyle,
-		...getRightHandContainerStyle(sequence),
 		gridArea: '2 / 2 / 3 / 3'
 	};
 
@@ -148,7 +146,12 @@ const DateTemplateWizard = (props) => {
 						/>
 					</div>
 				</div>
-				<div style={topRightContainer}>
+				<div
+					style={{
+						...topRightContainer,
+						...getSectionOpacityStyle(sequence === 'none')
+					}}
+				>
 					<div style={containerItemStyle}>Step:</div>
 					<div style={{ ...stepSubContainer, ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
@@ -177,7 +180,12 @@ const DateTemplateWizard = (props) => {
 						/>
 					</div>
 				</div>
-				<div style={bottomRightContainer}>
+				<div
+					style={{
+						...bottomRightContainer,
+						...getSectionOpacityStyle(sequence === 'none')
+					}}
+				>
 					<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
 					<Dropdown
 						className="dropdown"

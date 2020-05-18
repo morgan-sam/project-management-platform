@@ -27,10 +27,10 @@ const TaskTemplateWizard = (props) => {
 		gridTemplateRows: 'repeat(2, 1fr)'
 	};
 
-	const getDigitContainerStyle = (symbol) => {
+	const getSectionOpacityStyle = (disabled) => {
 		return {
-			opacity: symbol === 'l' ? '0.3' : '1',
-			pointerEvents: symbol === 'l' ? 'none' : 'auto'
+			opacity: disabled ? '0.3' : '1',
+			pointerEvents: disabled ? 'none' : 'auto'
 		};
 	};
 
@@ -51,7 +51,6 @@ const TaskTemplateWizard = (props) => {
 
 	const topRightContainer = {
 		...categoryStyle,
-		...getDigitContainerStyle(symbol),
 		gridArea: '1 / 2 / 2 / 3'
 	};
 
@@ -116,7 +115,12 @@ const TaskTemplateWizard = (props) => {
 						/>
 					</div>
 				</div>
-				<div style={topRightContainer}>
+				<div
+					style={{
+						...topRightContainer,
+						...getSectionOpacityStyle(symbol === 'l')
+					}}
+				>
 					<div style={{ ...containerItemStyle, paddingTop: '0.3rem' }}>{`Digits:`}</div>
 					<Dropdown
 						className="dropdown"
