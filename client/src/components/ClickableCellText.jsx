@@ -17,7 +17,7 @@ const ClickableCellText = (props) => {
 		if (cellType === 'deadline') setFilterOptions({ ...filterOptions, deadline: parseLittleEndianToISOTime(text) });
 		if (cellType === 'urgency')
 			setFilterOptions({ ...filterOptions, urgency: { min: parseInt(text), max: parseInt(text) } });
-		if (cellType === 'team') setFilterOptions({ ...filterOptions, teams: [ text ] });
+		if (cellType === 'teams') setFilterOptions({ ...filterOptions, teams: [ text ] });
 	};
 
 	const textDivs = (text) => {

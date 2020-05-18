@@ -5,7 +5,7 @@ import {
 	dateCell,
 	deadlineCell,
 	urgencyCell,
-	teamCell,
+	teamsCell,
 	completedCell,
 	selectionCell
 } from 'styling/headingCell';
@@ -40,10 +40,10 @@ const TableHeadings = (props) => {
 				style={urgencyCell}
 			/>
 			<HeadingCell
-				className="teamCell"
-				text={`Teams ${props.sortOptions.type === 'team' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('team')}
-				style={teamCell}
+				className="teamsCell"
+				text={`Teams ${props.sortOptions.type === 'teams' ? sortArrow : ''}`}
+				onClick={() => props.userSetSort('teams')}
+				style={teamsCell}
 			/>
 			<HeadingCell
 				className="completedCell"

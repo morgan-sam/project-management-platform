@@ -3,7 +3,7 @@ import {
 	dateDefaultCell,
 	deadlineDefaultCell,
 	urgencyDefaultCell,
-	teamDefaultCell,
+	teamsDefaultCell,
 	completedDefaultCell,
 	selectionDefaultCell
 } from 'styling/table';
@@ -26,8 +26,8 @@ export const urgencyCell = {
 	...urgencyDefaultCell
 };
 
-export const teamCell = {
-	...teamDefaultCell
+export const teamsCell = {
+	...teamsDefaultCell
 };
 
 export const completedCell = {

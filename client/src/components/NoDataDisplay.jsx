@@ -4,7 +4,7 @@ import {
 	dateCell,
 	deadlineCell,
 	urgencyCell,
-	teamCell,
+	teamsCell,
 	completedCell,
 	selectionCell
 } from 'styling/dataCell';
@@ -19,7 +19,7 @@ const NoDataDisplay = () => {
 				<td style={dateCell}>{text}</td>
 				<td style={deadlineCell}>{text}</td>
 				<td style={urgencyCell}>{text}</td>
-				<td style={teamCell}>{text}</td>
+				<td style={teamsCell}>{text}</td>
 				<td style={completedCell}>{text}</td>
 				<td style={selectionCell}>{text}</td>
 			</tr>

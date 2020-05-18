@@ -18,11 +18,11 @@ const NewTaskBar = (props) => {
 	const [ date, setDate ] = useState(getDayFromTodayAsISO(0));
 	const [ deadline, setDeadline ] = useState(getDayFromTodayAsISO(14));
 	const [ urgency, setUrgency ] = useState(3);
-	const [ team, setTeam ] = useState(null);
+	const [ teams, setTeams ] = useState(null);
 
 	const addTaskToDatabase = () => {
-		if (task && team) {
-			const entry = { task, date, deadline, urgency, team, completed: 'false' };
+		if (task && teams) {
+			const entry = { task, date, deadline, urgency, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
 			setTimeout(() => setDisplayNewTaskBar(false), 500);
@@ -59,12 +59,12 @@ const NewTaskBar = (props) => {
 					onClick={(val) => setUrgency(val)}
 					setOverflowHidden={setOverflowHidden}
 				/>
-				<InputFormWithLabel {...props} label={'Team'} onChange={(val) => setTeam(val)} />
+				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
 				<ColorButton
 					text={`Add Task To Database`}
 					onClick={() => addTaskToDatabase()}
 					color={colorTheme}
-					enabled={task && team}
+					enabled={task && teams}
 				/>
 			</div>
 		</div>

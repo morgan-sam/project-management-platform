@@ -27,7 +27,7 @@ export const urgencyDefaultCell = {
 	...cellStyle
 };
 
-export const teamDefaultCell = {
+export const teamsDefaultCell = {
 	...cellStyle
 };
 

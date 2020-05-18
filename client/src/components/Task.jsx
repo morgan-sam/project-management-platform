@@ -7,7 +7,7 @@ import {
 	dateCell,
 	deadlineCell,
 	urgencyCell,
-	teamCell,
+	teamsCell,
 	completedCell,
 	selectionCell,
 	getHighlightCellStyle
@@ -65,9 +65,9 @@ const Task = (props) => {
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
-				className="teamCell"
+				className="teamsCell"
 				text={props.item.teams ? props.item.teams.join(' ') : null}
-				style={{ ...teamCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				style={{ ...teamsCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				{...props}
 				{...dragSelectionFunctions}
 			/>

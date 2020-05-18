@@ -8,7 +8,7 @@ const DataCell = (props) => {
 		props.className === 'dateCell' ||
 		props.className === 'deadlineCell' ||
 		props.className === 'urgencyCell' ||
-		props.className === 'teamCell';
+		props.className === 'teamsCell';
 
 	return (
 		<td
