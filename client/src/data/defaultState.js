@@ -7,6 +7,6 @@ export const filterOptionsDefault = () => {
 		deadline: getDayFromTodayAsISO(14),
 		completion: 'all',
 		urgency: { min: 1, max: 5 },
-		teams: 'all'
+		teams: [ 'all' ]
 	};
 };

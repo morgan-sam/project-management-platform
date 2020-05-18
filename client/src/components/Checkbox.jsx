@@ -33,9 +33,9 @@ const Checkbox = (props) => {
 	};
 
 	return (
-		<div style={{ ...checkboxContainerStyle, ...style }}>
-			<div style={{ ...checkboxIconStyle }} onClick={() => props.onChange()}>
-				{props.default ? <div style={checkStyle} /> : null}
+		<div className={props.className} style={{ ...checkboxContainerStyle, ...style }}>
+			<div className={props.className} style={{ ...checkboxIconStyle }} onClick={() => props.onChange()}>
+				{props.default ? <div className={props.className} style={checkStyle} /> : null}
 			</div>
 		</div>
 	);
