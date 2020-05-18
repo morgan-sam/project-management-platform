@@ -1,6 +1,15 @@
 import React from 'react';
+import ClickableCellText from 'components/ClickableCellText';
 
 const DataCell = (props) => {
+	const { setFilterOptions, text, filterOptions } = props;
+
+	const clickableCell =
+		props.className === 'dateCell' ||
+		props.className === 'deadlineCell' ||
+		props.className === 'urgencyCell' ||
+		props.className === 'teamCell';
+
 	return (
 		<td
 			className={`dataCell ${props.className}`}
@@ -16,7 +25,19 @@ const DataCell = (props) => {
 				if (props.onMouseDown) props.onMouseDown(val);
 			}}
 		>
-			{props.text === true ? '✓' : props.text}
+			{text === true ? (
+				'✓'
+			) : clickableCell ? (
+				<ClickableCellText
+					cellType={props.className.replace(/Cell/, '')}
+					text={text}
+					filterOptions={filterOptions}
+					setFilterOptions={setFilterOptions}
+					color={props.style.color}
+				/>
+			) : (
+				text
+			)}
 		</td>
 	);
 };

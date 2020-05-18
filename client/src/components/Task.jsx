@@ -40,30 +40,35 @@ const Task = (props) => {
 				text={props.item.task}
 				style={{ ...taskCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				onClick={() => props.toggleSelectState(props.item.id)}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
 				className="dateCell"
 				text={parseISOToLittleEndian(props.item.date)}
 				style={{ ...dateCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
 				className="deadlineCell"
 				text={parseISOToLittleEndian(props.item.deadline)}
 				style={{ ...deadlineCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
 				className="urgencyCell"
 				text={props.item.urgency}
 				style={{ ...urgencyCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
 				className="teamCell"
 				text={props.item.teams ? props.item.teams.join(' ') : null}
 				style={{ ...teamCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
@@ -71,6 +76,7 @@ const Task = (props) => {
 				text={props.item.completed}
 				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
 				style={{ ...completedCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
@@ -78,6 +84,7 @@ const Task = (props) => {
 				text={props.selected ? 'X' : ''}
 				onClick={() => props.toggleSelectState(props.item.id)}
 				style={{ ...selectionCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				{...props}
 				{...dragSelectionFunctions}
 			/>
 		</tr>

@@ -114,6 +114,8 @@ const App = () => {
 					colorTheme={colorTheme}
 				/>
 				<Table
+					filterOptions={filterOptions}
+					setFilterOptions={setFilterOptions}
 					style={mainPageItemStyle}
 					sortOptions={sortOptions}
 					userSetSort={(val) => userSetSort(val)}

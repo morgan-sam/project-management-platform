@@ -6,6 +6,8 @@ import { getParentsClassList } from 'processing/processClassnames';
 
 const Table = (props) => {
 	const {
+		filterOptions,
+		setFilterOptions,
 		taskList,
 		selectedTasks,
 		setSelectedTasks,
@@ -33,6 +35,8 @@ const Table = (props) => {
 					newTaskHover={newTaskHover}
 					initialID={initialID}
 					setInitialID={setInitialID}
+					filterOptions={filterOptions}
+					setFilterOptions={setFilterOptions}
 				/>
 			);
 		});
