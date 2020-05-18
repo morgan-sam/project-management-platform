@@ -12,13 +12,14 @@ const NewTaskBar = (props) => {
 	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar, colorTheme } = props;
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
-	const [ task, setTask ] = useState(null);
+	const [ taskString, setTaskString ] = useState(null);
 	const [ date, setDate ] = useState(getDayFromTodayAsISO(0));
 	const [ deadline, setDeadline ] = useState(getDayFromTodayAsISO(14));
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teamsString, setTeamsStrings ] = useState(null);
 
 	const teams = teamsString ? teamsString.split(' ').filter((el) => el !== '') : [];
+	const task = taskString ? taskString.trim() : '';
 
 	const addTaskToDatabase = () => {
 		if (task && teams.length) {
@@ -40,7 +41,7 @@ const NewTaskBar = (props) => {
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>
-				<InputFormWithLabel {...props} label={'Task'} onChange={(val) => setTask(val)} />
+				<InputFormWithLabel {...props} label={'Task'} onChange={(val) => setTaskString(val)} />
 				<DateRangeSelect
 					{...props}
 					date={parseISOToDateObj(date)}
