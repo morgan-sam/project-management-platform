@@ -21,3 +21,8 @@ export const getGradientTextColor = (color) => {
 	const sum = rgb.reduce((a, b) => a + b, 0);
 	return sum > 5 * (255 * 3) / 6 ? 'black' : 'white';
 };
+
+export const getOppositeRGB = (color) => {
+	const [ r, g, b ] = hexToRgb(anyColorToHex(color));
+	return [ 255 - r, 255 - g, 255 - b ];
+};

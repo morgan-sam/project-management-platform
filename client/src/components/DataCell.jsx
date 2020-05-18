@@ -34,6 +34,7 @@ const DataCell = (props) => {
 					filterOptions={filterOptions}
 					setFilterOptions={setFilterOptions}
 					color={props.style.color}
+					selected={props.selected}
 				/>
 			) : (
 				text

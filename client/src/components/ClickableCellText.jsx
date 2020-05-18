@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { parseLittleEndianToISOTime } from 'processing/parseDates';
+import { getOppositeRGB } from 'styling/theme';
+import ThemeContext from 'context/ThemeContext';
 
 const ClickableCellText = (props) => {
-	const { cellType, filterOptions, setFilterOptions } = props;
+	const { cellType, filterOptions, setFilterOptions, selected } = props;
+	const themeColor = useContext(ThemeContext);
 
 	const [ hoveredItem, setHoveredItem ] = useState(false);
 
@@ -25,7 +28,10 @@ const ClickableCellText = (props) => {
 		return array.map((el) => (
 			<div
 				style={{
-					color: hoveredItem === el ? 'red' : props.color
+					color:
+						hoveredItem === el
+							? selected ? `rgb(${getOppositeRGB(themeColor).join(',')})` : 'red'
+							: props.color
 				}}
 				onClick={() => textClick(el)}
 				onMouseOver={() => setHoveredItem(el)}
