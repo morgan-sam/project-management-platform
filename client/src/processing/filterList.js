@@ -20,7 +20,7 @@ const filterListDeadline = (filterOptions, list) => {
 const filterListTeams = (filterOptions, list) => {
 	return list.filter((el) => {
 		if (filterOptions.teams === 'all') return true;
-		else if (filterOptions.teams === el.team) return true;
+		else if (el.teams.includes(filterOptions.teams)) return true;
 		else return false;
 	});
 };
