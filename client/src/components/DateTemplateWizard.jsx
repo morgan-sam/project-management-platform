@@ -15,7 +15,8 @@ import {
 	topRightContainer,
 	bottomRightContainer,
 	bottomContainer,
-	containerItemStyle
+	containerItemStyle,
+	getSubGridStyle
 } from 'styling/wizardStyles';
 
 const DateTemplateWizard = (props) => {
@@ -24,22 +25,6 @@ const DateTemplateWizard = (props) => {
 	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
 	const [ amount, setAmount ] = useState(1);
-
-	const sequenceSubContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(2, 1fr)',
-		gridGap: '1rem',
-		padding: '1rem'
-	};
-
-	const stepSubContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(4, 1fr)',
-		gridGap: '1rem',
-		padding: '1rem'
-	};
 
 	const generateDateTemplate = () => {
 		let template = '${';
@@ -76,7 +61,7 @@ const DateTemplateWizard = (props) => {
 				</div>
 				<div style={bottomLeftContainer}>
 					<div style={containerItemStyle}>Sequence:</div>
-					<div style={{ ...sequenceSubContainer, ...containerItemStyle }}>
+					<div style={{ ...getSubGridStyle(2, 2), ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
 						<Checkbox
 							style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -104,7 +89,7 @@ const DateTemplateWizard = (props) => {
 					}}
 				>
 					<div style={containerItemStyle}>Step:</div>
-					<div style={{ ...stepSubContainer, ...containerItemStyle }}>
+					<div style={{ ...getSubGridStyle(2, 4), ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
 						<Checkbox
 							style={{ gridArea: '1 / 2 / 2 / 3' }}

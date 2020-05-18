@@ -12,7 +12,8 @@ import {
 	topRightContainer,
 	bottomRightContainer,
 	bottomContainer,
-	containerItemStyle
+	containerItemStyle,
+	getSubGridStyle
 } from 'styling/wizardStyles';
 
 const TaskTemplateWizard = (props) => {
@@ -21,14 +22,6 @@ const TaskTemplateWizard = (props) => {
 	const [ symbol, setSymbol ] = useState('n');
 	const [ digits, setDigits ] = useState(1);
 	const [ order, setOrder ] = useState('a');
-
-	const subContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(2, 1fr)',
-		gridGap: '1rem',
-		padding: '1rem'
-	};
 
 	const generateTaskTemplate = () => {
 		let template = name.length ? `${name}_` : '';
@@ -52,7 +45,7 @@ const TaskTemplateWizard = (props) => {
 				</div>
 				<div style={bottomLeftContainer}>
 					<div style={containerItemStyle}>Symbol:</div>
-					<div style={{ ...subContainer, ...containerItemStyle }}>
+					<div style={{ ...getSubGridStyle(2, 2), ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Number:</div>
 						<Checkbox
 							style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -89,7 +82,7 @@ const TaskTemplateWizard = (props) => {
 				</div>
 				<div style={bottomRightContainer}>
 					<div style={containerItemStyle}>Order:</div>
-					<div style={{ ...subContainer, ...containerItemStyle }}>
+					<div style={{ ...getSubGridStyle(2, 2), ...containerItemStyle }}>
 						<div style={{ gridArea: '1 / 1 / 2 / 2' }}>Ascending:</div>
 						<Checkbox
 							style={{ gridArea: '1 / 2 / 2 / 3' }}

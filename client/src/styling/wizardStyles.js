@@ -58,3 +58,13 @@ export const bottomContainer = {
 export const containerItemStyle = {
 	padding: '1rem'
 };
+
+export const getSubGridStyle = (columns, rows) => {
+	return {
+		display: 'grid',
+		gridTemplateColumns: `repeat(${columns}, 1fr)`,
+		gridTemplateRows: `repeat(${rows}, 1fr)`,
+		gridGap: '1rem',
+		padding: '1rem'
+	};
+};
