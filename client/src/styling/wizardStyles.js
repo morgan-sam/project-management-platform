@@ -6,8 +6,7 @@ const categoryStyle = {
 	alignItems: 'center',
 	justifyContent: 'center',
 	padding: '1rem',
-	textAlign: 'center',
-	margin: '1.5rem 0rem'
+	textAlign: 'center'
 };
 
 export const mainGridContainer = {
@@ -25,7 +24,8 @@ export const getSectionOpacityStyle = (disabled) => {
 
 export const topContainer = {
 	...titleStyle,
-	...categoryStyle
+	...categoryStyle,
+	margin: '2rem 0rem'
 };
 
 export const topLeftContainer = {
@@ -52,7 +52,8 @@ export const bottomContainer = {
 	padding: '2rem',
 	display: 'flex',
 	alignItems: 'center',
-	justifyContent: 'center'
+	justifyContent: 'center',
+	margin: '1.5rem 0rem'
 };
 
 export const containerItemStyle = {
