@@ -19,8 +19,8 @@ const filterListDeadline = (filterOptions, list) => {
 
 const filterListTeams = (filterOptions, list) => {
 	return list.filter((el) => {
-		if (filterOptions.teams === 'all') return true;
-		else if (el.teams.includes(filterOptions.teams)) return true;
+		if (filterOptions.teams.includes('all')) return true;
+		else if (el.teams.some((team) => filterOptions.teams.includes(team))) return true;
 		else return false;
 	});
 };
