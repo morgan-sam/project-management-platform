@@ -39,7 +39,7 @@ const TaskTemplateWizard = (props) => {
 				<div style={topLeftContainer}>
 					<div style={{ padding: '1.5rem', paddingTop: '0.4rem' }}>Text Name:</div>
 					<form style={{ padding: '1rem' }} onChange={(e) => setName(e.target.value)}>
-						<input type="text" name="name" value={name} />
+						<input type="text" name="name" defaultValue={name} />
 						<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
 					</form>
 				</div>
