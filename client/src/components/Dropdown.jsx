@@ -131,6 +131,7 @@ const Dropdown = (props) => {
 					{listOpen ? optionDivs : null}
 				</div>
 				<div
+					className="dropdown"
 					style={{
 						...dropdownBoxStyle(themeColor, { listOpen, hovered: false }),
 						...dropdownEndNode,
