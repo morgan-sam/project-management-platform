@@ -98,6 +98,7 @@ const Dropdown = (props) => {
 
 	useEffect(
 		() => {
+			console.log(listOpen);
 			if (props.onOpenChange) props.onOpenChange(listOpen);
 			if (listOpen) setListingOpening(true);
 		},

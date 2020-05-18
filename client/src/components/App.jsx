@@ -22,7 +22,10 @@ const App = () => {
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
-	const [ displayNewTaskBar, setDisplayNewTaskBar ] = useState(false);
+	const [ displayedBars, setDisplayedBars ] = useState({
+		filter: false,
+		newTask: false
+	});
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
 	const [ popUp, setPopUp ] = useState(null);
 
@@ -90,8 +93,8 @@ const App = () => {
 					rawTaskList={rawTaskList}
 					setDataChanged={setDataChanged}
 					setEntryCompletion={setEntryCompletion}
-					displayNewTaskBar={displayNewTaskBar}
-					setDisplayNewTaskBar={setDisplayNewTaskBar}
+					displayedBars={displayedBars}
+					setDisplayedBars={setDisplayedBars}
 					colorTheme={colorTheme}
 					pressedKeys={pressedKeys}
 					setPopUp={setPopUp}
@@ -103,11 +106,12 @@ const App = () => {
 					taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 					rawTaskList={rawTaskList}
 					colorTheme={colorTheme}
+					displayedBars={displayedBars}
 				/>
 				<NewTaskBar
 					style={mainPageItemStyle}
-					displayNewTaskBar={displayNewTaskBar}
-					setDisplayNewTaskBar={setDisplayNewTaskBar}
+					displayedBars={displayedBars}
+					setDisplayedBars={setDisplayedBars}
 					setDataChanged={setDataChanged}
 					colorTheme={colorTheme}
 				/>

@@ -9,7 +9,7 @@ import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
 
 const NewTaskBar = (props) => {
-	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar, colorTheme } = props;
+	const { style, displayedBars, setDataChanged, setDisplayedBars, colorTheme } = props;
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 	const [ taskString, setTaskString ] = useState(null);
@@ -26,7 +26,7 @@ const NewTaskBar = (props) => {
 			const entry = { task, date, deadline, urgency, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
-			setTimeout(() => setDisplayNewTaskBar(false), 500);
+			setTimeout(() => setDisplayedBars(false), 500);
 		}
 	};
 
@@ -37,7 +37,7 @@ const NewTaskBar = (props) => {
 				style={{
 					...style,
 					...newTaskBarStyle,
-					...(displayNewTaskBar ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
+					...(displayedBars.newTask ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>

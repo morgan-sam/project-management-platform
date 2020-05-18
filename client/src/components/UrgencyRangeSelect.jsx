@@ -24,6 +24,14 @@ const UrgencyRangeSelect = (props) => {
 		else setParentUrgencyOptions(props.filterOptions.urgency.min, max);
 	};
 
+	const setParentOverflow = (val) => {
+		if (!val) props.setOverflowHidden(val);
+		else
+			setTimeout(() => {
+				if (props.setOverflowHidden) props.setOverflowHidden(val);
+			}, 10);
+	};
+
 	return (
 		<div style={props.style}>
 			<div className="filterBarLabel" style={elStyle}>
@@ -39,6 +47,7 @@ const UrgencyRangeSelect = (props) => {
 					default={props.filterOptions.urgency.min}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setMinUrgency(val)}
+					onOpenChange={(val) => setParentOverflow(val)}
 				/>
 				{'..'}
 				<Dropdown
@@ -50,6 +59,7 @@ const UrgencyRangeSelect = (props) => {
 					default={props.filterOptions.urgency.max}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setMaxUrgency(val)}
+					onOpenChange={(val) => setParentOverflow(val)}
 				/>
 			</div>
 		</div>

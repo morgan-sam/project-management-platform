@@ -15,7 +15,9 @@ const TaskManager = (props) => {
 		selectedTasks,
 		colorTheme,
 		setPopUp,
-		pressedKeys
+		pressedKeys,
+		displayedBars,
+		setDisplayedBars
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -67,7 +69,13 @@ const TaskManager = (props) => {
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={'New Task'}
-				onClick={() => props.setDisplayNewTaskBar(!props.displayNewTaskBar)}
+				onClick={() => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })}
+				color={colorTheme}
+			/>
+			<ColorButton
+				className={'taskManagerBtn'}
+				text={'Filter'}
+				onClick={() => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })}
 				color={colorTheme}
 			/>
 			<ColorButton

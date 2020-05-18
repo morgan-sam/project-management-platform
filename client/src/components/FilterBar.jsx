@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FilterToggle from 'components/FilterToggle';
 import ResetFilterBtn from 'components/ResetFilterBtn';
 import DateRangeSelect from 'components/DateRangeSelect';
@@ -7,12 +7,27 @@ import CompletionSelect from 'components/CompletionSelect';
 import DropdownCheckboxes from 'components/DropdownCheckboxes';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/parseDates';
+import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
 
 const FilterBar = (props) => {
-	const { taskListTeams, filterOptions, setFilterOptions } = props;
-
+	const { taskListTeams, filterOptions, setFilterOptions, displayedBars } = props;
+	const [ dropdownsOpen, setDropdownsOpen ] = useState({
+		date: false,
+		urgency: false,
+		teams: false,
+		completion: false
+	});
+	const [ popUpOpen, setPopUpOpen ] = useState(false);
+	console.log(dropdownsOpen);
 	return (
-		<div className="filterBar" style={{ ...props.style, ...filterBarStyle }}>
+		<div
+			className="filterBar"
+			style={{
+				...filterBarStyle,
+				...(displayedBars.filter ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
+				overflow: Object.values(dropdownsOpen).includes(true) ? 'visible' : 'hidden'
+			}}
+		>
 			<FilterToggle {...props} style={filterBarItemStyle} />
 			<ResetFilterBtn {...props} style={filterBarItemStyle} />
 			<DateRangeSelect
@@ -30,8 +45,14 @@ const FilterBar = (props) => {
 						...props.filterOptions,
 						deadline: val
 					})}
+				setOverflowHidden={(val) => setDropdownsOpen({ ...dropdownsOpen, date: val })}
+				setPopUpOpen={setPopUpOpen}
 			/>
-			<UrgencyRangeSelect {...props} style={filterBarItemStyle} />
+			<UrgencyRangeSelect
+				{...props}
+				style={filterBarItemStyle}
+				setOverflowHidden={(val) => setDropdownsOpen({ ...dropdownsOpen, urgency: val })}
+			/>
 			<DropdownCheckboxes
 				label={'Teams'}
 				onClick={(val) => {
@@ -47,8 +68,13 @@ const FilterBar = (props) => {
 				filterOptions={filterOptions}
 				selected={filterOptions.teams}
 				style={{ ...filterBarItemStyle, width: '8rem', zIndex: '10' }}
+				onOpenChange={(val) => setDropdownsOpen({ ...dropdownsOpen, teams: val })}
 			/>
-			<CompletionSelect {...props} style={filterBarItemStyle} />
+			<CompletionSelect
+				{...props}
+				style={filterBarItemStyle}
+				setOverflowHidden={(val) => setDropdownsOpen({ ...dropdownsOpen, completion: val })}
+			/>
 		</div>
 	);
 };

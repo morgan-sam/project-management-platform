@@ -21,6 +21,7 @@ const CompletionSelect = (props) => {
 						...props.filterOptions,
 						completion: val
 					})}
+				onOpenChange={props.setOverflowHidden}
 			/>
 		</div>
 	);
