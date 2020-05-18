@@ -41,7 +41,7 @@ const TableHeadings = (props) => {
 			/>
 			<HeadingCell
 				className="teamCell"
-				text={`Team ${props.sortOptions.type === 'team' ? sortArrow : ''}`}
+				text={`Teams ${props.sortOptions.type === 'team' ? sortArrow : ''}`}
 				onClick={() => props.userSetSort('team')}
 				style={teamCell}
 			/>

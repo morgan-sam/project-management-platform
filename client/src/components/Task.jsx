@@ -62,7 +62,7 @@ const Task = (props) => {
 			/>
 			<DataCell
 				className="teamCell"
-				text={props.item.team}
+				text={props.item.teams ? props.item.teams.join(' ') : null}
 				style={{ ...teamCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				{...dragSelectionFunctions}
 			/>
