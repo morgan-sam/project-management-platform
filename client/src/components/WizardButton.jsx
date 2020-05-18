@@ -22,7 +22,9 @@ const WizardButton = (props) => {
 			onMouseLeave={() => setHover(false)}
 			style={wizardBtnStyle}
 		>
-			⚡
+			<span role="img" aria-label="lightning">
+				⚡
+			</span>
 		</div>
 	);
 };
