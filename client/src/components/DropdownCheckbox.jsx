@@ -26,6 +26,8 @@ const DropdownCheckbox = (props) => {
 		[ hoverEnabled ]
 	);
 
+	const displayString = typeof value === 'string' && value.match(/^[a-z]/) ? capitalizeFirstLetter(value) : value;
+
 	return (
 		<div
 			ref={entryRef}
@@ -41,7 +43,7 @@ const DropdownCheckbox = (props) => {
 		>
 			<div style={{ display: 'flex', width: '100%' }}>
 				<div style={{ color: 'black', width: '100%' }} className="dropdown">
-					{typeof value === 'string' && value.match(/^[a-z]/) ? capitalizeFirstLetter(value) : value}
+					{displayString.length > 8 ? `${displayString.substr(0, 8)}...` : displayString}
 				</div>
 				<Checkbox
 					default={selected}
