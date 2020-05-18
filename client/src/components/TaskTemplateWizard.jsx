@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
-import { cancelButtonStyle, containerStyle, titleStyle } from 'styling/batchNewTasks';
+import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
+import {
+	mainGridContainer,
+	getSectionOpacityStyle,
+	topContainer,
+	topLeftContainer,
+	bottomLeftContainer,
+	topRightContainer,
+	bottomRightContainer,
+	bottomContainer,
+	containerItemStyle
+} from 'styling/wizardStyles';
 
 const TaskTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template } = props;
@@ -11,70 +22,11 @@ const TaskTemplateWizard = (props) => {
 	const [ digits, setDigits ] = useState(1);
 	const [ order, setOrder ] = useState('a');
 
-	const categoryStyle = {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: '1rem',
-		textAlign: 'center',
-		margin: '1.5rem 0rem'
-	};
-
-	const mainGridContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(2, 1fr)'
-	};
-
-	const getSectionOpacityStyle = (disabled) => {
-		return {
-			opacity: disabled ? '0.3' : '1',
-			pointerEvents: disabled ? 'none' : 'auto'
-		};
-	};
-
-	const topContainer = {
-		...titleStyle,
-		...categoryStyle
-	};
-
-	const topLeftContainer = {
-		...categoryStyle,
-		gridArea: '1 / 1 / 2 / 2'
-	};
-
-	const bottomLeftContainer = {
-		...categoryStyle,
-		gridArea: '2 / 1 / 3 / 2'
-	};
-
-	const topRightContainer = {
-		...categoryStyle,
-		gridArea: '1 / 2 / 2 / 3'
-	};
-
-	const bottomRightContainer = {
-		...categoryStyle,
-		gridArea: '2 / 2 / 3 / 3'
-	};
-
-	const bottomContainer = {
-		padding: '2rem',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center'
-	};
-
 	const subContainer = {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridTemplateRows: 'repeat(2, 1fr)',
 		gridGap: '1rem',
-		padding: '1rem'
-	};
-
-	const containerItemStyle = {
 		padding: '1rem'
 	};
 

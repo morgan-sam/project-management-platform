@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DateSelect from 'components/DateSelect';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj } from 'processing/parseDates';
-import { cancelButtonStyle, containerStyle, titleStyle } from 'styling/batchNewTasks';
-import { useState } from 'react';
+import { cancelButtonStyle, containerStyle } from 'styling/batchNewTasks';
+import {
+	mainGridContainer,
+	getSectionOpacityStyle,
+	topContainer,
+	topLeftContainer,
+	bottomLeftContainer,
+	topRightContainer,
+	bottomRightContainer,
+	bottomContainer,
+	containerItemStyle
+} from 'styling/wizardStyles';
 
 const DateTemplateWizard = (props) => {
 	const { setScreen, colorTheme, setTemplate, template, screen } = props;
@@ -14,61 +24,6 @@ const DateTemplateWizard = (props) => {
 	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
 	const [ amount, setAmount ] = useState(1);
-
-	const categoryStyle = {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: '1rem',
-		textAlign: 'center'
-	};
-
-	const mainGridContainer = {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
-		gridTemplateRows: 'repeat(2, 1fr)'
-	};
-
-	const getSectionOpacityStyle = (disabled) => {
-		return {
-			opacity: disabled ? '0.3' : '1',
-			pointerEvents: disabled ? 'none' : 'auto'
-		};
-	};
-
-	const topContainer = {
-		...titleStyle,
-		...categoryStyle,
-		margin: '1.5rem 0rem'
-	};
-
-	const topLeftContainer = {
-		...categoryStyle,
-		gridArea: '1 / 1 / 2 / 2'
-	};
-
-	const bottomLeftContainer = {
-		...categoryStyle,
-		gridArea: '2 / 1 / 3 / 2'
-	};
-
-	const topRightContainer = {
-		...categoryStyle,
-		gridArea: '1 / 2 / 2 / 3'
-	};
-
-	const bottomRightContainer = {
-		...categoryStyle,
-		gridArea: '2 / 2 / 3 / 3'
-	};
-
-	const bottomContainer = {
-		padding: '2rem',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center'
-	};
 
 	const sequenceSubContainer = {
 		display: 'grid',
@@ -83,10 +38,6 @@ const DateTemplateWizard = (props) => {
 		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridTemplateRows: 'repeat(4, 1fr)',
 		gridGap: '1rem',
-		padding: '1rem'
-	};
-
-	const containerItemStyle = {
 		padding: '1rem'
 	};
 
