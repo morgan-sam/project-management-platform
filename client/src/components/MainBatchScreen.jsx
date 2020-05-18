@@ -87,9 +87,12 @@ const MainBatchScreen = (props) => {
 			<div style={subContainerStyle}>
 				<InputFormWithLabel
 					{...props}
-					label={'Team'}
-					onChange={(val) => setTemplate({ ...template, team: val })}
-					default={template.team}
+					label={'Teams'}
+					onChange={(val) => {
+						const array = val.split(' ');
+						setTemplate({ ...template, teams: array });
+					}}
+					default={`${template.teams.join(' ')}`}
 				/>
 			</div>
 			<div style={finalContainerStyle}>

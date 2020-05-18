@@ -15,7 +15,7 @@ const BatchNewTasks = (props) => {
 		date: '${t}',
 		deadline: '${t}+2w',
 		urgency: 3,
-		team: 'PLACEHOLDER_NAME'
+		teams: [ 'PLACEHOLDER_NAME', 'TEAM10' ]
 	});
 	const [ screen, setScreen ] = useState('main');
 
@@ -34,7 +34,7 @@ const BatchNewTasks = (props) => {
 					date: parseDateObjToISO(dates[i]),
 					deadline: parseDateObjToISO(deadlines[i]),
 					urgency: template.urgency,
-					team: template.team,
+					teams: template.teams.filter((el) => el !== ''),
 					completed: false
 				};
 				fetchPostEntry(entry);
