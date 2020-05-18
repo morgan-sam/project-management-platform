@@ -40,17 +40,13 @@ const DropdownCheckbox = (props) => {
 				if (hoverEnabled) setHovered(true);
 			}}
 			onMouseLeave={() => setHovered(false)}
+			onClick={() => onClick(value)}
 		>
 			<div style={{ display: 'flex', width: '100%' }}>
 				<div style={{ color: 'black', width: '100%' }} className="dropdown">
 					{displayString.length > 8 ? `${displayString.substr(0, 8)}...` : displayString}
 				</div>
-				<Checkbox
-					default={selected}
-					style={{ width: '2.5rem' }}
-					className="dropdown"
-					onChange={() => onClick(value)}
-				/>
+				<Checkbox default={selected} style={{ width: '2.5rem' }} className="dropdown" onChange={() => null} />
 			</div>
 
 			<div
