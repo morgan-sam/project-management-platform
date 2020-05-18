@@ -25,8 +25,9 @@ const ClickableCellText = (props) => {
 
 	const textDivs = (text) => {
 		const array = text.toString().split(' ');
-		return array.map((el) => (
+		return array.map((el, i) => (
 			<div
+				key={i}
 				style={{
 					color:
 						hoveredItem === el
