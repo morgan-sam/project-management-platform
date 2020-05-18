@@ -8,7 +8,6 @@ import {
 	getHoveredStyle,
 	getDefaultStyle
 } from 'styling/dropdown';
-import { calculateColorStyles } from 'styling/theme';
 
 const DropdownEntry = (props) => {
 	const entryRef = useRef(null);

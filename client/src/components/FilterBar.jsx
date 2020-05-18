@@ -7,7 +7,7 @@ import CompletionSelect from 'components/CompletionSelect';
 import DropdownCheckboxes from 'components/DropdownCheckboxes';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/parseDates';
-import { newTaskBarStyle, getTaskBarHiddenStyle, getTaskBarVisibleStyle, addTaskBtn } from 'styling/newTaskBar';
+import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
 
 const FilterBar = (props) => {
 	const { taskListTeams, filterOptions, setFilterOptions, displayedBars } = props;
