@@ -10,18 +10,18 @@ import { getDayFromTodayAsISO } from 'data/dates';
 
 const NewTaskBar = (props) => {
 	const { style, displayNewTaskBar, setDataChanged, setDisplayNewTaskBar, colorTheme } = props;
-
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
-
 	const [ task, setTask ] = useState(null);
 	const [ date, setDate ] = useState(getDayFromTodayAsISO(0));
 	const [ deadline, setDeadline ] = useState(getDayFromTodayAsISO(14));
 	const [ urgency, setUrgency ] = useState(3);
-	const [ teams, setTeams ] = useState(null);
+	const [ teamsString, setTeamsStrings ] = useState(null);
+
+	const teams = teamsString ? teamsString.split(' ').filter((el) => el !== '') : [];
 
 	const addTaskToDatabase = () => {
-		if (task && teams) {
+		if (task && teams.length) {
 			const entry = { task, date, deadline, urgency, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
@@ -59,12 +59,12 @@ const NewTaskBar = (props) => {
 					onClick={(val) => setUrgency(val)}
 					setOverflowHidden={setOverflowHidden}
 				/>
-				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeams(val)} />
+				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeamsStrings(val)} />
 				<ColorButton
 					text={`Add Task To Database`}
 					onClick={() => addTaskToDatabase()}
 					color={colorTheme}
-					enabled={task && teams}
+					enabled={task && teams.length}
 				/>
 			</div>
 		</div>
