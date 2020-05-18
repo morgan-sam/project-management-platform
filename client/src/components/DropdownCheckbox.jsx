@@ -39,15 +39,17 @@ const DropdownCheckbox = (props) => {
 			}}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<span style={{ color: 'black' }} className="dropdown">
-				{typeof value === 'string' && value.match(/^[a-z]/) ? capitalizeFirstLetter(value) : value}
-			</span>
-			<Checkbox
-				default={selected}
-				style={{ paddingLeft: '1rem' }}
-				className="dropdown"
-				onChange={() => onClick(value)}
-			/>
+			<div style={{ display: 'flex', width: '100%' }}>
+				<div style={{ color: 'black', width: '100%' }} className="dropdown">
+					{typeof value === 'string' && value.match(/^[a-z]/) ? capitalizeFirstLetter(value) : value}
+				</div>
+				<Checkbox
+					default={selected}
+					style={{ width: '2.5rem' }}
+					className="dropdown"
+					onChange={() => onClick(value)}
+				/>
+			</div>
 
 			<div
 				className="dropdown"
