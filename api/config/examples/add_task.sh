@@ -10,7 +10,13 @@ do
     DATE=$(date --utc +%FT%TZ)
     DEADLINE=$(date --date='14 days' --utc +%FT%TZ)
     URGENCY=$(echo $RANDOM % 5 + 1 | bc)
-    TEAM=$(echo Team_$(echo $RANDOM % 5 + 1 | bc))
-    echo -e "Task: ${TASK}\nDate: ${DATE}\nDeadline: ${DEADLINE}\nUrgency: ${URGENCY}\nTeam: ${TEAM}"
-    curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"team":"'$TEAM'","completed":"false"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
+    teamArray=()
+    for ((i=1;i<=5;i++)); 
+    do if ((RANDOM % 2))
+    then teamArray+=("Team_$i"); fi; done;
+    if [ ${#teamArray[@]} -eq 0 ];
+    then teamArray+="Team_$(( RANDOM % 5 + 1))"; fi;
+    TEAMS=$(printf '%s\n' "${teamArray[@]}" | jq -R . | jq -s .)
+    echo -e "Task: ${TASK}\nDate: ${DATE}\nDeadline: ${DEADLINE}\nUrgency: ${URGENCY}\nTeam: ${TEAMS}"
+    #curl -d '{"task":"'$TASK'","date":"'$DATE'","deadline":"'$DEADLINE'","urgency":'$URGENCY',"team":"'$TEAMS'","completed":"false"}' -H "Content-Type: application/json" -X POST http://localhost:8000/tasks
 done
