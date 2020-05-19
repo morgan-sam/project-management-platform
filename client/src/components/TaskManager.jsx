@@ -76,7 +76,7 @@ const TaskManager = (props) => {
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
-				text={'Filter'}
+				text={`${displayedBars.filter ? 'Hide' : 'Show'} Filter`}
 				onClick={() => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })}
 				color={colorTheme}
 			/>
