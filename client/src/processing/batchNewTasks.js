@@ -1,5 +1,5 @@
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj, parseDateObjToLittleEndian, parseECMADateToDateObj } from 'processing/parseDates';
+import { parseISOToDateObj, parseECMADateToDateObj } from 'processing/parseDates';
 
 ////////////////////////////////////////////////
 
