@@ -64,8 +64,6 @@ const TaskManager = (props) => {
 		[ pressedKeys ]
 	);
 
-	console.log(displayedBars);
-
 	return (
 		<div className="taskManager" style={{ ...props.style, ...btnContainerStyle }}>
 			<ColorButton
