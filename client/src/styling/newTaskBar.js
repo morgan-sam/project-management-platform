@@ -23,10 +23,12 @@ export const getTaskBarHiddenStyle = (popUpOpen) => {
 		opacity: '0',
 		maxHeight: '0',
 		zIndex: '-10',
+		padding: '0',
+		border: '0px solid black',
 		//executes on task bar close
 		transition: `${popUpOpen
 			? largeCloseTransition
-			: smallCloseTransition}, opacity 1s cubic-bezier(0,1.06,.62,.99)`
+			: smallCloseTransition}, opacity 1s cubic-bezier(0,1.06,.62,.99), border 0s linear 0.5s`
 	};
 };
 
