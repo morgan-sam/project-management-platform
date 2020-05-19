@@ -159,3 +159,10 @@ test('Adding dates, multiple algebra, 3 other op combos', () => {
 	];
 	expect(result).toStrictEqual(expected);
 });
+
+test('Check if instructions starting with date returns error', () => {
+	const dateTemplate = 'nd+${1/1/2020}';
+	const expected = 'ERROR: TEMPLATE MUST START WITH DATE';
+	const result = interpretDateTemplate(dateTemplate, 3);
+	expect(result).toStrictEqual(expected);
+});
