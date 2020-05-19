@@ -23,7 +23,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayedBars, setDisplayedBars ] = useState({
-		filter: false,
+		filter: true,
 		newTask: false
 	});
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
@@ -50,8 +50,12 @@ const App = () => {
 		() => {
 			(async () => {
 				const data = await fetchGetEntries();
-				if (data) setRawTaskList(data);
-				else setRawTaskList([]);
+				if (data) {
+					if (rawTaskList.length === 0) setFilterOptions(filterOptionsDefault(data));
+					setRawTaskList(data);
+				} else {
+					setRawTaskList([]);
+				}
 				setDataChanged(false);
 			})();
 		},

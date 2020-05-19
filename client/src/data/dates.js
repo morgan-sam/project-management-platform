@@ -53,6 +53,7 @@ export const getBoundaryDates = (rawTaskList) => {
 		},
 		rawTaskList
 	);
+	const firstDate = tasksSortedByDate[0].date;
 	const tasksSortedByDeadline = sortList(
 		{
 			sortOptions: {
@@ -63,9 +64,8 @@ export const getBoundaryDates = (rawTaskList) => {
 		},
 		rawTaskList
 	);
+	const lastDeadline = tasksSortedByDeadline[0].deadline;
 	if (tasksSortedByDate.length && tasksSortedByDeadline.length) {
-		const firstDate = tasksSortedByDate[0].date;
-		const lastDeadline = tasksSortedByDeadline[0].deadline;
 		return { date: firstDate, deadline: lastDeadline };
 	} else return { date: null, deadline: null };
 };

@@ -16,11 +16,13 @@ const ClickableCellText = (props) => {
 	};
 
 	const textClick = (text) => {
-		if (cellType === 'date') setFilterOptions({ ...filterOptions, date: parseLittleEndianToISOTime(text) });
-		if (cellType === 'deadline') setFilterOptions({ ...filterOptions, deadline: parseLittleEndianToISOTime(text) });
+		if (cellType === 'date')
+			setFilterOptions({ ...filterOptions, date: parseLittleEndianToISOTime(text), active: true });
+		if (cellType === 'deadline')
+			setFilterOptions({ ...filterOptions, deadline: parseLittleEndianToISOTime(text), active: true });
 		if (cellType === 'urgency')
-			setFilterOptions({ ...filterOptions, urgency: { min: parseInt(text), max: parseInt(text) } });
-		if (cellType === 'teams') setFilterOptions({ ...filterOptions, teams: [ text ] });
+			setFilterOptions({ ...filterOptions, urgency: { min: parseInt(text), max: parseInt(text), active: true } });
+		if (cellType === 'teams') setFilterOptions({ ...filterOptions, teams: [ text ], active: true });
 	};
 
 	const textDivs = (text) => {

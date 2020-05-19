@@ -1,21 +1,15 @@
 import React from 'react';
 import ColorButton from 'components/ColorButton';
-import { getBoundaryDates } from 'data/dates';
-import { parseISOToZeroTime } from 'processing/parseDates';
+import { filterOptionsDefault } from 'data/defaultState';
 
 const ResetFilterBtn = (props) => {
 	return (
 		<ColorButton
 			className="resetFilterBtn"
 			onClick={() => {
-				const boundaryDates = getBoundaryDates(props.rawTaskList);
+				const active = props.filterOptions.active;
 				props.setFilterOptions({
-					...props.filterOptions,
-					date: parseISOToZeroTime(boundaryDates.date),
-					deadline: parseISOToZeroTime(boundaryDates.deadline),
-					completion: 'all',
-					urgency: { min: 1, max: 5 },
-					teams: [ 'all' ]
+					...filterOptionsDefault(props.rawTaskList, active)
 				});
 			}}
 			text={'Reset Filter'}
