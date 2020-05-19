@@ -10,7 +10,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
-import { getMainPageStyle, taskManagerStyle, overlayStyle } from 'styling/mainPage';
+import { getMainPageStyle, taskManagerStyle, tableStyle, overlayStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -118,6 +118,7 @@ const App = () => {
 					colorTheme={colorTheme}
 				/>
 				<Table
+					style={tableStyle}
 					filterOptions={filterOptions}
 					setFilterOptions={setFilterOptions}
 					sortOptions={sortOptions}

@@ -15,6 +15,10 @@ export const taskManagerStyle = {
 	margin: '1rem 0'
 };
 
+export const tableStyle = {
+	margin: '0 0 3rem 0'
+};
+
 export const overlayStyle = {
 	height: '100vh',
 	width: '100vw',
