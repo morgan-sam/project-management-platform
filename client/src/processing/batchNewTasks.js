@@ -59,12 +59,8 @@ const interpretInstructions = (instructions, taskCount) => {
 		for (let i = 0; i < instructions.length; i++) {
 			const { type, value } = instructions[i];
 			if ((type === 'date' || type === 'algebra') && previous === null) previous = instructions[i];
-			else if (type === 'operator') {
-				if (operator === '-' && value === '-') operator = '+';
-				else if (operator === '-' && value === '+') operator = '-';
-				else if (operator === '+' && value === '-') operator = '-';
-				else operator = value;
-			} else if (type === 'algebra' && previous && operator) {
+			else if (type === 'operator') operator = interpretOperatorInstructions(operator, value);
+			else if (type === 'algebra' && previous && operator) {
 				// template must start with date so previous type for algebra will always be date
 				previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
 				operator = null;
@@ -81,6 +77,13 @@ const interpretInstructions = (instructions, taskCount) => {
 		stringArray.push(previous.value);
 	}
 	return stringArray;
+};
+
+const interpretOperatorInstructions = (operator, value) => {
+	if (operator === '-' && value === '-') return '+';
+	else if (operator === '-' && value === '+') return '-';
+	else if (operator === '+' && value === '-') return '-';
+	else return value;
 };
 
 const addSubtractDates = (dateOne, dateTwo, operator) => {
