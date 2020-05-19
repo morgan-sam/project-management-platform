@@ -27,7 +27,7 @@ const regexList = [
 	{ type: 'algebra', regex: new RegExp('^([ndwmy0-9]+)') }
 ];
 
-export const convertTemplateToInstructions = (template) => {
+const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
 		let skipCount = 0;
@@ -51,7 +51,7 @@ export const convertTemplateToInstructions = (template) => {
 	return instructions;
 };
 
-export const interpretInstructions = (instructions, taskCount) => {
+const interpretInstructions = (instructions, taskCount) => {
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		let [ previous, operator ] = new Array(2).fill(null);
@@ -142,4 +142,9 @@ const getNumbersFromString = (string) => {
 	if (!numbers) return null;
 	const numArray = numbers.map((el) => parseInt(el));
 	return numArray;
+};
+
+export const testFunctions = {
+	interpretDateTemplate,
+	interpretInstructions
 };

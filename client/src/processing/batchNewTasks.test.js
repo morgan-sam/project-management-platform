@@ -1,7 +1,9 @@
-import { interpretDateTemplate, interpretInstructions, convertTemplateToInstructions } from './batchNewTasks';
+import { testFunctions } from './batchNewTasks';
+const { interpretDateTemplate, interpretInstructions } = testFunctions;
 
 test('Check 3 sequential days date template', () => {
 	const dateTemplate = '${1/1/2020}+nd';
+	``;
 	const expected = [
 		{
 			day: 1,
