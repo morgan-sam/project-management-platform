@@ -9,7 +9,8 @@ export const newTaskBarStyle = {
 	boxSizing: 'content-box',
 	height: 'auto',
 	overflow: 'hidden',
-	zIndex: '8'
+	zIndex: '8',
+	padding: '0.5rem'
 };
 
 const smallOpenTransition = 'max-height 1s cubic-bezier(.23,.52,.53,.74)';
