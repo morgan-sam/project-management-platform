@@ -85,9 +85,8 @@ const Dropdown = (props) => {
 		() => {
 			dropdownRef.current.onscroll = () => {
 				let dropdownSize =
-					convertRemToPixels(DROPDOWN_HEIGHT_REMS) * props.options.length +
-					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 +
-					1;
+					convertRemToPixels(DROPDOWN_HEIGHT_REMS) * (props.options.length - 1) +
+					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2;
 				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
 				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
 				setEndOfList(dropdownSize === dropdownRef.current.scrollTop);
@@ -122,13 +121,16 @@ const Dropdown = (props) => {
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
 					ref={dropdownRef}
 				>
-					<DropdownHeader
-						default={props.default}
-						setListOpen={setListOpen}
-						listOpen={listOpen}
-						hoverEnabled={endOfList || !listOpening}
-					/>
-					{listOpen ? optionDivs : null}
+					{listOpen ? (
+						optionDivs
+					) : (
+						<DropdownHeader
+							default={props.default}
+							setListOpen={setListOpen}
+							listOpen={listOpen}
+							hoverEnabled={endOfList || !listOpening}
+						/>
+					)}
 				</div>
 				<div
 					className="dropdown"
