@@ -149,13 +149,18 @@ const addSubtractDates = (dateOne, dateTwo, operator) => {
 
 const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 	const { day, month, year } = date;
-	let numArray = getNumbersFromString(algebra);
-	let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
-	product = operator === '-' ? -product : product;
+	const product = getProductFromAlgebra(operator, algebra, task);
 	date = new Date(year, month - 1, day);
-	if (algebra.match(/n/g)) product *= task;
 	date = getDateFromAlgebra(date, algebra, product);
 	return parseECMADateToDateObj(new Date(date));
+};
+
+const getProductFromAlgebra = (operator, algebra, task) => {
+	const numArray = getNumbersFromString(algebra);
+	let product = numArray ? numArray.reduce((a, b) => a * b) : 1;
+	product = operator === '-' ? -product : product;
+	if (algebra.match(/n/g)) product *= task;
+	return product;
 };
 
 const getDateFromAlgebra = (date, algebra, product) => {
