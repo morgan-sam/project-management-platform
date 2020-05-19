@@ -166,3 +166,10 @@ test('Check if instructions starting with date returns error', () => {
 	const result = interpretDateTemplate(dateTemplate, 3);
 	expect(result).toStrictEqual(expected);
 });
+
+test('Check if empty instructions returns error', () => {
+	const dateTemplate = '';
+	const expected = 'ERROR: NO TEMPLATE ENTERED';
+	const result = interpretDateTemplate(dateTemplate, 3);
+	expect(result).toStrictEqual(expected);
+});
