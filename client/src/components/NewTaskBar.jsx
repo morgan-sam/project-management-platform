@@ -26,7 +26,7 @@ const NewTaskBar = (props) => {
 			const entry = { task, date, deadline, urgency, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
-			setTimeout(() => setDisplayedBars(false), 500);
+			setTimeout(() => setDisplayedBars({ ...displayedBars, newTask: false }), 500);
 		}
 	};
 
