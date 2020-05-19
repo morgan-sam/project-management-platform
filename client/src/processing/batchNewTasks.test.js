@@ -1,4 +1,4 @@
-import { interpretDateTemplate, interpretInstructions } from './batchNewTasks';
+import { interpretDateTemplate, interpretInstructions, convertTemplateToInstructions } from './batchNewTasks';
 
 test('Check 3 sequential days date template', () => {
 	const dateTemplate = '${1/1/2020}+nd';
@@ -178,5 +178,12 @@ test('Check if invalid instructions returns error', () => {
 	const dateTemplate = '${1/1/2020}+q';
 	const expected = 'ERROR: INVALID TEMPLATE';
 	const result = interpretDateTemplate(dateTemplate, 7);
+	expect(result).toStrictEqual(expected);
+});
+
+test('Check if brackets return an error', () => {
+	const dateTemplate = '${1/1/2020}+(nd)';
+	const expected = 'ERROR: INVALID TEMPLATE';
+	const result = interpretDateTemplate(dateTemplate, 1);
 	expect(result).toStrictEqual(expected);
 });

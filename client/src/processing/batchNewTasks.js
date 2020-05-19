@@ -24,11 +24,10 @@ const regexList = [
 	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
 	{ type: 'date', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
 	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
-	{ type: 'algebra', regex: new RegExp('^([ndwmy0-9]+)') },
-	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
+	{ type: 'algebra', regex: new RegExp('^([ndwmy0-9]+)') }
 ];
 
-const convertTemplateToInstructions = (template) => {
+export const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
 		let skipCount = 0;
