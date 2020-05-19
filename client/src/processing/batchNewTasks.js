@@ -60,23 +60,26 @@ const interpretInstructions = (instructions, taskCount) => {
 			const { type, value } = instructions[i];
 			if ((type === 'date' || type === 'algebra') && previous === null) previous = instructions[i];
 			else if (type === 'operator') operator = interpretOperatorInstructions(operator, value);
-			else if (type === 'algebra' && previous && operator) {
-				// template must start with date so previous type for algebra will always be date
-				previous = { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
+			else if (previous && operator) {
+				previous = sumInstructions(instructions[i], previous, operator, task);
 				operator = null;
-			} else if (type === 'date' && previous && operator) {
-				if (previous.type === 'date') {
-					previous = { value: addSubtractDates(previous.value, value, operator), type: 'date' };
-					operator = null;
-				} else if (previous.type === 'algebra') {
-					previous = { value: calculateDateWithAlgebra(value, operator, previous.value, task), type: 'date' };
-					operator = null;
-				}
 			}
 		}
 		stringArray.push(previous.value);
 	}
 	return stringArray;
+};
+
+const sumInstructions = (current, previous, operator, task) => {
+	const { type, value } = current;
+	// template must start with date so previous type for algebra will always be date
+	if (type === 'algebra')
+		return { value: calculateDateWithAlgebra(previous.value, operator, value, task), type: 'date' };
+	else if (type === 'date') {
+		if (previous.type === 'date') return { value: addSubtractDates(previous.value, value, operator), type: 'date' };
+		else if (previous.type === 'algebra')
+			return { value: calculateDateWithAlgebra(value, operator, previous.value, task), type: 'date' };
+	}
 };
 
 const interpretOperatorInstructions = (operator, value) => {
