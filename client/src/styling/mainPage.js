@@ -11,7 +11,7 @@ export const getMainPageStyle = (scrollLocked = false) => {
 	};
 };
 
-export const mainPageItemStyle = {
+export const taskManagerStyle = {
 	margin: '1rem 0'
 };
 

@@ -10,7 +10,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
 import { filterList, getTaskListTeams } from 'processing/filterList';
 import NewTaskBar from 'components/NewTaskBar';
-import { getMainPageStyle, mainPageItemStyle, overlayStyle } from 'styling/mainPage';
+import { getMainPageStyle, taskManagerStyle, overlayStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -89,9 +89,9 @@ const App = () => {
 		<ThemeProvider value={colorTheme}>
 			<div className="mainPage" style={getMainPageStyle(popUp)}>
 				{/* <ColorTest /> */}
-				<MainTitle style={mainPageItemStyle} />
+				<MainTitle />
 				<TaskManager
-					style={mainPageItemStyle}
+					style={taskManagerStyle}
 					selectedTasks={selectedTasks}
 					setSelectedTasks={setSelectedTasks}
 					rawTaskList={rawTaskList}
@@ -104,7 +104,6 @@ const App = () => {
 					setPopUp={setPopUp}
 				/>
 				<FilterBar
-					style={mainPageItemStyle}
 					setFilterOptions={setFilterOptions}
 					filterOptions={filterOptions}
 					taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
@@ -113,7 +112,6 @@ const App = () => {
 					displayedBars={displayedBars}
 				/>
 				<NewTaskBar
-					style={mainPageItemStyle}
 					displayedBars={displayedBars}
 					setDisplayedBars={setDisplayedBars}
 					setDataChanged={setDataChanged}
@@ -122,7 +120,6 @@ const App = () => {
 				<Table
 					filterOptions={filterOptions}
 					setFilterOptions={setFilterOptions}
-					style={mainPageItemStyle}
 					sortOptions={sortOptions}
 					userSetSort={(val) => userSetSort(val)}
 					selectedTasks={selectedTasks}
