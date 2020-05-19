@@ -154,11 +154,16 @@ const calculateDateWithAlgebra = (date, operator, algebra, task) => {
 	product = operator === '-' ? -product : product;
 	date = new Date(year, month - 1, day);
 	if (algebra.match(/n/g)) product *= task;
+	date = getDateFromAlgebra(date, algebra, product);
+	return parseECMADateToDateObj(new Date(date));
+};
+
+const getDateFromAlgebra = (date, algebra, product) => {
 	if (algebra.match(/d/g)) date = date.setDate(date.getDate() + product);
 	else if (algebra.match(/w/g)) date = date.setDate(date.getDate() + product * 7);
 	else if (algebra.match(/m/g)) date = addMonths(date, product);
 	else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
-	return parseECMADateToDateObj(new Date(date));
+	return date;
 };
 
 const getDateWithExactValues = (date) => {
