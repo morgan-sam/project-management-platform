@@ -24,7 +24,7 @@ const regexList = [
 	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
 	{ type: 'date', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
 	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
-	{ type: 'algebra', regex: new RegExp('^([a-zA-Z0-9]+)') },
+	{ type: 'algebra', regex: new RegExp('^([ndwmy0-9]+)') },
 	{ type: 'brackets', regex: new RegExp('^(\\(.*\\))') }
 ];
 
