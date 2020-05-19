@@ -1,4 +1,4 @@
-import { interpretDateTemplate } from './batchNewTasks';
+import { interpretDateTemplate, interpretInstructions } from './batchNewTasks';
 
 test('Check 3 sequential days date template', () => {
 	const dateTemplate = '${1/1/2020}+nd';
@@ -111,5 +111,28 @@ test('Check 100s of years', () => {
 		}
 	];
 	const result = interpretDateTemplate(dateTemplate, 11);
+	expect(result).toStrictEqual(expected);
+});
+
+test('Instructions with double negative operators are interpreted to dates', () => {
+	const instructions = [
+		{ type: 'date', value: { day: 19, month: 5, year: 2020 } },
+		{ type: 'operator', value: '-' },
+		{ type: 'operator', value: '-' },
+		{ type: 'algebra', value: '2wn' }
+	];
+	const result = interpretInstructions(instructions, 10);
+	const expected = [
+		{ day: 19, month: 5, year: 2020 },
+		{ day: 2, month: 6, year: 2020 },
+		{ day: 16, month: 6, year: 2020 },
+		{ day: 30, month: 6, year: 2020 },
+		{ day: 14, month: 7, year: 2020 },
+		{ day: 28, month: 7, year: 2020 },
+		{ day: 11, month: 8, year: 2020 },
+		{ day: 25, month: 8, year: 2020 },
+		{ day: 8, month: 9, year: 2020 },
+		{ day: 22, month: 9, year: 2020 }
+	];
 	expect(result).toStrictEqual(expected);
 });

@@ -52,7 +52,7 @@ const convertTemplateToInstructions = (template) => {
 	return instructions;
 };
 
-const interpretInstructions = (instructions, taskCount) => {
+export const interpretInstructions = (instructions, taskCount) => {
 	let stringArray = [];
 	for (let task = 0; task < taskCount; task++) {
 		let [ previous, operator ] = new Array(2).fill(null);
