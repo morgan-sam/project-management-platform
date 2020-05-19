@@ -136,3 +136,26 @@ test('Instructions with double negative operators are interpreted to dates', () 
 	];
 	expect(result).toStrictEqual(expected);
 });
+
+test('Adding dates, multiple algebra, 3 other op combos', () => {
+	const instructions = [
+		{ type: 'date', value: { day: 19, month: 5, year: 2020 } },
+		{ type: 'operator', value: '-' },
+		{ type: 'operator', value: '+' },
+		{ type: 'date', value: { day: 9, month: 0, year: 0 } },
+		{ type: 'operator', value: '+' },
+		{ type: 'operator', value: '-' },
+		{ type: 'algebra', value: '3yn' },
+		{ type: 'operator', value: '+' },
+		{ type: 'operator', value: '+' },
+		{ type: 'algebra', value: 'nd' }
+	];
+	const result = interpretInstructions(instructions, 4);
+	const expected = [
+		{ day: 10, month: 5, year: 2020 },
+		{ day: 11, month: 5, year: 2017 },
+		{ day: 12, month: 5, year: 2014 },
+		{ day: 13, month: 5, year: 2011 }
+	];
+	expect(result).toStrictEqual(expected);
+});
