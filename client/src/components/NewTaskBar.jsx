@@ -47,8 +47,8 @@ const NewTaskBar = (props) => {
 					{...props}
 					date={parseISOToDateObj(date)}
 					deadline={parseISOToDateObj(deadline)}
-					setDate={(val) => setDate(val)}
-					setDeadline={(val) => setDeadline(val)}
+					setDate={setDate}
+					setDeadline={setDeadline}
 					setOverflowHidden={setOverflowHidden}
 					setPopUpOpen={setPopUpOpen}
 				/>
@@ -58,15 +58,11 @@ const NewTaskBar = (props) => {
 					label={'Urgency'}
 					selected={urgency}
 					options={[ 1, 2, 3, 4, 5 ]}
-					onClick={(val) => setUrgency(val)}
+					onClick={setUrgency}
 					setOverflowHidden={setOverflowHidden}
 				/>
 				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeamsStrings(val)} />
-				<ColorButton
-					text={`Add Task To Database`}
-					onClick={() => addTaskToDatabase()}
-					enabled={task && teams.length}
-				/>
+				<ColorButton text={`Add Task To Database`} onClick={addTaskToDatabase} enabled={task && teams.length} />
 			</div>
 		</div>
 	);
