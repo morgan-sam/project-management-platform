@@ -3,6 +3,7 @@ import DataCell from 'components/DataCell';
 import ThemeContext from 'context/ThemeContext';
 import { parseISOToLittleEndian } from 'processing/parseDates';
 import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
+import { fields } from 'data/table';
 
 const Task = (props) => {
 	const themeColor = useContext(ThemeContext);
@@ -49,8 +50,6 @@ const Task = (props) => {
 		completed: () => props.setEntryCompletion(props.item, !props.item.completed),
 		selected: () => props.toggleSelectState(props.item.id)
 	};
-
-	const fields = [ 'task', 'date', 'deadline', 'urgency', 'teams', 'completed', 'selected' ];
 
 	const getAllDataCells = () => fields.map((type) => getDataCell(type));
 

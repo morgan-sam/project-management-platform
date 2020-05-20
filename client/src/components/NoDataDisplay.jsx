@@ -1,13 +1,12 @@
 import React from 'react';
 import { cellStyles } from 'styling/dataCell';
+import { fields } from 'data/table';
 
 const NoDataDisplay = () => {
 	const text = 'NO DATA AVAILABLE';
 
-	const headings = [ 'task', 'date', 'deadline', 'urgency', 'teams', 'completed', 'selected' ];
-
 	const emptyCells = () => {
-		return headings.map((type) => {
+		return fields.map((type) => {
 			return <td style={cellStyles[type]}>{text}</td>;
 		});
 	};

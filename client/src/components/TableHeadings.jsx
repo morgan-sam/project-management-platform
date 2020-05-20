@@ -2,6 +2,7 @@ import React from 'react';
 import HeadingCell from 'components/HeadingCell';
 import { headingCellStyles } from 'styling/headingCell';
 import { capitalizeFirstLetter } from 'processing/utility';
+import { fields } from 'data/table';
 
 const TableHeadings = (props) => {
 	const sortArrow = props.sortOptions.reversed ? '↓' : '↑';
@@ -21,10 +22,7 @@ const TableHeadings = (props) => {
 		);
 	};
 
-	const getHeadingCellArray = () => {
-		const headings = [ 'task', 'date', 'deadline', 'urgency', 'teams', 'completed', 'selected' ];
-		return headings.map((el) => getHeadingCell(el));
-	};
+	const getHeadingCellArray = () => fields.map((el) => getHeadingCell(el));
 
 	return (
 		<tr className="tableHeadings" style={{ cursor: 'pointer', userSelect: 'none' }}>
