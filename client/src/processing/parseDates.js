@@ -41,7 +41,7 @@ export const parseISOToLittleEndian = (string) => {
 	return stringDate.split('-').reverse().join('/');
 };
 
-export const parseISOToZeroTime = (iso) => {
+export const stripISODateOfTime = (iso) => {
 	const dateOnly = iso.match(/.+?(?=T)/g)[0];
 	return `${dateOnly}T00:00:00.000Z`;
 };

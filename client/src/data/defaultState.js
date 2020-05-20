@@ -1,5 +1,5 @@
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToZeroTime } from 'processing/parseDates';
+import { stripISODateOfTime } from 'processing/parseDates';
 import { getBoundaryDates } from 'data/dates';
 
 export const filterOptionsDefault = (taskList, active = null) => {
@@ -16,8 +16,8 @@ export const filterOptionsDefault = (taskList, active = null) => {
 		const boundaryDates = getBoundaryDates(taskList);
 		return {
 			active,
-			date: parseISOToZeroTime(boundaryDates.date),
-			deadline: parseISOToZeroTime(boundaryDates.deadline),
+			date: stripISODateOfTime(boundaryDates.date),
+			deadline: stripISODateOfTime(boundaryDates.deadline),
 			completion: 'all',
 			urgency: { min: 1, max: 5 },
 			teams: [ 'all' ]
