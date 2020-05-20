@@ -33,13 +33,15 @@ const Task = (props) => {
 		}
 	};
 
+	console.log(props.item.completed);
+
 	return (
 		<tr className="taskEntry">
 			<DataCell
+				onClick={() => props.toggleSelectState(props.item.id)}
 				className="taskCell"
 				text={props.item.task}
 				style={{ ...taskCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				onClick={() => props.toggleSelectState(props.item.id)}
 				{...props}
 				{...dragSelectionFunctions}
 			/>
@@ -72,17 +74,17 @@ const Task = (props) => {
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
+				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
 				className="completedCell"
 				text={props.item.completed}
-				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
 				style={{ ...completedCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				{...props}
 				{...dragSelectionFunctions}
 			/>
 			<DataCell
+				onClick={() => props.toggleSelectState(props.item.id)}
 				className="selectionCell"
 				text={props.selected ? 'X' : ''}
-				onClick={() => props.toggleSelectState(props.item.id)}
 				style={{ ...selectionCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				{...props}
 				{...dragSelectionFunctions}
