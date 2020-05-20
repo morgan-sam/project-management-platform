@@ -18,3 +18,9 @@ export const generateEmptyMatrix = (x, y) => {
 	for (let a = 0; a < x; a++) matrix.push([].concat(Array(y)));
 	return matrix;
 };
+
+export const getNumbersFromString = (string) => {
+	const numbers = string.match(/([0-9]+)/g);
+	if (!numbers) return null;
+	return numbers.map((el) => parseInt(el));
+};

@@ -1,5 +1,6 @@
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj, parseECMADateToDateObj } from 'processing/parseDates';
+import { getNumbersFromString } from 'processing/utility';
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	const instructions = convertTemplateToInstructions(dateTemplate);
@@ -133,13 +134,6 @@ const addMonths = (date, months) => {
 	date.setMonth(date.getMonth() + +months);
 	if (date.getDate() != d) date.setDate(0);
 	return date;
-};
-
-const getNumbersFromString = (string) => {
-	const numbers = string.match(/([0-9]+)/g);
-	if (!numbers) return null;
-	const numArray = numbers.map((el) => parseInt(el));
-	return numArray;
 };
 
 export const testFunctions = {
