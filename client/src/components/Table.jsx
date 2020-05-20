@@ -57,7 +57,6 @@ const Table = (props) => {
 
 	const newTaskHoverWhileMouseHeld = (dragToID) => {
 		let tasksToSelect = getMouseSelectedTasks(dragToID);
-		console.log(tasksToSelect);
 		if (pressedKeys.includes('Control')) {
 			setSelectedTasks([ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ]);
 		} else {
