@@ -32,7 +32,7 @@ const Table = (props) => {
 					setEntryCompletion={setEntryCompletion}
 					selecting={selecting}
 					setSelecting={setSelecting}
-					newTaskHover={newTaskHover}
+					newTaskHover={newTaskHoverWhileMouseHeld}
 					initialID={initialID}
 					setInitialID={setInitialID}
 					filterOptions={filterOptions}
@@ -55,7 +55,8 @@ const Table = (props) => {
 		else setSelectedTasks(filtered);
 	};
 
-	const newTaskHover = (dragToID) => {
+	const newTaskHoverWhileMouseHeld = (dragToID) => {
+		console.log('hi');
 		let inScope = false;
 		let tasksToSelect = [];
 		if (initialID === dragToID) return;
