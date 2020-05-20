@@ -24,19 +24,25 @@ const getFullTaskStrings = (strings, template) => {
 
 const convertSettingsToStrings = (settings, count) => {
 	let strings = [];
-	const { ascending, digits } = settings;
 	for (let i = 0; i < count; i++) {
-		if (settings.numerical) {
-			const num = ascending ? i : count - i - 1;
-			const zeroes = Math.max(0, digits - num.toString().length);
-			strings.push(`${'0'.repeat(zeroes)}${num}`);
-		} else {
-			const num = ascending ? i % 26 : 25 - i % 26;
-			const alphaIteration = Math.floor(i / 26);
-			strings.push(`${String.fromCharCode(97 + num)}${count > 26 ? alphaIteration : ''}`);
-		}
+		if (settings.numerical) strings.push(convertNumSettingToString(settings, i, count));
+		else strings.push(convertLetterSettingToString(settings, i, count));
 	}
 	return strings;
+};
+
+const convertNumSettingToString = (settings, i, count) => {
+	const { ascending, digits } = settings;
+	const num = ascending ? i : count - i - 1;
+	const zeroes = Math.max(0, digits - num.toString().length);
+	return `${'0'.repeat(zeroes)}${num}`;
+};
+
+const convertLetterSettingToString = (settings, i, count) => {
+	const { ascending } = settings;
+	const num = ascending ? i % 26 : 25 - i % 26;
+	const alphaIteration = Math.floor(i / 26);
+	return `${String.fromCharCode(97 + num)}${count > 26 ? alphaIteration : ''}`;
 };
 
 const convertFlagToSettings = (flag) => {
