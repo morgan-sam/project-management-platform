@@ -33,12 +33,12 @@ const BatchNewTasks = (props) => {
 	};
 
 	const checkForTemplateErrors = (strings) => {
-		let errors = {};
 		const { task, date, deadline } = strings;
-		if (typeof task === 'string') errors['task'] = task;
-		if (typeof date === 'string') errors['date'] = date;
-		if (typeof deadline === 'string') errors['deadline'] = deadline;
-		return errors;
+		return {
+			...(typeof task === 'string' ? { task } : null),
+			...(typeof date === 'string' ? { date } : null),
+			...(typeof deadline === 'string' ? { deadline } : null)
+		};
 	};
 
 	const getEntryStrings = () => {
