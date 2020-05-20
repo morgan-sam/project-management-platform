@@ -8,6 +8,7 @@ import DropdownCheckboxes from 'components/DropdownCheckboxes';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/parseDates';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
+import { formatTeamsDropdownSelect } from 'processing/teamsProcessing';
 
 const FilterBar = (props) => {
 	const { taskListTeams, filterOptions, setFilterOptions, displayedBars } = props;
@@ -18,15 +19,6 @@ const FilterBar = (props) => {
 		completion: false
 	});
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
-
-	const formatTeamsDropdownSelect = (select, filterOptions) => {
-		let newState = filterOptions.teams.filter((el) => el !== 'all');
-		if (select === 'all') newState = [ 'all' ];
-		else if (newState.includes(select)) newState = newState.filter((el) => el !== select);
-		else newState.push(select);
-		if (newState.length === 0) newState = [ 'all' ];
-		return newState;
-	};
 
 	return (
 		<div

@@ -8,7 +8,8 @@ import FilterBar from 'components/FilterBar';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
-import { filterList, getTaskListTeams } from 'processing/filterList';
+import { filterList } from 'processing/filterList';
+import { getTaskListTeams } from 'processing/teamsProcessing';
 import NewTaskBar from 'components/NewTaskBar';
 import { getMainPageStyle, taskManagerStyle, tableStyle, overlayStyle } from 'styling/mainPage';
 
