@@ -7,7 +7,7 @@ import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/parseDates';
-import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
+import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teamsProcessing';
 
 const FilterBar = (props) => {
