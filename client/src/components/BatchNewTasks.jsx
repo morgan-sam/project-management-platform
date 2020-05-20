@@ -41,11 +41,16 @@ const BatchNewTasks = (props) => {
 		return errors;
 	};
 
+	const getTaskStrings = () => {
+		return {
+			tasks: interpretTaskTemplate(template.task, template.count),
+			dates: interpretDateTemplate(template.date, template.count),
+			deadlines: interpretDateTemplate(template.deadline, template.count)
+		};
+	};
+
 	const addMultipleTasks = () => {
-		let strings = {};
-		strings.tasks = interpretTaskTemplate(template.task, template.count);
-		strings.dates = interpretDateTemplate(template.date, template.count);
-		strings.deadlines = interpretDateTemplate(template.deadline, template.count);
+		let strings = getTaskStrings();
 		let errors = checkForTemplateErrors(strings);
 		if (Object.values(errors).length === 0) {
 			for (let i = 0; i < template.count; i++) {
