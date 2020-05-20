@@ -21,13 +21,11 @@ const getFullTaskStrings = (strings, template) => {
 };
 
 const convertSettingsToStrings = (settings, count) => {
-	let strings = [];
-	for (let i = 0; i < count; i++) {
+	return new Array(count).fill().map((el, i) => {
 		const loop = { i, count };
-		if (settings.numerical) strings.push(convertNumSettingToString(settings, loop));
-		else strings.push(convertLetterSettingToString(settings, loop));
-	}
-	return strings;
+		if (settings.numerical) return convertNumSettingToString(settings, loop);
+		else return convertLetterSettingToString(settings, loop);
+	});
 };
 
 const convertNumSettingToString = (settings, loop) => {
