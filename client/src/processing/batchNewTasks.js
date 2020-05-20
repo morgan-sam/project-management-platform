@@ -1,8 +1,6 @@
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj, parseECMADateToDateObj } from 'processing/parseDates';
 
-////////////////////////////////////////////////
-
 export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	const instructions = convertTemplateToInstructions(dateTemplate);
 	if (typeof instructions === 'string') return instructions;
@@ -35,7 +33,6 @@ const convertTemplateToInstructions = (template) => {
 			let { value, newTemplate } = retrieveInstructionFromTemplate(template, regexList[i].regex);
 			if (newTemplate !== null) {
 				template = newTemplate;
-				console.log(template);
 				instructions.push({
 					type: regexList[i].type,
 					value: regexList[i].default ? regexList[i].default : value
