@@ -12,14 +12,12 @@ export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 };
 
 const getFullTaskStrings = (strings, template) => {
-	let taskStrings = [];
-	for (let i = 0; i < strings.length; i++) {
+	return strings.map((el, i) => {
 		let matchIndex = 0;
-		taskStrings[i] = template.replace(/\$\{( *[nlNL][^}]*)\}/g, function(s) {
-			return strings[i][matchIndex++] || s;
+		return template.replace(/\$\{( *[nlNL][^}]*)\}/g, (s) => {
+			return el[matchIndex++] || s;
 		});
-	}
-	return taskStrings;
+	});
 };
 
 const convertSettingsToStrings = (settings, count) => {
