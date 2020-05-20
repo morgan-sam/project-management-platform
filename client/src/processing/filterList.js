@@ -1,11 +1,14 @@
 export const filterList = (filterOptions, taskList) => {
 	let filteredList = taskList;
-	filteredList = filterListDate(filterOptions, filteredList);
-	filteredList = filterListDeadline(filterOptions, filteredList);
-	filteredList = filterListMinUrgency(filterOptions, filteredList);
-	filteredList = filterListMaxUrgency(filterOptions, filteredList);
-	filteredList = filterListTeams(filterOptions, filteredList);
-	filteredList = filterListCompletion(filterOptions, filteredList);
+	let filterFunctions = [
+		filterListDate,
+		filterListDeadline,
+		filterListMinUrgency,
+		filterListMaxUrgency,
+		filterListTeams,
+		filterListCompletion
+	];
+	for (let i = 0; i < filterFunctions.length; i++) filteredList = filterFunctions[i](filterOptions, filteredList);
 	return filteredList;
 };
 
