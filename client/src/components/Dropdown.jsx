@@ -37,6 +37,7 @@ const Dropdown = (props) => {
 					? props.options.map((value, i) => {
 							return (
 								<DropdownEntry
+									className="dropdown"
 									hoverEnabled={endOfList || !listOpening}
 									listOpen={listOpen}
 									onClick={props.onClick}
