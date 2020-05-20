@@ -25,20 +25,23 @@ const getFullTaskStrings = (strings, template) => {
 const convertSettingsToStrings = (settings, count) => {
 	let strings = [];
 	for (let i = 0; i < count; i++) {
-		if (settings.numerical) strings.push(convertNumSettingToString(settings, i, count));
-		else strings.push(convertLetterSettingToString(settings, i, count));
+		const loop = { i, count };
+		if (settings.numerical) strings.push(convertNumSettingToString(settings, loop));
+		else strings.push(convertLetterSettingToString(settings, loop));
 	}
 	return strings;
 };
 
-const convertNumSettingToString = (settings, i, count) => {
+const convertNumSettingToString = (settings, loop) => {
+	const { i, count } = loop;
 	const { ascending, digits } = settings;
 	const num = ascending ? i : count - i - 1;
 	const zeroes = Math.max(0, digits - num.toString().length);
 	return `${'0'.repeat(zeroes)}${num}`;
 };
 
-const convertLetterSettingToString = (settings, i, count) => {
+const convertLetterSettingToString = (settings, loop) => {
+	const { i, count } = loop;
 	const { ascending } = settings;
 	const num = ascending ? i % 26 : 25 - i % 26;
 	const alphaIteration = Math.floor(i / 26);
