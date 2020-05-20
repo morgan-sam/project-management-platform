@@ -12,7 +12,7 @@ export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 };
 
 const getFullTaskStrings = (strings, template) => {
-	return strings.map((el, i) => {
+	return strings.map((el) => {
 		let matchIndex = 0;
 		return template.replace(/\$\{( *[nlNL][^}]*)\}/g, (s) => {
 			return el[matchIndex++] || s;
