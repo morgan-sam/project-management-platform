@@ -2,18 +2,14 @@ export const filterList = (filterOptions, taskList) => {
 	let filteredList = taskList;
 	filteredList = filterListDate(filterOptions, filteredList);
 	filteredList = filterListDeadline(filterOptions, filteredList);
-	filteredList = filterListCompletion(filterOptions, filteredList);
 	filteredList = filterListMinUrgency(filterOptions, filteredList);
 	filteredList = filterListMaxUrgency(filterOptions, filteredList);
 	filteredList = filterListTeams(filterOptions, filteredList);
+	filteredList = filterListCompletion(filterOptions, filteredList);
 	return filteredList;
 };
 
 const filterListDate = (filterOptions, list) => list.filter((el) => filterOptions.date <= el.date);
-
-const filterListMinUrgency = (filterOptions, list) => list.filter((el) => filterOptions.urgency.min <= el.urgency);
-
-const filterListMaxUrgency = (filterOptions, list) => list.filter((el) => filterOptions.urgency.max >= el.urgency);
 
 const filterListDeadline = (filterOptions, list) => {
 	return list.filter((el) => {
@@ -22,6 +18,10 @@ const filterListDeadline = (filterOptions, list) => {
 		return filterDeadline >= elDeadline;
 	});
 };
+
+const filterListMinUrgency = (filterOptions, list) => list.filter((el) => filterOptions.urgency.min <= el.urgency);
+
+const filterListMaxUrgency = (filterOptions, list) => list.filter((el) => filterOptions.urgency.max >= el.urgency);
 
 const filterListTeams = (filterOptions, list) => {
 	return list.filter((el) => {
