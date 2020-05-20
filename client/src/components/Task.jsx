@@ -32,9 +32,10 @@ const Task = (props) => {
 		else return props.item[type];
 	};
 
-	const getDataCell = (type) => {
+	const getDataCell = (type, i) => {
 		return (
 			<DataCell
+				key={i}
 				onClick={clickFunctions[type]}
 				className={`${type}Cell`}
 				text={getDataCellText(type)}
@@ -51,7 +52,7 @@ const Task = (props) => {
 		selected: () => props.toggleSelectState(props.item.id)
 	};
 
-	const getAllDataCells = () => fields.map((type) => getDataCell(type));
+	const getAllDataCells = () => fields.map((type, i) => getDataCell(type, i));
 
 	return <tr className="taskEntry">{getAllDataCells()}</tr>;
 };
