@@ -53,9 +53,7 @@ const App = () => {
 				if (data) {
 					if (rawTaskList.length === 0) setFilterOptions(filterOptionsDefault(data));
 					setRawTaskList(data);
-				} else {
-					setRawTaskList([]);
-				}
+				} else setRawTaskList([]);
 				setDataChanged(false);
 			})();
 		},
