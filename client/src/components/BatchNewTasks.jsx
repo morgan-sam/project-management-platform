@@ -21,11 +21,11 @@ const BatchNewTasks = (props) => {
 	const [ screen, setScreen ] = useState('main');
 
 	const getTaskEntry = (strings, i) => {
-		const { tasks, dates, deadlines } = strings;
+		const { task, date, deadline } = strings;
 		return {
-			task: tasks[i],
-			date: parseDateObjToISO(dates[i]),
-			deadline: parseDateObjToISO(deadlines[i]),
+			task: task[i],
+			date: parseDateObjToISO(date[i]),
+			deadline: parseDateObjToISO(deadline[i]),
 			urgency: template.urgency,
 			teams: template.teams.filter((el) => el !== ''),
 			completed: false
@@ -34,23 +34,23 @@ const BatchNewTasks = (props) => {
 
 	const checkForTemplateErrors = (strings) => {
 		let errors = {};
-		const { tasks, dates, deadlines } = strings;
-		if (typeof tasks === 'string') errors['task'] = tasks;
-		if (typeof dates === 'string') errors['date'] = dates;
-		if (typeof deadlines === 'string') errors['deadline'] = deadlines;
+		const { task, date, deadline } = strings;
+		if (typeof task === 'string') errors['task'] = task;
+		if (typeof date === 'string') errors['date'] = date;
+		if (typeof deadline === 'string') errors['deadline'] = deadline;
 		return errors;
 	};
 
-	const getTaskStrings = () => {
+	const getEntryStrings = () => {
 		return {
-			tasks: interpretTaskTemplate(template.task, template.count),
-			dates: interpretDateTemplate(template.date, template.count),
-			deadlines: interpretDateTemplate(template.deadline, template.count)
+			task: interpretTaskTemplate(template.task, template.count),
+			date: interpretDateTemplate(template.date, template.count),
+			deadline: interpretDateTemplate(template.deadline, template.count)
 		};
 	};
 
 	const addMultipleTasks = () => {
-		let strings = getTaskStrings();
+		let strings = getEntryStrings();
 		let errors = checkForTemplateErrors(strings);
 		if (Object.values(errors).length === 0) {
 			for (let i = 0; i < template.count; i++) {
