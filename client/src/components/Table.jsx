@@ -56,20 +56,25 @@ const Table = (props) => {
 	};
 
 	const newTaskHoverWhileMouseHeld = (dragToID) => {
-		console.log('hi');
-		let inScope = false;
-		let tasksToSelect = [];
-		if (initialID === dragToID) return;
-		for (let i = 0; i < taskList.length - 1; i++) {
-			const task = taskList[i];
-			if (task.id === initialID || task.id === dragToID) inScope = !inScope;
-			if (inScope) tasksToSelect.push(task.id);
-		}
+		let tasksToSelect = getMouseSelectedTasks(dragToID);
+		console.log(tasksToSelect);
 		if (pressedKeys.includes('Control')) {
 			setSelectedTasks([ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ]);
 		} else {
 			setSelectedTasks([ ...tasksToSelect ]);
 		}
+	};
+
+	const getMouseSelectedTasks = (dragToID) => {
+		let inScope = false;
+		if (initialID === dragToID) return [ initialID ];
+		return [
+			initialID,
+			...taskList.flatMap((task) => {
+				if (task.id === initialID || task.id === dragToID) inScope = !inScope;
+				return inScope ? task.id : [];
+			})
+		];
 	};
 
 	useEffect(() => {
