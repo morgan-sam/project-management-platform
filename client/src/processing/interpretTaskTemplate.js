@@ -49,7 +49,6 @@ const convertLetterSettingToString = (settings, loop) => {
 };
 
 const convertFlagToSettings = (flag) => {
-	if (!flag) return null;
 	const groups = flag.replace(/[\$\{\} ]/g, '').split(',');
 	let settings = { numerical: true, digits: 1, ascending: true };
 	let orderIndex = 2;
