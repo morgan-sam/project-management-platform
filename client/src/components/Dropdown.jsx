@@ -52,7 +52,7 @@ const Dropdown = (props) => {
 					: null
 			);
 		},
-		[ listOpen, listOpening, endOfList ]
+		[ listOpen, listOpening, endOfList, props.filterOptions ]
 	);
 
 	useEffect(() => {
