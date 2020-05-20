@@ -2,16 +2,7 @@ import React, { useContext } from 'react';
 import DataCell from 'components/DataCell';
 import ThemeContext from 'context/ThemeContext';
 import { parseISOToLittleEndian } from 'processing/parseDates';
-import {
-	taskCell,
-	dateCell,
-	deadlineCell,
-	urgencyCell,
-	teamsCell,
-	completedCell,
-	selectionCell,
-	getHighlightCellStyle
-} from 'styling/dataCell';
+import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 
 const Task = (props) => {
 	const themeColor = useContext(ThemeContext);
@@ -33,64 +24,37 @@ const Task = (props) => {
 		}
 	};
 
-	console.log(props.item.completed);
+	const getDataCellText = (type) => {
+		if (type === 'selected' && props.selected) return 'X';
+		else if (type === 'date' || type === 'deadline') return parseISOToLittleEndian(props.item[type]);
+		else if (type === 'teams') return props.item[type].join(' ');
+		else return props.item[type];
+	};
 
-	return (
-		<tr className="taskEntry">
+	const getDataCell = (type) => {
+		return (
 			<DataCell
-				onClick={() => props.toggleSelectState(props.item.id)}
-				className="taskCell"
-				text={props.item.task}
-				style={{ ...taskCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				onClick={clickFunctions[type]}
+				className={`${type}Cell`}
+				text={getDataCellText(type)}
+				style={{ ...cellStyles[type], ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
 				{...props}
 				{...dragSelectionFunctions}
 			/>
-			<DataCell
-				className="dateCell"
-				text={parseISOToLittleEndian(props.item.date)}
-				style={{ ...dateCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				{...props}
-				{...dragSelectionFunctions}
-			/>
-			<DataCell
-				className="deadlineCell"
-				text={parseISOToLittleEndian(props.item.deadline)}
-				style={{ ...deadlineCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				{...props}
-				{...dragSelectionFunctions}
-			/>
-			<DataCell
-				className="urgencyCell"
-				text={props.item.urgency}
-				style={{ ...urgencyCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				{...props}
-				{...dragSelectionFunctions}
-			/>
-			<DataCell
-				className="teamsCell"
-				text={props.item.teams ? props.item.teams.join(' ') : null}
-				style={{ ...teamsCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				{...props}
-				{...dragSelectionFunctions}
-			/>
-			<DataCell
-				onClick={() => props.setEntryCompletion(props.item, !props.item.completed)}
-				className="completedCell"
-				text={props.item.completed}
-				style={{ ...completedCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				{...props}
-				{...dragSelectionFunctions}
-			/>
-			<DataCell
-				onClick={() => props.toggleSelectState(props.item.id)}
-				className="selectionCell"
-				text={props.selected ? 'X' : ''}
-				style={{ ...selectionCell, ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
-				{...props}
-				{...dragSelectionFunctions}
-			/>
-		</tr>
-	);
+		);
+	};
+
+	const clickFunctions = {
+		task: () => props.toggleSelectState(props.item.id),
+		completed: () => props.setEntryCompletion(props.item, !props.item.completed),
+		selected: () => props.toggleSelectState(props.item.id)
+	};
+
+	const fields = [ 'task', 'date', 'deadline', 'urgency', 'teams', 'completed', 'selected' ];
+
+	const getAllDataCells = () => fields.map((type) => getDataCell(type));
+
+	return <tr className="taskEntry">{getAllDataCells()}</tr>;
 };
 
 export default Task;

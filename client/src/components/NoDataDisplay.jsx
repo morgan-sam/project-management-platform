@@ -1,28 +1,20 @@
 import React from 'react';
-import {
-	taskCell,
-	dateCell,
-	deadlineCell,
-	urgencyCell,
-	teamsCell,
-	completedCell,
-	selectionCell
-} from 'styling/dataCell';
+import { cellStyles } from 'styling/dataCell';
 
 const NoDataDisplay = () => {
 	const text = 'NO DATA AVAILABLE';
 
+	const headings = [ 'task', 'date', 'deadline', 'urgency', 'teams', 'completed', 'selected' ];
+
+	const emptyCells = () => {
+		return headings.map((type) => {
+			return <td style={cellStyles[type]}>{text}</td>;
+		});
+	};
+
 	return (
 		<tbody>
-			<tr>
-				<td style={taskCell}>{text}</td>
-				<td style={dateCell}>{text}</td>
-				<td style={deadlineCell}>{text}</td>
-				<td style={urgencyCell}>{text}</td>
-				<td style={teamsCell}>{text}</td>
-				<td style={completedCell}>{text}</td>
-				<td style={selectionCell}>{text}</td>
-			</tr>
+			<tr>{emptyCells()}</tr>
 		</tbody>
 	);
 };

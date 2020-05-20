@@ -36,7 +36,7 @@ export const completedDefaultCell = {
 	cursor: 'pointer'
 };
 
-export const selectionDefaultCell = {
+export const selectedDefaultCell = {
 	...cellStyle,
 	cursor: 'pointer',
 	width: '1rem'

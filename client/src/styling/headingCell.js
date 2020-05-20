@@ -5,7 +5,7 @@ import {
 	urgencyDefaultCell,
 	teamsDefaultCell,
 	completedDefaultCell,
-	selectionDefaultCell
+	selectedDefaultCell
 } from 'styling/table';
 
 export const headingCellStyles = {
@@ -15,5 +15,5 @@ export const headingCellStyles = {
 	urgency: { ...urgencyDefaultCell },
 	teams: { ...teamsDefaultCell },
 	completed: { ...completedDefaultCell },
-	selected: { ...selectionDefaultCell }
+	selected: { ...selectedDefaultCell }
 };
