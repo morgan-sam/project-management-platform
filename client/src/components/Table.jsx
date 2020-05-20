@@ -86,7 +86,7 @@ const Table = (props) => {
 	return (
 		<table className="table" style={props.style}>
 			<thead>
-				<TableHeadings sortOptions={sortOptions} userSetSort={(val) => userSetSort(val)} />
+				<TableHeadings sortOptions={sortOptions} userSetSort={userSetSort} />
 			</thead>
 			<tbody>{getCompTaskList()}</tbody>
 			{taskList.length === 0 && <NoDataDisplay />}

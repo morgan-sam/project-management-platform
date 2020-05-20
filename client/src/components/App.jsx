@@ -120,7 +120,7 @@ const App = () => {
 					filterOptions={filterOptions}
 					setFilterOptions={setFilterOptions}
 					sortOptions={sortOptions}
-					userSetSort={(val) => userSetSort(val)}
+					userSetSort={userSetSort}
 					selectedTasks={selectedTasks}
 					setSelectedTasks={setSelectedTasks}
 					setDataChanged={setDataChanged}
