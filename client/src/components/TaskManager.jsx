@@ -13,7 +13,6 @@ const TaskManager = (props) => {
 		setEntryCompletion,
 		rawTaskList,
 		selectedTasks,
-		colorTheme,
 		setPopUp,
 		pressedKeys,
 		displayedBars,
@@ -70,35 +69,27 @@ const TaskManager = (props) => {
 				className={'taskManagerBtn'}
 				text={'New Task'}
 				onClick={() => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })}
-				color={colorTheme}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={`${displayedBars.filter ? 'Hide' : 'Show'} Filter`}
 				onClick={() => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })}
-				color={colorTheme}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={'Batch New Tasks'}
-				onClick={() =>
-					setPopUp(
-						<BatchNewTasks colorTheme={colorTheme} setPopUp={setPopUp} setDataChanged={setDataChanged} />
-					)}
-				color={colorTheme}
+				onClick={() => setPopUp(<BatchNewTasks setPopUp={setPopUp} setDataChanged={setDataChanged} />)}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={'Delete Selected Tasks'}
 				onClick={() => deletePopUp()}
 				enabled={selectedTasks.length}
-				color={colorTheme}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
 				text={`${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks`}
 				onClick={() => selectAllTasks()}
-				color={colorTheme}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
@@ -106,7 +97,6 @@ const TaskManager = (props) => {
 				onClick={() => {
 					if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);
 				}}
-				color={colorTheme}
 				enabled={selectedTasks.length}
 			/>
 		</div>

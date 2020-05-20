@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import ThemeContext from 'context/ThemeContext';
 import {
 	BUTTON_BOUNCE_PX,
 	getStaticContainerStyle,
@@ -13,6 +14,7 @@ const ColorButton = (props) => {
 	const [ shake, setShake ] = useState(false);
 	const [ pressed, setPressed ] = useState(false);
 	const floatRef = useRef();
+	const themeColor = useContext(ThemeContext);
 
 	return (
 		<div
@@ -51,7 +53,7 @@ const ColorButton = (props) => {
 				>
 					{props.text}
 				</button>
-				<div style={getColorBoxStyle(props.color, hover)} />
+				<div style={getColorBoxStyle(props.color ? props.color : themeColor, hover)} />
 				<div style={whiteBoxStyle} />
 			</div>
 		</div>

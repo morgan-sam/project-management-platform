@@ -14,7 +14,7 @@ import {
 } from 'styling/batchNewTasks';
 
 const MainBatchScreen = (props) => {
-	const { template, errors, setErrors, setTemplate, colorTheme, addMultipleTasks, setPopUp, setScreen } = props;
+	const { template, errors, setErrors, setTemplate, addMultipleTasks, setPopUp, setScreen } = props;
 
 	return (
 		<div style={containerStyle}>
@@ -38,7 +38,7 @@ const MainBatchScreen = (props) => {
 						}}
 						default={template.task}
 					/>
-					<WizardButton color={colorTheme} onClick={() => setScreen('taskWizard')} />
+					<WizardButton onClick={() => setScreen('taskWizard')} />
 				</div>
 				<div style={errorTextStyle}>{errors.task}</div>
 			</div>
@@ -54,7 +54,7 @@ const MainBatchScreen = (props) => {
 						}}
 						default={template.date}
 					/>
-					<WizardButton color={colorTheme} onClick={() => setScreen('dateWizard')} />
+					<WizardButton onClick={() => setScreen('dateWizard')} />
 				</div>
 				<div style={errorTextStyle}>{errors.date}</div>
 			</div>
@@ -70,7 +70,7 @@ const MainBatchScreen = (props) => {
 						}}
 						default={template.deadline}
 					/>
-					<WizardButton color={colorTheme} onClick={() => setScreen('deadlineWizard')} />
+					<WizardButton onClick={() => setScreen('deadlineWizard')} />
 				</div>
 				<div style={errorTextStyle}>{errors.deadline}</div>
 			</div>
@@ -96,7 +96,7 @@ const MainBatchScreen = (props) => {
 				/>
 			</div>
 			<div style={finalContainerStyle}>
-				<ColorButton color={colorTheme} text={'Add Tasks'} onClick={() => addMultipleTasks()} />
+				<ColorButton text={'Add Tasks'} onClick={() => addMultipleTasks()} />
 			</div>
 			<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 				×

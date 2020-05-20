@@ -9,7 +9,7 @@ import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
 
 const NewTaskBar = (props) => {
-	const { style, displayedBars, setDataChanged, setDisplayedBars, colorTheme } = props;
+	const { style, displayedBars, setDataChanged, setDisplayedBars } = props;
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 	const [ taskString, setTaskString ] = useState(null);
@@ -64,7 +64,6 @@ const NewTaskBar = (props) => {
 				<ColorButton
 					text={`Add Task To Database`}
 					onClick={() => addTaskToDatabase()}
-					color={colorTheme}
 					enabled={task && teams.length}
 				/>
 			</div>

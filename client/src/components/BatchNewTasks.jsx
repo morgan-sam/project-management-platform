@@ -8,7 +8,7 @@ import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/parseDates';
 
 const BatchNewTasks = (props) => {
-	const { setDataChanged, setPopUp, colorTheme } = props;
+	const { setDataChanged, setPopUp } = props;
 	const [ errors, setErrors ] = useState({ task: '', date: '', deadline: '' });
 	const [ template, setTemplate ] = useState({
 		count: 10,
@@ -70,7 +70,6 @@ const BatchNewTasks = (props) => {
 					setErrors={setErrors}
 					template={template}
 					setTemplate={setTemplate}
-					colorTheme={colorTheme}
 					addMultipleTasks={addMultipleTasks}
 					setPopUp={setPopUp}
 					setScreen={setScreen}
@@ -79,19 +78,13 @@ const BatchNewTasks = (props) => {
 			{(screen === 'dateWizard' || screen === 'deadlineWizard') && (
 				<DateTemplateWizard
 					setScreen={setScreen}
-					colorTheme={colorTheme}
 					template={template}
 					setTemplate={setTemplate}
 					screen={screen}
 				/>
 			)}
 			{screen === 'taskWizard' && (
-				<TaskTemplateWizard
-					setScreen={setScreen}
-					colorTheme={colorTheme}
-					template={template}
-					setTemplate={setTemplate}
-				/>
+				<TaskTemplateWizard setScreen={setScreen} template={template} setTemplate={setTemplate} />
 			)}
 		</div>
 	);

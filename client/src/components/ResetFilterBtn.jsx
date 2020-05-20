@@ -13,7 +13,6 @@ const ResetFilterBtn = (props) => {
 				});
 			}}
 			text={'Reset Filter'}
-			color={props.colorTheme}
 		/>
 	);
 };

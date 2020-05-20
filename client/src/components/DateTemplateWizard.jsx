@@ -21,7 +21,7 @@ import {
 } from 'styling/wizardStyles';
 
 const DateTemplateWizard = (props) => {
-	const { setScreen, colorTheme, setTemplate, template, screen } = props;
+	const { setScreen, setTemplate, template, screen } = props;
 	const [ date, setDate ] = useState(parseISOToDateObj(getDayFromTodayAsISO()));
 	const [ sequence, setSequence ] = useState('none');
 	const [ step, setStep ] = useState('d');
@@ -140,7 +140,6 @@ const DateTemplateWizard = (props) => {
 			</div>
 			<div style={bottomContainer}>
 				<ColorButton
-					color={colorTheme}
 					text={'Generate Template'}
 					onClick={() => {
 						const dateTemplate = generateDateTemplate();

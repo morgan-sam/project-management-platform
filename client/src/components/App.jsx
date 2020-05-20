@@ -98,7 +98,6 @@ const App = () => {
 					setEntryCompletion={setEntryCompletion}
 					displayedBars={displayedBars}
 					setDisplayedBars={setDisplayedBars}
-					colorTheme={colorTheme}
 					pressedKeys={pressedKeys}
 					setPopUp={setPopUp}
 				/>
@@ -107,14 +106,12 @@ const App = () => {
 					filterOptions={filterOptions}
 					taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 					rawTaskList={rawTaskList}
-					colorTheme={colorTheme}
 					displayedBars={displayedBars}
 				/>
 				<NewTaskBar
 					displayedBars={displayedBars}
 					setDisplayedBars={setDisplayedBars}
 					setDataChanged={setDataChanged}
-					colorTheme={colorTheme}
 				/>
 				<Table
 					style={tableStyle}

@@ -17,7 +17,7 @@ import {
 } from 'styling/wizardStyles';
 
 const TaskTemplateWizard = (props) => {
-	const { setScreen, colorTheme, setTemplate, template } = props;
+	const { setScreen, setTemplate, template } = props;
 	const [ name, setName ] = useState('');
 	const [ symbol, setSymbol ] = useState('n');
 	const [ digits, setDigits ] = useState(1);
@@ -100,7 +100,6 @@ const TaskTemplateWizard = (props) => {
 			</div>
 			<div style={bottomContainer}>
 				<ColorButton
-					color={colorTheme}
 					text={'Generate Template'}
 					onClick={() => {
 						const dateTemplate = generateTaskTemplate();
