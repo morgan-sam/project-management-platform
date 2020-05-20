@@ -97,7 +97,13 @@ const Dropdown = (props) => {
 
 	useEffect(
 		() => {
-			if (props.onOpenChange) props.onOpenChange(listOpen);
+			if (props.onOpenChange) {
+				if (!listOpen) props.onOpenChange(listOpen);
+				else
+					setTimeout(() => {
+						props.onOpenChange(listOpen);
+					}, 10);
+			}
 			if (listOpen) setListingOpening(true);
 		},
 		[ listOpen ]
