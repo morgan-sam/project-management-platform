@@ -9,23 +9,6 @@ export const interpretDateTemplate = (dateTemplate, taskCount) => {
 	return dateArray;
 };
 
-const retrieveInstructionFromTemplate = (template, regex) => {
-	const matches = template.match(regex);
-	if (!matches) return { value: null, newTemplate: null };
-	else
-		return {
-			value: regex.exec(template).groups ? regex.exec(template).groups : regex.exec(template)[0],
-			newTemplate: template.replace(regex, '')
-		};
-};
-
-const regexList = [
-	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
-	{ type: 'date', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
-	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
-	{ type: 'algebra', regex: new RegExp('^([ndwmy0-9]+)') }
-];
-
 const convertTemplateToInstructions = (template) => {
 	let instructions = [];
 	while (template.length) {
@@ -47,8 +30,34 @@ const convertTemplateToInstructions = (template) => {
 	return convertTsFromTemplate(instructions);
 };
 
+const regexList = [
+	{ type: 'date', regex: new RegExp('^\\$\\{(?<day>[^${}]+)\\/(?<month>[^${}]+)\\/(?<year>[^${}]+)\\}') },
+	{ type: 'date', regex: new RegExp('^\\$\\{t\\}'), default: parseISOToDateObj(getDayFromTodayAsISO()) },
+	{ type: 'operator', regex: new RegExp('^(\\+|\\-)') },
+	{ type: 'algebra', regex: new RegExp('^([ndwmy0-9]+)') }
+];
+
+const retrieveInstructionFromTemplate = (template, regex) => {
+	const matches = template.match(regex);
+	if (!matches) return { value: null, newTemplate: null };
+	else
+		return {
+			value: regex.exec(template).groups ? regex.exec(template).groups : regex.exec(template)[0],
+			newTemplate: template.replace(regex, '')
+		};
+};
+
 const convertTsFromTemplate = (instructions) =>
 	instructions.map((el) => (el.type === 'date' ? { type: 'date', value: getDateWithExactValues(el.value) } : el));
+
+const getDateWithExactValues = (date) => {
+	const today = new Date();
+	return {
+		day: date.day === 't' ? today.getDate() : date.day,
+		month: date.month === 't' ? today.getMonth() + 1 : date.month,
+		year: date.year === 't' ? today.getFullYear() : date.year
+	};
+};
 
 const interpretInstructions = (instructions, taskCount) => {
 	let stringArray = [];
@@ -68,6 +77,13 @@ const interpretInstructions = (instructions, taskCount) => {
 	return stringArray;
 };
 
+const interpretOperatorInstructions = (operator, value) => {
+	if (operator === '-' && value === '-') return '+';
+	else if (operator === '-' && value === '+') return '-';
+	else if (operator === '+' && value === '-') return '-';
+	else return value;
+};
+
 const sumInstructions = (current, previous, operator, task) => {
 	const { type, value } = current;
 	// template must start with date so previous type for algebra will always be date
@@ -80,11 +96,12 @@ const sumInstructions = (current, previous, operator, task) => {
 	}
 };
 
-const interpretOperatorInstructions = (operator, value) => {
-	if (operator === '-' && value === '-') return '+';
-	else if (operator === '-' && value === '+') return '-';
-	else if (operator === '+' && value === '-') return '-';
-	else return value;
+const calculateDateWithAlgebra = (date, operator, algebra, task) => {
+	const { day, month, year } = date;
+	const product = getProductFromAlgebra(operator, algebra, task);
+	date = new Date(year, month - 1, day);
+	date = getDateFromAlgebra(date, algebra, product);
+	return parseECMADateToDateObj(new Date(date));
 };
 
 const addSubtractDates = (dateOne, dateTwo, operator) => {
@@ -94,14 +111,6 @@ const addSubtractDates = (dateOne, dateTwo, operator) => {
 	date = addMonths(date, parseInt(dateTwo.month) * sign);
 	date = new Date(date.setFullYear(date.getFullYear() + parseInt(dateTwo.year) * sign));
 	return parseECMADateToDateObj(date);
-};
-
-const calculateDateWithAlgebra = (date, operator, algebra, task) => {
-	const { day, month, year } = date;
-	const product = getProductFromAlgebra(operator, algebra, task);
-	date = new Date(year, month - 1, day);
-	date = getDateFromAlgebra(date, algebra, product);
-	return parseECMADateToDateObj(new Date(date));
 };
 
 const getProductFromAlgebra = (operator, algebra, task) => {
@@ -118,15 +127,6 @@ const getDateFromAlgebra = (date, algebra, product) => {
 	else if (algebra.match(/m/g)) date = addMonths(date, product);
 	else if (algebra.match(/y/g)) date = date.setFullYear(date.getFullYear() + product);
 	return date;
-};
-
-const getDateWithExactValues = (date) => {
-	const today = new Date();
-	return {
-		day: date.day === 't' ? today.getDate() : date.day,
-		month: date.month === 't' ? today.getMonth() + 1 : date.month,
-		year: date.year === 't' ? today.getFullYear() : date.year
-	};
 };
 
 const addMonths = (date, months) => {
