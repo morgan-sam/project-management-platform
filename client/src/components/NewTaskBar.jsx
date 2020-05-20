@@ -42,7 +42,7 @@ const NewTaskBar = (props) => {
 					overflow: overflowHidden ? 'visible' : 'hidden'
 				}}
 			>
-				<InputFormWithLabel {...props} label={'Task'} onChange={(val) => setTaskString(val)} />
+				<InputFormWithLabel {...props} label={'Task'} onChange={setTaskString} />
 				<DateRangeSelect
 					{...props}
 					date={parseISOToDateObj(date)}
