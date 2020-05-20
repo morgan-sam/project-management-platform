@@ -35,6 +35,7 @@ const convertTemplateToInstructions = (template) => {
 			let { value, newTemplate } = retrieveInstructionFromTemplate(template, regexList[i].regex);
 			if (newTemplate !== null) {
 				template = newTemplate;
+				console.log(template);
 				instructions.push({
 					type: regexList[i].type,
 					value: regexList[i].default ? regexList[i].default : value
@@ -45,11 +46,11 @@ const convertTemplateToInstructions = (template) => {
 	}
 	if (instructions.length === 0) return 'ERROR: NO TEMPLATE ENTERED';
 	if (instructions[0].type !== 'date') return 'ERROR: TEMPLATE MUST START WITH DATE';
-	instructions = instructions.map(
-		(el) => (el.type === 'date' ? { type: 'date', value: getDateWithExactValues(el.value) } : el)
-	);
-	return instructions;
+	return convertTsFromTemplate(instructions);
 };
+
+const convertTsFromTemplate = (instructions) =>
+	instructions.map((el) => (el.type === 'date' ? { type: 'date', value: getDateWithExactValues(el.value) } : el));
 
 const interpretInstructions = (instructions, taskCount) => {
 	let stringArray = [];
