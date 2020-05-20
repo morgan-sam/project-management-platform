@@ -19,6 +19,15 @@ const FilterBar = (props) => {
 	});
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
+	const formatTeamsDropdownSelect = (select, filterOptions) => {
+		let newState = filterOptions.teams.filter((el) => el !== 'all');
+		if (select === 'all') newState = [ 'all' ];
+		else if (newState.includes(select)) newState = newState.filter((el) => el !== select);
+		else newState.push(select);
+		if (newState.length === 0) newState = [ 'all' ];
+		return newState;
+	};
+
 	return (
 		<div
 			className="filterBar"
@@ -56,12 +65,7 @@ const FilterBar = (props) => {
 			<DropdownCheckboxes
 				label={'Teams'}
 				onClick={(val) => {
-					let newState = filterOptions.teams.filter((el) => el !== 'all');
-					if (val === 'all') newState = [ 'all' ];
-					else if (newState.includes(val)) newState = newState.filter((el) => el !== val);
-					else newState.push(val);
-					if (newState.length === 0) newState = [ 'all' ];
-					setFilterOptions({ ...filterOptions, teams: newState });
+					setFilterOptions({ ...filterOptions, teams: formatTeamsDropdownSelect(val, filterOptions) });
 				}}
 				options={taskListTeams}
 				filterOptions={filterOptions}
