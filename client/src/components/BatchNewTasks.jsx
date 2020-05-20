@@ -59,9 +59,7 @@ const BatchNewTasks = (props) => {
 				setDataChanged(true);
 				setPopUp(null);
 			}
-		} else {
-			setErrors(errors);
-		}
+		} else setErrors(errors);
 	};
 
 	return (
