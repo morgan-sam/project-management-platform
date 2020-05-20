@@ -31,16 +31,14 @@ const convertSettingsToStrings = (settings, count) => {
 };
 
 const convertNumSettingToString = (settings, loop) => {
-	const { i, count } = loop;
-	const { ascending, digits } = settings;
+	const { i, count, ascending, digits } = { ...loop, ...settings };
 	const num = ascending ? i : count - i - 1;
 	const zeroes = Math.max(0, digits - num.toString().length);
 	return `${'0'.repeat(zeroes)}${num}`;
 };
 
 const convertLetterSettingToString = (settings, loop) => {
-	const { i, count } = loop;
-	const { ascending } = settings;
+	const { i, count, ascending } = { ...loop, ...settings };
 	const num = ascending ? i % 26 : 25 - i % 26;
 	const alphaIteration = Math.floor(i / 26);
 	return `${String.fromCharCode(97 + num)}${count > 26 ? alphaIteration : ''}`;
