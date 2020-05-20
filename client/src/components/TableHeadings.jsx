@@ -1,62 +1,34 @@
 import React from 'react';
 import HeadingCell from 'components/HeadingCell';
-import {
-	taskCell,
-	dateCell,
-	deadlineCell,
-	urgencyCell,
-	teamsCell,
-	completedCell,
-	selectionCell
-} from 'styling/headingCell';
+import { headingCellStyles } from 'styling/headingCell';
+import { capitalizeFirstLetter } from 'processing/utility';
 
 const TableHeadings = (props) => {
 	const sortArrow = props.sortOptions.reversed ? '↓' : '↑';
 
+	const getHeadingCell = (type) => {
+		const text =
+			type === 'selected'
+				? `${props.sortOptions.type === 'selected' ? sortArrow : 'X'}`
+				: `${type} ${props.sortOptions.type === type ? sortArrow : ''}`;
+		return (
+			<HeadingCell
+				className={`${type}Cell`}
+				text={capitalizeFirstLetter(text)}
+				onClick={() => props.userSetSort(type)}
+				style={headingCellStyles[type]}
+			/>
+		);
+	};
+
+	const getHeadingCellArray = () => {
+		const headings = [ 'task', 'date', 'deadline', 'urgency', 'teams', 'completed', 'selected' ];
+		return headings.map((el) => getHeadingCell(el));
+	};
+
 	return (
 		<tr className="tableHeadings" style={{ cursor: 'pointer', userSelect: 'none' }}>
-			<HeadingCell
-				className="taskCell"
-				text={`Task ${props.sortOptions.type === 'task' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('task')}
-				style={taskCell}
-			/>
-			<HeadingCell
-				className="dateCell"
-				text={`Date ${props.sortOptions.type === 'date' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('date')}
-				style={dateCell}
-			/>
-			<HeadingCell
-				className="deadlineCell"
-				text={`Deadline ${props.sortOptions.type === 'deadline' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('deadline')}
-				style={deadlineCell}
-			/>
-			<HeadingCell
-				className="urgencyCell"
-				text={`Urgency ${props.sortOptions.type === 'urgency' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('urgency')}
-				style={urgencyCell}
-			/>
-			<HeadingCell
-				className="teamsCell"
-				text={`Teams ${props.sortOptions.type === 'teams' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('teams')}
-				style={teamsCell}
-			/>
-			<HeadingCell
-				className="completedCell"
-				text={`Completed ${props.sortOptions.type === 'completed' ? sortArrow : ''}`}
-				onClick={() => props.userSetSort('completed')}
-				style={completedCell}
-			/>
-			<HeadingCell
-				className="selectionCell"
-				text={`${props.sortOptions.type === 'selected' ? sortArrow : 'X'}`}
-				onClick={() => props.userSetSort('selected')}
-				style={selectionCell}
-			/>
+			{getHeadingCellArray()}
 		</tr>
 	);
 };
