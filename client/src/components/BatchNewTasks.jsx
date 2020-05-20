@@ -16,7 +16,7 @@ const BatchNewTasks = (props) => {
 		date: '${t}',
 		deadline: '${t}+2w',
 		urgency: 3,
-		teams: [ 'PLACEHOLDER_NAME', 'TEAM10' ]
+		teams: [ 'Team1', 'Team2', 'Team3' ]
 	});
 	const [ screen, setScreen ] = useState('main');
 
