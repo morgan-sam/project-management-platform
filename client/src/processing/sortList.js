@@ -17,12 +17,16 @@ const sortListBySelected = (options, taskList) => {
 const sortListByData = (sortOptions, taskList) => {
 	const index = Object.keys(taskList[0]).indexOf(sortOptions.type);
 	const type = typeof Object.values(taskList[0])[index];
-	const params = { index, reversed: sortOptions.reversed ? -1 : 1 };
+	const params = { index, reversed: sortOptions.reversed ? -1 : 1, type };
 	taskList = sortObjListByTask(taskList, params);
-	if (type === 'number') taskList = sortObjListNumerically(taskList, params);
-	else if (type === 'string') taskList = sortObjListAlphabetically(taskList, params);
-	else if (type === 'boolean') taskList = sortObjListNumerically(taskList, params);
-	return taskList;
+	return sortListByType(taskList, params);
+};
+
+const sortListByType = (taskList, params) => {
+	if (params.type === 'number') return sortObjListNumerically(taskList, params);
+	else if (params.type === 'string') return sortObjListAlphabetically(taskList, params);
+	else if (params.type === 'boolean') return sortObjListNumerically(taskList, params);
+	else return taskList;
 };
 
 const sortObjListNumerically = (list, params) => {
