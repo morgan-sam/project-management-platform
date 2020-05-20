@@ -20,24 +20,36 @@ const BatchNewTasks = (props) => {
 	});
 	const [ screen, setScreen ] = useState('main');
 
-	const addMultipleTasks = () => {
+	const getTaskEntry = (strings, i) => {
+		const { tasks, dates, deadlines } = strings;
+		return {
+			task: tasks[i],
+			date: parseDateObjToISO(dates[i]),
+			deadline: parseDateObjToISO(deadlines[i]),
+			urgency: template.urgency,
+			teams: template.teams.filter((el) => el !== ''),
+			completed: false
+		};
+	};
+
+	const checkForTemplateErrors = (strings) => {
 		let errors = {};
-		const tasks = interpretTaskTemplate(template.task, template.count);
-		const dates = interpretDateTemplate(template.date, template.count);
-		const deadlines = interpretDateTemplate(template.deadline, template.count);
+		const { tasks, dates, deadlines } = strings;
 		if (typeof tasks === 'string') errors['task'] = tasks;
 		if (typeof dates === 'string') errors['date'] = dates;
 		if (typeof deadlines === 'string') errors['deadline'] = deadlines;
+		return errors;
+	};
+
+	const addMultipleTasks = () => {
+		let strings = {};
+		strings.tasks = interpretTaskTemplate(template.task, template.count);
+		strings.dates = interpretDateTemplate(template.date, template.count);
+		strings.deadlines = interpretDateTemplate(template.deadline, template.count);
+		let errors = checkForTemplateErrors(strings);
 		if (Object.values(errors).length === 0) {
 			for (let i = 0; i < template.count; i++) {
-				const entry = {
-					task: tasks[i],
-					date: parseDateObjToISO(dates[i]),
-					deadline: parseDateObjToISO(deadlines[i]),
-					urgency: template.urgency,
-					teams: template.teams.filter((el) => el !== ''),
-					completed: false
-				};
+				const entry = getTaskEntry(strings, i);
 				fetchPostEntry(entry);
 				setDataChanged(true);
 				setPopUp(null);
