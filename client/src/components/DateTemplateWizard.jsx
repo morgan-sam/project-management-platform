@@ -126,7 +126,7 @@ const DateTemplateWizard = (props) => {
 					<div style={containerItemStyle}>{`Amount Of ${shortStepToFull(step)}s:`}</div>
 					<Dropdown
 						className="dropdown"
-						default={amount}
+						selected={amount}
 						style={{
 							alignItems: 'center',
 							zIndex: '9',

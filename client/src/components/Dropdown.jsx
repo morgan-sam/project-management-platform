@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import DropdownHeader from 'components/DropdownHeader';
 import DropdownEntry from 'components/DropdownEntry';
+import DropdownCheckbox from 'components/DropdownCheckbox';
 import { convertRemToPixels } from 'processing/convertUnits';
 
 import {
@@ -35,19 +36,20 @@ const Dropdown = (props) => {
 			setOptionDivs(
 				props.options
 					? props.options.map((value, i) => {
-							return (
-								<DropdownEntry
-									className="dropdown"
-									hoverEnabled={endOfList || !listOpening}
-									listOpen={listOpen}
-									onClick={props.onClick}
-									style={getCurrentOptionStyle(i, props.options)}
-									value={value}
-									selected={props.default === value}
-									setListOpen={setListOpen}
-									key={i}
-								/>
-							);
+							const optionProps = {
+								className: 'dropdown',
+								hoverEnabled: endOfList || !listOpening,
+								listOpen: listOpen,
+								onClick: props.onClick,
+								style: getCurrentOptionStyle(i, props.options),
+								value: value,
+								selected:
+									props.type === 'checkbox' ? props.selected.includes(value) : props.selected === value,
+								setListOpen: setListOpen,
+								key: i
+							};
+							if (props.type === 'checkbox') return <DropdownCheckbox {...optionProps} />;
+							else return <DropdownEntry {...optionProps} />;
 						})
 					: null
 			);
@@ -56,7 +58,6 @@ const Dropdown = (props) => {
 	);
 
 	useEffect(() => {
-		checkIfOptionOOB();
 		if (listOpen) document.addEventListener('mousedown', whileDropdownOpenClick);
 		else document.removeEventListener('mousedown', whileDropdownOpenClick);
 		return () => document.removeEventListener('mousedown', whileDropdownOpenClick);
@@ -67,17 +68,11 @@ const Dropdown = (props) => {
 		setListOpen(false);
 	};
 
-	const checkIfOptionOOB = () => {
-		if (props.options.indexOf(props.default) === -1) {
-			const lastValue = props.options[props.options.length - 1];
-			props.onClick(lastValue);
-		}
-	};
-
 	const setDropdownStartPosition = () => {
-		const currentIndex = props.options.indexOf(props.default);
+		const currentIndex = props.options.indexOf(props.selected);
 		dropdownRef.current.scrollTop =
 			DROPDOWN_HEIGHT_REMS * (currentIndex + 1) * parseFloat(getComputedStyle(dropdownRef.current).fontSize);
+		if (props.type === 'checkbox') dropdownRef.current.scrollTop = 1;
 	};
 
 	useEffect(() => setDropdownStartPosition(), [ listOpen ]);
@@ -88,6 +83,10 @@ const Dropdown = (props) => {
 				let dropdownSize =
 					convertRemToPixels(DROPDOWN_HEIGHT_REMS) * (props.options.length - 1) +
 					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2;
+				dropdownSize =
+					props.type === 'checkbox'
+						? dropdownSize + parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 + 1
+						: dropdownSize;
 				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
 				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
 				setEndOfList(dropdownSize === dropdownRef.current.scrollTop);
@@ -128,16 +127,15 @@ const Dropdown = (props) => {
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
 					ref={dropdownRef}
 				>
-					{listOpen ? (
-						optionDivs
-					) : (
+					{props.type !== 'checkbox' && listOpen ? null : (
 						<DropdownHeader
-							default={props.default}
+							default={props.label ? props.label : props.selected}
 							setListOpen={setListOpen}
 							listOpen={listOpen}
 							hoverEnabled={endOfList || !listOpening}
 						/>
 					)}
+					{listOpen ? optionDivs : null}
 				</div>
 				<div
 					className="dropdown"

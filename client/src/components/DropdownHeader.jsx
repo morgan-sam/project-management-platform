@@ -43,7 +43,7 @@ const DropdownHeader = (props) => {
 			onMouseLeave={() => setHovered(false)}
 		>
 			<span style={getDropdownTextStyle(themeColor, hoverEnabled && hovered)}>
-				{capitalizeFirstLetter(props.default)}
+				{props.default ? capitalizeFirstLetter(props.default) : null}
 			</span>
 			<div
 				style={{

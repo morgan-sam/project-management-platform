@@ -36,7 +36,7 @@ const UrgencyRangeSelect = (props) => {
 						...elStyle,
 						width: '2rem'
 					}}
-					default={props.filterOptions.urgency.min}
+					selected={props.filterOptions.urgency.min}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setMinUrgency(val)}
 					onOpenChange={props.setOverflowHidden}
@@ -48,7 +48,7 @@ const UrgencyRangeSelect = (props) => {
 						...elStyle,
 						width: '2rem'
 					}}
-					default={props.filterOptions.urgency.max}
+					selected={props.filterOptions.urgency.max}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setMaxUrgency(val)}
 					onOpenChange={props.setOverflowHidden}

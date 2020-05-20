@@ -55,7 +55,7 @@ const NewTaskBar = (props) => {
 					{...props}
 					width={'2rem'}
 					label={'Urgency'}
-					default={urgency}
+					selected={urgency}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setUrgency(val)}
 					setOverflowHidden={setOverflowHidden}

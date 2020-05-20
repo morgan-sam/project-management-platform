@@ -24,7 +24,7 @@ const DropdownWithLabel = (props) => {
 					itemStyle,
 					width: props.width
 				}}
-				default={props.default}
+				selected={props.selected}
 				options={props.options}
 				onClick={(val) => props.onClick(val)}
 				onOpenChange={props.setOverflowHidden}

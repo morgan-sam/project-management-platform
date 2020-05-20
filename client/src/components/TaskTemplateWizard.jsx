@@ -69,7 +69,7 @@ const TaskTemplateWizard = (props) => {
 					<div style={{ ...containerItemStyle, paddingTop: '0.3rem' }}>{`Digits:`}</div>
 					<Dropdown
 						className="dropdown"
-						default={digits}
+						selected={digits}
 						style={{
 							alignItems: 'center',
 							zIndex: '9',

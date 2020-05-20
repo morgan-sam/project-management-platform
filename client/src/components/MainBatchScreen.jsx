@@ -79,7 +79,7 @@ const MainBatchScreen = (props) => {
 					{...props}
 					label={'Urgency'}
 					options={[ 1, 2, 3, 4, 5 ]}
-					default={template.urgency}
+					selected={template.urgency}
 					onClick={(val) => setTemplate({ ...template, urgency: val })}
 					width={'2rem'}
 				/>

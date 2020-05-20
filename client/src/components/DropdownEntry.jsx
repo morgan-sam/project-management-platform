@@ -24,7 +24,6 @@ const DropdownEntry = (props) => {
 		},
 		[ hoverEnabled ]
 	);
-
 	return (
 		<div
 			ref={entryRef}

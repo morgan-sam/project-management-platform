@@ -10,7 +10,7 @@ const DateSelect = (props) => {
 			<div className="dropdownLabel">Month</div>
 			<div className="dropdownLabel">Year</div>
 			<Dropdown
-				default={props.date.day}
+				selected={props.date.day}
 				options={arrayOfMonthDays(props.date.month, props.date.year)}
 				onClick={(val) => {
 					props.setDate({ ...props.date, day: val });
@@ -18,7 +18,7 @@ const DateSelect = (props) => {
 				onOpenChange={props.setOverflowHidden}
 			/>
 			<Dropdown
-				default={props.date.month}
+				selected={props.date.month}
 				options={getMonthIntegers()}
 				onClick={(val) => {
 					props.setDate({ ...props.date, month: val });
@@ -26,7 +26,7 @@ const DateSelect = (props) => {
 				onOpenChange={props.setOverflowHidden}
 			/>
 			<Dropdown
-				default={props.date.year}
+				selected={props.date.year}
 				options={get21stCenturyYears()}
 				onClick={(val) => {
 					props.setDate({ ...props.date, year: val });

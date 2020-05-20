@@ -4,7 +4,7 @@ import ResetFilterBtn from 'components/ResetFilterBtn';
 import DateRangeSelect from 'components/DateRangeSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import CompletionSelect from 'components/CompletionSelect';
-import DropdownCheckboxes from 'components/DropdownCheckboxes';
+import Dropdown from 'components/Dropdown';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/parseDates';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/newTaskBar';
@@ -54,7 +54,8 @@ const FilterBar = (props) => {
 				style={filterBarItemStyle}
 				setOverflowHidden={(val) => setDropdownsOpen({ ...dropdownsOpen, urgency: val })}
 			/>
-			<DropdownCheckboxes
+			<Dropdown
+				type={'checkbox'}
 				label={'Teams'}
 				onClick={(val) => {
 					setFilterOptions({ ...filterOptions, teams: formatTeamsDropdownSelect(val, filterOptions) });

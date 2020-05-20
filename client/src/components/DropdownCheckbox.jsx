@@ -15,7 +15,6 @@ const DropdownCheckbox = (props) => {
 	const [ hovered, setHovered ] = useState();
 	const { listOpen, onClick, value, hoverEnabled, selected } = props;
 	const themeColor = useContext(ThemeContext);
-
 	useEffect(
 		() => {
 			//check if mouseover with no movement once hover enabled

@@ -17,7 +17,7 @@ const ColorTest = (props) => {
 			<Dropdown
 				style={{ width: '10rem', zIndex: '109' }}
 				options={CSS_COLOR_NAMES}
-				default={color}
+				selected={color}
 				onClick={(val) => setColor(val)}
 			/>
 			<div style={{ ...boxStyle, backgroundColor: `rgb(${colors[0].join(',')})` }} />

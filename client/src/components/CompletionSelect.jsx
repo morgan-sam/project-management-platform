@@ -14,7 +14,7 @@ const CompletionSelect = (props) => {
 					...elStyle,
 					width: '7rem'
 				}}
-				default={props.filterOptions.completion}
+				selected={props.filterOptions.completion}
 				options={[ 'all', 'complete', 'incomplete' ]}
 				onClick={(val) =>
 					props.setFilterOptions({
