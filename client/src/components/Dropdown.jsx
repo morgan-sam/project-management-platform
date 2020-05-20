@@ -42,7 +42,7 @@ const Dropdown = (props) => {
 									onClick={props.onClick}
 									style={getCurrentOptionStyle(i, props.options)}
 									value={value}
-									isDefault={props.default === value}
+									selected={props.default === value}
 									setListOpen={setListOpen}
 									key={i}
 								/>

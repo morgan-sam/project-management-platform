@@ -12,7 +12,7 @@ import {
 const DropdownEntry = (props) => {
 	const entryRef = useRef(null);
 	const [ hovered, setHovered ] = useState();
-	const { listOpen, onClick, setListOpen, value, hoverEnabled, isDefault } = props;
+	const { listOpen, onClick, setListOpen, value, hoverEnabled, selected } = props;
 	const themeColor = useContext(ThemeContext);
 
 	useEffect(
@@ -42,14 +42,14 @@ const DropdownEntry = (props) => {
 			}}
 			onMouseLeave={() => setHovered(false)}
 		>
-			<span style={getDropdownTextStyle(themeColor, (hoverEnabled && hovered) || isDefault)}>
+			<span style={getDropdownTextStyle(themeColor, (hoverEnabled && hovered) || selected)}>
 				{typeof value === 'string' ? capitalizeFirstLetter(value) : value}
 			</span>
 			<div
 				style={{
 					...optionBackgroundStyle,
-					opacity: (hoverEnabled && hovered) || isDefault ? '1' : '0',
-					...(isDefault ? getDefaultStyle(themeColor) : null),
+					opacity: (hoverEnabled && hovered) || selected ? '1' : '0',
+					...(selected ? getDefaultStyle(themeColor) : null),
 					...(hoverEnabled && hovered ? getHoveredStyle(themeColor) : null)
 				}}
 			/>
