@@ -1,29 +1,11 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
-import ThemeContext from 'context/ThemeContext';
+import React, { useRef } from 'react';
 import Checkbox from 'components/Checkbox';
 import { capitalizeFirstLetter } from 'processing/utility';
-import {
-	dropdownBoxStyle,
-	getDropdownTextStyle,
-	optionBackgroundStyle,
-	getHoveredStyle,
-	getDefaultStyle
-} from 'styling/dropdown';
+import { dropdownBoxStyle, optionBackgroundStyle } from 'styling/dropdown';
 
 const DropdownCheckbox = (props) => {
 	const entryRef = useRef(null);
-	const [ hovered, setHovered ] = useState();
-	const { listOpen, onClick, value, hoverEnabled, selected } = props;
-	const themeColor = useContext(ThemeContext);
-	useEffect(
-		() => {
-			//check if mouseover with no movement once hover enabled
-			if (entryRef && entryRef.current && entryRef.current.querySelector(':hover')) {
-				setHovered(true);
-			}
-		},
-		[ hoverEnabled ]
-	);
+	const { listOpen, onClick, value, selected } = props;
 
 	const displayString = typeof value === 'string' && value.match(/^[a-z]/) ? capitalizeFirstLetter(value) : value;
 
@@ -35,10 +17,6 @@ const DropdownCheckbox = (props) => {
 				...dropdownBoxStyle(listOpen),
 				...props.style
 			}}
-			onMouseOver={() => {
-				if (hoverEnabled) setHovered(true);
-			}}
-			onMouseLeave={() => setHovered(false)}
 			onClick={() => onClick(value)}
 		>
 			<div style={{ display: 'flex', width: '100%' }}>
