@@ -44,14 +44,22 @@ const convertLetterSettingToString = (settings, loop) => {
 
 const convertFlagToSettings = (flag) => {
 	const groups = flag.replace(/[\$\{\} ]/g, '').split(',');
+	if (groups[0] === 'l' || groups[0] === 'L') return convertLetterFlag(groups);
+	else if (groups[0] === 'n' || groups[0] === 'N') return convertNumberFlag(groups);
+};
+
+const convertLetterFlag = (groups) => ({ numerical: false, digits: 1, ascending: convertAscendingFlag(groups[1]) });
+
+const convertNumberFlag = (groups) => {
 	let settings = { numerical: true, digits: 1, ascending: true };
-	let orderIndex = 2;
-	if (groups[0] === 'l' || groups[0] === 'L') {
-		orderIndex = 1;
-		settings.numerical = false;
-	} else if (parseInt(groups[1]) >= 0 && parseInt(groups[1]) <= 9) settings.digits = parseInt(groups[1]);
-	else orderIndex = 1;
-	if (groups[orderIndex] === 'a' || groups[orderIndex] === 'A') settings.ascending = true;
-	else if (groups[orderIndex] === 'd' || groups[orderIndex] === 'D') settings.ascending = false;
+	for (let i = 1; i < groups.length; i++) {
+		if (parseInt(groups[i]) >= 0 && parseInt(groups[i]) <= 9) settings.digits = parseInt(groups[i]);
+		else settings.ascending = convertAscendingFlag(groups[i]);
+	}
 	return settings;
+};
+
+const convertAscendingFlag = (flag) => {
+	if (flag === 'a' || flag === 'A') return true;
+	else if (flag === 'd' || flag === 'D') return false;
 };
