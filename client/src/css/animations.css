@@ -1,12 +1,3 @@
-@keyframes float {
-	from {
-		padding: 0;
-	}
-
-	to {
-		padding: 0;
-	}
-}
 @keyframes rotate {
 	0% {
 		transform: rotate(0deg) scale(4) skew(45deg);
@@ -32,6 +23,7 @@
 		transform: rotate(360deg) scale(2) skew(0);
 	}
 }
+
 @keyframes shake {
 	0% {
 		transform: translateX(0%);
