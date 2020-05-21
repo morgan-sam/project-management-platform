@@ -63,7 +63,18 @@ const BatchNewTasks = (props) => {
 	};
 
 	return (
-		<div>
+		<div
+			style={{
+				position: 'absolute',
+				height: '100vh',
+				width: '100vw',
+				top: '0',
+				left: '0',
+				opacity: '0',
+				animation: 'popup-fade-in 1s cubic-bezier(.57,.82,.01,.82) 0.1s 1 forwards',
+				zIndex: '10'
+			}}
+		>
 			{screen === 'main' && (
 				<MainBatchScreen
 					errors={errors}

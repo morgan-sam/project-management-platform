@@ -28,5 +28,5 @@ export const overlayStyle = {
 	top: '0',
 	left: '0',
 	zIndex: '9',
-	animation: 'overlay-fade-in 0.8s'
+	animation: 'overlay-fade-in linear 0.4s'
 };
