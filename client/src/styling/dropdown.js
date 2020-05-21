@@ -90,7 +90,7 @@ export const getHoveredStyle = (color) => {
 		background: getOptionGradientStyle(color),
 		filter: 'brightness(110%) contrast(80%) saturate(110%)',
 		zIndex: '-1',
-		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
+		animation: 'dropdown-bg-rotate 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
 		transition: 'opacity 0.05s'
 	};
 };
@@ -100,7 +100,7 @@ export const getDefaultStyle = (color) => {
 		background: getOptionGradientStyle(color),
 		filter: 'brightness(110%) contrast(80%) saturate(80%) opacity(80%)',
 		zIndex: '-1',
-		animation: 'wave 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
+		animation: 'dropdown-bg-rotate 14s cubic-bezier(0,1.02,.69,-0.27) alternate infinite',
 		transition: 'opacity 0.05s'
 	};
 };

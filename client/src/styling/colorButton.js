@@ -65,7 +65,7 @@ export const getColorBoxStyle = (color, hover) => {
 		transition: '0s transform ease-in-out',
 		background: getButtonGradient(color),
 		opacity: '100%',
-		animation: hover ? 'rotate 5s cubic-bezier(0,.09,1,-0.09) 0s infinite alternate-reverse' : 'none'
+		animation: hover ? 'button-bg-rotate 5s cubic-bezier(0,.09,1,-0.09) 0s infinite alternate-reverse' : 'none'
 	};
 };
 
