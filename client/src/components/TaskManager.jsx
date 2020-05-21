@@ -72,19 +72,13 @@ const TaskManager = (props) => {
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
-				text={`${displayedBars.filter ? 'Hide' : 'Show'} Filter`}
-				onClick={() => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })}
-			/>
-			<ColorButton
-				className={'taskManagerBtn'}
 				text={'Batch New Tasks'}
 				onClick={() => setPopUp(<BatchNewTasks setPopUp={setPopUp} setDataChanged={setDataChanged} />)}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
-				text={'Delete Selected Tasks'}
-				onClick={() => deletePopUp()}
-				enabled={selectedTasks.length}
+				text={`${displayedBars.filter ? 'Hide' : 'Show'} Filter`}
+				onClick={() => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })}
 			/>
 			<ColorButton
 				className={'taskManagerBtn'}
@@ -97,6 +91,12 @@ const TaskManager = (props) => {
 				onClick={() => {
 					if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);
 				}}
+				enabled={selectedTasks.length}
+			/>
+			<ColorButton
+				className={'taskManagerBtn'}
+				text={'Delete Selected Tasks'}
+				onClick={() => deletePopUp()}
 				enabled={selectedTasks.length}
 			/>
 		</div>
