@@ -127,7 +127,7 @@ const App = () => {
 					pressedKeys={pressedKeys}
 				/>
 				{popUp}
-				{popUp && <div className={'overlay'} style={overlayStyle} />}
+				{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}
 			</div>
 		</ThemeProvider>
 	);

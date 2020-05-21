@@ -72,3 +72,12 @@
 		background-position: 200%;
 	}
 }
+
+@keyframes overlay-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
