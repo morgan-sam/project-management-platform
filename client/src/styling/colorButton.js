@@ -15,7 +15,7 @@ export const getStaticContainerStyle = (style, shake) => {
 		display: 'flex',
 		alignItems: 'center',
 		margin: '0.5rem',
-		animation: shake ? 'shake 0.2s ease-in-out infinite' : 'none'
+		animation: shake ? 'button-error-shake 0.2s ease-in-out infinite' : 'none'
 	};
 };
 

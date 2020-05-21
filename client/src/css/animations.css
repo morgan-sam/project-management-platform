@@ -1,3 +1,26 @@
+@keyframes title-fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(20%);
+	}
+	20% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes title-shine {
+	0% {
+		background-position: -100%;
+	}
+	100% {
+		background-position: 200%;
+	}
+}
+
 @keyframes button-bg-rotate {
 	0% {
 		transform: rotate(0deg) scale(4) skew(45deg);
@@ -12,20 +35,7 @@
 		transform: rotate(270deg) scale(4) skew(45deg);
 	}
 }
-
-@keyframes dropdown-bg-rotate {
-	0% {
-		transform: rotate(0deg) scale(2) skew(0);
-	}
-	50% {
-		transform: rotate(180deg) scale(8) skew(45deg);
-	}
-	100% {
-		transform: rotate(360deg) scale(2) skew(0);
-	}
-}
-
-@keyframes shake {
+@keyframes button-error-shake {
 	0% {
 		transform: translateX(0%);
 	}
@@ -43,26 +53,15 @@
 	}
 }
 
-@keyframes title-fade-in {
+@keyframes dropdown-bg-rotate {
 	0% {
-		opacity: 0;
-		transform: translateY(20%);
+		transform: rotate(0deg) scale(2) skew(0);
 	}
-	20% {
-		opacity: 0;
+	50% {
+		transform: rotate(180deg) scale(8) skew(45deg);
 	}
 	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes shine {
-	0% {
-		background-position: -100%;
-	}
-	100% {
-		background-position: 200%;
+		transform: rotate(360deg) scale(2) skew(0);
 	}
 }
 
@@ -75,6 +74,15 @@
 	}
 }
 
+@keyframes confirm-popup-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 @keyframes batch-popup-fade-in {
 	0% {
 		opacity: 0;
@@ -83,14 +91,5 @@
 	100% {
 		opacity: 1;
 		transform: translateY(0%);
-	}
-}
-
-@keyframes confirm-popup-fade-in {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
 	}
 }

@@ -18,7 +18,7 @@ const MainTitle = (props) => {
 		color: 'rgba(0, 0, 0, 0.3)',
 		WebkitBackgroundClip: 'text',
 		textShadow: '0 0px 0px rgba(255, 255, 255, 0.2)',
-		animation: 'title-fade-in 1s ease-in-out 0s 1 forwards, shine 1s ease-in-out 1s 1 forwards',
+		animation: 'title-fade-in 1s ease-in-out 0s 1 forwards, title-shine 1s ease-in-out 1s 1 forwards',
 		backgroundPosition: '-300%'
 	};
 
