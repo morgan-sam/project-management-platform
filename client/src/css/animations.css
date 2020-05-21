@@ -82,7 +82,7 @@
 	}
 }
 
-@keyframes popup-fade-in {
+@keyframes batch-popup-fade-in {
 	0% {
 		opacity: 0;
 		transform: translateY(1rem);

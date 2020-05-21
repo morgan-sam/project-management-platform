@@ -25,7 +25,7 @@ export const popUpWindowStyle = {
 	width: 'auto',
 	opacity: '0',
 	zIndex: '10',
-	animation: 'popup-fade-in 1s cubic-bezier(.57,.82,.01,.82) 0.1s 1 forwards'
+	animation: 'batch-popup-fade-in 1s cubic-bezier(.57,.82,.01,.82) 0.1s 1 forwards'
 };
 
 export const subContainerStyle = {
