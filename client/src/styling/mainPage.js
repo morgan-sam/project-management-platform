@@ -20,11 +20,11 @@ export const tableStyle = {
 };
 
 export const overlayStyle = {
-	height: '100vh',
+	height: '100vw',
 	width: '100vw',
 	background: 'white',
 	opacity: '0.8',
-	position: 'absolute',
+	position: 'fixed',
 	top: '0',
 	left: '0',
 	zIndex: '9',

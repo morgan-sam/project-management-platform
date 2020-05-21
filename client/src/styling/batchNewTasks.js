@@ -3,21 +3,29 @@ export const titleStyle = {
 	fontSize: '1.6rem'
 };
 
-export const containerStyle = {
+export const topContainerStyle = {
+	height: '100vh',
+	width: '100vw',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center'
+};
+
+export const popUpWindowStyle = {
 	position: 'fixed',
 	display: 'flex',
-	flexDirection: 'column',
-	alignItems: 'center',
 	justifyContent: 'center',
-	top: '50vh',
-	left: '50vw',
+	alignItems: 'center',
+	flexDirection: 'column',
 	border: '1px solid black',
-	transform: 'translate(-50%,-50%)',
 	backgroundColor: 'white',
 	zIndex: '10',
 	padding: '2rem',
 	height: 'auto',
-	width: 'auto'
+	width: 'auto',
+	opacity: '0',
+	zIndex: '10',
+	animation: 'popup-fade-in 1s cubic-bezier(.57,.82,.01,.82) 0.1s 1 forwards'
 };
 
 export const subContainerStyle = {
