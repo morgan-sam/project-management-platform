@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
+import MainBar from 'components/MainBar';
 import TaskManager from 'components/TaskManager';
 import ColorTest from 'components/ColorTest';
 import FilterBar from 'components/FilterBar';
@@ -89,6 +90,7 @@ const App = () => {
 			<div className="mainPage" style={getMainPageStyle(popUp)}>
 				{/* <ColorTest /> */}
 				<MainTitle />
+				<MainBar />
 				<TaskManager
 					style={taskManagerStyle}
 					selectedTasks={selectedTasks}

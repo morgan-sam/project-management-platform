@@ -30,6 +30,7 @@ const Dropdown = (props) => {
 		else return optionStyle;
 	};
 	const themeColor = useContext(ThemeContext);
+	const includeDropdownHeader = props.type === 'checkbox' || props.type === 'mainNavbarTop';
 
 	useEffect(
 		() => {
@@ -127,7 +128,7 @@ const Dropdown = (props) => {
 					style={listOpen ? dropdownOpenStyle(listOpen) : dropdownClosedStyle(listOpen)}
 					ref={dropdownRef}
 				>
-					{props.type !== 'checkbox' && listOpen ? null : (
+					{!includeDropdownHeader && listOpen ? null : (
 						<DropdownHeader
 							default={props.label ? props.label : props.selected}
 							setListOpen={setListOpen}
