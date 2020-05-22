@@ -73,7 +73,7 @@ const Dropdown = (props) => {
 		const currentIndex = props.options.indexOf(props.selected);
 		dropdownRef.current.scrollTop =
 			DROPDOWN_HEIGHT_REMS * (currentIndex + 1) * parseFloat(getComputedStyle(dropdownRef.current).fontSize);
-		if (props.type === 'checkbox') dropdownRef.current.scrollTop = 1;
+		if (includeDropdownHeader) dropdownRef.current.scrollTop = 1;
 	};
 
 	useEffect(() => setDropdownStartPosition(), [ listOpen ]);
@@ -84,10 +84,9 @@ const Dropdown = (props) => {
 				let dropdownSize =
 					convertRemToPixels(DROPDOWN_HEIGHT_REMS) * (props.options.length - 1) +
 					parseFloat(getComputedStyle(document.documentElement).fontSize) * 2;
-				dropdownSize =
-					props.type === 'checkbox'
-						? dropdownSize + parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 + 1
-						: dropdownSize;
+				dropdownSize = includeDropdownHeader
+					? dropdownSize + parseFloat(getComputedStyle(document.documentElement).fontSize) * 2 + 1
+					: dropdownSize;
 				const dropdownMaxSize = convertRemToPixels(DROPDOWN_MAX_HEIGHT_REMS);
 				dropdownSize = Math.max(0, dropdownSize - dropdownMaxSize);
 				setEndOfList(dropdownSize === dropdownRef.current.scrollTop);
