@@ -5,9 +5,9 @@ const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
 
 	const menus = [
-		{ name: 'File', sub: [ 'Batch New Tasks' ] },
-		{ name: 'Edit', sub: [ 'Select All', 'Mark Complete', 'Delete Selected' ] },
-		{ name: 'View', sub: [ 'Filter', 'New Task' ] }
+		{ name: 'File', sub: [ { name: 'Batch New Tasks' } ] },
+		{ name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete Selected' } ] },
+		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
 	];
 	const convertMenusToOpenObj = () => {
 		let obj = {};
@@ -62,13 +62,13 @@ const NavigationMenu = (props) => {
 	};
 
 	const multipleBoxes = (boxes) => {
-		return <div style={mainMenuContainer}>{boxes.map((el) => singleMenuBox(el))}</div>;
+		return <div style={mainMenuContainer}>{boxes.map((el) => singleMenuBox(el.name))}</div>;
 	};
 
 	const mainRowOfBoxes = () => {
 		return menus.map((el) => {
 			const { name, sub } = el;
-			if (menusOpen[name]) return multipleBoxes([ name, ...sub ]);
+			if (menusOpen[name]) return multipleBoxes([ el, ...sub ]);
 			else return singleMenuBox(name);
 		});
 	};
