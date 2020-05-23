@@ -12,7 +12,7 @@ const NavigationMenu = (props) => {
 	const convertMenusToOpenObj = () => {
 		let obj = {};
 		for (let i = 0; i < menus.length; i++) {
-			obj[menus[i].name] = true;
+			obj[menus[i].name] = false;
 		}
 		return obj;
 	};
@@ -51,7 +51,9 @@ const NavigationMenu = (props) => {
 			<div
 				style={boxStyle}
 				onClick={() => {
-					//
+					let newObj = Object.assign({}, menusOpen);
+					newObj[box] = !newObj[box];
+					setMenusOpen(newObj);
 				}}
 			>
 				{box}
@@ -66,9 +68,6 @@ const NavigationMenu = (props) => {
 	const mainRowOfBoxes = () => {
 		return menus.map((el) => {
 			const { name, sub } = el;
-			console.log(name);
-			console.log(menusOpen);
-			console.log(menusOpen[name]);
 			if (menusOpen[name]) return multipleBoxes([ name, ...sub ]);
 			else return singleMenuBox(name);
 		});
