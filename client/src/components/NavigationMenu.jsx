@@ -25,7 +25,10 @@ const NavigationMenu = (props) => {
 	];
 	const menus = [
 		{ name: 'File', sub: [ { name: 'Batch New Tasks', sub: bntSub } ] },
-		{ name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete Selected' } ] },
+		{
+			name: 'Edit',
+			sub: [ { name: 'Select All' }, { name: 'Mark Complete', sub: bntSub }, { name: 'Delete Selected' } ]
+		},
 		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
 	];
 
