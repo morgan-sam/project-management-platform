@@ -1,10 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
+import { parentContainer, boxStyle, flexColumn, getTopMenuStyle, subMenuStyle } from 'styling/navigationMenu';
 
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
-
-	const BOX_WIDTH_REM = 4;
 
 	const bntSub = [
 		{ name: 'hello!', sub: [ { name: '53' } ] },
@@ -31,40 +30,6 @@ const NavigationMenu = (props) => {
 
 	const [ menusOpen, setMenusOpen ] = useState([]);
 
-	const parentContainer = {
-		position: 'relative',
-		height: '2rem',
-		margin: '2rem 0 1.75rem 0',
-		display: 'block',
-		overflow: 'visible',
-		zIndex: '10'
-	};
-
-	const boxStyle = {
-		textAlign: 'center',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		border: '1px solid black',
-		height: '2rem',
-		width: `${BOX_WIDTH_REM}rem`,
-		userSelect: 'none',
-		cursor: 'pointer',
-		fontSize: '0.75rem',
-		backgroundColor: 'white',
-		zIndex: '10',
-		boxSizing: 'border-box'
-	};
-
-	const flexColumn = {
-		display: 'inline-flex',
-		flexDirection: 'column'
-	};
-	const flexRow = {
-		display: 'inline-flex',
-		flexDirection: 'row'
-	};
-
 	const singleMenuBox = (text, menuPos) => {
 		let individualStyle;
 		if (menuPos[0] !== 0 && menuPos.length === 1) individualStyle = { borderLeft: 'none' };
@@ -78,19 +43,6 @@ const NavigationMenu = (props) => {
 
 	const multipleBoxes = (el, menuPos) => {
 		return el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, [ ...menuPos, i ])) : null;
-	};
-
-	const getTopMenuStyle = (menuPos) => {
-		return {
-			...flexColumn,
-			position: 'absolute',
-			left: `${menuPos[menuPos.length - 1] * BOX_WIDTH_REM}rem`
-		};
-	};
-
-	const subMenuStyle = {
-		...flexRow,
-		position: 'relative'
 	};
 
 	useEffect(() => {
