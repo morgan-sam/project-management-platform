@@ -19,11 +19,12 @@ const NavigationMenu = (props) => {
 	const [ menusOpen, setMenusOpen ] = useState(convertMenusToOpenObj());
 
 	const parentContainer = {
-		height: 'auto',
+		height: '2rem',
 		margin: '2rem 0',
 		display: 'flex',
 		justifyContent: 'left',
-		alignItems: 'top'
+		alignItems: 'top',
+		overflow: 'visible'
 	};
 
 	const boxStyle = {
@@ -36,7 +37,9 @@ const NavigationMenu = (props) => {
 		width: '4rem',
 		userSelect: 'none',
 		cursor: 'pointer',
-		fontSize: '0.75rem'
+		fontSize: '0.75rem',
+		backgroundColor: 'white',
+		zIndex: '10'
 	};
 
 	const mainMenuContainer = {
