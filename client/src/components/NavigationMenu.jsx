@@ -9,7 +9,19 @@ const NavigationMenu = (props) => {
 	const bntSub = [
 		{ name: 'hello!', sub: [ { name: '53' } ] },
 		{ name: 'what!', sub: [ { name: '53' } ] },
-		{ name: 'yellow!', sub: [ { name: '53' } ] }
+		{
+			name: 'yellow!',
+			sub: [
+				{ name: '53' },
+				{ name: '53' },
+				{ name: '53' },
+				{ name: '53' },
+				{ name: '53' },
+				{ name: '53' },
+				{ name: '53' },
+				{ name: '53' }
+			]
+		}
 	];
 	const menus = [
 		{ name: 'File', sub: [ { name: 'Batch New Tasks', sub: bntSub } ] },
@@ -59,22 +71,23 @@ const NavigationMenu = (props) => {
 		flexDirection: 'row'
 	};
 
-	const singleMenuBox = (box) => {
-		return <div style={boxStyle}>{box}</div>;
+	const singleMenuBox = (text) => {
+		return <div style={boxStyle}>{text}</div>;
 	};
 
 	const multipleBoxes = (el, recur) => {
-		return el.sub ? el.sub.map((el) => menuDropdownContainer(el, ++recur)) : null;
+		return el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, ++recur, i)) : null;
 	};
 
-	const menuDropdownContainer = (el, recur, topMenuPos = 0) => {
+	const menuDropdownContainer = (el, recur, menuPos = 0) => {
 		const { name, sub } = el;
+		console.log(menuPos);
 		return (
 			<div
 				style={{
 					...(recur === 0 ? flexColumn : flexRow),
 					position: recur === 0 ? 'absolute' : 'relative',
-					left: `${topMenuPos * BOX_WIDTH_REM}rem`
+					left: recur === 0 ? `${menuPos * BOX_WIDTH_REM}rem` : null
 				}}
 				onMouseOver={() => {
 					if (!menusOpen[name]) {
