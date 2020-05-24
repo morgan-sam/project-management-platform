@@ -20,7 +20,7 @@ const NavigationMenu = (props) => {
 
 	const parentContainer = {
 		height: '2rem',
-		margin: '2rem 0',
+		margin: '2rem 0 1.75rem 0',
 		display: 'flex',
 		justifyContent: 'left',
 		alignItems: 'top',
