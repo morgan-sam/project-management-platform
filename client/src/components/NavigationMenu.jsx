@@ -72,23 +72,29 @@ const NavigationMenu = (props) => {
 		flexDirection: 'row'
 	};
 
-	const singleMenuBox = (text) => {
-		return <div style={boxStyle}>{text}</div>;
+	const singleMenuBox = (text, menuPos) => {
+		return (
+			<div style={boxStyle} id={menuPos.toString()}>
+				{text}
+			</div>
+		);
 	};
 
-	const multipleBoxes = (el, recur) => {
-		return el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, ++recur, i)) : null;
+	const multipleBoxes = (el, recur, menuPos) => {
+		return el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, ++recur, [ ...menuPos, i ])) : null;
 	};
 
-	const menuDropdownContainer = (el, recur, menuPos = 0) => {
+	const menuDropdownContainer = (el, recur, menuPos) => {
 		const { name, sub } = el;
-		console.log(menuPos);
 		return (
 			<div
+				onClick={(e) => {
+					if (e.target.id === menuPos.toString()) console.log(menuPos);
+				}}
 				style={{
 					...(recur === 0 ? flexColumn : flexRow),
 					position: recur === 0 ? 'absolute' : 'relative',
-					left: recur === 0 ? `${menuPos * BOX_WIDTH_REM}rem` : null
+					left: recur === 0 ? `${menuPos[menuPos.length - 1] * BOX_WIDTH_REM}rem` : null
 				}}
 				onMouseOver={() => {
 					if (!menusOpen[name]) {
@@ -105,14 +111,14 @@ const NavigationMenu = (props) => {
 					}
 				}}
 			>
-				{singleMenuBox(name)}
-				<div style={flexColumn}>{menusOpen[name] && sub ? multipleBoxes(el, recur) : null}</div>
+				{singleMenuBox(name, menuPos)}
+				<div style={flexColumn}>{menusOpen[name] && sub ? multipleBoxes(el, recur, menuPos) : null}</div>
 			</div>
 		);
 	};
 
 	const mainRowOfBoxes = () => {
-		return menus.map((el, i) => menuDropdownContainer(el, 0, i));
+		return menus.map((el, i) => menuDropdownContainer(el, 0, [ i ]));
 	};
 
 	return <div style={parentContainer}>{mainRowOfBoxes()}</div>;
