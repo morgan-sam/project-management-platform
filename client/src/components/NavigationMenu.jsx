@@ -4,11 +4,19 @@ import ThemeContext from 'context/ThemeContext';
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
 
-	const menus = [
-		{ name: 'File', sub: [ { name: 'Batch New Tasks', sub: [ { name: 'hello!' } ] } ] }
-		// { name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete Selected' } ] },
-		// { name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
+	const BOX_WIDTH_REM = 4;
+
+	const bntSub = [
+		{ name: 'hello!', sub: [ { name: '53' } ] },
+		{ name: 'what!', sub: [ { name: '53' } ] },
+		{ name: 'yellow!', sub: [ { name: '53' } ] }
 	];
+	const menus = [
+		{ name: 'File', sub: [ { name: 'Batch New Tasks', sub: bntSub } ] },
+		{ name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete Selected' } ] },
+		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
+	];
+
 	const convertMenusToOpenObj = () => {
 		let obj = {};
 		for (let i = 0; i < menus.length; i++) {
@@ -19,12 +27,12 @@ const NavigationMenu = (props) => {
 	const [ menusOpen, setMenusOpen ] = useState(convertMenusToOpenObj());
 
 	const parentContainer = {
+		position: 'relative',
 		height: '2rem',
 		margin: '2rem 0 1.75rem 0',
-		display: 'flex',
-		justifyContent: 'left',
-		alignItems: 'top',
-		overflow: 'visible'
+		display: 'block',
+		overflow: 'visible',
+		zIndex: '10'
 	};
 
 	const boxStyle = {
@@ -34,7 +42,7 @@ const NavigationMenu = (props) => {
 		alignItems: 'center',
 		border: '1px solid black',
 		height: '2rem',
-		width: '4rem',
+		width: `${BOX_WIDTH_REM}rem`,
 		userSelect: 'none',
 		cursor: 'pointer',
 		fontSize: '0.75rem',
@@ -42,24 +50,32 @@ const NavigationMenu = (props) => {
 		zIndex: '10'
 	};
 
+	const flexColumn = {
+		display: 'inline-flex',
+		flexDirection: 'column'
+	};
+	const flexRow = {
+		display: 'inline-flex',
+		flexDirection: 'row'
+	};
+
 	const singleMenuBox = (box) => {
 		return <div style={boxStyle}>{box}</div>;
 	};
 
 	const multipleBoxes = (el, recur) => {
-		return (
-			<div>
-				{singleMenuBox(el.name)}
-				{el.sub ? el.sub.map((el) => menuDropdownContainer(el, ++recur)) : null}
-			</div>
-		);
+		return el.sub ? el.sub.map((el) => menuDropdownContainer(el, ++recur)) : null;
 	};
 
-	const menuDropdownContainer = (el, recur) => {
-		console.log(recur);
+	const menuDropdownContainer = (el, recur, topMenuPos = 0) => {
 		const { name, sub } = el;
 		return (
 			<div
+				style={{
+					...(recur === 0 ? flexColumn : flexRow),
+					position: recur === 0 ? 'absolute' : 'relative',
+					left: `${topMenuPos * BOX_WIDTH_REM}rem`
+				}}
 				onMouseOver={() => {
 					if (!menusOpen[name]) {
 						let newObj = Object.assign({}, menusOpen);
@@ -75,13 +91,14 @@ const NavigationMenu = (props) => {
 					}
 				}}
 			>
-				{menusOpen[name] && sub ? multipleBoxes(el, recur) : singleMenuBox(name)}
+				{singleMenuBox(name)}
+				<div style={flexColumn}>{menusOpen[name] && sub ? multipleBoxes(el, recur) : null}</div>
 			</div>
 		);
 	};
 
 	const mainRowOfBoxes = () => {
-		return menus.map((el) => menuDropdownContainer(el, 0));
+		return menus.map((el, i) => menuDropdownContainer(el, 0, i));
 	};
 
 	return <div style={parentContainer}>{mainRowOfBoxes()}</div>;
