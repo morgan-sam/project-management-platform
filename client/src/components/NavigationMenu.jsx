@@ -29,14 +29,6 @@ const NavigationMenu = (props) => {
 		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
 	];
 
-	const convertMenusToOpenObj = () => {
-		let obj = {};
-		for (let i = 0; i < menus.length; i++) {
-			obj[menus[i].name] = false;
-		}
-		return obj;
-	};
-
 	const [ menusOpen, setMenusOpen ] = useState([]);
 
 	const parentContainer = {
