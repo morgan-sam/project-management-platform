@@ -116,6 +116,7 @@ const NavigationMenu = (props) => {
 		const { name, sub } = el;
 		return (
 			<div
+				key={menuPos.toString()}
 				onClick={() => {
 					if (menusOpen.length === 0) setMenusOpen(menuPos);
 					else setMenusOpen([]);
