@@ -72,6 +72,12 @@ const NavigationMenu = (props) => {
 		flexDirection: 'row'
 	};
 
+	const setIndividualMenuOpen = (name, boo) => {
+		let newObj = Object.assign({}, menusOpen);
+		newObj[name] = boo;
+		setMenusOpen(newObj);
+	};
+
 	const singleMenuBox = (text, menuPos) => {
 		return (
 			<div style={boxStyle} id={menuPos.toString()}>
@@ -97,18 +103,10 @@ const NavigationMenu = (props) => {
 					left: menuPos.length === 1 ? `${menuPos[menuPos.length - 1] * BOX_WIDTH_REM}rem` : null
 				}}
 				onMouseOver={() => {
-					if (!menusOpen[name]) {
-						let newObj = Object.assign({}, menusOpen);
-						newObj[name] = true;
-						setMenusOpen(newObj);
-					}
+					if (!menusOpen[name]) setIndividualMenuOpen(name, true);
 				}}
 				onMouseLeave={() => {
-					if (menusOpen[name]) {
-						let newObj = Object.assign({}, menusOpen);
-						newObj[name] = false;
-						setMenusOpen(newObj);
-					}
+					if (menusOpen[name]) setIndividualMenuOpen(name, false);
 				}}
 			>
 				{singleMenuBox(name, menuPos)}
