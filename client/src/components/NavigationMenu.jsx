@@ -78,9 +78,12 @@ const NavigationMenu = (props) => {
 		setMenusOpen(newObj);
 	};
 
-	const singleMenuBox = (text, menuPos) => {
+	const singleMenuBox = (text, menuPos, menuOpen) => {
+		let individualStyle;
+		if (menuPos[0] !== 0 && menuPos.length === 1) individualStyle = { borderLeft: 'none' };
+		else individualStyle = { borderLeft: '1px solid black' };
 		return (
-			<div style={boxStyle} id={menuPos.toString()}>
+			<div style={{ ...boxStyle, ...individualStyle }} id={menuPos.toString()}>
 				{text}
 			</div>
 		);
@@ -118,7 +121,7 @@ const NavigationMenu = (props) => {
 					if (menusOpen[name]) setIndividualMenuOpen(name, false);
 				}}
 			>
-				{singleMenuBox(name, menuPos)}
+				{singleMenuBox(name, menuPos, menusOpen[name])}
 				<div style={flexColumn}>{menusOpen[name] && sub ? multipleBoxes(el, menuPos) : null}</div>
 			</div>
 		);
