@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { parentContainer, boxStyle, flexColumn, getTopMenuStyle, subMenuStyle } from 'styling/navigationMenu';
+import { getIndividualBoxStyle } from 'styling/navigationMenuBox';
 
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
@@ -31,11 +32,12 @@ const NavigationMenu = (props) => {
 	const [ menusOpen, setMenusOpen ] = useState([]);
 
 	const singleMenuBox = (text, menuPos) => {
-		let individualStyle;
-		if (menuPos[0] !== 0 && menuPos.length === 1) individualStyle = { borderLeft: 'none' };
-		else individualStyle = { borderLeft: '1px solid black' };
 		return (
-			<div className="navMenu" style={{ ...boxStyle, ...individualStyle }} id={menuPos.toString()}>
+			<div
+				className="navMenu"
+				style={{ ...boxStyle, ...getIndividualBoxStyle(menuPos, menusOpen) }}
+				id={menuPos.toString()}
+			>
 				{text}
 			</div>
 		);
