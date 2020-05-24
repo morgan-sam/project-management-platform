@@ -132,7 +132,7 @@ const getDateFromAlgebra = (date, algebra, product) => {
 const addMonths = (date, months) => {
 	const d = date.getDate();
 	date.setMonth(date.getMonth() + +months);
-	if (date.getDate() != d) date.setDate(0);
+	if (date.getDate() !== d) date.setDate(0);
 	return date;
 };
 
