@@ -36,7 +36,7 @@ const NavigationMenu = (props) => {
 		}
 		return obj;
 	};
-	const [ menusOpen, setMenusOpen ] = useState(convertMenusToOpenObj());
+	const [ menusOpen, setMenusOpen ] = useState([]);
 
 	const parentContainer = {
 		position: 'relative',
@@ -78,7 +78,7 @@ const NavigationMenu = (props) => {
 		setMenusOpen(newObj);
 	};
 
-	const singleMenuBox = (text, menuPos, menuOpen) => {
+	const singleMenuBox = (text, menuPos) => {
 		let individualStyle;
 		if (menuPos[0] !== 0 && menuPos.length === 1) individualStyle = { borderLeft: 'none' };
 		else individualStyle = { borderLeft: '1px solid black' };
@@ -114,15 +114,16 @@ const NavigationMenu = (props) => {
 					if (e.target.id === menuPos.toString()) console.log(menuPos);
 				}}
 				style={menuPos.length === 1 ? getTopMenuStyle(menuPos) : subMenuStyle}
-				onMouseOver={() => {
-					if (!menusOpen[name]) setIndividualMenuOpen(name, true);
-				}}
-				onMouseLeave={() => {
-					if (menusOpen[name]) setIndividualMenuOpen(name, false);
+				onMouseOver={(e) => {
+					if (e.target.id === menuPos.toString()) setMenusOpen(menuPos);
 				}}
 			>
-				{singleMenuBox(name, menuPos, menusOpen[name])}
-				<div style={flexColumn}>{menusOpen[name] && sub ? multipleBoxes(el, menuPos) : null}</div>
+				{singleMenuBox(name, menuPos)}
+				<div style={flexColumn}>
+					{menusOpen[menuPos.length - 1] === menuPos[menuPos.length - 1] && sub ? (
+						multipleBoxes(el, menuPos)
+					) : null}
+				</div>
 			</div>
 		);
 	};
