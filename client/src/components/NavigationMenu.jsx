@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
 
 const NavigationMenu = (props) => {
@@ -78,7 +78,7 @@ const NavigationMenu = (props) => {
 		if (menuPos[0] !== 0 && menuPos.length === 1) individualStyle = { borderLeft: 'none' };
 		else individualStyle = { borderLeft: '1px solid black' };
 		return (
-			<div style={{ ...boxStyle, ...individualStyle }} id={menuPos.toString()}>
+			<div className="navMenu" style={{ ...boxStyle, ...individualStyle }} id={menuPos.toString()}>
 				{text}
 			</div>
 		);
@@ -99,6 +99,17 @@ const NavigationMenu = (props) => {
 	const subMenuStyle = {
 		...flexRow,
 		position: 'relative'
+	};
+
+	useEffect(() => {
+		if (menusOpen.length) document.addEventListener('mousedown', whileDropdownOpenClick);
+		else document.removeEventListener('mousedown', whileDropdownOpenClick);
+		return () => document.removeEventListener('mousedown', whileDropdownOpenClick);
+	});
+
+	const whileDropdownOpenClick = (e) => {
+		if (e.target.className === 'navMenu') return;
+		setMenusOpen([]);
 	};
 
 	const menuDropdownContainer = (el, menuPos) => {
