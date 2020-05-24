@@ -5,9 +5,9 @@ const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
 
 	const menus = [
-		{ name: 'File', sub: [ { name: 'Batch New Tasks' } ] },
-		{ name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete Selected' } ] },
-		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
+		{ name: 'File', sub: [ { name: 'Batch New Tasks', sub: [ { name: 'hello!' } ] } ] }
+		// { name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete Selected' } ] },
+		// { name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
 	];
 	const convertMenusToOpenObj = () => {
 		let obj = {};
@@ -42,43 +42,46 @@ const NavigationMenu = (props) => {
 		zIndex: '10'
 	};
 
-	const mainMenuContainer = {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'left',
-		alignItems: 'center'
-	};
-
 	const singleMenuBox = (box) => {
 		return <div style={boxStyle}>{box}</div>;
 	};
 
-	const multipleBoxes = (boxes) => {
-		return <div style={mainMenuContainer}>{boxes.map((el) => singleMenuBox(el.name))}</div>;
+	const multipleBoxes = (el, recur) => {
+		return (
+			<div>
+				{singleMenuBox(el.name)}
+				{el.sub ? el.sub.map((el) => menuDropdownContainer(el, ++recur)) : null}
+			</div>
+		);
 	};
 
-	const menuDropdownContainer = (el) => {
+	const menuDropdownContainer = (el, recur) => {
+		console.log(recur);
 		const { name, sub } = el;
 		return (
 			<div
 				onMouseOver={() => {
-					let newObj = Object.assign({}, menusOpen);
-					newObj[name] = true;
-					setMenusOpen(newObj);
+					if (!menusOpen[name]) {
+						let newObj = Object.assign({}, menusOpen);
+						newObj[name] = true;
+						setMenusOpen(newObj);
+					}
 				}}
 				onMouseLeave={() => {
-					let newObj = Object.assign({}, menusOpen);
-					newObj[name] = false;
-					setMenusOpen(newObj);
+					if (menusOpen[name]) {
+						let newObj = Object.assign({}, menusOpen);
+						newObj[name] = false;
+						setMenusOpen(newObj);
+					}
 				}}
 			>
-				{menusOpen[name] ? multipleBoxes([ el, ...sub ]) : singleMenuBox(name)}
+				{menusOpen[name] && sub ? multipleBoxes(el, recur) : singleMenuBox(name)}
 			</div>
 		);
 	};
 
 	const mainRowOfBoxes = () => {
-		return menus.map((el) => menuDropdownContainer(el));
+		return menus.map((el) => menuDropdownContainer(el, 0));
 	};
 
 	return <div style={parentContainer}>{mainRowOfBoxes()}</div>;
