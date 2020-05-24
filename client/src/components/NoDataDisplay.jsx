@@ -6,8 +6,12 @@ const NoDataDisplay = () => {
 	const text = 'NO DATA AVAILABLE';
 
 	const emptyCells = () => {
-		return fields.map((type) => {
-			return <td style={cellStyles[type]}>{text}</td>;
+		return fields.map((type, i) => {
+			return (
+				<td key={i} style={cellStyles[type]}>
+					{text}
+				</td>
+			);
 		});
 	};
 
