@@ -36,6 +36,7 @@ const NavigationMenu = (props) => {
 		}
 		return obj;
 	};
+
 	const [ menusOpen, setMenusOpen ] = useState([]);
 
 	const parentContainer = {
@@ -104,12 +105,13 @@ const NavigationMenu = (props) => {
 		const { name, sub } = el;
 		return (
 			<div
-				onClick={(e) => {
-					if (e.target.id === menuPos.toString()) console.log(menuPos);
+				onClick={() => {
+					if (menusOpen.length === 0) setMenusOpen(menuPos);
+					else setMenusOpen([]);
 				}}
 				style={menuPos.length === 1 ? getTopMenuStyle(menuPos) : subMenuStyle}
 				onMouseOver={(e) => {
-					if (e.target.id === menuPos.toString()) setMenusOpen(menuPos);
+					if (e.target.id === menuPos.toString() && menusOpen.length > 0) setMenusOpen(menuPos);
 				}}
 			>
 				{singleMenuBox(name, menuPos)}
