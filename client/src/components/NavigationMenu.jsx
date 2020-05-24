@@ -47,30 +47,35 @@ const NavigationMenu = (props) => {
 	};
 
 	const singleMenuBox = (box) => {
-		return (
-			<div
-				style={boxStyle}
-				onClick={() => {
-					let newObj = Object.assign({}, menusOpen);
-					newObj[box] = !newObj[box];
-					setMenusOpen(newObj);
-				}}
-			>
-				{box}
-			</div>
-		);
+		return <div style={boxStyle}>{box}</div>;
 	};
 
 	const multipleBoxes = (boxes) => {
 		return <div style={mainMenuContainer}>{boxes.map((el) => singleMenuBox(el.name))}</div>;
 	};
 
+	const menuDropdownContainer = (el) => {
+		const { name, sub } = el;
+		return (
+			<div
+				onMouseOver={() => {
+					let newObj = Object.assign({}, menusOpen);
+					newObj[name] = true;
+					setMenusOpen(newObj);
+				}}
+				onMouseLeave={() => {
+					let newObj = Object.assign({}, menusOpen);
+					newObj[name] = false;
+					setMenusOpen(newObj);
+				}}
+			>
+				{menusOpen[name] ? multipleBoxes([ el, ...sub ]) : singleMenuBox(name)}
+			</div>
+		);
+	};
+
 	const mainRowOfBoxes = () => {
-		return menus.map((el) => {
-			const { name, sub } = el;
-			if (menusOpen[name]) return multipleBoxes([ el, ...sub ]);
-			else return singleMenuBox(name);
-		});
+		return menus.map((el) => menuDropdownContainer(el));
 	};
 
 	return <div style={parentContainer}>{mainRowOfBoxes()}</div>;
