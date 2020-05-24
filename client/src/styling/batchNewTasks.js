@@ -19,7 +19,6 @@ export const popUpWindowStyle = {
 	flexDirection: 'column',
 	border: '1px solid black',
 	backgroundColor: 'white',
-	zIndex: '10',
 	padding: '2rem',
 	height: 'auto',
 	width: 'auto',
