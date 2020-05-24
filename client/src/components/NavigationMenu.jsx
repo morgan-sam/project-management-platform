@@ -72,12 +72,6 @@ const NavigationMenu = (props) => {
 		flexDirection: 'row'
 	};
 
-	const setIndividualMenuOpen = (name, boo) => {
-		let newObj = Object.assign({}, menusOpen);
-		newObj[name] = boo;
-		setMenusOpen(newObj);
-	};
-
 	const singleMenuBox = (text, menuPos) => {
 		let individualStyle;
 		if (menuPos[0] !== 0 && menuPos.length === 1) individualStyle = { borderLeft: 'none' };
