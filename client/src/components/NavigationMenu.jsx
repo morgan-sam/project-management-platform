@@ -59,7 +59,8 @@ const NavigationMenu = (props) => {
 		cursor: 'pointer',
 		fontSize: '0.75rem',
 		backgroundColor: 'white',
-		zIndex: '10'
+		zIndex: '10',
+		boxSizing: 'border-box'
 	};
 
 	const flexColumn = {
