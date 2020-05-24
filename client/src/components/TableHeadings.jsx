@@ -7,13 +7,14 @@ import { fields } from 'data/table';
 const TableHeadings = (props) => {
 	const sortArrow = props.sortOptions.reversed ? '↓' : '↑';
 
-	const getHeadingCell = (type) => {
+	const getHeadingCell = (type, i) => {
 		const text =
 			type === 'selected'
 				? `${props.sortOptions.type === 'selected' ? sortArrow : 'X'}`
 				: `${type} ${props.sortOptions.type === type ? sortArrow : ''}`;
 		return (
 			<HeadingCell
+				key={i}
 				className={`${type}Cell`}
 				text={capitalizeFirstLetter(text)}
 				onClick={() => props.userSetSort(type)}
@@ -22,7 +23,7 @@ const TableHeadings = (props) => {
 		);
 	};
 
-	const getHeadingCellArray = () => fields.map((el) => getHeadingCell(el));
+	const getHeadingCellArray = () => fields.map((el, i) => getHeadingCell(el, i));
 
 	return (
 		<tr className="tableHeadings" style={{ cursor: 'pointer', userSelect: 'none' }}>
