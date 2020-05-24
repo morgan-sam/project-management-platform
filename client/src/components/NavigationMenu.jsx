@@ -90,6 +90,19 @@ const NavigationMenu = (props) => {
 		return el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, [ ...menuPos, i ])) : null;
 	};
 
+	const getTopMenuStyle = (menuPos) => {
+		return {
+			...flexColumn,
+			position: 'absolute',
+			left: `${menuPos[menuPos.length - 1] * BOX_WIDTH_REM}rem`
+		};
+	};
+
+	const subMenuStyle = {
+		...flexRow,
+		position: 'relative'
+	};
+
 	const menuDropdownContainer = (el, menuPos) => {
 		const { name, sub } = el;
 		return (
@@ -97,11 +110,7 @@ const NavigationMenu = (props) => {
 				onClick={(e) => {
 					if (e.target.id === menuPos.toString()) console.log(menuPos);
 				}}
-				style={{
-					...(menuPos.length === 1 ? flexColumn : flexRow),
-					position: menuPos.length === 1 ? 'absolute' : 'relative',
-					left: menuPos.length === 1 ? `${menuPos[menuPos.length - 1] * BOX_WIDTH_REM}rem` : null
-				}}
+				style={menuPos.length === 1 ? getTopMenuStyle(menuPos) : subMenuStyle}
 				onMouseOver={() => {
 					if (!menusOpen[name]) setIndividualMenuOpen(name, true);
 				}}
