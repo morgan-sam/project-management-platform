@@ -9,12 +9,14 @@ const NavigationMenu = (props) => {
 	const [ menusOpen, setMenusOpen ] = useState([]);
 	const [ hover, setHover ] = useState([]);
 
-	const singleMenuBox = (text, menuPos) => {
+	const singleMenuBox = (el, menuPos) => {
+		const { name, action, enabled } = el;
 		const hovered = menuPos.toString() === hover.toString();
 		return (
 			<div
 				onMouseOver={() => setHover(menuPos)}
 				onMouseLeave={() => setHover([])}
+				onClick={() => (action && enabled !== false ? action() : null)}
 				className="navMenu"
 				style={{
 					...getBoxStyle(hovered, themeColor),
@@ -22,7 +24,7 @@ const NavigationMenu = (props) => {
 				}}
 				id={menuPos.toString()}
 			>
-				{text}
+				{name}
 			</div>
 		);
 	};
@@ -43,7 +45,7 @@ const NavigationMenu = (props) => {
 	};
 
 	const menuDropdownContainer = (el, menuPos) => {
-		const { name, sub } = el;
+		const { sub } = el;
 		return (
 			<div
 				key={menuPos.toString()}
@@ -55,7 +57,7 @@ const NavigationMenu = (props) => {
 					if (e.target.id === menuPos.toString() && menusOpen.length > 0) setMenusOpen(menuPos);
 				}}
 			>
-				{singleMenuBox(name, menuPos)}
+				{singleMenuBox(el, menuPos)}
 				<div>
 					{menusOpen[menuPos.length - 1] === menuPos[menuPos.length - 1] && sub ? (
 						multipleBoxes(el, menuPos)
