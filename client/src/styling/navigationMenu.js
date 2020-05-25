@@ -15,12 +15,10 @@ export const parentContainer = {
 
 export const getBoxStyle = (buttonState, themeColor) => {
 	const { hovered, enabled } = buttonState;
-	console.log(enabled);
 	let backgroundColor = 'white';
 	let color = 'black';
-	if (enabled === false) {
-		color = '#ccc';
-	} else if (hovered) {
+	if (enabled === false) color = '#ccc';
+	else if (hovered) {
 		color = getGradientTextColor(themeColor);
 		backgroundColor = themeColor;
 	}
