@@ -1,5 +1,5 @@
-import { BOX_WIDTH_REM, BOX_HEIGHT_REM } from 'styling/navigationMenu';
-import { convertRemToPixels, convertPixelsToRem } from 'processing/convertUnits';
+import { BOX_WIDTH_REM, BOX_HEIGHT_REM, BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
+import { convertRemToPixels } from 'processing/convertUnits';
 
 export const getBoxPosition = (menuPos) => {
 	const pos = getExactRemPosition(menuPos);
@@ -18,11 +18,11 @@ const adjustForBorderPixels = (menuPos, position) => {
 	const leftPx = convertRemToPixels(parseInt(left.match(/\d+/)[0]));
 	const topPx = convertRemToPixels(parseInt(top.match(/\d+/)[0]));
 	if (menuPos.length === 1) {
-		left = `${leftPx - menuPos[0]}px`;
+		left = `${leftPx - menuPos[0] * BOX_BORDER_WIDTH_PX}px`;
 		top = '0px';
 	} else if (menuPos.length > 1) {
-		left = `${leftPx - menuPos.length - menuPos[0] + 2}px`;
-		top = `${topPx - menuPos.slice(1).reduce((a, b) => a + b, 0) - 1}px`;
+		left = `${leftPx + (2 - menuPos.length - menuPos[0]) * BOX_BORDER_WIDTH_PX}px`;
+		top = `${topPx + (-menuPos.slice(1).reduce((a, b) => a + b, 0) - 1) * BOX_BORDER_WIDTH_PX}px`;
 	}
 	return { top, left };
 };
