@@ -12,14 +12,48 @@ const NavigationMenu = (props) => {
 		{
 			name: 'yellow!',
 			sub: [
-				{ name: '53' },
-				{ name: '53' },
-				{ name: '53' },
-				{ name: '53' },
-				{ name: '53' },
-				{ name: '53' },
-				{ name: '53' },
-				{ name: '53' }
+				{
+					name: '53',
+					sub: [ { name: '53' }, { name: '53', sub: [ { name: '53' } ] } ]
+				},
+				{
+					name: '53',
+					sub: [
+						{
+							name: '53',
+							sub: [
+								{
+									name: '53',
+									sub: [
+										{
+											name: '53',
+											sub: [ { name: '53' }, { name: '53' } ]
+										},
+										{
+											name: '53',
+											sub: [
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' },
+												{ name: '53' }
+											]
+										}
+									]
+								}
+							]
+						},
+						{ name: '53' }
+					]
+				}
 			]
 		}
 	];
@@ -29,6 +63,9 @@ const NavigationMenu = (props) => {
 			name: 'Edit',
 			sub: [ { name: 'Select All' }, { name: 'Mark Complete', sub: bntSub }, { name: 'Delete Selected' } ]
 		},
+		{ name: 'View', sub: [ { name: 'Filter', sub: bntSub }, { name: 'New Task' } ] },
+		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] },
+		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] },
 		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
 	];
 
