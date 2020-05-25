@@ -50,12 +50,13 @@ const NavigationMenu = (props) => {
 	};
 
 	const menuDropdownContainer = (el, menuPos) => {
-		const { sub } = el;
+		const { sub, enabled } = el;
 		return (
 			<div
 				key={menuPos.toString()}
 				onMouseOver={(e) => {
-					if (e.target.id === menuPos.toString() && menusOpen.length > 0) setMenusOpen(menuPos);
+					if (e.target.id === menuPos.toString() && menusOpen.length > 0 && enabled !== false)
+						setMenusOpen(menuPos);
 				}}
 			>
 				{singleMenuBox(el, menuPos)}

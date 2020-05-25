@@ -80,7 +80,11 @@ const TaskManager = (props) => {
 					},
 					enabled: selectedTasks.length > 0
 				},
-				{ name: 'Delete', action: () => deletePopUp(), enabled: selectedTasks.length > 0 }
+				{
+					name: 'Delete',
+					enabled: selectedTasks.length > 0,
+					sub: [ { name: 'Delete All', action: () => deletePopUp() } ]
+				}
 			]
 		},
 		{
