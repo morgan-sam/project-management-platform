@@ -41,7 +41,7 @@ const NavigationMenu = (props) => {
 				style={{ ...boxStyle, ...getIndividualBoxStyle(menuPos, menusOpen) }}
 				id={menuPos.toString()}
 			>
-				{text}
+				{`${menuPos.toString()}`}
 			</div>
 		);
 	};

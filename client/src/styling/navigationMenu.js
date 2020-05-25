@@ -1,4 +1,5 @@
 export const BOX_WIDTH_REM = 4;
+export const BOX_HEIGHT_REM = 2;
 
 export const parentContainer = {
 	position: 'relative',
@@ -10,6 +11,7 @@ export const parentContainer = {
 };
 
 export const boxStyle = {
+	position: 'absolute',
 	textAlign: 'center',
 	display: 'flex',
 	justifyContent: 'center',
