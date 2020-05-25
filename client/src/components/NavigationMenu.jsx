@@ -17,7 +17,11 @@ const NavigationMenu = (props) => {
 			<div
 				onMouseOver={() => setHover(menuPos)}
 				onMouseLeave={() => setHover([])}
-				onClick={() => (action && enabled !== false ? action() : null)}
+				onClick={() => {
+					if (action && enabled !== false) action();
+					if (menusOpen.length === 0) setMenusOpen(menuPos);
+					else if (enabled !== false) setMenusOpen([]);
+				}}
 				className="navMenu"
 				style={{
 					...getBoxStyle(buttonState, themeColor),
@@ -50,10 +54,6 @@ const NavigationMenu = (props) => {
 		return (
 			<div
 				key={menuPos.toString()}
-				onClick={() => {
-					if (menusOpen.length === 0) setMenusOpen(menuPos);
-					else setMenusOpen([]);
-				}}
 				onMouseOver={(e) => {
 					if (e.target.id === menuPos.toString() && menusOpen.length > 0) setMenusOpen(menuPos);
 				}}
