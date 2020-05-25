@@ -90,6 +90,7 @@ const App = () => {
 					style={taskManagerStyle}
 					selectedTasks={selectedTasks}
 					setSelectedTasks={setSelectedTasks}
+					taskList={getTaskList()}
 					rawTaskList={rawTaskList}
 					setDataChanged={setDataChanged}
 					setEntryCompletion={setEntryCompletion}

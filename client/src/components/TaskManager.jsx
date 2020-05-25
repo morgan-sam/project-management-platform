@@ -16,6 +16,7 @@ const TaskManager = (props) => {
 		setPopUp,
 		pressedKeys,
 		displayedBars,
+		taskList,
 		setDisplayedBars
 	} = props;
 
@@ -42,18 +43,22 @@ const TaskManager = (props) => {
 		selectedTaskChangeComplete();
 	};
 
-	const deletePopUp = () => {
-		{
-			if (selectedTasks.length)
-				setPopUp(
-					<ConfirmPopUp
-						message={`Are you sure you want to delete ${selectedTasks.length} tasks?`}
-						confirm={() => deleteSelectedTasks(selectedTasks)}
-						pressedKeys={pressedKeys}
-						setPopUp={setPopUp}
-					/>
-				);
-		}
+	const deletePopUp = (arrayOfIds, description) => {
+		if (arrayOfIds.length)
+			setPopUp(
+				<ConfirmPopUp
+					message={`You are deleting ${description}. Are you sure you want to delete ${arrayOfIds.length} tasks?`}
+					confirm={() => deleteSelectedTasks(arrayOfIds)}
+					pressedKeys={pressedKeys}
+					setPopUp={setPopUp}
+				/>
+			);
+	};
+
+	const getFilteredTaskIds = () => {
+		const allIds = rawTaskList.map((el) => el.id);
+		const keptIds = taskList.map((el) => el.id);
+		return allIds.filter((el) => keptIds.indexOf(el) === -1);
 	};
 
 	const menus = [
@@ -82,8 +87,19 @@ const TaskManager = (props) => {
 				},
 				{
 					name: 'Delete',
-					enabled: selectedTasks.length > 0,
-					sub: [ { name: 'Delete All', action: () => deletePopUp() } ]
+					sub: [
+						{
+							name: 'Delete Selected',
+							enabled: selectedTasks.length > 0,
+							action: () => deletePopUp(selectedTasks, 'all selected entries')
+						},
+						{
+							name: 'Delete Filtered',
+							enabled: getFilteredTaskIds().length > 0,
+							action: () =>
+								deletePopUp(getFilteredTaskIds(), 'all entries that do not pass the filter parameters')
+						}
+					]
 				}
 			]
 		},
@@ -115,7 +131,7 @@ const TaskManager = (props) => {
 
 	useEffect(
 		() => {
-			if (pressedKeys.includes('Delete')) deletePopUp();
+			if (pressedKeys.includes('Delete')) deletePopUp(selectedTasks, 'all selected entries');
 		},
 		[ pressedKeys ]
 	);
