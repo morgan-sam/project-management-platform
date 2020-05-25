@@ -114,7 +114,12 @@ const App = () => {
 					setDisplayedBars={setDisplayedBars}
 					setDataChanged={setDataChanged}
 				/>
-				<DataInfoBar displayedBars={displayedBars} />
+				<DataInfoBar
+					taskList={getTaskList()}
+					displayedBars={displayedBars}
+					filterOptions={filterOptions}
+					rawTaskList={rawTaskList}
+				/>
 				<Table
 					style={tableStyle}
 					filterOptions={filterOptions}
