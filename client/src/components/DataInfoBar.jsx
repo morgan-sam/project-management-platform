@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
+import { dataInfoBarStyle } from 'styling/dataInfoBar';
 
 const DataInfoBar = (props) => {
 	const { style, dataChanged, displayedBars, setDisplayedBars } = props;
@@ -9,7 +10,7 @@ const DataInfoBar = (props) => {
 			<div
 				className="dataInfoBar"
 				style={{
-					...style,
+					...dataInfoBarStyle,
 					...(displayedBars.dataInfo ? getTaskBarVisibleStyle(false) : getTaskBarHiddenStyle(false))
 				}}
 			>

@@ -92,6 +92,10 @@ const TaskManager = (props) => {
 				{
 					name: 'New Task',
 					action: () => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })
+				},
+				{
+					name: 'Data Info',
+					action: () => setDisplayedBars({ ...displayedBars, dataInfo: !displayedBars.dataInfo })
 				}
 			]
 		}
