@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { parentContainer, boxStyle } from 'styling/navigationMenu';
-import { getIndividualBoxStyle } from 'styling/navigationMenuBox';
+import { getBoxPosition } from 'styling/navigationMenuBox';
 
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
@@ -73,11 +73,7 @@ const NavigationMenu = (props) => {
 
 	const singleMenuBox = (text, menuPos) => {
 		return (
-			<div
-				className="navMenu"
-				style={{ ...boxStyle, ...getIndividualBoxStyle(menuPos, menusOpen) }}
-				id={menuPos.toString()}
-			>
+			<div className="navMenu" style={{ ...boxStyle, ...getBoxPosition(menuPos) }} id={menuPos.toString()}>
 				{`${menuPos.toString()}`}
 			</div>
 		);

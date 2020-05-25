@@ -1,16 +1,7 @@
 import { BOX_WIDTH_REM, BOX_HEIGHT_REM } from 'styling/navigationMenu';
 import { convertRemToPixels, convertPixelsToRem } from 'processing/convertUnits';
 
-export const getIndividualBoxStyle = (menuPos, menusOpen) => {
-	let individualStyle;
-	const boxStyleFunctions = [ getBoxPosition ];
-	boxStyleFunctions.forEach((func) => (individualStyle = { ...individualStyle, ...func(menuPos, menusOpen) }));
-	return individualStyle;
-};
-
-///POSITION///
-
-const getBoxPosition = (menuPos, menusOpen) => {
+export const getBoxPosition = (menuPos) => {
 	const pos = getExactRemPosition(menuPos);
 	return adjustForBorderPixels(menuPos, pos);
 };
