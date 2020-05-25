@@ -1,4 +1,4 @@
-import { defaultBarStyle } from 'styling/defaultBar';
+import { defaultBarStyle } from 'styling/taskBars';
 
 export const newTaskBarStyle = {
 	...defaultBarStyle,

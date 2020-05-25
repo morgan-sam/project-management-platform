@@ -4,6 +4,18 @@ const smallCloseTransition = 'max-height .8s cubic-bezier(.27,.97,.36,.96)';
 const largeCloseTransition = 'max-height 1s cubic-bezier(.41,.49,.23,.93)';
 const largeOpenTransition = 'max-height 0.7s cubic-bezier(.38,.03,.23,.93)';
 
+export const defaultBarStyle = {
+	position: 'relative',
+	height: 'auto',
+	border: '1px solid black',
+	borderRadius: '5px',
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'center',
+	alignItems: 'center',
+	padding: '0.5rem'
+};
+
 export const getTaskBarHiddenStyle = (popUpOpen) => {
 	return {
 		opacity: '0',
