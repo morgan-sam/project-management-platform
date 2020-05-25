@@ -12,6 +12,7 @@ const NavigationMenu = (props) => {
 	const singleMenuBox = (el, menuPos) => {
 		const { name, action, enabled } = el;
 		const hovered = menuPos.toString() === hover.toString();
+		const buttonState = { hovered, enabled };
 		return (
 			<div
 				onMouseOver={() => setHover(menuPos)}
@@ -19,7 +20,7 @@ const NavigationMenu = (props) => {
 				onClick={() => (action && enabled !== false ? action() : null)}
 				className="navMenu"
 				style={{
-					...getBoxStyle(hovered, themeColor),
+					...getBoxStyle(buttonState, themeColor),
 					...getBoxPosition(menuPos)
 				}}
 				id={menuPos.toString()}

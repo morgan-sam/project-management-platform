@@ -77,9 +77,9 @@ const TaskManager = (props) => {
 					action: () => {
 						if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);
 					},
-					enabled: selectedTasks.length
+					enabled: selectedTasks.length > 0
 				},
-				{ name: 'Delete', action: () => deletePopUp(), enabled: selectedTasks.length }
+				{ name: 'Delete', action: () => deletePopUp(), enabled: selectedTasks.length > 0 }
 			]
 		},
 		{

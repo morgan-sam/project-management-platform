@@ -13,7 +13,17 @@ export const parentContainer = {
 	zIndex: '10'
 };
 
-export const getBoxStyle = (hovered, themeColor) => {
+export const getBoxStyle = (buttonState, themeColor) => {
+	const { hovered, enabled } = buttonState;
+	console.log(enabled);
+	let backgroundColor = 'white';
+	let color = 'black';
+	if (enabled === false) {
+		color = '#ccc';
+	} else if (hovered) {
+		color = getGradientTextColor(themeColor);
+		backgroundColor = themeColor;
+	}
 	return {
 		position: 'absolute',
 		textAlign: 'center',
@@ -29,8 +39,8 @@ export const getBoxStyle = (hovered, themeColor) => {
 		userSelect: 'none',
 		cursor: 'pointer',
 		fontSize: '0.75rem',
-		backgroundColor: hovered ? themeColor : 'white',
-		color: hovered ? getGradientTextColor(themeColor) : 'black',
+		backgroundColor,
+		color,
 		zIndex: '10',
 		boxSizing: 'border-box'
 	};
