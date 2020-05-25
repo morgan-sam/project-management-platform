@@ -15,3 +15,12 @@ export const standardizeHex = (hex) => {
 	if (match) return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${match[3]}`;
 	else return hex;
 };
+
+export const rgbToHex = (array) =>
+	'#' +
+	[ ...array ]
+		.map((el) => {
+			const hex = el.toString(16);
+			return hex.length === 1 ? '0' + hex : hex;
+		})
+		.join('');

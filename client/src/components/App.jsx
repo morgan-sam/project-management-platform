@@ -5,6 +5,7 @@ import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
 import FilterBar from 'components/FilterBar';
 import DataInfoBar from 'components/DataInfoBar';
+import AmbientBackground from 'components/AmbientBackground';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault, displayBarsAll } from 'data/defaultState';
@@ -132,6 +133,7 @@ const App = () => {
 				/>
 				{popUp}
 				{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}
+				<AmbientBackground />
 			</div>
 		</ThemeProvider>
 	);
