@@ -6,67 +6,10 @@ import { getBoxPosition } from 'styling/navigationMenuBox';
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
 
-	const bntSub = [
-		{ name: 'hello!', sub: [ { name: '53' } ] },
-		{ name: 'what!', sub: [ { name: '53' } ] },
-		{
-			name: 'yellow!',
-			sub: [
-				{
-					name: '53',
-					sub: [ { name: '53' }, { name: '53', sub: [ { name: '53' } ] } ]
-				},
-				{
-					name: '53',
-					sub: [
-						{
-							name: '53',
-							sub: [
-								{
-									name: '53',
-									sub: [
-										{
-											name: '53',
-											sub: [ { name: '53' }, { name: '53' } ]
-										},
-										{
-											name: '53',
-											sub: [
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' },
-												{ name: '53' }
-											]
-										}
-									]
-								}
-							]
-						},
-						{ name: '53' }
-					]
-				}
-			]
-		}
-	];
 	const menus = [
-		{ name: 'File', sub: [ { name: 'Batch New Tasks', sub: bntSub } ] },
-		{
-			name: 'Edit',
-			sub: [ { name: 'Select All' }, { name: 'Mark Complete', sub: bntSub }, { name: 'Delete Selected' } ]
-		},
-		{ name: 'View', sub: [ { name: 'Filter', sub: bntSub }, { name: 'New Task' } ] },
-		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] },
-		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] },
-		{ name: 'View', sub: [ { name: 'Filter' }, { name: 'New Task' } ] }
+		{ name: 'File', sub: [ { name: 'New Tasks' } ] },
+		{ name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete' } ] },
+		{ name: 'View', sub: [ { name: 'Show Filter' }, { name: 'New Task' } ] }
 	];
 
 	const [ menusOpen, setMenusOpen ] = useState([]);
@@ -74,7 +17,7 @@ const NavigationMenu = (props) => {
 	const singleMenuBox = (text, menuPos) => {
 		return (
 			<div className="navMenu" style={{ ...boxStyle, ...getBoxPosition(menuPos) }} id={menuPos.toString()}>
-				{`${menuPos.toString()}`}
+				{text}
 			</div>
 		);
 	};

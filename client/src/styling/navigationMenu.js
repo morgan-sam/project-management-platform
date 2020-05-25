@@ -1,6 +1,6 @@
-export const BOX_WIDTH_REM = 4;
+export const BOX_WIDTH_REM = 8;
 export const BOX_HEIGHT_REM = 2;
-export const BOX_BORDER_WIDTH_PX = 2;
+export const BOX_BORDER_WIDTH_PX = 1;
 
 export const parentContainer = {
 	position: 'relative',
