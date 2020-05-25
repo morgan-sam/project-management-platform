@@ -1,9 +1,20 @@
 import React from 'react';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
 import { dataInfoBarStyle } from 'styling/dataInfoBar';
+import { getBoundaryDates } from 'data/dates';
+import { parseISOToLittleEndian } from 'processing/parseDates';
 
 const DataInfoBar = (props) => {
 	const { displayedBars, rawTaskList, taskList, filterOptions } = props;
+
+	const getDateRangeText = () => {
+		if (taskList.length) {
+			const boundaryDates = getBoundaryDates(taskList);
+			return `Date Range: ${parseISOToLittleEndian(boundaryDates.date)} to ${parseISOToLittleEndian(
+				boundaryDates.deadline
+			)}`;
+		} else return 'No Data';
+	};
 
 	const textBox = {
 		padding: '1rem',
@@ -26,6 +37,7 @@ const DataInfoBar = (props) => {
 		>
 			<div style={textBox}>{filterText}</div>
 			<div style={textBox}>{taskCountText}</div>
+			<div style={textBox}>{getDateRangeText()}</div>
 		</div>
 	);
 };
