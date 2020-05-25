@@ -20,7 +20,8 @@ const DataInfoBar = (props) => {
 			style={{
 				...dataInfoBarStyle,
 				...(displayedBars.dataInfo ? getTaskBarVisibleStyle(false) : getTaskBarHiddenStyle(false)),
-				overflow: 'hidden'
+				overflow: 'hidden',
+				alignItems: 'stretch'
 			}}
 		>
 			<div style={textBox}>{filterText}</div>

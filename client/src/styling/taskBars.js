@@ -10,12 +10,10 @@ export const defaultBarStyle = {
 	width: 'auto',
 	border: '1px solid black',
 	borderRadius: '5px',
-	display: 'flex',
 	flexDirection: 'row',
-	justifyContent: 'left',
+	display: 'flex',
 	alignItems: 'center',
-	padding: '0.5rem',
-	display: 'inline-flex'
+	justifyContent: 'space-around'
 };
 
 export const getTaskBarHiddenStyle = (popUpOpen) => {
@@ -37,6 +35,7 @@ export const getTaskBarVisibleStyle = (popUpOpen) => {
 	return {
 		maxHeight: '11rem',
 		opacity: '1',
+		padding: '0.5rem',
 		margin: '0 0 1rem 0',
 		//executes on task bar open
 		transition: `${popUpOpen ? largeOpenTransition : smallOpenTransition}, opacity 1s`
