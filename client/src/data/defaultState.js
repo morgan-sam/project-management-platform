@@ -24,3 +24,11 @@ export const filterOptionsDefault = (taskList, active = null) => {
 		};
 	}
 };
+
+export const displayBarsAll = (boo) => {
+	return {
+		filter: boo,
+		newTask: boo,
+		dataInfo: boo
+	};
+};

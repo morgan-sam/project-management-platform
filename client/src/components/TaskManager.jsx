@@ -4,6 +4,7 @@ import { fetchDeleteTasks } from 'data/fetch';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 import BatchNewTasks from 'components/BatchNewTasks';
 import NavigationMenu from 'components/NavigationMenu';
+import { displayBarsAll } from 'data/defaultState';
 
 const TaskManager = (props) => {
 	const {
@@ -85,6 +86,13 @@ const TaskManager = (props) => {
 		{
 			name: 'View',
 			sub: [
+				{
+					name: `${Object.values(displayedBars).includes(true) ? 'Close' : 'Open'} All`,
+					action: () => {
+						const boo = !Object.values(displayedBars).includes(true);
+						setDisplayedBars(displayBarsAll(boo));
+					}
+				},
 				{
 					name: `${displayedBars.filter ? 'Hide' : 'Show'} Filter`,
 					action: () => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })

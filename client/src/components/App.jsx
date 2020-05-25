@@ -7,7 +7,7 @@ import FilterBar from 'components/FilterBar';
 import DataInfoBar from 'components/DataInfoBar';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
-import { filterOptionsDefault } from 'data/defaultState';
+import { filterOptionsDefault, displayBarsAll } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teamsProcessing';
 import NewTaskBar from 'components/NewTaskBar';
@@ -23,11 +23,7 @@ const App = () => {
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
-	const [ displayedBars, setDisplayedBars ] = useState({
-		filter: false,
-		newTask: false,
-		dataInfo: true
-	});
+	const [ displayedBars, setDisplayedBars ] = useState(displayBarsAll(false));
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
 	const [ popUp, setPopUp ] = useState(null);
 
