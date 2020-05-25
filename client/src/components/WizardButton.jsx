@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import ThemeContext from 'context/ThemeContext';
 
 const WizardButton = (props) => {
 	const [ hover, setHover ] = useState(false);
+	const themeColor = useContext(ThemeContext);
 
 	const wizardBtnStyle = {
 		display: 'flex',
@@ -12,7 +14,7 @@ const WizardButton = (props) => {
 		justifyContent: 'center',
 		userSelect: 'none',
 		color: hover ? 'white' : 'black',
-		backgroundColor: hover ? (props.color ? props.color : 'black') : 'white'
+		backgroundColor: hover ? themeColor : 'white'
 	};
 
 	return (
