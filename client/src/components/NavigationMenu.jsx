@@ -6,12 +6,6 @@ import { getBoxPosition } from 'styling/navigationMenuBox';
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
 
-	const menus = [
-		{ name: 'File', sub: [ { name: 'New Tasks' } ] },
-		{ name: 'Edit', sub: [ { name: 'Select All' }, { name: 'Mark Complete' }, { name: 'Delete' } ] },
-		{ name: 'View', sub: [ { name: 'Show Filter' }, { name: 'New Task' } ] }
-	];
-
 	const [ menusOpen, setMenusOpen ] = useState([]);
 	const [ hover, setHover ] = useState([]);
 
@@ -72,7 +66,7 @@ const NavigationMenu = (props) => {
 	};
 
 	const mainRowOfBoxes = () => {
-		return menus.map((el, i) => menuDropdownContainer(el, [ i ]));
+		return props.menus.map((el, i) => menuDropdownContainer(el, [ i ]));
 	};
 
 	return <div style={parentContainer}>{mainRowOfBoxes()}</div>;

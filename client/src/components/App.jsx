@@ -3,7 +3,6 @@ import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
-import NavigationMenu from 'components/NavigationMenu';
 import FilterBar from 'components/FilterBar';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
@@ -89,7 +88,6 @@ const App = () => {
 			<div className="mainPage" style={getMainPageStyle(popUp)}>
 				{/* <ColorTest /> */}
 				<MainTitle />
-				<NavigationMenu />
 				<TaskManager
 					style={taskManagerStyle}
 					selectedTasks={selectedTasks}

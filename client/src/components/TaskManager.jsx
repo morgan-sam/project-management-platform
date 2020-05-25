@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import ColorButton from 'components/ColorButton';
 import ConfirmPopUp from 'components/ConfirmPopUp';
 import { fetchDeleteTasks } from 'data/fetch';
-import { btnStyle, btnContainerStyle } from 'styling/taskManager';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 import BatchNewTasks from 'components/BatchNewTasks';
+import NavigationMenu from 'components/NavigationMenu';
 
 const TaskManager = (props) => {
 	const {
@@ -56,6 +55,48 @@ const TaskManager = (props) => {
 		}
 	};
 
+	const menus = [
+		{
+			name: 'File',
+			sub: [
+				{
+					name: 'New Tasks',
+					action: () => setPopUp(<BatchNewTasks setPopUp={setPopUp} setDataChanged={setDataChanged} />)
+				}
+			]
+		},
+		{
+			name: 'Edit',
+			sub: [
+				{
+					name: `${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All`,
+					action: () => selectAllTasks()
+				},
+				{
+					name: `Mark ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`,
+					action: () => {
+						if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);
+					},
+					enabled: selectedTasks.length
+				},
+				{ name: 'Delete', action: () => deletePopUp(), enabled: selectedTasks.length }
+			]
+		},
+		{
+			name: 'View',
+			sub: [
+				{
+					name: `${displayedBars.filter ? 'Hide' : 'Show'} Filter`,
+					action: () => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })
+				},
+				{
+					name: 'New Task',
+					action: () => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })
+				}
+			]
+		}
+	];
+
 	useEffect(
 		() => {
 			if (pressedKeys.includes('Delete')) deletePopUp();
@@ -63,44 +104,7 @@ const TaskManager = (props) => {
 		[ pressedKeys ]
 	);
 
-	return (
-		<div className="taskManager" style={{ ...props.style, ...btnContainerStyle }}>
-			<ColorButton
-				className={'taskManagerBtn'}
-				text={'New Task'}
-				onClick={() => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })}
-			/>
-			<ColorButton
-				className={'taskManagerBtn'}
-				text={'Batch New Tasks'}
-				onClick={() => setPopUp(<BatchNewTasks setPopUp={setPopUp} setDataChanged={setDataChanged} />)}
-			/>
-			<ColorButton
-				className={'taskManagerBtn'}
-				text={`${displayedBars.filter ? 'Hide' : 'Show'} Filter`}
-				onClick={() => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })}
-			/>
-			<ColorButton
-				className={'taskManagerBtn'}
-				text={`${checkIfAllTasksSelected(rawTaskList, selectedTasks) ? 'S' : 'Des'}elect All Tasks`}
-				onClick={() => selectAllTasks()}
-			/>
-			<ColorButton
-				className={'taskManagerBtn'}
-				text={`Mark As ${checkIfAllSelectedAreComplete(rawTaskList, selectedTasks) ? 'Inc' : 'C'}omplete`}
-				onClick={() => {
-					if (selectedTasks.length) setSelectedTaskCompletion(selectedTasks);
-				}}
-				enabled={selectedTasks.length}
-			/>
-			<ColorButton
-				className={'taskManagerBtn'}
-				text={'Delete Selected Tasks'}
-				onClick={() => deletePopUp()}
-				enabled={selectedTasks.length}
-			/>
-		</div>
-	);
+	return <NavigationMenu menus={menus} />;
 };
 
 export default TaskManager;
