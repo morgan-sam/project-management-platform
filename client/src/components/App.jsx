@@ -23,7 +23,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayedBars, setDisplayedBars ] = useState({
-		filter: true,
+		filter: false,
 		newTask: false
 	});
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
