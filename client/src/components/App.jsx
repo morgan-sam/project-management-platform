@@ -4,6 +4,7 @@ import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
 import FilterBar from 'components/FilterBar';
+import DataInfoBar from 'components/DataInfoBar';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault } from 'data/defaultState';
@@ -24,7 +25,8 @@ const App = () => {
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayedBars, setDisplayedBars ] = useState({
 		filter: false,
-		newTask: false
+		newTask: false,
+		dataInfo: true
 	});
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
 	const [ popUp, setPopUp ] = useState(null);
@@ -112,6 +114,7 @@ const App = () => {
 					setDisplayedBars={setDisplayedBars}
 					setDataChanged={setDataChanged}
 				/>
+				<DataInfoBar displayedBars={displayedBars} />
 				<Table
 					style={tableStyle}
 					filterOptions={filterOptions}
