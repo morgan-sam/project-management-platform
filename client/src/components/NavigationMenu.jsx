@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
-import { parentContainer, boxStyle, flexColumn, getTopMenuStyle, subMenuStyle } from 'styling/navigationMenu';
+import { parentContainer, boxStyle } from 'styling/navigationMenu';
 import { getIndividualBoxStyle } from 'styling/navigationMenuBox';
 
 const NavigationMenu = (props) => {
@@ -70,13 +70,12 @@ const NavigationMenu = (props) => {
 					if (menusOpen.length === 0) setMenusOpen(menuPos);
 					else setMenusOpen([]);
 				}}
-				style={menuPos.length === 1 ? getTopMenuStyle(menuPos) : subMenuStyle}
 				onMouseOver={(e) => {
 					if (e.target.id === menuPos.toString() && menusOpen.length > 0) setMenusOpen(menuPos);
 				}}
 			>
 				{singleMenuBox(name, menuPos)}
-				<div style={flexColumn}>
+				<div>
 					{menusOpen[menuPos.length - 1] === menuPos[menuPos.length - 1] && sub ? (
 						multipleBoxes(el, menuPos)
 					) : null}

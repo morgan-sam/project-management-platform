@@ -29,26 +29,3 @@ export const boxStyle = {
 	zIndex: '10',
 	boxSizing: 'border-box'
 };
-
-export const flexColumn = {
-	display: 'inline-flex',
-	flexDirection: 'column'
-};
-
-export const flexRow = {
-	display: 'inline-flex',
-	flexDirection: 'row'
-};
-
-export const getTopMenuStyle = (menuPos) => {
-	return {
-		...flexColumn,
-		position: 'absolute',
-		left: `${menuPos[menuPos.length - 1] * BOX_WIDTH_REM}rem`
-	};
-};
-
-export const subMenuStyle = {
-	...flexRow,
-	position: 'relative'
-};
