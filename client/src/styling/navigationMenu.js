@@ -17,8 +17,11 @@ export const getBoxStyle = (buttonState, themeColor) => {
 	const { hovered, enabled } = buttonState;
 	let backgroundColor = 'white';
 	let color = 'black';
-	if (enabled === false) color = '#ccc';
-	else if (hovered) {
+	let cursor = 'pointer';
+	if (enabled === false) {
+		color = '#ccc';
+		cursor = 'not-allowed';
+	} else if (hovered) {
 		color = getGradientTextColor(themeColor);
 		backgroundColor = themeColor;
 	}
@@ -34,12 +37,12 @@ export const getBoxStyle = (buttonState, themeColor) => {
 		borderBottom: `${BOX_BORDER_WIDTH_PX}px solid black`,
 		height: `${BOX_HEIGHT_REM}rem`,
 		width: `${BOX_WIDTH_REM}rem`,
+		zIndex: '10',
+		boxSizing: 'border-box',
 		userSelect: 'none',
-		cursor: 'pointer',
 		fontSize: '0.75rem',
 		backgroundColor,
 		color,
-		zIndex: '10',
-		boxSizing: 'border-box'
+		cursor
 	};
 };
