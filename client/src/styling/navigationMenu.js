@@ -1,3 +1,5 @@
+import { getGradientTextColor } from 'styling/theme';
+
 export const BOX_WIDTH_REM = 8;
 export const BOX_HEIGHT_REM = 2;
 export const BOX_BORDER_WIDTH_PX = 1;
@@ -11,22 +13,25 @@ export const parentContainer = {
 	zIndex: '10'
 };
 
-export const boxStyle = {
-	position: 'absolute',
-	textAlign: 'center',
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	borderTop: `${BOX_BORDER_WIDTH_PX}px solid black`,
-	borderLeft: `${BOX_BORDER_WIDTH_PX}px solid black`,
-	borderRight: `${BOX_BORDER_WIDTH_PX}px solid black`,
-	borderBottom: `${BOX_BORDER_WIDTH_PX}px solid black`,
-	height: `${BOX_HEIGHT_REM}rem`,
-	width: `${BOX_WIDTH_REM}rem`,
-	userSelect: 'none',
-	cursor: 'pointer',
-	fontSize: '0.75rem',
-	backgroundColor: 'white',
-	zIndex: '10',
-	boxSizing: 'border-box'
+export const getBoxStyle = (hovered, themeColor) => {
+	return {
+		position: 'absolute',
+		textAlign: 'center',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderTop: `${BOX_BORDER_WIDTH_PX}px solid black`,
+		borderLeft: `${BOX_BORDER_WIDTH_PX}px solid black`,
+		borderRight: `${BOX_BORDER_WIDTH_PX}px solid black`,
+		borderBottom: `${BOX_BORDER_WIDTH_PX}px solid black`,
+		height: `${BOX_HEIGHT_REM}rem`,
+		width: `${BOX_WIDTH_REM}rem`,
+		userSelect: 'none',
+		cursor: 'pointer',
+		fontSize: '0.75rem',
+		backgroundColor: hovered ? themeColor : 'white',
+		color: hovered ? getGradientTextColor(themeColor) : 'black',
+		zIndex: '10',
+		boxSizing: 'border-box'
+	};
 };

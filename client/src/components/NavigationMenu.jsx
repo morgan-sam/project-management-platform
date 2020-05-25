@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
-import { parentContainer, boxStyle } from 'styling/navigationMenu';
+import { parentContainer, getBoxStyle } from 'styling/navigationMenu';
 import { getBoxPosition } from 'styling/navigationMenuBox';
 
 const NavigationMenu = (props) => {
@@ -13,10 +13,21 @@ const NavigationMenu = (props) => {
 	];
 
 	const [ menusOpen, setMenusOpen ] = useState([]);
+	const [ hover, setHover ] = useState([]);
 
 	const singleMenuBox = (text, menuPos) => {
+		const hovered = menuPos.toString() === hover.toString();
 		return (
-			<div className="navMenu" style={{ ...boxStyle, ...getBoxPosition(menuPos) }} id={menuPos.toString()}>
+			<div
+				onMouseOver={() => setHover(menuPos)}
+				onMouseLeave={() => setHover([])}
+				className="navMenu"
+				style={{
+					...getBoxStyle(hovered, themeColor),
+					...getBoxPosition(menuPos)
+				}}
+				id={menuPos.toString()}
+			>
 				{text}
 			</div>
 		);
