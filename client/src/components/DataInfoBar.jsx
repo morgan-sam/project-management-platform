@@ -15,17 +15,15 @@ const DataInfoBar = (props) => {
 	const taskCountText = `Showing  ${taskList.length} out of ${rawTaskList.length} tasks in database`;
 
 	return (
-		<div>
-			<div
-				className="dataInfoBar"
-				style={{
-					...dataInfoBarStyle,
-					...(displayedBars.dataInfo ? getTaskBarVisibleStyle(false) : getTaskBarHiddenStyle(false))
-				}}
-			>
-				<div style={textBox}>{filterText}</div>
-				<div style={textBox}>{taskCountText}</div>
-			</div>
+		<div
+			className="dataInfoBar"
+			style={{
+				...dataInfoBarStyle,
+				...(displayedBars.dataInfo ? getTaskBarVisibleStyle(false) : getTaskBarHiddenStyle(false))
+			}}
+		>
+			<div style={textBox}>{filterText}</div>
+			<div style={textBox}>{taskCountText}</div>
 		</div>
 	);
 };

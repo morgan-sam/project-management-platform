@@ -7,13 +7,15 @@ const largeOpenTransition = 'max-height 0.7s cubic-bezier(.38,.03,.23,.93)';
 export const defaultBarStyle = {
 	position: 'relative',
 	height: 'auto',
+	width: 'auto',
 	border: '1px solid black',
 	borderRadius: '5px',
 	display: 'flex',
 	flexDirection: 'row',
-	justifyContent: 'center',
+	justifyContent: 'left',
 	alignItems: 'center',
-	padding: '0.5rem'
+	padding: '0.5rem',
+	display: 'inline-flex'
 };
 
 export const getTaskBarHiddenStyle = (popUpOpen) => {

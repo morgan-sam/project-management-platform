@@ -32,38 +32,36 @@ const NewTaskBar = (props) => {
 	};
 
 	return (
-		<div>
-			<div
-				className="newTaskBar"
-				style={{
-					...style,
-					...newTaskBarStyle,
-					...(displayedBars.newTask ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
-					overflow: overflowHidden ? 'visible' : 'hidden'
-				}}
-			>
-				<InputFormWithLabel {...props} label={'Task'} onChange={setTaskString} />
-				<DateRangeSelect
-					{...props}
-					date={parseISOToDateObj(date)}
-					deadline={parseISOToDateObj(deadline)}
-					setDate={setDate}
-					setDeadline={setDeadline}
-					setOverflowHidden={setOverflowHidden}
-					setPopUpOpen={setPopUpOpen}
-				/>
-				<DropdownWithLabel
-					{...props}
-					width={'2rem'}
-					label={'Urgency'}
-					selected={urgency}
-					options={[ 1, 2, 3, 4, 5 ]}
-					onClick={setUrgency}
-					setOverflowHidden={setOverflowHidden}
-				/>
-				<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeamsStrings(val)} />
-				<ColorButton text={`Add Task To Database`} onClick={addTaskToDatabase} enabled={task && teams.length} />
-			</div>
+		<div
+			className="newTaskBar"
+			style={{
+				...style,
+				...newTaskBarStyle,
+				...(displayedBars.newTask ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
+				overflow: overflowHidden ? 'visible' : 'hidden'
+			}}
+		>
+			<InputFormWithLabel {...props} label={'Task'} onChange={setTaskString} />
+			<DateRangeSelect
+				{...props}
+				date={parseISOToDateObj(date)}
+				deadline={parseISOToDateObj(deadline)}
+				setDate={setDate}
+				setDeadline={setDeadline}
+				setOverflowHidden={setOverflowHidden}
+				setPopUpOpen={setPopUpOpen}
+			/>
+			<DropdownWithLabel
+				{...props}
+				width={'2rem'}
+				label={'Urgency'}
+				selected={urgency}
+				options={[ 1, 2, 3, 4, 5 ]}
+				onClick={setUrgency}
+				setOverflowHidden={setOverflowHidden}
+			/>
+			<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeamsStrings(val)} />
+			<ColorButton text={`Add Task To Database`} onClick={addTaskToDatabase} enabled={task && teams.length} />
 		</div>
 	);
 };
