@@ -13,12 +13,12 @@ const AmbientBackground = (props) => {
 		height: '100rem',
 		width: '40rem',
 		borderRadius: '100%',
-		animation: 'spiral 300s ease-in-out infinite alternate',
+		animation: 'spiral 30s ease-in-out infinite alternate',
 		opacity: '0'
 	};
 
 	const parentContainer = {
-		position: 'absolute',
+		position: 'fixed',
 		top: '0',
 		left: '0',
 		height: '100vh',
