@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { parentContainer, getBoxStyle } from 'styling/navigationMenu';
 import { getBoxPosition } from 'styling/navigationMenuBox';
+import Checkbox from 'components/Checkbox';
 
 const NavigationMenu = (props) => {
 	const themeColor = useContext(ThemeContext);
@@ -9,8 +10,20 @@ const NavigationMenu = (props) => {
 	const [ menusOpen, setMenusOpen ] = useState([]);
 	const [ hover, setHover ] = useState([]);
 
+	const rightSideArrowStyle = {
+		position: 'absolute',
+		top: '50%',
+		transform: 'translateY(-56%)',
+		right: '0.5rem'
+	};
+
+	const checkboxStyle = {
+		position: 'absolute',
+		right: '0.3rem'
+	};
+
 	const singleMenuBox = (el, menuPos) => {
-		const { name, action, enabled } = el;
+		const { name, action, enabled, checkbox } = el;
 		const hovered = menuPos.toString() === hover.toString();
 		const buttonState = { hovered, enabled };
 		return (
@@ -20,7 +33,7 @@ const NavigationMenu = (props) => {
 				onClick={() => {
 					if (action && enabled !== false) action();
 					if (menusOpen.length === 0) setMenusOpen(menuPos);
-					else if (enabled !== false) setMenusOpen([]);
+					else if (enabled !== false && checkbox == undefined) setMenusOpen([]);
 				}}
 				className="navMenu"
 				style={{
@@ -30,18 +43,9 @@ const NavigationMenu = (props) => {
 				id={menuPos.toString()}
 			>
 				{name}
-				{menuPos.length > 1 &&
-				el.sub && (
-					<div
-						style={{
-							position: 'absolute',
-							top: '50%',
-							transform: 'translateY(-56%)',
-							right: '0.5rem'
-						}}
-					>
-						▶
-					</div>
+				{menuPos.length > 1 && el.sub && <div style={rightSideArrowStyle}>▶</div>}
+				{checkbox !== undefined && (
+					<Checkbox className="navMenu" style={checkboxStyle} default={checkbox} onChange={() => action()} />
 				)}
 			</div>
 		);

@@ -74,7 +74,8 @@ const TaskManager = (props) => {
 			newObj[field] = !visibleColumns[field];
 			return {
 				name: capitalizeFirstLetter(field),
-				action: () => setVisibleColumns(newObj)
+				action: () => setVisibleColumns(newObj),
+				checkbox: visibleColumns[field]
 			};
 		});
 	};
