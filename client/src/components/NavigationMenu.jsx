@@ -68,22 +68,24 @@ const NavigationMenu = (props) => {
 
 	const menuDropdownContainer = (el, menuPos) => {
 		const { sub, enabled } = el;
-		return (
-			<div
-				key={menuPos.toString()}
-				onMouseOver={(e) => {
-					if (e.target.id === menuPos.toString() && menusOpen.length > 0 && enabled !== false)
-						setMenusOpen(menuPos);
-				}}
-			>
-				{singleMenuBox(el, menuPos)}
-				<div>
-					{menusOpen[menuPos.length - 1] === menuPos[menuPos.length - 1] && sub ? (
-						multipleBoxes(el, menuPos)
-					) : null}
+		if (sub)
+			return (
+				<div
+					key={menuPos.toString()}
+					onMouseOver={(e) => {
+						if (e.target.id === menuPos.toString() && menusOpen.length > 0 && enabled !== false)
+							setMenusOpen(menuPos);
+					}}
+				>
+					{singleMenuBox(el, menuPos)}
+					<div>
+						{menusOpen[menuPos.length - 1] === menuPos[menuPos.length - 1] && sub ? (
+							multipleBoxes(el, menuPos)
+						) : null}
+					</div>
 				</div>
-			</div>
-		);
+			);
+		else return singleMenuBox(el, menuPos);
 	};
 
 	const mainRowOfBoxes = () => {
