@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
-import { parentContainer, getBoxStyle } from 'styling/navigationMenu';
+import { getParentContainer, getBoxStyle, multiBtnContainerStyle } from 'styling/navigationMenu';
 import { getBoxPosition } from 'styling/navigationMenuBox';
 import Checkbox from 'components/Checkbox';
 
@@ -92,7 +92,7 @@ const NavigationMenu = (props) => {
 		return props.menus.map((el, i) => menuDropdownContainer(el, [ i ]));
 	};
 
-	return <div style={{ ...parentContainer, ...props.style }}>{mainRowOfBoxes()}</div>;
+	return <div style={{ ...getParentContainer(props.menus.length), ...props.style }}>{mainRowOfBoxes()}</div>;
 };
 
 export default NavigationMenu;

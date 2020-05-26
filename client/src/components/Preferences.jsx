@@ -40,17 +40,9 @@ const Preferences = (props) => {
 			<div style={topContainerStyle}>
 				<div style={popUpWindowStyle}>
 					<div style={titleStyle}>Preferences</div>
-					<NavigationMenu
-						style={{
-							width: '100%',
-							margin: '0 auto',
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							alignContent: 'center'
-						}}
-						menus={menus}
-					/>
+					<div style={subContainerStyle}>
+						<NavigationMenu menus={menus} />
+					</div>
 					<div style={popUpStyle}>
 						{screen === 'general' && (
 							<div style={subContainerStyle}>

@@ -4,12 +4,16 @@ export const BOX_WIDTH_REM = 8;
 export const BOX_HEIGHT_REM = 2;
 export const BOX_BORDER_WIDTH_PX = 1;
 
-export const parentContainer = {
-	position: 'relative',
-	height: '2rem',
-	display: 'block',
-	overflow: 'visible',
-	zIndex: '10'
+export const getParentContainer = (menuCount) => {
+	return {
+		width: `${menuCount * BOX_WIDTH_REM}rem`,
+		height: `${BOX_HEIGHT_REM}rem`,
+		position: 'relative',
+		height: '2rem',
+		display: 'block',
+		overflow: 'visible',
+		zIndex: '10'
+	};
 };
 
 export const getBoxStyle = (buttonState, themeColor) => {
