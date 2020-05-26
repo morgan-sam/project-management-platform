@@ -8,6 +8,7 @@ import { displayBarsAll } from 'data/defaultState';
 import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 import { fields } from 'data/table';
 import { capitalizeFirstLetter } from 'processing/utility';
+import { visibleColumnsDefault } from 'data/defaultState';
 
 const TaskManager = (props) => {
 	const {
@@ -151,7 +152,10 @@ const TaskManager = (props) => {
 				},
 				{
 					name: 'Columns',
-					sub: getColumnVisibilityMenus()
+					sub: [
+						{ name: 'Reset To Default', action: () => setVisibleColumns(visibleColumnsDefault) },
+						...getColumnVisibilityMenus()
+					]
 				},
 				{
 					name: `${displayBackground ? 'Hide' : 'Show'} Background`,
