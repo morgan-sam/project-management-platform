@@ -6,6 +6,8 @@ import BatchNewTasks from 'components/BatchNewTasks';
 import NavigationMenu from 'components/NavigationMenu';
 import { displayBarsAll } from 'data/defaultState';
 import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
+import { fields } from 'data/table';
+import { capitalizeFirstLetter } from 'processing/utility';
 
 const TaskManager = (props) => {
 	const {
@@ -20,7 +22,9 @@ const TaskManager = (props) => {
 		taskList,
 		setDisplayedBars,
 		displayBackground,
-		setDisplayBackground
+		setDisplayBackground,
+		visibleColumns,
+		setVisibleColumns
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -63,6 +67,19 @@ const TaskManager = (props) => {
 		const keptIds = taskList.map((el) => el.id);
 		return allIds.filter((el) => keptIds.indexOf(el) === -1);
 	};
+
+	const getColumnVisibilityMenus = () => {
+		return fields.map((field) => {
+			const newObj = Object.assign({}, visibleColumns);
+			newObj[field] = !visibleColumns[field];
+			return {
+				name: capitalizeFirstLetter(field),
+				action: () => setVisibleColumns(newObj)
+			};
+		});
+	};
+
+	console.log(visibleColumns);
 
 	const menus = [
 		{
@@ -132,6 +149,10 @@ const TaskManager = (props) => {
 							action: () => setDisplayedBars({ ...displayedBars, dataInfo: !displayedBars.dataInfo })
 						}
 					]
+				},
+				{
+					name: 'Columns',
+					sub: getColumnVisibilityMenus()
 				},
 				{
 					name: `${displayBackground ? 'Hide' : 'Show'} Background`,

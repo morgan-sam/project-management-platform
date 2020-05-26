@@ -32,3 +32,13 @@ export const displayBarsAll = (boo) => {
 		dataInfo: boo
 	};
 };
+
+export const visibleColumnsDefault = {
+	task: true,
+	date: true,
+	deadline: true,
+	urgency: true,
+	teams: true,
+	completed: true,
+	selected: true
+};
