@@ -1,4 +1,5 @@
 import {
+	idDefaultCell,
 	taskDefaultCell,
 	dateDefaultCell,
 	deadlineDefaultCell,
@@ -11,6 +12,9 @@ import {
 import { getGradientTextColor } from 'styling/theme';
 
 export const cellStyles = {
+	id: {
+		...idDefaultCell
+	},
 	task: {
 		...taskDefaultCell
 	},

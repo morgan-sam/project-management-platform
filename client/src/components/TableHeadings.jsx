@@ -18,7 +18,7 @@ const TableHeadings = (props) => {
 			<HeadingCell
 				key={i}
 				className={`${type}Cell`}
-				text={capitalizeFirstLetter(text)}
+				text={text.match(/^id/) ? text.replace(/^id/, 'ID') : capitalizeFirstLetter(text)}
 				onClick={() => userSetSort(type)}
 				style={headingCellStyles[type]}
 			/>

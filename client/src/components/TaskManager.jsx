@@ -74,7 +74,7 @@ const TaskManager = (props) => {
 			const newObj = Object.assign({}, visibleColumns);
 			newObj[field] = !visibleColumns[field];
 			return {
-				name: capitalizeFirstLetter(field),
+				name: field === 'id' ? 'ID' : capitalizeFirstLetter(field),
 				action: () => setVisibleColumns(newObj),
 				checkbox: visibleColumns[field]
 			};

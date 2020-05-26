@@ -1,4 +1,5 @@
 import {
+	idDefaultCell,
 	taskDefaultCell,
 	dateDefaultCell,
 	deadlineDefaultCell,
@@ -9,6 +10,7 @@ import {
 } from 'styling/table';
 
 export const headingCellStyles = {
+	id: { ...idDefaultCell },
 	task: { ...taskDefaultCell },
 	date: { ...dateDefaultCell },
 	deadline: { ...deadlineDefaultCell },

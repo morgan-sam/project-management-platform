@@ -34,6 +34,7 @@ export const displayBarsAll = (boo) => {
 };
 
 export const visibleColumnsDefault = {
+	id: false,
 	task: true,
 	date: true,
 	deadline: true,

@@ -8,6 +8,10 @@ export const cellStyle = {
 	zIndex: '7'
 };
 
+export const idDefaultCell = {
+	...cellStyle
+};
+
 export const taskDefaultCell = {
 	...cellStyle,
 	width: '15rem',
