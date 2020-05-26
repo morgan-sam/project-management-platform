@@ -5,6 +5,7 @@ import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } fro
 import BatchNewTasks from 'components/BatchNewTasks';
 import NavigationMenu from 'components/NavigationMenu';
 import { displayBarsAll } from 'data/defaultState';
+import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 
 const TaskManager = (props) => {
 	const {
@@ -138,8 +139,8 @@ const TaskManager = (props) => {
 
 	const navMenuStyle = {
 		position: 'fixed',
-		top: '0',
-		left: '0'
+		top: `-${BOX_BORDER_WIDTH_PX}px`,
+		left: `-${BOX_BORDER_WIDTH_PX}px`
 	};
 
 	return <NavigationMenu style={navMenuStyle} menus={menus} />;
