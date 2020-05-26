@@ -108,23 +108,28 @@ const TaskManager = (props) => {
 			name: 'View',
 			sub: [
 				{
-					name: `${Object.values(displayedBars).includes(true) ? 'Close' : 'Open'} All`,
-					action: () => {
-						const boo = !Object.values(displayedBars).includes(true);
-						setDisplayedBars(displayBarsAll(boo));
-					}
-				},
-				{
-					name: `${displayedBars.filter ? 'Hide' : 'Show'} Filter`,
-					action: () => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })
-				},
-				{
-					name: `${displayedBars.newTask ? 'Hide' : 'Show'} New Task`,
-					action: () => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })
-				},
-				{
-					name: `${displayedBars.dataInfo ? 'Hide' : 'Show'} Data Info`,
-					action: () => setDisplayedBars({ ...displayedBars, dataInfo: !displayedBars.dataInfo })
+					name: 'Taskbars',
+					sub: [
+						{
+							name: `${Object.values(displayedBars).includes(true) ? 'Close' : 'Open'} All`,
+							action: () => {
+								const boo = !Object.values(displayedBars).includes(true);
+								setDisplayedBars(displayBarsAll(boo));
+							}
+						},
+						{
+							name: `${displayedBars.filter ? 'Hide' : 'Show'} Filter`,
+							action: () => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })
+						},
+						{
+							name: `${displayedBars.newTask ? 'Hide' : 'Show'} New Task`,
+							action: () => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })
+						},
+						{
+							name: `${displayedBars.dataInfo ? 'Hide' : 'Show'} Data Info`,
+							action: () => setDisplayedBars({ ...displayedBars, dataInfo: !displayedBars.dataInfo })
+						}
+					]
 				}
 			]
 		}
