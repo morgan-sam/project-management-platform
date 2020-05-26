@@ -17,6 +17,15 @@
 	}
 }
 
+@keyframes title-container-margin-close {
+	0% {
+		margin: 4rem 0 7rem 0;
+	}
+	100% {
+		margin: 0 0 0 0;
+	}
+}
+
 @keyframes title-shine {
 	0% {
 		background-position: -100%;

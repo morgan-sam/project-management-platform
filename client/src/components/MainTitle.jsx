@@ -8,7 +8,8 @@ const MainTitle = (props) => {
 		position: 'relative',
 		display: 'flex',
 		height: 'auto',
-		margin: '4rem 0 7rem 0'
+		margin: '4rem 0 7rem 0',
+		animation: 'title-container-margin-close 1.6s ease-in-out 3s 1 forwards'
 	};
 
 	const mainTitleStyle = {
