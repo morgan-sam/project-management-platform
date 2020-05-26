@@ -30,6 +30,19 @@ const NavigationMenu = (props) => {
 				id={menuPos.toString()}
 			>
 				{name}
+				{menuPos.length > 1 &&
+				el.sub && (
+					<div
+						style={{
+							position: 'absolute',
+							top: '50%',
+							transform: 'translateY(-56%)',
+							right: '0.5rem'
+						}}
+					>
+						▶
+					</div>
+				)}
 			</div>
 		);
 	};
