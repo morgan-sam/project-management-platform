@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Checkbox from 'components/Checkbox';
+import ColorButton from 'components/ColorButton';
 import NavigationMenu from 'components/NavigationMenu';
 import {
 	titleStyle,
@@ -13,8 +14,9 @@ import {
 } from 'styling/batchNewTasks';
 
 const Preferences = (props) => {
-	const { setPopUp } = props;
-	const [ screen, setScreen ] = useState('main');
+	const { setPopUp, preferences, setPreferences } = props;
+	const [ screen, setScreen ] = useState('general');
+	const [ tempPrefs, setTempPrefs ] = useState(preferences);
 
 	const menus = [
 		{ name: 'General', action: () => setScreen('general') },
@@ -22,7 +24,7 @@ const Preferences = (props) => {
 	];
 
 	const popUpStyle = {
-		height: '30rem',
+		height: '20rem',
 		width: '40rem'
 	};
 
@@ -38,22 +40,55 @@ const Preferences = (props) => {
 			<div style={topContainerStyle}>
 				<div style={popUpWindowStyle}>
 					<div style={titleStyle}>Preferences</div>
+					<NavigationMenu
+						style={{
+							width: '100%',
+							margin: '0 auto',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
+							alignContent: 'center'
+						}}
+						menus={menus}
+					/>
 					<div style={popUpStyle}>
-						<NavigationMenu
-							style={{
-								width: '100%'
-							}}
-							menus={menus}
-						/>
 						{screen === 'general' && (
 							<div style={subContainerStyle}>
 								<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 									<span>Show Startup Title Splash: </span>
-									<Checkbox style={{ padding: '1rem' }} onChange={() => console.log('HIDE/SHOW')} />
+									<Checkbox
+										style={{ padding: '1rem' }}
+										onChange={() =>
+											setTempPrefs({
+												...tempPrefs,
+												startupSplash: !tempPrefs.startupSplash
+											})}
+										default={tempPrefs.startupSplash}
+									/>
 								</div>
 							</div>
 						)}
 					</div>
+
+					<div style={finalContainerStyle}>
+						<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+							<ColorButton
+								text={'Apply'}
+								color={'green'}
+								onClick={() =>
+									setTimeout(() => {
+										setPreferences(tempPrefs);
+										setPopUp(null);
+									}, 500)}
+							/>
+							<ColorButton
+								text={'Cancel'}
+								color={'darkred'}
+								onClick={() => setTimeout(() => setPopUp(null), 500)}
+							/>
+						</div>
+					</div>
+
 					<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 						×
 					</button>

@@ -26,7 +26,9 @@ const TaskManager = (props) => {
 		displayBackground,
 		setDisplayBackground,
 		visibleColumns,
-		setVisibleColumns
+		setVisibleColumns,
+		preferences,
+		setPreferences
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -122,7 +124,17 @@ const TaskManager = (props) => {
 						}
 					]
 				},
-				{ name: 'Preferences', action: () => setPopUp(<Preferences setPopUp={setPopUp} />) }
+				{
+					name: 'Preferences',
+					action: () =>
+						setPopUp(
+							<Preferences
+								setPopUp={setPopUp}
+								preferences={preferences}
+								setPreferences={setPreferences}
+							/>
+						)
+				}
 			]
 		},
 		{

@@ -43,3 +43,7 @@ export const visibleColumnsDefault = {
 	completed: true,
 	selected: true
 };
+
+export const defaultPreferences = {
+	startupSplash: true
+};

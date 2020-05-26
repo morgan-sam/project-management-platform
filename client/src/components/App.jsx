@@ -8,7 +8,7 @@ import DataInfoBar from 'components/DataInfoBar';
 import AmbientBackground from 'components/AmbientBackground';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
-import { filterOptionsDefault, displayBarsAll, visibleColumnsDefault } from 'data/defaultState';
+import { filterOptionsDefault, displayBarsAll, visibleColumnsDefault, defaultPreferences } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teamsProcessing';
 import NewTaskBar from 'components/NewTaskBar';
@@ -24,11 +24,14 @@ const App = () => {
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
+	const [ popUp, setPopUp ] = useState(null);
+
 	const [ displayedBars, setDisplayedBars ] = useState(displayBarsAll(false));
 	const [ displayBackground, setDisplayBackground ] = useState(true);
 	const [ visibleColumns, setVisibleColumns ] = useState(visibleColumnsDefault);
+
+	const [ preferences, setPreferences ] = useState(defaultPreferences);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
-	const [ popUp, setPopUp ] = useState(null);
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -46,6 +49,8 @@ const App = () => {
 		fetchPutEntry(newEntry);
 		setDataChanged(true);
 	};
+
+	console.log(preferences);
 
 	useEffect(
 		() => {
@@ -104,6 +109,8 @@ const App = () => {
 						setDisplayBackground={setDisplayBackground}
 						visibleColumns={visibleColumns}
 						setVisibleColumns={setVisibleColumns}
+						preferences={preferences}
+						setPreferences={setPreferences}
 					/>
 					<FilterBar
 						setFilterOptions={setFilterOptions}
