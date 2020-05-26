@@ -11,7 +11,7 @@ export const popUpContainerStyle = {
 	border: '1px solid black',
 	transform: 'translate(-50%,-50%)',
 	backgroundColor: 'white',
-	zIndex: '10',
+	zIndex: '20',
 	animation: 'confirm-popup-fade-in 1s'
 };
 

@@ -32,6 +32,6 @@ export const overlayStyle = {
 	position: 'fixed',
 	top: '0',
 	left: '0',
-	zIndex: '9',
+	zIndex: '19',
 	animation: 'overlay-fade-in linear 0.4s'
 };

@@ -23,7 +23,7 @@ export const popUpWindowStyle = {
 	height: 'auto',
 	width: 'auto',
 	opacity: '0',
-	zIndex: '10',
+	zIndex: '20',
 	animation: 'batch-popup-fade-in 1s cubic-bezier(.57,.82,.01,.82) 0.1s 1 forwards'
 };
 
