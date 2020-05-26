@@ -136,7 +136,13 @@ const TaskManager = (props) => {
 		[ pressedKeys ]
 	);
 
-	return <NavigationMenu menus={menus} />;
+	const navMenuStyle = {
+		position: 'fixed',
+		top: '0',
+		left: '0'
+	};
+
+	return <NavigationMenu style={navMenuStyle} menus={menus} />;
 };
 
 export default TaskManager;

@@ -7,7 +7,8 @@ const MainTitle = (props) => {
 	const mainTitleContainer = {
 		position: 'relative',
 		display: 'flex',
-		height: 'auto'
+		height: 'auto',
+		margin: '4rem 0 7rem 0'
 	};
 
 	const mainTitleStyle = {

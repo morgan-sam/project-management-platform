@@ -7,7 +7,6 @@ export const BOX_BORDER_WIDTH_PX = 1;
 export const parentContainer = {
 	position: 'relative',
 	height: '2rem',
-	margin: '2rem 0 1.75rem 0',
 	display: 'block',
 	overflow: 'visible',
 	zIndex: '10'

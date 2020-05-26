@@ -73,7 +73,7 @@ const NavigationMenu = (props) => {
 		return props.menus.map((el, i) => menuDropdownContainer(el, [ i ]));
 	};
 
-	return <div style={parentContainer}>{mainRowOfBoxes()}</div>;
+	return <div style={{ ...parentContainer, ...props.style }}>{mainRowOfBoxes()}</div>;
 };
 
 export default NavigationMenu;

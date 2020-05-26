@@ -12,7 +12,7 @@ import { filterOptionsDefault, displayBarsAll } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teamsProcessing';
 import NewTaskBar from 'components/NewTaskBar';
-import { getMainPageStyle, taskManagerStyle, tableStyle, overlayStyle } from 'styling/mainPage';
+import { screenStyle, getMainPageStyle, taskManagerStyle, tableStyle, overlayStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -84,56 +84,57 @@ const App = () => {
 
 	return (
 		<ThemeProvider value={colorTheme}>
-			<div className="mainPage" style={getMainPageStyle(popUp)}>
-				{/* <ColorTest /> */}
-				<MainTitle />
-				<TaskManager
-					style={taskManagerStyle}
-					selectedTasks={selectedTasks}
-					setSelectedTasks={setSelectedTasks}
-					taskList={getTaskList()}
-					rawTaskList={rawTaskList}
-					setDataChanged={setDataChanged}
-					setEntryCompletion={setEntryCompletion}
-					displayedBars={displayedBars}
-					setDisplayedBars={setDisplayedBars}
-					pressedKeys={pressedKeys}
-					setPopUp={setPopUp}
-				/>
-				<FilterBar
-					setFilterOptions={setFilterOptions}
-					filterOptions={filterOptions}
-					taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
-					rawTaskList={rawTaskList}
-					displayedBars={displayedBars}
-				/>
-				<NewTaskBar
-					displayedBars={displayedBars}
-					setDisplayedBars={setDisplayedBars}
-					setDataChanged={setDataChanged}
-				/>
-				<DataInfoBar
-					taskList={getTaskList()}
-					displayedBars={displayedBars}
-					filterOptions={filterOptions}
-					rawTaskList={rawTaskList}
-				/>
-				<Table
-					style={tableStyle}
-					filterOptions={filterOptions}
-					setFilterOptions={setFilterOptions}
-					sortOptions={sortOptions}
-					userSetSort={userSetSort}
-					selectedTasks={selectedTasks}
-					setSelectedTasks={setSelectedTasks}
-					setDataChanged={setDataChanged}
-					setEntryCompletion={setEntryCompletion}
-					taskList={getTaskList()}
-					pressedKeys={pressedKeys}
-				/>
-				{popUp}
-				{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}
-				<AmbientBackground />
+			<div className="screen" style={screenStyle}>
+				<div className="mainPage" style={getMainPageStyle(popUp)}>
+					{/* <ColorTest /> */}
+					<MainTitle />
+					<TaskManager
+						selectedTasks={selectedTasks}
+						setSelectedTasks={setSelectedTasks}
+						taskList={getTaskList()}
+						rawTaskList={rawTaskList}
+						setDataChanged={setDataChanged}
+						setEntryCompletion={setEntryCompletion}
+						displayedBars={displayedBars}
+						setDisplayedBars={setDisplayedBars}
+						pressedKeys={pressedKeys}
+						setPopUp={setPopUp}
+					/>
+					<FilterBar
+						setFilterOptions={setFilterOptions}
+						filterOptions={filterOptions}
+						taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
+						rawTaskList={rawTaskList}
+						displayedBars={displayedBars}
+					/>
+					<NewTaskBar
+						displayedBars={displayedBars}
+						setDisplayedBars={setDisplayedBars}
+						setDataChanged={setDataChanged}
+					/>
+					<DataInfoBar
+						taskList={getTaskList()}
+						displayedBars={displayedBars}
+						filterOptions={filterOptions}
+						rawTaskList={rawTaskList}
+					/>
+					<Table
+						style={tableStyle}
+						filterOptions={filterOptions}
+						setFilterOptions={setFilterOptions}
+						sortOptions={sortOptions}
+						userSetSort={userSetSort}
+						selectedTasks={selectedTasks}
+						setSelectedTasks={setSelectedTasks}
+						setDataChanged={setDataChanged}
+						setEntryCompletion={setEntryCompletion}
+						taskList={getTaskList()}
+						pressedKeys={pressedKeys}
+					/>
+					{popUp}
+					{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}
+					<AmbientBackground />
+				</div>
 			</div>
 		</ThemeProvider>
 	);

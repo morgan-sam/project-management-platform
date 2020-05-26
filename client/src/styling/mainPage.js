@@ -1,18 +1,23 @@
-export const getMainPageStyle = (scrollLocked = false) => {
-	return {
-		height: '100vh',
-		width: 'fit-content',
-		position: 'absolute',
-		padding: '2.6rem',
-		boxSizing: 'border-box',
-		left: '0',
-		top: '0',
-		overflow: scrollLocked ? 'hidden' : 'visible'
-	};
+export const screenStyle = {
+	position: 'absolute',
+	height: '100vh',
+	width: '100vw',
+	left: '0',
+	top: '0'
 };
 
-export const taskManagerStyle = {
-	margin: '1rem 0'
+export const getMainPageStyle = (scrollLocked = false) => {
+	return {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		width: '75vw',
+		margin: '0 auto',
+		padding: '2.6rem',
+		boxSizing: 'border-box',
+		margin: '0 auto',
+		overflow: scrollLocked ? 'hidden' : 'visible'
+	};
 };
 
 export const tableStyle = {
