@@ -12,7 +12,7 @@ import { filterOptionsDefault, displayBarsAll } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teamsProcessing';
 import NewTaskBar from 'components/NewTaskBar';
-import { screenStyle, getMainPageStyle, taskManagerStyle, tableStyle, overlayStyle } from 'styling/mainPage';
+import { screenStyle, getMainPageStyle, tableStyle, overlayStyle } from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -86,7 +86,6 @@ const App = () => {
 		<ThemeProvider value={colorTheme}>
 			<div className="screen" style={screenStyle}>
 				<div className="mainPage" style={getMainPageStyle(popUp)}>
-					{/* <ColorTest /> */}
 					<MainTitle />
 					<TaskManager
 						selectedTasks={selectedTasks}
