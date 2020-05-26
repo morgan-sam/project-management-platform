@@ -1,9 +1,10 @@
 export const screenStyle = {
 	position: 'absolute',
-	height: '100vh',
-	width: '100vw',
+	height: '100%',
+	width: '100%',
 	left: '0',
-	top: '0'
+	top: '0',
+	overflow: 'hidden'
 };
 
 export const getMainPageStyle = (scrollLocked = false) => {
