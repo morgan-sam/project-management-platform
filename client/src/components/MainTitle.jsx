@@ -18,9 +18,12 @@ const MainTitle = (props) => {
 		WebkitBackgroundSize: '250px',
 		color: 'rgba(0, 0, 0, 0.3)',
 		WebkitBackgroundClip: 'text',
+		opacity: '0',
 		textShadow: '0 0px 0px rgba(255, 255, 255, 0.2)',
-		animation: 'title-fade-in 1s ease-in-out 0s 1 forwards, title-shine 1s ease-in-out 1s 1 forwards',
-		backgroundPosition: '-300%'
+		animation: 'title-fade-in-out 3s ease-in-out 0.4s 1 forwards, title-shine 1s ease-in-out 1.7s 1 forwards',
+		backgroundPosition: '-300%',
+		cursor: 'default',
+		userSelect: 'none'
 	};
 
 	return (
