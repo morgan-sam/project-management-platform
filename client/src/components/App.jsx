@@ -25,6 +25,7 @@ const App = () => {
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
 	const [ displayedBars, setDisplayedBars ] = useState(displayBarsAll(false));
+	const [ displayBackground, setDisplayBackground ] = useState(true);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
 	const [ popUp, setPopUp ] = useState(null);
 
@@ -98,6 +99,8 @@ const App = () => {
 						setDisplayedBars={setDisplayedBars}
 						pressedKeys={pressedKeys}
 						setPopUp={setPopUp}
+						displayBackground={displayBackground}
+						setDisplayBackground={setDisplayBackground}
 					/>
 					<FilterBar
 						setFilterOptions={setFilterOptions}
@@ -132,7 +135,7 @@ const App = () => {
 					/>
 					{popUp}
 					{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}
-					<AmbientBackground />
+					{displayBackground && <AmbientBackground />}
 				</div>
 			</div>
 		</ThemeProvider>

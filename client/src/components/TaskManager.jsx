@@ -18,7 +18,9 @@ const TaskManager = (props) => {
 		pressedKeys,
 		displayedBars,
 		taskList,
-		setDisplayedBars
+		setDisplayedBars,
+		displayBackground,
+		setDisplayBackground
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -130,6 +132,10 @@ const TaskManager = (props) => {
 							action: () => setDisplayedBars({ ...displayedBars, dataInfo: !displayedBars.dataInfo })
 						}
 					]
+				},
+				{
+					name: `${displayBackground ? 'Hide' : 'Show'} Background`,
+					action: () => setDisplayBackground(!displayBackground)
 				}
 			]
 		}
