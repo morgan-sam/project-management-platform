@@ -47,7 +47,7 @@ const Preferences = (props) => {
 						{screen === 'general' && (
 							<div style={subContainerStyle}>
 								<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-									<span>Show Startup Title Splash: </span>
+									<span>Show title splash on startup: </span>
 									<Checkbox
 										style={{ padding: '1rem' }}
 										onChange={() =>
