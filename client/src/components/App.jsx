@@ -135,6 +135,7 @@ const App = () => {
 						setEntryCompletion={setEntryCompletion}
 						taskList={getTaskList()}
 						pressedKeys={pressedKeys}
+						visibleColumns={visibleColumns}
 					/>
 					{popUp}
 					{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}

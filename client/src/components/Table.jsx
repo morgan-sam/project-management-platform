@@ -14,7 +14,8 @@ const Table = (props) => {
 		sortOptions,
 		setEntryCompletion,
 		userSetSort,
-		pressedKeys
+		pressedKeys,
+		visibleColumns
 	} = props;
 
 	const [ initialID, setInitialID ] = useState();
@@ -37,6 +38,7 @@ const Table = (props) => {
 					setInitialID={setInitialID}
 					filterOptions={filterOptions}
 					setFilterOptions={setFilterOptions}
+					visibleColumns={visibleColumns}
 				/>
 			);
 		});
@@ -91,7 +93,7 @@ const Table = (props) => {
 	return (
 		<table className="table" style={props.style}>
 			<thead>
-				<TableHeadings sortOptions={sortOptions} userSetSort={userSetSort} />
+				<TableHeadings sortOptions={sortOptions} userSetSort={userSetSort} visibleColumns={visibleColumns} />
 			</thead>
 			<tbody>{getCompTaskList()}</tbody>
 			{taskList.length === 0 && <NoDataDisplay />}

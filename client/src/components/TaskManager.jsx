@@ -79,8 +79,6 @@ const TaskManager = (props) => {
 		});
 	};
 
-	console.log(visibleColumns);
-
 	const menus = [
 		{
 			name: 'File',

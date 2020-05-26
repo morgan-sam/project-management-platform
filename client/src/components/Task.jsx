@@ -3,9 +3,11 @@ import DataCell from 'components/DataCell';
 import ThemeContext from 'context/ThemeContext';
 import { parseISOToLittleEndian } from 'processing/parseDates';
 import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
-import { fields } from 'data/table';
+import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
+	const { visibleColumns } = props;
+
 	const themeColor = useContext(ThemeContext);
 
 	const dragSelectionFunctions = {
@@ -52,7 +54,7 @@ const Task = (props) => {
 		selected: () => props.toggleSelectState(props.item.id)
 	};
 
-	const getAllDataCells = () => fields.map((type, i) => getDataCell(type, i));
+	const getAllDataCells = () => getTrueObjVals(visibleColumns).map((type, i) => getDataCell(type, i));
 
 	return <tr className="taskEntry">{getAllDataCells()}</tr>;
 };

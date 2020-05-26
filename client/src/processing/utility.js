@@ -24,3 +24,5 @@ export const getNumbersFromString = (string) => {
 	if (!numbers) return null;
 	return numbers.map((el) => parseInt(el));
 };
+
+export const getTrueObjVals = (obj) => Object.entries(obj).flatMap((el) => (el[1] ? el[0] : []));
