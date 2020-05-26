@@ -3,8 +3,7 @@ export const screenStyle = {
 	height: '100%',
 	width: '100%',
 	left: '0',
-	top: '0',
-	overflow: 'hidden'
+	top: '0'
 };
 
 export const getMainPageStyle = (scrollLocked = false) => {

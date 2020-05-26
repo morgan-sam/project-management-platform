@@ -4,6 +4,7 @@ import { fetchDeleteTasks } from 'data/fetch';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 import BatchNewTasks from 'components/BatchNewTasks';
 import NavigationMenu from 'components/NavigationMenu';
+import Preferences from 'components/Preferences';
 import { displayBarsAll } from 'data/defaultState';
 import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 import { fields } from 'data/table';
@@ -120,7 +121,8 @@ const TaskManager = (props) => {
 								deletePopUp(getFilteredTaskIds(), 'all entries that do not pass the filter parameters')
 						}
 					]
-				}
+				},
+				{ name: 'Preferences', action: () => setPopUp(<Preferences setPopUp={setPopUp} />) }
 			]
 		},
 		{
