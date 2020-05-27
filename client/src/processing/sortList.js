@@ -91,6 +91,10 @@ const getSortedMixedStringIndices = (arr) => {
 		indices.push(index);
 		orders[index] = null;
 	}
+	return indicesOrderToArray(arr, indices);
+};
+
+const indicesOrderToArray = (arr, indices) => {
 	let newArray = arr.slice().map(() => null);
 	for (let i = 0; i < arr.length; i++) newArray[i] = arr[indices[i]];
 	return newArray;
