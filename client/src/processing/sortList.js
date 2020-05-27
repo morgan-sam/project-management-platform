@@ -54,7 +54,7 @@ const sortObjListByTask = (list, reversed) => {
 const longestArrayString = (arr) => arr.reduce((a, b) => (a.length > b.length ? a : b));
 const numSort = (arr) => arr.slice().sort((a, b) => a - b);
 
-const consistentValues = (values) => {
+const standardiseMixedValues = (values) => {
 	for (let i = 0; i < values.length; i++) {
 		if (!isNaN(parseInt(values[i][0]))) values[i].unshift(null);
 		if (isNaN(parseInt(values[i][values[i].length - 1]))) values[i].push(Number.MAX_SAFE_INTEGER);
@@ -66,7 +66,7 @@ const getSortedMixedStringIndices = (arr) => {
 	let values = arr.map((el) =>
 		el.match(/([^0-9]+)|([0-9]+)/g).map((val) => (!isNaN(parseInt(val)) ? parseInt(val) : val))
 	);
-	values = consistentValues(values);
+	values = standardiseMixedValues(values);
 	const rounds = longestArrayString(values).length;
 	let orders = arr.map(() => '');
 	for (let i = 0; i < rounds; i++) {
