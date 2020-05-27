@@ -50,8 +50,6 @@ const App = () => {
 		setDataChanged(true);
 	};
 
-	console.log(preferences);
-
 	useEffect(
 		() => {
 			(async () => {
