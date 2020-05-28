@@ -8,6 +8,7 @@ import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars'
 import { parseISOToDateObj } from 'processing/parseDates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
+import Checkbox from 'components/Checkbox';
 
 const NewTaskBar = (props) => {
 	const { style, displayedBars, setDataChanged, setDisplayedBars } = props;
@@ -19,6 +20,8 @@ const NewTaskBar = (props) => {
 	const [ urgency, setUrgency ] = useState(3);
 	const [ teamsString, setTeamsStrings ] = useState(null);
 
+	const [ keepOpen, setKeepOpen ] = useState(false);
+
 	const teams = teamsString ? teamsString.split(' ').filter((el) => el !== '') : [];
 	const task = taskString ? taskString.trim() : '';
 
@@ -27,7 +30,7 @@ const NewTaskBar = (props) => {
 			const entry = { task, date, deadline, urgency, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
-			setTimeout(() => setDisplayedBars({ ...displayedBars, newTask: false }), 500);
+			if (!keepOpen) setTimeout(() => setDisplayedBars({ ...displayedBars, newTask: false }), 500);
 		}
 	};
 
@@ -62,6 +65,14 @@ const NewTaskBar = (props) => {
 			/>
 			<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeamsStrings(val)} />
 			<ColorButton text={`Add Task To Database`} onClick={addTaskToDatabase} enabled={task && teams.length} />
+			<div style={{ margin: '0 0 0 2rem', width: '8rem' }}>Keep Open:</div>
+			<Checkbox
+				type="checkbox"
+				className="inputCheckbox"
+				style={{ borderRadius: '100%', margin: '0 2rem 0 0' }}
+				onChange={() => setKeepOpen(!keepOpen)}
+				default={keepOpen}
+			/>
 		</div>
 	);
 };
