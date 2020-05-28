@@ -1,8 +1,7 @@
 export const sortList = (options, taskList) => {
 	const { sortOptions } = options;
 	if (taskList.length === 0) return [];
-	if (sortOptions.type === 'task') return sortObjListByTask(taskList, sortOptions.reversed);
-	if (sortOptions.type !== 'selected') return sortListByData(sortOptions, taskList);
+	if (sortOptions.type !== 'selected') return sortListByType(taskList, sortOptions);
 	else return sortListBySelected(options, taskList);
 };
 export default sortList;
@@ -15,36 +14,28 @@ const sortListBySelected = (options, taskList) => {
 	else return [ ...unselected, ...selected ];
 };
 
-const sortListByData = (sortOptions, taskList) => {
+const sortListByType = (taskList, sortOptions) => {
 	const index = Object.keys(taskList[0]).indexOf(sortOptions.type);
 	const type = typeof Object.values(taskList[0])[index];
-	const params = { index, reversed: sortOptions.reversed ? -1 : 1, type };
-	taskList = sortObjListByTask(taskList, params);
-	return sortListByType(taskList, params);
-};
-
-const sortListByType = (taskList, params) => {
-	if (params.type === 'number') return sortObjListNumerically(taskList, params);
-	else if (params.type === 'string') return sortObjListAlphabetically(taskList, params);
-	else if (params.type === 'boolean') return sortObjListNumerically(taskList, params);
+	taskList = sortObjListAlphabetically(taskList, { type: 'task', reversed: false });
+	if (type === 'number') return sortObjListNumerically(taskList, sortOptions);
+	else if (type === 'string') return sortObjListAlphabetically(taskList, sortOptions);
+	else if (type === 'boolean') return sortObjListNumerically(taskList, sortOptions);
 	else return taskList;
 };
 
-const sortObjListNumerically = (list, params) => {
-	const { index, reversed } = params;
+const sortObjListNumerically = (list, sortOptions) => {
+	const index = Object.keys(list[0]).indexOf(sortOptions.type);
+	const reversed = sortOptions.reversed ? -1 : 1;
 	return list.sort((a, b) => reversed * Object.values(a)[index] - reversed * Object.values(b)[index]);
 };
 
-const sortObjListAlphabetically = (list, params) => {
-	const { index, reversed } = params;
-	return list.sort((a, b) => (Object.values(a)[index] < Object.values(b)[index] ? -1 * reversed : 1 * reversed));
-};
-
-const sortObjListByTask = (list, reversed) => {
-	const tasks = list.slice().map((el) => el.task);
-	const sortedTasks = getSortedMixedStringIndices(tasks);
-	const newList = sortedTasks.map((task) => {
-		const index = list.findIndex((x) => x.task === task);
+const sortObjListAlphabetically = (list, sortOptions) => {
+	const { reversed, type } = sortOptions;
+	const sub = list.slice().map((el) => el[type]);
+	const sortedSub = getSortedMixedStringIndices(sub);
+	const newList = sortedSub.map((task) => {
+		const index = list.findIndex((x) => x[type] === task);
 		return list[index];
 	});
 	if (reversed) return newList.slice().reverse();
