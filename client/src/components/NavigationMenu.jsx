@@ -28,6 +28,7 @@ const NavigationMenu = (props) => {
 		const buttonState = { hovered, enabled };
 		return (
 			<div
+				key={menuPos.toString()}
 				onMouseOver={() => setHover(menuPos)}
 				onMouseLeave={() => setHover([])}
 				onClick={() => {
