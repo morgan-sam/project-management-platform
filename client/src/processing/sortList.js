@@ -18,10 +18,15 @@ const sortListByType = (taskList, sortOptions) => {
 	const index = Object.keys(taskList[0]).indexOf(sortOptions.type);
 	const type = typeof Object.values(taskList[0])[index];
 	taskList = sortObjListAlphabetically(taskList, { type: 'task', reversed: false });
-	if (type === 'number') return sortObjListNumerically(taskList, sortOptions);
+	if (Array.isArray(Object.values(taskList[0])[index])) return sortObjListAlphabetically(taskList, sortOptions);
+	else if (type === 'number') return sortObjListNumerically(taskList, sortOptions);
 	else if (type === 'string') return sortObjListAlphabetically(taskList, sortOptions);
 	else if (type === 'boolean') return sortObjListNumerically(taskList, sortOptions);
 	else return taskList;
+};
+
+const sortListAlphabetically = (list) => {
+	return list.sort((a, b) => (Object.values(a) < Object.values(b) ? -1 : 1));
 };
 
 const sortObjListNumerically = (list, sortOptions) => {
@@ -32,10 +37,17 @@ const sortObjListNumerically = (list, sortOptions) => {
 
 const sortObjListAlphabetically = (list, sortOptions) => {
 	const { reversed, type } = sortOptions;
-	const sub = list.slice().map((el) => el[type]);
+	let usingArrays = false;
+	const sub = list.slice().map((el) => {
+		if (Array.isArray(el[type])) {
+			usingArrays = true;
+			return sortListAlphabetically(el[type]).toString();
+		}
+		return el[type];
+	});
 	const sortedSub = getSortedMixedStringIndices(sub);
 	const newList = sortedSub.map((task) => {
-		const index = list.findIndex((x) => x[type] === task);
+		const index = list.findIndex((x) => (usingArrays ? x[type].toString() : x[type]) === task);
 		return list[index];
 	});
 	if (reversed) return newList.slice().reverse();
