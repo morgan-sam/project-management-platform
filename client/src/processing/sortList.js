@@ -42,8 +42,7 @@ const sortObjListAlphabetically = (list, sortOptions) => {
 		if (Array.isArray(el[type])) {
 			usingArrays = true;
 			return sortListAlphabetically(el[type]).toString();
-		}
-		return el[type];
+		} else return el[type];
 	});
 	const sortedSub = getSortedMixedStringIndices(sub);
 	const newList = sortedSub.map((task) => {
