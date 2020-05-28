@@ -37,6 +37,16 @@ const sortObjListNumerically = (list, sortOptions) => {
 
 const sortObjListAlphabetically = (list, sortOptions) => {
 	const { reversed, type } = sortOptions;
+	const { usingArrays, sortedSub } = sortObjListSubArray(list, type);
+	const newList = sortedSub.map((task) => {
+		const index = list.findIndex((x) => (usingArrays ? x[type].toString() : x[type]) === task);
+		return list[index];
+	});
+	if (reversed) return newList.slice().reverse();
+	else return newList;
+};
+
+const sortObjListSubArray = (list, type) => {
 	let usingArrays = false;
 	const sub = list.slice().map((el) => {
 		if (Array.isArray(el[type])) {
@@ -45,12 +55,7 @@ const sortObjListAlphabetically = (list, sortOptions) => {
 		} else return el[type];
 	});
 	const sortedSub = sortMixedStringArray(sub);
-	const newList = sortedSub.map((task) => {
-		const index = list.findIndex((x) => (usingArrays ? x[type].toString() : x[type]) === task);
-		return list[index];
-	});
-	if (reversed) return newList.slice().reverse();
-	else return newList;
+	return { usingArrays, sortedSub };
 };
 
 const longestArrayString = (arr) => arr.reduce((a, b) => (a.length > b.length ? a : b));
