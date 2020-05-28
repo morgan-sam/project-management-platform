@@ -44,7 +44,7 @@ const sortObjListAlphabetically = (list, sortOptions) => {
 			return sortListAlphabetically(el[type]).toString();
 		} else return el[type];
 	});
-	const sortedSub = getSortedMixedStringIndices(sub);
+	const sortedSub = sortMixedStringArray(sub);
 	const newList = sortedSub.map((task) => {
 		const index = list.findIndex((x) => (usingArrays ? x[type].toString() : x[type]) === task);
 		return list[index];
@@ -64,7 +64,7 @@ const standardiseMixedValues = (values) => {
 	return values;
 };
 
-const getSortedMixedStringIndices = (arr) => {
+const sortMixedStringArray = (arr) => {
 	let values = arr.map((el) =>
 		el.match(/([^0-9]+)|([0-9]+)/g).map((val) => (!isNaN(parseInt(val)) ? parseInt(val) : val))
 	);
