@@ -17,8 +17,9 @@ const sortListBySelected = (options, taskList) => {
 const sortListByType = (taskList, sortOptions) => {
 	const index = Object.keys(taskList[0]).indexOf(sortOptions.type);
 	const type = typeof Object.values(taskList[0])[index];
-	taskList = sortObjListAlphabetically(taskList, { type: 'task', reversed: false });
-	if (Array.isArray(Object.values(taskList[0])[index])) return sortObjListAlphabetically(taskList, sortOptions);
+	taskList = sortObjListAlphabetically(taskList.slice(), { type: 'task', reversed: false });
+	if (Array.isArray(Object.values(taskList[0])[index]))
+		return sortObjListAlphabetically(taskList.slice(), sortOptions);
 	else if (type === 'number') return sortObjListNumerically(taskList, sortOptions);
 	else if (type === 'string') return sortObjListAlphabetically(taskList, sortOptions);
 	else if (type === 'boolean') return sortObjListNumerically(taskList, sortOptions);
@@ -38,10 +39,15 @@ const sortObjListNumerically = (list, sortOptions) => {
 const sortObjListAlphabetically = (list, sortOptions) => {
 	const { reversed, type } = sortOptions;
 	const { usingArrays, sortedSub } = sortObjListSubArray(list, type);
-	const newList = sortedSub.map((task) => {
-		const index = list.findIndex((x) => (usingArrays ? x[type].toString() : x[type]) === task);
-		return list[index];
-	});
+	let newList = [];
+	for (let i = 0; i < list.length; i++) {
+		const index = list.findIndex((x) => {
+			if (x === null) return false;
+			return (usingArrays ? x[type].toString() : x[type]) === sortedSub[i];
+		});
+		newList[i] = list[index];
+		list[index] = null;
+	}
 	if (reversed) return newList.slice().reverse();
 	else return newList;
 };
