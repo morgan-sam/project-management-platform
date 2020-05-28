@@ -7,8 +7,9 @@ do
     TASK=($TASK)
     TASK="${TASK[@]^}"
     TASK=$(echo "${TASK// /$'_'}")
-    DATE=$(date --utc +%FT%TZ)
-    DEADLINE=$(date --date='14 days' --utc +%FT%TZ)
+    TODAY=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    DATE=$(date -d "$TODAY - $((RANDOM % 365)) days" -u +"%Y-%m-%dT%H:%M:%SZ")
+    DEADLINE=$(date -d "$TODAY + $((RANDOM % 365)) days" -u +"%Y-%m-%dT%H:%M:%SZ")
     URGENCY=$(echo $RANDOM % 5 + 1 | bc)
     teamArray=()
     for ((i=1;i<=5;i++)); 
