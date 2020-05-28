@@ -55,3 +55,7 @@ table > *:last-child > tr:last-child > *:first-child {
 table > *:last-child > tr:last-child > *:last-child {
 	border-bottom-right-radius: var(--line-curve);
 }
+
+.tableContainer::-webkit-scrollbar {
+	display: none;
+}

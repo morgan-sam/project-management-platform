@@ -13,7 +13,8 @@ export const defaultBarStyle = {
 	flexDirection: 'row',
 	display: 'flex',
 	alignItems: 'center',
-	justifyContent: 'space-around'
+	justifyContent: 'space-around',
+	backgroundColor: 'white'
 };
 
 export const getTaskBarHiddenStyle = (popUpOpen) => {
@@ -33,8 +34,8 @@ export const getTaskBarHiddenStyle = (popUpOpen) => {
 
 export const getTaskBarVisibleStyle = (popUpOpen) => {
 	return {
-		maxHeight: '11rem',
 		opacity: '1',
+		maxHeight: '11rem',
 		padding: '0.5rem',
 		margin: '0 0 1rem 0',
 		//executes on task bar open

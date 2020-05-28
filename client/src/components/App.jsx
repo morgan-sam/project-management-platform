@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
@@ -32,6 +32,8 @@ const App = () => {
 
 	const [ preferences, setPreferences ] = useState(defaultPreferences);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
+
+	const [ barConHeight, setBarConHeight ] = useState(0);
 
 	const userSetSort = (sort) => {
 		if (sort === sortOptions.type) {
@@ -87,6 +89,18 @@ const App = () => {
 		};
 	}, []);
 
+	useEffect(
+		() => {
+			const barsOpen = Object.values(displayedBars).filter((el) => el).length;
+			console.log(barsOpen);
+			setBarConHeight(barsOpen * 100);
+			console.log(barConHeight);
+		},
+		[ displayedBars ]
+	);
+
+	console.log(barConHeight);
+
 	return (
 		<ThemeProvider value={colorTheme}>
 			<div className="screen" style={screenStyle}>
@@ -110,38 +124,67 @@ const App = () => {
 						preferences={preferences}
 						setPreferences={setPreferences}
 					/>
-					<FilterBar
-						setFilterOptions={setFilterOptions}
-						filterOptions={filterOptions}
-						taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
-						rawTaskList={rawTaskList}
-						displayedBars={displayedBars}
-					/>
-					<NewTaskBar
-						displayedBars={displayedBars}
-						setDisplayedBars={setDisplayedBars}
-						setDataChanged={setDataChanged}
-					/>
-					<DataInfoBar
-						taskList={getTaskList()}
-						displayedBars={displayedBars}
-						filterOptions={filterOptions}
-						rawTaskList={rawTaskList}
-					/>
-					<Table
-						style={tableStyle}
-						filterOptions={filterOptions}
-						setFilterOptions={setFilterOptions}
-						sortOptions={sortOptions}
-						userSetSort={userSetSort}
-						selectedTasks={selectedTasks}
-						setSelectedTasks={setSelectedTasks}
-						setDataChanged={setDataChanged}
-						setEntryCompletion={setEntryCompletion}
-						taskList={getTaskList()}
-						pressedKeys={pressedKeys}
-						visibleColumns={visibleColumns}
-					/>
+					<div
+						className="topBars"
+						style={{
+							position: 'sticky',
+							top: '3rem',
+							margin: '2rem',
+							height: 'auto'
+						}}
+					>
+						<FilterBar
+							setFilterOptions={setFilterOptions}
+							filterOptions={filterOptions}
+							taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
+							rawTaskList={rawTaskList}
+							displayedBars={displayedBars}
+						/>
+						<NewTaskBar
+							displayedBars={displayedBars}
+							setDisplayedBars={setDisplayedBars}
+							setDataChanged={setDataChanged}
+						/>
+						<DataInfoBar
+							taskList={getTaskList()}
+							displayedBars={displayedBars}
+							filterOptions={filterOptions}
+							rawTaskList={rawTaskList}
+						/>
+					</div>
+					<div
+						className="tableContainer"
+						style={{
+							padding: '4rem',
+							display: 'flex',
+							justifyContent: 'center',
+							width: '100%',
+							height: `${500 - barConHeight}px`,
+							overflowY: 'scroll',
+							transition: `height ${Object.values(displayedBars).includes(true)
+								? '0.2s ease-in-out'
+								: '0.5s ease-in-out'}`,
+							WebkitMaskImage:
+								'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)',
+							maskImage:
+								'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)'
+						}}
+					>
+						<Table
+							style={tableStyle}
+							filterOptions={filterOptions}
+							setFilterOptions={setFilterOptions}
+							sortOptions={sortOptions}
+							userSetSort={userSetSort}
+							selectedTasks={selectedTasks}
+							setSelectedTasks={setSelectedTasks}
+							setDataChanged={setDataChanged}
+							setEntryCompletion={setEntryCompletion}
+							taskList={getTaskList()}
+							pressedKeys={pressedKeys}
+							visibleColumns={visibleColumns}
+						/>
+					</div>
 					{popUp}
 					{popUp && <div className={'overlay'} style={{ ...overlayStyle, opacity: '0.8' }} />}
 					{displayBackground && <AmbientBackground />}
