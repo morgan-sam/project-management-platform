@@ -30,6 +30,7 @@ const AmbientBackground = (props) => {
 	const getBackgroundShapes = () => {
 		return [ ...Array(NUM_OF_SHAPES).keys() ].map((i) => (
 			<div
+				key={i}
 				style={{
 					...shapeStyle,
 					right: `${i}rem`,
