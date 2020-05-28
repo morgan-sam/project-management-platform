@@ -83,7 +83,7 @@ const sortMixedStringArray = (arr) => {
 	const rounds = longestArrayString(values).length;
 	let orders = arr.map(() => '');
 	for (let i = 0; i < rounds; i++) {
-		const toCompare = values.map((el) => el[i]);
+		const toCompare = values.map((el) => (typeof el[i] === 'string' ? el[i].toLowerCase() : el[i]));
 		const sorted = !isNaN(parseInt(toCompare[0])) ? numSort(toCompare.slice()) : toCompare.slice().sort();
 		const indices = toCompare.slice().map((el) => sorted.indexOf(el));
 		const digits = Math.max(...indices).toString().length;
