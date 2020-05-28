@@ -2,11 +2,12 @@ import React from 'react';
 import { cellStyles } from 'styling/dataCell';
 import { fields } from 'data/table';
 
-const NoDataDisplay = () => {
+const NoDataDisplay = (props) => {
 	const text = 'NO DATA AVAILABLE';
+	const shownFields = Object.entries(props.visibleColumns).flatMap((el) => (el[1] ? el[0] : []));
 
 	const emptyCells = () => {
-		return fields.map((type, i) => {
+		return shownFields.map((type, i) => {
 			return (
 				<td key={i} style={cellStyles[type]}>
 					{text}
