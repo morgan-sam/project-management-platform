@@ -30,7 +30,9 @@ const TaskManager = (props) => {
 		preferences,
 		setPreferences,
 		fixedStyle,
-		setFixedStyle
+		setFixedStyle,
+		barsAtTop,
+		setBarsAtTop
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -145,6 +147,11 @@ const TaskManager = (props) => {
 				{
 					name: 'Taskbars',
 					sub: [
+						{
+							name: 'Keep At Top',
+							action: () => setBarsAtTop(!barsAtTop),
+							checkbox: barsAtTop
+						},
 						{
 							name: `${Object.values(displayedBars).includes(true) ? 'Close' : 'Open'} All`,
 							action: () => {

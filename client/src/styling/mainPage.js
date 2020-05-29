@@ -64,19 +64,19 @@ export const getTableContainerStyle = (fixedStyle, values) => {
 		};
 };
 
-export const getTopBarsContainerStyle = (fixedStyle) => {
-	if (fixedStyle)
+export const getTopBarsContainerStyle = (barsAtTop) => {
+	if (barsAtTop)
 		return {
 			position: 'sticky',
-			top: '3rem',
-			margin: '2rem',
+			top: '4rem',
+			margin: '0 0 2rem 0',
 			height: 'auto'
 		};
 	else
 		return {
 			position: 'relative',
-			top: '3rem',
-			margin: '0 0 8rem 0',
+			top: '0rem',
+			margin: '0rem 0 2rem 0',
 			height: 'auto'
 		};
 };
