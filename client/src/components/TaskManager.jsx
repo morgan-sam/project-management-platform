@@ -28,7 +28,9 @@ const TaskManager = (props) => {
 		visibleColumns,
 		setVisibleColumns,
 		preferences,
-		setPreferences
+		setPreferences,
+		fixedStyle,
+		setFixedStyle
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -174,6 +176,10 @@ const TaskManager = (props) => {
 				{
 					name: `${displayBackground ? 'Hide' : 'Show'} Background`,
 					action: () => setDisplayBackground(!displayBackground)
+				},
+				{
+					name: `Use ${fixedStyle ? 'Scroll' : 'Fixed'} View`,
+					action: () => setFixedStyle(!fixedStyle)
 				}
 			]
 		}

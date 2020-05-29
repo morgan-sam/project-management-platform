@@ -127,6 +127,8 @@ const App = () => {
 						setVisibleColumns={setVisibleColumns}
 						preferences={preferences}
 						setPreferences={setPreferences}
+						fixedStyle={fixedStyle}
+						setFixedStyle={setFixedStyle}
 					/>
 					<div className="topBars" style={getTopBarsContainerStyle(fixedStyle)}>
 						<FilterBar
