@@ -12,7 +12,14 @@ import { filterOptionsDefault, displayBarsAll, visibleColumnsDefault, defaultPre
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teamsProcessing';
 import NewTaskBar from 'components/NewTaskBar';
-import { screenStyle, getMainPageStyle, tableStyle, overlayStyle } from 'styling/mainPage';
+import {
+	getScreenStyle,
+	getMainPageStyle,
+	tableStyle,
+	overlayStyle,
+	getTableContainerStyle,
+	getTopBarsContainerStyle
+} from 'styling/mainPage';
 
 const App = () => {
 	const [ sortOptions, setSortOptions ] = useState({
@@ -32,6 +39,7 @@ const App = () => {
 
 	const [ preferences, setPreferences ] = useState(defaultPreferences);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
+	const [ fixedStyle, setFixedStyle ] = useState(false);
 
 	const [ barConHeight, setBarConHeight ] = useState(0);
 
@@ -92,18 +100,14 @@ const App = () => {
 	useEffect(
 		() => {
 			const barsOpen = Object.values(displayedBars).filter((el) => el).length;
-			console.log(barsOpen);
 			setBarConHeight(barsOpen * 100);
-			console.log(barConHeight);
 		},
 		[ displayedBars ]
 	);
 
-	console.log(barConHeight);
-
 	return (
 		<ThemeProvider value={colorTheme}>
-			<div className="screen" style={screenStyle}>
+			<div className="screen" style={getScreenStyle(fixedStyle)}>
 				<div className="mainPage" style={getMainPageStyle(popUp)}>
 					<MainTitle />
 					<TaskManager
@@ -124,15 +128,7 @@ const App = () => {
 						preferences={preferences}
 						setPreferences={setPreferences}
 					/>
-					<div
-						className="topBars"
-						style={{
-							position: 'sticky',
-							top: '3rem',
-							margin: '2rem',
-							height: 'auto'
-						}}
-					>
+					<div className="topBars" style={getTopBarsContainerStyle(fixedStyle)}>
 						<FilterBar
 							setFilterOptions={setFilterOptions}
 							filterOptions={filterOptions}
@@ -154,21 +150,7 @@ const App = () => {
 					</div>
 					<div
 						className="tableContainer"
-						style={{
-							padding: '4rem',
-							display: 'flex',
-							justifyContent: 'center',
-							width: '100%',
-							height: `${500 - barConHeight}px`,
-							overflowY: 'scroll',
-							transition: `height ${Object.values(displayedBars).includes(true)
-								? '0.2s ease-in-out'
-								: '0.5s ease-in-out'}`,
-							WebkitMaskImage:
-								'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)',
-							maskImage:
-								'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)'
-						}}
+						style={getTableContainerStyle(fixedStyle, { barConHeight, displayedBars })}
 					>
 						<Table
 							style={tableStyle}
