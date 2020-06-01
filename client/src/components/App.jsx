@@ -40,7 +40,7 @@ const App = () => {
 	const [ preferences, setPreferences ] = useState(defaultPreferences);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');
 	const [ fixedStyle, setFixedStyle ] = useState(false);
-	const [ barsAtTop, setBarsAtTop ] = useState(true);
+	const [ barsFloating, setBarsFloating ] = useState(true);
 
 	const [ barConHeight, setBarConHeight ] = useState(0);
 
@@ -130,10 +130,10 @@ const App = () => {
 						setPreferences={setPreferences}
 						fixedStyle={fixedStyle}
 						setFixedStyle={setFixedStyle}
-						barsAtTop={barsAtTop}
-						setBarsAtTop={setBarsAtTop}
+						barsFloating={barsFloating}
+						setBarsFloating={setBarsFloating}
 					/>
-					<div className="topBars" style={getTopBarsContainerStyle(barsAtTop)}>
+					<div className="topBars" style={getTopBarsContainerStyle(barsFloating)}>
 						<FilterBar
 							setFilterOptions={setFilterOptions}
 							filterOptions={filterOptions}
