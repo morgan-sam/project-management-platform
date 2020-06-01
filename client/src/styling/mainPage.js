@@ -65,9 +65,7 @@ export const getTableContainerStyle = (fixedStyle, values) => {
 };
 
 export const getTopBarsContainerStyle = (barsAtTop) => {
-	const defaultStyle = {
-		margin: '0rem 0 2rem 0'
-	};
+	const defaultStyle = { margin: '0rem 0 2rem 0' };
 	if (barsAtTop)
 		return {
 			...defaultStyle,
