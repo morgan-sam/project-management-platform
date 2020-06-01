@@ -65,18 +65,19 @@ export const getTableContainerStyle = (fixedStyle, values) => {
 };
 
 export const getTopBarsContainerStyle = (barsAtTop) => {
+	const defaultStyle = {
+		margin: '0rem 0 2rem 0'
+	};
 	if (barsAtTop)
 		return {
+			...defaultStyle,
 			position: 'sticky',
-			top: '4rem',
-			margin: '0 0 2rem 0',
-			height: 'auto'
+			top: '4rem'
 		};
 	else
 		return {
+			...defaultStyle,
 			position: 'relative',
-			top: '0rem',
-			margin: '0rem 0 2rem 0',
-			height: 'auto'
+			top: '0rem'
 		};
 };
