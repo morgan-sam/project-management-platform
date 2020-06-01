@@ -47,7 +47,7 @@ export const getTableContainerStyle = (fixedStyle, values) => {
 			display: 'flex',
 			justifyContent: 'center',
 			width: '100%',
-			height: `${500 - barConHeight}px`,
+			height: `${600 - barConHeight}px`,
 			overflowY: 'scroll',
 			transition: `height ${Object.values(displayedBars).includes(true)
 				? '0.2s ease-in-out'
