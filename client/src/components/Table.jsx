@@ -59,6 +59,7 @@ const Table = (props) => {
 
 	const newTaskHoverWhileMouseHeld = (dragToID) => {
 		let tasksToSelect = getMouseSelectedTasks(dragToID);
+		console.log(initialID, dragToID);
 		if (pressedKeys.includes('Control')) {
 			setSelectedTasks([ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ]);
 		} else {
@@ -71,6 +72,7 @@ const Table = (props) => {
 		if (initialID === dragToID) return [ initialID ];
 		return [
 			initialID,
+			dragToID,
 			...taskList.flatMap((task) => {
 				if (task.id === initialID || task.id === dragToID) inScope = !inScope;
 				return inScope ? task.id : [];

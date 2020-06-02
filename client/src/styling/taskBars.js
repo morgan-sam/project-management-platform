@@ -1,3 +1,5 @@
+export const taskbarHeights = {};
+
 const smallOpenTransition = 'max-height 1s cubic-bezier(.23,.52,.53,.74)';
 const smallCloseTransition = 'max-height .8s cubic-bezier(.27,.97,.36,.96)';
 
