@@ -8,8 +8,6 @@ import {
 	popUpWindowStyle,
 	subContainerStyle,
 	cancelButtonStyle,
-	errorTextStyle,
-	topRowStyle,
 	finalContainerStyle
 } from 'styling/batchNewTasks';
 

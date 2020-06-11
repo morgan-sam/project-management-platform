@@ -1,6 +1,5 @@
 import React from 'react';
 import { cellStyles } from 'styling/dataCell';
-import { fields } from 'data/table';
 
 const NoDataDisplay = (props) => {
 	const text = 'NO DATA AVAILABLE';

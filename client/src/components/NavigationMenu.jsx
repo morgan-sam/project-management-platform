@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
-import { getParentContainer, getBoxStyle, multiBtnContainerStyle } from 'styling/navigationMenu';
+import { getParentContainer, getBoxStyle } from 'styling/navigationMenu';
 import { getBoxPosition } from 'styling/navigationMenuBox';
 import Checkbox from 'components/Checkbox';
 

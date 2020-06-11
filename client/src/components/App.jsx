@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';

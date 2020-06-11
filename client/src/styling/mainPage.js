@@ -18,7 +18,6 @@ export const getMainPageStyle = (scrollLocked = false) => {
 		margin: '0 auto',
 		padding: '2.6rem',
 		boxSizing: 'border-box',
-		margin: '0 auto',
 		overflow: scrollLocked ? 'hidden' : 'visible'
 	};
 };

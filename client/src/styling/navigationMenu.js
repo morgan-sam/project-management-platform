@@ -9,7 +9,6 @@ export const getParentContainer = (menuCount) => {
 		width: `${menuCount * BOX_WIDTH_REM}rem`,
 		height: `${BOX_HEIGHT_REM}rem`,
 		position: 'relative',
-		height: '2rem',
 		display: 'block',
 		overflow: 'visible',
 		zIndex: '10'
