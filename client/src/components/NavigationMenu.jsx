@@ -34,7 +34,7 @@ const NavigationMenu = (props) => {
 				onClick={() => {
 					if (action && enabled !== false) action();
 					if (menusOpen.length === 0) setMenusOpen(menuPos);
-					else if (enabled !== false && checkbox == undefined) setMenusOpen([]);
+					else if (enabled !== false && checkbox === undefined) setMenusOpen([]);
 				}}
 				className="navMenu"
 				style={{
