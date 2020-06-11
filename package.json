@@ -16,5 +16,7 @@
 		"url": "https://github.com/morgan-sam/Project-Management-Platform/issues"
 	},
 	"homepage": "https://github.com/morgan-sam/Project-Management-Platform#readme",
-	"dependencies": {}
+	"dependencies": {
+		"@welldone-software/why-did-you-render": "^4.2.5"
+	}
 }

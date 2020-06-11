@@ -59,4 +59,4 @@ const Task = (props) => {
 	return <tr className="taskEntry">{getAllDataCells()}</tr>;
 };
 
-export default Task;
+export default React.memo(Task);
