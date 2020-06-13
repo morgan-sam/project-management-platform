@@ -18,6 +18,7 @@ const Table = (props) => {
 		visibleColumns
 	} = props;
 
+	const [ tableEntries, setTableEntries ] = useState([]);
 	const [ initialID, setInitialID ] = useState();
 	const [ selecting, setSelecting ] = useState(true);
 
@@ -92,12 +93,20 @@ const Table = (props) => {
 		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, []);
 
+	useEffect(
+		() => {
+			const tasks = getCompTaskList();
+			setTableEntries(tasks);
+		},
+		[ taskList ]
+	);
+
 	return (
 		<table className="table" style={props.style}>
 			<thead>
 				<TableHeadings sortOptions={sortOptions} userSetSort={userSetSort} visibleColumns={visibleColumns} />
 			</thead>
-			<tbody>{getCompTaskList()}</tbody>
+			<tbody>{tableEntries}</tbody>
 			{taskList.length === 0 && <NoDataDisplay visibleColumns={visibleColumns} />}
 		</table>
 	);
