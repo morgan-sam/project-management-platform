@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Task from 'components/Task';
 import TableHeadings from 'components/TableHeadings';
 import NoDataDisplay from 'components/NoDataDisplay';
@@ -58,15 +58,17 @@ const Table = (props) => {
 		else setSelectedTasks(filtered);
 	};
 
-	const newTaskHover = (dragToID) => {
-		let tasksToSelect = getMouseSelectedTasks(dragToID);
-		console.log(initialID, dragToID);
-		if (pressedKeys.includes('Control')) {
-			setSelectedTasks([ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ]);
-		} else {
-			setSelectedTasks([ ...tasksToSelect ]);
-		}
-	};
+	const newTaskHover = useCallback(
+		(dragToID) => {
+			setSelectedTasks((selectedTasks) => {
+				let tasksToSelect = getMouseSelectedTasks(dragToID);
+				console.log(initialID, dragToID);
+				if (pressedKeys.includes('Control')) return [ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ];
+				else return [ ...tasksToSelect ];
+			});
+		},
+		[ initialID ]
+	);
 
 	const getMouseSelectedTasks = (dragToID) => {
 		let inScope = false;
@@ -112,4 +114,4 @@ const Table = (props) => {
 	);
 };
 
-export default Table;
+export default React.memo(Table);
