@@ -6,8 +6,6 @@ import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
-	const { visibleColumns } = props;
-
 	const themeColor = useContext(ThemeContext);
 
 	const dragSelectionFunctions = {
@@ -54,7 +52,7 @@ const Task = (props) => {
 		selected: () => props.toggleSelectState(props.item.id)
 	};
 
-	const getAllDataCells = () => getTrueObjVals(visibleColumns).map((type, i) => getDataCell(type, i));
+	const getAllDataCells = () => getTrueObjVals(props.visibleColumns).map((type, i) => getDataCell(type, i));
 
 	return <tr className="taskEntry">{getAllDataCells()}</tr>;
 };
