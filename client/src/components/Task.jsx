@@ -6,30 +6,44 @@ import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
+	const {
+		setSelecting,
+		setInitialID,
+		newTaskHover,
+		initialID,
+		setSelectState,
+		item,
+		selecting,
+		selected,
+		toggleSelectState,
+		setEntryCompletion,
+		visibleColumns
+	} = props;
+
 	const themeColor = useContext(ThemeContext);
 
 	const dragSelectionFunctions = {
 		onMouseDown: () => {
-			props.setSelecting(!props.selected);
-			props.setInitialID(props.item.id);
+			setSelecting(!selected);
+			setInitialID(item.id);
 		},
 		onMouseOver: (e) => {
 			if (e.buttons === 1) {
-				props.newTaskHover(props.item.id);
+				newTaskHover(item.id);
 			}
 		},
 		onMouseLeave: (e) => {
-			if (props.initialID === props.item.id && e.buttons === 1) {
-				props.setSelectState(props.item.id, props.selecting);
+			if (initialID === item.id && e.buttons === 1) {
+				setSelectState(item.id, selecting);
 			}
 		}
 	};
 
 	const getDataCellText = (type) => {
-		if (type === 'selected' && props.selected) return 'X';
-		else if (type === 'date' || type === 'deadline') return parseISOToLittleEndian(props.item[type]);
-		else if (type === 'teams') return props.item[type].join(' ');
-		else return props.item[type];
+		if (type === 'selected' && selected) return 'X';
+		else if (type === 'date' || type === 'deadline') return parseISOToLittleEndian(item[type]);
+		else if (type === 'teams') return item[type].join(' ');
+		else return item[type];
 	};
 
 	const getDataCell = (type, i) => {
@@ -39,7 +53,7 @@ const Task = (props) => {
 				onClick={clickFunctions[type]}
 				className={`${type}Cell`}
 				text={getDataCellText(type)}
-				style={{ ...cellStyles[type], ...(props.selected ? getHighlightCellStyle(themeColor) : null) }}
+				style={{ ...cellStyles[type], ...(selected ? getHighlightCellStyle(themeColor) : null) }}
 				{...props}
 				{...dragSelectionFunctions}
 			/>
@@ -47,12 +61,12 @@ const Task = (props) => {
 	};
 
 	const clickFunctions = {
-		task: () => props.toggleSelectState(props.item.id),
-		completed: () => props.setEntryCompletion(props.item, !props.item.completed),
-		selected: () => props.toggleSelectState(props.item.id)
+		task: () => toggleSelectState(item.id),
+		completed: () => setEntryCompletion(item, !item.completed),
+		selected: () => toggleSelectState(item.id)
 	};
 
-	const getAllDataCells = () => getTrueObjVals(props.visibleColumns).map((type, i) => getDataCell(type, i));
+	const getAllDataCells = () => getTrueObjVals(visibleColumns).map((type, i) => getDataCell(type, i));
 
 	return <tr className="taskEntry">{getAllDataCells()}</tr>;
 };
