@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { getParentContainer, getBoxStyle } from 'styling/navigationMenu';
-import { getBoxPosition } from 'styling/navigationMenuBox';
+import { getBoxPosition, rightSideArrowStyle, checkboxStyle } from 'styling/navigationMenuBox';
 import Checkbox from 'components/Checkbox';
 
 const NavigationMenu = (props) => {
@@ -9,18 +9,6 @@ const NavigationMenu = (props) => {
 
 	const [ menusOpen, setMenusOpen ] = useState([]);
 	const [ hover, setHover ] = useState([]);
-
-	const rightSideArrowStyle = {
-		position: 'absolute',
-		top: '50%',
-		transform: 'translateY(-56%)',
-		right: '0.5rem'
-	};
-
-	const checkboxStyle = {
-		position: 'absolute',
-		right: '0.3rem'
-	};
 
 	const singleMenuBox = (el, menuPos) => {
 		const { name, action, enabled, checkbox } = el;

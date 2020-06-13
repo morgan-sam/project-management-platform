@@ -26,3 +26,15 @@ const adjustForBorderPixels = (menuPos, position) => {
 	}
 	return { top, left };
 };
+
+export const rightSideArrowStyle = {
+	position: 'absolute',
+	top: '50%',
+	transform: 'translateY(-56%)',
+	right: '0.5rem'
+};
+
+export const checkboxStyle = {
+	position: 'absolute',
+	right: '0.3rem'
+};
