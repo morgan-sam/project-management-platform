@@ -28,14 +28,10 @@ const Task = (props) => {
 			setInitialID(item.id);
 		},
 		onMouseOver: (e) => {
-			if (e.buttons === 1) {
-				newTaskHover(item.id);
-			}
+			if (e.buttons === 1) newTaskHover(item.id);
 		},
 		onMouseLeave: (e) => {
-			if (initialID === item.id && e.buttons === 1) {
-				setSelectState(item.id, selecting);
-			}
+			if (initialID === item.id && e.buttons === 1) setSelectState(item.id, selecting);
 		}
 	};
 
