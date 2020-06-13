@@ -34,7 +34,7 @@ const Table = (props) => {
 					setEntryCompletion={setEntryCompletion}
 					selecting={selecting}
 					setSelecting={setSelecting}
-					newTaskHover={newTaskHoverWhileMouseHeld}
+					newTaskHover={newTaskHover}
 					initialID={initialID}
 					setInitialID={setInitialID}
 					filterOptions={filterOptions}
@@ -58,7 +58,7 @@ const Table = (props) => {
 		else setSelectedTasks(filtered);
 	};
 
-	const newTaskHoverWhileMouseHeld = (dragToID) => {
+	const newTaskHover = (dragToID) => {
 		let tasksToSelect = getMouseSelectedTasks(dragToID);
 		console.log(initialID, dragToID);
 		if (pressedKeys.includes('Control')) {
