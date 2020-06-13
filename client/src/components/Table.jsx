@@ -52,11 +52,13 @@ const Table = (props) => {
 		} else setSelectedTasks([ ...selectedTasks, id ]);
 	};
 
-	const setSelectState = (id, state) => {
-		const filtered = selectedTasks.filter((el) => el !== id);
-		if (state) setSelectedTasks([ ...filtered, id ]);
-		else setSelectedTasks(filtered);
-	};
+	const setSelectState = useCallback((id, state) => {
+		setSelectedTasks((selectedTasks) => {
+			const filtered = selectedTasks.filter((el) => el !== id);
+			if (state) return [ ...filtered, id ];
+			else return filtered;
+		});
+	}, []);
 
 	const newTaskHover = useCallback(
 		(dragToID) => {
