@@ -31,7 +31,7 @@ const Table = (props) => {
 					selected={selectedTasks.includes(el.id)}
 					toggleSelectState={toggleSelectState}
 					setSelectState={setSelectState}
-					setEntryCompletion={setEntryCompletion}
+					setEntryCompletion={memoizedSetEntryCompletion}
 					selecting={selecting}
 					setSelecting={setSelecting}
 					newTaskHover={newTaskHover}
@@ -44,6 +44,10 @@ const Table = (props) => {
 			);
 		});
 	};
+
+	const memoizedSetEntryCompletion = useCallback((item, completed) => {
+		setEntryCompletion(item, completed);
+	}, []);
 
 	const toggleSelectState = useCallback((id) => {
 		setSelectedTasks((selectedTasks) => {
