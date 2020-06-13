@@ -164,18 +164,20 @@ const App = () => {
 						style={getTableContainerStyle(fixedStyle, { barConHeight, displayedBars })}
 					>
 						<Table
-							style={tableStyle}
-							filterOptions={filterOptions}
-							setFilterOptions={setFilterOptions}
-							sortOptions={sortOptions}
-							userSetSort={userSetSort}
-							selectedTasks={selectedTasks}
-							setSelectedTasks={setSelectedTasks}
-							setDataChanged={setDataChanged}
-							setEntryCompletion={setEntryCompletion}
 							taskList={getTaskList()}
-							pressedKeys={pressedKeys}
-							visibleColumns={visibleColumns}
+							style={tableStyle}
+							{...{
+								filterOptions,
+								setFilterOptions,
+								sortOptions,
+								userSetSort,
+								selectedTasks,
+								setSelectedTasks,
+								setDataChanged,
+								setEntryCompletion,
+								pressedKeys,
+								visibleColumns
+							}}
 						/>
 					</div>
 					{popUp}
