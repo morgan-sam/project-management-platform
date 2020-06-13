@@ -29,8 +29,8 @@ const Table = (props) => {
 					key={i}
 					item={el}
 					selected={selectedTasks.includes(el.id)}
-					toggleSelectState={(id) => toggleSelectState(id)}
-					setSelectState={(id, state) => setSelectState(id, state)}
+					toggleSelectState={toggleSelectState}
+					setSelectState={setSelectState}
 					setEntryCompletion={setEntryCompletion}
 					selecting={selecting}
 					setSelecting={setSelecting}
