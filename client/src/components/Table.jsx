@@ -45,12 +45,12 @@ const Table = (props) => {
 		});
 	};
 
-	const toggleSelectState = (id) => {
-		if (selectedTasks.includes(id)) {
-			const filtered = selectedTasks.filter((el) => el !== id);
-			setSelectedTasks(filtered);
-		} else setSelectedTasks([ ...selectedTasks, id ]);
-	};
+	const toggleSelectState = useCallback((id) => {
+		setSelectedTasks((selectedTasks) => {
+			if (selectedTasks.includes(id)) return selectedTasks.filter((el) => el !== id);
+			else return [ ...selectedTasks, id ];
+		});
+	}, []);
 
 	const setSelectState = useCallback((id, state) => {
 		setSelectedTasks((selectedTasks) => {
