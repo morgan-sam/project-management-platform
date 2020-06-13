@@ -29,17 +29,19 @@ const Table = (props) => {
 					key={i}
 					item={el}
 					selected={selectedTasks.includes(el.id)}
-					toggleSelectState={toggleSelectState}
-					setSelectState={setSelectState}
 					setEntryCompletion={memoizedSetEntryCompletion}
-					selecting={selecting}
-					setSelecting={setSelecting}
-					newTaskHover={newTaskHover}
-					initialID={initialID}
-					setInitialID={setInitialID}
-					filterOptions={filterOptions}
-					setFilterOptions={setFilterOptions}
-					visibleColumns={visibleColumns}
+					{...{
+						toggleSelectState,
+						setSelectState,
+						selecting,
+						setSelecting,
+						newTaskHover,
+						initialID,
+						setInitialID,
+						filterOptions,
+						setFilterOptions,
+						visibleColumns
+					}}
 				/>
 			);
 		});
