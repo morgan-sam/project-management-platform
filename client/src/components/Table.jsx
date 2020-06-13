@@ -117,7 +117,7 @@ const Table = (props) => {
 				<TableHeadings {...{ sortOptions, userSetSort, visibleColumns }} />
 			</thead>
 			<tbody>{tableEntries}</tbody>
-			{taskList.length === 0 && <NoDataDisplay visibleColumns={visibleColumns} />}
+			{taskList.length === 0 && <NoDataDisplay {...{ visibleColumns }} />}
 		</table>
 	);
 };
