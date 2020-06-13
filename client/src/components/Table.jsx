@@ -114,7 +114,7 @@ const Table = (props) => {
 	return (
 		<table className="table" style={props.style}>
 			<thead>
-				<TableHeadings sortOptions={sortOptions} userSetSort={userSetSort} visibleColumns={visibleColumns} />
+				<TableHeadings {...{ sortOptions, userSetSort, visibleColumns }} />
 			</thead>
 			<tbody>{tableEntries}</tbody>
 			{taskList.length === 0 && <NoDataDisplay visibleColumns={visibleColumns} />}
