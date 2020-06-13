@@ -115,23 +115,25 @@ const App = () => {
 						selectedTasks={selectedTasks}
 						setSelectedTasks={setSelectedTasks}
 						taskList={getTaskList()}
-						rawTaskList={rawTaskList}
-						setDataChanged={setDataChanged}
-						setEntryCompletion={setEntryCompletion}
-						displayedBars={displayedBars}
-						setDisplayedBars={setDisplayedBars}
-						pressedKeys={pressedKeys}
-						setPopUp={setPopUp}
-						displayBackground={displayBackground}
-						setDisplayBackground={setDisplayBackground}
-						visibleColumns={visibleColumns}
-						setVisibleColumns={setVisibleColumns}
-						preferences={preferences}
-						setPreferences={setPreferences}
-						fixedStyle={fixedStyle}
-						setFixedStyle={setFixedStyle}
-						barsFloating={barsFloating}
-						setBarsFloating={setBarsFloating}
+						{...{
+							rawTaskList,
+							setDataChanged,
+							setEntryCompletion,
+							displayedBars,
+							setDisplayedBars,
+							pressedKeys,
+							setPopUp,
+							displayBackground,
+							setDisplayBackground,
+							visibleColumns,
+							setVisibleColumns,
+							preferences,
+							setPreferences,
+							fixedStyle,
+							setFixedStyle,
+							barsFloating,
+							setBarsFloating
+						}}
 					/>
 					<div className="topBars" style={getTopBarsContainerStyle(barsFloating)}>
 						<FilterBar
