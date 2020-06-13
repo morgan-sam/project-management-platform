@@ -139,7 +139,7 @@ const App = () => {
 						<FilterBar
 							taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
 							{...{
-								setFilterOption,
+								setFilterOptions,
 								filterOptions,
 								rawTaskList,
 								displayedBars
