@@ -137,11 +137,13 @@ const App = () => {
 					/>
 					<div className="topBars" style={getTopBarsContainerStyle(barsFloating)}>
 						<FilterBar
-							setFilterOptions={setFilterOptions}
-							filterOptions={filterOptions}
 							taskListTeams={[ 'all', ...getTaskListTeams(rawTaskList) ]}
-							rawTaskList={rawTaskList}
-							displayedBars={displayedBars}
+							{...{
+								setFilterOption,
+								filterOptions,
+								rawTaskList,
+								displayedBars
+							}}
 						/>
 						<NewTaskBar
 							{...{
