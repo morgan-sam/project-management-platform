@@ -144,15 +144,19 @@ const App = () => {
 							displayedBars={displayedBars}
 						/>
 						<NewTaskBar
-							displayedBars={displayedBars}
-							setDisplayedBars={setDisplayedBars}
-							setDataChanged={setDataChanged}
+							{...{
+								displayedBars,
+								setDisplayedBars,
+								setDataChanged
+							}}
 						/>
 						<DataInfoBar
 							taskList={getTaskList()}
-							displayedBars={displayedBars}
-							filterOptions={filterOptions}
-							rawTaskList={rawTaskList}
+							{...{
+								displayedBars,
+								filterOptions,
+								rawTaskList
+							}}
 						/>
 					</div>
 					<div
