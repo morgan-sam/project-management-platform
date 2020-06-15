@@ -14,6 +14,10 @@ const NavigationMenu = (props) => {
 		const { name, action, enabled, checkbox } = el;
 		const hovered = menuPos.toString() === hover.toString();
 		const buttonState = { hovered, enabled };
+		const boxStyle = {
+			...getBoxStyle(buttonState, themeColor),
+			...getBoxPosition(menuPos)
+		};
 		return (
 			<div
 				key={menuPos.toString()}
@@ -25,10 +29,7 @@ const NavigationMenu = (props) => {
 					else if (enabled !== false && checkbox === undefined) setMenusOpen([]);
 				}}
 				className="navMenu"
-				style={{
-					...getBoxStyle(buttonState, themeColor),
-					...getBoxPosition(menuPos)
-				}}
+				style={boxStyle}
 				id={menuPos.toString()}
 			>
 				{name}
