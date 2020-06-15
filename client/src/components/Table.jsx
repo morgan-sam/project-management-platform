@@ -22,30 +22,27 @@ const Table = (props) => {
 	const [ initialID, setInitialID ] = useState();
 	const [ selecting, setSelecting ] = useState(true);
 
-	const getCompTaskList = () => {
-		return taskList.map((el, i) => {
-			return (
-				<Task
-					key={i}
-					item={el}
-					selected={selectedTasks.includes(el.id)}
-					setEntryCompletion={memoizedSetEntryCompletion}
-					{...{
-						toggleSelectState,
-						setSelectState,
-						selecting,
-						setSelecting,
-						newTaskHover,
-						initialID,
-						setInitialID,
-						filterOptions,
-						setFilterOptions,
-						visibleColumns
-					}}
-				/>
-			);
-		});
-	};
+	const getCompTaskList = () =>
+		taskList.map((el, i) => (
+			<Task
+				key={i}
+				item={el}
+				selected={selectedTasks.includes(el.id)}
+				setEntryCompletion={memoizedSetEntryCompletion}
+				{...{
+					toggleSelectState,
+					setSelectState,
+					selecting,
+					setSelecting,
+					newTaskHover,
+					initialID,
+					setInitialID,
+					filterOptions,
+					setFilterOptions,
+					visibleColumns
+				}}
+			/>
+		));
 
 	const memoizedSetEntryCompletion = useCallback((item, completed) => {
 		setEntryCompletion(item, completed);
