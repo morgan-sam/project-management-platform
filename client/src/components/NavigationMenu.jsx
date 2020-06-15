@@ -49,10 +49,7 @@ const NavigationMenu = (props) => {
 		return () => document.removeEventListener('mousedown', whileDropdownOpenClick);
 	});
 
-	const whileDropdownOpenClick = (e) => {
-		if (e.target.className === 'navMenu') return;
-		setMenusOpen([]);
-	};
+	const whileDropdownOpenClick = (e) => (e.target.className === 'navMenu' ? null : setMenusOpen([]));
 
 	const menuDropdownContainer = (el, menuPos) => {
 		const { sub, enabled } = el;
