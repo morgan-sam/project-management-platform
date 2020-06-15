@@ -44,9 +44,7 @@ const Table = (props) => {
 			/>
 		));
 
-	const memoizedSetEntryCompletion = useCallback((item, completed) => {
-		setEntryCompletion(item, completed);
-	}, []);
+	const memoizedSetEntryCompletion = useCallback((item, completed) => setEntryCompletion(item, completed), []);
 
 	const toggleSelectState = useCallback((id) => {
 		setSelectedTasks((selectedTasks) => {
@@ -100,13 +98,7 @@ const Table = (props) => {
 		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, []);
 
-	useEffect(
-		() => {
-			const tasks = getCompTaskList();
-			setTableEntries(tasks);
-		},
-		[ taskList ]
-	);
+	useEffect(() => setTableEntries(getCompTaskList()), [ taskList ]);
 
 	return (
 		<table className="table" style={props.style}>
