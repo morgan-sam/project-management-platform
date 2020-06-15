@@ -40,9 +40,8 @@ const NavigationMenu = (props) => {
 		);
 	};
 
-	const multipleBoxes = (el, menuPos) => {
-		return el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, [ ...menuPos, i ])) : null;
-	};
+	const multipleBoxes = (el, menuPos) =>
+		el.sub ? el.sub.map((el, i) => menuDropdownContainer(el, [ ...menuPos, i ])) : null;
 
 	useEffect(() => {
 		if (menusOpen.length) document.addEventListener('mousedown', whileDropdownOpenClick);
@@ -77,9 +76,7 @@ const NavigationMenu = (props) => {
 		else return singleMenuBox(el, menuPos);
 	};
 
-	const mainRowOfBoxes = () => {
-		return props.menus.map((el, i) => menuDropdownContainer(el, [ i ]));
-	};
+	const mainRowOfBoxes = () => props.menus.map((el, i) => menuDropdownContainer(el, [ i ]));
 
 	return <div style={{ ...getParentContainer(props.menus.length), ...props.style }}>{mainRowOfBoxes()}</div>;
 };
