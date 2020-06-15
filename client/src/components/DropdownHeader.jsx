@@ -33,13 +33,9 @@ const DropdownHeader = (props) => {
 				...dropdownBoxStyle(listOpen),
 				...dropdownHeaderStyle(listOpen)
 			}}
-			onMouseDown={(e) => {
-				if (e.buttons === 1) setListOpen(!listOpen);
-			}}
 			onContextMenu={(e) => e.preventDefault()}
-			onMouseOver={() => {
-				if (hoverEnabled) setHovered(true);
-			}}
+			onMouseDown={(e) => (e.buttons === 1 ? setListOpen(!listOpen) : null)}
+			onMouseOver={() => (hoverEnabled ? setHovered(true) : null)}
 			onMouseLeave={() => setHovered(false)}
 		>
 			<span style={getDropdownTextStyle(themeColor, hoverEnabled && hovered)}>
