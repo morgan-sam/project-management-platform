@@ -36,9 +36,7 @@ const DropdownEntry = (props) => {
 				onClick(value);
 				setListOpen(false);
 			}}
-			onMouseOver={() => {
-				if (hoverEnabled) setHovered(true);
-			}}
+			onMouseOver={() => (hoverEnabled ? setHovered(true) : null)}
 			onMouseLeave={() => setHovered(false)}
 		>
 			<span style={getDropdownTextStyle(themeColor, (hoverEnabled && hovered) || selected)}>
