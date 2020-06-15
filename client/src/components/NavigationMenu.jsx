@@ -18,16 +18,17 @@ const NavigationMenu = (props) => {
 			...getBoxStyle(buttonState, themeColor),
 			...getBoxPosition(menuPos)
 		};
+		const boxClick = () => {
+			if (action && enabled !== false) action();
+			if (menusOpen.length === 0) setMenusOpen(menuPos);
+			else if (enabled !== false && checkbox === undefined) setMenusOpen([]);
+		};
 		return (
 			<div
 				key={menuPos.toString()}
 				onMouseOver={() => setHover(menuPos)}
 				onMouseLeave={() => setHover([])}
-				onClick={() => {
-					if (action && enabled !== false) action();
-					if (menusOpen.length === 0) setMenusOpen(menuPos);
-					else if (enabled !== false && checkbox === undefined) setMenusOpen([]);
-				}}
+				onClick={boxClick}
 				className="navMenu"
 				style={boxStyle}
 				id={menuPos.toString()}
