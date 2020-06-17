@@ -8,13 +8,11 @@ import { getTrueObjVals } from 'processing/utility';
 const Task = (props) => {
 	console.log('Task Rerendered');
 	const {
-		setSelecting,
 		setInitialID,
 		newTaskHover,
 		initialID,
 		setSelectState,
 		item,
-		selecting,
 		selected,
 		changeSelectState,
 		setEntryCompletion,
