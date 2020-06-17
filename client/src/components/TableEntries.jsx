@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Task from 'components/Task';
 
 const TableEntries = (props) => {
@@ -13,37 +13,51 @@ const TableEntries = (props) => {
 		visibleColumns
 	} = props;
 
-	const [ initialID, setInitialID ] = useState();
+	const [ drag, setDrag ] = useState({
+		start: null,
+		end: null
+	});
+
 	const memoizedSetEntryCompletion = useCallback((item, completed) => setEntryCompletion(item, completed), []);
 
-	const changeSelectState = useCallback((id) => {
-		setSelectedTasks((selectedTasks) => {
-			if (selectedTasks.length === 1 && selectedTasks[0] === id) return [];
-			else if (!pressedKeys.includes('Control')) return [ id ];
-			else if (selectedTasks.includes(id)) return selectedTasks.filter((el) => el !== id);
-			else return [ ...selectedTasks, id ];
-		});
-	}, []);
+	const updateDragStart = useCallback(
+		(id) =>
+			setDrag((drag) => {
+				return { ...drag, start: id };
+			}),
+		[]
+	);
 
-	const newTaskHover = useCallback(
-		(dragToID) => {
+	const updateDragEnd = useCallback(
+		(id) =>
+			setDrag((drag) => {
+				return { ...drag, end: id };
+			}),
+		[]
+	);
+
+	useEffect(
+		() => {
 			setSelectedTasks((selectedTasks) => {
-				let tasksToSelect = getMouseSelectedTasks(dragToID);
+				let tasksToSelect = getMouseSelectedTasks(drag);
 				if (pressedKeys.includes('Control')) return [ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ];
 				else return [ ...tasksToSelect ];
 			});
 		},
-		[ initialID ]
+		[ drag ]
 	);
 
-	const getMouseSelectedTasks = (dragToID) => {
+	//Remove current drag tasks from selected tasks state
+
+	const getMouseSelectedTasks = (drag) => {
+		const { start, end } = drag;
 		let inScope = false;
-		if (initialID === dragToID) return [ initialID ];
+		if (start === end || end === null) return [ start ];
 		return [
-			initialID,
-			dragToID,
+			start,
+			end,
 			...taskList.flatMap((task) => {
-				if (task.id === initialID || task.id === dragToID) inScope = !inScope;
+				if (task.id === start || task.id === end) inScope = !inScope;
 				return inScope ? task.id : [];
 			})
 		];
@@ -56,13 +70,12 @@ const TableEntries = (props) => {
 			selected={selectedTasks.includes(el.id)}
 			setEntryCompletion={memoizedSetEntryCompletion}
 			{...{
-				changeSelectState,
-				newTaskHover,
-				initialID,
-				setInitialID,
+				setDrag,
 				filterOptions,
 				setFilterOptions,
-				visibleColumns
+				visibleColumns,
+				updateDragStart,
+				updateDragEnd
 			}}
 		/>
 	));

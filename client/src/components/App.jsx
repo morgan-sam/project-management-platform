@@ -36,7 +36,6 @@ const App = () => {
 	const [ displayedBars, setDisplayedBars ] = useState(displayBarsAll(false));
 	const [ displayBackground, setDisplayBackground ] = useState(true);
 	const [ visibleColumns, setVisibleColumns ] = useState(visibleColumnsDefault);
-	console.log(visibleColumns.id);
 
 	const [ preferences, setPreferences ] = useState(defaultPreferences);
 	const [ colorTheme, setColorTheme ] = useState('#add8e6');

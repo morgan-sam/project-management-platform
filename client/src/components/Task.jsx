@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext } from 'react';
 import DataCell from 'components/DataCell';
 import ThemeContext from 'context/ThemeContext';
 import { parseISOToLittleEndian } from 'processing/parseDates';
@@ -7,14 +7,16 @@ import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
 	console.log('Task Rerendered');
-	const { setInitialID, newTaskHover, item, selected, changeSelectState, setEntryCompletion, visibleColumns } = props;
-
+	const { item, selected, updateDragStart, updateDragEnd, setEntryCompletion, visibleColumns } = props;
 	const themeColor = useContext(ThemeContext);
 
 	const dragSelectionFunctions = {
-		onMouseDown: () => setInitialID(item.id),
-		onMouseOver: (e) => (e.buttons === 1 ? newTaskHover(item.id) : null),
-		onMouseLeave: (e) => null,
+		onMouseDown: () => {
+			updateDragStart(item.id);
+			updateDragEnd(item.id);
+		},
+		onMouseOver: (e) => (e.buttons === 1 ? updateDragEnd(item.id) : null),
+		onMouseLeave: () => null,
 		onMouseUp: () => null
 	};
 
@@ -26,14 +28,13 @@ const Task = (props) => {
 	};
 
 	const clickFunctions = {
-		task: () => changeSelectState(item.id),
-		completed: () => setEntryCompletion(item, !item.completed),
-		selected: () => changeSelectState(item.id)
+		completed: () => setEntryCompletion(item, !item.completed)
 	};
 
 	const getDataCell = (type, i) => {
 		const cellText = getDataCellText(type);
 		const cellStyle = { ...cellStyles[type], ...(selected ? getHighlightCellStyle(themeColor) : null) };
+		const dragFns = type === 'task' || type === 'selected' ? dragSelectionFunctions : null;
 		return (
 			<DataCell
 				key={i}
@@ -42,7 +43,7 @@ const Task = (props) => {
 				text={cellText}
 				style={cellStyle}
 				{...props}
-				{...dragSelectionFunctions}
+				{...dragFns}
 			/>
 		);
 	};
