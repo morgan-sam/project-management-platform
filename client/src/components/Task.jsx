@@ -6,6 +6,7 @@ import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
+	console.log('.');
 	const {
 		setSelecting,
 		setInitialID,
