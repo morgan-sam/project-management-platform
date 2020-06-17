@@ -18,7 +18,8 @@ const TableEntries = (props) => {
 
 	const changeSelectState = useCallback((id) => {
 		setSelectedTasks((selectedTasks) => {
-			if (!pressedKeys.includes('Control')) return [ id ];
+			if (selectedTasks.length === 1 && selectedTasks[0] === id) return [];
+			else if (!pressedKeys.includes('Control')) return [ id ];
 			else if (selectedTasks.includes(id)) return selectedTasks.filter((el) => el !== id);
 			else return [ ...selectedTasks, id ];
 		});
