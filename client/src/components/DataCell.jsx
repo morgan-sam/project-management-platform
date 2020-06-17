@@ -24,6 +24,9 @@ const DataCell = (props) => {
 			onMouseDown={(val) => {
 				if (props.onMouseDown) props.onMouseDown(val);
 			}}
+			onMouseUp={(val) => {
+				if (props.onMouseUp) props.onMouseUp(val);
+			}}
 		>
 			{text === true ? (
 				'✓'

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import DataCell from 'components/DataCell';
 import ThemeContext from 'context/ThemeContext';
 import { parseISOToLittleEndian } from 'processing/parseDates';
@@ -16,7 +16,7 @@ const Task = (props) => {
 		item,
 		selecting,
 		selected,
-		toggleSelectState,
+		changeSelectState,
 		setEntryCompletion,
 		visibleColumns
 	} = props;
@@ -24,16 +24,10 @@ const Task = (props) => {
 	const themeColor = useContext(ThemeContext);
 
 	const dragSelectionFunctions = {
-		onMouseDown: () => {
-			setSelecting(!selected);
-			setInitialID(item.id);
-		},
-		onMouseOver: (e) => {
-			if (e.buttons === 1) newTaskHover(item.id);
-		},
-		onMouseLeave: (e) => {
-			if (initialID === item.id && e.buttons === 1) setSelectState(item.id, selecting);
-		}
+		onMouseDown: () => setInitialID(item.id),
+		onMouseOver: (e) => (e.buttons === 1 ? newTaskHover(item.id) : null),
+		onMouseLeave: (e) => null,
+		onMouseUp: () => null
 	};
 
 	const getDataCellText = (type) => {
@@ -44,9 +38,9 @@ const Task = (props) => {
 	};
 
 	const clickFunctions = {
-		task: () => toggleSelectState(item.id),
+		task: () => changeSelectState(item.id),
 		completed: () => setEntryCompletion(item, !item.completed),
-		selected: () => toggleSelectState(item.id)
+		selected: () => changeSelectState(item.id)
 	};
 
 	const getDataCell = (type, i) => {

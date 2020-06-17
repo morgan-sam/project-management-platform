@@ -14,21 +14,13 @@ const TableEntries = (props) => {
 	} = props;
 
 	const [ initialID, setInitialID ] = useState();
-	const [ selecting, setSelecting ] = useState(true);
 	const memoizedSetEntryCompletion = useCallback((item, completed) => setEntryCompletion(item, completed), []);
 
-	const toggleSelectState = useCallback((id) => {
+	const changeSelectState = useCallback((id) => {
 		setSelectedTasks((selectedTasks) => {
-			if (selectedTasks.includes(id)) return selectedTasks.filter((el) => el !== id);
+			if (!pressedKeys.includes('Control')) return [ id ];
+			else if (selectedTasks.includes(id)) return selectedTasks.filter((el) => el !== id);
 			else return [ ...selectedTasks, id ];
-		});
-	}, []);
-
-	const setSelectState = useCallback((id, state) => {
-		setSelectedTasks((selectedTasks) => {
-			const filtered = selectedTasks.filter((el) => el !== id);
-			if (state) return [ ...filtered, id ];
-			else return filtered;
 		});
 	}, []);
 
@@ -63,10 +55,7 @@ const TableEntries = (props) => {
 			selected={selectedTasks.includes(el.id)}
 			setEntryCompletion={memoizedSetEntryCompletion}
 			{...{
-				toggleSelectState,
-				setSelectState,
-				selecting,
-				setSelecting,
+				changeSelectState,
 				newTaskHover,
 				initialID,
 				setInitialID,
