@@ -6,7 +6,7 @@ import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
-	// console.log('Task Rerendered');
+	console.log('Task Rerendered');
 	const {
 		item,
 		selected,
@@ -26,10 +26,7 @@ const Task = (props) => {
 		},
 		onMouseOver: (e) => (e.buttons === 1 ? updateDragEnd(item.id) : null),
 		onMouseLeave: () => null,
-		onMouseUp: () => {
-			updateDragHeld(false);
-			//
-		}
+		onMouseUp: () => updateDragHeld(false)
 	};
 
 	const getDataCellText = (type) => {

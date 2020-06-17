@@ -69,15 +69,20 @@ const TableEntries = (props) => {
 	useEffect(
 		() => {
 			if (drag.held && !pressedKeys.includes('Control')) setDrag({ ...drag, previous: [], current: [] });
-			else {
+			else if (drag.current.length > 0) {
 				const nextPrev = combineRemoveBothDuplicates(drag.previous, drag.current);
 				setDrag({ ...drag, previous: nextPrev, current: [] });
-			}
+			} else if (!drag.held) singleClickSelect();
 		},
 		[ drag.held ]
 	);
 
-	//Remove current drag tasks from selected tasks state
+	const singleClickSelect = () => {
+		const newPrev = drag.previous.includes(drag.start)
+			? drag.previous.filter((el) => el !== drag.start)
+			: [ ...drag.previous, drag.start ];
+		setDrag({ ...drag, previous: newPrev, current: [] });
+	};
 
 	const getMouseSelectedTasks = (drag) => {
 		const { start, end } = drag;
