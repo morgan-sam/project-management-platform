@@ -32,4 +32,4 @@ const Table = (props) => {
 	);
 };
 
-export default React.memo(Table);
+export default Table;
