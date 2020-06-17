@@ -7,17 +7,7 @@ import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
 	console.log('Task Rerendered');
-	const {
-		setInitialID,
-		newTaskHover,
-		initialID,
-		setSelectState,
-		item,
-		selected,
-		changeSelectState,
-		setEntryCompletion,
-		visibleColumns
-	} = props;
+	const { setInitialID, newTaskHover, item, selected, changeSelectState, setEntryCompletion, visibleColumns } = props;
 
 	const themeColor = useContext(ThemeContext);
 
