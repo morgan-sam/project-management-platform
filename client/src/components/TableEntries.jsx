@@ -36,7 +36,6 @@ const TableEntries = (props) => {
 		(dragToID) => {
 			setSelectedTasks((selectedTasks) => {
 				let tasksToSelect = getMouseSelectedTasks(dragToID);
-				console.log(initialID, dragToID);
 				if (pressedKeys.includes('Control')) return [ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ];
 				else return [ ...tasksToSelect ];
 			});
