@@ -15,7 +15,10 @@ const TableEntries = (props) => {
 
 	const [ drag, setDrag ] = useState({
 		start: null,
-		end: null
+		end: null,
+		held: false,
+		previous: [],
+		current: []
 	});
 
 	const memoizedSetEntryCompletion = useCallback((item, completed) => setEntryCompletion(item, completed), []);
@@ -36,15 +39,35 @@ const TableEntries = (props) => {
 		[]
 	);
 
+	const updateDragHeld = useCallback(
+		(boo) =>
+			setDrag((drag) => {
+				return { ...drag, held: boo };
+			}),
+		[]
+	);
+
 	useEffect(
 		() => {
-			setSelectedTasks((selectedTasks) => {
+			setDrag((drag) => {
 				let tasksToSelect = getMouseSelectedTasks(drag);
-				if (pressedKeys.includes('Control')) return [ ...new Set([ ...selectedTasks, ...tasksToSelect ]) ];
-				else return [ ...tasksToSelect ];
+				return { ...drag, current: tasksToSelect };
 			});
 		},
-		[ drag ]
+		[ drag.end ]
+	);
+
+	useEffect(() => setSelectedTasks([ ...drag.previous, ...drag.current ]), [ drag.current ]);
+
+	useEffect(
+		() => {
+			if (drag.held && !pressedKeys.includes('Control')) setDrag({ ...drag, previous: [], current: [] });
+			else {
+				const nextPrev = [ ...drag.previous, ...drag.current ];
+				setDrag({ ...drag, previous: nextPrev, current: [] });
+			}
+		},
+		[ drag.held ]
 	);
 
 	//Remove current drag tasks from selected tasks state
@@ -75,7 +98,8 @@ const TableEntries = (props) => {
 				setFilterOptions,
 				visibleColumns,
 				updateDragStart,
-				updateDragEnd
+				updateDragEnd,
+				updateDragHeld
 			}}
 		/>
 	));

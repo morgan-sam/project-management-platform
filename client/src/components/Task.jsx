@@ -6,18 +6,30 @@ import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 import { getTrueObjVals } from 'processing/utility';
 
 const Task = (props) => {
-	console.log('Task Rerendered');
-	const { item, selected, updateDragStart, updateDragEnd, setEntryCompletion, visibleColumns } = props;
+	// console.log('Task Rerendered');
+	const {
+		item,
+		selected,
+		updateDragStart,
+		updateDragEnd,
+		updateDragHeld,
+		setEntryCompletion,
+		visibleColumns
+	} = props;
 	const themeColor = useContext(ThemeContext);
 
 	const dragSelectionFunctions = {
 		onMouseDown: () => {
 			updateDragStart(item.id);
 			updateDragEnd(item.id);
+			updateDragHeld(true);
 		},
 		onMouseOver: (e) => (e.buttons === 1 ? updateDragEnd(item.id) : null),
 		onMouseLeave: () => null,
-		onMouseUp: () => null
+		onMouseUp: () => {
+			updateDragHeld(false);
+			//
+		}
 	};
 
 	const getDataCellText = (type) => {
