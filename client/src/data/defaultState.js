@@ -47,3 +47,12 @@ export const visibleColumnsDefault = {
 export const defaultPreferences = {
 	startupSplash: true
 };
+
+export const defaultBatchNewTasksTemplate = {
+	count: 10,
+	task: 'Task_${n}',
+	date: '${t}',
+	deadline: '${t}+2w',
+	urgency: 3,
+	teams: [ 'Team1', 'Team2', 'Team3' ]
+};

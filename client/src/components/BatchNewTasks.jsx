@@ -6,18 +6,12 @@ import { interpretDateTemplate } from 'processing/interpretDateTemplate';
 import { interpretTaskTemplate } from 'processing/interpretTaskTemplate';
 import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/parseDates';
+import { defaultBatchNewTasksTemplate } from 'data/defaultState';
 
 const BatchNewTasks = (props) => {
 	const { setDataChanged, setPopUp } = props;
 	const [ errors, setErrors ] = useState({ task: '', date: '', deadline: '' });
-	const [ template, setTemplate ] = useState({
-		count: 10,
-		task: 'Task_${n}',
-		date: '${t}',
-		deadline: '${t}+2w',
-		urgency: 3,
-		teams: [ 'Team1', 'Team2', 'Team3' ]
-	});
+	const [ template, setTemplate ] = useState(defaultBatchNewTasksTemplate);
 	const [ screen, setScreen ] = useState('main');
 
 	const getTaskEntry = (strings, i) => {
