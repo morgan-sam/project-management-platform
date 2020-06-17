@@ -26,3 +26,9 @@ export const getNumbersFromString = (string) => {
 };
 
 export const getTrueObjVals = (obj) => Object.entries(obj).flatMap((el) => (el[1] ? el[0] : []));
+
+export const combineRemoveBothDuplicates = (arr1, arr2) => {
+	const filterOne = arr1.filter((el) => !arr2.includes(el));
+	const filterTwo = arr2.filter((el) => !arr1.includes(el));
+	return [ ...filterOne, ...filterTwo ];
+};

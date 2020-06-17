@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Task from 'components/Task';
+import { combineRemoveBothDuplicates } from 'processing/utility';
 
 const TableEntries = (props) => {
 	const {
