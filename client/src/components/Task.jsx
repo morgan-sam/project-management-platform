@@ -43,24 +43,26 @@ const Task = (props) => {
 		else return item[type];
 	};
 
+	const clickFunctions = {
+		task: () => toggleSelectState(item.id),
+		completed: () => setEntryCompletion(item, !item.completed),
+		selected: () => toggleSelectState(item.id)
+	};
+
 	const getDataCell = (type, i) => {
+		const cellText = getDataCellText(type);
+		const cellStyle = { ...cellStyles[type], ...(selected ? getHighlightCellStyle(themeColor) : null) };
 		return (
 			<DataCell
 				key={i}
 				onClick={clickFunctions[type]}
 				className={`${type}Cell`}
-				text={getDataCellText(type)}
-				style={{ ...cellStyles[type], ...(selected ? getHighlightCellStyle(themeColor) : null) }}
+				text={cellText}
+				style={cellStyle}
 				{...props}
 				{...dragSelectionFunctions}
 			/>
 		);
-	};
-
-	const clickFunctions = {
-		task: () => toggleSelectState(item.id),
-		completed: () => setEntryCompletion(item, !item.completed),
-		selected: () => toggleSelectState(item.id)
 	};
 
 	const getAllDataCells = () => getTrueObjVals(visibleColumns).map((type, i) => getDataCell(type, i));
