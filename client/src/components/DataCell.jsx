@@ -13,20 +13,12 @@ const DataCell = (props) => {
 	return (
 		<td
 			className={`dataCell ${props.className}`}
-			onClick={() => (props.onClick ? props.onClick() : null)}
 			style={{ ...props.style, userSelect: 'none' }}
-			onMouseOver={(val) => {
-				if (props.onMouseOver) props.onMouseOver(val);
-			}}
-			onMouseLeave={(val) => {
-				if (props.onMouseLeave) props.onMouseLeave(val);
-			}}
-			onMouseDown={(val) => {
-				if (props.onMouseDown) props.onMouseDown(val);
-			}}
-			onMouseUp={(val) => {
-				if (props.onMouseUp) props.onMouseUp(val);
-			}}
+			onClick={() => (props.onClick ? props.onClick() : null)}
+			onMouseOver={(val) => (props.onMouseOver ? props.onMouseOver(val) : null)}
+			onMouseLeave={(val) => (props.onMouseLeave ? props.onMouseLeave(val) : null)}
+			onMouseDown={(val) => (props.onMouseDown ? props.onMouseDown(val) : null)}
+			onMouseUp={(val) => (props.onMouseUp ? props.onMouseUp(val) : null)}
 		>
 			{text === true ? (
 				'✓'
