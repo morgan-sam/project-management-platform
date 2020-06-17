@@ -58,13 +58,19 @@ const TableEntries = (props) => {
 		[ drag.end ]
 	);
 
-	useEffect(() => setSelectedTasks([ ...drag.previous, ...drag.current ]), [ drag.current ]);
+	useEffect(
+		() => {
+			const combinedArrs = combineRemoveBothDuplicates(drag.previous, drag.current);
+			setSelectedTasks(combinedArrs);
+		},
+		[ drag.current ]
+	);
 
 	useEffect(
 		() => {
 			if (drag.held && !pressedKeys.includes('Control')) setDrag({ ...drag, previous: [], current: [] });
 			else {
-				const nextPrev = [ ...drag.previous, ...drag.current ];
+				const nextPrev = combineRemoveBothDuplicates(drag.previous, drag.current);
 				setDrag({ ...drag, previous: nextPrev, current: [] });
 			}
 		},
