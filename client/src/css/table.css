@@ -1,0 +1,33 @@
+/* TABLE CURVED CORNERS */
+
+table {
+	border-collapse: separate;
+}
+
+table > * > * > *:last-child {
+	border-right: var(--line-thickness) solid var(--line-color);
+}
+
+table > *:last-child > tr:last-child > * {
+	border-bottom: var(--line-thickness) solid var(--line-color);
+}
+
+table > *:first-child > tr:first-child > *:first-child {
+	border-top-left-radius: var(--line-curve);
+}
+
+table > *:first-child > tr:first-child > *:last-child {
+	border-top-right-radius: var(--line-curve);
+}
+
+table > *:last-child > tr:last-child > *:first-child {
+	border-bottom-left-radius: var(--line-curve);
+}
+
+table > *:last-child > tr:last-child > *:last-child {
+	border-bottom-right-radius: var(--line-curve);
+}
+
+.tableContainer::-webkit-scrollbar {
+	display: none;
+}
