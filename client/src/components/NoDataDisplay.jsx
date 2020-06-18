@@ -1,8 +1,9 @@
 import React from 'react';
 import { cellStyles } from 'styling/dataCell';
 
+const text = 'NO DATA AVAILABLE';
+
 const NoDataDisplay = (props) => {
-	const text = 'NO DATA AVAILABLE';
 	const shownFields = Object.entries(props.visibleColumns).flatMap((el) => (el[1] ? el[0] : []));
 
 	const emptyCells = () => {
