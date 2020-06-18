@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
-import { cancelButtonStyle, topContainerStyle, popUpWindowStyle } from 'styling/batchNewTasks';
+import { cancelButtonStyle, topContainerStyle, popUpWindowStyle } from 'styling/popUp';
 import {
 	mainGridContainer,
 	getSectionOpacityStyle,

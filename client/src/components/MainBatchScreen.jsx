@@ -12,7 +12,7 @@ import {
 	errorTextStyle,
 	topRowStyle,
 	finalContainerStyle
-} from 'styling/batchNewTasks';
+} from 'styling/popUp';
 
 const MainBatchScreen = (props) => {
 	const { template, errors, setErrors, setTemplate, addMultipleTasks, setPopUp, setScreen } = props;

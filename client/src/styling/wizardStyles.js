@@ -1,4 +1,4 @@
-import { titleStyle } from 'styling/batchNewTasks';
+import { titleStyle } from 'styling/popUp';
 
 const categoryStyle = {
 	display: 'flex',

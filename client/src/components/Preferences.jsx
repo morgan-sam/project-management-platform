@@ -9,7 +9,7 @@ import {
 	subContainerStyle,
 	cancelButtonStyle,
 	finalContainerStyle
-} from 'styling/batchNewTasks';
+} from 'styling/popUp';
 
 const Preferences = (props) => {
 	const { setPopUp, preferences, setPreferences } = props;
