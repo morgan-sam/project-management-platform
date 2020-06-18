@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { parseLittleEndianToISOTime } from 'processing/parseDates';
+import { parseLittleEndianToISOTime } from 'processing/dates';
 import { getOppositeRGB } from 'styling/theme';
 import ThemeContext from 'context/ThemeContext';
 

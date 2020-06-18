@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import TableEntries from 'components/TableEntries';
 import TableHeadings from 'components/TableHeadings';
 import NoDataDisplay from 'components/NoDataDisplay';
-import { getParentsClassList } from 'processing/processClassnames';
+import { getParentsClassList } from 'processing/classnames';
 
 const Table = (props) => {
 	const { taskList, setSelectedTasks, sortOptions, userSetSort, visibleColumns } = props;

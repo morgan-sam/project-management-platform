@@ -10,7 +10,7 @@ import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { filterOptionsDefault, displayBarsAll, visibleColumnsDefault, defaultPreferences } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
-import { getTaskListTeams } from 'processing/teamsProcessing';
+import { getTaskListTeams } from 'processing/teams';
 import NewTaskBar from 'components/NewTaskBar';
 import {
 	getScreenStyle,

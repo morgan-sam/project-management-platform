@@ -1,4 +1,4 @@
-import { anyColorToHex, hexToRgb } from 'processing/convertColors';
+import { anyColorToHex, hexToRgb } from 'processing/colors';
 
 export const calculateColorStyles = (color) => {
 	const hex = anyColorToHex(color);

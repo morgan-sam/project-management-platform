@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import MainBatchScreen from 'components/MainBatchScreen';
 import DateTemplateWizard from 'components/DateTemplateWizard';
 import TaskTemplateWizard from 'components/TaskTemplateWizard';
-import { interpretDateTemplate } from 'processing/interpretDateTemplate';
-import { interpretTaskTemplate } from 'processing/interpretTaskTemplate';
+import { interpretDateTemplate } from 'processing/dateTemplate';
+import { interpretTaskTemplate } from 'processing/taskTemplate';
 import { fetchPostEntry } from 'data/fetch';
-import { parseDateObjToISO } from 'processing/parseDates';
+import { parseDateObjToISO } from 'processing/dates';
 import { defaultBatchNewTasksTemplate } from 'data/defaultState';
 
 const BatchNewTasks = (props) => {

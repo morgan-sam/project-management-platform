@@ -3,7 +3,7 @@ import ThemeContext from 'context/ThemeContext';
 import DropdownHeader from 'components/DropdownHeader';
 import DropdownEntry from 'components/DropdownEntry';
 import DropdownCheckbox from 'components/DropdownCheckbox';
-import { convertRemToPixels } from 'processing/convertUnits';
+import { convertRemToPixels } from 'processing/units';
 
 import {
 	dropdownParentStyle,

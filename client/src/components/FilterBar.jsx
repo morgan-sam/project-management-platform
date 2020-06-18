@@ -6,9 +6,9 @@ import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
-import { parseISOToDateObj } from 'processing/parseDates';
+import { parseISOToDateObj } from 'processing/dates';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
-import { formatTeamsDropdownSelect } from 'processing/teamsProcessing';
+import { formatTeamsDropdownSelect } from 'processing/teams';
 
 const FilterBar = (props) => {
 	const { taskListTeams, filterOptions, setFilterOptions, displayedBars } = props;

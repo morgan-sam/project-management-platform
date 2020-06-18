@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DateSelect from 'components/DateSelect';
-import { parseDateObjToISO } from 'processing/parseDates';
+import { parseDateObjToISO } from 'processing/dates';
 import {
 	dateOptionPopUpStyling,
 	dateDisplayBoxStyling,

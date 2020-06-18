@@ -2,7 +2,7 @@ import React from 'react';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
 import { dataInfoBarStyle } from 'styling/dataInfoBar';
 import { getBoundaryDates } from 'data/dates';
-import { parseISOToLittleEndian } from 'processing/parseDates';
+import { parseISOToLittleEndian } from 'processing/dates';
 
 const DataInfoBar = (props) => {
 	const { displayedBars, rawTaskList, taskList, filterOptions } = props;

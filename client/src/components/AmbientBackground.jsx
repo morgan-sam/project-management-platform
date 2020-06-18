@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import { shapeStyle, parentContainer } from 'styling/ambientBackground';
-import { colorToWhiteArray } from 'processing/processColors';
+import { colorToWhiteArray } from 'processing/colors';
 
 const AmbientBackground = (props) => {
 	const NUM_OF_SHAPES = 30;

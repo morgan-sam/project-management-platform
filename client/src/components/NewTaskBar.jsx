@@ -5,7 +5,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import { newTaskBarStyle } from 'styling/newTaskBar';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
-import { parseISOToDateObj } from 'processing/parseDates';
+import { parseISOToDateObj } from 'processing/dates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
 import Checkbox from 'components/Checkbox';

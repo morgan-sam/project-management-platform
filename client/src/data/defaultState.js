@@ -1,5 +1,5 @@
 import { getDayFromTodayAsISO } from 'data/dates';
-import { stripISODateOfTime } from 'processing/parseDates';
+import { stripISODateOfTime } from 'processing/dates';
 import { getBoundaryDates } from 'data/dates';
 
 export const filterOptionsDefault = (taskList, active = null) => {

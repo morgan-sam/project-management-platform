@@ -1,4 +1,4 @@
-import { testFunctions } from './interpretDateTemplate';
+import { testFunctions } from './dateTemplate';
 const { interpretDateTemplate, interpretInstructions } = testFunctions;
 
 test('Check 3 sequential days date template', () => {

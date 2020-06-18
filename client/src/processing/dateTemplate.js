@@ -1,5 +1,5 @@
 import { getDayFromTodayAsISO } from 'data/dates';
-import { parseISOToDateObj, parseECMADateToDateObj } from 'processing/parseDates';
+import { parseISOToDateObj, parseECMADateToDateObj } from 'processing/dates';
 import { getNumbersFromString } from 'processing/utility';
 
 export const interpretDateTemplate = (dateTemplate, taskCount) => {

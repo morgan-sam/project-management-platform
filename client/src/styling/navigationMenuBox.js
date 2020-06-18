@@ -1,5 +1,5 @@
 import { BOX_WIDTH_REM, BOX_HEIGHT_REM, BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
-import { convertRemToPixels } from 'processing/convertUnits';
+import { convertRemToPixels } from 'processing/units';
 
 export const getBoxPosition = (menuPos) => {
 	const pos = getExactRemPosition(menuPos);

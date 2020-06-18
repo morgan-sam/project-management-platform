@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import DataCell from 'components/DataCell';
 import ThemeContext from 'context/ThemeContext';
-import { parseISOToLittleEndian } from 'processing/parseDates';
+import { parseISOToLittleEndian } from 'processing/dates';
 import { cellStyles, getHighlightCellStyle } from 'styling/dataCell';
 import { getTrueObjVals } from 'processing/utility';
 
