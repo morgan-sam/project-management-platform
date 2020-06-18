@@ -46,7 +46,8 @@ export const cancelButtonStyle = {
 	right: '1rem',
 	backgroundColor: 'salmon',
 	color: 'white',
-	fontSize: '2rem'
+	fontSize: '2rem',
+	outline: 'none'
 };
 
 export const errorTextStyle = {
