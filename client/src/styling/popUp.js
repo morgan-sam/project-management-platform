@@ -74,9 +74,17 @@ export const finalContainerStyle = {
 	padding: '2.5rem'
 };
 
+export const dateTopContainer = {
+	display: 'flex',
+	flexDirection: 'column',
+	padding: '2rem',
+	alignItems: 'center'
+};
+
 export const dateRangeContainer = {
 	display: 'flex',
-	flexDirection: 'row'
+	flexDirection: 'row',
+	zIndex: '21'
 };
 
 export const dateContainer = {
@@ -88,5 +96,5 @@ export const dateContainer = {
 };
 
 export const dateLabel = {
-	margin: '1rem'
+	marginBottom: '1rem'
 };

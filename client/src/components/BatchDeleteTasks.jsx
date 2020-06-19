@@ -9,6 +9,7 @@ import {
 	errorMatchTextStyle,
 	topRowStyle,
 	finalContainerStyle,
+	dateTopContainer,
 	dateRangeContainer,
 	dateContainer,
 	dateLabel
@@ -33,6 +34,12 @@ const BatchDeleteTasks = (props) => {
 		urgency: { min: 1, max: 5 }
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [] });
+
+	const textContainerStyle = {
+		height: 'auto',
+		width: 'auto',
+		padding: '2rem'
+	};
 
 	useEffect(
 		() => {
@@ -86,41 +93,53 @@ const BatchDeleteTasks = (props) => {
 							)}
 						</div>
 					</div>
-					<div style={dateRangeContainer}>
-						<div style={dateContainer}>
-							<div style={dateLabel}>Date:</div>
-							<DateSelect
-								style={{ zIndex: '20' }}
-								date={parseISOToDateObj(template.date)}
-								setDate={(val) =>
-									setTemplate({
-										...template,
-										date: parseDateObjToISO(val)
-									})}
-							/>
-							<ColorButton
-								text={'Reset To First Date'}
-								onClick={() =>
-									setTemplate({ ...template, date: stripISODateOfTime(boundaryDates.date) })}
-							/>
+					<div style={dateTopContainer}>
+						<div style={dateRangeContainer}>
+							<div style={dateContainer}>
+								<div style={dateLabel}>Date:</div>
+								<DateSelect
+									style={{ zIndex: '20' }}
+									date={parseISOToDateObj(template.date)}
+									setDate={(val) =>
+										setTemplate({
+											...template,
+											date: parseDateObjToISO(val)
+										})}
+								/>
+								<ColorButton
+									text={'Reset To First Date'}
+									onClick={() =>
+										setTemplate({ ...template, date: stripISODateOfTime(boundaryDates.date) })}
+								/>
+							</div>
+							<div style={dateContainer}>
+								<div style={dateLabel}>Deadline:</div>
+								<DateSelect
+									style={{ zIndex: '20' }}
+									date={parseISOToDateObj(template.deadline)}
+									setDate={(val) => {
+										setTemplate({
+											...template,
+											deadline: parseDateObjToISO(val)
+										});
+									}}
+								/>
+								<ColorButton
+									text={'Reset To Last Deadline'}
+									onClick={() =>
+										setTemplate({
+											...template,
+											deadline: stripISODateOfTime(boundaryDates.deadline)
+										})}
+								/>
+							</div>
 						</div>
-						<div style={dateContainer}>
-							<div style={dateLabel}>Deadline:</div>
-							<DateSelect
-								style={{ zIndex: '20' }}
-								date={parseISOToDateObj(template.deadline)}
-								setDate={(val) => {
-									setTemplate({
-										...template,
-										deadline: parseDateObjToISO(val)
-									});
-								}}
-							/>
-							<ColorButton
-								text={'Reset To Last Deadline'}
-								onClick={() =>
-									setTemplate({ ...template, deadline: stripISODateOfTime(boundaryDates.deadline) })}
-							/>
+						<div style={errorMatchTextStyle}>
+							{matched.dateRange.length === rawTaskList.length ? (
+								''
+							) : (
+								`${matched.dateRange.length}/${rawTaskList.length} Date Range Matches`
+							)}
 						</div>
 					</div>
 
@@ -133,13 +152,6 @@ const BatchDeleteTasks = (props) => {
 							urgency={template.urgency}
 							onChange={(min, max) => setTemplate({ ...template, urgency: { min, max } })}
 						/>
-					</div>
-					<div style={errorMatchTextStyle}>
-						{matched.dateRange.length === rawTaskList.length ? (
-							''
-						) : (
-							`${matched.dateRange.length}/${rawTaskList.length} Date Range Matches`
-						)}
 					</div>
 					<div style={finalContainerStyle}>
 						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
