@@ -4,6 +4,7 @@ import ColorButton from 'components/ColorButton';
 import NavigationMenu from 'components/NavigationMenu';
 import {
 	titleStyle,
+	popUpPositionStyle,
 	topContainerStyle,
 	popUpWindowStyle,
 	subContainerStyle,
@@ -27,14 +28,7 @@ const Preferences = (props) => {
 	};
 
 	return (
-		<div
-			style={{
-				position: 'fixed',
-				top: '0',
-				left: '0',
-				zIndex: '20'
-			}}
-		>
+		<div style={popUpPositionStyle}>
 			<div style={topContainerStyle}>
 				<div style={popUpWindowStyle}>
 					<div style={titleStyle}>Preferences</div>

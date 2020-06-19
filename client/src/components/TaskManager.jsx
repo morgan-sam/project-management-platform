@@ -3,6 +3,7 @@ import ConfirmPopUp from 'components/ConfirmPopUp';
 import { fetchDeleteTasks } from 'data/fetch';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 import BatchNewTasks from 'components/BatchNewTasks';
+import BatchDeleteTasks from 'components/BatchDeleteTasks';
 import NavigationMenu from 'components/NavigationMenu';
 import Preferences from 'components/Preferences';
 import { displayBarsAll } from 'data/defaultState';
@@ -98,7 +99,7 @@ const TaskManager = (props) => {
 				},
 				{
 					name: 'Delete Tasks',
-					action: () => null
+					action: () => setPopUp(<BatchDeleteTasks setPopUp={setPopUp} setDataChanged={setDataChanged} />)
 				}
 			]
 		},

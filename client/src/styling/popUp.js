@@ -3,12 +3,20 @@ export const titleStyle = {
 	fontSize: '1.6rem'
 };
 
+export const popUpPositionStyle = {
+	position: 'fixed',
+	top: '0',
+	left: '0',
+	zIndex: '20'
+};
+
 export const topContainerStyle = {
 	height: '100vh',
 	width: '100vw',
 	display: 'flex',
 	justifyContent: 'center',
-	alignItems: 'center'
+	alignItems: 'center',
+	zIndex: '20'
 };
 
 export const popUpWindowStyle = {
