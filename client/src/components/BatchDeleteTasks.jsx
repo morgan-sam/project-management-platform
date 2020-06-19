@@ -52,28 +52,29 @@ const BatchDeleteTasks = (props) => {
 
 	useEffect(
 		() => {
-			const taskMatches = getTaskMatches(template.task);
-			const dateRangeMatches = getDateRangeMatches(template);
-			const urgencyMatches = getUrgencyMatches(template);
-			const teamMatches = filterListTeams(template, rawTaskList);
-			const completionMatches = filterListCompletion(template, rawTaskList);
+			const taskMatchIDs = getTaskMatchIDs(template.task);
+			const dateRangeMatchIDs = getDateRangeMatchIDs(template);
+			const urgencyMatchIDs = getUrgencyMatchIDs(template);
+			const teamMatchIDs = filterListTeams(template, rawTaskList).map((el) => el.id);
+			const completionMatchIDs = filterListCompletion(template, rawTaskList).map((el) => el.id);
 			setMatched({
-				task: taskMatches,
-				dateRange: dateRangeMatches,
-				urgency: urgencyMatches,
-				teams: teamMatches,
-				completion: completionMatches
+				task: taskMatchIDs,
+				dateRange: dateRangeMatchIDs,
+				urgency: urgencyMatchIDs,
+				teams: teamMatchIDs,
+				completion: completionMatchIDs
 			});
 		},
 		[ template ]
 	);
 
 	const clickRemove = () => {
-		fetchDeleteTasks();
-		setDataChanged(true);
+		console.log(matched);
+		// fetchDeleteTasks();
+		// setDataChanged(true);
 	};
 
-	const getTaskMatches = (regex) => {
+	const getTaskMatchIDs = (regex) => {
 		if (regex.length === 0) return '';
 		else {
 			try {
@@ -81,25 +82,23 @@ const BatchDeleteTasks = (props) => {
 				const filtered = props.rawTaskList.filter((el) => {
 					return el.task.match(reg);
 				});
-				return filtered;
+				return filtered.map((el) => el.id);
 			} catch (error) {
 				return 'Invalid Regex';
 			}
 		}
 	};
 
-	const getDateRangeMatches = (template) => {
+	const getDateRangeMatchIDs = (template) => {
 		const datesMatchIDs = filterListDate(template, rawTaskList).map((el) => el.id);
 		const deadlinesMatchIDs = filterListDeadline(template, rawTaskList).map((el) => el.id);
-		const matchIDs = getCommonElements(datesMatchIDs, deadlinesMatchIDs);
-		return rawTaskList.filter((el) => matchIDs.includes(el.id));
+		return getCommonElements(datesMatchIDs, deadlinesMatchIDs);
 	};
 
-	const getUrgencyMatches = (template) => {
+	const getUrgencyMatchIDs = (template) => {
 		const minMatchIDs = filterListMinUrgency(template, rawTaskList).map((el) => el.id);
 		const maxMatchIDs = filterListMaxUrgency(template, rawTaskList).map((el) => el.id);
-		const matchIDs = getCommonElements(minMatchIDs, maxMatchIDs);
-		return rawTaskList.filter((el) => matchIDs.includes(el.id));
+		return getCommonElements(minMatchIDs, maxMatchIDs);
 	};
 
 	return (
