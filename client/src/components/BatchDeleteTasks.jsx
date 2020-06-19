@@ -11,7 +11,8 @@ import {
 	finalContainerStyle,
 	dateRangeContainer,
 	dateContainer,
-	dateLabel
+	dateLabel,
+	resetDateButton
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
@@ -84,6 +85,7 @@ const BatchDeleteTasks = (props) => {
 						<div style={dateContainer}>
 							<div style={dateLabel}>Date:</div>
 							<DateSelect
+								style={{ zIndex: '20' }}
 								date={parseISOToDateObj(template.date)}
 								setDate={(val) =>
 									setTemplate({
@@ -91,16 +93,16 @@ const BatchDeleteTasks = (props) => {
 										date: parseDateObjToISO(val)
 									})}
 							/>
-							<button
+							<ColorButton
+								text={'Reset To First Date'}
 								onClick={() =>
 									setTemplate({ ...template, date: stripISODateOfTime(boundaryDates.date) })}
-							>
-								Reset To First Date
-							</button>
+							/>
 						</div>
 						<div style={dateContainer}>
 							<div style={dateLabel}>Deadline:</div>
 							<DateSelect
+								style={{ zIndex: '20' }}
 								date={parseISOToDateObj(template.deadline)}
 								setDate={(val) => {
 									setTemplate({
@@ -109,12 +111,11 @@ const BatchDeleteTasks = (props) => {
 									});
 								}}
 							/>
-							<button
+							<ColorButton
+								text={'Reset To Last Deadline'}
 								onClick={() =>
 									setTemplate({ ...template, deadline: stripISODateOfTime(boundaryDates.deadline) })}
-							>
-								Reset To Last Deadline
-							</button>
+							/>
 						</div>
 					</div>
 					<div style={errorMatchTextStyle}>
