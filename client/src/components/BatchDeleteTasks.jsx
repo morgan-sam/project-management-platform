@@ -29,6 +29,7 @@ import {
 	filterListTeams,
 	filterListCompletion
 } from 'processing/filterList';
+import { fetchDeleteTasks } from 'data/fetch';
 import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
 import { formatTeamsDropdownSelect } from 'processing/teams';
@@ -66,6 +67,11 @@ const BatchDeleteTasks = (props) => {
 		},
 		[ template ]
 	);
+
+	const clickRemove = () => {
+		fetchDeleteTasks();
+		setDataChanged(true);
+	};
 
 	const getTaskMatches = (regex) => {
 		if (regex.length === 0) return '';
@@ -267,7 +273,7 @@ const BatchDeleteTasks = (props) => {
 						</div>
 					</div>
 					<div style={finalContainerStyle}>
-						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
+						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => clickRemove()} />
 					</div>
 					<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 						×
