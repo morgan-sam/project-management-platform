@@ -99,7 +99,14 @@ const TaskManager = (props) => {
 				},
 				{
 					name: 'Delete Tasks',
-					action: () => setPopUp(<BatchDeleteTasks setPopUp={setPopUp} setDataChanged={setDataChanged} />)
+					action: () =>
+						setPopUp(
+							<BatchDeleteTasks
+								rawTaskList={rawTaskList}
+								setPopUp={setPopUp}
+								setDataChanged={setDataChanged}
+							/>
+						)
 				}
 			]
 		},
