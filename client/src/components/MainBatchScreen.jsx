@@ -9,7 +9,7 @@ import {
 	popUpWindowStyle,
 	subContainerStyle,
 	cancelButtonStyle,
-	errorTextStyle,
+	errorMatchTextStyle,
 	topRowStyle,
 	finalContainerStyle
 } from 'styling/popUp';
@@ -43,7 +43,7 @@ const MainBatchScreen = (props) => {
 						/>
 						<WizardButton onClick={() => setScreen('taskWizard')} />
 					</div>
-					<div style={errorTextStyle}>{errors.task}</div>
+					<div style={errorMatchTextStyle}>{errors.task}</div>
 				</div>
 				<div style={subContainerStyle}>
 					<div style={topRowStyle}>
@@ -60,7 +60,7 @@ const MainBatchScreen = (props) => {
 						/>
 						<WizardButton onClick={() => setScreen('dateWizard')} />
 					</div>
-					<div style={errorTextStyle}>{errors.date}</div>
+					<div style={errorMatchTextStyle}>{errors.date}</div>
 				</div>
 				<div style={subContainerStyle}>
 					<div style={topRowStyle}>
@@ -77,7 +77,7 @@ const MainBatchScreen = (props) => {
 						/>
 						<WizardButton onClick={() => setScreen('deadlineWizard')} />
 					</div>
-					<div style={errorTextStyle}>{errors.deadline}</div>
+					<div style={errorMatchTextStyle}>{errors.deadline}</div>
 				</div>
 				<div style={{ zIndex: '10' }}>
 					<DropdownWithLabel

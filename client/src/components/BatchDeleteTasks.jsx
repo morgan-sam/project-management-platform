@@ -6,7 +6,7 @@ import {
 	popUpWindowStyle,
 	subContainerStyle,
 	cancelButtonStyle,
-	errorTextStyle,
+	errorMatchTextStyle,
 	topRowStyle,
 	finalContainerStyle,
 	dateRangeContainer,
@@ -65,7 +65,7 @@ const BatchDeleteTasks = (props) => {
 								default={template.task}
 							/>
 						</div>
-						<div style={errorTextStyle}>
+						<div style={errorMatchTextStyle}>
 							{typeof matched.task === 'string' ? matched.task : `${matched.task.length} Matches`}
 						</div>
 					</div>
@@ -94,7 +94,7 @@ const BatchDeleteTasks = (props) => {
 							/>
 						</div>
 					</div>
-					<div style={errorTextStyle}>{`0 Matches`}</div>
+					<div style={errorMatchTextStyle}>{`0 Matches`}</div>
 					<div style={finalContainerStyle}>
 						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
 					</div>

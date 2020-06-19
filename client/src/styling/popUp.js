@@ -58,7 +58,7 @@ export const cancelButtonStyle = {
 	outline: 'none'
 };
 
-export const errorTextStyle = {
+export const errorMatchTextStyle = {
 	position: 'relative',
 	top: '1rem',
 	lineHeight: '0',
