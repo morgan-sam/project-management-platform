@@ -78,7 +78,11 @@ const BatchDeleteTasks = (props) => {
 							/>
 						</div>
 						<div style={errorMatchTextStyle}>
-							{typeof matched.task === 'string' ? matched.task : `${matched.task.length} Matches`}
+							{typeof matched.task === 'string' ? (
+								matched.task
+							) : (
+								`${matched.task.length}/${rawTaskList.length} Name Matches`
+							)}
 						</div>
 					</div>
 					<div style={dateRangeContainer}>
@@ -122,7 +126,7 @@ const BatchDeleteTasks = (props) => {
 						{matched.dateRange.length === rawTaskList.length ? (
 							''
 						) : (
-							`${matched.dateRange.length} Date Range Matches`
+							`${matched.dateRange.length}/${rawTaskList.length} Date Range Matches`
 						)}
 					</div>
 					<div style={finalContainerStyle}>
