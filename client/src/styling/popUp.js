@@ -73,3 +73,20 @@ export const topRowStyle = {
 export const finalContainerStyle = {
 	padding: '2.5rem'
 };
+
+export const dateRangeContainer = {
+	display: 'flex',
+	flexDirection: 'row'
+};
+
+export const dateContainer = {
+	margin: '1rem',
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	zIndex: '20'
+};
+
+export const dateLabel = {
+	margin: '1rem'
+};

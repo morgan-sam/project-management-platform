@@ -8,21 +8,30 @@ import {
 	cancelButtonStyle,
 	errorTextStyle,
 	topRowStyle,
-	finalContainerStyle
+	finalContainerStyle,
+	dateRangeContainer,
+	dateContainer,
+	dateLabel
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
+import DateSelect from 'components/DateSelect';
+import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
+import { getDayFromTodayAsISO } from 'data/dates';
 
 const BatchDeleteTasks = (props) => {
 	const { setDataChanged, setPopUp } = props;
 
 	const [ regex, setRegex ] = useState('');
 	const [ matched, setMatched ] = useState([]);
+	const [ template, setTemplate ] = useState({
+		date: parseISOToDateObj(getDayFromTodayAsISO(0)),
+		deadline: parseISOToDateObj(getDayFromTodayAsISO(14))
+	});
 	useEffect(
 		() => {
-			if (regex.length === 0) {
-				setMatched('');
-			} else {
+			if (regex.length === 0) setMatched('');
+			else {
 				try {
 					const reg = new RegExp(regex);
 					const filtered = props.rawTaskList.filter((el) => {
@@ -52,6 +61,31 @@ const BatchDeleteTasks = (props) => {
 						</div>
 						<div style={errorTextStyle}>
 							{typeof matched === 'string' ? matched : `${matched.length} Matches`}
+						</div>
+					</div>
+					<div style={dateRangeContainer}>
+						<div style={dateContainer}>
+							<div style={dateLabel}>Date:</div>
+							<DateSelect
+								date={template.date}
+								setDate={(val) =>
+									setTemplate({
+										...template,
+										date: val
+									})}
+							/>
+						</div>
+						<div style={dateContainer}>
+							<div style={dateLabel}>Deadline:</div>
+							<DateSelect
+								date={template.deadline}
+								setDate={(val) => {
+									setTemplate({
+										...template,
+										deadline: val
+									});
+								}}
+							/>
 						</div>
 					</div>
 					<div style={finalContainerStyle}>
