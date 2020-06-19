@@ -11,8 +11,7 @@ import {
 	finalContainerStyle,
 	dateRangeContainer,
 	dateContainer,
-	dateLabel,
-	resetDateButton
+	dateLabel
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
