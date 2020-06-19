@@ -52,8 +52,6 @@ const BatchDeleteTasks = (props) => {
 		}
 	};
 
-	console.log(matched);
-
 	return (
 		<div style={popUpPositionStyle}>
 			<div style={topContainerStyle}>
