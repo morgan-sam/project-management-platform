@@ -10,7 +10,8 @@ export const filterOptionsDefault = (taskList, active = null) => {
 			deadline: getDayFromTodayAsISO(14),
 			completion: 'all',
 			urgency: { min: 1, max: 5 },
-			teams: [ 'all' ]
+			teams: [ 'all' ],
+			teamMatch: 'AND'
 		};
 	else {
 		const boundaryDates = getBoundaryDates(taskList);
@@ -20,7 +21,8 @@ export const filterOptionsDefault = (taskList, active = null) => {
 			deadline: stripISODateOfTime(boundaryDates.deadline),
 			completion: 'all',
 			urgency: { min: 1, max: 5 },
-			teams: [ 'all' ]
+			teams: [ 'all' ],
+			teamMatch: 'AND'
 		};
 	}
 };

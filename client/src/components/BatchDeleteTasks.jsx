@@ -16,7 +16,7 @@ import {
 	autoContainerStyle
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
-import Checkbox from 'components/Checkbox';
+import MatchType from 'components/MatchType';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
@@ -198,29 +198,10 @@ const BatchDeleteTasks = (props) => {
 								style={{ width: '8rem', zIndex: '10', margin: '1rem' }}
 							/>
 							<div style={{ display: 'flex', flexDirection: 'column', width: '8rem' }}>
-								<div
-									style={{
-										display: 'grid',
-										gridGap: '0.5rem',
-										gridTemplateColumns: 'repeat(2, 1fr)',
-										gridTemplateRows: 'repeat(3, 1fr)',
-										margin: '1rem'
-									}}
-								>
-									<div style={{ gridArea: '1 / 1 / 2 / 3' }}>Match Type:</div>
-									<div style={{ gridArea: '2 / 1 / 3 / 2' }}>AND:</div>
-									<Checkbox
-										style={{ gridArea: '2 / 2 / 3 / 3' }}
-										default={template.teamMatch === 'AND'}
-										onChange={() => setTemplate({ ...template, teamMatch: 'AND' })}
-									/>
-									<div style={{ gridArea: '3 / 1 / 4 / 2' }}>OR:</div>
-									<Checkbox
-										style={{ gridArea: '3 / 2 / 4 / 3' }}
-										default={template.teamMatch === 'OR'}
-										onChange={() => setTemplate({ ...template, teamMatch: 'OR' })}
-									/>
-								</div>
+								<MatchType
+									default={template.teamMatch}
+									onChange={(val) => setTemplate({ ...template, teamMatch: val })}
+								/>
 								<div style={{ color: 'rgb(193, 45, 41)', fontSize: '0.8rem', height: '1rem' }}>
 									{template.teams.includes('all') ? (
 										''

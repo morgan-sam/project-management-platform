@@ -29,9 +29,11 @@ export const filterListMaxUrgency = (filterOptions, list) =>
 	list.filter((el) => filterOptions.urgency.max >= el.urgency);
 
 export const filterListTeams = (filterOptions, list) => {
+	const { teams, teamMatch } = filterOptions;
 	return list.filter((el) => {
-		if (filterOptions.teams.includes('all')) return true;
-		else if (el.teams.some((team) => filterOptions.teams.includes(team))) return true;
+		if (teams.includes('all')) return true;
+		else if (teamMatch === 'AND' && el.teams.every((team) => teams.includes(team))) return true;
+		else if (teamMatch === 'OR' && el.teams.some((team) => teams.includes(team))) return true;
 		else return false;
 	});
 };

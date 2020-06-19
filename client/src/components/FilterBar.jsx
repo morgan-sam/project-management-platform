@@ -5,6 +5,7 @@ import DateRangeSelect from 'components/DateRangeSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
+import MatchType from 'components/MatchType';
 import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/dates';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
@@ -20,6 +21,7 @@ const FilterBar = (props) => {
 	});
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
+	console.log(props.filterOptions.teamMatch);
 	return (
 		<div
 			className="filterBar"
@@ -74,6 +76,14 @@ const FilterBar = (props) => {
 				selected={filterOptions.teams}
 				style={{ ...filterBarItemStyle, width: '8rem', zIndex: '10' }}
 				onOpenChange={(val) => setDropdownsOpen({ ...dropdownsOpen, teams: val })}
+			/>
+			<MatchType
+				default={props.filterOptions.teamMatch}
+				onChange={(val) =>
+					props.setFilterOptions({
+						...props.filterOptions,
+						teamMatch: val
+					})}
 			/>
 			<CompletionSelect
 				{...props}
