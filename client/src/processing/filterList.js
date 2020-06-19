@@ -38,7 +38,7 @@ export const filterListTeams = (filterOptions, list) => {
 	});
 };
 
-const filterListCompletion = (filterOptions, list) => {
+export const filterListCompletion = (filterOptions, list) => {
 	return list.filter((el) => {
 		if (filterOptions.completion === 'all') return true;
 		else if (filterOptions.completion === 'complete' && el.completed) return true;

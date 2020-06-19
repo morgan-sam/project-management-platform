@@ -26,7 +26,8 @@ import {
 	filterListDeadline,
 	filterListMinUrgency,
 	filterListMaxUrgency,
-	filterListTeams
+	filterListTeams,
+	filterListCompletion
 } from 'processing/filterList';
 import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
@@ -53,8 +54,15 @@ const BatchDeleteTasks = (props) => {
 			const taskMatches = getTaskMatches(template.task);
 			const dateRangeMatches = getDateRangeMatches(template);
 			const urgencyMatches = getUrgencyMatches(template);
-			const teamMatches = getTeamMatches(template, rawTaskList);
-			setMatched({ task: taskMatches, dateRange: dateRangeMatches, urgency: urgencyMatches, teams: teamMatches });
+			const teamMatches = filterListTeams(template, rawTaskList);
+			const completionMatches = filterListCompletion(template, rawTaskList);
+			setMatched({
+				task: taskMatches,
+				dateRange: dateRangeMatches,
+				urgency: urgencyMatches,
+				teams: teamMatches,
+				completion: completionMatches
+			});
 		},
 		[ template ]
 	);
@@ -86,11 +94,6 @@ const BatchDeleteTasks = (props) => {
 		const maxMatchIDs = filterListMaxUrgency(template, rawTaskList).map((el) => el.id);
 		const matchIDs = getCommonElements(minMatchIDs, maxMatchIDs);
 		return rawTaskList.filter((el) => matchIDs.includes(el.id));
-	};
-
-	const getTeamMatches = (template) => {
-		const teams = filterListTeams(template, rawTaskList);
-		return teams;
 	};
 
 	return (
@@ -140,6 +143,7 @@ const BatchDeleteTasks = (props) => {
 							style={{
 								color: 'rgb(193, 45, 41)',
 								fontSize: '0.8rem',
+								height: '1rem',
 								textAlign: 'center'
 							}}
 						>
@@ -153,11 +157,15 @@ const BatchDeleteTasks = (props) => {
 							style={{
 								color: 'rgb(193, 45, 41)',
 								fontSize: '0.8rem',
-								padding: '1rem',
+								height: '1rem',
 								textAlign: 'center'
 							}}
 						>
-							{/* {'1234567890'} */}
+							{template.completion.includes('all') ? (
+								''
+							) : (
+								`${matched.completion.length}/${rawTaskList.length} Completion Matches`
+							)}
 						</div>
 					</div>
 					<div style={dateTopContainer}>
