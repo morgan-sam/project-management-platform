@@ -91,6 +91,12 @@ const BatchDeleteTasks = (props) => {
 										date: parseDateObjToISO(val)
 									})}
 							/>
+							<button
+								onClick={() =>
+									setTemplate({ ...template, date: stripISODateOfTime(boundaryDates.date) })}
+							>
+								Reset To First Date
+							</button>
 						</div>
 						<div style={dateContainer}>
 							<div style={dateLabel}>Deadline:</div>
@@ -103,6 +109,12 @@ const BatchDeleteTasks = (props) => {
 									});
 								}}
 							/>
+							<button
+								onClick={() =>
+									setTemplate({ ...template, deadline: stripISODateOfTime(boundaryDates.deadline) })}
+							>
+								Reset To Last Deadline
+							</button>
 						</div>
 					</div>
 					<div style={errorMatchTextStyle}>
