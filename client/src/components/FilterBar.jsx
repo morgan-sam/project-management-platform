@@ -52,6 +52,15 @@ const FilterBar = (props) => {
 			<UrgencyRangeSelect
 				{...props}
 				style={filterBarItemStyle}
+				onChange={(min, max) =>
+					props.setFilterOptions({
+						...props.filterOptions,
+						urgency: {
+							min,
+							max
+						}
+					})}
+				urgency={props.filterOptions.urgency}
 				setOverflowHidden={(val) => setDropdownsOpen({ ...dropdownsOpen, urgency: val })}
 			/>
 			<Dropdown

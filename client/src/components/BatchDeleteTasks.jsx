@@ -16,6 +16,7 @@ import {
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
+import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import { parseISOToDateObj, parseDateObjToISO, stripISODateOfTime } from 'processing/dates';
 import { filterListDate, filterListDeadline } from 'processing/filterList';
 import { getBoundaryDates } from 'data/dates';
@@ -28,7 +29,8 @@ const BatchDeleteTasks = (props) => {
 	const [ template, setTemplate ] = useState({
 		task: '',
 		date: stripISODateOfTime(boundaryDates.date),
-		deadline: stripISODateOfTime(boundaryDates.deadline)
+		deadline: stripISODateOfTime(boundaryDates.deadline),
+		urgency: { min: 1, max: 5 }
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [] });
 
@@ -120,6 +122,17 @@ const BatchDeleteTasks = (props) => {
 									setTemplate({ ...template, deadline: stripISODateOfTime(boundaryDates.deadline) })}
 							/>
 						</div>
+					</div>
+
+					<div style={subContainerStyle}>
+						<UrgencyRangeSelect
+							style={{
+								display: 'flex',
+								zIndex: '20'
+							}}
+							urgency={template.urgency}
+							onChange={(min, max) => setTemplate({ ...template, urgency: { min, max } })}
+						/>
 					</div>
 					<div style={errorMatchTextStyle}>
 						{matched.dateRange.length === rawTaskList.length ? (

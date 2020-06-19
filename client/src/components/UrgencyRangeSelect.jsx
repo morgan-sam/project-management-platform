@@ -2,26 +2,17 @@ import React from 'react';
 import Dropdown from 'components/Dropdown';
 
 const UrgencyRangeSelect = (props) => {
+	const { onChange, urgency } = props;
 	const elStyle = { margin: '0 0.3rem' };
 
-	const setParentUrgencyOptions = (min, max) => {
-		props.setFilterOptions({
-			...props.filterOptions,
-			urgency: {
-				min,
-				max
-			}
-		});
-	};
-
 	const setMinUrgency = (min) => {
-		if (min > props.filterOptions.urgency.max) setParentUrgencyOptions(min, min);
-		else setParentUrgencyOptions(min, props.filterOptions.urgency.max);
+		if (min > urgency.max) onChange(min, min);
+		else onChange(min, urgency.max);
 	};
 
 	const setMaxUrgency = (max) => {
-		if (max < props.filterOptions.urgency.min) setParentUrgencyOptions(max, max);
-		else setParentUrgencyOptions(props.filterOptions.urgency.min, max);
+		if (max < urgency.min) onChange(max, max);
+		else onChange(urgency.min, max);
 	};
 
 	return (
@@ -36,7 +27,7 @@ const UrgencyRangeSelect = (props) => {
 						...elStyle,
 						width: '2rem'
 					}}
-					selected={props.filterOptions.urgency.min}
+					selected={urgency.min}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setMinUrgency(val)}
 					onOpenChange={props.setOverflowHidden}
@@ -48,7 +39,7 @@ const UrgencyRangeSelect = (props) => {
 						...elStyle,
 						width: '2rem'
 					}}
-					selected={props.filterOptions.urgency.max}
+					selected={urgency.max}
 					options={[ 1, 2, 3, 4, 5 ]}
 					onClick={(val) => setMaxUrgency(val)}
 					onOpenChange={props.setOverflowHidden}
