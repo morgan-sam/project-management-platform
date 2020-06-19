@@ -19,10 +19,13 @@ import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
+import Dropdown from 'components/Dropdown';
 import { parseISOToDateObj, parseDateObjToISO, stripISODateOfTime } from 'processing/dates';
 import { filterListDate, filterListDeadline, filterListMinUrgency, filterListMaxUrgency } from 'processing/filterList';
 import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
+import { formatTeamsDropdownSelect } from 'processing/teams';
+import { getTaskListTeams } from 'processing/teams';
 
 const BatchDeleteTasks = (props) => {
 	const { setDataChanged, setPopUp, rawTaskList } = props;
@@ -32,7 +35,8 @@ const BatchDeleteTasks = (props) => {
 		task: '',
 		date: stripISODateOfTime(boundaryDates.date),
 		deadline: stripISODateOfTime(boundaryDates.deadline),
-		urgency: { min: 1, max: 5 }
+		urgency: { min: 1, max: 5 },
+		teams: []
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 
@@ -145,22 +149,41 @@ const BatchDeleteTasks = (props) => {
 							)}
 						</div>
 					</div>
-					<div style={autoContainerStyle}>
-						<UrgencyRangeSelect
-							style={{
-								display: 'flex',
-								zIndex: '20',
-								padding: '1rem'
-							}}
-							urgency={template.urgency}
-							onChange={(min, max) => setTemplate({ ...template, urgency: { min, max } })}
-						/>
-						<div style={errorMatchTextStyle}>
-							{matched.urgency.length === rawTaskList.length ? (
-								''
-							) : (
-								`${matched.urgency.length}/${rawTaskList.length} Urgency Matches`
-							)}
+					<div style={{ display: 'flex' }}>
+						<div style={autoContainerStyle}>
+							<UrgencyRangeSelect
+								style={{
+									display: 'flex',
+									zIndex: '20',
+									padding: '1rem'
+								}}
+								urgency={template.urgency}
+								onChange={(min, max) => setTemplate({ ...template, urgency: { min, max } })}
+							/>
+							<div style={errorMatchTextStyle}>
+								{matched.urgency.length === rawTaskList.length ? (
+									''
+								) : (
+									`${matched.urgency.length}/${rawTaskList.length} Urgency Matches`
+								)}
+							</div>
+						</div>
+						<div style={{ display: 'flex', alignItems: 'center' }}>
+							<Dropdown
+								type={'checkbox'}
+								label={'Teams'}
+								onClick={(val) => {
+									setTemplate({
+										...template,
+										teams: formatTeamsDropdownSelect(val, template)
+									});
+								}}
+								options={getTaskListTeams(rawTaskList)}
+								filterOptions={template}
+								selected={template.teams}
+								style={{ width: '8rem', zIndex: '10' }}
+							/>
+							<div style={{ padding: '1rem', color: 'red' }}>9/10</div>
 						</div>
 					</div>
 					<div style={finalContainerStyle}>
