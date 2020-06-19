@@ -16,6 +16,7 @@ import {
 	autoContainerStyle
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
+import Checkbox from 'components/Checkbox';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
@@ -42,7 +43,8 @@ const BatchDeleteTasks = (props) => {
 		date: stripISODateOfTime(boundaryDates.date),
 		deadline: stripISODateOfTime(boundaryDates.deadline),
 		urgency: { min: 1, max: 5 },
-		teams: [ 'all' ]
+		teams: [ 'all' ],
+		teamMatch: 'AND'
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 
@@ -193,8 +195,31 @@ const BatchDeleteTasks = (props) => {
 								options={getTaskListTeams(rawTaskList)}
 								filterOptions={template}
 								selected={template.teams}
-								style={{ width: '8rem', zIndex: '10' }}
+								style={{ width: '8rem', zIndex: '10', margin: '1rem' }}
 							/>
+							<div
+								style={{
+									display: 'grid',
+									gridGap: '0.5rem',
+									gridTemplateColumns: 'repeat(2, 1fr)',
+									gridTemplateRows: 'repeat(3, 1fr)',
+									margin: '1rem'
+								}}
+							>
+								<div style={{ gridArea: '1 / 1 / 2 / 3' }}>Match Type:</div>
+								<div style={{ gridArea: '2 / 1 / 3 / 2' }}>AND:</div>
+								<Checkbox
+									style={{ gridArea: '2 / 2 / 3 / 3' }}
+									default={template.teamMatch === 'AND'}
+									onChange={() => setTemplate({ ...template, teamMatch: 'AND' })}
+								/>
+								<div style={{ gridArea: '3 / 1 / 4 / 2' }}>OR:</div>
+								<Checkbox
+									style={{ gridArea: '3 / 2 / 4 / 3' }}
+									default={template.teamMatch === 'OR'}
+									onChange={() => setTemplate({ ...template, teamMatch: 'OR' })}
+								/>
+							</div>
 							<div style={{ padding: '1rem', color: 'red' }}>
 								{template.teams.includes('all') ? (
 									''
