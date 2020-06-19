@@ -16,24 +16,27 @@ import {
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
-import { parseISOToDateObj } from 'processing/dates';
-import { getDayFromTodayAsISO } from 'data/dates';
+import { parseISOToDateObj, parseDateObjToISO, stripISODateOfTime } from 'processing/dates';
+import { filterListDate, filterListDeadline } from 'processing/filterList';
+import { getBoundaryDates } from 'data/dates';
+import { getCommonElements } from 'processing/utility';
 
 const BatchDeleteTasks = (props) => {
-	const { setDataChanged, setPopUp } = props;
+	const { setDataChanged, setPopUp, rawTaskList } = props;
 
+	const boundaryDates = getBoundaryDates(rawTaskList);
 	const [ template, setTemplate ] = useState({
 		task: '',
-		date: parseISOToDateObj(getDayFromTodayAsISO(0)),
-		deadline: parseISOToDateObj(getDayFromTodayAsISO(14))
+		date: stripISODateOfTime(boundaryDates.date),
+		deadline: stripISODateOfTime(boundaryDates.deadline)
 	});
-	const [ matched, setMatched ] = useState({ task: [] });
+	const [ matched, setMatched ] = useState({ task: [], dateRange: [] });
 
 	useEffect(
 		() => {
 			const taskMatches = getTaskMatches(template.task);
-
-			setMatched({ task: taskMatches });
+			const dateRangeMatches = getDateRangeMatches(template);
+			setMatched({ task: taskMatches, dateRange: dateRangeMatches });
 		},
 		[ template ]
 	);
@@ -51,6 +54,13 @@ const BatchDeleteTasks = (props) => {
 				return 'Invalid Regex';
 			}
 		}
+	};
+
+	const getDateRangeMatches = () => {
+		const datesMatchIDs = filterListDate(template, rawTaskList).map((el) => el.id);
+		const deadlinesMatchIDs = filterListDeadline(template, rawTaskList).map((el) => el.id);
+		const matchIDs = getCommonElements(datesMatchIDs, deadlinesMatchIDs);
+		return rawTaskList.filter((el) => matchIDs.includes(el.id));
 	};
 
 	return (
@@ -74,28 +84,34 @@ const BatchDeleteTasks = (props) => {
 						<div style={dateContainer}>
 							<div style={dateLabel}>Date:</div>
 							<DateSelect
-								date={template.date}
+								date={parseISOToDateObj(template.date)}
 								setDate={(val) =>
 									setTemplate({
 										...template,
-										date: val
+										date: parseDateObjToISO(val)
 									})}
 							/>
 						</div>
 						<div style={dateContainer}>
 							<div style={dateLabel}>Deadline:</div>
 							<DateSelect
-								date={template.deadline}
+								date={parseISOToDateObj(template.deadline)}
 								setDate={(val) => {
 									setTemplate({
 										...template,
-										deadline: val
+										deadline: parseDateObjToISO(val)
 									});
 								}}
 							/>
 						</div>
 					</div>
-					<div style={errorMatchTextStyle}>{`0 Matches`}</div>
+					<div style={errorMatchTextStyle}>
+						{typeof matched.dateRange === 'string' ? (
+							matched.dateRange
+						) : (
+							`${matched.dateRange.length} Matches`
+						)}
+					</div>
 					<div style={finalContainerStyle}>
 						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
 					</div>

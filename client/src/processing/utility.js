@@ -32,3 +32,9 @@ export const combineRemoveBothDuplicates = (arr1, arr2) => {
 	const filterTwo = arr2.filter((el) => !arr1.includes(el));
 	return [ ...filterOne, ...filterTwo ];
 };
+
+export const getCommonElements = (arr1, arr2) => {
+	const filterOne = arr1.filter((el) => arr2.includes(el));
+	const filterTwo = arr2.filter((el) => arr1.includes(el));
+	return [ ...new Set([ ...filterOne, ...filterTwo ]) ];
+};

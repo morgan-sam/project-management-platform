@@ -12,9 +12,9 @@ export const filterList = (filterOptions, taskList) => {
 	return filteredList;
 };
 
-const filterListDate = (filterOptions, list) => list.filter((el) => filterOptions.date <= el.date);
+export const filterListDate = (filterOptions, list) => list.filter((el) => filterOptions.date <= el.date);
 
-const filterListDeadline = (filterOptions, list) => {
+export const filterListDeadline = (filterOptions, list) => {
 	return list.filter((el) => {
 		const filterDeadline = filterOptions.deadline.substring(0, 10);
 		const elDeadline = el.deadline.substring(0, 10);
