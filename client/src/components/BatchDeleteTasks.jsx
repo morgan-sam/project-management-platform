@@ -197,35 +197,37 @@ const BatchDeleteTasks = (props) => {
 								selected={template.teams}
 								style={{ width: '8rem', zIndex: '10', margin: '1rem' }}
 							/>
-							<div
-								style={{
-									display: 'grid',
-									gridGap: '0.5rem',
-									gridTemplateColumns: 'repeat(2, 1fr)',
-									gridTemplateRows: 'repeat(3, 1fr)',
-									margin: '1rem'
-								}}
-							>
-								<div style={{ gridArea: '1 / 1 / 2 / 3' }}>Match Type:</div>
-								<div style={{ gridArea: '2 / 1 / 3 / 2' }}>AND:</div>
-								<Checkbox
-									style={{ gridArea: '2 / 2 / 3 / 3' }}
-									default={template.teamMatch === 'AND'}
-									onChange={() => setTemplate({ ...template, teamMatch: 'AND' })}
-								/>
-								<div style={{ gridArea: '3 / 1 / 4 / 2' }}>OR:</div>
-								<Checkbox
-									style={{ gridArea: '3 / 2 / 4 / 3' }}
-									default={template.teamMatch === 'OR'}
-									onChange={() => setTemplate({ ...template, teamMatch: 'OR' })}
-								/>
-							</div>
-							<div style={{ padding: '1rem', color: 'red' }}>
-								{template.teams.includes('all') ? (
-									''
-								) : (
-									`${matched.teams.length}/${rawTaskList.length} Team Matches`
-								)}
+							<div style={{ display: 'flex', flexDirection: 'column', width: '8rem' }}>
+								<div
+									style={{
+										display: 'grid',
+										gridGap: '0.5rem',
+										gridTemplateColumns: 'repeat(2, 1fr)',
+										gridTemplateRows: 'repeat(3, 1fr)',
+										margin: '1rem'
+									}}
+								>
+									<div style={{ gridArea: '1 / 1 / 2 / 3' }}>Match Type:</div>
+									<div style={{ gridArea: '2 / 1 / 3 / 2' }}>AND:</div>
+									<Checkbox
+										style={{ gridArea: '2 / 2 / 3 / 3' }}
+										default={template.teamMatch === 'AND'}
+										onChange={() => setTemplate({ ...template, teamMatch: 'AND' })}
+									/>
+									<div style={{ gridArea: '3 / 1 / 4 / 2' }}>OR:</div>
+									<Checkbox
+										style={{ gridArea: '3 / 2 / 4 / 3' }}
+										default={template.teamMatch === 'OR'}
+										onChange={() => setTemplate({ ...template, teamMatch: 'OR' })}
+									/>
+								</div>
+								<div style={{ color: 'red', fontSize: '0.8rem', height: '1rem' }}>
+									{template.teams.includes('all') ? (
+										''
+									) : (
+										`${matched.teams.length}/${rawTaskList.length} Team Matches`
+									)}
+								</div>
 							</div>
 						</div>
 					</div>
