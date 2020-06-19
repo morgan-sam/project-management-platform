@@ -21,7 +21,13 @@ import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import Dropdown from 'components/Dropdown';
 import { parseISOToDateObj, parseDateObjToISO, stripISODateOfTime } from 'processing/dates';
-import { filterListDate, filterListDeadline, filterListMinUrgency, filterListMaxUrgency } from 'processing/filterList';
+import {
+	filterListDate,
+	filterListDeadline,
+	filterListMinUrgency,
+	filterListMaxUrgency,
+	filterListTeams
+} from 'processing/filterList';
 import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
 import { formatTeamsDropdownSelect } from 'processing/teams';
@@ -36,7 +42,7 @@ const BatchDeleteTasks = (props) => {
 		date: stripISODateOfTime(boundaryDates.date),
 		deadline: stripISODateOfTime(boundaryDates.deadline),
 		urgency: { min: 1, max: 5 },
-		teams: []
+		teams: [ 'all' ]
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 
@@ -45,7 +51,8 @@ const BatchDeleteTasks = (props) => {
 			const taskMatches = getTaskMatches(template.task);
 			const dateRangeMatches = getDateRangeMatches(template);
 			const urgencyMatches = getUrgencyMatches(template);
-			setMatched({ task: taskMatches, dateRange: dateRangeMatches, urgency: urgencyMatches });
+			const teamMatches = getTeamMatches(template, rawTaskList);
+			setMatched({ task: taskMatches, dateRange: dateRangeMatches, urgency: urgencyMatches, teams: teamMatches });
 		},
 		[ template ]
 	);
@@ -77,6 +84,11 @@ const BatchDeleteTasks = (props) => {
 		const maxMatchIDs = filterListMaxUrgency(template, rawTaskList).map((el) => el.id);
 		const matchIDs = getCommonElements(minMatchIDs, maxMatchIDs);
 		return rawTaskList.filter((el) => matchIDs.includes(el.id));
+	};
+
+	const getTeamMatches = (template) => {
+		const teams = filterListTeams(template, rawTaskList);
+		return teams;
 	};
 
 	return (
@@ -183,7 +195,13 @@ const BatchDeleteTasks = (props) => {
 								selected={template.teams}
 								style={{ width: '8rem', zIndex: '10' }}
 							/>
-							<div style={{ padding: '1rem', color: 'red' }}>9/10</div>
+							<div style={{ padding: '1rem', color: 'red' }}>
+								{template.teams.includes('all') ? (
+									''
+								) : (
+									`${matched.teams.length}/${rawTaskList.length} Team Matches`
+								)}
+							</div>
 						</div>
 					</div>
 					<div style={finalContainerStyle}>

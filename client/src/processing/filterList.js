@@ -28,7 +28,7 @@ export const filterListMinUrgency = (filterOptions, list) =>
 export const filterListMaxUrgency = (filterOptions, list) =>
 	list.filter((el) => filterOptions.urgency.max >= el.urgency);
 
-const filterListTeams = (filterOptions, list) => {
+export const filterListTeams = (filterOptions, list) => {
 	return list.filter((el) => {
 		if (filterOptions.teams.includes('all')) return true;
 		else if (el.teams.some((team) => filterOptions.teams.includes(team))) return true;
