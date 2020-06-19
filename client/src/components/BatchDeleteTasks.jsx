@@ -4,7 +4,6 @@ import {
 	popUpPositionStyle,
 	topContainerStyle,
 	popUpWindowStyle,
-	subContainerStyle,
 	cancelButtonStyle,
 	errorMatchTextStyle,
 	topRowStyle,
@@ -44,7 +43,8 @@ const BatchDeleteTasks = (props) => {
 		deadline: stripISODateOfTime(boundaryDates.deadline),
 		urgency: { min: 1, max: 5 },
 		teams: [ 'all' ],
-		teamMatch: 'AND'
+		teamMatch: 'AND',
+		completion: 'all'
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 
@@ -98,20 +98,66 @@ const BatchDeleteTasks = (props) => {
 			<div style={topContainerStyle}>
 				<div style={popUpWindowStyle}>
 					<div style={titleStyle}>Batch Delete Tasks</div>
-					<div style={autoContainerStyle}>
-						<div style={topRowStyle}>
-							<InputFormWithLabel
-								label={'Task Regex'}
-								onChange={(val) => setTemplate({ ...template, task: val })}
-								default={template.task}
+					<div
+						style={{
+							display: 'grid',
+							gridTemplateColumns: 'repeat(2, 1fr)',
+							gridTemplateRows: 'repeat(2, 1fr)',
+							justifyContent: 'center',
+							alignItems: 'center',
+							marginTop: '2rem',
+							zIndex: '22'
+						}}
+					>
+						<InputFormWithLabel
+							label={'Task Regex'}
+							onChange={(val) => setTemplate({ ...template, task: val })}
+							default={template.task}
+						/>
+						<div
+							style={{
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								flexDirection: 'row'
+							}}
+						>
+							<div>Completion: </div>
+							<Dropdown
+								onClick={(val) => {
+									setTemplate({
+										...template,
+										completion: val
+									});
+								}}
+								options={[ 'all', 'complete', 'incomplete' ]}
+								filterOptions={template}
+								selected={template.completion}
+								style={{ width: '8rem', zIndex: '21', margin: '1rem' }}
 							/>
 						</div>
-						<div style={errorMatchTextStyle}>
+						<div
+							style={{
+								color: 'rgb(193, 45, 41)',
+								fontSize: '0.8rem',
+								textAlign: 'center'
+							}}
+						>
 							{typeof matched.task === 'string' ? (
 								matched.task
 							) : (
 								`${matched.task.length}/${rawTaskList.length} Name Matches`
 							)}
+						</div>
+						<div
+							style={{
+								color: 'rgb(193, 45, 41)',
+								fontSize: '0.8rem',
+								padding: '1rem',
+								textAlign: 'center'
+							}}
+						>
+							{/* {'1234567890'} */}
 						</div>
 					</div>
 					<div style={dateTopContainer}>
@@ -195,7 +241,7 @@ const BatchDeleteTasks = (props) => {
 								options={getTaskListTeams(rawTaskList)}
 								filterOptions={template}
 								selected={template.teams}
-								style={{ width: '8rem', zIndex: '10', margin: '1rem' }}
+								style={{ width: '8rem', zIndex: '18', margin: '1rem' }}
 							/>
 							<div style={{ display: 'flex', flexDirection: 'column', width: '8rem' }}>
 								<MatchType
