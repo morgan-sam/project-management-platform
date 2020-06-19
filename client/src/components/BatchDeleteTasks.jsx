@@ -119,10 +119,10 @@ const BatchDeleteTasks = (props) => {
 						</div>
 					</div>
 					<div style={errorMatchTextStyle}>
-						{typeof matched.dateRange === 'string' ? (
-							matched.dateRange
+						{matched.dateRange.length === rawTaskList.length ? (
+							''
 						) : (
-							`${matched.dateRange.length} Matches`
+							`${matched.dateRange.length} Date Range Matches`
 						)}
 					</div>
 					<div style={finalContainerStyle}>
