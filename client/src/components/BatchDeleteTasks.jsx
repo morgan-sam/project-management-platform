@@ -221,7 +221,7 @@ const BatchDeleteTasks = (props) => {
 										onChange={() => setTemplate({ ...template, teamMatch: 'OR' })}
 									/>
 								</div>
-								<div style={{ color: 'red', fontSize: '0.8rem', height: '1rem' }}>
+								<div style={{ color: 'rgb(193, 45, 41)', fontSize: '0.8rem', height: '1rem' }}>
 									{template.teams.includes('all') ? (
 										''
 									) : (
