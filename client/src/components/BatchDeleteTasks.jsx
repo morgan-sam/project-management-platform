@@ -22,29 +22,37 @@ import { getDayFromTodayAsISO } from 'data/dates';
 const BatchDeleteTasks = (props) => {
 	const { setDataChanged, setPopUp } = props;
 
-	const [ regex, setRegex ] = useState('');
-	const [ matched, setMatched ] = useState([]);
 	const [ template, setTemplate ] = useState({
+		task: '',
 		date: parseISOToDateObj(getDayFromTodayAsISO(0)),
 		deadline: parseISOToDateObj(getDayFromTodayAsISO(14))
 	});
+	const [ matched, setMatched ] = useState({ task: [] });
+
 	useEffect(
 		() => {
-			if (regex.length === 0) setMatched('');
-			else {
-				try {
-					const reg = new RegExp(regex);
-					const filtered = props.rawTaskList.filter((el) => {
-						return el.task.match(reg);
-					});
-					setMatched(filtered);
-				} catch (error) {
-					setMatched('Invalid Regex');
-				}
-			}
+			const taskMatches = getTaskMatches(template.task);
+			setMatched({ task: taskMatches });
 		},
-		[ regex ]
+		[ template ]
 	);
+
+	const getTaskMatches = (regex) => {
+		if (regex.length === 0) return '';
+		else {
+			try {
+				const reg = new RegExp(regex);
+				const filtered = props.rawTaskList.filter((el) => {
+					return el.task.match(reg);
+				});
+				return filtered;
+			} catch (error) {
+				return 'Invalid Regex';
+			}
+		}
+	};
+
+	console.log(matched);
 
 	return (
 		<div style={popUpPositionStyle}>
@@ -55,12 +63,12 @@ const BatchDeleteTasks = (props) => {
 						<div style={topRowStyle}>
 							<InputFormWithLabel
 								label={'Task Regex'}
-								onChange={(val) => setRegex(val)}
-								default={regex}
+								onChange={(val) => setTemplate({ ...template, task: val })}
+								default={template.task}
 							/>
 						</div>
 						<div style={errorTextStyle}>
-							{typeof matched === 'string' ? matched : `${matched.length} Matches`}
+							{typeof matched.task === 'string' ? matched.task : `${matched.task.length} Matches`}
 						</div>
 					</div>
 					<div style={dateRangeContainer}>
@@ -88,6 +96,7 @@ const BatchDeleteTasks = (props) => {
 							/>
 						</div>
 					</div>
+					<div style={errorTextStyle}>{`0 Matches`}</div>
 					<div style={finalContainerStyle}>
 						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
 					</div>
