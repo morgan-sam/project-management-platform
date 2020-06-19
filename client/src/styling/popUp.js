@@ -98,3 +98,11 @@ export const dateContainer = {
 export const dateLabel = {
 	marginBottom: '1rem'
 };
+
+export const autoContainerStyle = {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
+	justifyContent: 'center',
+	margin: '1rem'
+};

@@ -12,7 +12,8 @@ import {
 	dateTopContainer,
 	dateRangeContainer,
 	dateContainer,
-	dateLabel
+	dateLabel,
+	autoContainerStyle
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
@@ -33,13 +34,14 @@ const BatchDeleteTasks = (props) => {
 		deadline: stripISODateOfTime(boundaryDates.deadline),
 		urgency: { min: 1, max: 5 }
 	});
-	const [ matched, setMatched ] = useState({ task: [], dateRange: [] });
+	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 
 	useEffect(
 		() => {
 			const taskMatches = getTaskMatches(template.task);
 			const dateRangeMatches = getDateRangeMatches(template);
-			setMatched({ task: taskMatches, dateRange: dateRangeMatches });
+			const urgencyMatches = getUrgencyMatches(template);
+			setMatched({ task: taskMatches, dateRange: dateRangeMatches, urgency: urgencyMatches });
 		},
 		[ template ]
 	);
@@ -59,10 +61,17 @@ const BatchDeleteTasks = (props) => {
 		}
 	};
 
-	const getDateRangeMatches = () => {
+	const getDateRangeMatches = (template) => {
 		const datesMatchIDs = filterListDate(template, rawTaskList).map((el) => el.id);
 		const deadlinesMatchIDs = filterListDeadline(template, rawTaskList).map((el) => el.id);
 		const matchIDs = getCommonElements(datesMatchIDs, deadlinesMatchIDs);
+		return rawTaskList.filter((el) => matchIDs.includes(el.id));
+	};
+
+	const getUrgencyMatches = (template) => {
+		const minMatchIDs = filterListMinUrgency(template, rawTaskList).map((el) => el.id);
+		const maxMatchIDs = filterListMaxUrgency(template, rawTaskList).map((el) => el.id);
+		const matchIDs = getCommonElements(minMatchIDs, maxMatchIDs);
 		return rawTaskList.filter((el) => matchIDs.includes(el.id));
 	};
 
@@ -71,7 +80,7 @@ const BatchDeleteTasks = (props) => {
 			<div style={topContainerStyle}>
 				<div style={popUpWindowStyle}>
 					<div style={titleStyle}>Batch Delete Tasks</div>
-					<div style={subContainerStyle}>
+					<div style={autoContainerStyle}>
 						<div style={topRowStyle}>
 							<InputFormWithLabel
 								label={'Task Regex'}
@@ -136,16 +145,23 @@ const BatchDeleteTasks = (props) => {
 							)}
 						</div>
 					</div>
-
-					<div style={subContainerStyle}>
+					<div style={autoContainerStyle}>
 						<UrgencyRangeSelect
 							style={{
 								display: 'flex',
-								zIndex: '20'
+								zIndex: '20',
+								padding: '1rem'
 							}}
 							urgency={template.urgency}
 							onChange={(min, max) => setTemplate({ ...template, urgency: { min, max } })}
 						/>
+						<div style={errorMatchTextStyle}>
+							{matched.urgency.length === rawTaskList.length ? (
+								''
+							) : (
+								`${matched.urgency.length}/${rawTaskList.length} Urgency Matches`
+							)}
+						</div>
 					</div>
 					<div style={finalContainerStyle}>
 						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
