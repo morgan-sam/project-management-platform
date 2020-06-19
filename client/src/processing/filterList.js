@@ -22,9 +22,11 @@ export const filterListDeadline = (filterOptions, list) => {
 	});
 };
 
-const filterListMinUrgency = (filterOptions, list) => list.filter((el) => filterOptions.urgency.min <= el.urgency);
+export const filterListMinUrgency = (filterOptions, list) =>
+	list.filter((el) => filterOptions.urgency.min <= el.urgency);
 
-const filterListMaxUrgency = (filterOptions, list) => list.filter((el) => filterOptions.urgency.max >= el.urgency);
+export const filterListMaxUrgency = (filterOptions, list) =>
+	list.filter((el) => filterOptions.urgency.max >= el.urgency);
 
 const filterListTeams = (filterOptions, list) => {
 	return list.filter((el) => {

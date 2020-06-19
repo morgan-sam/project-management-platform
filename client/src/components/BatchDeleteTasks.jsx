@@ -18,7 +18,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import { parseISOToDateObj, parseDateObjToISO, stripISODateOfTime } from 'processing/dates';
-import { filterListDate, filterListDeadline } from 'processing/filterList';
+import { filterListDate, filterListDeadline, filterListMinUrgency, filterListMaxUrgency } from 'processing/filterList';
 import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
 
