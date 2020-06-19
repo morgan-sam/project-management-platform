@@ -35,12 +35,6 @@ const BatchDeleteTasks = (props) => {
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [] });
 
-	const textContainerStyle = {
-		height: 'auto',
-		width: 'auto',
-		padding: '2rem'
-	};
-
 	useEffect(
 		() => {
 			const taskMatches = getTaskMatches(template.task);
