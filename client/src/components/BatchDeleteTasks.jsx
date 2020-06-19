@@ -22,7 +22,7 @@ const BatchDeleteTasks = (props) => {
 					<div style={titleStyle}>Batch Delete Tasks</div>
 					<div style={subContainerStyle}>TEST</div>
 					<div style={finalContainerStyle}>
-						<ColorButton text={'Delete Tasks'} onClick={() => null} />
+						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => null} />
 					</div>
 					<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 						×
