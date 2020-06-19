@@ -16,7 +16,7 @@ import {
 import ColorButton from 'components/ColorButton';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
-import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
+import { parseISOToDateObj } from 'processing/dates';
 import { getDayFromTodayAsISO } from 'data/dates';
 
 const BatchDeleteTasks = (props) => {
@@ -32,6 +32,7 @@ const BatchDeleteTasks = (props) => {
 	useEffect(
 		() => {
 			const taskMatches = getTaskMatches(template.task);
+
 			setMatched({ task: taskMatches });
 		},
 		[ template ]
