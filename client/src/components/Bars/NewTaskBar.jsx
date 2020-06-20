@@ -13,20 +13,21 @@ const NewTaskBar = (props) => {
 	const { style, displayedBars, setDataChanged, setDisplayedBars } = props;
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
-	const [ taskString, setTaskString ] = useState(null);
-	const [ date, setDate ] = useState(getDayFromTodayAsISO(0));
-	const [ deadline, setDeadline ] = useState(getDayFromTodayAsISO(14));
-	const [ urgency, setUrgency ] = useState(3);
-	const [ teamsString, setTeamsStrings ] = useState(null);
-
+	const [ input, setInput ] = useState({
+		task: null,
+		date: getDayFromTodayAsISO(0),
+		deadline: getDayFromTodayAsISO(14),
+		urgency: 3,
+		teams: null
+	});
 	const [ keepOpen, setKeepOpen ] = useState(false);
 
-	const teams = teamsString ? teamsString.split(' ').filter((el) => el !== '') : [];
-	const task = taskString ? taskString.trim() : '';
+	const teams = input.teams ? input.teams.split(' ').filter((el) => el !== '') : [];
+	const task = input.task ? input.task.trim() : '';
 
 	const addTaskToDatabase = () => {
 		if (task && teams.length) {
-			const entry = { task, date, deadline, urgency, teams, completed: 'false' };
+			const entry = { ...input, task, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
 			if (!keepOpen) setTimeout(() => setDisplayedBars({ ...displayedBars, newTask: false }), 500);
@@ -43,13 +44,13 @@ const NewTaskBar = (props) => {
 				overflow: overflowHidden ? 'visible' : 'hidden'
 			}}
 		>
-			<InputFormWithLabel {...props} label={'Task'} onChange={setTaskString} />
+			<InputFormWithLabel {...props} label={'Task'} onChange={(val) => setInput({ ...input, task: val })} />
 			<DateRangeSelect
 				{...props}
-				date={parseISOToDateObj(date)}
-				deadline={parseISOToDateObj(deadline)}
-				setDate={setDate}
-				setDeadline={setDeadline}
+				date={parseISOToDateObj(input.date)}
+				deadline={parseISOToDateObj(input.deadline)}
+				setDate={(val) => setInput({ ...input, date: val })}
+				setDeadline={(val) => setInput({ ...input, deadline: val })}
 				setOverflowHidden={setOverflowHidden}
 				setPopUpOpen={setPopUpOpen}
 			/>
@@ -57,12 +58,12 @@ const NewTaskBar = (props) => {
 				{...props}
 				width={'2rem'}
 				label={'Urgency'}
-				selected={urgency}
+				selected={input.urgency}
 				options={[ 1, 2, 3, 4, 5 ]}
-				onClick={setUrgency}
+				onClick={(val) => setInput({ ...input, urgency: val })}
 				setOverflowHidden={setOverflowHidden}
 			/>
-			<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setTeamsStrings(val)} />
+			<InputFormWithLabel {...props} label={'Teams'} onChange={(val) => setInput({ ...input, teams: val })} />
 			<ColorButton text={`Add Task To Database`} onClick={addTaskToDatabase} enabled={task && teams.length} />
 			<div style={{ margin: '0 0 0 2rem', width: '8rem' }}>Keep Open:</div>
 			<Checkbox
