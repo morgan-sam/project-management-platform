@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FilterToggle from 'components/FilterToggle';
-import ResetFilterBtn from 'components/ResetFilterBtn';
+import ColorButton from 'components/ColorButton';
 import DateRangeSelect from 'components/DateRangeSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import CompletionSelect from 'components/CompletionSelect';
@@ -10,6 +10,7 @@ import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
 import { parseISOToDateObj } from 'processing/dates';
 import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teams';
+import { getDefaultFilterOptions } from 'data/defaultState';
 
 const FilterBar = (props) => {
 	const { taskListTeams, filterOptions, setFilterOptions, displayedBars } = props;
@@ -31,7 +32,17 @@ const FilterBar = (props) => {
 			}}
 		>
 			<FilterToggle {...props} style={filterBarItemStyle} />
-			<ResetFilterBtn {...props} style={filterBarItemStyle} />
+			<ColorButton
+				className="resetFilterBtn"
+				onClick={() => {
+					const active = props.filterOptions.active;
+					props.setFilterOptions({
+						...getDefaultFilterOptions(props.rawTaskList, active)
+					});
+				}}
+				text={'Reset Filter'}
+				style={{ width: '6rem' }}
+			/>
 			<DateRangeSelect
 				{...props}
 				style={filterBarItemStyle}
