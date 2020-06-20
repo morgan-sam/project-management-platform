@@ -1,4 +1,5 @@
 import { getGradientTextColor } from 'styling/theme';
+import { flexCenter } from 'styling/generic';
 
 export const BOX_WIDTH_REM = 8;
 export const BOX_HEIGHT_REM = 2;
@@ -28,11 +29,9 @@ export const getBoxStyle = (buttonState, themeColor) => {
 		backgroundColor = themeColor;
 	}
 	return {
+		...flexCenter,
 		position: 'absolute',
 		textAlign: 'center',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
 		borderTop: `${BOX_BORDER_WIDTH_PX}px solid black`,
 		borderLeft: `${BOX_BORDER_WIDTH_PX}px solid black`,
 		borderRight: `${BOX_BORDER_WIDTH_PX}px solid black`,

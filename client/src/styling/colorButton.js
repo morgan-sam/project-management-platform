@@ -1,4 +1,6 @@
 import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
+import { flexCenter } from 'styling/generic';
+
 export const BUTTON_BOUNCE_PX = 8;
 
 const getButtonSizes = (style) => {
@@ -30,9 +32,7 @@ export const getFloatingContainerStyle = (style, state) => {
 		transition: 'top 0.2s ease-in-out',
 		animation: hover ? 'float 1.4s ease-in-out 0.4s alternate infinite' : 'none',
 		overflow: 'hidden',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center'
+		...flexCenter
 	};
 };
 

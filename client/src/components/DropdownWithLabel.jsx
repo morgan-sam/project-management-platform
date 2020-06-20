@@ -1,11 +1,10 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
+import { flexCenter } from 'styling/generic';
 
 const DropdownWithLabel = (props) => {
 	const containerStyle = {
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
+		...flexCenter,
 		margin: '1rem'
 	};
 

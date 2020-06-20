@@ -1,4 +1,5 @@
 import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
+import { flexCenter } from './generic';
 
 export const DROPDOWN_HEIGHT_REMS = 2;
 export const DROPDOWN_MAX_HEIGHT_REMS = 20;
@@ -25,9 +26,7 @@ export const dropdownHeaderStyle = (listOpen) => {
 	return {
 		position: 'relative',
 		height: `${DROPDOWN_HEIGHT_REMS}rem`,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
+		...flexCenter,
 		width: 'inherit',
 		borderRadius: listOpen ? `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0` : DROPDOWN_BORDER_RADIUS
 	};
@@ -62,6 +61,7 @@ export const dropdownOpenStyle = () => {
 
 export const dropdownBoxStyle = (listOpen) => {
 	return {
+		...flexCenter,
 		position: 'relative',
 		boxSizing: 'content-box',
 		height: `${DROPDOWN_HEIGHT_REMS}rem`,
@@ -72,9 +72,6 @@ export const dropdownBoxStyle = (listOpen) => {
 		textAlign: 'center',
 		userSelect: 'none',
 		width: 'inherit',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
 		overflow: 'hidden'
 	};
 };

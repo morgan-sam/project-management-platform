@@ -24,6 +24,7 @@ import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getTaskListTeams } from 'processing/teams';
 import { getDefaultDeleteTemplate } from 'data/defaultState';
+import { flexCenter } from 'styling/generic';
 
 const BatchDeleteTasks = (props) => {
 	const { setPopUp, rawTaskList, setScreen, finalMatched, template, setTemplate, matched } = props;
@@ -37,14 +38,7 @@ const BatchDeleteTasks = (props) => {
 						onChange={(val) => setTemplate({ ...template, task: val })}
 						default={template.task}
 					/>
-					<div
-						style={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							flexDirection: 'row'
-						}}
-					>
+					<div style={flexCenter}>
 						<CompletionSelect {...props} state={[ template, setTemplate ]} />
 					</div>
 					<div

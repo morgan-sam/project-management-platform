@@ -1,8 +1,10 @@
+import { flexCenter } from './generic';
+
 export const dateOptionPopUpStyling = {
 	display: 'flex',
-	border: '1px solid black',
 	justifyContent: 'left',
 	alignItems: 'center',
+	border: '1px solid black',
 	transition: '1s',
 	position: 'relative',
 	borderRadius: '5px'
@@ -28,10 +30,7 @@ export const datePopUpStyling = {
 };
 
 export const canConContainerStyle = {
-	display: 'flex',
-	flexDirection: 'row',
-	justifyContent: 'center',
-	alignItems: 'center',
+	...flexCenter,
 	paddingRight: '0.75rem',
 	transition: '0.5s'
 };
