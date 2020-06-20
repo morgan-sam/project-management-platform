@@ -74,11 +74,8 @@ const BatchDeleteTasks = (props) => {
 			const matches = Object.values(matched);
 			if (matches.some((el) => typeof el === 'string')) setFinalMatched([]);
 			else {
-				let matchArray = matches[0];
-				for (let i = 1; i < matches.length; i++) {
-					matchArray = getCommonElements(matchArray, matches[i]);
-				}
-				setFinalMatched(matchArray);
+				const commonMatches = matches.reduce((common, category) => getCommonElements(common, category));
+				setFinalMatched(commonMatches);
 			}
 		},
 		[ matched ]
