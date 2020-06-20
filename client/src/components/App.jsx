@@ -3,15 +3,15 @@ import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
-import FilterBar from 'components/FilterBar';
-import DataInfoBar from 'components/DataInfoBar';
+import FilterBar from 'components/Bars/FilterBar';
+import DataInfoBar from 'components/Bars/DataInfoBar';
 import AmbientBackground from 'components/AmbientBackground';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { getDefaultFilterOptions, displayBarsAll, visibleColumnsDefault, defaultPreferences } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teams';
-import NewTaskBar from 'components/NewTaskBar';
+import NewTaskBar from 'components/Bars/NewTaskBar';
 import {
 	getScreenStyle,
 	getMainPageStyle,
