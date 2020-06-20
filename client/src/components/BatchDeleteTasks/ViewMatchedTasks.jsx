@@ -45,22 +45,20 @@ const MatchedDeleteTasks = (props) => {
 	};
 
 	return (
-		<div style={topContainerStyle}>
-			<div style={popUpWindowStyle}>
-				<div style={titleStyle}>Matched Delete Tasks</div>
-				<div style={autoContainerStyle}>{getMatchedList()}</div>
-				<div style={finalContainerStyle}>
-					<ColorButton text={'Back To Previous Screen'} onClick={() => setScreen('main')} />
-					<ColorButton
-						color={'#a00'}
-						text={`Delete ${finalMatched.length} Tasks`}
-						onClick={() => setScreen('confirm')}
-					/>
-				</div>
-				<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
-					×
-				</button>
+		<div style={popUpWindowStyle}>
+			<div style={titleStyle}>Matched Delete Tasks</div>
+			<div style={autoContainerStyle}>{getMatchedList()}</div>
+			<div style={finalContainerStyle}>
+				<ColorButton text={'Back To Previous Screen'} onClick={() => setScreen('main')} />
+				<ColorButton
+					color={'#a00'}
+					text={`Delete ${finalMatched.length} Tasks`}
+					onClick={() => setScreen('confirm')}
+				/>
 			</div>
+			<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
+				×
+			</button>
 		</div>
 	);
 };

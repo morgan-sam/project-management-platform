@@ -7,7 +7,7 @@ import { interpretTaskTemplate } from 'processing/taskTemplate';
 import { fetchPostEntry } from 'data/fetch';
 import { parseDateObjToISO } from 'processing/dates';
 import { defaultBatchNewTasksTemplate } from 'data/defaultState';
-import { popUpPositionStyle } from 'styling/popUp';
+import { topContainerStyle } from 'styling/popUp';
 
 const BatchNewTasks = (props) => {
 	const { setDataChanged, setPopUp } = props;
@@ -58,7 +58,7 @@ const BatchNewTasks = (props) => {
 	};
 
 	return (
-		<div style={popUpPositionStyle}>
+		<div style={topContainerStyle}>
 			{screen === 'main' && (
 				<MainScreen
 					errors={errors}

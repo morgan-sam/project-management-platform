@@ -1,15 +1,7 @@
 import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 
-import {
-	titleStyle,
-	popUpPositionStyle,
-	topContainerStyle,
-	popUpWindowStyle,
-	subContainerStyle,
-	cancelButtonStyle,
-	finalContainerStyle
-} from 'styling/popUp';
+import { titleStyle, topContainerStyle, popUpWindowStyle, subContainerStyle, finalContainerStyle } from 'styling/popUp';
 
 const ConfirmPopUp = (props) => {
 	const popUpCloseTimeMs = 400;
@@ -38,21 +30,19 @@ const ConfirmPopUp = (props) => {
 	};
 
 	return (
-		<div className={'popUp'} style={popUpPositionStyle}>
-			<div className={'popUp'} style={topContainerStyle}>
-				<div className={'popUp'} style={popUpWindowStyle}>
-					<h2 style={titleStyle}>About</h2>
-					<div style={subContainerStyle}>{convertMessageArrayToElements()}</div>
-					<div style={finalContainerStyle}>
-						<ColorButton
-							text={'Close'}
-							onClick={async () => {
-								setTimeout(() => {
-									closePopUp();
-								}, popUpCloseTimeMs);
-							}}
-						/>
-					</div>
+		<div className={'popUp'} style={topContainerStyle}>
+			<div className={'popUp'} style={popUpWindowStyle}>
+				<h2 style={titleStyle}>About</h2>
+				<div style={subContainerStyle}>{convertMessageArrayToElements()}</div>
+				<div style={finalContainerStyle}>
+					<ColorButton
+						text={'Close'}
+						onClick={async () => {
+							setTimeout(() => {
+								closePopUp();
+							}, popUpCloseTimeMs);
+						}}
+					/>
 				</div>
 			</div>
 		</div>

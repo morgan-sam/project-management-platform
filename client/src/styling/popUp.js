@@ -5,15 +5,11 @@ export const titleStyle = {
 	fontSize: '1.6rem'
 };
 
-export const popUpPositionStyle = {
+export const topContainerStyle = {
+	...flexCenter,
 	position: 'fixed',
 	top: '0',
 	left: '0',
-	zIndex: '20'
-};
-
-export const topContainerStyle = {
-	...flexCenter,
 	height: '100vh',
 	width: '100vw',
 	zIndex: '20'

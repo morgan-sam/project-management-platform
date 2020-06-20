@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MainScreen from 'components/BatchDeleteTasks/MainScreen';
 import ViewMatchedTasks from 'components/BatchDeleteTasks/ViewMatchedTasks';
-import { popUpPositionStyle } from 'styling/popUp';
 import ConfirmPopUp from 'components/PopUps/ConfirmPopUp';
+import { topContainerStyle } from 'styling/popUp';
 import {
 	filterListDate,
 	filterListDeadline,
@@ -83,7 +83,7 @@ const BatchDeleteTasks = (props) => {
 	};
 
 	return (
-		<div style={popUpPositionStyle}>
+		<div style={topContainerStyle}>
 			{screen === 'main' && (
 				<MainScreen
 					{...props}
