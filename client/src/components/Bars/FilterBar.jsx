@@ -6,9 +6,9 @@ import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
 import MatchType from 'components/MatchType';
-import { filterBarStyle, filterBarItemStyle } from 'styling/filterBar';
+import { filterBarStyle, filterBarItemStyle } from 'styling/Bars/filterBar';
 import { parseISOToDateObj } from 'processing/dates';
-import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
+import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/Bars/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getDefaultFilterOptions } from 'data/defaultState';
 
