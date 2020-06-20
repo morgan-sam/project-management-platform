@@ -97,7 +97,7 @@ const FilterBar = (props) => {
 			/>
 			<CompletionSelect
 				{...props}
-				style={filterBarItemStyle}
+				state={[ filterOptions, setFilterOptions ]}
 				setOverflowHidden={(val) => setDropdownsOpen({ ...dropdownsOpen, completion: val })}
 			/>
 		</div>

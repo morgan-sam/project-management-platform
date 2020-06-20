@@ -2,11 +2,23 @@ import React from 'react';
 import Dropdown from 'components/Dropdown';
 
 const CompletionSelect = (props) => {
-	const elStyle = { margin: '0 0.3rem' };
+	const { state, setOverflowHidden } = props;
+	const [ obj, set ] = state;
+
+	const elStyle = {
+		margin: '0 0.3rem'
+	};
+
+	const completionSelectStyle = {
+		display: 'flex',
+		alignItems: 'center',
+		height: '3rem'
+	};
+
 	return (
-		<div style={props.style}>
-			<div className="filterBarLabel" style={elStyle}>
-				Completed:
+		<div style={completionSelectStyle}>
+			<div className="label" style={elStyle}>
+				Completion:
 			</div>
 			<Dropdown
 				className="completionDropdown"
@@ -14,14 +26,14 @@ const CompletionSelect = (props) => {
 					...elStyle,
 					width: '7rem'
 				}}
-				selected={props.filterOptions.completion}
+				selected={obj.completion}
 				options={[ 'all', 'complete', 'incomplete' ]}
 				onClick={(val) =>
-					props.setFilterOptions({
-						...props.filterOptions,
+					set({
+						...obj,
 						completion: val
 					})}
-				onOpenChange={props.setOverflowHidden}
+				onOpenChange={setOverflowHidden}
 			/>
 		</div>
 	);

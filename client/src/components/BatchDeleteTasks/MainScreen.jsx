@@ -19,6 +19,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import Dropdown from 'components/Dropdown';
+import CompletionSelect from 'components/CompletionSelect';
 import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getTaskListTeams } from 'processing/teams';
@@ -44,19 +45,7 @@ const BatchDeleteTasks = (props) => {
 							flexDirection: 'row'
 						}}
 					>
-						<div>Completion: </div>
-						<Dropdown
-							onClick={(val) => {
-								setTemplate({
-									...template,
-									completion: val
-								});
-							}}
-							options={[ 'all', 'complete', 'incomplete' ]}
-							filterOptions={template}
-							selected={template.completion}
-							style={{ width: '8rem', zIndex: '21', margin: '1rem' }}
-						/>
+						<CompletionSelect {...props} state={[ template, setTemplate ]} />
 					</div>
 					<div
 						style={{
