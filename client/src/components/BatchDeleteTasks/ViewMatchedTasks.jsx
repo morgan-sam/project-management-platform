@@ -16,7 +16,7 @@ import {
 import ColorButton from 'components/ColorButton';
 
 const MatchedDeleteTasks = (props) => {
-	const { finalMatched, setScreen, setPopUp, rawTaskList } = props;
+	const { finalMatched, setScreen, setPopUp, rawTaskList, confirmDelete } = props;
 
 	const getMatchedListItem = (el) => {
 		return (
@@ -51,6 +51,11 @@ const MatchedDeleteTasks = (props) => {
 				<div style={autoContainerStyle}>{getMatchedList()}</div>
 				<div style={finalContainerStyle}>
 					<ColorButton text={'Back To Previous Screen'} onClick={() => setScreen('main')} />
+					<ColorButton
+						color={'#a00'}
+						text={`Delete ${finalMatched.length} Tasks`}
+						onClick={() => confirmDelete()}
+					/>
 				</div>
 				<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 					×
