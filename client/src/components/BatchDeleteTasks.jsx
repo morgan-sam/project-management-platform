@@ -8,6 +8,7 @@ import {
 	errorMatchTextStyle,
 	finalContainerStyle,
 	dateTopContainer,
+	dateGridStyle,
 	dateRangeContainer,
 	dateContainer,
 	dateLabel,
@@ -106,17 +107,7 @@ const BatchDeleteTasks = (props) => {
 			<div style={topContainerStyle}>
 				<div style={popUpWindowStyle}>
 					<div style={titleStyle}>Batch Delete Tasks</div>
-					<div
-						style={{
-							display: 'grid',
-							gridTemplateColumns: 'repeat(2, 1fr)',
-							gridTemplateRows: 'repeat(2, 1fr)',
-							justifyContent: 'center',
-							alignItems: 'center',
-							marginTop: '2rem',
-							zIndex: '22'
-						}}
-					>
+					<div style={dateGridStyle}>
 						<InputFormWithLabel
 							label={'Task Regex'}
 							onChange={(val) => setTemplate({ ...template, task: val })}

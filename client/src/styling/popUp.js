@@ -77,6 +77,16 @@ export const finalContainerStyle = {
 	justifyContent: 'center'
 };
 
+export const dateGridStyle = {
+	display: 'grid',
+	gridTemplateColumns: 'repeat(2, 1fr)',
+	gridTemplateRows: 'repeat(2, 1fr)',
+	justifyContent: 'center',
+	alignItems: 'center',
+	marginTop: '2rem',
+	zIndex: '22'
+};
+
 export const dateTopContainer = {
 	display: 'flex',
 	flexDirection: 'column',
