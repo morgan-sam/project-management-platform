@@ -280,6 +280,14 @@ const BatchDeleteTasks = (props) => {
 							onClick={() => setTemplate(getDefaultDeleteTemplate(rawTaskList))}
 						/>
 						<ColorButton
+							color={'#32CD32'}
+							text={
+								finalMatched.length === rawTaskList.length ? `All Tasks Matched` : `Check Matched Tasks`
+							}
+							enabled={finalMatched.length !== rawTaskList.length}
+							onClick={() => null}
+						/>
+						<ColorButton
 							color={'#a00'}
 							text={`Delete ${finalMatched.length} Tasks`}
 							onClick={() => clickRemove()}
