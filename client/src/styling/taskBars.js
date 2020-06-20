@@ -48,6 +48,12 @@ export const dataInfoBarStyle = {
 	zIndex: '7'
 };
 
+export const dataInfoItemStyle = {
+	padding: '1rem',
+	margin: '1rem',
+	border: '1px solid black'
+};
+
 export const newTaskBarStyle = {
 	...defaultBarStyle,
 	zIndex: '8'

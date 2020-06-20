@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
+import { getTaskBarHiddenStyle, getTaskBarVisibleStyle, dataInfoItemStyle } from 'styling/taskBars';
 import { dataInfoBarStyle } from 'styling/taskBars';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToLittleEndian } from 'processing/dates';
@@ -16,12 +16,6 @@ const DataInfoBar = (props) => {
 		} else return 'No Data';
 	};
 
-	const textBox = {
-		padding: '1rem',
-		margin: '1rem',
-		border: '1px solid black'
-	};
-
 	const filterText = `Filter is ${filterOptions.active ? '' : 'not'} active`;
 	const taskCountText = `Showing  ${taskList.length} out of ${rawTaskList.length} tasks in database`;
 
@@ -35,9 +29,9 @@ const DataInfoBar = (props) => {
 				alignItems: 'stretch'
 			}}
 		>
-			<div style={textBox}>{filterText}</div>
-			<div style={textBox}>{taskCountText}</div>
-			<div style={textBox}>{getDateRangeText()}</div>
+			<div style={dataInfoItemStyle}>{filterText}</div>
+			<div style={dataInfoItemStyle}>{taskCountText}</div>
+			<div style={dataInfoItemStyle}>{getDateRangeText()}</div>
 		</div>
 	);
 };
