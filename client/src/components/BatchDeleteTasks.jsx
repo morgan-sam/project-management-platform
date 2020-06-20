@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import MainBatchDeleteScreen from 'components/MainBatchDeleteScreen';
-import MatchedDeleteTasks from 'components/MatchedDeleteTasks';
+import MainScreen from 'components/BatchDeleteTasks/MainScreen';
+import ViewMatchedTasks from 'components/BatchDeleteTasks/ViewMatchedTasks';
 import { popUpPositionStyle } from 'styling/popUp';
 
 const BatchDeleteTasks = (props) => {
@@ -8,8 +8,8 @@ const BatchDeleteTasks = (props) => {
 
 	return (
 		<div style={popUpPositionStyle}>
-			{screen === 'main' && <MainBatchDeleteScreen {...props} setScreen={setScreen} />}
-			{screen === 'matched' && <MatchedDeleteTasks />}
+			{screen === 'main' && <MainScreen {...props} setScreen={setScreen} />}
+			{screen === 'matched' && <ViewMatchedTasks />}
 		</div>
 	);
 };

@@ -21,7 +21,6 @@ import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import Dropdown from 'components/Dropdown';
 import ConfirmPopUp from 'components/ConfirmPopUp';
-import MatchedDeleteTasks from 'components/MatchedDeleteTasks';
 import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
 import {
 	filterListDate,
