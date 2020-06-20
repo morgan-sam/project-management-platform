@@ -39,7 +39,6 @@ export const overlayStyle = {
 };
 
 export const getTableContainerStyle = (fixedStyle, values) => {
-	console.log('hi');
 	if (fixedStyle) {
 		const { barConHeight, displayedBars } = values;
 		return {
