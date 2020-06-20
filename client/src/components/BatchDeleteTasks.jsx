@@ -291,8 +291,11 @@ const BatchDeleteTasks = (props) => {
 						/>
 						<ColorButton
 							color={'#a00'}
-							text={`Delete ${finalMatched.length} Tasks`}
+							text={
+								finalMatched.length === 0 ? `No Tasks Matched` : `Delete ${finalMatched.length} Tasks`
+							}
 							onClick={() => clickRemove()}
+							enabled={finalMatched.length !== 0}
 						/>
 					</div>
 					<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
