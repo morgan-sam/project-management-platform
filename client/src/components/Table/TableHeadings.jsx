@@ -1,5 +1,5 @@
 import React from 'react';
-import HeadingCell from 'components/HeadingCell';
+import HeadingCell from 'components/Cells/HeadingCell';
 import { headingCellStyles } from 'styling/headingCell';
 import { capitalizeFirstLetter } from 'processing/utility';
 import { getTrueObjVals } from 'processing/utility';
