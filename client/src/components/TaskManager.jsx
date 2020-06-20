@@ -202,6 +202,15 @@ const TaskManager = (props) => {
 					action: () => setFixedStyle(!fixedStyle)
 				}
 			]
+		},
+		{
+			name: 'Help',
+			sub: [
+				{
+					name: 'About',
+					action: () => console.log('About')
+				}
+			]
 		}
 	];
 
