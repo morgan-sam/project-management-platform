@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import ConfirmPopUp from 'components/PopUps/ConfirmPopUp';
+import MessagePopUp from 'components/PopUps/MessagePopUp';
 import { fetchDeleteTasks } from 'data/fetch';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
 import BatchNewTasks from 'components/PopUps/BatchNewTasks';
@@ -208,7 +209,18 @@ const TaskManager = (props) => {
 			sub: [
 				{
 					name: 'About',
-					action: () => console.log('About')
+					action: () =>
+						setPopUp(
+							<MessagePopUp
+								message={[
+									`Created by Samuel Morgan, 2020.`,
+									`This app was created using React, Node & PostgreSQL.`,
+									<a href="https://github.com/morgan-sam/Project-Management-Platform">Source Code</a>
+								]}
+								pressedKeys={pressedKeys}
+								setPopUp={setPopUp}
+							/>
+						)
 				}
 			]
 		}
