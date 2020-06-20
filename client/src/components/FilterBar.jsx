@@ -21,7 +21,6 @@ const FilterBar = (props) => {
 	});
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
 
-	console.log(props.filterOptions.teamMatch);
 	return (
 		<div
 			className="filterBar"
