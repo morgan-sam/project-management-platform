@@ -38,7 +38,7 @@ import { getDefaultDeleteTemplate } from 'data/defaultState';
 const BatchDeleteTasks = (props) => {
 	const { setDataChanged, setPopUp, rawTaskList, pressedKeys, setScreen, finalMatched, setFinalMatched } = props;
 	const [ template, setTemplate ] = useState(getDefaultDeleteTemplate(rawTaskList));
-	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
+	const [ matched, setMatched ] = useState({ task: [], completion: [], dateRange: [], urgency: [], teams: [] });
 
 	useEffect(
 		() => {
