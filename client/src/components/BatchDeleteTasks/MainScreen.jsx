@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
 	titleStyle,
-	popUpPositionStyle,
 	topContainerStyle,
 	popUpWindowStyle,
 	cancelButtonStyle,
@@ -37,10 +36,9 @@ import { getTaskListTeams } from 'processing/teams';
 import { getDefaultDeleteTemplate } from 'data/defaultState';
 
 const BatchDeleteTasks = (props) => {
-	const { setDataChanged, setPopUp, rawTaskList, pressedKeys, setScreen } = props;
+	const { setDataChanged, setPopUp, rawTaskList, pressedKeys, setScreen, finalMatched, setFinalMatched } = props;
 	const [ template, setTemplate ] = useState(getDefaultDeleteTemplate(rawTaskList));
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
-	const [ finalMatched, setFinalMatched ] = useState([]);
 
 	useEffect(
 		() => {

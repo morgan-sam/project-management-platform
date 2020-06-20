@@ -5,11 +5,12 @@ import { popUpPositionStyle } from 'styling/popUp';
 
 const BatchDeleteTasks = (props) => {
 	const [ screen, setScreen ] = useState('main');
+	const [ finalMatched, setFinalMatched ] = useState([]);
 
 	return (
 		<div style={popUpPositionStyle}>
-			{screen === 'main' && <MainScreen {...props} setScreen={setScreen} />}
-			{screen === 'matched' && <ViewMatchedTasks />}
+			{screen === 'main' && <MainScreen {...props} {...{ finalMatched, setFinalMatched, setScreen }} />}
+			{screen === 'matched' && <ViewMatchedTasks {...props} {...{ finalMatched, setScreen }} />}
 		</div>
 	);
 };
