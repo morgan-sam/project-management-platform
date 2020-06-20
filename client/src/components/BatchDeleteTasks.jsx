@@ -284,9 +284,15 @@ const BatchDeleteTasks = (props) => {
 						<ColorButton
 							color={'#32CD32'}
 							text={
-								finalMatched.length === rawTaskList.length ? `All Tasks Matched` : `Check Matched Tasks`
+								finalMatched.length === rawTaskList.length ? (
+									`All Tasks Matched`
+								) : finalMatched.length === 0 ? (
+									`No Tasks Matched`
+								) : (
+									`Check Matched Tasks`
+								)
 							}
-							enabled={finalMatched.length !== rawTaskList.length}
+							enabled={finalMatched.length !== rawTaskList.length && finalMatched.length !== 0}
 							onClick={() => null}
 						/>
 						<ColorButton
