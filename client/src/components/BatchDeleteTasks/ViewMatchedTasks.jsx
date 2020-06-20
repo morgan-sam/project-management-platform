@@ -16,7 +16,7 @@ import {
 import ColorButton from 'components/ColorButton';
 
 const MatchedDeleteTasks = (props) => {
-	const { finalMatched, setScreen, setPopUp, rawTaskList, confirmDelete } = props;
+	const { finalMatched, setScreen, setPopUp, rawTaskList } = props;
 
 	const getMatchedListItem = (el) => {
 		return (
@@ -54,7 +54,7 @@ const MatchedDeleteTasks = (props) => {
 					<ColorButton
 						color={'#a00'}
 						text={`Delete ${finalMatched.length} Tasks`}
-						onClick={() => confirmDelete()}
+						onClick={() => setScreen('confirm')}
 					/>
 				</div>
 				<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>

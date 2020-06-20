@@ -58,17 +58,6 @@ const BatchDeleteTasks = (props) => {
 		setPopUp(null);
 	};
 
-	const confirmDelete = () => {
-		setPopUp(
-			<ConfirmPopUp
-				message={`Are you sure you want to delete ${finalMatched.length} tasks?`}
-				confirm={() => deletedMatchedTasks()}
-				pressedKeys={pressedKeys}
-				setPopUp={setPopUp}
-			/>
-		);
-	};
-
 	const getTaskMatchIDs = (regex) => {
 		try {
 			const reg = new RegExp(regex);
@@ -98,10 +87,19 @@ const BatchDeleteTasks = (props) => {
 			{screen === 'main' && (
 				<MainScreen
 					{...props}
-					{...{ finalMatched, setFinalMatched, setScreen, template, setTemplate, matched, confirmDelete }}
+					{...{ finalMatched, setFinalMatched, setScreen, template, setTemplate, matched }}
 				/>
 			)}
-			{screen === 'matched' && <ViewMatchedTasks {...props} {...{ finalMatched, setScreen, confirmDelete }} />}
+			{screen === 'matched' && <ViewMatchedTasks {...props} {...{ finalMatched, setScreen }} />}
+			{screen === 'confirm' && (
+				<ConfirmPopUp
+					message={`Are you sure you want to delete ${finalMatched.length} tasks?`}
+					confirm={() => deletedMatchedTasks()}
+					cancel={() => setScreen('main')}
+					pressedKeys={pressedKeys}
+					setPopUp={setPopUp}
+				/>
+			)}
 		</div>
 	);
 };

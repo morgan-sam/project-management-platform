@@ -25,7 +25,7 @@ import { getTaskListTeams } from 'processing/teams';
 import { getDefaultDeleteTemplate } from 'data/defaultState';
 
 const BatchDeleteTasks = (props) => {
-	const { setPopUp, rawTaskList, setScreen, finalMatched, template, setTemplate, matched, confirmDelete } = props;
+	const { setPopUp, rawTaskList, setScreen, finalMatched, template, setTemplate, matched } = props;
 	return (
 		<div style={topContainerStyle}>
 			<div style={popUpWindowStyle}>
@@ -210,7 +210,7 @@ const BatchDeleteTasks = (props) => {
 					<ColorButton
 						color={'#a00'}
 						text={finalMatched.length === 0 ? `No Tasks Matched` : `Delete ${finalMatched.length} Tasks`}
-						onClick={() => confirmDelete()}
+						onClick={() => setScreen('confirm')}
 						enabled={finalMatched.length !== 0}
 					/>
 				</div>

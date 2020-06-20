@@ -4,12 +4,15 @@ import { popUpContainerStyle, buttonContainerStyle, buttonStyle, messageContaine
 
 const ConfirmPopUp = (props) => {
 	const popUpCloseTimeMs = 400;
-	const { message, confirm, setPopUp, pressedKeys } = props;
+	const { message, cancel, confirm, setPopUp, pressedKeys } = props;
 	const closePopUp = () => setPopUp(null);
 
 	useEffect(
 		() => {
-			if (pressedKeys.includes('Escape')) closePopUp();
+			if (pressedKeys.includes('Escape')) {
+				if (cancel) cancel();
+				else closePopUp();
+			}
 			if (pressedKeys.includes('Enter')) {
 				closePopUp();
 				confirm();
@@ -39,7 +42,11 @@ const ConfirmPopUp = (props) => {
 					color={'darkred'}
 					style={buttonStyle}
 					text={'Cancel'}
-					onClick={() => setTimeout(() => closePopUp(), popUpCloseTimeMs)}
+					onClick={() =>
+						setTimeout(() => {
+							if (cancel) cancel();
+							else closePopUp();
+						}, popUpCloseTimeMs)}
 				/>
 			</div>
 		</div>
