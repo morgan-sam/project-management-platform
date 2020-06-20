@@ -54,16 +54,16 @@ const BatchDeleteTasks = (props) => {
 	useEffect(
 		() => {
 			const taskMatchIDs = getTaskMatchIDs(template.task);
+			const completionMatchIDs = filterListCompletion(template, rawTaskList).map((el) => el.id);
 			const dateRangeMatchIDs = getDateRangeMatchIDs(template);
 			const urgencyMatchIDs = getUrgencyMatchIDs(template);
 			const teamMatchIDs = filterListTeams(template, rawTaskList).map((el) => el.id);
-			const completionMatchIDs = filterListCompletion(template, rawTaskList).map((el) => el.id);
 			setMatched({
 				task: taskMatchIDs,
+				completion: completionMatchIDs,
 				dateRange: dateRangeMatchIDs,
 				urgency: urgencyMatchIDs,
-				teams: teamMatchIDs,
-				completion: completionMatchIDs
+				teams: teamMatchIDs
 			});
 		},
 		[ template ]
@@ -82,7 +82,6 @@ const BatchDeleteTasks = (props) => {
 	);
 
 	const clickRemove = () => {
-		console.log(finalMatched);
 		// fetchDeleteTasks();
 		// setDataChanged(true);
 	};
