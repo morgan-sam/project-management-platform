@@ -41,8 +41,6 @@ const BatchDeleteTasks = (props) => {
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 	const [ finalMatched, setFinalMatched ] = useState([]);
 
-	console.log(template);
-
 	useEffect(
 		() => {
 			const taskMatchIDs = getTaskMatchIDs(template.task);

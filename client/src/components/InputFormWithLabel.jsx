@@ -13,13 +13,17 @@ const InputFormWithLabel = (props) => {
 	};
 
 	return (
-		<div style={{ ...props.style, ...inputFormWithLabelStyle }}>
-			<form onChange={(e) => props.onChange(e.target.value)}>
-				<label style={formItemsStyle}>{props.label}:</label>
-				<input style={formItemsStyle} type="text" name="name" value={props.default} />
-				<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
-			</form>
-		</div>
+		<form style={{ ...props.style, ...inputFormWithLabelStyle }}>
+			<label style={formItemsStyle}>{props.label}:</label>
+			<input
+				onChange={(e) => props.onChange(e.target.value)}
+				style={formItemsStyle}
+				type="text"
+				name="name"
+				value={props.default}
+			/>
+			<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
+		</form>
 	);
 };
 
