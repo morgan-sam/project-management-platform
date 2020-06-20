@@ -49,6 +49,7 @@ const BatchDeleteTasks = (props) => {
 		completion: 'all'
 	});
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
+	const [ finalMatched, setFinalMatched ] = useState([]);
 
 	useEffect(
 		() => {
@@ -68,24 +69,36 @@ const BatchDeleteTasks = (props) => {
 		[ template ]
 	);
 
+	useEffect(
+		() => {
+			const matches = Object.values(matched);
+			if (matches.some((el) => typeof el === 'string')) setFinalMatched([]);
+			else {
+				let matchArray = matches[0];
+				for (let i = 1; i < matches.length; i++) {
+					matchArray = getCommonElements(matchArray, matches[i]);
+				}
+				setFinalMatched(matchArray);
+			}
+		},
+		[ matched ]
+	);
+
 	const clickRemove = () => {
-		console.log(matched);
+		console.log(finalMatched);
 		// fetchDeleteTasks();
 		// setDataChanged(true);
 	};
 
 	const getTaskMatchIDs = (regex) => {
-		if (regex.length === 0) return '';
-		else {
-			try {
-				const reg = new RegExp(regex);
-				const filtered = props.rawTaskList.filter((el) => {
-					return el.task.match(reg);
-				});
-				return filtered.map((el) => el.id);
-			} catch (error) {
-				return 'Invalid Regex';
-			}
+		try {
+			const reg = new RegExp(regex);
+			const filtered = props.rawTaskList.filter((el) => {
+				return el.task.match(reg);
+			});
+			return filtered.map((el) => el.id);
+		} catch (error) {
+			return 'Invalid Regex';
 		}
 	};
 
@@ -154,6 +167,8 @@ const BatchDeleteTasks = (props) => {
 						>
 							{typeof matched.task === 'string' ? (
 								matched.task
+							) : matched.task.length === rawTaskList.length ? (
+								''
 							) : (
 								`${matched.task.length}/${rawTaskList.length} Name Matches`
 							)}
