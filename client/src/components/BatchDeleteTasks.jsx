@@ -6,7 +6,6 @@ import {
 	popUpWindowStyle,
 	cancelButtonStyle,
 	errorMatchTextStyle,
-	topRowStyle,
 	finalContainerStyle,
 	dateTopContainer,
 	dateRangeContainer,
@@ -20,7 +19,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import Dropdown from 'components/Dropdown';
-import { parseISOToDateObj, parseDateObjToISO, stripISODateOfTime } from 'processing/dates';
+import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
 import {
 	filterListDate,
 	filterListDeadline,
@@ -30,17 +29,18 @@ import {
 	filterListCompletion
 } from 'processing/filterList';
 import { fetchDeleteTasks } from 'data/fetch';
-import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getTaskListTeams } from 'processing/teams';
-import { getDefaultFilterOptions } from 'data/defaultState';
+import { getDefaultDeleteTemplate } from 'data/defaultState';
 
 const BatchDeleteTasks = (props) => {
 	const { setDataChanged, setPopUp, rawTaskList } = props;
-	const [ template, setTemplate ] = useState(getDefaultFilterOptions(rawTaskList));
+	const [ template, setTemplate ] = useState(getDefaultDeleteTemplate(rawTaskList));
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 	const [ finalMatched, setFinalMatched ] = useState([]);
+
+	console.log(template);
 
 	useEffect(
 		() => {
@@ -191,7 +191,7 @@ const BatchDeleteTasks = (props) => {
 								<ColorButton
 									text={'Reset To First Date'}
 									onClick={() =>
-										setTemplate({ ...template, date: getDefaultFilterOptions(rawTaskList).date })}
+										setTemplate({ ...template, date: getDefaultDeleteTemplate(rawTaskList).date })}
 								/>
 							</div>
 							<div style={dateContainer}>
@@ -211,7 +211,7 @@ const BatchDeleteTasks = (props) => {
 									onClick={() =>
 										setTemplate({
 											...template,
-											deadline: getDefaultFilterOptions(rawTaskList).deadline
+											deadline: getDefaultDeleteTemplate(rawTaskList).deadline
 										})}
 								/>
 							</div>
@@ -274,7 +274,11 @@ const BatchDeleteTasks = (props) => {
 						</div>
 					</div>
 					<div style={finalContainerStyle}>
-						<ColorButton color={'#a00'} text={`Reset Template To Default`} onClick={() => clickRemove()} />
+						<ColorButton
+							color={'#32CD32'}
+							text={`Reset Template To Default`}
+							onClick={() => setTemplate(getDefaultDeleteTemplate(rawTaskList))}
+						/>
 						<ColorButton
 							color={'#a00'}
 							text={`Delete ${finalMatched.length} Tasks`}

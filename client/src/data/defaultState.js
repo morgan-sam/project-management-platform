@@ -27,6 +27,13 @@ export const getDefaultFilterOptions = (taskList, active = null) => {
 	}
 };
 
+export const getDefaultDeleteTemplate = (taskList) => {
+	let template = getDefaultFilterOptions(taskList);
+	delete template.active;
+	template['task'] = '';
+	return template;
+};
+
 export const displayBarsAll = (boo) => {
 	return {
 		filter: boo,

@@ -16,7 +16,7 @@ const InputFormWithLabel = (props) => {
 		<div style={{ ...props.style, ...inputFormWithLabelStyle }}>
 			<form onChange={(e) => props.onChange(e.target.value)}>
 				<label style={formItemsStyle}>{props.label}:</label>
-				<input style={formItemsStyle} type="text" name="name" defaultValue={props.default} />
+				<input style={formItemsStyle} type="text" name="name" value={props.default} />
 				<input disabled type="submit" value="Submit" style={{ display: 'none' }} />
 			</form>
 		</div>
