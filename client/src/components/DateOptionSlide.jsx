@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import DateSelect from 'components/DateSelect';
 import { parseDateObjToISO } from 'processing/dates';
 import {
-	dateOptionPopUpStyling,
+	dateOptionSlideStyling,
 	dateDisplayBoxStyling,
-	datePopUpStyling,
+	dateSlideStyling,
 	canConBtnStyle,
 	confirmBtnStyle,
 	cancelBtnStyle,
@@ -18,9 +18,9 @@ import {
 	displayOnscreen,
 	selectOffscreen,
 	selectOnscreen
-} from 'styling/dateOptionPopUp';
+} from 'styling/dateOptionSlide';
 
-const DateOptionPopUp = (props) => {
+const DateOptionSlide = (props) => {
 	const [ internalDateChange, setInternalDateChange ] = useState(false);
 	const [ backupDate, setBackupDate ] = useState(props.date);
 	const [ showDateSelect, setShowDateSelect ] = useState(false);
@@ -29,7 +29,7 @@ const DateOptionPopUp = (props) => {
 	return (
 		<div
 			style={{
-				...dateOptionPopUpStyling,
+				...dateOptionSlideStyling,
 				overflow: overflowHidden ? 'visible' : 'hidden',
 				...(showDateSelect ? dateOptionOpen : dateOptionClosed)
 			}}
@@ -53,7 +53,7 @@ const DateOptionPopUp = (props) => {
 			>
 				<DateSelect
 					style={{
-						...datePopUpStyling
+						...dateSlideStyling
 					}}
 					setDate={(date) => {
 						setInternalDateChange(true);
@@ -99,4 +99,4 @@ const DateOptionPopUp = (props) => {
 	);
 };
 
-export default DateOptionPopUp;
+export default DateOptionSlide;

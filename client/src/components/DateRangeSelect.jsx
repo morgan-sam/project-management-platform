@@ -1,5 +1,5 @@
 import React from 'react';
-import DateOptionPopUp from 'components/DateOptionPopUp';
+import DateOptionSlide from 'components/DateOptionSlide';
 
 const DateRangeSelect = (props) => {
 	const elStyle = { margin: '0 1rem' };
@@ -14,11 +14,11 @@ const DateRangeSelect = (props) => {
 			<div className="filterBarLabel" style={elStyle}>
 				Date:
 			</div>
-			<DateOptionPopUp {...props} style={elStyle} setSelectDate={(val) => props.setDate(val)} date={props.date} />
+			<DateOptionSlide {...props} style={elStyle} setSelectDate={(val) => props.setDate(val)} date={props.date} />
 			<div className="filterBarLabel" style={elStyle}>
 				Deadline:
 			</div>
-			<DateOptionPopUp
+			<DateOptionSlide
 				{...props}
 				style={elStyle}
 				setSelectDate={(val) => props.setDeadline(val)}

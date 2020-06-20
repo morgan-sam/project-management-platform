@@ -1,6 +1,6 @@
 import { flexCenter } from './generic';
 
-export const dateOptionPopUpStyling = {
+export const dateOptionSlideStyling = {
 	display: 'flex',
 	justifyContent: 'left',
 	alignItems: 'center',
@@ -23,7 +23,7 @@ export const dateDisplayBoxStyling = {
 	transition: '1s'
 };
 
-export const datePopUpStyling = {
+export const dateSlideStyling = {
 	textAlign: 'center',
 	display: 'grid',
 	transition: '1s'
