@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MainBatchScreen from 'components/MainBatchScreen';
+import MainBatchNewScreen from 'components/MainBatchNewScreen';
 import DateTemplateWizard from 'components/DateTemplateWizard';
 import TaskTemplateWizard from 'components/TaskTemplateWizard';
 import { interpretDateTemplate } from 'processing/dateTemplate';
@@ -60,7 +60,7 @@ const BatchNewTasks = (props) => {
 	return (
 		<div style={popUpPositionStyle}>
 			{screen === 'main' && (
-				<MainBatchScreen
+				<MainBatchNewScreen
 					errors={errors}
 					setErrors={setErrors}
 					template={template}
