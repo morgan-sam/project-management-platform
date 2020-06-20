@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import ThemeContext from 'context/ThemeContext';
-import DropdownHeader from 'components/DropdownHeader';
-import DropdownEntry from 'components/DropdownEntry';
-import DropdownCheckbox from 'components/DropdownCheckbox';
+import DropdownHeader from 'components/Dropdown/DropdownHeader';
+import DropdownEntry from 'components/Dropdown/DropdownEntry';
+import DropdownCheckbox from 'components/Dropdown/DropdownCheckbox';
 import { convertRemToPixels } from 'processing/units';
 
 import {
