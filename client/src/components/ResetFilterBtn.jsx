@@ -1,6 +1,6 @@
 import React from 'react';
 import ColorButton from 'components/ColorButton';
-import { filterOptionsDefault } from 'data/defaultState';
+import { getDefaultFilterOptions } from 'data/defaultState';
 
 const ResetFilterBtn = (props) => {
 	return (
@@ -9,7 +9,7 @@ const ResetFilterBtn = (props) => {
 			onClick={() => {
 				const active = props.filterOptions.active;
 				props.setFilterOptions({
-					...filterOptionsDefault(props.rawTaskList, active)
+					...getDefaultFilterOptions(props.rawTaskList, active)
 				});
 			}}
 			text={'Reset Filter'}

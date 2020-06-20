@@ -34,20 +34,11 @@ import { getBoundaryDates } from 'data/dates';
 import { getCommonElements } from 'processing/utility';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getTaskListTeams } from 'processing/teams';
+import { getDefaultFilterOptions } from 'data/defaultState';
 
 const BatchDeleteTasks = (props) => {
 	const { setDataChanged, setPopUp, rawTaskList } = props;
-
-	const boundaryDates = getBoundaryDates(rawTaskList);
-	const [ template, setTemplate ] = useState({
-		task: '',
-		date: stripISODateOfTime(boundaryDates.date),
-		deadline: stripISODateOfTime(boundaryDates.deadline),
-		urgency: { min: 1, max: 5 },
-		teams: [ 'all' ],
-		teamMatch: 'AND',
-		completion: 'all'
-	});
+	const [ template, setTemplate ] = useState(getDefaultFilterOptions(rawTaskList));
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 	const [ finalMatched, setFinalMatched ] = useState([]);
 
@@ -200,7 +191,7 @@ const BatchDeleteTasks = (props) => {
 								<ColorButton
 									text={'Reset To First Date'}
 									onClick={() =>
-										setTemplate({ ...template, date: stripISODateOfTime(boundaryDates.date) })}
+										setTemplate({ ...template, date: getDefaultFilterOptions(rawTaskList).date })}
 								/>
 							</div>
 							<div style={dateContainer}>
@@ -220,7 +211,7 @@ const BatchDeleteTasks = (props) => {
 									onClick={() =>
 										setTemplate({
 											...template,
-											deadline: stripISODateOfTime(boundaryDates.deadline)
+											deadline: getDefaultFilterOptions(rawTaskList).deadline
 										})}
 								/>
 							</div>
@@ -283,7 +274,12 @@ const BatchDeleteTasks = (props) => {
 						</div>
 					</div>
 					<div style={finalContainerStyle}>
-						<ColorButton color={'#a00'} text={'Delete Tasks'} onClick={() => clickRemove()} />
+						<ColorButton color={'#a00'} text={`Reset Template To Default`} onClick={() => clickRemove()} />
+						<ColorButton
+							color={'#a00'}
+							text={`Delete ${finalMatched.length} Tasks`}
+							onClick={() => clickRemove()}
+						/>
 					</div>
 					<button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
 						×

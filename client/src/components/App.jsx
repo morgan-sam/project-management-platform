@@ -8,7 +8,7 @@ import DataInfoBar from 'components/DataInfoBar';
 import AmbientBackground from 'components/AmbientBackground';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
-import { filterOptionsDefault, displayBarsAll, visibleColumnsDefault, defaultPreferences } from 'data/defaultState';
+import { getDefaultFilterOptions, displayBarsAll, visibleColumnsDefault, defaultPreferences } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teams';
 import NewTaskBar from 'components/NewTaskBar';
@@ -27,7 +27,7 @@ const App = () => {
 		reversed: false
 	});
 	const [ pressedKeys, setPressedKeys ] = useState([]);
-	const [ filterOptions, setFilterOptions ] = useState(filterOptionsDefault());
+	const [ filterOptions, setFilterOptions ] = useState(getDefaultFilterOptions());
 	const [ rawTaskList, setRawTaskList ] = useState([]);
 	const [ selectedTasks, setSelectedTasks ] = useState([]);
 	const [ dataChanged, setDataChanged ] = useState(false);
@@ -66,7 +66,7 @@ const App = () => {
 			(async () => {
 				const data = await fetchGetEntries();
 				if (data) {
-					if (rawTaskList.length === 0) setFilterOptions(filterOptionsDefault(data));
+					if (rawTaskList.length === 0) setFilterOptions(getDefaultFilterOptions(data));
 					setRawTaskList(data);
 				} else setRawTaskList([]);
 				setDataChanged(false);

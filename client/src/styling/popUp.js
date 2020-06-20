@@ -71,7 +71,10 @@ export const topRowStyle = {
 };
 
 export const finalContainerStyle = {
-	padding: '2.5rem'
+	padding: '2.5rem',
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center'
 };
 
 export const dateTopContainer = {
