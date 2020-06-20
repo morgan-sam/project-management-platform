@@ -102,6 +102,7 @@ const TaskManager = (props) => {
 					action: () =>
 						setPopUp(
 							<BatchDeleteTasks
+								pressedKeys={pressedKeys}
 								rawTaskList={rawTaskList}
 								setPopUp={setPopUp}
 								setDataChanged={setDataChanged}

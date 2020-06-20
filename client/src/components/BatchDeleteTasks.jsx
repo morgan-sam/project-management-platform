@@ -20,6 +20,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import DateSelect from 'components/DateSelect';
 import UrgencyRangeSelect from 'components/UrgencyRangeSelect';
 import Dropdown from 'components/Dropdown';
+import ConfirmPopUp from 'components/ConfirmPopUp';
 import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
 import {
 	filterListDate,
@@ -36,7 +37,7 @@ import { getTaskListTeams } from 'processing/teams';
 import { getDefaultDeleteTemplate } from 'data/defaultState';
 
 const BatchDeleteTasks = (props) => {
-	const { setDataChanged, setPopUp, rawTaskList } = props;
+	const { setDataChanged, setPopUp, rawTaskList, pressedKeys } = props;
 	const [ template, setTemplate ] = useState(getDefaultDeleteTemplate(rawTaskList));
 	const [ matched, setMatched ] = useState({ task: [], dateRange: [], urgency: [] });
 	const [ finalMatched, setFinalMatched ] = useState([]);
@@ -71,9 +72,21 @@ const BatchDeleteTasks = (props) => {
 		[ matched ]
 	);
 
+	const deletedMatchedTasks = () => {
+		fetchDeleteTasks(finalMatched);
+		setDataChanged(true);
+		setPopUp(null);
+	};
+
 	const clickRemove = () => {
-		// fetchDeleteTasks();
-		// setDataChanged(true);
+		setPopUp(
+			<ConfirmPopUp
+				message={`Are you sure you want to delete ${finalMatched.length} tasks?`}
+				confirm={() => deletedMatchedTasks()}
+				pressedKeys={pressedKeys}
+				setPopUp={setPopUp}
+			/>
+		);
 	};
 
 	const getTaskMatchIDs = (regex) => {
