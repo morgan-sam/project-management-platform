@@ -39,6 +39,7 @@ export const overlayStyle = {
 };
 
 export const getTableContainerStyle = (fixedStyle, values) => {
+	console.log('hi');
 	if (fixedStyle) {
 		const { barConHeight, displayedBars } = values;
 		return {
@@ -48,11 +49,10 @@ export const getTableContainerStyle = (fixedStyle, values) => {
 			width: '100%',
 			height: `${600 - barConHeight}px`,
 			overflowY: 'scroll',
-			transition: `height ${Object.values(displayedBars).includes(true)
-				? '0.2s ease-in-out'
-				: '0.5s ease-in-out'}`,
+			transition: `${Object.values(displayedBars).includes(true) ? '0.2s ease-in-out' : '0.5s ease-in-out'}`,
 			WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)',
-			maskImage: 'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)'
+			maskImage: 'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)',
+			animation: 'table-fixed-view-toggle 2s ease-in-out'
 		};
 	} else
 		return {
