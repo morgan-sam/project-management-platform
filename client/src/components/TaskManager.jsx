@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import ConfirmPopUp from 'components/ConfirmPopUp';
+import ConfirmPopUp from 'components/PopUps/ConfirmPopUp';
 import { fetchDeleteTasks } from 'data/fetch';
 import { checkIfAllSelectedAreComplete, getAllIds, checkIfAllTasksSelected } from 'processing/taskListSelection';
-import BatchNewTasks from 'components/BatchNewTasks';
-import BatchDeleteTasks from 'components/BatchDeleteTasks';
+import BatchNewTasks from 'components/PopUps/BatchNewTasks';
+import BatchDeleteTasks from 'components/PopUps/BatchDeleteTasks';
 import NavigationMenu from 'components/NavigationMenu';
-import Preferences from 'components/Preferences';
+import Preferences from 'components/PopUps/Preferences';
 import { displayBarsAll } from 'data/defaultState';
 import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 import { fields } from 'data/table';
