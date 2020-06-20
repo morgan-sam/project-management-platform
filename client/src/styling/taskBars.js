@@ -1,12 +1,10 @@
-export const taskbarHeights = {};
-
 const smallOpenTransition = 'max-height 1s cubic-bezier(.23,.52,.53,.74)';
 const smallCloseTransition = 'max-height .8s cubic-bezier(.27,.97,.36,.96)';
 
 const largeCloseTransition = 'max-height 1s cubic-bezier(.41,.49,.23,.93)';
 const largeOpenTransition = 'max-height 0.7s cubic-bezier(.38,.03,.23,.93)';
 
-export const defaultBarStyle = {
+const defaultBarStyle = {
 	position: 'relative',
 	height: 'auto',
 	width: 'auto',
@@ -43,4 +41,25 @@ export const getTaskBarVisibleStyle = (popUpOpen) => {
 		//executes on task bar open
 		transition: `${popUpOpen ? largeOpenTransition : smallOpenTransition}, opacity 1s`
 	};
+};
+
+export const dataInfoBarStyle = {
+	...defaultBarStyle,
+	zIndex: '7'
+};
+
+export const newTaskBarStyle = {
+	...defaultBarStyle,
+	zIndex: '8'
+};
+
+export const filterBarStyle = {
+	...defaultBarStyle,
+	zIndex: '9'
+};
+
+export const filterBarItemStyle = {
+	margin: '0 0.5rem',
+	display: 'flex',
+	alignItems: 'center'
 };

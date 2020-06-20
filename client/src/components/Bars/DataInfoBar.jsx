@@ -1,6 +1,6 @@
 import React from 'react';
-import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/Bars/taskBars';
-import { dataInfoBarStyle } from 'styling/Bars/dataInfoBar';
+import { getTaskBarHiddenStyle, getTaskBarVisibleStyle } from 'styling/taskBars';
+import { dataInfoBarStyle } from 'styling/taskBars';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToLittleEndian } from 'processing/dates';
 
