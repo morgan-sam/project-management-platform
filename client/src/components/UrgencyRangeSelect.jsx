@@ -32,7 +32,7 @@ const UrgencyRangeSelect = (props) => {
 					onClick={(val) => setMinUrgency(val)}
 					onOpenChange={props.setOverflowHidden}
 				/>
-				{'..'}
+				<div style={{ paddingLeft: '0.2rem' }}>{'..'}</div>
 				<Dropdown
 					className="maxUrgencyDropdown"
 					style={{
