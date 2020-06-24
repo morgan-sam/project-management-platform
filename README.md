@@ -6,14 +6,25 @@
 <p>Entries can be deleted via the following method:</p>
 <p>
   <ol>
-    <li>Selecting the entries to delete by clicking and dragging over them</li>
-    <li>Clicking the <code>Edit</code> in the top left corner</li>
-    <li>Hovering over <code>Delete</code></li>
-    <li>Clicking on <code>Delete Selected</code></li>
+    <li>Select the entries to delete by clicking and dragging over them</li>
+    <li>Click <code>Edit</code> in the top left navigation menu</li>
+    <li>Hover over <code>Delete</code></li>
+    <li>Click <code>Delete Selected</code></li>
   </ol>
 </p>
 
 ![Alt text](docs/delete.gif)
+
+<h3>Filtering Entries</h3>
+<p>The task list can be filtered for entries that meet a specific set of criterion.</p>
+<p>Open the filter via the following method:</p>
+<p>
+  <ol>
+    <li>Click on <code>View</code> in the top left navigation menu</li>
+    <li>Hover over <code>Taskbars</code></li>
+    <li>Click <code>Show Filter</code></li>
+  </ol>
+</p>
 
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
