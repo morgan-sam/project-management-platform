@@ -11,8 +11,8 @@
 
 <h2>Usage</h2>
 <h3>Deleting Entries</h3>
-<p>Entries can be deleted either via selecting manually or by matching by regex/parameters:</p>
-<h4>Manual Selection</h3>
+<p>Entries can be deleted either via selecting manually or batch deleting by matching regex/parameters:</p>
+<h4>Manual Selection</h4>
 <p>
   <ol>
     <li>Select the entries to delete by clicking and dragging over them</li>
@@ -23,6 +23,8 @@
 </p>
 
 ![Alt text](docs/delete.gif)
+
+<h4>Batch Delete Tasks</h3>
 
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
