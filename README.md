@@ -15,6 +15,13 @@
     <li><code>a</code> is ascending, <code>d</code> is descending</li>
   </ul>
 </p>
+<p>Examples:
+    <ul>
+    <li><code>BackendTest_${n}</code> with 4 tasks would output: <code>[BackendTest_1, BackendTest_2, BackendTest_3, BackendTest_4]</code></li>
+    <li><code>FrontendTest_${n-1,3}</code> with 3 tasks would output: <code>[FrontendTest_000, FrontendTest_001, FrontendTest_002]</code></li>
+    <li><code>feature_${l,d}</code> with 5 tasks would output: <code>[feature_z, feature_y, feature_x, feature_w, feature_v]</code></li>
+  </ul>
+</p>
 <h4>Date/Deadline</h4>
 <p><code>${#/#/#} +/- # n d/w/m/y</code></p>
 <p>
