@@ -34,6 +34,16 @@
     <li>Click <code>Delete Tasks</code></li>
   </ol>
 </p>
+<p>Next complete the following to delete the completed <code>Deployment</code> tasks:</p>
+<p>
+  <ol>
+    <li>Click in the <code>Task Regex</code> form</li>
+    <li>Type <code>Deployment</code></li>
+    <li>Click the <code>Completion</code> dropdown</li>
+    <li>Select <code>Complete</code></li>
+    <li>Click the <code>Select Matched Tasks</code> button</li>
+  </ol>
+</p>
 
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
