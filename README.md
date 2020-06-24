@@ -4,6 +4,8 @@
 <h3>Usage</h3>
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
+<p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
+<p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
 <p>The syntax of the templating is listed below:</p>
 <h4>Task</h4>
 <p><code>${n/l, #, a/d}</code></p>
