@@ -44,7 +44,7 @@
 
 <p>The remaining list only includes 3 tasks out of the original list.</p>
 
-<h4>Batching New Tasks</h4>
+<h3>Batching New Tasks</h3>
 <p>Multiple tasks can be added to the database by using a single template.</p>
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
 <p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
