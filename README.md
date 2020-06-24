@@ -11,7 +11,8 @@
 
 <h2>Usage</h2>
 <h3>Deleting Entries</h3>
-<p>Entries can be deleted via the following method:</p>
+<p>Entries can be deleted either via selecting manually or by matching by regex/parameters:</p>
+<h4>Manual Selection</h3>
 <p>
   <ol>
     <li>Select the entries to delete by clicking and dragging over them</li>
