@@ -36,6 +36,8 @@
   </ol>
 </p>
 
+![Alt text](docs/filtered1.gif)
+
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
