@@ -38,6 +38,12 @@
 
 ![Alt text](docs/filtered1.gif)
 
+<p>The filtered list only needs to include tasks that have a deadline this year, so the filter is changed:</p>
+
+![Alt text](docs/filtered2.gif)
+
+<p>The remaining list only includes 3 tasks out of the original list.</p>
+
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
