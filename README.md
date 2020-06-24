@@ -62,6 +62,7 @@
 </p>
 <p>Note:</p>
 <blockquote><code>${t}</code> is shorthand for <code>${t/t/t}</code>, today's date.</blockquote>
+<blockquote>Multiple modifications can be applied to one date (i.e. <code>${t} + nd + 5y</code>)</blockquote>
 <p>Examples:
   <ul>
     <li><code>${1/1/2020}+2nd</code> with 5 tasks would output: <code>[1/1/2020, 1/3/2020, 1/5/2020, 1/7/2020, 1/9/2020]</code></li>
