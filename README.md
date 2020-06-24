@@ -26,6 +26,16 @@
   </ol>
 </p>
 
+<p>Next for this example we filter for tasks that are highly urgent (above 4 in urgency) and involve only the 2 main teams (Team 1 & Team 2) via the following method:</p>
+<p>
+  <ol>
+    <li>Select the <code>Active</code> checkbox</li>
+    <li>Set <code>Urgency Range</code> to minimum <code>4</code></li>
+    <li>For the <code>Teams</code> dropdown, select <code>Team 1</code> & <code>Team 2</code></li>
+    <li>Set <code>Match Type</code> to <code>AND</code></li>
+  </ol>
+</p>
+
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
