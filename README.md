@@ -29,7 +29,7 @@
 <p>Next for this example we filter for tasks that are highly urgent and involve only the 2 main teams via the following method:</p>
 <p>
   <ol>
-    <li>Select the <code>Active</code> checkbox</li>
+    <li>Select the <code>Active</code> checkbox to turn on the filter</li>
     <li>Set <code>Urgency Range</code> to minimum <code>4</code></li>
     <li>For the <code>Teams</code> dropdown, select <code>Team 1</code> & <code>Team 2</code></li>
     <li>Set <code>Match Type</code> to <code>AND</code></li>
