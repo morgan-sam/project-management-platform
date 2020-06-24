@@ -26,7 +26,7 @@
   </ol>
 </p>
 
-<p>Next for this example we filter for tasks that are highly urgent (above 4 in urgency) and involve only the 2 main teams (Team 1 & Team 2) via the following method:</p>
+<p>Next for this example we filter for tasks that are highly urgent and involve only the 2 main teams via the following method:</p>
 <p>
   <ol>
     <li>Select the <code>Active</code> checkbox</li>
