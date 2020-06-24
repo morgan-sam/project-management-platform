@@ -10,9 +10,9 @@
 <p>
   Where: 
   <ul>
-    <li>n is number, l is letter</li>
-    <li># is number of digits, (skipped for letter)</li>
-    <li>a is ascending, d is descending</li>
+    <li><code>n</code> is number, <code>l</code> is letter</li>
+    <li><code>#</code> is number of digits, (skipped for letter)</li>
+    <li><code>a</code> is ascending, <code>d</code> is descending</li>
   </ul>
 </p>
 <h4>Date/Deadline</h4>
