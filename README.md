@@ -1,7 +1,7 @@
-<h3>Project Management Platform</h3>
+<h1>Project Management Platform</h1>
 <p>PMP is a platform for managing task lists for projects.</p>
 
-<h3>Usage</h3>
+<h2>Usage</h2>
 <h3>Deleting Entries</h3>
 <p>Entries can be deleted via the following method:</p>
 <p>
