@@ -7,7 +7,7 @@
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
 <p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
 <p>The syntax of the templating is listed below:</p>
-<h4>Task</h4>
+<h4>Task Template Syntax</h4>
 <p><code>${n/l, #, a/d}</code></p>
 <p>
   Where: 
@@ -24,7 +24,7 @@
     <li><code>feature_${l,d}</code> with 5 tasks would output: <code>[feature_z, feature_y, feature_x, feature_w, feature_v]</code></li>
   </ul>
 </p>
-<h4>Date/Deadline</h4>
+<h4>Date/Deadline Template Syntax</h4>
 <p><code>${#/#/#} +/- # n d/w/m/y</code></p>
 <p>
   Where: 
