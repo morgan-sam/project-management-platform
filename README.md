@@ -26,6 +26,15 @@
 
 <h4>Batch Delete Tasks</h3>
 
+<p>For this example all completed tasks named <code>Deployment</code> tasks will be deleted.</p>
+<p>First open the Batch Delete Tasks popup:</p>
+<p>
+  <ol>
+    <li>Click <code>File</code> in the top left navigation menu</li>
+    <li>Click <code>Delete Tasks</code></li>
+  </ol>
+</p>
+
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
 <p>Open the filter via the following method:</p>
