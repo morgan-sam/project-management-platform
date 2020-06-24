@@ -41,7 +41,7 @@
     <li>Type <code>"Deployment"</code></li>
     <li>Click the <code>Completion</code> dropdown</li>
     <li>Select <code>Complete</code></li>
-    <li>Click the <code>Select Matched Tasks</code> button</li>
+    <li>Click the <code>Check Matched Tasks</code> button</li>
   </ol>
 </p>
 
