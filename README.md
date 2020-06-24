@@ -2,6 +2,19 @@
 <p>PMP is a platform for managing task lists for projects.</p>
 
 <h3>Usage</h3>
+<h3>Deleting Entries</h3>
+<p>Entries can be deleted via the following method:</p>
+<p>
+  <ol>
+    <li>Selecting the entries to delete by clicking and dragging over them</li>
+    <li>Clicking the <code>Edit</code> in the top left corner</li>
+    <li>Hovering over <code>Delete</code></li>
+    <li>Clicking on <code>Delete Selected</code></li>
+  </ol>
+</p>
+
+![Alt text](docs/delete.gif)
+
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
