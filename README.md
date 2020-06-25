@@ -45,6 +45,12 @@
   </ol>
 </p>
 
+<p>The matched tasks to be deleted will then be displayed.To delete:</p>
+  <ol>
+    <li>Click the <code>Delete 𝑥 Tasks</code> button</li>
+    <li>Click the <code>Confirm</code> button</li>
+  </ol>
+
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
 <p>Open the filter via the following method:</p>
