@@ -56,7 +56,7 @@
   </ol>
 </p>
 
-<p>Next for this example the task list is filtered for tasks that are highly urgent and involve only the 2 main teams via the following method:</p>
+<p>For this example the task list is filtered for tasks that are highly urgent and involve only the 2 main teams:</p>
 <p>
   <ol>
     <li>Select the <code>Active</code> checkbox to turn on the filter</li>
