@@ -26,7 +26,6 @@
 
 <h4>Batch Delete Tasks</h3>
 
-<p>For this example all completed tasks named <code>"Deployment"</code> tasks will be deleted.</p>
 <p>First open the Batch Delete Tasks popup:</p>
 <p>
   <ol>
@@ -34,7 +33,8 @@
     <li>Click <code>Delete Tasks</code></li>
   </ol>
 </p>
-<p>Next complete the following to delete the completed <code>"Deployment"</code> tasks:</p>
+
+<p>For this example all completed tasks named <code>"Deployment"</code> tasks will be deleted:</p>
 <p>
   <ol>
     <li>Click in the <code>Task Regex</code> form</li>
