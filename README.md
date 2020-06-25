@@ -22,7 +22,7 @@
   </ol>
 </p>
 
-![Alt text](docs/delete.gif)
+![delete_gif](docs/delete.gif)
 
 <h4>Batch Delete Tasks</h3>
 
@@ -51,7 +51,7 @@
     <li>Click the <code>Confirm</code> button</li>
   </ol>
   
-![Alt text](docs/batch_delete.gif)
+![batch_delete_gif](docs/batch_delete.gif)
 
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
@@ -74,11 +74,11 @@
   </ol>
 </p>
 
-![Alt text](docs/filtered1.gif)
+![filtered1_gif](docs/filtered1.gif)
 
 <p>The filtered list only needs to include tasks that have a deadline this year, so the filter is changed:</p>
 
-![Alt text](docs/filtered2.gif)
+![filtered2_gif](docs/filtered2.gif)
 
 <p>The remaining list only includes 3 tasks out of the original list.</p>
 
