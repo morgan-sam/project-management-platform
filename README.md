@@ -76,7 +76,14 @@
 
 ![filtered1_gif](docs/filtered1.gif)
 
-<p>The filtered list only needs to include tasks that have a deadline this year, so the filter is changed:</p>
+<p>To further the example, the filtered list only needs to include tasks that have a deadline this year:</p>
+<p>
+  <ol>
+    <li>Click the <code>Deadline</code> date</li>
+    <li>Set the date to <code>31/12/2020</code></li>
+    <li>Click the <code>✓</code> button</li>
+  </ol>
+</p>
 
 ![filtered2_gif](docs/filtered2.gif)
 
