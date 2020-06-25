@@ -92,7 +92,9 @@
 <p>Multiple tasks can be added to the database by using a single template.</p>
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
 <p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
-<p>The syntax of the templating is listed below:</p>
+
+<h3>Template Syntax</h3>
+
 <h4>Task Template Syntax</h4>
 <p><code>${n/l, #, a/d}</code></p>
 <p>
@@ -134,5 +136,5 @@
   </ul>
 </p>
 
-<h3>To Do</h3>
+<h2>To Do</h2>
 <p>Authentification is not yet implemented. Once implemented the manager account will be able to view the complete task list and assign tasks to individual teams. A team account will only be able to view the tasks assigned to them and tick them off as they are completed.</p>
