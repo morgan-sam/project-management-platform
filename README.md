@@ -34,7 +34,7 @@
   </ol>
 </p>
 
-<p>For this example all completed tasks named <code>"Deployment"</code> tasks will be deleted:</p>
+<p>For this example all completed tasks named <code>"Deployment"</code> tasks will be checked and then deleted:</p>
 <p>
   <ol>
     <li>Click in the <code>Task Regex</code> form</li>
