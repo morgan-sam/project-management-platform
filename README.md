@@ -87,7 +87,6 @@
 
 ![filtered2_gif](docs/filtered2.gif)
 
-<p>The remaining list only includes 3 tasks out of the original list.</p>
 
 <h3>Batching New Tasks</h3>
 <p>Multiple tasks can be added to the database by using a single template.</p>
