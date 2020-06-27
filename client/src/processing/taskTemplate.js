@@ -2,7 +2,7 @@ import { combineParallelArrays } from 'processing/utility';
 
 export const interpretTaskTemplate = (taskTemplate, taskCount) => {
 	if (taskTemplate) {
-		const flags = taskTemplate.match(/\$\{( *[nlNL][^}]*)\}/g);
+		const flags = taskTemplate.match(/\$\{ *([nNlL]+)[ ,]*([0-9]*)[ ,]*([adAD]*) *\}/g);
 		if (!flags) return 'ERROR: INVALID TEMPLATE';
 		const settings = flags.map((el) => convertFlagToSettings(el));
 		const strings = settings.map((el) => convertSettingsToStrings(el, taskCount));
