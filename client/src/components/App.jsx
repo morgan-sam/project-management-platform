@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MainScreen from 'components/MainScreen';
 import InputFormWithLabel from 'components/InputFormWithLabel';
 import ColorButton from 'components/ColorButton';
-import { accountScreenStyle, accountEntryBox } from 'styling/accountEntry';
+import { accountScreenStyle, accountEntryBox, loginButton } from 'styling/accountEntry';
 
 const App = () => {
 	const [ currentUser, setCurrentUser ] = useState();
@@ -14,17 +14,7 @@ const App = () => {
 			<div style={accountEntryBox} className="accountEntryBox">
 				<InputFormWithLabel label={'Email'} />
 				<InputFormWithLabel label={'Password'} />
-				<ColorButton
-					style={{
-						fontSize: '1.8rem',
-						fontWeight: '600',
-						padding: '0.25rem 0.5rem',
-						letterSpacing: '0.04em'
-					}}
-					color={'#aaa'}
-					text={'Log In'}
-					onClick={() => null}
-				>
+				<ColorButton style={loginButton} color={'rgb(173, 216, 230)'} text={'Log In'} onClick={() => null}>
 					Log In
 				</ColorButton>
 			</div>
