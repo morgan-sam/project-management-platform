@@ -1,3 +1,9 @@
+export const loginTitle = {
+	margin: '1rem',
+	fontSize: '2rem',
+	textDecoration: 'underline'
+};
+
 export const accountScreenStyle = {
 	width: '100vw',
 	height: '100vh',
@@ -11,7 +17,7 @@ export const accountScreenStyle = {
 
 export const accountEntryBox = {
 	width: 'fit-content',
-	height: '10rem',
+	height: '17rem',
 	padding: '2rem',
 	border: '2px solid black',
 	borderRadius: '1rem',
@@ -25,5 +31,5 @@ export const accountEntryBox = {
 
 export const loginButton = {
 	fontSize: '1.5rem',
-	padding: '0.25rem 0.5rem'
+	padding: '0.25rem 1.5rem'
 };
