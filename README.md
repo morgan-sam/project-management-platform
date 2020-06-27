@@ -107,8 +107,9 @@
 </p>
 <p>Examples:
     <ul>
-    <li><code>BackendTest_${n}</code> with 4 tasks would output: <code>[BackendTest_1, BackendTest_2, BackendTest_3, BackendTest_4]</code></li>
-    <li><code>FrontendTest_${n-1,3}</code> with 3 tasks would output: <code>[FrontendTest_000, FrontendTest_001, FrontendTest_002]</code></li>
+    <li><code>BackendTest_${n}</code> with 3 tasks would output: <code>[BackendTest_0, BackendTest_1, BackendTest_2]</code></li>
+    <li><code>FrontendTest_${n,3,d}</code> with 3 tasks would output: <code>[FrontendTest_002, FrontendTest_001, FrontendTest_000]</code></li>
+    <li><code>Review_${l}</code> with 4 tasks would output: <code>[Review_a, Review_b, Review_c, Review_d]</code></li>
     <li><code>feature_${l,d}</code> with 5 tasks would output: <code>[feature_z, feature_y, feature_x, feature_w, feature_v]</code></li>
   </ul>
 </p>
