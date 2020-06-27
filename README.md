@@ -10,6 +10,14 @@
      
 
 <h2>Usage</h2>
+<h3>Contents:</h3>
+<p>
+  <ol>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#deleting-entries'>Deleting Entries</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>Filtering Entries</a></li>
+  </ol>
+</p>
+
 <h3>Deleting Entries</h3>
 <p>Entries can be deleted either via selecting manually or batch deleting by matching regex/parameters:</p>
 <h4>Manual Selection</h4>
