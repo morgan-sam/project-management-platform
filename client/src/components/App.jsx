@@ -12,7 +12,7 @@ const App = () => {
 	return (
 		<div style={accountScreenStyle}>
 			<div style={accountEntryBox} className="accountEntryBox">
-				<InputFormWithLabel label={'Email'} />
+				<InputFormWithLabel label={'Username'} />
 				<InputFormWithLabel label={'Password'} />
 				<ColorButton style={loginButton} color={'rgb(173, 216, 230)'} text={'Log In'} onClick={() => null}>
 					Log In
