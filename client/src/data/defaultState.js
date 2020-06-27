@@ -59,7 +59,7 @@ export const defaultPreferences = {
 
 export const defaultBatchNewTasksTemplate = {
 	count: 10,
-	task: 'Task_${n}',
+	task: 'Task_${l,a}',
 	date: '${t}',
 	deadline: '${t}+2w',
 	urgency: 3,
