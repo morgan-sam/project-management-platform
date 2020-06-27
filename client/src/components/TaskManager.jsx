@@ -221,6 +221,11 @@ const TaskManager = (props) => {
 								setPopUp={setPopUp}
 							/>
 						)
+				},
+				{
+					name: 'Documentation',
+					action: () =>
+						window.open('https://github.com/morgan-sam/Project-Management-Platform#usage', '_blank')
 				}
 			]
 		}
