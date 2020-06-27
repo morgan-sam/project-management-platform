@@ -16,6 +16,7 @@
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-entries'>Creating Entries</a></li>
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#deleting-entries'>Deleting Entries</a></li>
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>Filtering Entries</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>Template Syntax</a></li>
   </ol>
 </p>
 <h3>Creating Entries</h3>
