@@ -113,10 +113,10 @@ const MainScreen = (props) => {
 					<MainTitle />
 					<TaskManager
 						{...props}
-						selectedTasks={selectedTasks}
-						setSelectedTasks={setSelectedTasks}
 						taskList={getTaskList()}
 						{...{
+							selectedTasks,
+							setSelectedTasks,
 							rawTaskList,
 							setDataChanged,
 							setEntryCompletion,
