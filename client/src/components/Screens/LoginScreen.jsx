@@ -4,13 +4,19 @@ import ColorButton from 'components/ColorButton';
 import { loginTitle, accountScreenStyle, accountEntryBox, loginButton } from 'styling/accountEntry';
 
 const LoginScreen = (props) => {
+	const { setCurrentUser } = props;
 	return (
 		<div style={accountScreenStyle}>
 			<div style={accountEntryBox} className="accountEntryBox">
 				<div style={loginTitle}>Log In</div>
 				<InputFormWithLabel label={'Username'} />
 				<InputFormWithLabel label={'Password'} />
-				<ColorButton style={loginButton} color={'rgb(173, 216, 230)'} text={'Log In'} onClick={() => null}>
+				<ColorButton
+					style={loginButton}
+					color={'rgb(173, 216, 230)'}
+					text={'Log In'}
+					onClick={() => setTimeout(() => setCurrentUser('manager'), 500)}
+				>
 					Log In
 				</ColorButton>
 			</div>
