@@ -10,6 +10,24 @@
      
 
 <h2>Usage</h2>
+<h3>Contents:</h3>
+<p>
+  <ol>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-entries'>Creating Entries</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#deleting-entries'>Deleting Entries</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>Filtering Entries</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>Template Syntax</a></li>
+  </ol>
+</p>
+<h3>Creating Entries</h3>
+<p>Entries can be created either via the create task bar or the batch new tasks popup:</p>
+
+<h4>Batching New Tasks</h4>
+<p>Multiple tasks can be added to the database by using a single template.</p>
+<p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
+<p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
+
+
 <h3>Deleting Entries</h3>
 <p>Entries can be deleted either via selecting manually or batch deleting by matching regex/parameters:</p>
 <h4>Manual Selection</h4>
@@ -87,11 +105,6 @@
 
 ![filtered2_gif](docs/filtered2.gif)
 
-
-<h3>Batching New Tasks</h3>
-<p>Multiple tasks can be added to the database by using a single template.</p>
-<p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
-<p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
 
 <h3>Template Syntax</h3>
 
