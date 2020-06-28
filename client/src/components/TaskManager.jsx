@@ -15,6 +15,7 @@ import { visibleColumnsDefault } from 'data/defaultState';
 
 const TaskManager = (props) => {
 	const {
+		setCurrentUser,
 		setSelectedTasks,
 		setDataChanged,
 		setEntryCompletion,
@@ -226,6 +227,15 @@ const TaskManager = (props) => {
 					name: 'Documentation',
 					action: () =>
 						window.open('https://github.com/morgan-sam/Project-Management-Platform#usage', '_blank')
+				}
+			]
+		},
+		{
+			name: 'Account',
+			sub: [
+				{
+					name: 'Log Out',
+					action: () => setCurrentUser(null)
 				}
 			]
 		}

@@ -21,7 +21,7 @@ import {
 	getTopBarsContainerStyle
 } from 'styling/mainPage';
 
-const MainScreen = () => {
+const MainScreen = (props) => {
 	const [ sortOptions, setSortOptions ] = useState({
 		type: 'date',
 		reversed: false
@@ -112,6 +112,7 @@ const MainScreen = () => {
 				<div className="mainPage" style={getMainPageStyle(popUp)}>
 					<MainTitle />
 					<TaskManager
+						{...props}
 						selectedTasks={selectedTasks}
 						setSelectedTasks={setSelectedTasks}
 						taskList={getTaskList()}

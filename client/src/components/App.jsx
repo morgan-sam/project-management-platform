@@ -7,8 +7,8 @@ const App = () => {
 
 	console.log(currentUser);
 
-	if (currentUser === 'manager') return <MainScreen />;
-	else if (currentUser === 'worker') return <MainScreen />;
+	if (currentUser === 'manager') return <MainScreen {...{ setCurrentUser }} />;
+	else if (currentUser === 'worker') return <MainScreen {...{ setCurrentUser }} />;
 	else return <LoginScreen {...{ setCurrentUser }} />;
 };
 
