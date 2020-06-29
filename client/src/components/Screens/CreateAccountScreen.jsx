@@ -64,21 +64,22 @@ const CreateAccountScreen = ({ history }) => {
 		userSelect: 'none'
 	};
 
+	const pageTwoInterfaceStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center' };
+	const listLineStyle = {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		margin: '1rem'
+	};
+
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
 		else if (page === 2)
 			return (
-				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+				<div style={pageTwoInterfaceStyle}>
 					<div>
 						{teamMembers.map((el, i) => (
-							<div
-								style={{
-									display: 'flex',
-									alignItems: 'center',
-									flexDirection: 'row',
-									margin: '1rem'
-								}}
-							>
+							<div style={listLineStyle}>
 								{el}
 								<div
 									style={removeButtonStyle}
