@@ -8,9 +8,7 @@ import {
 	textStyle,
 	footerStyle
 } from 'styling/accountEntry';
-import { withRouter, Redirect } from 'react-router';
-import app from 'config/firebase';
-import { AuthContext } from 'config/auth';
+import { withRouter } from 'react-router';
 import PageNavigation from 'components/PageNavigation';
 import { useState } from 'react';
 
