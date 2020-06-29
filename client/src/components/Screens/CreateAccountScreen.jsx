@@ -11,8 +11,12 @@ import {
 import { withRouter, Redirect } from 'react-router';
 import app from 'config/firebase';
 import { AuthContext } from 'config/auth';
+import PageNavigation from 'components/PageNavigation';
+import { useState } from 'react';
 
 const CreateAccountScreen = ({ history }) => {
+	const [ currentPage, setCurrentPage ] = useState(0);
+
 	const handleLogin = useCallback(
 		async (e) => {
 			e.preventDefault();
@@ -29,13 +33,18 @@ const CreateAccountScreen = ({ history }) => {
 	const { currentUser } = useContext(AuthContext);
 	if (currentUser) return <Redirect to="/" />;
 
-	const generateSubText = () => createAccountText.map((el) => <div style={textStyle}>{el}</div>);
+	const generateSubText = () => createAccountText[currentPage].map((el) => <div style={textStyle}>{el}</div>);
 
 	return (
 		<div style={accountScreenStyle}>
 			<div style={accountEntryBox}>
 				<div style={loginTitle}>Create Account</div>
 				<div style={textContainerStyle}>{generateSubText()}</div>
+				<PageNavigation
+					currentPage={currentPage}
+					setCurrentPage={setCurrentPage}
+					totalPages={createAccountText.length}
+				/>
 				<div style={footerStyle}>
 					Returning? <a href="/login">Log In</a>
 				</div>
