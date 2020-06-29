@@ -72,7 +72,15 @@ const CreateAccountScreen = ({ history }) => {
 		userSelect: 'none'
 	};
 
-	const pageTwoInterfaceStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center' };
+	const pageTwoInterfaceStyle = {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	};
+	const listStyle = {
+		maxHeight: '20rem',
+		overflowY: 'scroll'
+	};
 	const listLineStyle = {
 		display: 'flex',
 		flexDirection: 'row',
@@ -90,7 +98,7 @@ const CreateAccountScreen = ({ history }) => {
 		else if (page === 2)
 			return (
 				<div style={pageTwoInterfaceStyle}>
-					<div>
+					<div style={listStyle}>
 						{teamMembers.length ? (
 							teamMembers.map((el, i) => (
 								<div style={listLineStyle}>
