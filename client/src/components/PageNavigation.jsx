@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CreateAccountScreen = (props) => {
-	const { currentPage, setCurrentPage, totalPages } = props;
+	const { currentPage, setCurrentPage, currentPageComplete, totalPages } = props;
 
 	const navigationContainerStyle = {
 		display: 'flex',
@@ -29,8 +29,9 @@ const CreateAccountScreen = (props) => {
 				{currentPage + 1}/{totalPages}
 			</span>
 			<div
-				style={getArrowStyle(currentPage < totalPages - 1)}
-				onClick={() => (currentPage < totalPages - 1 ? setCurrentPage(currentPage + 1) : null)}
+				style={getArrowStyle(currentPageComplete && currentPage < totalPages - 1)}
+				onClick={() =>
+					currentPageComplete && currentPage < totalPages - 1 ? setCurrentPage(currentPage + 1) : null}
 			>
 				⮞
 			</div>
