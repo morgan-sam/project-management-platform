@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import MainScreen from 'components/Screens/MainScreen';
 import LoginScreen from 'components/Screens/LoginScreen';
+import { AuthProvider } from 'config/auth';
+import PrivateRoute from 'routes/PrivateRoute';
 
 const App = () => {
-	const [ currentUser, setCurrentUser ] = useState();
-
-	console.log(currentUser);
-
-	if (currentUser === 'manager') return <MainScreen {...{ setCurrentUser }} />;
-	else if (currentUser === 'worker') return <MainScreen {...{ setCurrentUser }} />;
-	else return <LoginScreen {...{ setCurrentUser }} />;
+	return (
+		<AuthProvider>
+			<Router>
+				<div>
+					<PrivateRoute exact path="/" component={MainScreen} />
+					<Route exact path="/login" component={LoginScreen} />
+				</div>
+			</Router>
+		</AuthProvider>
+	);
 };
 
 export default App;

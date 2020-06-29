@@ -12,6 +12,7 @@ import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 import { fields } from 'data/table';
 import { capitalizeFirstLetter } from 'processing/utility';
 import { visibleColumnsDefault } from 'data/defaultState';
+import app from 'config/firebase';
 
 const TaskManager = (props) => {
 	const {
@@ -235,7 +236,7 @@ const TaskManager = (props) => {
 			sub: [
 				{
 					name: 'Log Out',
-					action: () => setCurrentUser(null)
+					action: () => app.auth().signOut()
 				}
 			]
 		}

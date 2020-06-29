@@ -112,7 +112,6 @@ const MainScreen = (props) => {
 				<div className="mainPage" style={getMainPageStyle(popUp)}>
 					<MainTitle />
 					<TaskManager
-						{...props}
 						taskList={getTaskList()}
 						{...{
 							selectedTasks,

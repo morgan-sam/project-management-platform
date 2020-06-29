@@ -28,8 +28,3 @@ export const accountEntryBox = {
 	justifyContent: 'space-between',
 	alignItems: 'center'
 };
-
-export const loginButton = {
-	fontSize: '1.5rem',
-	padding: '0.25rem 1.5rem'
-};
