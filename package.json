@@ -17,6 +17,7 @@
 	},
 	"homepage": "https://github.com/morgan-sam/Project-Management-Platform#readme",
 	"dependencies": {
-		"@welldone-software/why-did-you-render": "^4.2.5"
+		"@welldone-software/why-did-you-render": "^4.2.5",
+		"react-router-dom": "^5.2.0"
 	}
 }
