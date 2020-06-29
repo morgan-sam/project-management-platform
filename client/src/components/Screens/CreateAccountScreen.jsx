@@ -80,26 +80,35 @@ const CreateAccountScreen = ({ history }) => {
 		margin: '1rem'
 	};
 
+	const noTeamMembersStyle = {
+		fontSize: '0.8rem',
+		margin: '1rem'
+	};
+
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
 		else if (page === 2)
 			return (
 				<div style={pageTwoInterfaceStyle}>
 					<div>
-						{teamMembers.map((el, i) => (
-							<div style={listLineStyle}>
-								{el}
-								<div
-									style={removeButtonStyle}
-									onClick={() => {
-										const removed = [ ...teamMembers.slice(0, i), ...teamMembers.slice(i + 1) ];
-										setTeamMembers(removed);
-									}}
-								>
-									✕
+						{teamMembers.length ? (
+							teamMembers.map((el, i) => (
+								<div style={listLineStyle}>
+									{el}
+									<div
+										style={removeButtonStyle}
+										onClick={() => {
+											const removed = [ ...teamMembers.slice(0, i), ...teamMembers.slice(i + 1) ];
+											setTeamMembers(removed);
+										}}
+									>
+										✕
+									</div>
 								</div>
-							</div>
-						))}
+							))
+						) : (
+							<div style={noTeamMembersStyle}>(No team members added - can be added later instead)</div>
+						)}
 					</div>
 					<Form
 						style={{ flexDirection: 'row' }}
