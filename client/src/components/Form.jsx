@@ -31,7 +31,7 @@ const Form = (props) => {
 	};
 
 	return (
-		<form onSubmit={onSubmit} style={formStyle}>
+		<form onSubmit={onSubmit} style={{ ...formStyle, ...props.style }}>
 			{inputs.map((el, i) => (
 				<label key={i} style={formInputStyle}>
 					<span style={formLabelStyle}>{capitalizeFirstLetter(el)}</span>
