@@ -23,12 +23,28 @@ const CreateAccountScreen = ({ history }) => {
 
 	const generateSubText = () => createAccountText[currentPage].map((el) => <div style={textStyle}>{el}</div>);
 
+	const checkIfEmailPasswordValid = async (email, password) => {
+		try {
+			const signInMethods = await app.auth().fetchSignInMethodsForEmail(email);
+			const emailValid = signInMethods.length === 0;
+			const passwordValid = password.length >= 6;
+			return emailValid && passwordValid;
+		} catch (error) {
+			return false;
+		}
+	};
+
 	useEffect(
 		() => {
-			if (currentPage === 0) setCurrentPageComplete(true);
-			else if (currentPage === 1) {
-				setCurrentPageComplete(false);
-			} else if (currentPage === 2) setCurrentPageComplete(false);
+			setCurrentPageComplete(false);
+			const checkIfPageComplete = async () => {
+				if (currentPage === 0) setCurrentPageComplete(true);
+				else if (currentPage === 1) {
+					const bothValid = await checkIfEmailPasswordValid(managerDetails.email, managerDetails.password);
+					setCurrentPageComplete(bothValid);
+				} else if (currentPage === 2) setCurrentPageComplete(false);
+			};
+			checkIfPageComplete();
 		},
 		[ currentPage, managerDetails ]
 	);
