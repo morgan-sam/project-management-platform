@@ -33,9 +33,11 @@ export const textContainerStyle = {
 };
 
 export const textStyle = {
-	padding: '1rem'
+	padding: '1rem',
+	fontSize: '1.3rem'
 };
 
 export const footerStyle = {
-	padding: '1rem'
+	padding: '1rem',
+	fontSize: '1rem'
 };
