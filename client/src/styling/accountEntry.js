@@ -17,7 +17,6 @@ export const accountScreenStyle = {
 
 export const accountEntryBox = {
 	width: 'fit-content',
-	height: '17rem',
 	padding: '2rem',
 	border: '2px solid black',
 	borderRadius: '1rem',
