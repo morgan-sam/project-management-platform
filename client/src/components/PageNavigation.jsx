@@ -11,8 +11,9 @@ const CreateAccountScreen = (props) => {
 	const getArrowStyle = (enabled) => {
 		return {
 			color: enabled ? 'black' : '#ccc',
-			cursor: 'pointer',
-			margin: '1rem'
+			cursor: enabled ? 'pointer' : 'not-allowed',
+			margin: '1rem',
+			userSelect: 'none'
 		};
 	};
 
