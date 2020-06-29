@@ -25,10 +25,18 @@ const CreateAccountScreen = ({ history }) => {
 
 	const generateSubText = () => createAccountText[currentPage].map((el) => <div style={textStyle}>{el}</div>);
 
-	const checkIfEmailPasswordValid = async (email, password) => {
+	const checkIfEmailValid = async (email) => {
 		try {
 			const signInMethods = await app.auth().fetchSignInMethodsForEmail(email);
-			const emailValid = signInMethods.length === 0;
+			return signInMethods.length === 0;
+		} catch (error) {
+			return false;
+		}
+	};
+
+	const checkIfEmailPasswordValid = async (email, password) => {
+		try {
+			const emailValid = await checkIfEmailValid(email);
 			const passwordValid = password.length >= 6;
 			return emailValid && passwordValid;
 		} catch (error) {
@@ -95,11 +103,14 @@ const CreateAccountScreen = ({ history }) => {
 					</div>
 					<Form
 						style={{ flexDirection: 'row' }}
-						onSubmit={(e) => {
+						onSubmit={async (e) => {
 							e.preventDefault();
 							const { email } = e.target.elements;
-							setTeamMembers([ ...teamMembers, email.value ]);
-							email.value = '';
+							const emailValid = await checkIfEmailValid(email.value);
+							if (emailValid) {
+								setTeamMembers([ ...teamMembers, email.value ]);
+								email.value = '';
+							}
 						}}
 						inputs={[ 'email' ]}
 						submitLabel={'Add User'}
