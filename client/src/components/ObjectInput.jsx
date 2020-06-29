@@ -26,20 +26,23 @@ const ObjectInput = (props) => {
 
 	return (
 		<form style={formStyle}>
-			{Object.entries(obj).map((el, i) => (
-				<label key={i} style={formInputStyle}>
-					<span style={formLabelStyle}>{capitalizeFirstLetter(el[0])}</span>
-					<input
-						onChange={(e) => {
-							let objCopy = Object.assign({}, obj);
-							objCopy[el[0]] = e.target.value;
-							setObj(objCopy);
-						}}
-						style={formTextAreaStyle}
-						placeholder={capitalizeFirstLetter(el[1])}
-					/>
-				</label>
-			))}
+			{Object.entries(obj).map((el, i) => {
+				return (
+					<label key={i} style={formInputStyle}>
+						<span style={formLabelStyle}>{capitalizeFirstLetter(el[0])}</span>
+						<input
+							type={el[0]}
+							onChange={(e) => {
+								let objCopy = Object.assign({}, obj);
+								objCopy[el[0]] = e.target.value;
+								setObj(objCopy);
+							}}
+							style={formTextAreaStyle}
+							placeholder={capitalizeFirstLetter(el[1])}
+						/>
+					</label>
+				);
+			})}
 		</form>
 	);
 };
