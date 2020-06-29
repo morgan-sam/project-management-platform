@@ -27,3 +27,15 @@ export const accountEntryBox = {
 	justifyContent: 'space-between',
 	alignItems: 'center'
 };
+
+export const textContainerStyle = {
+	padding: '1rem'
+};
+
+export const textStyle = {
+	padding: '1rem'
+};
+
+export const footerStyle = {
+	padding: '1rem'
+};

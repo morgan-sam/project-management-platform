@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import Form from 'components/Form';
-import { loginTitle, accountScreenStyle, accountEntryBox } from 'styling/accountEntry';
+import { loginTitle, accountScreenStyle, accountEntryBox, footerStyle } from 'styling/accountEntry';
 import { withRouter, Redirect } from 'react-router';
 import app from 'config/firebase';
 import { AuthContext } from 'config/auth';
@@ -26,7 +26,7 @@ const LoginScreen = ({ history }) => {
 			<div style={accountEntryBox}>
 				<div style={loginTitle}>Log In</div>
 				<Form onSubmit={handleLogin} inputs={[ 'email', 'password' ]} submitLabel={'Log In'} />
-				<div style={{ margin: '1rem' }}>
+				<div style={footerStyle}>
 					New here? <a href="/signup">Sign Up</a>
 				</div>
 			</div>

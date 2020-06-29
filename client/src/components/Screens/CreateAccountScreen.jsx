@@ -1,6 +1,13 @@
 import React, { useCallback, useContext } from 'react';
 import { createAccountText } from 'data/createAccountText';
-import { loginTitle, accountScreenStyle, accountEntryBox } from 'styling/accountEntry';
+import {
+	loginTitle,
+	accountScreenStyle,
+	accountEntryBox,
+	textContainerStyle,
+	textStyle,
+	footerStyle
+} from 'styling/accountEntry';
 import { withRouter, Redirect } from 'react-router';
 import app from 'config/firebase';
 import { AuthContext } from 'config/auth';
@@ -22,18 +29,14 @@ const CreateAccountScreen = ({ history }) => {
 	const { currentUser } = useContext(AuthContext);
 	if (currentUser) return <Redirect to="/" />;
 
-	const textContainerStyle = {
-		margin: '1rem'
-	};
-
-	const generateSubText = () => createAccountText.map((el) => <div style={{ padding: '1rem' }}>{el}</div>);
+	const generateSubText = () => createAccountText.map((el) => <div style={textStyle}>{el}</div>);
 
 	return (
 		<div style={accountScreenStyle}>
 			<div style={accountEntryBox}>
 				<div style={loginTitle}>Create Account</div>
 				<div style={textContainerStyle}>{generateSubText()}</div>
-				<div style={{ padding: '1rem' }}>
+				<div style={footerStyle}>
 					Returning? <a href="/login">Log In</a>
 				</div>
 			</div>
