@@ -17,22 +17,6 @@ import { useState } from 'react';
 const CreateAccountScreen = ({ history }) => {
 	const [ currentPage, setCurrentPage ] = useState(0);
 
-	const handleLogin = useCallback(
-		async (e) => {
-			e.preventDefault();
-			const { email, password } = e.target.elements;
-			try {
-				await app.auth().createUserWithEmailAndPassword(email.value, password.value);
-				history.push('/');
-			} catch (error) {
-				alert(error);
-			}
-		},
-		[ history ]
-	);
-	const { currentUser } = useContext(AuthContext);
-	if (currentUser) return <Redirect to="/" />;
-
 	const generateSubText = () => createAccountText[currentPage].map((el) => <div style={textStyle}>{el}</div>);
 
 	return (
