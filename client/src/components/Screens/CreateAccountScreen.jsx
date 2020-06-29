@@ -44,7 +44,7 @@ const CreateAccountScreen = ({ history }) => {
 				else if (currentPage === 1) {
 					const bothValid = await checkIfEmailPasswordValid(managerDetails.email, managerDetails.password);
 					setCurrentPageComplete(bothValid);
-				} else if (currentPage === 2) setCurrentPageComplete(false);
+				} else if (currentPage === 2) setCurrentPageComplete(true);
 			};
 			checkIfPageComplete();
 		},
