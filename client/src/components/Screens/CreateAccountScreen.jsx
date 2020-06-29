@@ -98,6 +98,7 @@ const CreateAccountScreen = ({ history }) => {
 							e.preventDefault();
 							const { email } = e.target.elements;
 							setTeamMembers([ ...teamMembers, email.value ]);
+							email.value = '';
 						}}
 						inputs={[ 'email' ]}
 						submitLabel={'Add User'}
