@@ -51,12 +51,47 @@ const CreateAccountScreen = ({ history }) => {
 		[ currentPage, managerDetails ]
 	);
 
+	const removeButtonStyle = {
+		width: '1rem',
+		height: '1rem',
+		fontSize: '1rem',
+		border: '1px solid black',
+		backgroundColor: '#FFB2B2',
+		display: 'flex',
+		justifyContent: 'center',
+		margin: '0 1rem',
+		cursor: 'pointer',
+		userSelect: 'none'
+	};
+
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
 		else if (page === 2)
 			return (
 				<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-					<div>{teamMembers.map((el) => <div>{el}</div>)}</div>
+					<div>
+						{teamMembers.map((el, i) => (
+							<div
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									flexDirection: 'row',
+									margin: '1rem'
+								}}
+							>
+								{el}
+								<div
+									style={removeButtonStyle}
+									onClick={() => {
+										const removed = [ ...teamMembers.slice(0, i), ...teamMembers.slice(i + 1) ];
+										setTeamMembers(removed);
+									}}
+								>
+									✕
+								</div>
+							</div>
+						))}
+					</div>
 					<Form
 						style={{ flexDirection: 'row' }}
 						onSubmit={(e) => {
