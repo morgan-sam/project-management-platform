@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React from 'react';
 import { createAccountText } from 'data/createAccountText';
 import {
 	loginTitle,
