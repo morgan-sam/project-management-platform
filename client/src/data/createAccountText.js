@@ -6,8 +6,8 @@ export const createAccountText = [
 	[ 'Firstly create the account of the team manager.', 'Please enter an email and password for the team manager.' ],
 	[
 		'Now create the list of team members for your PMP session. Please enter the email of each team member.',
-		'They will each be sent an email link where they can login and create a password.',
-		'(Note: members can be added/removed later)'
+		'Each added member will each be sent an email link where they can login and create a password.',
+		'Members can be added/removed after setup.'
 	],
 	[ 'Please confirm the following information is correct:' ]
 ];
