@@ -75,11 +75,13 @@ const CreateAccountScreen = ({ history }) => {
 	const pageTwoInterfaceStyle = {
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center'
+		alignItems: 'center',
+		margin: '0.75rem'
 	};
 	const listStyle = {
 		maxHeight: '20rem',
-		overflowY: 'scroll'
+		overflowY: 'scroll',
+		margin: '0.5rem'
 	};
 	const listLineStyle = {
 		display: 'flex',
@@ -92,12 +94,17 @@ const CreateAccountScreen = ({ history }) => {
 		fontSize: '0.8rem',
 		margin: '1rem'
 	};
+	const pageThreeTitleStyle = {
+		textDecoration: 'underline',
+		margin: '1rem'
+	};
 
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
 		else if (page === 2)
 			return (
 				<div style={pageTwoInterfaceStyle}>
+					<h3 style={pageThreeTitleStyle}>Added Members:</h3>
 					<div style={listStyle}>
 						{teamMembers.length ? (
 							teamMembers.map((el, i) => (
@@ -119,7 +126,7 @@ const CreateAccountScreen = ({ history }) => {
 						)}
 					</div>
 					<Form
-						style={{ flexDirection: 'row' }}
+						style={{ flexDirection: 'row', margin: '0.75rem' }}
 						onSubmit={async (e) => {
 							e.preventDefault();
 							const { email } = e.target.elements;
