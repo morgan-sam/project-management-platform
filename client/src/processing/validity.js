@@ -11,5 +11,3 @@ export const checkIfEmailValid = (email) => {
 	if (charAtStartOrEnd(domain, '-')) return false;
 	return true;
 };
-
-console.log(checkIfEmailValid('localdomain@dsgf.dff'));
