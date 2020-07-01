@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import app from 'config/firebase';
-
+import LoadingScreen from 'components/Screens/LoadingScreen';
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
 			}),
 		[]
 	);
-	if (loading) return <div>Loading...</div>;
+
+	if (loading) return <LoadingScreen />;
 	else return <AuthContext.Provider value={{ currentUser }}>{children}</AuthContext.Provider>;
 };
