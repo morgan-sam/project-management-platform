@@ -15,6 +15,30 @@ test('Check legal Emails:', () => {
 		'firstname-lastname@example.com'
 	];
 	const tested = legalEmails.map((el) => checkIfEmailValid(el));
-	const result = tested.includes(false);
-	expect(result).toStrictEqual(false);
+	const includesIllegal = tested.includes(false);
+	expect(includesIllegal).toStrictEqual(false);
+});
+
+test('Check illegal Emails:', () => {
+	const illegalEmails = [
+		'plainaddress',
+		'#@%^%#$@#$@#.com',
+		'@example.com',
+		'Joe Smith <email@example.com>',
+		'email.example.com',
+		'email@example@example.com',
+		'.email@example.com',
+		'email.@example.com',
+		'email..email@example.com',
+		'あいうえお@example.com',
+		'email@example.com (Joe Smith)',
+		'email@example',
+		'email@-example.com',
+		'email@111.222.333.44444',
+		'email@example..com',
+		'Abc..123@example.com'
+	];
+	const tested = illegalEmails.map((el) => checkIfEmailValid(el));
+	const includesLegal = tested.includes(true);
+	expect(includesLegal).toStrictEqual(false);
 });
