@@ -13,9 +13,17 @@ import PageNavigation from 'components/PageNavigation';
 import Form from 'components/Form';
 import ObjectInput from 'components/ObjectInput';
 import app from 'config/firebase';
+import {
+	pageTwoInterfaceStyle,
+	pageThreeTitleStyle,
+	listStyle,
+	listLineStyle,
+	removeButtonStyle,
+	noTeamMembersStyle
+} from 'styling/createAccountStyle';
 
 const CreateAccountScreen = ({ history }) => {
-	const [ currentPage, setCurrentPage ] = useState(2);
+	const [ currentPage, setCurrentPage ] = useState(0);
 	const [ currentPageComplete, setCurrentPageComplete ] = useState(false);
 	const [ managerDetails, setManagerDetails ] = useState({
 		email: '',
@@ -58,46 +66,6 @@ const CreateAccountScreen = ({ history }) => {
 		},
 		[ currentPage, managerDetails ]
 	);
-
-	const removeButtonStyle = {
-		width: '1rem',
-		height: '1rem',
-		fontSize: '1rem',
-		border: '1px solid black',
-		backgroundColor: '#FFB2B2',
-		display: 'flex',
-		justifyContent: 'center',
-		margin: '0 1rem',
-		cursor: 'pointer',
-		userSelect: 'none'
-	};
-
-	const pageTwoInterfaceStyle = {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		margin: '0.75rem'
-	};
-	const listStyle = {
-		maxHeight: '20rem',
-		overflowY: 'scroll',
-		margin: '0.5rem'
-	};
-	const listLineStyle = {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		margin: '1rem'
-	};
-
-	const noTeamMembersStyle = {
-		fontSize: '0.8rem',
-		margin: '1rem'
-	};
-	const pageThreeTitleStyle = {
-		textDecoration: 'underline',
-		margin: '1rem'
-	};
 
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
