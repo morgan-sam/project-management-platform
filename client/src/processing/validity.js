@@ -7,6 +7,7 @@ export const checkIfEmailValid = (email) => {
 	const matches = regex.exec(email);
 	if (matches === null) return false;
 	const [ full, local, domain, ext ] = matches;
+	if (email !== full) return false;
 	if (charAtStartOrEnd(local, '.') || stringConsecutiveDots(local)) return false;
 	if (charAtStartOrEnd(domain, '-')) return false;
 	return true;
