@@ -21,6 +21,7 @@ import {
 	removeButtonStyle,
 	noTeamMembersStyle
 } from 'styling/createAccountStyle';
+import { checkIfEmailValid } from 'processing/validity';
 
 const CreateAccountScreen = ({ history }) => {
 	const [ currentPage, setCurrentPage ] = useState(0);
@@ -33,23 +34,10 @@ const CreateAccountScreen = ({ history }) => {
 
 	const generateSubText = () => createAccountText[currentPage].map((el) => <div style={textStyle}>{el}</div>);
 
-	const checkIfEmailValid = async (email) => {
-		try {
-			const signInMethods = await app.auth().fetchSignInMethodsForEmail(email);
-			return signInMethods.length === 0;
-		} catch (error) {
-			return false;
-		}
-	};
-
-	const checkIfEmailPasswordValid = async (email, password) => {
-		try {
-			const emailValid = await checkIfEmailValid(email);
-			const passwordValid = password.length >= 6;
-			return emailValid && passwordValid;
-		} catch (error) {
-			return false;
-		}
+	const checkIfEmailPasswordValid = (email, password) => {
+		const emailValid = checkIfEmailValid(email);
+		const passwordValid = password.length >= 6;
+		return emailValid && passwordValid;
 	};
 
 	useEffect(
@@ -58,7 +46,7 @@ const CreateAccountScreen = ({ history }) => {
 			const checkIfPageComplete = async () => {
 				if (currentPage === 0) setCurrentPageComplete(true);
 				else if (currentPage === 1) {
-					const bothValid = await checkIfEmailPasswordValid(managerDetails.email, managerDetails.password);
+					const bothValid = checkIfEmailPasswordValid(managerDetails.email, managerDetails.password);
 					setCurrentPageComplete(bothValid);
 				} else if (currentPage === 2) setCurrentPageComplete(true);
 			};
@@ -98,7 +86,7 @@ const CreateAccountScreen = ({ history }) => {
 						onSubmit={async (e) => {
 							e.preventDefault();
 							const { email } = e.target.elements;
-							const emailValid = await checkIfEmailValid(email.value);
+							const emailValid = checkIfEmailValid(email.value);
 							if (emailValid) {
 								setTeamMembers([ ...teamMembers, email.value ]);
 								email.value = '';
