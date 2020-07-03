@@ -32,7 +32,12 @@ const CreateAccountScreen = ({ history }) => {
 	});
 	const [ teamMembers, setTeamMembers ] = useState([ 'hello@aol.com', 'world@sky.com' ]);
 
-	const generateSubText = () => createAccountText[currentPage].map((el) => <div style={textStyle}>{el}</div>);
+	const generateSubText = () =>
+		createAccountText[currentPage].map((el, i) => (
+			<div key={i} style={textStyle}>
+				{el}
+			</div>
+		));
 
 	const checkIfEmailPasswordValid = (email, password) => {
 		const emailValid = checkIfEmailValid(email);
