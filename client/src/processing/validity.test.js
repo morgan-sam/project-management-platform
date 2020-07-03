@@ -15,6 +15,8 @@ test('Check legal Emails:', () => {
 		'firstname-lastname@example.com'
 	];
 	const tested = legalEmails.map((el) => checkIfEmailValid(el));
+	const failedTestEmails = legalEmails.filter((el, i) => !tested[i]);
+	console.log(failedTestEmails);
 	const includesIllegal = tested.includes(false);
 	expect(includesIllegal).toStrictEqual(false);
 });
@@ -39,6 +41,8 @@ test('Check illegal Emails:', () => {
 		'Abc..123@example.com'
 	];
 	const tested = illegalEmails.map((el) => checkIfEmailValid(el));
+	const failedTestEmails = illegalEmails.filter((el, i) => tested[i]);
+	console.log(failedTestEmails);
 	const includesLegal = tested.includes(true);
 	expect(includesLegal).toStrictEqual(false);
 });
