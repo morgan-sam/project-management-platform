@@ -33,7 +33,6 @@ test('Check illegal Emails:', () => {
 		'email..email@example.com',
 		'あいうえお@example.com',
 		'email@example.com (Joe Smith)',
-		'email@example',
 		'email@-example.com',
 		'email@111.222.333.44444',
 		'email@example..com',
