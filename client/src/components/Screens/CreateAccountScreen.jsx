@@ -14,7 +14,7 @@ import Form from 'components/Form';
 import ObjectInput from 'components/ObjectInput';
 import app from 'config/firebase';
 import {
-	pageTwoInterfaceStyle,
+	pageThreeInterfaceStyle,
 	pageThreeTitleStyle,
 	listStyle,
 	listLineStyle,
@@ -109,7 +109,7 @@ const CreateAccountScreen = ({ history }) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
 		else if (page === 2)
 			return (
-				<div style={pageTwoInterfaceStyle}>
+				<div style={pageThreeInterfaceStyle}>
 					<h3 style={pageThreeTitleStyle}>Added Members:</h3>
 					<div style={listStyle}>
 						{teamMembers.length ? (

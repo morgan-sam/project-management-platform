@@ -11,17 +11,19 @@ export const removeButtonStyle = {
 	userSelect: 'none'
 };
 
-export const pageTwoInterfaceStyle = {
+export const pageThreeInterfaceStyle = {
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
 	margin: '0.75rem'
 };
+
 export const listStyle = {
 	maxHeight: '20rem',
 	overflowY: 'scroll',
 	margin: '0.5rem'
 };
+
 export const listLineStyle = {
 	display: 'flex',
 	flexDirection: 'row',
@@ -33,6 +35,7 @@ export const noTeamMembersStyle = {
 	fontSize: '0.8rem',
 	margin: '1rem'
 };
+
 export const pageThreeTitleStyle = {
 	textDecoration: 'underline',
 	margin: '1rem'
