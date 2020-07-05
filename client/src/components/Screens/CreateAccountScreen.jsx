@@ -34,48 +34,7 @@ const CreateAccountScreen = ({ history }) => {
 		email: 'test@email.com',
 		password: '123456789'
 	});
-	const [ teamMembers, setTeamMembers ] = useState([
-		'hello@aol.com',
-		'world@sky.com',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345',
-		'345'
-	]);
+	const [ teamMembers, setTeamMembers ] = useState([ 'hello@aol.com', 'world@sky.com' ]);
 
 	const generateSubText = () =>
 		createAccountText[currentPage].map((el, i) => (
@@ -155,7 +114,7 @@ const CreateAccountScreen = ({ history }) => {
 						<div>{managerDetails.email}</div>
 					</div>
 					<div style={pageFourSubSectionStyle}>
-						<div style={pageThreeTitleStyle}>Team Members:</div>
+						<div style={pageThreeTitleStyle}>Team Members ({teamMembers.length}):</div>
 						<ul style={pageFourListStyle}>
 							{teamMembers.map((el) => <li style={pageFourListLineStyle}>{el}</li>)}
 						</ul>
