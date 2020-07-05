@@ -39,6 +39,9 @@ export const pageThreeTitleStyle = {
 };
 
 export const pageFourSubSectionStyle = {
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'center',
 	padding: '1rem'
 };
 
@@ -52,4 +55,11 @@ export const pageFourListStyle = {
 export const pageFourListLineStyle = {
 	display: 'flex',
 	justifyContent: 'center'
+};
+
+export const pageFourConfirmButtonStyle = {
+	margin: '1rem',
+	padding: '0.65rem 1rem',
+	backgroundColor: 'white',
+	borderRadius: '5px'
 };

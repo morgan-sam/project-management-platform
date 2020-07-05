@@ -22,7 +22,8 @@ import {
 	noTeamMembersStyle,
 	pageFourSubSectionStyle,
 	pageFourListStyle,
-	pageFourListLineStyle
+	pageFourListLineStyle,
+	pageFourConfirmButtonStyle
 } from 'styling/createAccountStyle';
 import { checkIfEmailValid } from 'processing/validity';
 
@@ -158,6 +159,9 @@ const CreateAccountScreen = ({ history }) => {
 						<ul style={pageFourListStyle}>
 							{teamMembers.map((el) => <li style={pageFourListLineStyle}>{el}</li>)}
 						</ul>
+					</div>
+					<div style={pageFourSubSectionStyle}>
+						<button style={pageFourConfirmButtonStyle}>Confirm</button>
 					</div>
 				</div>
 			);
