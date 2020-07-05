@@ -25,6 +25,7 @@ import {
 	pageFourListLineStyle,
 	pageFourConfirmButtonStyle
 } from 'styling/createAccountStyle';
+import SystemButton from 'components/SystemButton';
 import { checkIfEmailValid } from 'processing/validity';
 
 const CreateAccountScreen = ({ history }) => {
@@ -120,7 +121,9 @@ const CreateAccountScreen = ({ history }) => {
 						</ul>
 					</div>
 					<div style={pageFourSubSectionStyle}>
-						<button style={pageFourConfirmButtonStyle}>Confirm</button>
+						<SystemButton onClick={() => alert('Confirm')} style={pageFourConfirmButtonStyle}>
+							Confirm
+						</SystemButton>
 					</div>
 				</div>
 			);

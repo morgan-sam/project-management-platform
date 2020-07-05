@@ -62,8 +62,5 @@ export const pageFourListLineStyle = {
 };
 
 export const pageFourConfirmButtonStyle = {
-	margin: '1rem',
-	padding: '0.65rem 1rem',
-	backgroundColor: 'white',
-	borderRadius: '5px'
+	margin: '1rem'
 };
