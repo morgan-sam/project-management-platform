@@ -37,3 +37,19 @@ export const pageThreeTitleStyle = {
 	textDecoration: 'underline',
 	margin: '1rem'
 };
+
+export const pageFourSubSectionStyle = {
+	padding: '1rem'
+};
+
+export const pageFourListStyle = {
+	fontSize: '1rem',
+	flexDirection: 'column',
+	maxHeight: '10rem',
+	overflowY: 'scroll'
+};
+
+export const pageFourListLineStyle = {
+	display: 'flex',
+	justifyContent: 'center'
+};

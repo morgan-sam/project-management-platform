@@ -19,18 +19,62 @@ import {
 	listStyle,
 	listLineStyle,
 	removeButtonStyle,
-	noTeamMembersStyle
+	noTeamMembersStyle,
+	pageFourSubSectionStyle,
+	pageFourListStyle,
+	pageFourListLineStyle
 } from 'styling/createAccountStyle';
 import { checkIfEmailValid } from 'processing/validity';
 
 const CreateAccountScreen = ({ history }) => {
-	const [ currentPage, setCurrentPage ] = useState(0);
+	const [ currentPage, setCurrentPage ] = useState(3);
 	const [ currentPageComplete, setCurrentPageComplete ] = useState(false);
 	const [ managerDetails, setManagerDetails ] = useState({
-		email: '',
-		password: ''
+		email: 'test@email.com',
+		password: '123456789'
 	});
-	const [ teamMembers, setTeamMembers ] = useState([ 'hello@aol.com', 'world@sky.com' ]);
+	const [ teamMembers, setTeamMembers ] = useState([
+		'hello@aol.com',
+		'world@sky.com',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345',
+		'345'
+	]);
 
 	const generateSubText = () =>
 		createAccountText[currentPage].map((el, i) => (
@@ -102,6 +146,22 @@ const CreateAccountScreen = ({ history }) => {
 					/>
 				</div>
 			);
+		else if (page === 3) {
+			return (
+				<div>
+					<div style={pageFourSubSectionStyle}>
+						<div style={pageThreeTitleStyle}>Manager Email:</div>
+						<div>{managerDetails.email}</div>
+					</div>
+					<div style={pageFourSubSectionStyle}>
+						<div style={pageThreeTitleStyle}>Team Members:</div>
+						<ul style={pageFourListStyle}>
+							{teamMembers.map((el) => <li style={pageFourListLineStyle}>{el}</li>)}
+						</ul>
+					</div>
+				</div>
+			);
+		}
 	};
 
 	return (
