@@ -57,7 +57,8 @@ export const pageFourListStyle = {
 
 export const pageFourListLineStyle = {
 	display: 'flex',
-	justifyContent: 'center'
+	justifyContent: 'center',
+	margin: '0 1rem'
 };
 
 export const pageFourConfirmButtonStyle = {
