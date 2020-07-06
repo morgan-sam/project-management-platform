@@ -35,7 +35,7 @@ const CreateAccountScreen = ({ history }) => {
 		email: 'test@email.com',
 		password: '123456789'
 	});
-	const [ teamMembers, setTeamMembers ] = useState([ 'test@email.com' ]);
+	const [ teamMembers, setTeamMembers ] = useState([ 'user@mail.com' ]);
 
 	const generateSubText = () =>
 		createAccountText[currentPage].map((el, i) => (
