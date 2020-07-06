@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'context/ThemeContext';
 import MainTitle from 'components/MainTitle';
+import AccountInfo from 'components/AccountInfo';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
 import FilterBar from 'components/Bars/FilterBar';
@@ -111,6 +112,7 @@ const MainScreen = (props) => {
 			<div className="screen" style={getScreenStyle(fixedStyle)}>
 				<div className="mainPage" style={getMainPageStyle(popUp)}>
 					<MainTitle />
+					<AccountInfo />
 					<TaskManager
 						taskList={getTaskList()}
 						{...{
