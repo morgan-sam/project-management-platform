@@ -35,7 +35,7 @@ const CreateAccountScreen = ({ history }) => {
 		email: 'test@email.com',
 		password: '123456789'
 	});
-	const [ teamMembers, setTeamMembers ] = useState([ 'hello@aol.com', 'world@sky.com' ]);
+	const [ teamMembers, setTeamMembers ] = useState([ 'test@email.com' ]);
 
 	const generateSubText = () =>
 		createAccountText[currentPage].map((el, i) => (
@@ -48,6 +48,22 @@ const CreateAccountScreen = ({ history }) => {
 		const emailValid = checkIfEmailValid(email);
 		const passwordValid = password.length >= 6;
 		return emailValid && passwordValid;
+	};
+
+	const actionCodeSettings = {
+		url: 'http://localhost:3000/',
+		handleCodeInApp: true
+	};
+
+	const addAccounts = async () => {
+		const { email, password } = managerDetails;
+		try {
+			await app.auth().createUserWithEmailAndPassword(email, password);
+			teamMembers.map(async (el) => await app.auth().sendSignInLinkToEmail(el, actionCodeSettings));
+			history.push('/');
+		} catch (error) {
+			alert(error);
+		}
 	};
 
 	useEffect(
@@ -121,7 +137,7 @@ const CreateAccountScreen = ({ history }) => {
 						</ul>
 					</div>
 					<div style={pageFourSubSectionStyle}>
-						<SystemButton onClick={() => alert('Confirm')} style={pageFourConfirmButtonStyle}>
+						<SystemButton onClick={addAccounts} style={pageFourConfirmButtonStyle}>
 							Confirm
 						</SystemButton>
 					</div>
