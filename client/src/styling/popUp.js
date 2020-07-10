@@ -36,6 +36,7 @@ export const subContainerStyle = {
 export const cancelButtonStyle = {
 	position: 'absolute',
 	display: 'flex',
+	alignItems: 'center',
 	justifyContent: 'center',
 	lineHeight: '0',
 	height: '2rem',
