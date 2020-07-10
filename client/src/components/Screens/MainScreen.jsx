@@ -12,7 +12,7 @@ import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
 import { getDefaultFilterOptions, displayBarsAll, visibleColumnsDefault, defaultPreferences } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teams';
-import NewTaskBar from 'components/Bars/NewTaskBar';
+import CreateTaskBar from 'components/Bars/CreateTaskBar';
 import {
 	getScreenStyle,
 	getMainPageStyle,
@@ -147,7 +147,7 @@ const MainScreen = (props) => {
 								displayedBars
 							}}
 						/>
-						<NewTaskBar
+						<CreateTaskBar
 							{...{
 								displayedBars,
 								setDisplayedBars,

@@ -180,8 +180,8 @@ const TaskManager = (props) => {
 							action: () => setDisplayedBars({ ...displayedBars, filter: !displayedBars.filter })
 						},
 						{
-							name: `${displayedBars.newTask ? 'Hide' : 'Show'} New Task`,
-							action: () => setDisplayedBars({ ...displayedBars, newTask: !displayedBars.newTask })
+							name: `${displayedBars.createTask ? 'Hide' : 'Show'} Create Task`,
+							action: () => setDisplayedBars({ ...displayedBars, createTask: !displayedBars.createTask })
 						},
 						{
 							name: `${displayedBars.dataInfo ? 'Hide' : 'Show'} Data Info`,

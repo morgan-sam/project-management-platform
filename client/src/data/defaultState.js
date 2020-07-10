@@ -37,7 +37,7 @@ export const getDefaultDeleteTemplate = (taskList) => {
 export const displayBarsAll = (boo) => {
 	return {
 		filter: boo,
-		newTask: boo,
+		createTask: boo,
 		dataInfo: boo
 	};
 };

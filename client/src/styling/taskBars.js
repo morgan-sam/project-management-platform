@@ -54,7 +54,7 @@ export const dataInfoItemStyle = {
 	border: '1px solid black'
 };
 
-export const newTaskBarStyle = {
+export const createTaskBarStyle = {
 	...defaultBarStyle,
 	zIndex: '8'
 };

@@ -3,13 +3,13 @@ import ColorButton from 'components/ColorButton';
 import DateRangeSelect from 'components/DateRangeSelect';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
-import { getTaskBarHiddenStyle, getTaskBarVisibleStyle, newTaskBarStyle } from 'styling/taskBars';
+import { getTaskBarHiddenStyle, getTaskBarVisibleStyle, createTaskBarStyle } from 'styling/taskBars';
 import { parseISOToDateObj } from 'processing/dates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
 import Checkbox from 'components/Checkbox';
 
-const NewTaskBar = (props) => {
+const CreateTaskBar = (props) => {
 	const { style, displayedBars, setDataChanged, setDisplayedBars } = props;
 	const [ overflowHidden, setOverflowHidden ] = useState(true);
 	const [ popUpOpen, setPopUpOpen ] = useState(false);
@@ -30,17 +30,17 @@ const NewTaskBar = (props) => {
 			const entry = { ...input, task, teams, completed: 'false' };
 			fetchPostEntry(entry);
 			setDataChanged(true);
-			if (!keepOpen) setTimeout(() => setDisplayedBars({ ...displayedBars, newTask: false }), 500);
+			if (!keepOpen) setTimeout(() => setDisplayedBars({ ...displayedBars, createTask: false }), 500);
 		}
 	};
 
 	return (
 		<div
-			className="newTaskBar"
+			className="createTaskBar"
 			style={{
 				...style,
-				...newTaskBarStyle,
-				...(displayedBars.newTask ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
+				...createTaskBarStyle,
+				...(displayedBars.createTask ? getTaskBarVisibleStyle(popUpOpen) : getTaskBarHiddenStyle(popUpOpen)),
 				overflow: overflowHidden ? 'visible' : 'hidden'
 			}}
 		>
@@ -77,4 +77,4 @@ const NewTaskBar = (props) => {
 	);
 };
 
-export default NewTaskBar;
+export default CreateTaskBar;
