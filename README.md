@@ -31,6 +31,10 @@
     <li>Click <code>Show Create Task</code></li>
   </ol>
 </p>
+<p>Enter the task information into the relevant fields. The task will not add if the <i>task</i> or <i>teams</i> fields are left blank.</p>
+<p>Next click <code>Add Task To Database</code>. The task will add and the bar will automatically close.</p>
+<p>If you would like to add multiple tasks, ensure the <code>Keep Open</code> option is checked.</p>
+<p>If you are adding large amounts of tasks that use similar formatting, it is much more efficient to use the Batch New Tasks feature.</p>
 
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
