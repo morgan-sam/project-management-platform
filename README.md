@@ -55,7 +55,7 @@
   </ol>
 </p>
 
-![delete_gif](docs/delete.gif)
+![delete_gif](docs/delete.gif?raw=true)
 
 <h4>Batch Delete Tasks</h3>
 
@@ -84,7 +84,7 @@
     <li>Click the <code>Confirm</code> button</li>
   </ol>
   
-![batch_delete_gif](docs/batch_delete.gif)
+![batch_delete_gif](docs/batch_delete.gif?raw=true)
 
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
@@ -107,7 +107,7 @@
   </ol>
 </p>
 
-![filtered1_gif](docs/filtered1.gif)
+![filtered1_gif](docs/filtered1.gif?raw=true)
 
 <p>To further the example, the filtered list only needs to include tasks that have a deadline this year:</p>
 <p>
@@ -118,7 +118,7 @@
   </ol>
 </p>
 
-![filtered2_gif](docs/filtered2.gif)
+![filtered2_gif](docs/filtered2.gif?raw=true)
 
 
 <h3>Template Syntax</h3>
