@@ -1,7 +1,8 @@
 export const createAccountText = [
 	[
 		'Welcome to PMP. This setup will create a new group of accounts for your team.',
-		'If you are a team member, please contact your manager for your login details.'
+		'If you are a team member, your signup link will be send directly to you via email.',
+		'Please contact your manager if you have not recieved one.'
 	],
 	[ 'Firstly create the account of the team manager.', 'Please enter an email and password for the team manager.' ],
 	[
