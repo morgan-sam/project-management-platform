@@ -11,6 +11,20 @@
 
 <h2>Usage</h2>
 <h3>Contents:</h3>
+<h4>Accessing Platform</h4>
+<p>
+  <ol>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-an-account'>Creating an Account</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#logging-in'>Logging In</a></li>
+    <li>
+      <ol>
+        <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>As a Manager</a></li>
+        <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>As an Employee</a></li>
+      </ol>
+    </li>
+  </ol>
+</p>
+<h4>Using Platform</h4>
 <p>
   <ol>
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-entries'>Creating Entries</a></li>
