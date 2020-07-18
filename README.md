@@ -33,6 +33,23 @@
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>Template Syntax</a></li>
   </ol>
 </p>
+
+<h2>Accessing Platform</h2>
+
+<h3>Creating an Account</h3>
+<p>(Create account instructions)</p>
+
+<h3>Logging In</h3>
+
+<h4>As a Manager</h4>
+<p>(Manager login instructions)</p>
+
+<h4>As an Employee</h4>
+<p>(Employee login instructions)</p>
+
+
+<h2>Using Platform</h2>
+
 <h3>Creating Entries</h3>
 <p>Entries can be created either via the create task bar or the batch new tasks popup:</p>
 
