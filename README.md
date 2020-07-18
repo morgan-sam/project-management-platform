@@ -11,6 +11,20 @@
 
 <h2>Usage</h2>
 <h3>Contents:</h3>
+<h4>Accessing Platform</h4>
+<p>
+  <ol>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-an-account'>Creating an Account</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#logging-in'>Logging In</a></li>
+    <li>
+      <ol>
+        <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>As a Manager</a></li>
+        <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>As an Employee</a></li>
+      </ol>
+    </li>
+  </ol>
+</p>
+<h4>Using Platform</h4>
 <p>
   <ol>
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-entries'>Creating Entries</a></li>
@@ -19,6 +33,23 @@
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>Template Syntax</a></li>
   </ol>
 </p>
+
+<h2>Accessing Platform</h2>
+
+<h3>Creating an Account</h3>
+<p>(Create account instructions)</p>
+
+<h3>Logging In</h3>
+
+<h4>As a Manager</h4>
+<p>(Manager login instructions)</p>
+
+<h4>As an Employee</h4>
+<p>(Employee login instructions)</p>
+
+
+<h2>Using Platform</h2>
+
 <h3>Creating Entries</h3>
 <p>Entries can be created either via the create task bar or the batch new tasks popup:</p>
 
@@ -31,6 +62,10 @@
     <li>Click <code>Show Create Task</code></li>
   </ol>
 </p>
+<p>Enter the task information into the relevant fields. The task will not add if the <i>task</i> or <i>teams</i> fields are left blank.</p>
+<p>Next click <code>Add Task To Database</code>. The task will add and the bar will automatically close.</p>
+<p>If you would like to add multiple tasks, ensure the <code>Keep Open</code> option is checked.</p>
+<p>If you are adding large amounts of tasks that use similar formatting, it is much more efficient to use the Batch New Tasks feature.</p>
 
 <h4>Batching New Tasks</h4>
 <p>Multiple tasks can be added to the database by using a single template.</p>
@@ -51,7 +86,7 @@
   </ol>
 </p>
 
-![delete_gif](docs/delete.gif)
+![delete_gif](docs/delete.gif?raw=true)
 
 <h4>Batch Delete Tasks</h3>
 
@@ -80,7 +115,7 @@
     <li>Click the <code>Confirm</code> button</li>
   </ol>
   
-![batch_delete_gif](docs/batch_delete.gif)
+![batch_delete_gif](docs/batch_delete.gif?raw=true)
 
 <h3>Filtering Entries</h3>
 <p>The task list can be filtered for entries that meet a specific set of criterion.</p>
@@ -103,9 +138,9 @@
   </ol>
 </p>
 
-![filtered1_gif](docs/filtered1.gif)
+![filtered1_gif](docs/filtered1.gif?raw=true)
 
-<p>To further the example, the filtered list only needs to include tasks that have a deadline this year:</p>
+<p>To further the example, the filtered list only needs to include tasks that have a deadline in the year 2020:</p>
 <p>
   <ol>
     <li>Click the <code>Deadline</code> date</li>
@@ -114,7 +149,7 @@
   </ol>
 </p>
 
-![filtered2_gif](docs/filtered2.gif)
+![filtered2_gif](docs/filtered2.gif?raw=true)
 
 
 <h3>Template Syntax</h3>
