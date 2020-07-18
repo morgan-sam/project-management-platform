@@ -10,16 +10,11 @@ import {
 } from 'styling/accountEntry';
 import { withRouter } from 'react-router';
 import PageNavigation from 'components/PageNavigation';
-import Form from 'components/Form';
 import ObjectInput from 'components/ObjectInput';
+import PageThreeInterface from 'components/Screens/CreateAccountScreen/PageThreeInterface';
 import app from 'config/firebase';
 import {
-	pageThreeInterfaceStyle,
 	pageThreeTitleStyle,
-	listStyle,
-	listLineStyle,
-	removeButtonStyle,
-	noTeamMembersStyle,
 	pageFourSubSectionStyle,
 	pageFourListStyle,
 	pageFourListLineStyle,
@@ -83,46 +78,7 @@ const CreateAccountScreen = ({ history }) => {
 
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
-		else if (page === 2)
-			return (
-				<div style={pageThreeInterfaceStyle}>
-					<h3 style={pageThreeTitleStyle}>Added Members:</h3>
-					<div style={listStyle}>
-						{teamMembers.length ? (
-							teamMembers.map((el, i) => (
-								<div style={listLineStyle}>
-									{el}
-									<div
-										style={removeButtonStyle}
-										onClick={() => {
-											const removed = [ ...teamMembers.slice(0, i), ...teamMembers.slice(i + 1) ];
-											setTeamMembers(removed);
-										}}
-									>
-										✕
-									</div>
-								</div>
-							))
-						) : (
-							<div style={noTeamMembersStyle}>(No team members added - can be added later instead)</div>
-						)}
-					</div>
-					<Form
-						style={{ flexDirection: 'row', margin: '0.75rem' }}
-						onSubmit={async (e) => {
-							e.preventDefault();
-							const { email } = e.target.elements;
-							const emailValid = checkIfEmailValid(email.value);
-							if (emailValid) {
-								setTeamMembers([ ...teamMembers, email.value ]);
-								email.value = '';
-							}
-						}}
-						inputs={[ 'email' ]}
-						submitLabel={'Add User'}
-					/>
-				</div>
-			);
+		else if (page === 2) return <PageThreeInterface {...{ teamMembers, setTeamMembers }} />;
 		else if (page === 3) {
 			return (
 				<div>
