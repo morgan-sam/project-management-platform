@@ -12,15 +12,8 @@ import { withRouter } from 'react-router';
 import PageNavigation from 'components/PageNavigation';
 import ObjectInput from 'components/ObjectInput';
 import PageThreeInterface from 'components/Screens/CreateAccountScreen/PageThreeInterface';
+import PageFourInterface from 'components/Screens/CreateAccountScreen/PageFourInterface';
 import app from 'config/firebase';
-import {
-	pageThreeTitleStyle,
-	pageFourSubSectionStyle,
-	pageFourListStyle,
-	pageFourListLineStyle,
-	pageFourConfirmButtonStyle
-} from 'styling/createAccountStyle';
-import SystemButton from 'components/SystemButton';
 import { checkIfEmailValid } from 'processing/validity';
 
 const CreateAccountScreen = ({ history }) => {
@@ -79,27 +72,7 @@ const CreateAccountScreen = ({ history }) => {
 	const getPageInterface = (page) => {
 		if (page === 1) return <ObjectInput obj={managerDetails} setObj={setManagerDetails} />;
 		else if (page === 2) return <PageThreeInterface {...{ teamMembers, setTeamMembers }} />;
-		else if (page === 3) {
-			return (
-				<div>
-					<div style={pageFourSubSectionStyle}>
-						<div style={pageThreeTitleStyle}>Manager Email:</div>
-						<div>{managerDetails.email}</div>
-					</div>
-					<div style={pageFourSubSectionStyle}>
-						<div style={pageThreeTitleStyle}>Team Members ({teamMembers.length}):</div>
-						<ul style={pageFourListStyle}>
-							{teamMembers.map((el) => <li style={pageFourListLineStyle}>{el}</li>)}
-						</ul>
-					</div>
-					<div style={pageFourSubSectionStyle}>
-						<SystemButton onClick={addAccounts} style={pageFourConfirmButtonStyle}>
-							Confirm
-						</SystemButton>
-					</div>
-				</div>
-			);
-		}
+		else if (page === 3) return <PageFourInterface {...{ managerDetails, teamMembers, addAccounts }} />;
 	};
 
 	return (
