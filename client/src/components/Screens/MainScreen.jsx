@@ -134,7 +134,8 @@ const MainScreen = (props) => {
 							fixedStyle,
 							setFixedStyle,
 							barsFloating,
-							setBarsFloating
+							setBarsFloating,
+							setColorTheme
 						}}
 					/>
 					<div className="topBars" style={getTopBarsContainerStyle(barsFloating)}>

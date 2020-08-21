@@ -12,6 +12,7 @@ import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 import { fields } from 'data/table';
 import { capitalizeFirstLetter } from 'processing/utility';
 import { visibleColumnsDefault } from 'data/defaultState';
+import { themeColors } from 'data/themeColors';
 import app from 'config/firebase';
 
 const TaskManager = (props) => {
@@ -36,7 +37,8 @@ const TaskManager = (props) => {
 		fixedStyle,
 		setFixedStyle,
 		barsFloating,
-		setBarsFloating
+		setBarsFloating,
+		setColorTheme
 	} = props;
 
 	const selectedTaskChangeComplete = () => {
@@ -203,6 +205,13 @@ const TaskManager = (props) => {
 				{
 					name: `Use ${fixedStyle ? 'Scroll' : 'Fixed'} View`,
 					action: () => setFixedStyle(!fixedStyle)
+				},
+				{
+					name: `Color Theme`,
+					sub: themeColors.map((el) => ({
+						name: el.name,
+						action: () => setColorTheme(el.value)
+					}))
 				}
 			]
 		},
