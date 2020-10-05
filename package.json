@@ -1,23 +1,24 @@
 {
-	"name": "project-management-platform",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/morgan-sam/Project-Management-Platform.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/morgan-sam/Project-Management-Platform/issues"
-	},
-	"homepage": "https://github.com/morgan-sam/Project-Management-Platform#readme",
-	"dependencies": {
-		"@welldone-software/why-did-you-render": "^4.2.5",
-		"react-router-dom": "^5.2.0"
-	}
+  "name": "project-management-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm i --prefix ./client/ && npm i --prefix ./api/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morgan-sam/Project-Management-Platform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/morgan-sam/Project-Management-Platform/issues"
+  },
+  "homepage": "https://github.com/morgan-sam/Project-Management-Platform#readme",
+  "dependencies": {
+    "@welldone-software/why-did-you-render": "^4.2.5",
+    "react-router-dom": "^5.2.0"
+  }
 }
