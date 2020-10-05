@@ -7,6 +7,3 @@ CREATE TABLE tasks (
   teams TEXT[],
   completed BOOLEAN NOT NULL
 );
-
-INSERT INTO tasks (task, date, urgency, completed)
-VALUES  ('DB_INIT',  (now() at time zone 'utc'), 3, TRUE);
