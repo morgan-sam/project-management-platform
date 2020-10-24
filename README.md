@@ -36,17 +36,15 @@
 
 <h2>Accessing Platform</h2>
 
-<h3>Creating an Account</h3>
-<p>(Create account instructions)</p>
+<h3>First time setup</h3>
 
-<h3>Logging In</h3>
+<p>In order to access the PMP platform, a manager will create an account. During the account creation the manager will list the emails of the team members they want on their team. More team members can be added at a later time. The team members will recieve emails that allow them to setup their account password and settings.</p>
 
 <h4>As a Manager</h4>
-<p>(Manager login instructions)</p>
+<p>(Manager setup instructions)</p>
 
 <h4>As an Employee</h4>
-<p>(Employee login instructions)</p>
-
+<p>(Employee setup instructions)</p>
 
 <h2>Using Platform</h2>
 
