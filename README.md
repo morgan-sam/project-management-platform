@@ -51,7 +51,7 @@
 </p>
 
 <h4>As an Employee</h4>
-<p>(Employee setup instructions)</p>
+<p>As an employee your first time login link will be sent to you by email, where you will then be able to set your account password. Once your password is set you will be able to login from the main portal.</p>
 
 <h2>Using Platform</h2>
 
