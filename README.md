@@ -1,6 +1,6 @@
 <h1>Project Management Platform</h1>
 <p>PMP is a platform for managing task lists for projects. Create tasks. Assign them to employees.</p>
-<p>This app features a custom made Interpreter for creating/deleting a large amount tasks at once.</p>     
+<p><b>This app features a custom made Interpreter for creating/deleting a large amount tasks at once.</b></p>     
 
 <h2>Usage</h2>
 <h3>Contents:</h3>
