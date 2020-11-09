@@ -3,7 +3,7 @@ import Form from "components/Form";
 import {
   LoginTitle,
   AccountScreen,
-  accountEntryBox,
+  AccountEntryBox,
   footerStyle,
 } from "styling/accountEntry";
 import { withRouter, Redirect } from "react-router";
@@ -30,7 +30,7 @@ const LoginScreen = ({ history }) => {
   if (currentUser) return <Redirect to="/" />;
   return (
     <AccountScreen>
-      <div style={accountEntryBox}>
+      <AccountEntryBox>
         <LoginTitle>Log In</LoginTitle>
         <Form
           onSubmit={handleLogin}
@@ -40,7 +40,7 @@ const LoginScreen = ({ history }) => {
         <div style={footerStyle}>
           New here? <a href="/signup">Sign Up</a>
         </div>
-      </div>
+      </AccountEntryBox>
     </AccountScreen>
   );
 };

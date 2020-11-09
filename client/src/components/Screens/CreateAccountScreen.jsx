@@ -3,7 +3,7 @@ import { createAccountText } from "data/createAccountText";
 import {
   LoginTitle,
   AccountScreen,
-  accountEntryBox,
+  AccountEntryBox,
   textContainerStyle,
   textStyle,
   footerStyle,
@@ -85,7 +85,7 @@ const CreateAccountScreen = ({ history }) => {
 
   return (
     <AccountScreen>
-      <div style={accountEntryBox}>
+      <AccountEntryBox>
         <LoginTitle>Create Account</LoginTitle>
         <div style={textContainerStyle}>{generateSubText()}</div>
         {getPageInterface(currentPage)}
@@ -98,7 +98,7 @@ const CreateAccountScreen = ({ history }) => {
         <div style={footerStyle}>
           Returning? <a href="/login">Log In</a>
         </div>
-      </div>
+      </AccountEntryBox>
     </AccountScreen>
   );
 };
