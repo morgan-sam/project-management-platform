@@ -1,15 +1,20 @@
-import React from 'react';
-import app from 'config/firebase';
+import React from "react";
+import app from "config/firebase";
+import styled from "@emotion/styled";
 
-const accountInfoStyle = {
-	position: 'absolute',
-	top: '0',
-	right: '0',
-	margin: '1rem'
-};
+const AccountInfoText = styled.h3`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+`;
 
 const AccountInfo = () => {
-	return <h3 style={accountInfoStyle}>Logged in as: {app.auth().currentUser.email}</h3>;
+  return (
+    <AccountInfoText>
+      Logged in as: {app.auth().currentUser.email}
+    </AccountInfoText>
+  );
 };
 
 export default AccountInfo;
