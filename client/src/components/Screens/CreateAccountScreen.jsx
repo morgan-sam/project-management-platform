@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { css, jsx } from "@emotion/core";
 import { createAccountText } from "data/createAccountText";
 import {
   LoginTitle,
   AccountScreen,
   AccountEntryBox,
-  textContainerStyle,
-  textStyle,
-  footerStyle,
+  LoginSignupFooter,
 } from "styling/accountEntry";
 import { withRouter } from "react-router";
 import PageNavigation from "components/PageNavigation";
@@ -27,7 +26,13 @@ const CreateAccountScreen = ({ history }) => {
 
   const generateSubText = () =>
     createAccountText[currentPage].map((el, i) => (
-      <div key={i} style={textStyle}>
+      <div
+        key={i}
+        css={css`
+          padding: 1rem;
+          fontsize: 1.3rem;
+        `}
+      >
         {el}
       </div>
     ));
@@ -87,7 +92,13 @@ const CreateAccountScreen = ({ history }) => {
     <AccountScreen>
       <AccountEntryBox>
         <LoginTitle>Create Account</LoginTitle>
-        <div style={textContainerStyle}>{generateSubText()}</div>
+        <div
+          css={css`
+            padding: 1rem;
+          `}
+        >
+          {generateSubText()}
+        </div>
         {getPageInterface(currentPage)}
         <PageNavigation
           currentPage={currentPage}
@@ -95,9 +106,9 @@ const CreateAccountScreen = ({ history }) => {
           currentPageComplete={currentPageComplete}
           totalPages={createAccountText.length}
         />
-        <div style={footerStyle}>
+        <LoginSignupFooter>
           Returning? <a href="/login">Log In</a>
-        </div>
+        </LoginSignupFooter>
       </AccountEntryBox>
     </AccountScreen>
   );

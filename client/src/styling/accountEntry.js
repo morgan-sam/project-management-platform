@@ -30,16 +30,7 @@ export const AccountEntryBox = styled.div`
   align-items: center;
 `;
 
-export const textContainerStyle = {
-  padding: "1rem",
-};
-
-export const textStyle = {
-  padding: "1rem",
-  fontSize: "1.3rem",
-};
-
-export const footerStyle = {
-  padding: "1rem",
-  fontSize: "1rem",
-};
+export const LoginSignupFooter = styled.div`
+  padding: 1rem;
+  font-size: 1rem;
+`;
