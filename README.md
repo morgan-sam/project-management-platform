@@ -1,13 +1,6 @@
 <h1>Project Management Platform</h1>
-<p>PMP is a platform for managing task lists for projects.</p>
-<p>This app features:
-  <ul>
-    <li>Filtering for tasks by parameter(s)</li>
-    <li>Batch creating tasks by template strings</li>
-    <li>Batch deleting tasks by regex/parameter match</li>
-  </ul>
-</p>
-     
+<p>PMP is a platform for managing task lists for projects. Create tasks. Assign them to employees.</p>
+<p><b>This app features a custom made Interpreter for creating/deleting a large amount tasks at once.</b></p>     
 
 <h2>Usage</h2>
 <h3>Contents:</h3>
@@ -18,7 +11,7 @@
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#logging-in'>Logging In</a></li>
     <li>
       <ol>
-        <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>As a Manager</a></li>
+        <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-tasks'>As a Manager</a></li>
         <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>As an Employee</a></li>
       </ol>
     </li>
@@ -27,9 +20,9 @@
 <h4>Using Platform</h4>
 <p>
   <ol>
-    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-entries'>Creating Entries</a></li>
-    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#deleting-entries'>Deleting Entries</a></li>
-    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-entries'>Filtering Entries</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#creating-tasks'>Creating Tasks</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#deleting-tasks'>Deleting Tasks</a></li>
+    <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#filtering-tasks'>Filtering Tasks</a></li>
     <li><a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>Template Syntax</a></li>
   </ol>
 </p>
@@ -55,8 +48,8 @@
 
 <h2>Using Platform</h2>
 
-<h3>Creating Entries</h3>
-<p>Entries can be created either via the create task bar or the batch new tasks popup:</p>
+<h3>Creating Tasks</h3>
+<p>Tasks can be created either via the create task bar or the batch new tasks popup:</p>
 
 <h4>Create Task Bar</h4>
 <p>First open the Create Task Bar:
@@ -79,12 +72,12 @@
 <p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
 
 
-<h3>Deleting Entries</h3>
-<p>Entries can be deleted either via selecting manually or batch deleting by matching regex/parameters:</p>
+<h3>Deleting Tasks</h3>
+<p>Tasks can be deleted either via selecting manually or batch deleting by matching regex/parameters:</p>
 <h4>Manual Selection</h4>
 <p>
   <ol>
-    <li>Select the entries to delete by clicking and dragging over them</li>
+    <li>Select the tasks to delete by clicking and dragging over them</li>
     <li>Click <code>Edit</code> in the top left navigation menu</li>
     <li>Hover over <code>Delete</code></li>
     <li>Click <code>Delete Selected</code></li>
@@ -122,8 +115,8 @@
   
 ![batch_delete_gif](docs/batch_delete.gif?raw=true)
 
-<h3>Filtering Entries</h3>
-<p>The task list can be filtered for entries that meet a specific set of criterion.</p>
+<h3>Filtering Tasks</h3>
+<p>The task list can be filtered for tasks that meet a specific set of criterion.</p>
 <p>Open the filter via the following method:</p>
 <p>
   <ol>
