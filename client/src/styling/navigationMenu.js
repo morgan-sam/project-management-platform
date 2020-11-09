@@ -33,6 +33,7 @@ export const getBoxStyle = (buttonState, themeColor) => {
   }
   return {
     ...flexCenter,
+    textDecoration: boxColor && hovered ? "underline" : "none",
     position: "absolute",
     textAlign: "center",
     borderTop: `${BOX_BORDER_WIDTH_PX}px solid black`,
