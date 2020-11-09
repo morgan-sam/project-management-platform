@@ -11,10 +11,6 @@ export const DateOptionSlideContainer = styled.div`
   border-radius: 5px;
 `;
 
-export const dateSelectConfirmContainerStyling = {
-  transition: "1s",
-};
-
 export const dateDisplayBoxStyling = {
   height: "auto",
   padding: "0 0.5rem",

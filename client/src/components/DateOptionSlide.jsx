@@ -9,7 +9,6 @@ import {
   confirmBtnStyle,
   cancelBtnStyle,
   canConContainerStyle,
-  dateSelectConfirmContainerStyling,
 } from "styling/dateOption";
 import {
   dateOptionOpen,
@@ -49,7 +48,7 @@ const DateOptionSlide = (props) => {
       <div
         className="dateSelectConfirmContainer"
         style={{
-          ...dateSelectConfirmContainerStyling,
+          transition: "1s",
           ...(showDateSelect ? selectOnscreen : selectOffscreen),
         }}
       >
