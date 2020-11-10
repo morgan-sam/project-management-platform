@@ -49,6 +49,7 @@ export const cancelButtonStyle = {
   color: "white",
   fontSize: "2rem",
   outline: "none",
+  cursor: "pointer",
 };
 
 export const errorMatchTextStyle = {
