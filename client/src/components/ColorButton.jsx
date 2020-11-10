@@ -38,7 +38,11 @@ const ColorButton = (props) => {
                     className={props.className}
                     style={{
                         ...getButtonStyle(
-                            { style: props.style, color: props.color },
+                            {
+                                style: props.style,
+                                color: props.color,
+                                enabled: props.enabled
+                            },
                             hover
                         ),
                         ...props.style

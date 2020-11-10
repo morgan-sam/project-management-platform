@@ -48,7 +48,7 @@ export const getFloatingContainerStyle = (style, state) => {
 };
 
 export const getButtonStyle = (props, hover) => {
-    const { style, color } = props;
+    const { style, color, enabled } = props;
     const { width, height } = getButtonSizes(style);
     const hoverTextColor = getGradientTextColor(color);
 
@@ -60,7 +60,8 @@ export const getButtonStyle = (props, hover) => {
         backgroundColor: 'transparent',
         border: '1px solid black',
         color: hover ? hoverTextColor : 'black',
-        transition: '0s cubic-bezier(.11,.31,.92,.05)'
+        transition: '0s cubic-bezier(.11,.31,.92,.05)',
+        cursor: enabled ? 'pointer' : 'not-allowed'
     };
 };
 
