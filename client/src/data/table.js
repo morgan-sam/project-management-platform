@@ -1,10 +1,10 @@
 export const fields = [
-  "id",
-  "task",
-  "date",
-  "deadline",
-  "urgency",
-  "teams",
-  "completed",
-  "selected",
+    'id',
+    'task',
+    'date',
+    'deadline',
+    'urgency',
+    'teams',
+    'completed',
+    'selected'
 ];
