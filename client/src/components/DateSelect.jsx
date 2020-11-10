@@ -5,14 +5,11 @@ import {
     arrayOfMonthDays,
     get21stCenturyYears
 } from 'data/dates';
-import { dateSelectStyle } from 'styling/dateSelect';
+import { DateSelectElement } from 'styling/dateSelect';
 
 const DateSelect = (props) => {
     return (
-        <div
-            className="dateSelect"
-            style={{ ...dateSelectStyle, ...props.style }}
-        >
+        <DateSelectElement className="dateSelect" style={{ ...props.style }}>
             <div className="dropdownLabel">Day</div>
             <div className="dropdownLabel">Month</div>
             <div className="dropdownLabel">Year</div>
@@ -40,7 +37,7 @@ const DateSelect = (props) => {
                 }}
                 onOpenChange={props.setOverflowHidden}
             />
-        </div>
+        </DateSelectElement>
     );
 };
 
