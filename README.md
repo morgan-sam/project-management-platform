@@ -1,6 +1,6 @@
 <h1>Project Management Platform</h1>
 <p>PMP is a platform for managing task lists for projects. Create tasks. Assign them to employees.</p>
-<p><b>This app features a custom made Interpreter for creating/deleting a large amount tasks at once.</b></p>     
+<p><b>This app features a custom made Interpreter for creating/deleting a large amount tasks at once.</b></p>
 
 <h2>Usage</h2>
 <h3>Contents:</h3>
@@ -70,7 +70,6 @@
 <p>Templates can be very quickly written using strings, although it will likely be much easier to intially use the wizard to generate the correct template string.</p>
 <p>To learn how to write templates, see the <a href='https://github.com/morgan-sam/Project-Management-Platform/#template-syntax'>template syntax section</a> of this document.</p>
 <p>To open the wizard for a template input, click the ⚡ button next to the corresponding form.</p>
-
 
 <h3>Deleting Tasks</h3>
 <p>Tasks can be deleted either via selecting manually or batch deleting by matching regex/parameters:</p>
@@ -148,7 +147,6 @@
 </p>
 
 ![filtered2_gif](docs/filtered2.gif?raw=true)
-
 
 <h3>Template Syntax</h3>
 
