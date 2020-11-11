@@ -48,10 +48,6 @@ const PageNavigation = (props) => {
         `}
     `;
 
-    const PaginationText = styled.div`
-        color: ${(props) => props.theme.colors.primary};
-    `;
-
     return (
         <div style={navigationContainerStyle}>
             <NavigateButton
