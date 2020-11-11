@@ -14,14 +14,13 @@ const PageNavigation = (props) => {
         alignItems: 'center'
     };
 
-    const getArrowStyle = (enabled) => {
-        return {
-            color: enabled ? 'black' : '#ccc',
-            cursor: enabled ? 'pointer' : 'not-allowed',
-            margin: '1rem',
-            userSelect: 'none'
-        };
-    };
+    const Arrow = styled.div`
+        color: ${(props) =>
+            props.enabled ? props.theme.colors.primary : '#ccc'};
+        cursor: ${(props) => (props.enabled ? 'pointer' : 'not-allowed')};
+        margin: '1rem';
+        user-select: 'none';
+    `;
 
     const PaginationText = styled.div`
         color: ${(props) => props.theme.colors.primary};
@@ -29,21 +28,19 @@ const PageNavigation = (props) => {
 
     return (
         <div style={navigationContainerStyle}>
-            <div
-                style={getArrowStyle(currentPage > 0)}
+            <Arrow
+                enabled={currentPage > 0}
                 onClick={() =>
                     currentPage > 0 ? setCurrentPage(currentPage - 1) : null
                 }
             >
                 ⮜
-            </div>
+            </Arrow>
             <PaginationText>
                 {currentPage + 1}/{totalPages}
             </PaginationText>
-            <div
-                style={getArrowStyle(
-                    currentPageComplete && currentPage < totalPages - 1
-                )}
+            <Arrow
+                enabled={currentPageComplete && currentPage < totalPages - 1}
                 onClick={() =>
                     currentPageComplete && currentPage < totalPages - 1
                         ? setCurrentPage(currentPage + 1)
@@ -51,7 +48,7 @@ const PageNavigation = (props) => {
                 }
             >
                 ⮞
-            </div>
+            </Arrow>
         </div>
     );
 };
