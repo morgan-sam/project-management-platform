@@ -18,8 +18,8 @@ const PageNavigation = (props) => {
         color: ${(props) =>
             props.enabled ? props.theme.colors.primary : '#ccc'};
         cursor: ${(props) => (props.enabled ? 'pointer' : 'not-allowed')};
-        margin: '1rem';
-        user-select: 'none';
+        margin: 1rem;
+        user-select: none;
     `;
 
     const PaginationText = styled.div`
