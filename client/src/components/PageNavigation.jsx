@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 const PageNavigation = (props) => {
+    const history = useHistory();
     const {
         currentPage,
         setCurrentPage,
@@ -50,17 +52,20 @@ const PageNavigation = (props) => {
         `}
     `;
 
+    const handleLoginClick = () => history.push('/login');
+
     return (
         <div style={navigationContainerStyle}>
-            {currentPage > 0 && (
+            {currentPage > 0 ? (
                 <NavigateButton
                     secondary
-                    enabled={currentPage > 0}
-                    onClick={() =>
-                        currentPage > 0 ? setCurrentPage(currentPage - 1) : null
-                    }
+                    onClick={() => setCurrentPage(currentPage - 1)}
                 >
                     Previous
+                </NavigateButton>
+            ) : (
+                <NavigateButton secondary onClick={handleLoginClick}>
+                    Log In
                 </NavigateButton>
             )}
             <NavigateButton
