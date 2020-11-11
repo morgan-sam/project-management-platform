@@ -23,6 +23,8 @@ const PageNavigation = (props) => {
         cursor: pointer;
         width: 10rem;
         margin: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
         ${(props) =>
             props.primary &&
             `background: none;
