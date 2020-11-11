@@ -4,6 +4,7 @@ export const LoginTitle = styled.h1`
     margin: 1rem;
     font-size: 2rem;
     text-decoration: underline;
+    color: ${(props) => props.theme.colors.primary};
 `;
 
 export const AccountScreen = styled.div`
@@ -18,6 +19,12 @@ export const AccountScreen = styled.div`
 `;
 
 export const AccountEntryBox = styled.div`
+    background: linear-gradient(
+        90deg,
+        rgba(218, 183, 255, 1) 0%,
+        rgba(159, 138, 255, 1) 100%
+    );
+
     width: fit-content;
     padding: 2rem;
     border: 2px solid black;
@@ -33,15 +40,4 @@ export const AccountEntryBox = styled.div`
 export const LoginSignupFooter = styled.div`
     padding: 1rem;
     font-size: 1rem;
-`;
-
-export const Instruction = styled.li`
-    padding: 0.7rem;
-    font-size: 1rem;
-`;
-
-export const InstructionsContainer = styled.ul`
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
 `;

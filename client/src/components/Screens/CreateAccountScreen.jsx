@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { createAccountText } from 'data/createAccountText';
 import {
     LoginTitle,
-    Instruction,
-    InstructionsContainer,
     AccountScreen,
     AccountEntryBox,
     LoginSignupFooter
 } from 'styling/accountEntry';
 import { withRouter } from 'react-router';
 import PageNavigation from 'components/PageNavigation';
-import ObjectInput from 'components/ObjectInput';
-import PageThreeInterface from 'components/Screens/CreateAccountScreen/PageThreeInterface';
-import PageFourInterface from 'components/Screens/CreateAccountScreen/PageFourInterface';
+import CreateAccountPageOne from 'components/Screens/CreateAccountScreen/CreateAccountPageOne';
+import CreateAccountPageTwo from 'components/Screens/CreateAccountScreen/CreateAccountPageTwo';
+import CreateAccountPageThree from 'components/Screens/CreateAccountScreen/CreateAccountPageThree';
+import CreateAccountPageFour from 'components/Screens/CreateAccountScreen/CreateAccountPageFour';
 import app from 'config/firebase';
 import { checkIfEmailValid } from 'processing/validity';
 
 const CreateAccountScreen = ({ history }) => {
-    const [currentPage, setCurrentPage] = useState(3);
+    const [currentPage, setCurrentPage] = useState(0);
     const [currentPageComplete, setCurrentPageComplete] = useState(false);
     const [managerDetails, setManagerDetails] = useState({
         email: 'test@email.com',
         password: '123456789'
     });
     const [teamMembers, setTeamMembers] = useState(['user@mail.com']);
-
-    const generateSubText = () =>
-        createAccountText[currentPage].map((el, i) => (
-            <Instruction key={i}>{el}</Instruction>
-        ));
 
     const checkIfEmailPasswordValid = (email, password) => {
         const emailValid = checkIfEmailValid(email);
@@ -72,34 +65,25 @@ const CreateAccountScreen = ({ history }) => {
         checkIfPageComplete();
     }, [currentPage, managerDetails]);
 
-    const getPageInterface = (page) => {
-        if (page === 1)
-            return (
-                <ObjectInput obj={managerDetails} setObj={setManagerDetails} />
-            );
-        else if (page === 2)
-            return <PageThreeInterface {...{ teamMembers, setTeamMembers }} />;
-        else if (page === 3)
-            return (
-                <PageFourInterface
-                    {...{ managerDetails, teamMembers, addAccounts }}
-                />
-            );
-    };
+    const pages = [
+        <CreateAccountPageOne />,
+        <CreateAccountPageTwo {...{ managerDetails, setManagerDetails }} />,
+        <CreateAccountPageThree {...{ teamMembers, setTeamMembers }} />,
+        <CreateAccountPageFour
+            {...{ managerDetails, teamMembers, addAccounts }}
+        />
+    ];
 
     return (
         <AccountScreen>
             <AccountEntryBox>
                 <LoginTitle>Create Account</LoginTitle>
-                <InstructionsContainer>
-                    {generateSubText()}
-                </InstructionsContainer>
-                {getPageInterface(currentPage)}
+                {pages[currentPage]}
                 <PageNavigation
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                     currentPageComplete={currentPageComplete}
-                    totalPages={createAccountText.length}
+                    totalPages={pages.length}
                 />
                 <LoginSignupFooter>
                     Returning? <a href="/login">Log In</a>

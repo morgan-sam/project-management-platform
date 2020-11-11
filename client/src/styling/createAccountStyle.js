@@ -1,5 +1,17 @@
 import styled from '@emotion/styled';
 
+export const Instruction = styled.li`
+    padding: 0.7rem;
+    font-size: 1rem;
+    color: ${(props) => props.theme.colors.primary};
+`;
+
+export const InstructionsContainer = styled.ul`
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+`;
+
 export const RemoveButton = styled.button`
     width: 1rem;
     height: 1rem;

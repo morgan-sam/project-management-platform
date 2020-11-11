@@ -5,19 +5,28 @@ import LoginScreen from 'components/Screens/LoginScreen';
 import CreateAccountScreen from 'components/Screens/CreateAccountScreen';
 import { AuthProvider } from 'config/auth';
 import PrivateRoute from 'routes/PrivateRoute';
+import { ThemeProvider } from 'emotion-theming';
 
 const App = () => {
+    const theme = {
+        colors: {
+            primary: 'white'
+        }
+    };
     return (
         <AuthProvider>
             <Router>
                 <div>
                     <PrivateRoute exact path="/" component={MainScreen} />
-                    <Route exact path="/login" component={LoginScreen} />
-                    <Route
-                        exact
-                        path="/signup"
-                        component={CreateAccountScreen}
-                    />
+
+                    <ThemeProvider theme={theme}>
+                        <Route exact path="/login" component={LoginScreen} />
+                        <Route
+                            exact
+                            path="/signup"
+                            component={CreateAccountScreen}
+                        />
+                    </ThemeProvider>
                 </div>
             </Router>
         </AuthProvider>

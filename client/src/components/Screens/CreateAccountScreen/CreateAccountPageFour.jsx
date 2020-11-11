@@ -7,11 +7,17 @@ import {
     pageFourConfirmButtonStyle
 } from 'styling/createAccountStyle';
 import SystemButton from 'components/SystemButton';
+import { Instruction, InstructionsContainer } from 'styling/createAccountStyle';
 
-const PageFourInterface = (props) => {
+const CreateAccountPageFour = (props) => {
     const { managerDetails, teamMembers, addAccounts } = props;
     return (
         <div>
+            <InstructionsContainer>
+                <Instruction>
+                    Please confirm the following information is correct:
+                </Instruction>
+            </InstructionsContainer>
             <div style={pageFourSubSectionStyle}>
                 <div style={pageThreeTitleStyle}>Manager Email:</div>
                 <div>{managerDetails.email}</div>
@@ -38,4 +44,4 @@ const PageFourInterface = (props) => {
     );
 };
 
-export default PageFourInterface;
+export default CreateAccountPageFour;
