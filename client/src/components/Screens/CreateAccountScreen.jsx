@@ -3,7 +3,8 @@ import {
     LoginTitle,
     AccountScreen,
     AccountEntryBox,
-    LoginSignupFooter
+    LoginSignupFooter,
+    LoginSignupLink
 } from 'styling/accountEntry';
 import { withRouter } from 'react-router';
 import PageNavigation from 'components/PageNavigation';
@@ -86,7 +87,8 @@ const CreateAccountScreen = ({ history }) => {
                     totalPages={pages.length}
                 />
                 <LoginSignupFooter>
-                    Returning? <a href="/login">Log In</a>
+                    Returning?{' '}
+                    <LoginSignupLink href="/login">Log In</LoginSignupLink>
                 </LoginSignupFooter>
             </AccountEntryBox>
         </AccountScreen>

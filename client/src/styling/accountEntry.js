@@ -40,4 +40,9 @@ export const AccountEntryBox = styled.div`
 export const LoginSignupFooter = styled.div`
     padding: 1rem;
     font-size: 1rem;
+    color: ${(props) => props.theme.colors.primary};
+`;
+
+export const LoginSignupLink = styled.a`
+    color: ${(props) => props.theme.colors.primary};
 `;

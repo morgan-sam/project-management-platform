@@ -4,7 +4,8 @@ import {
     LoginTitle,
     AccountScreen,
     AccountEntryBox,
-    LoginSignupFooter
+    LoginSignupFooter,
+    LoginSignupLink
 } from 'styling/accountEntry';
 import { withRouter, Redirect } from 'react-router';
 import app from 'config/firebase';
@@ -38,7 +39,8 @@ const LoginScreen = ({ history }) => {
                     submitLabel={'Log In'}
                 />
                 <LoginSignupFooter>
-                    New here? <a href="/signup">Sign Up</a>
+                    New here?{' '}
+                    <LoginSignupLink href="/signup">Sign Up</LoginSignupLink>
                 </LoginSignupFooter>
             </AccountEntryBox>
         </AccountScreen>
