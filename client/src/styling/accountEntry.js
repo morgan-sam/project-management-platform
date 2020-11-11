@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const LoginTitle = styled.h1`
     margin: 1rem;
     font-size: 2rem;
-    text-decoration: underline;
+    font-weight: bold;
     color: ${(props) => props.theme.colors.primary};
 `;
 
