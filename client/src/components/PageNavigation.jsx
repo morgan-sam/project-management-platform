@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateAccountScreen = (props) => {
+const PageNavigation = (props) => {
     const {
         currentPage,
         setCurrentPage,
@@ -51,4 +51,4 @@ const CreateAccountScreen = (props) => {
     );
 };
 
-export default CreateAccountScreen;
+export default PageNavigation;
