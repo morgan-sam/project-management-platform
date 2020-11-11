@@ -21,8 +21,8 @@ export const AccountScreen = styled.div`
 export const AccountEntryBox = styled.div`
     background: linear-gradient(
         90deg,
-        rgba(218, 183, 255, 1) 0%,
-        rgba(159, 138, 255, 1) 100%
+        rgba(200, 160, 255, 1) 0%,
+        rgba(140, 120, 255, 1) 100%
     );
 
     width: fit-content;
