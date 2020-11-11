@@ -77,7 +77,7 @@ const PageNavigation = (props) => {
                         : null
                 }
             >
-                Next
+                {currentPage > 0 ? 'Next' : 'Get Started'}
             </NavigateButton>
         </div>
     );
