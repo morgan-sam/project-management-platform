@@ -14,12 +14,12 @@ export const RemoveButton = styled.button`
     user-select: none;
 `;
 
-export const pageThreeInterfaceStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    margin: '0.75rem'
-};
+export const PageThreeInterfaceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.75rem;
+`;
 
 export const listStyle = {
     maxHeight: '20rem',

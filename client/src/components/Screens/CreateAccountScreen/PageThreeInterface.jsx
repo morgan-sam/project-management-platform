@@ -2,7 +2,7 @@ import React from 'react';
 import { checkIfEmailValid } from 'processing/validity';
 import Form from 'components/Form';
 import {
-    pageThreeInterfaceStyle,
+    PageThreeInterfaceContainer,
     pageThreeTitleStyle,
     listStyle,
     listLineStyle,
@@ -13,10 +13,10 @@ import {
 const PageThreeInterface = (props) => {
     const { teamMembers, setTeamMembers } = props;
     return (
-        <div style={pageThreeInterfaceStyle}>
+        <PageThreeInterfaceContainer>
             <h3 style={pageThreeTitleStyle}>Added Members:</h3>
             <div style={listStyle}>
-                {teamMembers.length ? (
+                {teamMembers && teamMembers.length ? (
                     teamMembers.map((el, i) => (
                         <div style={listLineStyle}>
                             {el}
@@ -53,7 +53,7 @@ const PageThreeInterface = (props) => {
                 inputs={['email']}
                 submitLabel={'Add User'}
             />
-        </div>
+        </PageThreeInterfaceContainer>
     );
 };
 
