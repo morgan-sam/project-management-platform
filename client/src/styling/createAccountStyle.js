@@ -1,15 +1,18 @@
-export const removeButtonStyle = {
-    width: '1rem',
-    height: '1rem',
-    fontSize: '1rem',
-    border: '1px solid black',
-    backgroundColor: '#FFB2B2',
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '0 1rem',
-    cursor: 'pointer',
-    userSelect: 'none'
-};
+import styled from '@emotion/styled';
+
+export const RemoveButton = styled.button`
+    width: 1rem;
+    height: 1rem;
+    fontsize: 1rem;
+    border: 1px solid black;
+    background-color: #ffb2b2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+    cursor: pointer;
+    user-select: none;
+`;
 
 export const pageThreeInterfaceStyle = {
     display: 'flex',

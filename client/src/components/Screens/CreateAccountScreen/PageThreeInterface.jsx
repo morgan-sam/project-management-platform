@@ -6,7 +6,7 @@ import {
     pageThreeTitleStyle,
     listStyle,
     listLineStyle,
-    removeButtonStyle,
+    RemoveButton,
     noTeamMembersStyle
 } from 'styling/createAccountStyle';
 
@@ -20,8 +20,7 @@ const PageThreeInterface = (props) => {
                     teamMembers.map((el, i) => (
                         <div style={listLineStyle}>
                             {el}
-                            <div
-                                style={removeButtonStyle}
+                            <RemoveButton
                                 onClick={() => {
                                     const removed = [
                                         ...teamMembers.slice(0, i),
@@ -31,7 +30,7 @@ const PageThreeInterface = (props) => {
                                 }}
                             >
                                 ✕
-                            </div>
+                            </RemoveButton>
                         </div>
                     ))
                 ) : (
