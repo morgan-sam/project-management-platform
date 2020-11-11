@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from '@emotion/styled';
 
 const PageNavigation = (props) => {
     const {
@@ -22,6 +23,10 @@ const PageNavigation = (props) => {
         };
     };
 
+    const PaginationText = styled.div`
+        color: ${(props) => props.theme.colors.primary};
+    `;
+
     return (
         <div style={navigationContainerStyle}>
             <div
@@ -32,9 +37,9 @@ const PageNavigation = (props) => {
             >
                 ⮜
             </div>
-            <span>
+            <PaginationText>
                 {currentPage + 1}/{totalPages}
-            </span>
+            </PaginationText>
             <div
                 style={getArrowStyle(
                     currentPageComplete && currentPage < totalPages - 1
