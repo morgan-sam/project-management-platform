@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     LoginTitle,
     AccountScreen,
-    AccountEntryBox,
-    LoginSignupFooter,
-    LoginSignupLink
+    AccountEntryBox
 } from 'styling/accountEntry';
 import { withRouter } from 'react-router';
 import PageNavigation from 'components/PageNavigation';
@@ -86,10 +84,6 @@ const CreateAccountScreen = ({ history }) => {
                     currentPageComplete={currentPageComplete}
                     totalPages={pages.length}
                 />
-                <LoginSignupFooter>
-                    Returning?{' '}
-                    <LoginSignupLink href="/login">Log In</LoginSignupLink>
-                </LoginSignupFooter>
             </AccountEntryBox>
         </AccountScreen>
     );
