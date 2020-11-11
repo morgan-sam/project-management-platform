@@ -34,3 +34,14 @@ export const LoginSignupFooter = styled.div`
     padding: 1rem;
     font-size: 1rem;
 `;
+
+export const Instruction = styled.li`
+    padding: 0.7rem;
+    font-size: 1rem;
+`;
+
+export const InstructionsContainer = styled.ul`
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+`;

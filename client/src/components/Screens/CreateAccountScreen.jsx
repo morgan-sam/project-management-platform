@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { css, jsx } from '@emotion/core';
 import { createAccountText } from 'data/createAccountText';
 import {
     LoginTitle,
+    Instruction,
+    InstructionsContainer,
     AccountScreen,
     AccountEntryBox,
     LoginSignupFooter
@@ -26,15 +27,7 @@ const CreateAccountScreen = ({ history }) => {
 
     const generateSubText = () =>
         createAccountText[currentPage].map((el, i) => (
-            <div
-                key={i}
-                css={css`
-                    padding: 1rem;
-                    fontsize: 1.3rem;
-                `}
-            >
-                {el}
-            </div>
+            <Instruction key={i}>{el}</Instruction>
         ));
 
     const checkIfEmailPasswordValid = (email, password) => {
@@ -98,13 +91,9 @@ const CreateAccountScreen = ({ history }) => {
         <AccountScreen>
             <AccountEntryBox>
                 <LoginTitle>Create Account</LoginTitle>
-                <div
-                    css={css`
-                        padding: 1rem;
-                    `}
-                >
+                <InstructionsContainer>
                     {generateSubText()}
-                </div>
+                </InstructionsContainer>
                 {getPageInterface(currentPage)}
                 <PageNavigation
                     currentPage={currentPage}
