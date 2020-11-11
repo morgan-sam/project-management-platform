@@ -50,15 +50,17 @@ const PageNavigation = (props) => {
 
     return (
         <div style={navigationContainerStyle}>
-            <NavigateButton
-                secondary
-                enabled={currentPage > 0}
-                onClick={() =>
-                    currentPage > 0 ? setCurrentPage(currentPage - 1) : null
-                }
-            >
-                Previous
-            </NavigateButton>
+            {currentPage > 0 && (
+                <NavigateButton
+                    secondary
+                    enabled={currentPage > 0}
+                    onClick={() =>
+                        currentPage > 0 ? setCurrentPage(currentPage - 1) : null
+                    }
+                >
+                    Previous
+                </NavigateButton>
+            )}
             <NavigateButton
                 primary
                 enabled={currentPageComplete && currentPage < totalPages - 1}
