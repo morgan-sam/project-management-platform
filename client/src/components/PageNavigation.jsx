@@ -14,12 +14,38 @@ const PageNavigation = (props) => {
         alignItems: 'center'
     };
 
-    const Arrow = styled.div`
-        color: ${(props) =>
-            props.enabled ? props.theme.colors.primary : '#ccc'};
-        cursor: ${(props) => (props.enabled ? 'pointer' : 'not-allowed')};
-        margin: 1rem;
-        user-select: none;
+    const NavigateButton = styled.button`
+        position: relative;
+        outline: none;
+        padding: 1rem;
+        border: none;
+        border-radius: 0.2rem;
+        cursor: pointer;
+        width: 10rem;
+        margin: 0.5rem;
+        ${(props) =>
+            props.primary &&
+            `background: none;
+        color: black;
+        mix-blend-mode: screen;
+        &:before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: white;
+            content: '';
+            mix-blend-mode: color-burn;
+            border-radius: 0.2rem;
+        }`}
+        ${(props) =>
+            props.secondary &&
+            `
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        `}
     `;
 
     const PaginationText = styled.div`
@@ -28,18 +54,17 @@ const PageNavigation = (props) => {
 
     return (
         <div style={navigationContainerStyle}>
-            <Arrow
+            <NavigateButton
+                secondary
                 enabled={currentPage > 0}
                 onClick={() =>
                     currentPage > 0 ? setCurrentPage(currentPage - 1) : null
                 }
             >
-                ⮜
-            </Arrow>
-            <PaginationText>
-                {currentPage + 1}/{totalPages}
-            </PaginationText>
-            <Arrow
+                Previous
+            </NavigateButton>
+            <NavigateButton
+                primary
                 enabled={currentPageComplete && currentPage < totalPages - 1}
                 onClick={() =>
                     currentPageComplete && currentPage < totalPages - 1
@@ -47,8 +72,8 @@ const PageNavigation = (props) => {
                         : null
                 }
             >
-                ⮞
-            </Arrow>
+                Next
+            </NavigateButton>
         </div>
     );
 };
