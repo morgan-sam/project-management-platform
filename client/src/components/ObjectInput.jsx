@@ -1,51 +1,49 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { capitalizeFirstLetter } from 'processing/utility';
 
 const ObjectInput = (props) => {
     const { obj, setObj } = props;
 
-    const formStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-    };
+    const Form = styled.form`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    `;
 
-    const formInputStyle = {
-        display: 'flex',
-        alignItems: 'center'
-    };
+    const FormInput = styled.label`
+        display: flex;
+        align-items: center;
+    `;
 
-    const formLabelStyle = {
-        margin: '1rem'
-    };
+    const FormLabel = styled.span`
+        margin: 1rem;
+    `;
 
-    const formTextAreaStyle = {
-        height: '1.4rem',
-        textIndent: '5px'
-    };
+    const FormTextArea = styled.input`
+        height: 1.4rem;
+        text-indent: 5px;
+    `;
 
     return (
-        <form style={formStyle}>
+        <Form>
             {Object.entries(obj).map((el, i) => {
                 return (
-                    <label key={i} style={formInputStyle}>
-                        <span style={formLabelStyle}>
-                            {capitalizeFirstLetter(el[0])}
-                        </span>
-                        <input
+                    <FormInput key={i}>
+                        <FormLabel>{capitalizeFirstLetter(el[0])}</FormLabel>
+                        <FormTextArea
                             type={el[0]}
                             onChange={(e) => {
                                 let objCopy = Object.assign({}, obj);
                                 objCopy[el[0]] = e.target.value;
                                 setObj(objCopy);
                             }}
-                            style={formTextAreaStyle}
                             placeholder={capitalizeFirstLetter(el[1])}
                         />
-                    </label>
+                    </FormInput>
                 );
             })}
-        </form>
+        </Form>
     );
 };
 
