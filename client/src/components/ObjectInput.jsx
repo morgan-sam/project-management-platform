@@ -9,15 +9,19 @@ const ObjectInput = (props) => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 1rem;
     `;
 
     const FormInput = styled.label`
         display: flex;
+        flex-direction: column;
         align-items: center;
+        margin: 0.5rem;
     `;
 
     const FormLabel = styled.span`
         margin: 1rem;
+        color: ${(props) => props.theme.colors.primary};
     `;
 
     const FormTextArea = styled.input`
