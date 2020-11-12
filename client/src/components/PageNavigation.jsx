@@ -11,10 +11,11 @@ const PageNavigation = (props) => {
         totalPages
     } = props;
 
-    const navigationContainerStyle = {
-        display: 'flex',
-        alignItems: 'center'
-    };
+    const NavigationContainer = styled.div`
+        display: 'flex';
+        align-items: 'center';
+        margin: 1rem;
+    `;
 
     const NavigateButton = styled.button`
         position: relative;
@@ -55,7 +56,7 @@ const PageNavigation = (props) => {
     const handleLoginClick = () => history.push('/login');
 
     return (
-        <div style={navigationContainerStyle}>
+        <NavigationContainer>
             {currentPage > 0 ? (
                 <NavigateButton
                     secondary
@@ -79,7 +80,7 @@ const PageNavigation = (props) => {
             >
                 {currentPage > 0 ? 'Next' : 'Get Started'}
             </NavigateButton>
-        </div>
+        </NavigationContainer>
     );
 };
 
