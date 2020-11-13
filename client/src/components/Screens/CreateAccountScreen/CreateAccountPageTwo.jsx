@@ -1,6 +1,5 @@
 import React from 'react';
 import { Instruction, InstructionsContainer } from 'styling/createAccountStyle';
-import ObjectInput from 'components/ObjectInput';
 
 const CreateAccountPageTwo = (props) => {
     const { managerDetails, setManagerDetails } = props;
@@ -14,7 +13,6 @@ const CreateAccountPageTwo = (props) => {
                     Please enter an email and password for the team manager.
                 </Instruction>
             </InstructionsContainer>
-            <ObjectInput obj={managerDetails} setObj={setManagerDetails} />
         </div>
     );
 };
