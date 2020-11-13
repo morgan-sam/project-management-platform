@@ -69,17 +69,25 @@ const PageNavigation = (props) => {
                     Log In
                 </NavigateButton>
             )}
-            <NavigateButton
-                primary
-                enabled={currentPageComplete && currentPage < totalPages - 1}
-                onClick={() =>
-                    currentPageComplete && currentPage < totalPages - 1
-                        ? setCurrentPage(currentPage + 1)
-                        : null
-                }
-            >
-                {currentPage > 0 ? 'Next' : 'Get Started'}
-            </NavigateButton>
+            {currentPage < totalPages - 1 ? (
+                <NavigateButton
+                    primary
+                    enabled={
+                        currentPageComplete && currentPage < totalPages - 1
+                    }
+                    onClick={() =>
+                        currentPageComplete && currentPage < totalPages - 1
+                            ? setCurrentPage(currentPage + 1)
+                            : null
+                    }
+                >
+                    {currentPage > 0 ? 'Next' : 'Get Started'}
+                </NavigateButton>
+            ) : (
+                <NavigateButton primary onClick={() => null}>
+                    {'Sign Up'}
+                </NavigateButton>
+            )}
         </NavigationContainer>
     );
 };
