@@ -1,4 +1,3 @@
-import { flexCenter } from './generic';
 import styled from '@emotion/styled';
 
 export const DateOptionSlideContainer = styled.div`
@@ -27,7 +26,9 @@ export const dateSlideStyling = {
 };
 
 export const canConContainerStyle = {
-    ...flexCenter,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingRight: '0.75rem',
     transition: '0.5s'
 };

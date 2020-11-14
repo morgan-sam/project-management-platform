@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
-import { flexCenter } from 'styling/generic';
 
 const WizardButton = (props) => {
     const [hover, setHover] = useState(false);
     const themeColor = useContext(ThemeContext);
 
     const wizardBtnStyle = {
-        ...flexCenter,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         width: '1.3rem',
         height: '1.3rem',
         border: '1px solid black',

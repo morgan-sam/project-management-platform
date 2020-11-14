@@ -1,7 +1,8 @@
-import { flexCenterColumn, flexCenter } from 'styling/generic';
-
 export const popUpContainerStyle = {
-    ...flexCenterColumn,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     position: 'fixed',
     top: '50vh',
     left: '50vw',
@@ -15,7 +16,9 @@ export const popUpContainerStyle = {
 };
 
 export const buttonContainerStyle = {
-    ...flexCenter,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: '1rem'
 };
 

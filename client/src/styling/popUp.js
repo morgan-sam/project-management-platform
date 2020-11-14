@@ -1,12 +1,12 @@
-import { flexCenter, flexCenterColumn } from 'styling/generic';
-
 export const titleStyle = {
     padding: '3rem',
     fontSize: '1.6rem'
 };
 
 export const topContainerStyle = {
-    ...flexCenter,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'fixed',
     top: '0',
     left: '0',
@@ -16,7 +16,10 @@ export const topContainerStyle = {
 };
 
 export const popUpWindowStyle = {
-    ...flexCenterColumn,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     position: 'fixed',
     border: '1px solid black',
     backgroundColor: 'white',
@@ -31,7 +34,10 @@ export const popUpWindowStyle = {
 };
 
 export const subContainerStyle = {
-    ...flexCenterColumn,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     height: '4rem'
 };
 
@@ -66,7 +72,10 @@ export const topRowStyle = {
 
 export const finalContainerStyle = {
     padding: '2.5rem',
-    ...flexCenter
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
 };
 
 export const dateGridStyle = {
@@ -105,6 +114,9 @@ export const dateLabel = {
 };
 
 export const autoContainerStyle = {
-    ...flexCenterColumn,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     margin: '1rem'
 };

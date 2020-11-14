@@ -1,9 +1,10 @@
 import React from 'react';
-import { flexCenter } from 'styling/generic';
 
 const InputFormWithLabel = (props) => {
     const inputFormWithLabelStyle = {
-        ...flexCenter,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         padding: '0 1rem'
     };
 

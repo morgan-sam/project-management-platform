@@ -5,6 +5,8 @@ export const flexCenter = {
 };
 
 export const flexCenterColumn = {
-    ...flexCenter,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'column'
 };

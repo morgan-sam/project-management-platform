@@ -1,8 +1,10 @@
 import { titleStyle } from 'styling/popUp';
-import { flexCenter, flexCenterColumn } from 'styling/generic';
 
 const categoryStyle = {
-    ...flexCenterColumn,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     padding: '1rem',
     textAlign: 'center'
 };
@@ -47,7 +49,9 @@ export const bottomRightContainer = {
 };
 
 export const bottomContainer = {
-    ...flexCenter,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: '2rem',
     margin: '1.5rem 0rem'
 };

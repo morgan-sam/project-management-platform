@@ -1,15 +1,18 @@
 import React from 'react';
-import { flexCenter } from 'styling/generic';
 
 const Checkbox = (props) => {
     const { style } = props;
 
     const checkboxContainerStyle = {
-        ...flexCenter
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     };
 
     const checkboxIconStyle = {
-        ...flexCenter,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         width: '1rem',
         height: '1rem',
         border: '2px solid #777',

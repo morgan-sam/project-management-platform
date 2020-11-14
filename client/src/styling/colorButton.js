@@ -1,5 +1,4 @@
 import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
-import { flexCenter } from 'styling/generic';
 
 export const BUTTON_BOUNCE_PX = 8;
 
@@ -43,7 +42,10 @@ export const getFloatingContainerStyle = (style, state) => {
             ? 'float 1.4s ease-in-out 0.4s alternate infinite'
             : 'none',
         overflow: 'hidden',
-        ...flexCenter
+
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     };
 };
 
