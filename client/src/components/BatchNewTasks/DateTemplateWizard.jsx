@@ -5,11 +5,7 @@ import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj } from 'processing/dates';
-import {
-    cancelButtonStyle,
-    topContainerStyle,
-    popUpWindowStyle
-} from 'styling/popUp';
+import { cancelButtonStyle, popUpWindowStyle } from 'styling/popUp';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
     mainGridContainer,

@@ -1,16 +1,9 @@
 import React from 'react';
 import {
     titleStyle,
-    topContainerStyle,
     popUpWindowStyle,
     cancelButtonStyle,
-    errorMatchTextStyle,
     finalContainerStyle,
-    dateTopContainer,
-    dateGridStyle,
-    dateRangeContainer,
-    dateContainer,
-    dateLabel,
     autoContainerStyle
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
