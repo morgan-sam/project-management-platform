@@ -24,7 +24,13 @@ import { parseISOToDateObj, parseDateObjToISO } from 'processing/dates';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getTaskListTeams } from 'processing/teams';
 import { getDefaultDeleteTemplate } from 'data/defaultState';
-import { flexCenter } from 'styling/generic';
+import styled from '@emotion/styled';
+
+const CompletionSelectContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 const BatchDeleteTasks = (props) => {
     const {
@@ -45,12 +51,12 @@ const BatchDeleteTasks = (props) => {
                     onChange={(val) => setTemplate({ ...template, task: val })}
                     default={template.task}
                 />
-                <div style={flexCenter}>
+                <CompletionSelectContainer>
                     <CompletionSelect
                         {...props}
                         state={[template, setTemplate]}
                     />
-                </div>
+                </CompletionSelectContainer>
                 <div
                     style={{
                         color: 'rgb(193, 45, 41)',
