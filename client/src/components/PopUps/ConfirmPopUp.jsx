@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 import {
     PopUpContainerElement,
-    buttonContainerStyle,
+    ConfirmButtonContainer,
     buttonStyle,
     messageContainerStyle
 } from 'styling/confirmPopUp';
@@ -28,7 +28,7 @@ const ConfirmPopUp = (props) => {
             <div style={messageContainerStyle}>
                 <h3>{message}</h3>
             </div>
-            <div style={buttonContainerStyle}>
+            <ConfirmButtonContainer>
                 <ColorButton
                     color={'green'}
                     style={buttonStyle}
@@ -51,7 +51,7 @@ const ConfirmPopUp = (props) => {
                         }, popUpCloseTimeMs)
                     }
                 />
-            </div>
+            </ConfirmButtonContainer>
         </PopUpContainerElement>
     );
 };

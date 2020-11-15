@@ -25,12 +25,12 @@ export const PopUpContainerElement = styled.div`
     animation: fade-in 1s;
 `;
 
-export const buttonContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: '1rem'
-};
+export const ConfirmButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+`;
 
 export const buttonStyle = {
     width: '5rem',
