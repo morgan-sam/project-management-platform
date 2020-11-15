@@ -3,7 +3,7 @@ import DateSelect from 'components/DateSelect';
 import { parseDateObjToISO } from 'processing/dates';
 import {
     DateOptionSlideContainer,
-    dateDisplayBoxStyling,
+    DateDisplayBox,
     dateSlideStyling,
     canConBtnStyle,
     confirmBtnStyle,
@@ -13,8 +13,6 @@ import {
 import {
     dateOptionOpen,
     dateOptionClosed,
-    displayOffscreen,
-    displayOnscreen,
     selectOffscreen,
     selectOnscreen
 } from 'styling/dateOptionSlide';
@@ -24,6 +22,7 @@ const DateOptionSlide = (props) => {
     const [backupDate, setBackupDate] = useState(props.date);
     const [showDateSelect, setShowDateSelect] = useState(false);
     const [overflowHidden, setOverflowHidden] = useState(true);
+    console.log(showDateSelect);
 
     return (
         <DateOptionSlideContainer
@@ -32,18 +31,15 @@ const DateOptionSlide = (props) => {
                 ...(showDateSelect ? dateOptionOpen : dateOptionClosed)
             }}
         >
-            <div
-                style={{
-                    ...dateDisplayBoxStyling,
-                    ...(showDateSelect ? displayOffscreen : displayOnscreen)
-                }}
+            <DateDisplayBox
+                {...{ showDateSelect }}
                 onClick={() => {
                     setShowDateSelect(true);
                     if (props.setPopUpOpen) props.setPopUpOpen(true);
                 }}
             >
                 {props.date.day}/{props.date.month}/{props.date.year}
-            </div>
+            </DateDisplayBox>
 
             <div
                 className="dateSelectConfirmContainer"

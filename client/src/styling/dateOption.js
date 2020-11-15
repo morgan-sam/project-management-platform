@@ -10,14 +10,26 @@ export const DateOptionSlideContainer = styled.div`
     border-radius: 5px;
 `;
 
-export const dateDisplayBoxStyling = {
-    height: 'auto',
-    padding: '0 0.5rem',
-    textAlign: 'center',
-    userSelect: 'none',
-    cursor: 'pointer',
-    transition: '1s'
-};
+export const DateDisplayBox = styled.div`
+    height: auto;
+    padding: 0 0.5rem;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    transition: 1s;
+
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    ${(props) =>
+        props.showDateSelect
+            ? `left: 0%;
+            transform: translate(-150%,-50%);
+            opacity: 0;`
+            : `left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 1;`};
+`;
 
 export const dateSlideStyling = {
     textAlign: 'center',
