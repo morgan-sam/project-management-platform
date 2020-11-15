@@ -8,7 +8,7 @@ import {
 } from 'styling/confirmPopUp';
 
 const ConfirmPopUp = (props) => {
-    const popUpCloseTimeMs = 400;
+    const POPUP_CLOSE_TIME_MS = 400;
     const { message, cancel, confirm, setPopUp, pressedKeys } = props;
     const closePopUp = () => setPopUp(null);
 
@@ -37,7 +37,7 @@ const ConfirmPopUp = (props) => {
                         setTimeout(() => {
                             closePopUp();
                             confirm();
-                        }, popUpCloseTimeMs);
+                        }, POPUP_CLOSE_TIME_MS);
                     }}
                 />
                 <ColorButton
@@ -48,7 +48,7 @@ const ConfirmPopUp = (props) => {
                         setTimeout(() => {
                             if (cancel) cancel();
                             else closePopUp();
-                        }, popUpCloseTimeMs)
+                        }, POPUP_CLOSE_TIME_MS)
                     }
                 />
             </ConfirmButtonContainer>
