@@ -38,9 +38,9 @@ export const buttonStyle = {
     lineHeight: '0'
 };
 
-export const messageContainerStyle = {
-    width: '75%',
-    textAlign: 'center',
-    lineHeight: '1.5rem',
-    margin: '2rem 0 0 0'
-};
+export const ConfirmMessageContainer = styled.div`
+    width: 75%;
+    text-align: center;
+    line-height: 1.5rem;
+    margin: 2rem 0 0 0;
+`;

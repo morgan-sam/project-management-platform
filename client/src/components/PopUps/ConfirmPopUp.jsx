@@ -4,7 +4,7 @@ import {
     PopUpContainerElement,
     ConfirmButtonContainer,
     buttonStyle,
-    messageContainerStyle
+    ConfirmMessageContainer
 } from 'styling/confirmPopUp';
 
 const ConfirmPopUp = (props) => {
@@ -25,9 +25,9 @@ const ConfirmPopUp = (props) => {
 
     return (
         <PopUpContainerElement>
-            <div style={messageContainerStyle}>
+            <ConfirmMessageContainer>
                 <h3>{message}</h3>
-            </div>
+            </ConfirmMessageContainer>
             <ConfirmButtonContainer>
                 <ColorButton
                     color={'green'}
