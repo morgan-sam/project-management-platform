@@ -1,19 +1,29 @@
-export const popUpContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    position: 'fixed',
-    top: '50vh',
-    left: '50vw',
-    height: '12rem',
-    width: '23rem',
-    border: '1px solid black',
-    transform: 'translate(-50%,-50%)',
-    backgroundColor: 'white',
-    zIndex: '20',
-    animation: 'confirm-popup-fade-in 1s'
-};
+import styled from '@emotion/styled';
+
+export const PopUpContainerElement = styled.div`
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    height: 12rem;
+    width: 23rem;
+    border: 1px solid black;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 20;
+    animation: fade-in 1s;
+`;
 
 export const buttonContainerStyle = {
     display: 'flex',

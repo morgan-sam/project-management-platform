@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 import {
-    popUpContainerStyle,
+    PopUpContainerElement,
     buttonContainerStyle,
     buttonStyle,
     messageContainerStyle
@@ -24,7 +24,7 @@ const ConfirmPopUp = (props) => {
     }, [pressedKeys]);
 
     return (
-        <div className={'popUp'} style={popUpContainerStyle}>
+        <PopUpContainerElement>
             <div style={messageContainerStyle}>
                 <h3>{message}</h3>
             </div>
@@ -52,7 +52,7 @@ const ConfirmPopUp = (props) => {
                     }
                 />
             </div>
-        </div>
+        </PopUpContainerElement>
     );
 };
 
