@@ -24,7 +24,7 @@ import {
     tableStyle,
     overlayStyle,
     getTableContainerStyle,
-    getTopBarsContainerStyle
+    TopBarsContainer
 } from 'styling/mainPage';
 
 const MainScreen = (props) => {
@@ -145,10 +145,7 @@ const MainScreen = (props) => {
                             setColorTheme
                         }}
                     />
-                    <div
-                        className="topBars"
-                        style={getTopBarsContainerStyle(barsFloating)}
-                    >
+                    <TopBarsContainer barsAtTop={barsFloating}>
                         <FilterBar
                             taskListTeams={[
                                 'all',
@@ -176,7 +173,7 @@ const MainScreen = (props) => {
                                 rawTaskList
                             }}
                         />
-                    </div>
+                    </TopBarsContainer>
                     <div
                         className="tableContainer"
                         style={getTableContainerStyle(fixedStyle, {

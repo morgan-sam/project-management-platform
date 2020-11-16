@@ -46,8 +46,7 @@ export const getTaskBarVisibleStyle = (popUpOpen) => {
 };
 
 export const dataInfoBarStyle = {
-    ...defaultBarStyle,
-    zIndex: '7'
+    ...defaultBarStyle
 };
 
 export const dataInfoItemStyle = {
@@ -57,13 +56,11 @@ export const dataInfoItemStyle = {
 };
 
 export const createTaskBarStyle = {
-    ...defaultBarStyle,
-    zIndex: '8'
+    ...defaultBarStyle
 };
 
 export const filterBarStyle = {
-    ...defaultBarStyle,
-    zIndex: '9'
+    ...defaultBarStyle
 };
 
 export const filterBarItemStyle = {

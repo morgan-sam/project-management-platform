@@ -1,3 +1,5 @@
+import styled from '@emotion/styled';
+
 export const getScreenStyle = (fixedStyle) => {
     return {
         position: 'absolute',
@@ -68,18 +70,21 @@ export const getTableContainerStyle = (fixedStyle, values) => {
         };
 };
 
-export const getTopBarsContainerStyle = (barsAtTop) => {
-    const defaultStyle = { margin: '0rem 0 2rem 0' };
-    if (barsAtTop)
-        return {
-            ...defaultStyle,
-            position: 'sticky',
-            top: '4rem'
-        };
-    else
-        return {
-            ...defaultStyle,
-            position: 'relative',
-            top: '0rem'
-        };
-};
+export const TopBarsContainer = styled.div`
+    margin: 0rem 0 2rem 0;
+    & > *:nth-child(1) {
+        z-index: 9;
+    }
+    & > *:nth-child(2) {
+        z-index: 8;
+    }
+    & > *:nth-child(3) {
+        z-index: 7;
+    }
+    ${(props) =>
+        props.barsAtTop
+            ? `position: sticky;
+               top: 4rem;`
+            : `position: relative;
+               top: 0rem;`}
+`;
