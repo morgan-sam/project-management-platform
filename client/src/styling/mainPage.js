@@ -72,15 +72,11 @@ export const getTableContainerStyle = (fixedStyle, values) => {
 
 export const TopBarsContainer = styled.div`
     margin: 0rem 0 2rem 0;
-    & > *:nth-child(1) {
-        z-index: 9;
-    }
-    & > *:nth-child(2) {
-        z-index: 8;
-    }
-    & > *:nth-child(3) {
-        z-index: 7;
-    }
+    ${[...Array(3)].map(
+        (el, i) => `& > *:nth-child(${i + 1}) {
+        z-index: ${9 - i};
+    }`
+    )}
     ${(props) =>
         props.barsAtTop
             ? `position: sticky;
