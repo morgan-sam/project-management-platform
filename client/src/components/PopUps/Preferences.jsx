@@ -4,7 +4,7 @@ import ColorButton from 'components/ColorButton';
 import NavigationMenu from 'components/NavigationMenu';
 import {
     titleStyle,
-    topContainerStyle,
+    PopUpContainer,
     popUpWindowStyle,
     subContainerStyle,
     cancelButtonStyle,
@@ -27,7 +27,7 @@ const Preferences = (props) => {
     };
 
     return (
-        <div style={topContainerStyle}>
+        <PopUpContainer>
             <div style={popUpWindowStyle}>
                 <div style={titleStyle}>Preferences</div>
                 <div style={subContainerStyle}>
@@ -94,7 +94,7 @@ const Preferences = (props) => {
                     ×
                 </button>
             </div>
-        </div>
+        </PopUpContainer>
     );
 };
 

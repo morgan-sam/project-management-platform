@@ -1,19 +1,21 @@
+import styled from '@emotion/styled';
+
 export const titleStyle = {
     padding: '3rem',
     fontSize: '1.6rem'
 };
 
-export const topContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    height: '100vh',
-    width: '100vw',
-    zIndex: '20'
-};
+export const PopUpContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 20;
+`;
 
 export const popUpWindowStyle = {
     display: 'flex',

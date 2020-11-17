@@ -5,7 +5,6 @@ import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import {
     titleStyle,
-    topContainerStyle,
     popUpWindowStyle,
     subContainerStyle,
     cancelButtonStyle,

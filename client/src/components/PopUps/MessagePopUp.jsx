@@ -3,7 +3,7 @@ import ColorButton from 'components/ColorButton';
 
 import {
     titleStyle,
-    topContainerStyle,
+    PopUpContainer,
     popUpWindowStyle,
     subContainerStyle,
     finalContainerStyle
@@ -33,7 +33,7 @@ const ConfirmPopUp = (props) => {
     };
 
     return (
-        <div className={'popUp'} style={topContainerStyle}>
+        <PopUpContainer>
             <div className={'popUp'} style={popUpWindowStyle}>
                 <h2 style={titleStyle}>About</h2>
                 <div style={subContainerStyle}>
@@ -50,7 +50,7 @@ const ConfirmPopUp = (props) => {
                     />
                 </div>
             </div>
-        </div>
+        </PopUpContainer>
     );
 };
 

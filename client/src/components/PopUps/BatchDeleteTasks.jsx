@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MainScreen from 'components/BatchDeleteTasks/MainScreen';
 import ViewMatchedTasks from 'components/BatchDeleteTasks/ViewMatchedTasks';
 import ConfirmPopUp from 'components/PopUps/ConfirmPopUp';
-import { topContainerStyle } from 'styling/popUp';
+import { PopUpContainer } from 'styling/popUp';
 import {
     filterListDate,
     filterListDeadline,
@@ -100,7 +100,7 @@ const BatchDeleteTasks = (props) => {
     };
 
     return (
-        <div style={topContainerStyle}>
+        <PopUpContainer>
             {screen === 'main' && (
                 <MainScreen
                     {...props}
@@ -126,7 +126,7 @@ const BatchDeleteTasks = (props) => {
                     setPopUp={setPopUp}
                 />
             )}
-        </div>
+        </PopUpContainer>
     );
 };
 
