@@ -4,8 +4,8 @@ import MainTitle from 'components/MainTitle';
 import AccountInfo from 'components/AccountInfo';
 import Table from 'components/Table';
 import TaskManager from 'components/TaskManager';
-import FilterBar from 'components/Bars/FilterBar';
-import DataInfoBar from 'components/Bars/DataInfoBar';
+import FilterBar from 'components/Taskbars/FilterBar';
+import DataInfoBar from 'components/Taskbars/DataInfoBar';
 import AmbientBackground from 'components/AmbientBackground';
 import sortList from 'processing/sortList';
 import { fetchGetEntries, fetchPutEntry } from 'data/fetch';
@@ -17,7 +17,7 @@ import {
 } from 'data/defaultState';
 import { filterList } from 'processing/filterList';
 import { getTaskListTeams } from 'processing/teams';
-import CreateTaskBar from 'components/Bars/CreateTaskBar';
+import CreateTaskBar from 'components/Taskbars/CreateTaskBar';
 import {
     getScreenStyle,
     getMainPageStyle,
