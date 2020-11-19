@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-    getTaskBarHiddenStyle,
-    getTaskBarVisibleStyle,
-    dataInfoItemStyle,
-    Taskbar
-} from 'styling/taskBars';
+import { dataInfoItemStyle, Taskbar } from 'styling/taskBars';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToLittleEndian } from 'processing/dates';
 
@@ -26,10 +21,8 @@ const DataInfoBar = (props) => {
     return (
         <Taskbar
             className="dataInfoBar"
+            visible={displayedBars.dataInfo}
             style={{
-                ...(displayedBars.dataInfo
-                    ? getTaskBarVisibleStyle(false)
-                    : getTaskBarHiddenStyle(false)),
                 overflow: 'hidden',
                 alignItems: 'stretch'
             }}

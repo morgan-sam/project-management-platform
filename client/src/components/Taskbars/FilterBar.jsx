@@ -7,12 +7,7 @@ import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
 import MatchType from 'components/MatchType';
 import { parseISOToDateObj } from 'processing/dates';
-import {
-    getTaskBarHiddenStyle,
-    getTaskBarVisibleStyle,
-    Taskbar,
-    filterBarItemStyle
-} from 'styling/taskBars';
+import { Taskbar, filterBarItemStyle } from 'styling/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getDefaultFilterOptions } from 'data/defaultState';
 
@@ -34,10 +29,9 @@ const FilterBar = (props) => {
     return (
         <Taskbar
             className="filterBar"
+            popUpOpen={popUpOpen}
+            visible={displayedBars.filter}
             style={{
-                ...(displayedBars.filter
-                    ? getTaskBarVisibleStyle(popUpOpen)
-                    : getTaskBarHiddenStyle(popUpOpen)),
                 overflow: Object.values(dropdownsOpen).includes(true)
                     ? 'visible'
                     : 'hidden'

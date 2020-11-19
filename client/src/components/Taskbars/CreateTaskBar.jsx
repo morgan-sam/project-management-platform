@@ -3,11 +3,7 @@ import ColorButton from 'components/ColorButton';
 import DateRangeSelect from 'components/DateRangeSelect';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
-import {
-    getTaskBarHiddenStyle,
-    getTaskBarVisibleStyle,
-    Taskbar
-} from 'styling/taskBars';
+import { Taskbar } from 'styling/taskBars';
 import { parseISOToDateObj } from 'processing/dates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
@@ -51,11 +47,10 @@ const CreateTaskBar = (props) => {
     return (
         <Taskbar
             className="createTaskBar"
+            popUpOpen={popUpOpen}
+            visible={displayedBars.createTask}
             style={{
                 ...style,
-                ...(displayedBars.createTask
-                    ? getTaskBarVisibleStyle(popUpOpen)
-                    : getTaskBarHiddenStyle(popUpOpen)),
                 overflow: overflowHidden ? 'visible' : 'hidden'
             }}
         >
