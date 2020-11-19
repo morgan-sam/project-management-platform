@@ -2,9 +2,9 @@ import React from 'react';
 import {
     getTaskBarHiddenStyle,
     getTaskBarVisibleStyle,
-    dataInfoItemStyle
+    dataInfoItemStyle,
+    Taskbar
 } from 'styling/taskBars';
-import { dataInfoBarStyle } from 'styling/taskBars';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToLittleEndian } from 'processing/dates';
 
@@ -24,10 +24,9 @@ const DataInfoBar = (props) => {
     const taskCountText = `Showing  ${taskList.length} out of ${rawTaskList.length} tasks in database`;
 
     return (
-        <div
+        <Taskbar
             className="dataInfoBar"
             style={{
-                ...dataInfoBarStyle,
                 ...(displayedBars.dataInfo
                     ? getTaskBarVisibleStyle(false)
                     : getTaskBarHiddenStyle(false)),
@@ -38,7 +37,7 @@ const DataInfoBar = (props) => {
             <div style={dataInfoItemStyle}>{filterText}</div>
             <div style={dataInfoItemStyle}>{taskCountText}</div>
             <div style={dataInfoItemStyle}>{getDateRangeText()}</div>
-        </div>
+        </Taskbar>
     );
 };
 

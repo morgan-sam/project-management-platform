@@ -6,7 +6,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import {
     getTaskBarHiddenStyle,
     getTaskBarVisibleStyle,
-    createTaskBarStyle
+    Taskbar
 } from 'styling/taskBars';
 import { parseISOToDateObj } from 'processing/dates';
 import { fetchPostEntry } from 'data/fetch';
@@ -49,11 +49,10 @@ const CreateTaskBar = (props) => {
     };
 
     return (
-        <div
+        <Taskbar
             className="createTaskBar"
             style={{
                 ...style,
-                ...createTaskBarStyle,
                 ...(displayedBars.createTask
                     ? getTaskBarVisibleStyle(popUpOpen)
                     : getTaskBarHiddenStyle(popUpOpen)),
@@ -103,7 +102,7 @@ const CreateTaskBar = (props) => {
                 onChange={() => setKeepOpen(!keepOpen)}
                 default={keepOpen}
             />
-        </div>
+        </Taskbar>
     );
 };
 

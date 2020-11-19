@@ -10,7 +10,7 @@ import { parseISOToDateObj } from 'processing/dates';
 import {
     getTaskBarHiddenStyle,
     getTaskBarVisibleStyle,
-    filterBarStyle,
+    Taskbar,
     filterBarItemStyle
 } from 'styling/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teams';
@@ -32,10 +32,9 @@ const FilterBar = (props) => {
     const [popUpOpen, setPopUpOpen] = useState(false);
 
     return (
-        <div
+        <Taskbar
             className="filterBar"
             style={{
-                ...filterBarStyle,
                 ...(displayedBars.filter
                     ? getTaskBarVisibleStyle(popUpOpen)
                     : getTaskBarHiddenStyle(popUpOpen)),
@@ -128,7 +127,7 @@ const FilterBar = (props) => {
                     setDropdownsOpen({ ...dropdownsOpen, completion: val })
                 }
             />
-        </div>
+        </Taskbar>
     );
 };
 

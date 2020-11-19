@@ -1,21 +1,23 @@
+import styled from '@emotion/styled';
+
 const smallOpenTransition = 'max-height 1s cubic-bezier(.23,.52,.53,.74)';
 const smallCloseTransition = 'max-height .8s cubic-bezier(.27,.97,.36,.96)';
 
 const largeCloseTransition = 'max-height 1s cubic-bezier(.41,.49,.23,.93)';
 const largeOpenTransition = 'max-height 0.7s cubic-bezier(.38,.03,.23,.93)';
 
-const defaultBarStyle = {
-    position: 'relative',
-    height: 'auto',
-    width: 'auto',
-    border: '1px solid black',
-    borderRadius: '5px',
-    flexDirection: 'row',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: 'white'
-};
+export const Taskbar = styled.div`
+    position: relative;
+    height: auto;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+`;
 
 export const getTaskBarHiddenStyle = (popUpOpen) => {
     return {
@@ -45,22 +47,10 @@ export const getTaskBarVisibleStyle = (popUpOpen) => {
     };
 };
 
-export const dataInfoBarStyle = {
-    ...defaultBarStyle
-};
-
 export const dataInfoItemStyle = {
     padding: '1rem',
     margin: '1rem',
     border: '1px solid black'
-};
-
-export const createTaskBarStyle = {
-    ...defaultBarStyle
-};
-
-export const filterBarStyle = {
-    ...defaultBarStyle
 };
 
 export const filterBarItemStyle = {
