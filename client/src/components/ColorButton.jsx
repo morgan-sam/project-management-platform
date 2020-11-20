@@ -6,7 +6,7 @@ import {
     getFloatingContainerStyle,
     getButtonStyle,
     ColorBox,
-    whiteBoxStyle
+    WhiteBox
 } from 'styling/colorButton';
 
 const ColorButton = (props) => {
@@ -74,7 +74,7 @@ const ColorButton = (props) => {
                     color={props.color ? props.color : themeColor}
                     hover={hover}
                 />
-                <div style={whiteBoxStyle} />
+                <WhiteBox />
             </div>
         </div>
     );

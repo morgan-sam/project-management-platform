@@ -95,12 +95,12 @@ const getButtonGradient = (color) => {
     )}) 0%, rgb(${colors[1].join(',')}) 48%, rgb(${colors[2].join(',')}) 100%)`;
 };
 
-export const whiteBoxStyle = {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'white',
-    zIndex: '-3'
-};
+export const WhiteBox = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -3;
+`;
