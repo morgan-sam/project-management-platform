@@ -43,22 +43,23 @@ export const subContainerStyle = {
     height: '4rem'
 };
 
-export const cancelButtonStyle = {
-    position: 'absolute',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    lineHeight: '0',
-    height: '2rem',
-    width: '2rem',
-    top: '1rem',
-    right: '1rem',
-    backgroundColor: 'salmon',
-    color: 'white',
-    fontSize: '2rem',
-    outline: 'none',
-    cursor: 'pointer'
-};
+export const CancelButton = styled.button`
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    height: 2rem;
+    width: 2rem;
+    top: 1rem;
+    right: 1rem;
+    background-color: salmon;
+    color: white;
+    font-size: 2rem;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 140, 100);
+`;
 
 export const errorMatchTextStyle = {
     position: 'relative',

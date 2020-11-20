@@ -7,7 +7,7 @@ import {
     PopUpContainer,
     popUpWindowStyle,
     subContainerStyle,
-    cancelButtonStyle,
+    CancelButton,
     finalContainerStyle
 } from 'styling/popUp';
 
@@ -87,12 +87,7 @@ const Preferences = (props) => {
                     </div>
                 </div>
 
-                <button
-                    style={cancelButtonStyle}
-                    onClick={() => setPopUp(null)}
-                >
-                    ×
-                </button>
+                <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
             </div>
         </PopUpContainer>
     );

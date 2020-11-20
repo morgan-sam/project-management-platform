@@ -2,7 +2,7 @@ import React from 'react';
 import {
     titleStyle,
     popUpWindowStyle,
-    cancelButtonStyle,
+    CancelButton,
     errorMatchTextStyle,
     finalContainerStyle,
     dateTopContainer,
@@ -234,9 +234,7 @@ const BatchDeleteTasks = (props) => {
                     enabled={finalMatched.length !== 0}
                 />
             </div>
-            <button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
-                ×
-            </button>
+            <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
         </div>
     );
 };

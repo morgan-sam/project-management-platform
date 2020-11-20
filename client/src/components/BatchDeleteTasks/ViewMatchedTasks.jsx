@@ -2,7 +2,7 @@ import React from 'react';
 import {
     titleStyle,
     popUpWindowStyle,
-    cancelButtonStyle,
+    CancelButton,
     finalContainerStyle,
     autoContainerStyle
 } from 'styling/popUp';
@@ -54,9 +54,7 @@ const MatchedDeleteTasks = (props) => {
                     onClick={() => setScreen('confirm')}
                 />
             </div>
-            <button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
-                ×
-            </button>
+            <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
         </div>
     );
 };

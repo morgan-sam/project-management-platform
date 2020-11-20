@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
-import { cancelButtonStyle, popUpWindowStyle } from 'styling/popUp';
+import { CancelButton, popUpWindowStyle } from 'styling/popUp';
 import {
     mainGridContainer,
     getSectionOpacityStyle,
@@ -134,9 +134,7 @@ const TaskTemplateWizard = (props) => {
                     }}
                 />
             </div>
-            <button style={cancelButtonStyle} onClick={() => setScreen('main')}>
-                ×
-            </button>
+            <CancelButton onClick={() => setScreen('main')}>×</CancelButton>
         </div>
     );
 };

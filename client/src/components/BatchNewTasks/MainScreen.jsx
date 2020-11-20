@@ -7,7 +7,7 @@ import {
     titleStyle,
     popUpWindowStyle,
     subContainerStyle,
-    cancelButtonStyle,
+    CancelButton,
     errorMatchTextStyle,
     topRowStyle,
     finalContainerStyle
@@ -122,9 +122,7 @@ const MainBatchScreen = (props) => {
                     onClick={() => addMultipleTasks()}
                 />
             </div>
-            <button style={cancelButtonStyle} onClick={() => setPopUp(null)}>
-                ×
-            </button>
+            <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
         </div>
     );
 };
