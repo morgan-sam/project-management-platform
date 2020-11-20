@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
 
 export const BUTTON_BOUNCE_PX = 8;
@@ -67,25 +68,25 @@ export const getButtonStyle = (props, hover) => {
     };
 };
 
-export const getColorBoxStyle = (color, hover) => {
-    return {
-        position: 'absolute',
-        width: '150%',
-        height: '150%',
-        zIndex: '-2',
-        transformOrigin: 'center',
-        transform: hover
-            ? 'translate(0%,0%) scale(2) skew(0deg)'
-            : 'translate(0%,400%) scale(2) skew(45deg)',
-        borderRadius: '0',
-        transition: '0s transform ease-in-out',
-        background: getButtonGradient(color),
-        opacity: '100%',
-        animation: hover
+export const ColorBox = styled.div`
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    z-index: -2;
+    transform-origin: center;
+    transform: ${(props) =>
+        props.hover
+            ? 'translate(0%, 0%) scale(2) skew(0deg)'
+            : 'translate(0%, 400%) scale(2) skew(45deg)'};
+    border-radius: 0;
+    transition: 0s transform ease-in-out;
+    background: ${(props) => getButtonGradient(props.color)};
+    opacity: 100%;
+    animation: ${(props) =>
+        props.hover
             ? 'button-bg-rotate 5s cubic-bezier(0,.09,1,-0.09) 0s infinite alternate-reverse'
-            : 'none'
-    };
-};
+            : 'none'};
+}`;
 
 const getButtonGradient = (color) => {
     const colors = calculateColorStyles(color);
