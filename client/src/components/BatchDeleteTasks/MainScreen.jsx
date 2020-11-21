@@ -3,7 +3,7 @@ import {
     titleStyle,
     popUpWindowStyle,
     CancelButton,
-    errorMatchTextStyle,
+    ErrorMatchText,
     finalContainerStyle,
     dateTopContainer,
     dateGridStyle,
@@ -133,11 +133,11 @@ const BatchDeleteTasks = (props) => {
                         />
                     </div>
                 </div>
-                <div style={errorMatchTextStyle}>
+                <ErrorMatchText>
                     {matched.dateRange.length === rawTaskList.length
                         ? ''
                         : `${matched.dateRange.length}/${rawTaskList.length} Date Range Matches`}
-                </div>
+                </ErrorMatchText>
             </div>
             <div style={{ display: 'flex' }}>
                 <div style={autoContainerStyle}>
@@ -152,11 +152,11 @@ const BatchDeleteTasks = (props) => {
                             setTemplate({ ...template, urgency: { min, max } })
                         }
                     />
-                    <div style={errorMatchTextStyle}>
+                    <ErrorMatchText>
                         {matched.urgency.length === rawTaskList.length
                             ? ''
                             : `${matched.urgency.length}/${rawTaskList.length} Urgency Matches`}
-                    </div>
+                    </ErrorMatchText>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Dropdown

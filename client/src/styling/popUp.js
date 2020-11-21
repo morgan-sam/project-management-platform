@@ -61,12 +61,12 @@ export const CancelButton = styled.button`
     border: 2px solid rgb(255, 140, 100);
 `;
 
-export const errorMatchTextStyle = {
-    position: 'relative',
-    top: '1rem',
-    lineHeight: '0',
-    color: '#c12d29'
-};
+export const ErrorMatchText = styled.div`
+    position: relative;
+    top: 1rem;
+    line-height: 0;
+    color: #c12d29;
+`;
 
 export const topRowStyle = {
     display: 'flex',
