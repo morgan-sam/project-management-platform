@@ -6,7 +6,7 @@ import {
     PopUpContainer,
     popUpWindowStyle,
     subContainerStyle,
-    finalContainerStyle
+    FinalContainer
 } from 'styling/popUp';
 
 const ConfirmPopUp = (props) => {
@@ -39,7 +39,7 @@ const ConfirmPopUp = (props) => {
                 <div style={subContainerStyle}>
                     {convertMessageArrayToElements()}
                 </div>
-                <div style={finalContainerStyle}>
+                <FinalContainer>
                     <ColorButton
                         text={'Close'}
                         onClick={async () => {
@@ -48,7 +48,7 @@ const ConfirmPopUp = (props) => {
                             }, popUpCloseTimeMs);
                         }}
                     />
-                </div>
+                </FinalContainer>
             </div>
         </PopUpContainer>
     );

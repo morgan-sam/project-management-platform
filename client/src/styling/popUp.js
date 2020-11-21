@@ -68,18 +68,17 @@ export const ErrorMatchText = styled.div`
     color: #c12d29;
 `;
 
-export const topRowStyle = {
-    display: 'flex',
-    flexDirection: 'row'
-};
+export const TopRow = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
 
-export const finalContainerStyle = {
-    padding: '2.5rem',
-
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-};
+export const FinalContainer = styled.div`
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 export const dateGridStyle = {
     display: 'grid',

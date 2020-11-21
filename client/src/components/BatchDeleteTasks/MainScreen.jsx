@@ -4,7 +4,7 @@ import {
     popUpWindowStyle,
     CancelButton,
     ErrorMatchText,
-    finalContainerStyle,
+    FinalContainer,
     dateTopContainer,
     dateGridStyle,
     dateRangeContainer,
@@ -200,7 +200,7 @@ const BatchDeleteTasks = (props) => {
                     </div>
                 </div>
             </div>
-            <div style={finalContainerStyle}>
+            <FinalContainer>
                 <ColorButton
                     color={'#32CD32'}
                     text={`Reset Template To Default`}
@@ -233,7 +233,7 @@ const BatchDeleteTasks = (props) => {
                     onClick={() => setScreen('confirm')}
                     enabled={finalMatched.length !== 0}
                 />
-            </div>
+            </FinalContainer>
             <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
         </div>
     );

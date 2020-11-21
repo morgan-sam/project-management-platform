@@ -8,7 +8,7 @@ import {
     popUpWindowStyle,
     subContainerStyle,
     CancelButton,
-    finalContainerStyle
+    FinalContainer
 } from 'styling/popUp';
 
 const Preferences = (props) => {
@@ -59,7 +59,7 @@ const Preferences = (props) => {
                     )}
                 </div>
 
-                <div style={finalContainerStyle}>
+                <FinalContainer>
                     <div
                         style={{
                             display: 'flex',
@@ -85,7 +85,7 @@ const Preferences = (props) => {
                             }
                         />
                     </div>
-                </div>
+                </FinalContainer>
 
                 <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
             </div>

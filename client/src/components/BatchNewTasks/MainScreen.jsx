@@ -9,8 +9,8 @@ import {
     subContainerStyle,
     CancelButton,
     ErrorMatchText,
-    topRowStyle,
-    finalContainerStyle
+    TopRow,
+    FinalContainer
 } from 'styling/popUp';
 
 const MainBatchScreen = (props) => {
@@ -38,7 +38,7 @@ const MainBatchScreen = (props) => {
                 />
             </div>
             <div style={subContainerStyle}>
-                <div style={topRowStyle}>
+                <TopRow>
                     <InputFormWithLabel
                         {...props}
                         style={null}
@@ -50,11 +50,11 @@ const MainBatchScreen = (props) => {
                         default={template.task}
                     />
                     <WizardButton onClick={() => setScreen('taskWizard')} />
-                </div>
+                </TopRow>
                 <ErrorMatchText>{errors.task}</ErrorMatchText>
             </div>
             <div style={subContainerStyle}>
-                <div style={topRowStyle}>
+                <TopRow>
                     <InputFormWithLabel
                         {...props}
                         style={null}
@@ -70,11 +70,11 @@ const MainBatchScreen = (props) => {
                         default={template.date}
                     />
                     <WizardButton onClick={() => setScreen('dateWizard')} />
-                </div>
+                </TopRow>
                 <ErrorMatchText>{errors.date}</ErrorMatchText>
             </div>
             <div style={subContainerStyle}>
-                <div style={topRowStyle}>
+                <TopRow>
                     <InputFormWithLabel
                         {...props}
                         style={null}
@@ -90,7 +90,7 @@ const MainBatchScreen = (props) => {
                         default={template.deadline}
                     />
                     <WizardButton onClick={() => setScreen('deadlineWizard')} />
-                </div>
+                </TopRow>
                 <ErrorMatchText>{errors.deadline}</ErrorMatchText>
             </div>
             <div style={{ zIndex: '10' }}>
@@ -116,12 +116,12 @@ const MainBatchScreen = (props) => {
                     default={`${template.teams.join(' ')}`}
                 />
             </div>
-            <div style={finalContainerStyle}>
+            <FinalContainer>
                 <ColorButton
                     text={'Add Tasks'}
                     onClick={() => addMultipleTasks()}
                 />
-            </div>
+            </FinalContainer>
             <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
         </div>
     );

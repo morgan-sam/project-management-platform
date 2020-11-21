@@ -3,7 +3,7 @@ import {
     titleStyle,
     popUpWindowStyle,
     CancelButton,
-    finalContainerStyle,
+    FinalContainer,
     autoContainerStyle
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
@@ -43,7 +43,7 @@ const MatchedDeleteTasks = (props) => {
         <div style={popUpWindowStyle}>
             <div style={titleStyle}>Matched Delete Tasks</div>
             <div style={autoContainerStyle}>{getMatchedList()}</div>
-            <div style={finalContainerStyle}>
+            <FinalContainer>
                 <ColorButton
                     text={'Back To Previous Screen'}
                     onClick={() => setScreen('main')}
@@ -53,7 +53,7 @@ const MatchedDeleteTasks = (props) => {
                     text={`Delete ${finalMatched.length} Tasks`}
                     onClick={() => setScreen('confirm')}
                 />
-            </div>
+            </FinalContainer>
             <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
         </div>
     );
