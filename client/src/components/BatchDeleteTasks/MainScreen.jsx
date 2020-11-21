@@ -5,12 +5,12 @@ import {
     CancelButton,
     ErrorMatchText,
     FinalContainer,
-    dateTopContainer,
-    dateGridStyle,
-    dateRangeContainer,
-    dateContainer,
-    dateLabel,
-    autoContainerStyle
+    DateTopContainer,
+    DateGrid,
+    DateRangeContainer,
+    DateContainer,
+    DateLabel,
+    AutoContainer
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
 import MatchType from 'components/MatchType';
@@ -44,7 +44,7 @@ const BatchDeleteTasks = (props) => {
     return (
         <div style={popUpWindowStyle}>
             <div style={titleStyle}>Batch Delete Tasks</div>
-            <div style={dateGridStyle}>
+            <DateGrid>
                 <InputFormWithLabel
                     label={'Task Regex'}
                     onChange={(val) => setTemplate({ ...template, task: val })}
@@ -82,11 +82,11 @@ const BatchDeleteTasks = (props) => {
                         ? ''
                         : `${matched.completion.length}/${rawTaskList.length} Completion Matches`}
                 </div>
-            </div>
-            <div style={dateTopContainer}>
-                <div style={dateRangeContainer}>
-                    <div style={dateContainer}>
-                        <div style={dateLabel}>Date:</div>
+            </DateGrid>
+            <DateTopContainer>
+                <DateRangeContainer>
+                    <DateContainer>
+                        <DateLabel>Date:</DateLabel>
                         <DateSelect
                             style={{ zIndex: '20' }}
                             date={parseISOToDateObj(template.date)}
@@ -107,9 +107,9 @@ const BatchDeleteTasks = (props) => {
                                 })
                             }
                         />
-                    </div>
-                    <div style={dateContainer}>
-                        <div style={dateLabel}>Deadline:</div>
+                    </DateContainer>
+                    <DateContainer>
+                        <DateLabel>Deadline:</DateLabel>
                         <DateSelect
                             style={{ zIndex: '20' }}
                             date={parseISOToDateObj(template.deadline)}
@@ -131,16 +131,16 @@ const BatchDeleteTasks = (props) => {
                                 })
                             }
                         />
-                    </div>
-                </div>
+                    </DateContainer>
+                </DateRangeContainer>
                 <ErrorMatchText>
                     {matched.dateRange.length === rawTaskList.length
                         ? ''
                         : `${matched.dateRange.length}/${rawTaskList.length} Date Range Matches`}
                 </ErrorMatchText>
-            </div>
+            </DateTopContainer>
             <div style={{ display: 'flex' }}>
-                <div style={autoContainerStyle}>
+                <AutoContainer>
                     <UrgencyRangeSelect
                         style={{
                             display: 'flex',
@@ -157,7 +157,7 @@ const BatchDeleteTasks = (props) => {
                             ? ''
                             : `${matched.urgency.length}/${rawTaskList.length} Urgency Matches`}
                     </ErrorMatchText>
-                </div>
+                </AutoContainer>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Dropdown
                         type={'checkbox'}

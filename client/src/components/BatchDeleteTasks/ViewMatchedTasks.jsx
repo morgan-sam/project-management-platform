@@ -4,7 +4,7 @@ import {
     popUpWindowStyle,
     CancelButton,
     FinalContainer,
-    autoContainerStyle
+    AutoContainer
 } from 'styling/popUp';
 import ColorButton from 'components/ColorButton';
 
@@ -42,7 +42,7 @@ const MatchedDeleteTasks = (props) => {
     return (
         <div style={popUpWindowStyle}>
             <div style={titleStyle}>Matched Delete Tasks</div>
-            <div style={autoContainerStyle}>{getMatchedList()}</div>
+            <AutoContainer>{getMatchedList()}</AutoContainer>
             <FinalContainer>
                 <ColorButton
                     text={'Back To Previous Screen'}

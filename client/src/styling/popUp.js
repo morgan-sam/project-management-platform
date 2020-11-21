@@ -80,45 +80,45 @@ export const FinalContainer = styled.div`
     align-items: center;
 `;
 
-export const dateGridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridTemplateRows: 'repeat(2, 1fr)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '2rem',
-    zIndex: '22'
-};
+export const DateGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    z-index: 22;
+`;
 
-export const dateTopContainer = {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '2rem',
-    alignItems: 'center'
-};
+export const DateTopContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+`;
 
-export const dateRangeContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    zIndex: '21'
-};
+export const DateRangeContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    z-index: 21;
+`;
 
-export const dateContainer = {
-    margin: '1rem',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    zIndex: '20'
-};
+export const DateContainer = styled.div`
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
+`;
 
-export const dateLabel = {
-    marginBottom: '1rem'
-};
+export const DateLabel = styled.div`
+    margin-bottom: 1rem;
+`;
 
-export const autoContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    margin: '1rem'
-};
+export const AutoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+`;
