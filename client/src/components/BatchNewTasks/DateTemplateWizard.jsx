@@ -10,7 +10,7 @@ import { capitalizeFirstLetter } from 'processing/utility';
 import {
     mainGridContainer,
     getSectionOpacityStyle,
-    topContainer,
+    WizardTitle,
     topLeftContainer,
     bottomLeftContainer,
     topRightContainer,
@@ -47,9 +47,9 @@ const DateTemplateWizard = (props) => {
 
     return (
         <PopUpWindow>
-            <div style={topContainer}>{`Generate ${capitalizeFirstLetter(
+            <WizardTitle>{`Generate ${capitalizeFirstLetter(
                 screen.replace(/Wizard/, '')
-            )} Template`}</div>
+            )} Template`}</WizardTitle>
             <div style={mainGridContainer}>
                 <div style={topLeftContainer}>
                     <div style={containerItemStyle}>Initial Date:</div>

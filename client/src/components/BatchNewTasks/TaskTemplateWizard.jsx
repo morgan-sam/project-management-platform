@@ -6,7 +6,7 @@ import { CancelButton, PopUpWindow } from 'styling/popUp';
 import {
     mainGridContainer,
     getSectionOpacityStyle,
-    topContainer,
+    WizardTitle,
     topLeftContainer,
     bottomLeftContainer,
     topRightContainer,
@@ -34,7 +34,7 @@ const TaskTemplateWizard = (props) => {
 
     return (
         <PopUpWindow>
-            <div style={topContainer}>Generate Task Template</div>
+            <WizardTitle>Generate Task Template</WizardTitle>
             <div style={mainGridContainer}>
                 <div style={topLeftContainer}>
                     <div style={{ padding: '1.5rem', paddingTop: '0.4rem' }}>

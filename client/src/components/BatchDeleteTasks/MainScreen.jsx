@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    titleStyle,
+    PopupTitle,
     PopUpWindow,
     CancelButton,
     ErrorMatchText,
@@ -43,7 +43,7 @@ const BatchDeleteTasks = (props) => {
     } = props;
     return (
         <PopUpWindow>
-            <div style={titleStyle}>Batch Delete Tasks</div>
+            <PopupTitle>Batch Delete Tasks</PopupTitle>
             <DateGrid>
                 <InputFormWithLabel
                     label={'Task Regex'}

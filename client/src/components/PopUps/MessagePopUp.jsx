@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 
 import {
-    titleStyle,
+    PopupTitle,
     PopUpContainer,
     PopUpWindow,
     SubContainer,
@@ -35,7 +35,7 @@ const ConfirmPopUp = (props) => {
     return (
         <PopUpContainer>
             <PopUpWindow>
-                <h2 style={titleStyle}>About</h2>
+                <PopupTitle>About</PopupTitle>
                 <SubContainer>{convertMessageArrayToElements()}</SubContainer>
                 <FinalContainer>
                     <ColorButton

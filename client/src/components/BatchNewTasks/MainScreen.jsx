@@ -4,7 +4,7 @@ import InputFormWithLabel from 'components/InputFormWithLabel';
 import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import {
-    titleStyle,
+    PopupTitle,
     PopUpWindow,
     SubContainer,
     CancelButton,
@@ -26,7 +26,7 @@ const MainBatchScreen = (props) => {
 
     return (
         <PopUpWindow>
-            <div style={titleStyle}>Batch New Tasks</div>
+            <PopupTitle>Batch New Tasks</PopupTitle>
             <SubContainer>
                 <InputFormWithLabel
                     {...props}

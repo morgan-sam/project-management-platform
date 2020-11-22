@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-export const titleStyle = {
-    padding: '3rem',
-    fontSize: '1.6rem'
-};
+export const PopupTitle = styled.h2`
+    padding: 3rem;
+    font-size: 1.6rem;
+`;
 
 export const PopUpContainer = styled.div`
     display: flex;

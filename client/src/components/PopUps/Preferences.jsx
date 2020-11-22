@@ -3,7 +3,7 @@ import Checkbox from 'components/Checkbox';
 import ColorButton from 'components/ColorButton';
 import NavigationMenu from 'components/NavigationMenu';
 import {
-    titleStyle,
+    PopupTitle,
     PopUpContainer,
     PopUpWindow,
     SubContainer,
@@ -29,7 +29,7 @@ const Preferences = (props) => {
     return (
         <PopUpContainer>
             <PopUpWindow>
-                <div style={titleStyle}>Preferences</div>
+                <PopupTitle>Preferences</PopupTitle>
                 <SubContainer>
                     <NavigationMenu menus={menus} />
                 </SubContainer>

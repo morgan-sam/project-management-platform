@@ -1,4 +1,4 @@
-import { titleStyle } from 'styling/popUp';
+import styled from '@emotion/styled';
 
 const categoryStyle = {
     display: 'flex',
@@ -22,11 +22,10 @@ export const getSectionOpacityStyle = (disabled) => {
     };
 };
 
-export const topContainer = {
-    ...titleStyle,
-    ...categoryStyle,
-    margin: '2rem 0rem'
-};
+export const WizardTitle = styled.h3`
+    margin: 2rem 0rem;
+    font-size: 1.2rem;
+`;
 
 export const topLeftContainer = {
     ...categoryStyle,
