@@ -6,11 +6,10 @@ import DropdownCheckbox from 'components/Dropdown/DropdownCheckbox';
 import { convertRemToPixels } from 'processing/units';
 
 import {
+    DropdownOptionContainer,
     dropdownParentStyle,
     dropdownElementStyle,
     dropdownBoxStyle,
-    dropdownClosedStyle,
-    dropdownOpenStyle,
     finalOptionStyle,
     optionStyle,
     dropdownEndNode,
@@ -143,15 +142,7 @@ const Dropdown = (props) => {
             style={{ ...dropdownParentStyle, ...props.style }}
         >
             <div className="dropdownElement" style={dropdownElementStyle}>
-                <div
-                    className="dropdownOptionContainer"
-                    style={
-                        listOpen
-                            ? dropdownOpenStyle(listOpen)
-                            : dropdownClosedStyle(listOpen)
-                    }
-                    ref={dropdownRef}
-                >
+                <DropdownOptionContainer listOpen={listOpen} ref={dropdownRef}>
                     {!includeDropdownHeader && listOpen ? null : (
                         <DropdownHeader
                             default={props.label ? props.label : props.selected}
@@ -161,7 +152,7 @@ const Dropdown = (props) => {
                         />
                     )}
                     {listOpen ? optionDivs : null}
-                </div>
+                </DropdownOptionContainer>
                 <div
                     className="dropdown"
                     style={{

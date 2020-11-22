@@ -1,4 +1,5 @@
 import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
+import styled from '@emotion/styled';
 
 export const DROPDOWN_HEIGHT_REMS = 2;
 export const DROPDOWN_MAX_HEIGHT_REMS = 20;
@@ -36,32 +37,38 @@ export const dropdownHeaderStyle = (listOpen) => {
     };
 };
 
-export const dropdownClosedStyle = (listOpen) => {
-    return {
-        position: 'relative',
-        cursor: 'pointer',
-        maxHeight: `${DROPDOWN_HEIGHT_REMS}rem`,
-        width: 'inherit',
-        borderTop: '1px solid black',
-        borderLeft: '1px solid black',
-        borderRight: '1px solid black',
-        borderBottom: listOpen ? 'none' : '1px solid black',
-        transition: '0s borderBottom',
-        borderRadius: DROPDOWN_BORDER_RADIUS
-    };
-};
+export const DropdownOptionContainer = styled.div`
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    transition: 1s;
+    &::-webkit-scrollbar {
+        width: 0px; /* For Chrome, Safari, and Opera */
+    }
+    ${(props) => (props.listOpen ? DropdownOpen : DropdownClosed)}
+`;
 
-export const dropdownOpenStyle = () => {
-    return {
-        position: 'relative',
-        cursor: 'pointer',
-        maxHeight: `${DROPDOWN_MAX_HEIGHT_REMS}rem`,
-        overflowY: 'scroll',
-        width: 'inherit',
-        border: '1px solid black',
-        borderRadius: `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0`
-    };
-};
+const DropdownOpen = `
+    position: relative;
+    cursor: pointer;
+    max-height: ${DROPDOWN_MAX_HEIGHT_REMS}rem;
+    overflow-y: scroll;
+    width: inherit;
+    border: 1px solid black;
+    border-radius: ${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0
+`;
+
+const DropdownClosed = `
+    position: relative;
+    cursor: pointer;
+    max-height: ${DROPDOWN_HEIGHT_REMS}rem;
+    width: inherit;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    transition: 0s borderBottom;
+    border-radius: ${DROPDOWN_BORDER_RADIUS}
+`;
 
 export const dropdownBoxStyle = (listOpen) => {
     return {
