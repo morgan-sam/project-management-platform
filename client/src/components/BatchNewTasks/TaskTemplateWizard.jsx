@@ -4,13 +4,9 @@ import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
 import { CancelButton, PopUpWindow } from 'styling/popUp';
 import {
-    mainGridContainer,
+    FourByFourGrid,
     getSectionOpacityStyle,
     WizardTitle,
-    topLeftContainer,
-    bottomLeftContainer,
-    topRightContainer,
-    bottomRightContainer,
     bottomContainer,
     containerItemStyle,
     getSubGridStyle
@@ -35,8 +31,8 @@ const TaskTemplateWizard = (props) => {
     return (
         <PopUpWindow>
             <WizardTitle>Generate Task Template</WizardTitle>
-            <div style={mainGridContainer}>
-                <div style={topLeftContainer}>
+            <FourByFourGrid>
+                <div>
                     <div style={{ padding: '1.5rem', paddingTop: '0.4rem' }}>
                         Text Name:
                     </div>
@@ -53,7 +49,7 @@ const TaskTemplateWizard = (props) => {
                         />
                     </form>
                 </div>
-                <div style={bottomLeftContainer}>
+                <div>
                     <div style={containerItemStyle}>Symbol:</div>
                     <div
                         style={{
@@ -77,7 +73,6 @@ const TaskTemplateWizard = (props) => {
                 </div>
                 <div
                     style={{
-                        ...topRightContainer,
                         ...getSectionOpacityStyle(symbol === 'l')
                     }}
                 >
@@ -97,7 +92,7 @@ const TaskTemplateWizard = (props) => {
                         onClick={(val) => setDigits(val)}
                     />
                 </div>
-                <div style={bottomRightContainer}>
+                <div>
                     <div style={containerItemStyle}>Order:</div>
                     <div
                         style={{
@@ -123,7 +118,7 @@ const TaskTemplateWizard = (props) => {
                         />
                     </div>
                 </div>
-            </div>
+            </FourByFourGrid>
             <div style={bottomContainer}>
                 <ColorButton
                     text={'Generate Template'}

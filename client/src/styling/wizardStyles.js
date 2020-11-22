@@ -1,19 +1,30 @@
 import styled from '@emotion/styled';
 
-const categoryStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    padding: '1rem',
-    textAlign: 'center'
-};
-
-export const mainGridContainer = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridTemplateRows: 'repeat(2, 1fr)'
-};
+export const FourByFourGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    & > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+    & > *:nth-child(1) {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+    & > *:nth-child(2) {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+    & > *:nth-child(3) {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+    & > *:nth-child(4) {
+        grid-area: 2 / 2 / 3 / 3;
+    }
+`;
 
 export const getSectionOpacityStyle = (disabled) => {
     return {
@@ -26,26 +37,6 @@ export const WizardTitle = styled.h3`
     margin: 2rem 0rem;
     font-size: 1.2rem;
 `;
-
-export const topLeftContainer = {
-    ...categoryStyle,
-    gridArea: '1 / 1 / 2 / 2'
-};
-
-export const bottomLeftContainer = {
-    ...categoryStyle,
-    gridArea: '2 / 1 / 3 / 2'
-};
-
-export const topRightContainer = {
-    ...categoryStyle,
-    gridArea: '1 / 2 / 2 / 3'
-};
-
-export const bottomRightContainer = {
-    ...categoryStyle,
-    gridArea: '2 / 2 / 3 / 3'
-};
 
 export const bottomContainer = {
     display: 'flex',

@@ -8,13 +8,9 @@ import { parseISOToDateObj } from 'processing/dates';
 import { CancelButton, PopUpWindow } from 'styling/popUp';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
-    mainGridContainer,
+    FourByFourGrid,
     getSectionOpacityStyle,
     WizardTitle,
-    topLeftContainer,
-    bottomLeftContainer,
-    topRightContainer,
-    bottomRightContainer,
     bottomContainer,
     containerItemStyle,
     getSubGridStyle
@@ -50,8 +46,8 @@ const DateTemplateWizard = (props) => {
             <WizardTitle>{`Generate ${capitalizeFirstLetter(
                 screen.replace(/Wizard/, '')
             )} Template`}</WizardTitle>
-            <div style={mainGridContainer}>
-                <div style={topLeftContainer}>
+            <FourByFourGrid>
+                <div>
                     <div style={containerItemStyle}>Initial Date:</div>
                     <DateSelect
                         date={date}
@@ -62,7 +58,7 @@ const DateTemplateWizard = (props) => {
                         }}
                     />
                 </div>
-                <div style={bottomLeftContainer}>
+                <div>
                     <div style={containerItemStyle}>Sequence:</div>
                     <div
                         style={{
@@ -96,7 +92,6 @@ const DateTemplateWizard = (props) => {
                 </div>
                 <div
                     style={{
-                        ...topRightContainer,
                         ...getSectionOpacityStyle(sequence === 'none')
                     }}
                 >
@@ -135,7 +130,6 @@ const DateTemplateWizard = (props) => {
                 </div>
                 <div
                     style={{
-                        ...bottomRightContainer,
                         ...getSectionOpacityStyle(sequence === 'none')
                     }}
                 >
@@ -155,7 +149,7 @@ const DateTemplateWizard = (props) => {
                         onClick={(val) => setAmount(val)}
                     />
                 </div>
-            </div>
+            </FourByFourGrid>
             <div style={bottomContainer}>
                 <ColorButton
                     text={'Generate Template'}
