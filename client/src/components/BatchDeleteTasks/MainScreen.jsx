@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     titleStyle,
-    popUpWindowStyle,
+    PopUpWindow,
     CancelButton,
     ErrorMatchText,
     FinalContainer,
@@ -42,7 +42,7 @@ const BatchDeleteTasks = (props) => {
         matched
     } = props;
     return (
-        <div style={popUpWindowStyle}>
+        <PopUpWindow>
             <div style={titleStyle}>Batch Delete Tasks</div>
             <DateGrid>
                 <InputFormWithLabel
@@ -235,7 +235,7 @@ const BatchDeleteTasks = (props) => {
                 />
             </FinalContainer>
             <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
-        </div>
+        </PopUpWindow>
     );
 };
 

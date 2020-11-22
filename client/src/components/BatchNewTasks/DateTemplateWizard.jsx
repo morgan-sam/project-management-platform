@@ -5,7 +5,7 @@ import Dropdown from 'components/Dropdown';
 import ColorButton from 'components/ColorButton';
 import { getDayFromTodayAsISO } from 'data/dates';
 import { parseISOToDateObj } from 'processing/dates';
-import { CancelButton, popUpWindowStyle } from 'styling/popUp';
+import { CancelButton, PopUpWindow } from 'styling/popUp';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
     mainGridContainer,
@@ -46,7 +46,7 @@ const DateTemplateWizard = (props) => {
     };
 
     return (
-        <div style={popUpWindowStyle}>
+        <PopUpWindow>
             <div style={topContainer}>{`Generate ${capitalizeFirstLetter(
                 screen.replace(/Wizard/, '')
             )} Template`}</div>
@@ -173,7 +173,7 @@ const DateTemplateWizard = (props) => {
                 />
             </div>
             <CancelButton onClick={() => setScreen('main')}>×</CancelButton>
-        </div>
+        </PopUpWindow>
     );
 };
 

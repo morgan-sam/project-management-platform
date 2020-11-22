@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     titleStyle,
-    popUpWindowStyle,
+    PopUpWindow,
     CancelButton,
     FinalContainer,
     AutoContainer
@@ -40,7 +40,7 @@ const MatchedDeleteTasks = (props) => {
     };
 
     return (
-        <div style={popUpWindowStyle}>
+        <PopUpWindow>
             <div style={titleStyle}>Matched Delete Tasks</div>
             <AutoContainer>{getMatchedList()}</AutoContainer>
             <FinalContainer>
@@ -55,7 +55,7 @@ const MatchedDeleteTasks = (props) => {
                 />
             </FinalContainer>
             <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
-        </div>
+        </PopUpWindow>
     );
 };
 

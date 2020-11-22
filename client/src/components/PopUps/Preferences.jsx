@@ -5,7 +5,7 @@ import NavigationMenu from 'components/NavigationMenu';
 import {
     titleStyle,
     PopUpContainer,
-    popUpWindowStyle,
+    PopUpWindow,
     subContainerStyle,
     CancelButton,
     FinalContainer
@@ -28,7 +28,7 @@ const Preferences = (props) => {
 
     return (
         <PopUpContainer>
-            <div style={popUpWindowStyle}>
+            <PopUpWindow>
                 <div style={titleStyle}>Preferences</div>
                 <div style={subContainerStyle}>
                     <NavigationMenu menus={menus} />
@@ -88,7 +88,7 @@ const Preferences = (props) => {
                 </FinalContainer>
 
                 <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
-            </div>
+            </PopUpWindow>
         </PopUpContainer>
     );
 };

@@ -5,7 +5,7 @@ import WizardButton from 'components/WizardButton';
 import ColorButton from 'components/ColorButton';
 import {
     titleStyle,
-    popUpWindowStyle,
+    PopUpWindow,
     subContainerStyle,
     CancelButton,
     ErrorMatchText,
@@ -25,7 +25,7 @@ const MainBatchScreen = (props) => {
     } = props;
 
     return (
-        <div style={popUpWindowStyle}>
+        <PopUpWindow>
             <div style={titleStyle}>Batch New Tasks</div>
             <div style={subContainerStyle}>
                 <InputFormWithLabel
@@ -123,7 +123,7 @@ const MainBatchScreen = (props) => {
                 />
             </FinalContainer>
             <CancelButton onClick={() => setPopUp(null)}>×</CancelButton>
-        </div>
+        </PopUpWindow>
     );
 };
 

@@ -17,23 +17,23 @@ export const PopUpContainer = styled.div`
     z-index: 20;
 `;
 
-export const popUpWindowStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    position: 'fixed',
-    border: '1px solid black',
-    backgroundColor: 'white',
-    padding: '2rem',
-    height: 'auto',
-    width: 'auto',
-    opacity: '0',
-    zIndex: '20',
-    borderRadius: '1rem',
-    animation:
-        'batch-popup-fade-in 1s cubic-bezier(.57,.82,.01,.82) 0.1s 1 forwards'
-};
+export const PopUpWindow = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    border: 1px solid black;
+    background-color: white;
+    padding: 2rem;
+    height: auto;
+    width: auto;
+    opacity: 0;
+    z-index: 20;
+    border-radius: 1rem;
+    animation: batch-popup-fade-in 1s cubic-bezier(0.57, 0.82, 0.01, 0.82) 0.1s
+        1 forwards;
+`;
 
 export const subContainerStyle = {
     display: 'flex',
