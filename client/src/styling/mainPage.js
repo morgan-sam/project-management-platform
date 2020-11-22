@@ -24,17 +24,17 @@ export const tableStyle = {
     margin: '0 0 3rem 0'
 };
 
-export const overlayStyle = {
-    height: '100vw',
-    width: '100vw',
-    background: 'white',
-    opacity: '0.8',
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    zIndex: '19',
-    animation: 'overlay-fade-in linear 0.4s'
-};
+export const Overlay = styled.div`
+    height: 100vw;
+    width: 100vw;
+    background: white;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 19;
+    animation: overlay-fade-in linear 0.4s;
+`;
 
 export const getTableContainerStyle = (fixedStyle, values) => {
     if (fixedStyle) {

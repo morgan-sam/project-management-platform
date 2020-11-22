@@ -22,7 +22,7 @@ import {
     Screen,
     MainPage,
     tableStyle,
-    overlayStyle,
+    Overlay,
     getTableContainerStyle,
     TopBarsContainer
 } from 'styling/mainPage';
@@ -199,12 +199,7 @@ const MainScreen = (props) => {
                         />
                     </div>
                     {popUp}
-                    {popUp && (
-                        <div
-                            className={'overlay'}
-                            style={{ ...overlayStyle, opacity: '0.8' }}
-                        />
-                    )}
+                    {popUp && <Overlay />}
                     {displayBackground && <AmbientBackground />}
                 </MainPage>
             </Screen>
