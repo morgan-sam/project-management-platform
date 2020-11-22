@@ -1,15 +1,13 @@
 import styled from '@emotion/styled';
 
-export const getScreenStyle = (fixedStyle) => {
-    return {
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
-        left: '0',
-        top: '0',
-        overflowY: fixedStyle ? 'hidden' : 'scroll'
-    };
-};
+export const Screen = styled.div`
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow-y: ${(props) => (props.fixedStyle ? 'hidden' : 'scroll')};
+`;
 
 export const getMainPageStyle = (scrollLocked = false) => {
     return {
