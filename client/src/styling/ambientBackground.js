@@ -1,6 +1,23 @@
 import styled from '@emotion/styled';
 
 export const Shape = styled.div`
+    @keyframes spiral {
+        0% {
+            opacity: 0;
+            transform: rotate(0deg) skew(0deg);
+        }
+        50% {
+            transform: rotate(-160deg) skew(20deg);
+            opacity: 1;
+        }
+        75% {
+            transform: rotate(-80deg) skew(-10deg);
+        }
+        100% {
+            opacity: 1;
+            transform: rotate(0deg) skew(10deg);
+        }
+    }
     position: absolute;
     display: block;
     height: 100rem;
