@@ -25,6 +25,14 @@ export const tableStyle = {
 };
 
 export const Overlay = styled.div`
+    @keyframes overlay-fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 0.8;
+        }
+    }
     height: 100vw;
     width: 100vw;
     background: white;

@@ -69,6 +69,20 @@ export const getButtonStyle = (props, hover) => {
 };
 
 export const ColorBox = styled.div`
+    @keyframes button-bg-rotate {
+        0% {
+            transform: rotate(0deg) scale(4) skew(45deg);
+        }
+        25% {
+            transform: rotate(90deg) scale(4) skew(45deg);
+        }
+        50% {
+            transform: rotate(180deg) scale(4) skew(45deg);
+        }
+        100% {
+            transform: rotate(270deg) scale(4) skew(45deg);
+        }
+    }
     position: absolute;
     width: 150%;
     height: 150%;

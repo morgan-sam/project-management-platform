@@ -18,6 +18,16 @@ export const PopUpContainer = styled.div`
 `;
 
 export const PopUpWindow = styled.div`
+    @keyframes batch-popup-fade-in {
+        0% {
+            opacity: 0;
+            transform: translateY(1rem);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
     display: flex;
     justify-content: center;
     align-items: center;

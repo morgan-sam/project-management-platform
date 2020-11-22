@@ -1,6 +1,14 @@
 import styled from '@emotion/styled';
 
 export const MainTitleContainer = styled.div`
+    @keyframes title-container-margin-close {
+        0% {
+            margin: 4rem 0 7rem 0;
+        }
+        100% {
+            margin: 0 0 0 0;
+        }
+    }
     position: relative;
     display: flex;
     height: auto;
@@ -9,6 +17,32 @@ export const MainTitleContainer = styled.div`
 `;
 
 export const MainTitleText = styled.h1`
+    @keyframes title-fade-in-out {
+        0% {
+            opacity: 0;
+            transform: translateY(20%);
+        }
+        30% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        80% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-65%);
+        }
+    }
+    @keyframes title-shine {
+        0% {
+            background-position: -100%;
+        }
+        100% {
+            background-position: 200%;
+        }
+    }
     position: relative;
     font-size: 2.2rem;
     background: #fff -webkit-gradient(
