@@ -66,7 +66,7 @@ const DropdownClosed = `
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-    transition: 0s borderBottom;
+    transition: 0s border-bottom;
     border-radius: ${DROPDOWN_BORDER_RADIUS}
 `;
 
