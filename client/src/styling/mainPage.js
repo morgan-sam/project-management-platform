@@ -9,18 +9,16 @@ export const Screen = styled.div`
     overflow-y: ${(props) => (props.fixedStyle ? 'hidden' : 'scroll')};
 `;
 
-export const getMainPageStyle = (scrollLocked = false) => {
-    return {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '75vw',
-        margin: '0 auto',
-        padding: '2.6rem',
-        boxSizing: 'border-box',
-        overflow: scrollLocked ? 'hidden' : 'visible'
-    };
-};
+export const MainPage = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75vw;
+    margin: 0 auto;
+    padding: 2.6rem;
+    box-sizing: border-box;
+    overflow: ${(props) => (props.scrollLocked ? 'hidden' : 'visible')};
+`;
 
 export const tableStyle = {
     margin: '0 0 3rem 0'

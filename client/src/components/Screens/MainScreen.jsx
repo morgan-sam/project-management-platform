@@ -20,7 +20,7 @@ import { getTaskListTeams } from 'processing/teams';
 import CreateTaskBar from 'components/Taskbars/CreateTaskBar';
 import {
     Screen,
-    getMainPageStyle,
+    MainPage,
     tableStyle,
     overlayStyle,
     getTableContainerStyle,
@@ -117,7 +117,7 @@ const MainScreen = (props) => {
     return (
         <ThemeProvider value={colorTheme}>
             <Screen fixedStyle={fixedStyle}>
-                <div className="mainPage" style={getMainPageStyle(popUp)}>
+                <MainPage scrollLocked={popUp}>
                     <MainTitle />
                     <AccountInfo />
                     <TaskManager
@@ -206,7 +206,7 @@ const MainScreen = (props) => {
                         />
                     )}
                     {displayBackground && <AmbientBackground />}
-                </div>
+                </MainPage>
             </Screen>
         </ThemeProvider>
     );
