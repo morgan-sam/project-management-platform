@@ -35,13 +35,13 @@ export const PopUpWindow = styled.div`
         1 forwards;
 `;
 
-export const subContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    height: '4rem'
-};
+export const SubContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 4rem;
+`;
 
 export const CancelButton = styled.button`
     position: absolute;

@@ -5,7 +5,7 @@ import {
     titleStyle,
     PopUpContainer,
     PopUpWindow,
-    subContainerStyle,
+    SubContainer,
     FinalContainer
 } from 'styling/popUp';
 
@@ -36,9 +36,7 @@ const ConfirmPopUp = (props) => {
         <PopUpContainer>
             <PopUpWindow>
                 <h2 style={titleStyle}>About</h2>
-                <div style={subContainerStyle}>
-                    {convertMessageArrayToElements()}
-                </div>
+                <SubContainer>{convertMessageArrayToElements()}</SubContainer>
                 <FinalContainer>
                     <ColorButton
                         text={'Close'}

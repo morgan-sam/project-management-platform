@@ -6,7 +6,7 @@ import ColorButton from 'components/ColorButton';
 import {
     titleStyle,
     PopUpWindow,
-    subContainerStyle,
+    SubContainer,
     CancelButton,
     ErrorMatchText,
     TopRow,
@@ -27,7 +27,7 @@ const MainBatchScreen = (props) => {
     return (
         <PopUpWindow>
             <div style={titleStyle}>Batch New Tasks</div>
-            <div style={subContainerStyle}>
+            <SubContainer>
                 <InputFormWithLabel
                     {...props}
                     label={'Number Of Tasks'}
@@ -36,8 +36,8 @@ const MainBatchScreen = (props) => {
                     }
                     default={template.count ? template.count : 0}
                 />
-            </div>
-            <div style={subContainerStyle}>
+            </SubContainer>
+            <SubContainer>
                 <TopRow>
                     <InputFormWithLabel
                         {...props}
@@ -52,8 +52,8 @@ const MainBatchScreen = (props) => {
                     <WizardButton onClick={() => setScreen('taskWizard')} />
                 </TopRow>
                 <ErrorMatchText>{errors.task}</ErrorMatchText>
-            </div>
-            <div style={subContainerStyle}>
+            </SubContainer>
+            <SubContainer>
                 <TopRow>
                     <InputFormWithLabel
                         {...props}
@@ -72,8 +72,8 @@ const MainBatchScreen = (props) => {
                     <WizardButton onClick={() => setScreen('dateWizard')} />
                 </TopRow>
                 <ErrorMatchText>{errors.date}</ErrorMatchText>
-            </div>
-            <div style={subContainerStyle}>
+            </SubContainer>
+            <SubContainer>
                 <TopRow>
                     <InputFormWithLabel
                         {...props}
@@ -92,7 +92,7 @@ const MainBatchScreen = (props) => {
                     <WizardButton onClick={() => setScreen('deadlineWizard')} />
                 </TopRow>
                 <ErrorMatchText>{errors.deadline}</ErrorMatchText>
-            </div>
+            </SubContainer>
             <div style={{ zIndex: '10' }}>
                 <DropdownWithLabel
                     {...props}
@@ -105,7 +105,7 @@ const MainBatchScreen = (props) => {
                     width={'2rem'}
                 />
             </div>
-            <div style={subContainerStyle}>
+            <SubContainer>
                 <InputFormWithLabel
                     {...props}
                     label={'Teams'}
@@ -115,7 +115,7 @@ const MainBatchScreen = (props) => {
                     }}
                     default={`${template.teams.join(' ')}`}
                 />
-            </div>
+            </SubContainer>
             <FinalContainer>
                 <ColorButton
                     text={'Add Tasks'}

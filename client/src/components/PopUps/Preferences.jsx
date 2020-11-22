@@ -6,7 +6,7 @@ import {
     titleStyle,
     PopUpContainer,
     PopUpWindow,
-    subContainerStyle,
+    SubContainer,
     CancelButton,
     FinalContainer
 } from 'styling/popUp';
@@ -30,12 +30,12 @@ const Preferences = (props) => {
         <PopUpContainer>
             <PopUpWindow>
                 <div style={titleStyle}>Preferences</div>
-                <div style={subContainerStyle}>
+                <SubContainer>
                     <NavigationMenu menus={menus} />
-                </div>
+                </SubContainer>
                 <div style={popUpStyle}>
                     {screen === 'general' && (
-                        <div style={subContainerStyle}>
+                        <SubContainer>
                             <div
                                 style={{
                                     display: 'flex',
@@ -55,7 +55,7 @@ const Preferences = (props) => {
                                     default={tempPrefs.startupSplash}
                                 />
                             </div>
-                        </div>
+                        </SubContainer>
                     )}
                 </div>
 
