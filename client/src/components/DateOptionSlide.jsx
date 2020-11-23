@@ -10,12 +10,7 @@ import {
     cancelBtnStyle,
     canConContainerStyle
 } from 'styling/dateOption';
-import {
-    dateOptionOpen,
-    dateOptionClosed,
-    selectOffscreen,
-    selectOnscreen
-} from 'styling/dateOptionSlide';
+import { selectOffscreen, selectOnscreen } from 'styling/dateOptionSlide';
 
 const DateOptionSlide = (props) => {
     const [internalDateChange, setInternalDateChange] = useState(false);
@@ -26,10 +21,8 @@ const DateOptionSlide = (props) => {
 
     return (
         <DateOptionSlideContainer
-            style={{
-                overflow: overflowHidden ? 'visible' : 'hidden',
-                ...(showDateSelect ? dateOptionOpen : dateOptionClosed)
-            }}
+            showDateSelect={showDateSelect}
+            overflowHidden={overflowHidden}
         >
             <DateDisplayBox
                 {...{ showDateSelect }}

@@ -8,6 +8,13 @@ export const DateOptionSlideContainer = styled.div`
     transition: 1s;
     position: relative;
     border-radius: 5px;
+
+    overflow: ${(props) => (props.overflowHidden ? 'visible' : 'hidden')};
+
+    ${(props) =>
+        props.showDateSelect
+            ? 'width: 18rem; height: 10rem;'
+            : 'width: 7rem; height: 3rem;'}
 `;
 
 export const DateDisplayBox = styled.div`

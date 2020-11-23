@@ -1,13 +1,3 @@
-export const dateOptionOpen = {
-    width: '18rem',
-    height: '10rem'
-};
-
-export const dateOptionClosed = {
-    width: '7rem',
-    height: '3rem'
-};
-
 export const selectOffscreen = {
     position: 'absolute',
     left: '0%',
