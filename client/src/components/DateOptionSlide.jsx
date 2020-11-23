@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DateSelect from 'components/DateSelect';
 import { parseDateObjToISO } from 'processing/dates';
 import {
+    DateSelectConfirmContainer,
     DateOptionSlideContainer,
     DateDisplayBox,
     dateSlideStyling,
@@ -10,7 +11,6 @@ import {
     cancelBtnStyle,
     canConContainerStyle
 } from 'styling/dateOption';
-import { selectOffscreen, selectOnscreen } from 'styling/dateOptionSlide';
 
 const DateOptionSlide = (props) => {
     const [internalDateChange, setInternalDateChange] = useState(false);
@@ -34,13 +34,7 @@ const DateOptionSlide = (props) => {
                 {props.date.day}/{props.date.month}/{props.date.year}
             </DateDisplayBox>
 
-            <div
-                className="dateSelectConfirmContainer"
-                style={{
-                    transition: '1s',
-                    ...(showDateSelect ? selectOnscreen : selectOffscreen)
-                }}
-            >
+            <DateSelectConfirmContainer showDateSelect={showDateSelect}>
                 <DateSelect
                     style={{
                         ...dateSlideStyling
@@ -90,7 +84,7 @@ const DateOptionSlide = (props) => {
                         ✓
                     </button>
                 </div>
-            </div>
+            </DateSelectConfirmContainer>
         </DateOptionSlideContainer>
     );
 };

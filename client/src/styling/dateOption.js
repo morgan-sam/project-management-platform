@@ -38,6 +38,18 @@ export const DateDisplayBox = styled.div`
             opacity: 1;`};
 `;
 
+export const DateSelectConfirmContainer = styled.div`
+    transition: 1s;
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+
+    ${(props) =>
+        props.showDateSelect
+            ? 'left: 50%; transform: translate(-50%,-50%); opacity: 1;'
+            : 'left: 0%; transform: translate(100%,-50%); opacity: 0;'}
+`;
+
 export const dateSlideStyling = {
     textAlign: 'center',
     display: 'grid',
