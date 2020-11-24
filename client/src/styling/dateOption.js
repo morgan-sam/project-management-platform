@@ -58,33 +58,25 @@ export const CanConContainer = styled.div`
     transition: 0.5s;
 `;
 
-export const canConBtnStyle = {
-    margin: '0.5rem',
-    height: '2.2rem',
-    width: '2.2rem',
-    boxShadow: '1px 1px 1px 1px #ddd',
-    color: '#eee',
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    WebkitTextStroke: '0.7px #222',
-    display: 'flex',
-    justifyContent: 'center',
-    lineHeight: '1.72rem',
-    outline: 'none'
-};
-
-export const confirmBtnStyle = {
-    backgroundColor: '#b3ff99',
-    userSelect: 'none',
-    cursor: 'pointer',
-    border: '3px solid #99ff99',
-    borderRadius: '5px'
-};
-
-export const cancelBtnStyle = {
-    backgroundColor: '#ff9999',
-    userSelect: 'none',
-    cursor: 'pointer',
-    border: '3px solid #ff8080',
-    borderRadius: '5px'
-};
+export const DateSelectButton = styled.button`
+    margin: 0.5rem;
+    height: 2.2rem;
+    width: 2.2rem;
+    box-shadow: 1px 1px 1px 1px #ddd;
+    color: #eee;
+    font-size: 2rem;
+    font-weight: bold;
+    -webkit-text-stroke: 0.7px #222;
+    display: flex;
+    justify-content: center;
+    line-height: 1.72rem;
+    outline: none;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 5px;
+    ${(props) =>
+        props.cancel && 'background-color: #ff9999; border: 3px solid #ff8080;'}
+    ${(props) =>
+        props.confirm &&
+        'background-color: #b3ff99; border: 3px solid #99ff99;'}
+`;

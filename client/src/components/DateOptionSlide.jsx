@@ -5,9 +5,7 @@ import {
     DateSelectConfirmContainer,
     DateOptionSlideContainer,
     DateDisplayBox,
-    canConBtnStyle,
-    confirmBtnStyle,
-    cancelBtnStyle,
+    DateSelectButton,
     CanConContainer
 } from 'styling/dateOption';
 
@@ -46,9 +44,8 @@ const DateOptionSlide = (props) => {
                 />
 
                 <CanConContainer>
-                    <button
-                        className="cancelButton"
-                        style={{ ...canConBtnStyle, ...cancelBtnStyle }}
+                    <DateSelectButton
+                        cancel
                         onClick={() => {
                             setShowDateSelect(false);
                             if (props.setPopUpOpen) props.setPopUpOpen(false);
@@ -61,10 +58,9 @@ const DateOptionSlide = (props) => {
                         tabIndex="-1"
                     >
                         ×
-                    </button>
-                    <button
-                        className="confirmButton"
-                        style={{ ...canConBtnStyle, ...confirmBtnStyle }}
+                    </DateSelectButton>
+                    <DateSelectButton
+                        confirm
                         onClick={() => {
                             setShowDateSelect(false);
                             if (props.setPopUpOpen) props.setPopUpOpen(false);
@@ -74,7 +70,7 @@ const DateOptionSlide = (props) => {
                         tabIndex="-1"
                     >
                         ✓
-                    </button>
+                    </DateSelectButton>
                 </CanConContainer>
             </DateSelectConfirmContainer>
         </DateOptionSlideContainer>
