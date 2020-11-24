@@ -50,12 +50,6 @@ export const DateSelectConfirmContainer = styled.div`
             : 'left: 0%; transform: translate(100%,-50%); opacity: 0;'}
 `;
 
-export const dateSlideStyling = {
-    textAlign: 'center',
-    display: 'grid',
-    transition: '1s'
-};
-
 export const canConContainerStyle = {
     display: 'flex',
     justifyContent: 'center',

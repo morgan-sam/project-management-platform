@@ -5,7 +5,6 @@ import {
     DateSelectConfirmContainer,
     DateOptionSlideContainer,
     DateDisplayBox,
-    dateSlideStyling,
     canConBtnStyle,
     confirmBtnStyle,
     cancelBtnStyle,
@@ -17,7 +16,6 @@ const DateOptionSlide = (props) => {
     const [backupDate, setBackupDate] = useState(props.date);
     const [showDateSelect, setShowDateSelect] = useState(false);
     const [overflowHidden, setOverflowHidden] = useState(true);
-    console.log(showDateSelect);
 
     return (
         <DateOptionSlideContainer
@@ -36,9 +34,6 @@ const DateOptionSlide = (props) => {
 
             <DateSelectConfirmContainer showDateSelect={showDateSelect}>
                 <DateSelect
-                    style={{
-                        ...dateSlideStyling
-                    }}
                     setDate={(date) => {
                         setInternalDateChange(true);
                         props.setSelectDate(parseDateObjToISO(date));
