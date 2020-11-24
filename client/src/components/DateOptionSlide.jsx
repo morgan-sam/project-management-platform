@@ -8,7 +8,7 @@ import {
     canConBtnStyle,
     confirmBtnStyle,
     cancelBtnStyle,
-    canConContainerStyle
+    CanConContainer
 } from 'styling/dateOption';
 
 const DateOptionSlide = (props) => {
@@ -45,10 +45,7 @@ const DateOptionSlide = (props) => {
                     }}
                 />
 
-                <div
-                    className="canConBtnContainer"
-                    style={{ ...canConContainerStyle }}
-                >
+                <CanConContainer>
                     <button
                         className="cancelButton"
                         style={{ ...canConBtnStyle, ...cancelBtnStyle }}
@@ -78,7 +75,7 @@ const DateOptionSlide = (props) => {
                     >
                         ✓
                     </button>
-                </div>
+                </CanConContainer>
             </DateSelectConfirmContainer>
         </DateOptionSlideContainer>
     );

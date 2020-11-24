@@ -50,13 +50,13 @@ export const DateSelectConfirmContainer = styled.div`
             : 'left: 0%; transform: translate(100%,-50%); opacity: 0;'}
 `;
 
-export const canConContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingRight: '0.75rem',
-    transition: '0.5s'
-};
+export const CanConContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.75rem;
+    transition: 0.5s;
+`;
 
 export const canConBtnStyle = {
     margin: '0.5rem',
