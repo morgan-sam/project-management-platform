@@ -22,20 +22,18 @@ export const DropdownElement = styled.div`
     transform: translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem);
 `;
 
-export const dropdownHeaderStyle = (listOpen) => {
-    return {
-        position: 'relative',
-        height: `${DROPDOWN_HEIGHT_REMS}rem`,
-
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 'inherit',
-        borderRadius: listOpen
+export const DropdownHeaderElement = styled.div`
+    position: relative;
+    height: ${DROPDOWN_HEIGHT_REMS}rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    border-radius: ${(props) =>
+        props.listOpen
             ? `${DROPDOWN_BORDER_RADIUS} ${DROPDOWN_BORDER_RADIUS} 0 0`
-            : DROPDOWN_BORDER_RADIUS
-    };
-};
+            : DROPDOWN_BORDER_RADIUS};
+`;
 
 export const DropdownOptionContainer = styled.div`
     scrollbar-width: none; /* For Firefox */

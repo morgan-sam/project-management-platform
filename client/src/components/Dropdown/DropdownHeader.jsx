@@ -3,7 +3,7 @@ import ThemeContext from 'context/ThemeContext';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
     dropdownBoxStyle,
-    dropdownHeaderStyle,
+    DropdownHeaderElement,
     getHoveredStyle,
     getDropdownTextStyle,
     optionBackgroundStyle
@@ -27,12 +27,12 @@ const DropdownHeader = (props) => {
     }, [hoverEnabled]);
 
     return (
-        <div
+        <DropdownHeaderElement
+            listOpen={listOpen}
             ref={headerRef}
             className="dropdownHeader"
             style={{
-                ...dropdownBoxStyle(listOpen),
-                ...dropdownHeaderStyle(listOpen)
+                ...dropdownBoxStyle(listOpen)
             }}
             onContextMenu={(e) => e.preventDefault()}
             onMouseDown={(e) =>
@@ -56,7 +56,7 @@ const DropdownHeader = (props) => {
                     opacity: hoverEnabled && hovered ? '1' : '0'
                 }}
             />
-        </div>
+        </DropdownHeaderElement>
     );
 };
 
