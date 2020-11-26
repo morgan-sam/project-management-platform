@@ -14,13 +14,13 @@ export const DropdownParent = styled.div`
     box-sizing: border-box;
 `;
 
-export const dropdownElementStyle = {
-    height: `${DROPDOWN_HEIGHT_REMS}rem`,
-    width: 'inherit',
-    position: 'absolute',
-    top: '50%',
-    transform: `translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem)`
-};
+export const DropdownElement = styled.div`
+    height: ${DROPDOWN_HEIGHT_REMS}rem;
+    width: inherit;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-${DROPDOWN_HEIGHT_REMS / 2}rem);
+`;
 
 export const dropdownHeaderStyle = (listOpen) => {
     return {
