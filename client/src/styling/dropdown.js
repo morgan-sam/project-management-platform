@@ -5,14 +5,14 @@ export const DROPDOWN_HEIGHT_REMS = 2;
 export const DROPDOWN_MAX_HEIGHT_REMS = 20;
 const DROPDOWN_BORDER_RADIUS = '5px';
 
-export const dropdownParentStyle = {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    position: 'relative',
-    boxSizing: 'border-box'
-};
+export const DropdownParent = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+`;
 
 export const dropdownElementStyle = {
     height: `${DROPDOWN_HEIGHT_REMS}rem`,

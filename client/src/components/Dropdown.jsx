@@ -7,7 +7,7 @@ import { convertRemToPixels } from 'processing/units';
 
 import {
     DropdownOptionContainer,
-    dropdownParentStyle,
+    DropdownParent,
     dropdownElementStyle,
     dropdownBoxStyle,
     finalOptionStyle,
@@ -137,10 +137,7 @@ const Dropdown = (props) => {
     }, []);
 
     return (
-        <div
-            className={props.className}
-            style={{ ...dropdownParentStyle, ...props.style }}
-        >
+        <DropdownParent className={props.className} style={props.style}>
             <div className="dropdownElement" style={dropdownElementStyle}>
                 <DropdownOptionContainer listOpen={listOpen} ref={dropdownRef}>
                     {!includeDropdownHeader && listOpen ? null : (
@@ -167,7 +164,7 @@ const Dropdown = (props) => {
                     {endOfList ? '✖' : '▼'}
                 </div>
             </div>
-        </div>
+        </DropdownParent>
     );
 };
 
