@@ -7,7 +7,7 @@ import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
 import MatchType from 'components/MatchType';
 import { parseISOToDateObj } from 'processing/dates';
-import { FilterTaskbarElement, filterBarItemStyle } from 'styling/taskBars';
+import { FilterTaskbarElement } from 'styling/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getDefaultFilterOptions } from 'data/defaultState';
 
@@ -37,7 +37,7 @@ const FilterBar = (props) => {
                     : 'hidden'
             }}
         >
-            <FilterToggle {...props} style={filterBarItemStyle} />
+            <FilterToggle {...props}  />
             <ColorButton
                 className="resetFilterBtn"
                 onClick={() => {
@@ -51,7 +51,7 @@ const FilterBar = (props) => {
             />
             <DateRangeSelect
                 {...props}
-                style={filterBarItemStyle}
+                
                 date={parseISOToDateObj(props.filterOptions.date)}
                 deadline={parseISOToDateObj(props.filterOptions.deadline)}
                 setDate={(val) =>
@@ -73,7 +73,7 @@ const FilterBar = (props) => {
             />
             <UrgencyRangeSelect
                 {...props}
-                style={filterBarItemStyle}
+                
                 onChange={(min, max) =>
                     props.setFilterOptions({
                         ...props.filterOptions,
@@ -100,7 +100,7 @@ const FilterBar = (props) => {
                 options={taskListTeams}
                 filterOptions={filterOptions}
                 selected={filterOptions.teams}
-                style={{ ...filterBarItemStyle, width: '8rem', zIndex: '10' }}
+                style={{ width: '8rem', zIndex: '10' }}
                 onOpenChange={(val) =>
                     setDropdownsOpen({ ...dropdownsOpen, teams: val })
                 }

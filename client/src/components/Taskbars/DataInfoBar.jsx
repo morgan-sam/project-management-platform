@@ -1,5 +1,5 @@
 import React from 'react';
-import { dataInfoItemStyle, DataInfoTaskbarElement } from 'styling/taskBars';
+import { DataInfoTaskbarElement } from 'styling/taskBars';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToLittleEndian } from 'processing/dates';
 
@@ -27,9 +27,9 @@ const DataInfoBar = (props) => {
                 alignItems: 'stretch'
             }}
         >
-            <div style={dataInfoItemStyle}>{filterText}</div>
-            <div style={dataInfoItemStyle}>{taskCountText}</div>
-            <div style={dataInfoItemStyle}>{getDateRangeText()}</div>
+            <div>{filterText}</div>
+            <div>{taskCountText}</div>
+            <div>{getDateRangeText()}</div>
         </DataInfoTaskbarElement>
     );
 };

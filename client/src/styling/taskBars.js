@@ -47,21 +47,21 @@ export const getTaskBarVisibleStyle = (popUpOpen) => `
         }, opacity 1s;
     `;
 
-export const dataInfoItemStyle = {
-    padding: '1rem',
-    margin: '1rem',
-    border: '1px solid black'
-};
-
-export const filterBarItemStyle = {
-    margin: '0 0.5rem',
-    display: 'flex',
-    alignItems: 'center'
-};
-
 export const FilterTaskbarElement = styled(Taskbar)`
+    & > * {
+        margin: 0 0.5rem;
+        display: flex;
+        align-items: center;
+    }
 `;
 export const CreateTaskbarElement = styled(Taskbar)`
+    // 
 `;
+
 export const DataInfoTaskbarElement = styled(Taskbar)`
+    & > * { 
+        padding: 1rem;
+        margin: 1rem;
+        border: 1px solid black;
+    }
 `;
