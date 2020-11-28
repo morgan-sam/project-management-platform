@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "server": "nodemon index.js"
+        "server": "kill -9 $(lsof -t -i:8000) && nodemon index.js"
     },
     "author": "",
     "license": "ISC",
