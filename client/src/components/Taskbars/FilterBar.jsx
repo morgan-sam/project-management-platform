@@ -7,7 +7,7 @@ import CompletionSelect from 'components/CompletionSelect';
 import Dropdown from 'components/Dropdown';
 import MatchType from 'components/MatchType';
 import { parseISOToDateObj } from 'processing/dates';
-import { Taskbar, filterBarItemStyle } from 'styling/taskBars';
+import { FilterTaskbarElement, filterBarItemStyle } from 'styling/taskBars';
 import { formatTeamsDropdownSelect } from 'processing/teams';
 import { getDefaultFilterOptions } from 'data/defaultState';
 
@@ -27,7 +27,7 @@ const FilterBar = (props) => {
     const [popUpOpen, setPopUpOpen] = useState(false);
 
     return (
-        <Taskbar
+        <FilterTaskbarElement
             className="filterBar"
             popUpOpen={popUpOpen}
             visible={displayedBars.filter}
@@ -121,7 +121,7 @@ const FilterBar = (props) => {
                     setDropdownsOpen({ ...dropdownsOpen, completion: val })
                 }
             />
-        </Taskbar>
+        </FilterTaskbarElement>
     );
 };
 

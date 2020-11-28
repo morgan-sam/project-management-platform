@@ -3,7 +3,7 @@ import ColorButton from 'components/ColorButton';
 import DateRangeSelect from 'components/DateRangeSelect';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import InputFormWithLabel from 'components/InputFormWithLabel';
-import { Taskbar } from 'styling/taskBars';
+import { CreateTaskbarElement } from 'styling/taskBars';
 import { parseISOToDateObj } from 'processing/dates';
 import { fetchPostEntry } from 'data/fetch';
 import { getDayFromTodayAsISO } from 'data/dates';
@@ -45,8 +45,7 @@ const CreateTaskBar = (props) => {
     };
 
     return (
-        <Taskbar
-            className="createTaskBar"
+        <CreateTaskbarElement
             popUpOpen={popUpOpen}
             visible={displayedBars.createTask}
             style={{
@@ -97,7 +96,7 @@ const CreateTaskBar = (props) => {
                 onChange={() => setKeepOpen(!keepOpen)}
                 default={keepOpen}
             />
-        </Taskbar>
+        </CreateTaskbarElement>
     );
 };
 

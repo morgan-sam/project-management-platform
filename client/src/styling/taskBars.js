@@ -6,7 +6,7 @@ const smallCloseTransition = 'max-height .8s cubic-bezier(.27,.97,.36,.96)';
 const largeCloseTransition = 'max-height 1s cubic-bezier(.41,.49,.23,.93)';
 const largeOpenTransition = 'max-height 0.7s cubic-bezier(.38,.03,.23,.93)';
 
-export const Taskbar = styled.div`
+const Taskbar = styled.div`
     position: relative;
     height: auto;
     width: auto;
@@ -58,3 +58,10 @@ export const filterBarItemStyle = {
     display: 'flex',
     alignItems: 'center'
 };
+
+export const FilterTaskbarElement = styled(Taskbar)`
+`;
+export const CreateTaskbarElement = styled(Taskbar)`
+`;
+export const DataInfoTaskbarElement = styled(Taskbar)`
+`;

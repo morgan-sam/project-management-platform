@@ -1,5 +1,5 @@
 import React from 'react';
-import { dataInfoItemStyle, Taskbar } from 'styling/taskBars';
+import { dataInfoItemStyle, DataInfoTaskbarElement } from 'styling/taskBars';
 import { getBoundaryDates } from 'data/dates';
 import { parseISOToLittleEndian } from 'processing/dates';
 
@@ -19,7 +19,7 @@ const DataInfoBar = (props) => {
     const taskCountText = `Showing  ${taskList.length} out of ${rawTaskList.length} tasks in database`;
 
     return (
-        <Taskbar
+        <DataInfoTaskbarElement
             className="dataInfoBar"
             visible={displayedBars.dataInfo}
             style={{
@@ -30,7 +30,7 @@ const DataInfoBar = (props) => {
             <div style={dataInfoItemStyle}>{filterText}</div>
             <div style={dataInfoItemStyle}>{taskCountText}</div>
             <div style={dataInfoItemStyle}>{getDateRangeText()}</div>
-        </Taskbar>
+        </DataInfoTaskbarElement>
     );
 };
 
