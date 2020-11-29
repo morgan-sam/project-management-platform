@@ -3,6 +3,12 @@ import HeadingCell from 'components/Cells/HeadingCell';
 import { headingCellStyles } from 'styling/headingCell';
 import { capitalizeFirstLetter } from 'processing/utility';
 import { getTrueObjVals } from 'processing/utility';
+import styled from '@emotion/styled';
+
+const TableHeadingsElement = styled.tr`
+    cursor: pointer;
+    user-select: none;
+`;
 
 const TableHeadings = (props) => {
     const { sortOptions, userSetSort, visibleColumns } = props;
@@ -32,14 +38,7 @@ const TableHeadings = (props) => {
     const getHeadingCellArray = () =>
         getTrueObjVals(visibleColumns).map((el, i) => getHeadingCell(el, i));
 
-    return (
-        <tr
-            className="tableHeadings"
-            style={{ cursor: 'pointer', userSelect: 'none' }}
-        >
-            {getHeadingCellArray()}
-        </tr>
-    );
+    return <TableHeadingsElement>{getHeadingCellArray()}</TableHeadingsElement>;
 };
 
 export default TableHeadings;
