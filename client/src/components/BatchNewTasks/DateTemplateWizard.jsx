@@ -13,7 +13,7 @@ import {
     WizardTitle,
     bottomContainer,
     containerItemStyle,
-    getSubGridStyle
+    Grid
 } from 'styling/wizardStyles';
 
 const DateTemplateWizard = (props) => {
@@ -60,12 +60,7 @@ const DateTemplateWizard = (props) => {
                 </div>
                 <div>
                     <div style={containerItemStyle}>Sequence:</div>
-                    <div
-                        style={{
-                            ...getSubGridStyle(2, 2),
-                            ...containerItemStyle
-                        }}
-                    >
+                    <Grid rows={2} columns={2} style={containerItemStyle}>
                         <div style={{ gridArea: '1 / 1 / 2 / 2' }}>None:</div>
                         <Checkbox
                             style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -88,7 +83,7 @@ const DateTemplateWizard = (props) => {
                             default={sequence === '-'}
                             onChange={() => setSequence('-')}
                         />
-                    </div>
+                    </Grid>
                 </div>
                 <div
                     style={{
@@ -96,12 +91,7 @@ const DateTemplateWizard = (props) => {
                     }}
                 >
                     <div style={containerItemStyle}>Step:</div>
-                    <div
-                        style={{
-                            ...getSubGridStyle(2, 4),
-                            ...containerItemStyle
-                        }}
-                    >
+                    <Grid rows={4} columns={2} style={containerItemStyle}>
                         <div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
                         <Checkbox
                             style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -126,7 +116,7 @@ const DateTemplateWizard = (props) => {
                             default={step === 'y'}
                             onChange={() => setStep('y')}
                         />
-                    </div>
+                    </Grid>
                 </div>
                 <div
                     style={{

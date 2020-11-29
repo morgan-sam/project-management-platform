@@ -50,12 +50,10 @@ export const containerItemStyle = {
     padding: '1rem'
 };
 
-export const getSubGridStyle = (columns, rows) => {
-    return {
-        display: 'grid',
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`,
-        gridGap: '1rem',
-        padding: '1rem'
-    };
-};
+export const Grid = styled.div`
+    display: grid;
+    grid-template-rows: repeat(${(props) => props.rows}, 1fr);
+    grid-template-columns: repeat(${(props) => props.columns}, 1fr);
+    grid-gap: 1rem;
+    padding: 1rem;
+`;

@@ -9,7 +9,7 @@ import {
     WizardTitle,
     bottomContainer,
     containerItemStyle,
-    getSubGridStyle
+    Grid
 } from 'styling/wizardStyles';
 
 const TaskTemplateWizard = (props) => {
@@ -51,12 +51,7 @@ const TaskTemplateWizard = (props) => {
                 </div>
                 <div>
                     <div style={containerItemStyle}>Symbol:</div>
-                    <div
-                        style={{
-                            ...getSubGridStyle(2, 2),
-                            ...containerItemStyle
-                        }}
-                    >
+                    <Grid rows={2} columns={2} style={containerItemStyle}>
                         <div style={{ gridArea: '1 / 1 / 2 / 2' }}>Number:</div>
                         <Checkbox
                             style={{ gridArea: '1 / 2 / 2 / 3' }}
@@ -69,7 +64,7 @@ const TaskTemplateWizard = (props) => {
                             default={symbol === 'l'}
                             onChange={() => setSymbol('l')}
                         />
-                    </div>
+                    </Grid>
                 </div>
                 <div
                     style={{
@@ -94,12 +89,7 @@ const TaskTemplateWizard = (props) => {
                 </div>
                 <div>
                     <div style={containerItemStyle}>Order:</div>
-                    <div
-                        style={{
-                            ...getSubGridStyle(2, 2),
-                            ...containerItemStyle
-                        }}
-                    >
+                    <Grid rows={2} columns={2} style={containerItemStyle}>
                         <div style={{ gridArea: '1 / 1 / 2 / 2' }}>
                             Ascending:
                         </div>
@@ -116,7 +106,7 @@ const TaskTemplateWizard = (props) => {
                             default={order === 'd'}
                             onChange={() => setOrder('d')}
                         />
-                    </div>
+                    </Grid>
                 </div>
             </FourByFourGrid>
             <div style={bottomContainer}>
