@@ -3,6 +3,11 @@ import TableEntries from 'components/Table/TableEntries';
 import TableHeadings from 'components/Table/TableHeadings';
 import NoDataDisplay from 'components/Table/NoDataDisplay';
 import { getParentsClassList } from 'processing/classnames';
+import styled from '@emotion/styled';
+
+export const TableElement = styled.table`
+    margin: 0 0 3rem 0;
+`;
 
 const Table = (props) => {
     const {
@@ -35,7 +40,7 @@ const Table = (props) => {
     }, []);
 
     return (
-        <table className="table" style={props.style}>
+        <TableElement>
             <thead>
                 <TableHeadings
                     {...{ sortOptions, userSetSort, visibleColumns }}
@@ -45,7 +50,7 @@ const Table = (props) => {
                 <TableEntries {...props} />
             </tbody>
             {taskList.length === 0 && <NoDataDisplay {...{ visibleColumns }} />}
-        </table>
+        </TableElement>
     );
 };
 

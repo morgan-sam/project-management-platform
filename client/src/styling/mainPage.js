@@ -20,10 +20,6 @@ export const MainPage = styled.div`
     overflow: ${(props) => (props.scrollLocked ? 'hidden' : 'visible')};
 `;
 
-export const tableStyle = {
-    margin: '0 0 3rem 0'
-};
-
 export const Overlay = styled.div`
     @keyframes overlay-fade-in {
         0% {

@@ -21,7 +21,6 @@ import CreateTaskBar from 'components/Taskbars/CreateTaskBar';
 import {
     Screen,
     MainPage,
-    tableStyle,
     Overlay,
     getTableContainerStyle,
     TopBarsContainer
@@ -183,7 +182,6 @@ const MainScreen = (props) => {
                     >
                         <Table
                             taskList={getTaskList()}
-                            style={tableStyle}
                             {...{
                                 filterOptions,
                                 setFilterOptions,
