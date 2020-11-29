@@ -7,6 +7,31 @@ import styled from '@emotion/styled';
 
 export const TableElement = styled.table`
     margin: 0 0 3rem 0;
+    border-collapse: separate;
+
+    & > * > * > *:last-child {
+        border-right: var(--line-thickness) solid var(--line-color);
+    }
+
+    & > *:last-child > tr:last-child > * {
+        border-bottom: var(--line-thickness) solid var(--line-color);
+    }
+
+    & > *:first-child > tr:first-child > *:first-child {
+        border-top-left-radius: var(--line-curve);
+    }
+
+    & > *:first-child > tr:first-child > *:last-child {
+        border-top-right-radius: var(--line-curve);
+    }
+
+    & > *:last-child > tr:last-child > *:first-child {
+        border-bottom-left-radius: var(--line-curve);
+    }
+
+    & > *:last-child > tr:last-child > *:last-child {
+        border-bottom-right-radius: var(--line-curve);
+    }
 `;
 
 const Table = (props) => {
