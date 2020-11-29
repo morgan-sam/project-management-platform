@@ -40,35 +40,43 @@ export const Overlay = styled.div`
     animation: overlay-fade-in linear 0.4s;
 `;
 
-export const getTableContainerStyle = (fixedStyle, values) => {
-    if (fixedStyle) {
-        const { barConHeight, displayedBars } = values;
-        return {
-            padding: '4rem',
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-            height: `${600 - barConHeight}px`,
-            overflowY: 'scroll',
-            transition: `${
-                Object.values(displayedBars).includes(true)
-                    ? '0.2s ease-in-out'
-                    : '0.5s ease-in-out'
-            }`,
-            WebkitMaskImage:
-                'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)',
-            maskImage:
-                'linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%)',
-            animation: 'table-fixed-view-toggle 2s ease-in-out'
-        };
-    } else
-        return {
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%'
-        };
-};
+export const TableContainer = styled.div`
+    @keyframes table-fixed-view-toggle {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    ${(props) =>
+        props.fixedStyle
+            ? `
+    padding: 4rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: ${600 - props.barConHeight}px;
+    overflow-y: scroll;
+    transition: ${
+        Object.values(props.displayedBars).includes(true)
+            ? '0.2s ease-in-out'
+            : '0.5s ease-in-out'
+    },
+    -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%);
+    mask-image:
+        linear-gradient(to bottom, transparent 0%, white 10%, white 90%, transparent 100%);
+    animation: table-fixed-view-toggle 2s ease-in-out;
+    `
+            : `
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    `}
+`;
 
 export const TopBarsContainer = styled.div`
     margin: 0rem 0 2rem 0;

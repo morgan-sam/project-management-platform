@@ -22,7 +22,7 @@ import {
     Screen,
     MainPage,
     Overlay,
-    getTableContainerStyle,
+    TableContainer,
     TopBarsContainer
 } from 'styling/mainPage';
 
@@ -173,12 +173,11 @@ const MainScreen = (props) => {
                             }}
                         />
                     </TopBarsContainer>
-                    <div
+                    <TableContainer
                         className="tableContainer"
-                        style={getTableContainerStyle(fixedStyle, {
-                            barConHeight,
-                            displayedBars
-                        })}
+                        fixedStyle={fixedStyle}
+                        barConHeight={barConHeight}
+                        displayedBars={displayedBars}
                     >
                         <Table
                             taskList={getTaskList()}
@@ -195,7 +194,7 @@ const MainScreen = (props) => {
                                 visibleColumns
                             }}
                         />
-                    </div>
+                    </TableContainer>
                     {popUp}
                     {popUp && <Overlay />}
                     {displayBackground && <AmbientBackground />}
