@@ -1,27 +1,24 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
+import styled from '@emotion/styled';
 
 const DropdownWithLabel = (props) => {
-    const containerStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: '1rem'
-    };
-
-    const itemStyle = {
-        margin: '1rem'
-    };
+    const DropdownContainer = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        & > * {
+            margin: 1rem;
+        }
+    `;
 
     return (
-        <div style={containerStyle}>
-            <div className="dropdownLabel" style={itemStyle}>
-                {props.label}:
-            </div>
+        <DropdownContainer>
+            <div>{props.label}:</div>
             <Dropdown
                 className="dropdown"
                 style={{
-                    itemStyle,
                     width: props.width
                 }}
                 selected={props.selected}
@@ -29,7 +26,7 @@ const DropdownWithLabel = (props) => {
                 onClick={(val) => props.onClick(val)}
                 onOpenChange={props.setOverflowHidden}
             />
-        </div>
+        </DropdownContainer>
     );
 };
 
