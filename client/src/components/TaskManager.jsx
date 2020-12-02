@@ -134,6 +134,10 @@ const TaskManager = (props) => {
             name: 'Edit',
             sub: [
                 {
+                    name: 'Change Value',
+                    sub: []
+                },
+                {
                     name: `${
                         checkIfAllTasksSelected(rawTaskList, selectedTasks)
                             ? 'S'
