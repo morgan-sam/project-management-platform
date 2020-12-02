@@ -142,11 +142,6 @@ const TaskManager = (props) => {
                     action: () => selectAllTasks()
                 },
                 {
-                    name: 'Change Value',
-                    sub: [],
-                    enabled: selectedTasks.length > 0
-                },
-                {
                     name: `Mark ${
                         checkIfAllSelectedAreComplete(
                             rawTaskList,
@@ -159,6 +154,11 @@ const TaskManager = (props) => {
                         if (selectedTasks.length)
                             setSelectedTaskCompletion(selectedTasks);
                     },
+                    enabled: selectedTasks.length > 0
+                },
+                {
+                    name: 'Change Value',
+                    sub: [],
                     enabled: selectedTasks.length > 0
                 },
                 {
