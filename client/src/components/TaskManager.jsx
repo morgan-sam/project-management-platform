@@ -135,7 +135,8 @@ const TaskManager = (props) => {
             sub: [
                 {
                     name: 'Change Value',
-                    sub: []
+                    sub: [],
+                    enabled: selectedTasks.length > 0
                 },
                 {
                     name: `${
