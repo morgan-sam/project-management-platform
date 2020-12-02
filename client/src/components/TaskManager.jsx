@@ -182,7 +182,8 @@ const TaskManager = (props) => {
                                     'all entries that do not pass the filter parameters'
                                 )
                         }
-                    ]
+                    ],
+                    enabled: selectedTasks.length > 0
                 },
                 {
                     name: 'Preferences',
