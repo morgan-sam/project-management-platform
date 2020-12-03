@@ -11,6 +11,7 @@ import BatchNewTasks from 'components/PopUps/BatchNewTasks';
 import BatchDeleteTasks from 'components/PopUps/BatchDeleteTasks';
 import NavigationMenu from 'components/NavigationMenu';
 import Preferences from 'components/PopUps/Preferences';
+import ChangeValue from 'components/PopUps/ChangeValue';
 import { displayBarsAll } from 'data/defaultState';
 import { BOX_BORDER_WIDTH_PX } from 'styling/navigationMenu';
 import { fields } from 'data/table';
@@ -161,7 +162,15 @@ const TaskManager = (props) => {
                     sub: fields
                         .filter((el) => el !== 'id')
                         .map((field) => ({
-                            name: capitalizeFirstLetter(field)
+                            name: capitalizeFirstLetter(field),
+                            action: () =>
+                                setPopUp(
+                                    <ChangeValue
+                                        field={field}
+                                        setPopUp={setPopUp}
+                                        pressedKeys={pressedKeys}
+                                    />
+                                )
                         })),
                     enabled: selectedTasks.length > 0
                 },
