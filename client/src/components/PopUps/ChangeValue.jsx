@@ -15,7 +15,7 @@ import {
 const getDefaultValue = (field) => {
     switch (field) {
         case 'task':
-            return null;
+            return '';
         case 'date':
             return { day: 1, month: 12, year: 2020 };
         case 'deadline':
@@ -23,9 +23,9 @@ const getDefaultValue = (field) => {
         case 'urgency':
             return 3;
         case 'teams':
-            return null;
+            return [];
         case 'completed':
-            return null;
+            return false;
         default:
             return null;
     }
