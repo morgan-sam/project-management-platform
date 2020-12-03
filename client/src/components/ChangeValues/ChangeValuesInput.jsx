@@ -1,9 +1,11 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
+import Dropdown from 'components/Dropdown';
+import LoadingScreen from 'components/Screens/LoadingScreen';
 
 const ChangeValuesInput = (props) => {
     const { field, value, setValue } = props;
-
+    console.log(value);
     switch (field) {
         case 'task':
             // text input
@@ -14,7 +16,13 @@ const ChangeValuesInput = (props) => {
             return <DateSelect date={value} setDate={setValue} />;
         case 'urgency':
             // integer input
-            return <div>integer input</div>;
+            return (
+                <Dropdown
+                    selected={value}
+                    options={[1, 2, 3, 4, 5]}
+                    onClick={setValue}
+                />
+            );
         case 'teams':
             // array input
             return <div>array input</div>;
