@@ -158,7 +158,11 @@ const TaskManager = (props) => {
                 },
                 {
                     name: 'Change Value',
-                    sub: [],
+                    sub: fields
+                        .filter((el) => el !== 'id')
+                        .map((field) => ({
+                            name: capitalizeFirstLetter(field)
+                        })),
                     enabled: selectedTasks.length > 0
                 },
                 {
