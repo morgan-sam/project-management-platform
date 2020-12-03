@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ColorButton from 'components/ColorButton';
 import { capitalizeFirstLetter } from 'processing/utility';
+import ChangeValuesInput from 'components/ChangeValues/ChangeValuesInput';
 
 import {
     PopupTitle,
@@ -26,7 +27,9 @@ const ChangeValue = (props) => {
                 <PopupTitle>
                     Change {capitalizeFirstLetter(field)} Values
                 </PopupTitle>
-                <SubContainer>[input to change the values]</SubContainer>
+                <SubContainer>
+                    <ChangeValuesInput {...{ field }}></ChangeValuesInput>
+                </SubContainer>
                 <FinalContainer>
                     <ColorButton
                         text={'Change all values'}
