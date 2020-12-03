@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ColorButton from 'components/ColorButton';
 import { capitalizeFirstLetter } from 'processing/utility';
 import ChangeValuesInput from 'components/ChangeValues/ChangeValuesInput';
@@ -17,6 +17,8 @@ const ChangeValue = (props) => {
     const { setPopUp, pressedKeys, field } = props;
     const closePopUp = () => setPopUp(null);
 
+    const [value, setValue] = useState({ day: 1, month: 12, year: 2020 });
+
     useEffect(() => {
         if (pressedKeys.includes('Escape')) closePopUp();
     }, [pressedKeys]);
@@ -28,7 +30,9 @@ const ChangeValue = (props) => {
                     Change {capitalizeFirstLetter(field)} Values
                 </PopupTitle>
                 <SubContainer>
-                    <ChangeValuesInput {...{ field }}></ChangeValuesInput>
+                    <ChangeValuesInput
+                        {...{ field, value, setValue }}
+                    ></ChangeValuesInput>
                 </SubContainer>
                 <FinalContainer>
                     <ColorButton

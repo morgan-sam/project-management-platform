@@ -1,7 +1,8 @@
 import React from 'react';
+import DateSelect from 'components/DateSelect';
 
 const ChangeValuesInput = (props) => {
-    const { field } = props;
+    const { field, value, setValue } = props;
 
     switch (field) {
         case 'task':
@@ -10,7 +11,7 @@ const ChangeValuesInput = (props) => {
         case 'date':
         case 'deadline':
             // date input
-            return <div>date input</div>;
+            return <DateSelect date={value} setDate={setValue} />;
         case 'urgency':
             // integer input
             return <div>integer input</div>;

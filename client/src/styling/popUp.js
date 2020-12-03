@@ -51,6 +51,7 @@ export const SubContainer = styled.div`
     align-items: center;
     flex-direction: column;
     height: 4rem;
+    z-index: 10;
 `;
 
 export const CancelButton = styled.button`
