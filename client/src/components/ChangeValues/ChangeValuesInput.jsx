@@ -1,6 +1,7 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
 import Dropdown from 'components/Dropdown';
+import DropdownWithLabel from 'components/DropdownWithLabel';
 import LoadingScreen from 'components/Screens/LoadingScreen';
 import styled from '@emotion/styled';
 
@@ -39,7 +40,9 @@ const ChangeValuesInput = (props) => {
         case 'urgency':
             // integer input
             return (
-                <Dropdown
+                <DropdownWithLabel
+                    width={2}
+                    label={'Urgency'}
                     selected={value}
                     options={[1, 2, 3, 4, 5]}
                     onClick={setValue}

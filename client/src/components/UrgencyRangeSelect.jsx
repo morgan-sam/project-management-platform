@@ -25,10 +25,10 @@ const UrgencyRangeSelect = (props) => {
             </div>
             <div style={{ display: 'flex' }}>
                 <Dropdown
+                    width={2}
                     className="minUrgencyDropdown"
                     style={{
-                        ...elStyle,
-                        width: '2rem'
+                        ...elStyle
                     }}
                     selected={urgency.min}
                     options={[1, 2, 3, 4, 5]}
@@ -37,10 +37,10 @@ const UrgencyRangeSelect = (props) => {
                 />
                 <div style={{ paddingLeft: '0.2rem' }}>{'..'}</div>
                 <Dropdown
+                    width={2}
                     className="maxUrgencyDropdown"
                     style={{
-                        ...elStyle,
-                        width: '2rem'
+                        ...elStyle
                     }}
                     selected={urgency.max}
                     options={[1, 2, 3, 4, 5]}

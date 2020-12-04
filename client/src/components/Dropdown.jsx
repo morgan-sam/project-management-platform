@@ -137,7 +137,11 @@ const Dropdown = (props) => {
     }, []);
 
     return (
-        <DropdownParent className={props.className} style={props.style}>
+        <DropdownParent
+            className={props.className}
+            style={props.style}
+            width={props.width}
+        >
             <DropdownElement>
                 <DropdownOptionContainer listOpen={listOpen} ref={dropdownRef}>
                     {!includeDropdownHeader && listOpen ? null : (

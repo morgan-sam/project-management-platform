@@ -69,7 +69,7 @@ const CreateTaskBar = (props) => {
             />
             <DropdownWithLabel
                 {...props}
-                width={'2rem'}
+                width={2}
                 label={'Urgency'}
                 selected={input.urgency}
                 options={[1, 2, 3, 4, 5]}

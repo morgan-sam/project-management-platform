@@ -21,10 +21,10 @@ const CompletionSelect = (props) => {
                 Completion:
             </div>
             <Dropdown
+                width={7}
                 className="completionDropdown"
                 style={{
-                    ...elStyle,
-                    width: '7rem'
+                    ...elStyle
                 }}
                 selected={obj.completion}
                 options={['all', 'complete', 'incomplete']}

@@ -127,12 +127,12 @@ const DateTemplateWizard = (props) => {
                         style={containerItemStyle}
                     >{`Amount Of ${shortStepToFull(step)}s:`}</div>
                     <Dropdown
+                        width={2}
                         className="dropdown"
                         selected={amount}
                         style={{
                             alignItems: 'center',
                             zIndex: '9',
-                            width: '2rem',
                             padding: '3rem'
                         }}
                         options={[...Array(11).keys()].slice(1)}

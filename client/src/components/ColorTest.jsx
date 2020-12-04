@@ -18,7 +18,8 @@ const ColorTest = (props) => {
             style={{ display: 'flex', margin: '0 0 3rem 0' }}
         >
             <Dropdown
-                style={{ width: '10rem', zIndex: '109' }}
+                width={10}
+                style={{ zIndex: '109' }}
                 options={CSS_COLOR_NAMES}
                 selected={color}
                 onClick={(val) => setColor(val)}

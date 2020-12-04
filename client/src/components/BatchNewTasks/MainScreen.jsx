@@ -102,7 +102,7 @@ const MainBatchScreen = (props) => {
                     onClick={(val) =>
                         setTemplate({ ...template, urgency: val })
                     }
-                    width={'2rem'}
+                    width={2}
                 />
             </div>
             <SubContainer>

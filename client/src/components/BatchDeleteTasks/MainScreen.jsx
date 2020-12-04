@@ -160,6 +160,7 @@ const BatchDeleteTasks = (props) => {
                 </AutoContainer>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Dropdown
+                        width={8}
                         type={'checkbox'}
                         label={'Teams'}
                         onClick={(val) => {
@@ -171,7 +172,7 @@ const BatchDeleteTasks = (props) => {
                         options={getTaskListTeams(rawTaskList)}
                         filterOptions={template}
                         selected={template.teams}
-                        style={{ width: '8rem', zIndex: '18', margin: '1rem' }}
+                        style={{ zIndex: '18', margin: '1rem' }}
                     />
                     <div
                         style={{

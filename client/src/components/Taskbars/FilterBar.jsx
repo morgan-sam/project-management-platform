@@ -37,7 +37,7 @@ const FilterBar = (props) => {
                     : 'hidden'
             }}
         >
-            <FilterToggle {...props}  />
+            <FilterToggle {...props} />
             <ColorButton
                 className="resetFilterBtn"
                 onClick={() => {
@@ -51,7 +51,6 @@ const FilterBar = (props) => {
             />
             <DateRangeSelect
                 {...props}
-                
                 date={parseISOToDateObj(props.filterOptions.date)}
                 deadline={parseISOToDateObj(props.filterOptions.deadline)}
                 setDate={(val) =>
@@ -73,7 +72,6 @@ const FilterBar = (props) => {
             />
             <UrgencyRangeSelect
                 {...props}
-                
                 onChange={(min, max) =>
                     props.setFilterOptions({
                         ...props.filterOptions,
@@ -89,6 +87,7 @@ const FilterBar = (props) => {
                 }
             />
             <Dropdown
+                width={8}
                 type={'checkbox'}
                 label={'Teams'}
                 onClick={(val) => {
@@ -100,7 +99,7 @@ const FilterBar = (props) => {
                 options={taskListTeams}
                 filterOptions={filterOptions}
                 selected={filterOptions.teams}
-                style={{ width: '8rem', zIndex: '10' }}
+                style={{ zIndex: '10' }}
                 onOpenChange={(val) =>
                     setDropdownsOpen({ ...dropdownsOpen, teams: val })
                 }

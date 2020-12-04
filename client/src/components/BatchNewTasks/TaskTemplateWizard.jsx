@@ -75,12 +75,12 @@ const TaskTemplateWizard = (props) => {
                         style={{ ...containerItemStyle, paddingTop: '0.3rem' }}
                     >{`Digits:`}</div>
                     <Dropdown
+                        width={2}
                         className="dropdown"
                         selected={digits}
                         style={{
                             alignItems: 'center',
                             zIndex: '9',
-                            width: '2rem',
                             padding: '2rem'
                         }}
                         options={[...Array(11).keys()].slice(1)}

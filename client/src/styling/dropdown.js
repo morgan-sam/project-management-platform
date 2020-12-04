@@ -6,7 +6,7 @@ export const DROPDOWN_MAX_HEIGHT_REMS = 20;
 const DROPDOWN_BORDER_RADIUS = '5px';
 
 export const DropdownParent = styled.div`
-    width: 100%;
+    width: ${(props) => (props.width ? `${props.width}rem` : 'auto')};
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -8,4 +8,7 @@ export const DateSelectElement = styled.div`
     text-align: center;
     padding: 1rem;
     grid-gap: 0.31rem;
+    & > * {
+        margin: 0 auto;
+    }
 `;

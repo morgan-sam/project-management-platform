@@ -18,9 +18,7 @@ const DropdownWithLabel = (props) => {
             <div>{props.label}:</div>
             <Dropdown
                 className="dropdown"
-                style={{
-                    width: props.width
-                }}
+                width={props.width}
                 selected={props.selected}
                 options={props.options}
                 onClick={(val) => props.onClick(val)}
