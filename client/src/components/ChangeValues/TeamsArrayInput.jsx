@@ -19,11 +19,13 @@ const TeamsList = styled.ul`
 const TeamsListItem = styled.li`
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0.3rem;
 `;
 
 const RemoveButton = styled.button`
     height: 1rem;
     width: 1rem;
+    margin: 0 0.5rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
