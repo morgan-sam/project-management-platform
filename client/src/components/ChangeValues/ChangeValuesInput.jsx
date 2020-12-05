@@ -4,6 +4,8 @@ import Dropdown from 'components/Dropdown';
 import DropdownWithLabel from 'components/DropdownWithLabel';
 import LoadingScreen from 'components/Screens/LoadingScreen';
 import styled from '@emotion/styled';
+import TableEntries from 'components/Table/TableEntries';
+import TeamsArrayInput from './TeamsArrayInput';
 
 const InputContainer = styled.div`
     padding: 0.5rem;
@@ -19,7 +21,6 @@ const TaskTextInput = styled.input`
 
 const ChangeValuesInput = (props) => {
     const { field, value, setValue } = props;
-    console.log(value);
     switch (field) {
         case 'task':
             // text input
@@ -50,7 +51,7 @@ const ChangeValuesInput = (props) => {
             );
         case 'teams':
             // array input
-            return <div>array input</div>;
+            return <TeamsArrayInput {...{ value, setValue }} />;
         case 'completed':
             // boolean input
             return <div>boolean input</div>;
