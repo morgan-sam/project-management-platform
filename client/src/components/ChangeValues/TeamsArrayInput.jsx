@@ -16,6 +16,19 @@ const TeamsList = styled.ul`
     margin: 0.5rem 0;
 `;
 
+const TeamsListItem = styled.li`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const RemoveButton = styled.button`
+    height: 1rem;
+    width: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+`;
+
 const TeamsArrayInput = (props) => {
     const { value, setValue } = props;
 
@@ -26,8 +39,19 @@ const TeamsArrayInput = (props) => {
     return (
         <TeamInputContainer>
             <TeamsList>
-                {value.map((el) => (
-                    <li key={el}>{el}</li>
+                {value.map((item) => (
+                    <TeamsListItem key={item}>
+                        <span>{item}</span>
+                        <RemoveButton
+                            onClick={() =>
+                                setValue((cur) =>
+                                    cur.filter((val) => val !== item)
+                                )
+                            }
+                        >
+                            ❎
+                        </RemoveButton>
+                    </TeamsListItem>
                 ))}
             </TeamsList>
             <TeamTextInput onKeyDown={handleKeyDown}></TeamTextInput>
