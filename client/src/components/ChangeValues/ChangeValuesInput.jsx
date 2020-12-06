@@ -1,11 +1,8 @@
 import React from 'react';
 import DateSelect from 'components/DateSelect';
-import Dropdown from 'components/Dropdown';
 import DropdownWithLabel from 'components/DropdownWithLabel';
-import LoadingScreen from 'components/Screens/LoadingScreen';
 import styled from '@emotion/styled';
-import TableEntries from 'components/Table/TableEntries';
-import TeamsArrayInput from './TeamsArrayInput';
+import TeamsArrayInput from 'components/ChangeValues/TeamsArrayInput';
 import Checkbox from 'components/Checkbox';
 
 // Task
