@@ -17,6 +17,7 @@ const InputLabel = styled.span`
 `;
 const TaskTextInput = styled.input`
     padding: 0.5rem;
+    text-indent: 3px;
 `;
 
 // Completed
