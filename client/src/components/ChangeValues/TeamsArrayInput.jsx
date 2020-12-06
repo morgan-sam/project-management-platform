@@ -6,12 +6,8 @@ const TeamInputContainer = styled.div`
     flex-direction: column;
 `;
 
-const TeamTextInput = styled.input`
-    padding: 0.5rem;
-`;
-
 const TeamsList = styled.ul`
-    height: 5rem;
+    height: 12rem;
     width: 12rem;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -37,6 +33,11 @@ const RemoveButton = styled.button`
     display: inline-flex;
     align-items: center;
     justify-content: center;
+`;
+
+const TeamTextInput = styled.input`
+    padding: 0.5rem;
+    margin-top: 1rem;
 `;
 
 const TeamsArrayInput = (props) => {
