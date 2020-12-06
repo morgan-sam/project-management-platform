@@ -67,7 +67,10 @@ const ChangeValuesInput = (props) => {
             return (
                 <CheckboxContainer>
                     <span>Completed: </span>
-                    <Checkbox />
+                    <Checkbox
+                        default={value}
+                        onChange={() => setValue(!value)}
+                    />
                 </CheckboxContainer>
             );
         default:
