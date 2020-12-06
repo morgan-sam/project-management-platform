@@ -40,6 +40,7 @@ const TeamTextInput = styled.input`
     margin-top: 1rem;
     width: 12rem;
     box-sizing: border-box;
+    text-indent: 10px;
 `;
 
 const TeamsArrayInput = (props) => {
