@@ -50,7 +50,7 @@ export const SubContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 4rem;
+    min-height: 4rem;
     z-index: 10;
 `;
 
