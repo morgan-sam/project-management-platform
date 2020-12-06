@@ -12,12 +12,10 @@ const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
-const InputLabel = styled.span`
-    padding: 0.75rem 0;
-`;
 const TaskTextInput = styled.input`
     padding: 0.5rem;
     text-indent: 3px;
+    margin-top: 0.75rem;
 `;
 
 // Completed
@@ -37,7 +35,7 @@ const ChangeValuesInput = (props) => {
             // text input
             return (
                 <InputContainer>
-                    <InputLabel>Input new task name:</InputLabel>
+                    <span>Input new task name:</span>
                     <TaskTextInput
                         value={value}
                         onChange={(e) => setValue(e.currentTarget.value)}
