@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ColorButton from 'components/ColorButton';
 import { capitalizeFirstLetter } from 'processing/utility';
 import ChangeValuesInput from 'components/ChangeValues/ChangeValuesInput';
+import { todaysDateAsObject } from 'data/dates';
 
 import {
     PopupTitle,
@@ -17,9 +18,8 @@ const getDefaultValue = (field) => {
         case 'task':
             return '';
         case 'date':
-            return { day: 1, month: 12, year: 2020 };
         case 'deadline':
-            return { day: 1, month: 12, year: 2020 };
+            return todaysDateAsObject();
         case 'urgency':
             return 3;
         case 'teams':

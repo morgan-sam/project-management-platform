@@ -43,6 +43,15 @@ export const getDayFromTodayAsISO = (dayDifference = 0) => {
     return `${stringDate}T00:00:00.000Z`;
 };
 
+export const todaysDateAsObject = () => {
+    const date = new Date();
+    return {
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear()
+    };
+};
+
 export const getBoundaryDates = (rawTaskList) => {
     const tasksSortedByDate = sortList(
         {
