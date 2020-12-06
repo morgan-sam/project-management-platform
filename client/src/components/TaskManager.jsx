@@ -160,7 +160,7 @@ const TaskManager = (props) => {
                 {
                     name: 'Change Value',
                     sub: fields
-                        .filter((el) => el !== 'id')
+                        .filter((el) => el !== 'id' && el !== 'selected')
                         .map((field) => ({
                             name: capitalizeFirstLetter(field),
                             action: () =>
