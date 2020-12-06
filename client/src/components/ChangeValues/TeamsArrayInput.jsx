@@ -36,8 +36,10 @@ const RemoveButton = styled.button`
 `;
 
 const TeamTextInput = styled.input`
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     margin-top: 1rem;
+    width: 12rem;
+    box-sizing: border-box;
 `;
 
 const TeamsArrayInput = (props) => {
