@@ -44,7 +44,7 @@ const ChangeValue = (props) => {
     }, [pressedKeys]);
 
     return (
-        <PopUpContainer>
+        <PopUpContainer className={'popUp'}>
             <PopUpWindow>
                 <PopupTitle>
                     Change {capitalizeFirstLetter(field)} Values
