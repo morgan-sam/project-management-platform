@@ -13,6 +13,8 @@ import {
     CancelButton
 } from 'styling/popUp';
 
+const POP_UP_CLOSE_TIME_MS = 400;
+
 const getDefaultValue = (field) => {
     switch (field) {
         case 'task':
@@ -32,7 +34,6 @@ const getDefaultValue = (field) => {
 };
 
 const ChangeValue = (props) => {
-    const popUpCloseTimeMs = 400;
     const { setPopUp, pressedKeys, field } = props;
     const closePopUp = () => setPopUp(null);
 
@@ -57,7 +58,7 @@ const ChangeValue = (props) => {
                         onClick={async () => {
                             setTimeout(() => {
                                 closePopUp();
-                            }, popUpCloseTimeMs);
+                            }, POP_UP_CLOSE_TIME_MS);
                         }}
                     />
                 </FinalContainer>
