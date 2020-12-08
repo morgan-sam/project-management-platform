@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ColorButton from 'components/ColorButton';
 import { capitalizeFirstLetter } from 'processing/utility';
 import ChangeValuesInput from 'components/ChangeValues/ChangeValuesInput';
-import { todaysDateAsObject } from 'data/dates';
+import { getDayFromTodayAsISO } from 'data/dates';
+import { fetchPutEntry } from 'data/fetch';
 
 import {
     PopupTitle,
@@ -21,7 +22,7 @@ const getDefaultValue = (field) => {
             return '';
         case 'date':
         case 'deadline':
-            return todaysDateAsObject();
+            return getDayFromTodayAsISO();
         case 'urgency':
             return 3;
         case 'teams':
@@ -34,7 +35,14 @@ const getDefaultValue = (field) => {
 };
 
 const ChangeValue = (props) => {
-    const { setPopUp, pressedKeys, field } = props;
+    const {
+        setPopUp,
+        pressedKeys,
+        field,
+        selectedTasks,
+        taskList,
+        setDataChanged
+    } = props;
     const closePopUp = () => setPopUp(null);
 
     const [value, setValue] = useState(getDefaultValue(field));
@@ -42,6 +50,16 @@ const ChangeValue = (props) => {
     useEffect(() => {
         if (pressedKeys.includes('Escape')) closePopUp();
     }, [pressedKeys]);
+
+    const ChangeVals = () => {
+        selectedTasks.forEach((id) => {
+            let entry = taskList.filter((task) => id === task.id)[0];
+            entry[field] = value;
+            fetchPutEntry(entry);
+        });
+        setDataChanged(true);
+        setPopUp(null);
+    };
 
     return (
         <PopUpContainer className={'popUp'}>
@@ -57,7 +75,7 @@ const ChangeValue = (props) => {
                         text={'Change all values'}
                         onClick={async () => {
                             setTimeout(() => {
-                                closePopUp();
+                                ChangeVals();
                             }, POP_UP_CLOSE_TIME_MS);
                         }}
                     />

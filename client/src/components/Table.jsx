@@ -47,7 +47,13 @@ const Table = (props) => {
         const handleClickOutside = (e) => {
             const clickClasses = getParentsClassList(e.target);
             if (clickClasses === '') return;
-            const legalClasses = ['dataCell', 'popUp', 'overlay', 'navMenu'];
+            const legalClasses = [
+                'dataCell',
+                'popUp',
+                'overlay',
+                'navMenu',
+                'dropdown'
+            ];
             const conditions = legalClasses.map((el) =>
                 Boolean(clickClasses.match(el))
             );

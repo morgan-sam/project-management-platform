@@ -4,6 +4,7 @@ import DropdownWithLabel from 'components/DropdownWithLabel';
 import styled from '@emotion/styled';
 import TeamsArrayInput from 'components/ChangeValues/TeamsArrayInput';
 import Checkbox from 'components/Checkbox';
+import { DateISOToObject, DateObjectToISO } from 'data/dates';
 
 // Task
 
@@ -46,7 +47,12 @@ const ChangeValuesInput = (props) => {
         case 'date':
         case 'deadline':
             // date input
-            return <DateSelect date={value} setDate={setValue} />;
+            return (
+                <DateSelect
+                    date={DateISOToObject(value)}
+                    setDate={(date) => setValue(DateObjectToISO(date))}
+                />
+            );
         case 'urgency':
             // integer input
             return (

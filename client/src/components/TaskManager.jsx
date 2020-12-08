@@ -169,6 +169,9 @@ const TaskManager = (props) => {
                                         field={field}
                                         setPopUp={setPopUp}
                                         pressedKeys={pressedKeys}
+                                        selectedTasks={selectedTasks}
+                                        taskList={taskList}
+                                        setDataChanged={setDataChanged}
                                     />
                                 )
                         })),

@@ -52,6 +52,22 @@ export const todaysDateAsObject = () => {
     };
 };
 
+export const DateISOToObject = (dateISO) => {
+    const matches = dateISO.match(/([\d]+)\-([\d]+)\-([\d]+)\T/);
+    return {
+        year: parseInt(matches[1]),
+        month: parseInt(matches[2]),
+        day: parseInt(matches[3])
+    };
+};
+
+const twoDigits = (num) => (`${num}`.length > 1 ? +`${num}` : `0${num}`);
+
+export const DateObjectToISO = (dateObject) => {
+    const { year, month, day } = dateObject;
+    return `${`${year}-${twoDigits(month)}-${twoDigits(day)}`}T00:00:00.000Z`;
+};
+
 export const getBoundaryDates = (rawTaskList) => {
     const tasksSortedByDate = sortList(
         {
