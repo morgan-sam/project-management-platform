@@ -111,10 +111,7 @@ const TaskManager = (props) => {
                     name: 'New Tasks',
                     action: () =>
                         setPopUp(
-                            <BatchNewTasks
-                                setPopUp={setPopUp}
-                                setDataChanged={setDataChanged}
-                            />
+                            <BatchNewTasks {...{ setPopUp, setDataChanged }} />
                         )
                 },
                 {
@@ -122,10 +119,12 @@ const TaskManager = (props) => {
                     action: () =>
                         setPopUp(
                             <BatchDeleteTasks
-                                pressedKeys={pressedKeys}
-                                rawTaskList={rawTaskList}
-                                setPopUp={setPopUp}
-                                setDataChanged={setDataChanged}
+                                {...{
+                                    pressedKeys,
+                                    rawTaskList,
+                                    setPopUp,
+                                    setDataChanged
+                                }}
                             />
                         )
                 }
@@ -166,12 +165,14 @@ const TaskManager = (props) => {
                             action: () =>
                                 setPopUp(
                                     <ChangeValue
-                                        field={field}
-                                        setPopUp={setPopUp}
-                                        pressedKeys={pressedKeys}
-                                        selectedTasks={selectedTasks}
-                                        taskList={taskList}
-                                        setDataChanged={setDataChanged}
+                                        {...{
+                                            field,
+                                            setPopUp,
+                                            pressedKeys,
+                                            selectedTasks,
+                                            taskList,
+                                            setDataChanged
+                                        }}
                                     />
                                 )
                         })),
@@ -206,9 +207,7 @@ const TaskManager = (props) => {
                     action: () =>
                         setPopUp(
                             <Preferences
-                                setPopUp={setPopUp}
-                                preferences={preferences}
-                                setPreferences={setPreferences}
+                                {...{ setPopUp, preferences, setPreferences }}
                             />
                         )
                 }
@@ -314,8 +313,7 @@ const TaskManager = (props) => {
                                         Source Code
                                     </a>
                                 ]}
-                                pressedKeys={pressedKeys}
-                                setPopUp={setPopUp}
+                                {...{ pressedKeys, setPopUp }}
                             />
                         )
                 },
