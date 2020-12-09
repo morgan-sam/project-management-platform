@@ -2,7 +2,8 @@ import React from 'react';
 import ClickableCellText from 'components/ClickableCellText';
 
 const DataCell = (props) => {
-    const { setFilterOptions, text, filterOptions } = props;
+    const { setFilterOptions, text, filterOptions, selected } = props;
+    const color = props.style.color;
 
     const clickableCell =
         props.className === 'dateCell' ||
@@ -31,11 +32,13 @@ const DataCell = (props) => {
             ) : clickableCell ? (
                 <ClickableCellText
                     cellType={props.className.replace(/Cell/, '')}
-                    text={text}
-                    filterOptions={filterOptions}
-                    setFilterOptions={setFilterOptions}
-                    color={props.style.color}
-                    selected={props.selected}
+                    {...{
+                        text,
+                        filterOptions,
+                        setFilterOptions,
+                        color,
+                        selected
+                    }}
                 />
             ) : (
                 text
