@@ -4,7 +4,7 @@ const HeadingCell = (props) => {
     return (
         <th
             className={`headingCell ${props.className}`}
-            onClick={() => (props.onClick ? props.onClick() : null)}
+            onClick={props.onClick}
             style={props.style}
         >
             {props.text}
