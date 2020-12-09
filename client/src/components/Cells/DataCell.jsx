@@ -15,17 +15,11 @@ const DataCell = (props) => {
         <td
             className={`dataCell ${props.className}`}
             style={{ ...props.style, userSelect: 'none' }}
-            onClick={() => (props.onClick ? props.onClick() : null)}
-            onMouseOver={(val) =>
-                props.onMouseOver ? props.onMouseOver(val) : null
-            }
-            onMouseLeave={(val) =>
-                props.onMouseLeave ? props.onMouseLeave(val) : null
-            }
-            onMouseDown={(val) =>
-                props.onMouseDown ? props.onMouseDown(val) : null
-            }
-            onMouseUp={(val) => (props.onMouseUp ? props.onMouseUp(val) : null)}
+            onClick={props.onClick}
+            onMouseOver={props.onMouseOver}
+            onMouseLeave={props.onMouseLeave}
+            onMouseDown={props.onMouseDown}
+            onMouseUp={props.onMouseUp}
         >
             {text === true ? (
                 '✓'
