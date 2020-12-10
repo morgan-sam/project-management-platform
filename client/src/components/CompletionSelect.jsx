@@ -1,31 +1,26 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
+import styled from '@emotion/styled';
+
+const CompletionSelectContainer = styled.div`
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    & > * {
+        margin: 0 0.3rem;
+    }
+`;
 
 const CompletionSelect = (props) => {
     const { state, setOverflowHidden } = props;
     const [obj, set] = state;
 
-    const elStyle = {
-        margin: '0 0.3rem'
-    };
-
-    const completionSelectStyle = {
-        display: 'flex',
-        alignItems: 'center',
-        height: '3rem'
-    };
-
     return (
-        <div style={completionSelectStyle}>
-            <div className="label" style={elStyle}>
-                Completion:
-            </div>
+        <CompletionSelectContainer>
+            <div className="label">Completion:</div>
             <Dropdown
                 width={7}
                 className="completionDropdown"
-                style={{
-                    ...elStyle
-                }}
                 selected={obj.completion}
                 options={['all', 'complete', 'incomplete']}
                 onClick={(val) =>
@@ -36,7 +31,7 @@ const CompletionSelect = (props) => {
                 }
                 onOpenChange={setOverflowHidden}
             />
-        </div>
+        </CompletionSelectContainer>
     );
 };
 
