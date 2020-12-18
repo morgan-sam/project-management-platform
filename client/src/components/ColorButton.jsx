@@ -19,9 +19,7 @@ const ColorButton = (props) => {
     return (
         <ColorButtonStaticContainer
             shake={shake}
-            onMouseOver={() => {
-                if (props.enabled) setHover(true);
-            }}
+            onMouseOver={() => props.enabled && setHover(true)}
             onMouseLeave={() => {
                 if (hover) setHover(false);
                 if (pressed) setTimeout(() => setPressed(false), 200);
