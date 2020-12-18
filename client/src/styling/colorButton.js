@@ -10,21 +10,16 @@ const getButtonSizes = (style) => {
     };
 };
 
-export const getStaticContainerStyle = (style, shake) => {
-    return {
-        position: 'relative',
-        height:
-            style && style.height
-                ? `${parseInt(style.height) * 1.8}rem`
-                : 'auto',
-        display: 'flex',
-        alignItems: 'center',
-        margin: '0.5rem',
-        animation: shake
-            ? 'button-error-shake 0.2s ease-in-out infinite'
-            : 'none'
-    };
-};
+export const ColorButtonStaticContainer = styled.div`
+    position: relative;
+    min-height: 2rem;
+    height: 'auto';
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    animation: ${(props) =>
+        props.shake ? 'button-error-shake 0.2s ease-in-out infinite' : 'none'};
+`;
 
 export const getFloatingContainerStyle = (style, state) => {
     const { width, height } = getButtonSizes(style);

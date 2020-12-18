@@ -47,7 +47,6 @@ const FilterBar = (props) => {
                     });
                 }}
                 text={'Reset Filter'}
-                style={{ width: '6rem' }}
             />
             <DateRangeSelect
                 {...props}

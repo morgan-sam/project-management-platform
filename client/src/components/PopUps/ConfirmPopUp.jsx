@@ -3,7 +3,6 @@ import ColorButton from 'components/ColorButton';
 import {
     PopUpContainerElement,
     ConfirmButtonContainer,
-    buttonStyle,
     ConfirmMessageContainer
 } from 'styling/confirmPopUp';
 
@@ -31,7 +30,6 @@ const ConfirmPopUp = (props) => {
             <ConfirmButtonContainer>
                 <ColorButton
                     color={'green'}
-                    style={buttonStyle}
                     text={'Confirm'}
                     onClick={async () => {
                         setTimeout(() => {
@@ -42,7 +40,6 @@ const ConfirmPopUp = (props) => {
                 />
                 <ColorButton
                     color={'darkred'}
-                    style={buttonStyle}
                     text={'Cancel'}
                     onClick={() =>
                         setTimeout(() => {

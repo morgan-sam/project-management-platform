@@ -2,7 +2,7 @@ import React, { useState, useRef, useContext } from 'react';
 import ThemeContext from 'context/ThemeContext';
 import {
     BUTTON_BOUNCE_PX,
-    getStaticContainerStyle,
+    ColorButtonStaticContainer,
     getFloatingContainerStyle,
     getButtonStyle,
     ColorBox,
@@ -17,8 +17,8 @@ const ColorButton = (props) => {
     const themeColor = useContext(ThemeContext);
 
     return (
-        <div
-            style={getStaticContainerStyle(props.style, shake)}
+        <ColorButtonStaticContainer
+            shake={shake}
             onMouseOver={() => {
                 if (props.enabled) setHover(true);
             }}
@@ -76,7 +76,7 @@ const ColorButton = (props) => {
                 />
                 <WhiteBox />
             </div>
-        </div>
+        </ColorButtonStaticContainer>
     );
 };
 

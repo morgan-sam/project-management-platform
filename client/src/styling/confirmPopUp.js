@@ -32,12 +32,6 @@ export const ConfirmButtonContainer = styled.div`
     margin: 1rem;
 `;
 
-export const buttonStyle = {
-    width: '5rem',
-    height: '2rem',
-    lineHeight: '0'
-};
-
 export const ConfirmMessageContainer = styled.div`
     width: 75%;
     text-align: center;
