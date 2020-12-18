@@ -45,9 +45,7 @@ const ColorButton = (props) => {
                         ),
                         ...props.style
                     }}
-                    onMouseDown={() => {
-                        if (props.enabled) setPressed(true);
-                    }}
+                    onMouseDown={() => props.enabled && setPressed(true)}
                     onMouseUp={(val) => {
                         if (props.enabled) {
                             if (pressed) props.onClick(val);
