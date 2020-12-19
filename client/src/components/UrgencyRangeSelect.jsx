@@ -3,7 +3,7 @@ import Dropdown from 'components/Dropdown';
 import styled from '@emotion/styled';
 
 const FilterBarLabel = styled.div`
-    width: 7rem;
+    margin-right: 1rem;
 `;
 
 const DropdownContainer = styled.div`
