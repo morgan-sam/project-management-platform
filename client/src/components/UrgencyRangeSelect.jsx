@@ -2,7 +2,7 @@ import React from 'react';
 import Dropdown from 'components/Dropdown';
 import styled from '@emotion/styled';
 
-const DropdownContainers = styled.div`
+const DropdownContainer = styled.div`
     display: flex;
     & > * {
         margin: 0 0.3rem;
@@ -27,7 +27,7 @@ const UrgencyRangeSelect = (props) => {
             <div className="filterBarLabel" style={{ width: '7rem' }}>
                 Urgency Range:
             </div>
-            <DropdownContainers>
+            <DropdownContainer>
                 <Dropdown
                     width={2}
                     className="minUrgencyDropdown"
@@ -45,7 +45,7 @@ const UrgencyRangeSelect = (props) => {
                     onClick={(val) => setMaxUrgency(val)}
                     onOpenChange={props.setOverflowHidden}
                 />
-            </DropdownContainers>
+            </DropdownContainer>
         </div>
     );
 };
