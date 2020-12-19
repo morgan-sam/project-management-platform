@@ -2,6 +2,10 @@ import React from 'react';
 import Dropdown from 'components/Dropdown';
 import styled from '@emotion/styled';
 
+const FilterBarLabel = styled.div`
+    width: 7rem;
+`;
+
 const DropdownContainer = styled.div`
     display: flex;
     & > * {
@@ -24,9 +28,7 @@ const UrgencyRangeSelect = (props) => {
 
     return (
         <div style={props.style}>
-            <div className="filterBarLabel" style={{ width: '7rem' }}>
-                Urgency Range:
-            </div>
+            <FilterBarLabel>Urgency Range:</FilterBarLabel>
             <DropdownContainer>
                 <Dropdown
                     width={2}
