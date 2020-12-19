@@ -1,9 +1,16 @@
 import React from 'react';
 import Dropdown from 'components/Dropdown';
+import styled from '@emotion/styled';
+
+const DropdownContainers = styled.div`
+    display: flex;
+    & > * {
+        margin: 0 0.3rem;
+    }
+`;
 
 const UrgencyRangeSelect = (props) => {
     const { onChange, urgency } = props;
-    const elStyle = { margin: '0 0.3rem' };
 
     const setMinUrgency = (min) => {
         if (min > urgency.max) onChange(min, min);
@@ -17,19 +24,13 @@ const UrgencyRangeSelect = (props) => {
 
     return (
         <div style={props.style}>
-            <div
-                className="filterBarLabel"
-                style={{ ...elStyle, width: '7rem' }}
-            >
+            <div className="filterBarLabel" style={{ width: '7rem' }}>
                 Urgency Range:
             </div>
-            <div style={{ display: 'flex' }}>
+            <DropdownContainers>
                 <Dropdown
                     width={2}
                     className="minUrgencyDropdown"
-                    style={{
-                        ...elStyle
-                    }}
                     selected={urgency.min}
                     options={[1, 2, 3, 4, 5]}
                     onClick={(val) => setMinUrgency(val)}
@@ -39,15 +40,12 @@ const UrgencyRangeSelect = (props) => {
                 <Dropdown
                     width={2}
                     className="maxUrgencyDropdown"
-                    style={{
-                        ...elStyle
-                    }}
                     selected={urgency.max}
                     options={[1, 2, 3, 4, 5]}
                     onClick={(val) => setMaxUrgency(val)}
                     onOpenChange={props.setOverflowHidden}
                 />
-            </div>
+            </DropdownContainers>
         </div>
     );
 };
