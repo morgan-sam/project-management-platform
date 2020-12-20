@@ -14,7 +14,7 @@ export const ColorButtonStaticContainer = styled.div`
         props.shake ? 'button-error-shake 0.2s ease-in-out infinite' : 'none'};
 `;
 
-export const getFloatingContainerStyle = (style, state) => {
+export const getFloatingContainerStyle = (state) => {
     const { pressed, hover } = state;
     return {
         position: 'relative',
@@ -38,7 +38,7 @@ export const getFloatingContainerStyle = (style, state) => {
 };
 
 export const getButtonStyle = (props, hover) => {
-    const { style, color, enabled } = props;
+    const { color, enabled } = props;
     const hoverTextColor = getGradientTextColor(color);
 
     return {

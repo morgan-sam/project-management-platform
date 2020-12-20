@@ -26,7 +26,7 @@ const ColorButton = (props) => {
             }}
         >
             <div
-                style={getFloatingContainerStyle(props.style, {
+                style={getFloatingContainerStyle({
                     hover,
                     pressed
                 })}
