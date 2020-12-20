@@ -3,13 +3,6 @@ import { calculateColorStyles, getGradientTextColor } from 'styling/theme';
 
 export const BUTTON_BOUNCE_PX = 8;
 
-const getButtonSizes = (style) => {
-    return {
-        width: style && style.width ? style.width : 'auto',
-        height: style && style.height ? style.height : 'auto'
-    };
-};
-
 export const ColorButtonStaticContainer = styled.div`
     position: relative;
     min-height: 2rem;
@@ -22,12 +15,11 @@ export const ColorButtonStaticContainer = styled.div`
 `;
 
 export const getFloatingContainerStyle = (style, state) => {
-    const { width, height } = getButtonSizes(style);
     const { pressed, hover } = state;
     return {
         position: 'relative',
-        width,
-        height,
+        width: 'auto',
+        height: 'auto',
         top: pressed
             ? `${BUTTON_BOUNCE_PX}px`
             : hover
@@ -47,13 +39,12 @@ export const getFloatingContainerStyle = (style, state) => {
 
 export const getButtonStyle = (props, hover) => {
     const { style, color, enabled } = props;
-    const { width, height } = getButtonSizes(style);
     const hoverTextColor = getGradientTextColor(color);
 
     return {
         position: 'relative',
-        width,
-        height,
+        width: 'auto',
+        height: 'auto',
         padding: '0.75rem',
         backgroundColor: 'transparent',
         border: '1px solid black',
