@@ -14,29 +14,26 @@ export const ColorButtonStaticContainer = styled.div`
         props.shake ? 'button-error-shake 0.2s ease-in-out infinite' : 'none'};
 `;
 
-export const getFloatingContainerStyle = (state) => {
-    const { pressed, hover } = state;
-    return {
-        position: 'relative',
-        width: 'auto',
-        height: 'auto',
-        top: pressed
+export const FloatingContainer = styled.div`
+    position: relative;
+    width: auto;
+    height: auto;
+    top: ${(props) =>
+        props.pressed
             ? `${BUTTON_BOUNCE_PX}px`
-            : hover
+            : props.hover
             ? `-${BUTTON_BOUNCE_PX}px`
-            : '0',
-        transition: 'top 0.2s ease-in-out',
-        animation: hover
+            : '0'};
+    transition: top 0.2s ease-in-out;
+    animation: ${(props) =>
+        props.hover
             ? 'float 1.4s ease-in-out 0.4s alternate infinite'
-            : 'none',
-        overflow: 'hidden',
-
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    };
-};
-
+            : 'none'};
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 export const getButtonStyle = (props, hover) => {
     const { color, enabled } = props;
     const hoverTextColor = getGradientTextColor(color);

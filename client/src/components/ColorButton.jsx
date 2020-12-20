@@ -3,7 +3,7 @@ import ThemeContext from 'context/ThemeContext';
 import {
     BUTTON_BOUNCE_PX,
     ColorButtonStaticContainer,
-    getFloatingContainerStyle,
+    FloatingContainer,
     getButtonStyle,
     ColorBox,
     WhiteBox
@@ -25,13 +25,7 @@ const ColorButton = (props) => {
                 if (pressed) setTimeout(() => setPressed(false), 200);
             }}
         >
-            <div
-                style={getFloatingContainerStyle({
-                    hover,
-                    pressed
-                })}
-                ref={floatRef}
-            >
+            <FloatingContainer {...{ hover, pressed }} ref={floatRef}>
                 <button
                     className={props.className}
                     style={{
@@ -71,7 +65,7 @@ const ColorButton = (props) => {
                     hover={hover}
                 />
                 <WhiteBox />
-            </div>
+            </FloatingContainer>
         </ColorButtonStaticContainer>
     );
 };
