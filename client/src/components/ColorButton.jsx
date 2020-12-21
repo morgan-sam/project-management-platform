@@ -4,7 +4,7 @@ import {
     BUTTON_BOUNCE_PX,
     ColorButtonStaticContainer,
     FloatingContainer,
-    getButtonStyle,
+    ButtonStyle,
     ColorBox,
     WhiteBox
 } from 'styling/colorButton';
@@ -26,19 +26,11 @@ const ColorButton = (props) => {
             }}
         >
             <FloatingContainer {...{ hover, pressed }} ref={floatRef}>
-                <button
+                <ButtonStyle
                     className={props.className}
-                    style={{
-                        ...getButtonStyle(
-                            {
-                                style: props.style,
-                                color: props.color,
-                                enabled: props.enabled
-                            },
-                            hover
-                        ),
-                        ...props.style
-                    }}
+                    color={props.color}
+                    enabled={props.enabled}
+                    hover={hover}
                     onMouseDown={() => props.enabled && setPressed(true)}
                     onMouseUp={(val) => {
                         if (props.enabled) {
@@ -59,7 +51,7 @@ const ColorButton = (props) => {
                     }}
                 >
                     {props.text}
-                </button>
+                </ButtonStyle>
                 <ColorBox
                     color={props.color ? props.color : themeColor}
                     hover={hover}

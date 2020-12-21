@@ -34,22 +34,19 @@ export const FloatingContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const getButtonStyle = (props, hover) => {
-    const { color, enabled } = props;
-    const hoverTextColor = getGradientTextColor(color);
 
-    return {
-        position: 'relative',
-        width: 'auto',
-        height: 'auto',
-        padding: '0.75rem',
-        backgroundColor: 'transparent',
-        border: '1px solid black',
-        color: hover ? hoverTextColor : 'black',
-        transition: '0s cubic-bezier(.11,.31,.92,.05)',
-        cursor: enabled ? 'pointer' : 'not-allowed'
-    };
-};
+export const ButtonStyle = styled.button`
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 0.75rem;
+    background-color: transparent;
+    border: 1px solid black;
+    color: ${(props) =>
+        props.hover ? getGradientTextColor(props.color) : 'black'};
+    transition: 0s cubic-bezier(0.11, 0.31, 0.92, 0.05);
+    cursor: ${(props) => (props.enabled ? 'pointer' : 'not-allowed')};
+`;
 
 export const ColorBox = styled.div`
     @keyframes button-bg-rotate {
