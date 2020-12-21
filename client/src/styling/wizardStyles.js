@@ -36,13 +36,13 @@ export const WizardTitle = styled.h3`
     font-size: 1.2rem;
 `;
 
-export const bottomContainer = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '2rem',
-    margin: '1.5rem 0rem'
-};
+export const BottomContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 1.5rem 0rem;
+`;
 
 export const containerItemStyle = {
     padding: '1rem'

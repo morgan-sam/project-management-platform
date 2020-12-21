@@ -7,7 +7,7 @@ import {
     FourByFourGrid,
     DisabledContainer,
     WizardTitle,
-    bottomContainer,
+    BottomContainer,
     containerItemStyle,
     Grid
 } from 'styling/wizardStyles';
@@ -105,7 +105,7 @@ const TaskTemplateWizard = (props) => {
                     </Grid>
                 </div>
             </FourByFourGrid>
-            <div style={bottomContainer}>
+            <BottomContainer>
                 <ColorButton
                     text={'Generate Template'}
                     onClick={() => {
@@ -114,7 +114,7 @@ const TaskTemplateWizard = (props) => {
                         setScreen('main');
                     }}
                 />
-            </div>
+            </BottomContainer>
             <CancelButton onClick={() => setScreen('main')}>×</CancelButton>
         </PopUpWindow>
     );
