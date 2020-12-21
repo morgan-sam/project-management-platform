@@ -26,12 +26,10 @@ export const FourByFourGrid = styled.div`
     }
 `;
 
-export const getSectionOpacityStyle = (disabled) => {
-    return {
-        opacity: disabled ? '0.3' : '1',
-        pointerEvents: disabled ? 'none' : 'auto'
-    };
-};
+export const DisabledContainer = styled.div`
+    opacity: ${(props) => (props.disabled ? '0.3' : '1')};
+    pointer-events: ${(props) => (props.disabled ? 'none' : 'auto')};
+`;
 
 export const WizardTitle = styled.h3`
     margin: 2rem 0rem;

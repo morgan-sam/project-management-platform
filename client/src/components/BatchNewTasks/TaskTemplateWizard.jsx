@@ -5,7 +5,7 @@ import ColorButton from 'components/ColorButton';
 import { CancelButton, PopUpWindow } from 'styling/popUp';
 import {
     FourByFourGrid,
-    getSectionOpacityStyle,
+    DisabledContainer,
     WizardTitle,
     bottomContainer,
     containerItemStyle,
@@ -66,11 +66,7 @@ const TaskTemplateWizard = (props) => {
                         />
                     </Grid>
                 </div>
-                <div
-                    style={{
-                        ...getSectionOpacityStyle(symbol === 'l')
-                    }}
-                >
+                <DisabledContainer disabled={symbol === 'l'}>
                     <div
                         style={{ ...containerItemStyle, paddingTop: '0.3rem' }}
                     >{`Digits:`}</div>
@@ -86,7 +82,7 @@ const TaskTemplateWizard = (props) => {
                         options={[...Array(11).keys()].slice(1)}
                         onClick={(val) => setDigits(val)}
                     />
-                </div>
+                </DisabledContainer>
                 <div>
                     <div style={containerItemStyle}>Order:</div>
                     <Grid rows={2} columns={2} style={containerItemStyle}>

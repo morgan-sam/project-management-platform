@@ -9,7 +9,7 @@ import { CancelButton, PopUpWindow } from 'styling/popUp';
 import { capitalizeFirstLetter } from 'processing/utility';
 import {
     FourByFourGrid,
-    getSectionOpacityStyle,
+    DisabledContainer,
     WizardTitle,
     bottomContainer,
     containerItemStyle,
@@ -85,11 +85,7 @@ const DateTemplateWizard = (props) => {
                         />
                     </Grid>
                 </div>
-                <div
-                    style={{
-                        ...getSectionOpacityStyle(sequence === 'none')
-                    }}
-                >
+                <DisabledContainer disabled={sequence === 'none'}>
                     <div style={containerItemStyle}>Step:</div>
                     <Grid rows={4} columns={2} style={containerItemStyle}>
                         <div style={{ gridArea: '1 / 1 / 2 / 2' }}>Day:</div>
@@ -117,12 +113,8 @@ const DateTemplateWizard = (props) => {
                             onChange={() => setStep('y')}
                         />
                     </Grid>
-                </div>
-                <div
-                    style={{
-                        ...getSectionOpacityStyle(sequence === 'none')
-                    }}
-                >
+                </DisabledContainer>
+                <DisabledContainer disabled={sequence === 'none'}>
                     <div
                         style={containerItemStyle}
                     >{`Amount Of ${shortStepToFull(step)}s:`}</div>
@@ -138,7 +130,7 @@ const DateTemplateWizard = (props) => {
                         options={[...Array(11).keys()].slice(1)}
                         onClick={(val) => setAmount(val)}
                     />
-                </div>
+                </DisabledContainer>
             </FourByFourGrid>
             <div style={bottomContainer}>
                 <ColorButton
